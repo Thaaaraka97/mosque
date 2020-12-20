@@ -1,0 +1,122 @@
+div.card{
+    background-color: #fff;
+}
+
+.card .card-title{
+    color: #111;
+}
+
+h6.preview-subject{
+    color: #111;
+}
+
+.content-wrapper{
+    background-color: #ddd;
+}
+
+.card .card-body h5{
+    color:#111;
+}
+/* .info-title */
+h2.mb-0{
+    color:#111;
+}
+
+.bg-gray-dark{
+    background-color: #ddd;
+}
+
+h6.mb-1{
+    color: #111;
+}
+
+h6.font-weight-bold.mb-0{
+    color: #111;
+}
+h3.page-title{
+    color: #111; 
+ }
+ input.form-control{
+     background-color: #ddd;
+     
+ }
+ input.form-control:active{
+     background-color: #ddd;
+     
+ }
+ input.form-control:focus{
+     background-color: #ddd;
+     
+ }
+ label{
+     color: #a5a5a5;
+ }
+ select.form-control{
+     background-color: #ddd;
+     
+ }
+ select.form-control:active{
+     background-color: #ddd;
+     
+ }
+ select.form-control:focus{
+     background-color: #ddd;
+     
+ }
+ textarea.form-control{
+     background-color: #ddd;
+ }
+ textarea.form-control:active{
+     background-color: #ddd;
+     
+ }
+ textarea.form-control:focus{
+     background-color: #ddd;
+     
+ }
+ input.typeahead.tt-input{
+     background-color: #ddd;
+ }
+ input.typeahead.tt-input:active{
+     background-color: #ddd;
+     
+ }
+ input.typeahead.tt-input:focus{
+     background-color: #ddd;
+     
+ }
+ .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #ddd;
+}
+.table-dark {
+    background-color: #ddd;
+}
+div.progress{
+    background-color: #999;
+}
+.table-hover tbody tr:hover {
+    color: #111;
+    background-color: #ddd;
+}
+div.row.icons-list{
+    color:#111; 
+ }
+button.btn.btn-primary.btn-block.enter-btn{
+    background-color: #0090e7;
+}
+button.btn.btn-primary.btn-block.enter-btn:active{
+    background-color: #ddd;    
+}
+button.btn.btn-primary.btn-block.enter-btn:focus{
+    background-color: #ddd;   
+}
+button.btn.btn-primary.btn-block.enter-btn:hover{
+    background-color: #005b94;   
+}
+p.sign-up, p.terms{
+    color: #6c7293;
+}
+.form-check .form-check-label input {
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
