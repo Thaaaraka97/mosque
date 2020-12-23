@@ -1,6 +1,7 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/mosque/admin/include/include.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/include/include.php";
 ?>
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -22,6 +23,7 @@ include $_SERVER['DOCUMENT_ROOT']."/mosque/admin/include/include.php";
     <!-- Layout styles -->
     <link rel="stylesheet" href="/mosque/admin/assets/css/style.css">
     <link rel="stylesheet" href="/mosque/admin/assets/css/light-version.css">
+    <link rel="stylesheet" href="/mosque/admin/assets/css/custom-styles.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="/mosque/admin/assets/images/favicon.png" />
+    <link rel="shortcut icon" href="/mosque/admin/assets/images/logo-mini.png" />
 </head>

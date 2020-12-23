@@ -110,7 +110,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                       <a href="#" class="btn btn-primary btn-md">Disaster Relief Donations</a>
                     </p>
                     <p>
-                      <a href="/mosque/admin/other-donations.php" class="btn btn-primary btn-md">Other Donations</a>
+                      <a href="#" class="btn btn-primary btn-md">Other Donations</a>
                     </p>
                   </div>
 

@@ -24,19 +24,19 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="page-header">
-            <h3 class="page-title"> Form elements </h3>
+            <h3 class="page-title">Nikkah Details</h3>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                <li class="breadcrumb-item"><a href="/mosque/admin/forms.php">Forms</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Nikkah Details</li>
               </ol>
             </nav>
           </div>
-          <div class="row">
+          <div class="row justify-content-center">
             <div class="col-md-6 grid-margin stretch-card">
-              <div class="card">
+              <div class="card shadow">
                 <div class="card-body">
-                  <h4 class="card-title">Horizontal Form</h4>
+                  <h4 class="card-title">Nikkah Details Form</h4>
                   <p class="card-description"> Horizontal form layout </p>
                   <form class="forms-sample">
                     <div class="form-group row">

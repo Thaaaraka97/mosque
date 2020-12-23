@@ -1,0 +1,30 @@
+/* nikkah-details.php */
+/* Bride Form hide */
+#bridedetails{
+    display:none;
+}
+
+/* trustee-board.php */
+/* VPdetails Form hide */
+#VPdetails{
+    display:none;
+}
+/* secretarydetails Form hide */
+#secretarydetails{
+    display:none;
+}
+/* ASdetails Form hide */
+#ASdetails{
+    display:none;
+}
+/* treasurerdetails Form hide */
+#treasurerdetails{
+    display:none;
+}
+
+/* other-donations.php */
+/* hide country textbox */
+#inputCountry{
+    display: none;
+}
+

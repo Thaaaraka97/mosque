@@ -25,3 +25,5 @@
     <script src="assets/js/typeahead.js"></script>
     <script src="assets/js/select2.js"></script>
     <script src="assets/js/chart.js"></script>
+    <script src="assets/js/custom-script.js"></script>
+
