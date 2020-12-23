@@ -2,4 +2,4 @@
 *.html
 
 #exclude file
-**admin/samples/
+**admin/sample/
