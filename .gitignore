@@ -1,4 +1,5 @@
 #all html
 *.html
 
+#exclude file
 **admin/samples/
