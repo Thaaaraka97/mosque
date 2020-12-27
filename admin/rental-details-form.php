@@ -33,7 +33,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
             </nav>
           </div>
           <div class="row justify-content-center">
-            <div class="col-md-6 grid-margin stretch-card">
+            <div class="col-md-8 grid-margin stretch-card">
               <div class="card shadow">
                 <div class="card-body">
                   <h4 class="card-title">Rental Details</h4>

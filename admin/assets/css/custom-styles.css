@@ -28,3 +28,9 @@
     display: none;
 }
 
+/* disaster-relief-donations.php */
+/* hide membership id textbox */
+#inputMemID{
+    display: none;
+}
+

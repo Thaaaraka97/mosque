@@ -24,7 +24,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title">Non-Mahalla Donations</h3>
+                        <h3 class="page-title">Disaster Relief Donations</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/mosque/admin/forms.php">Forms</a></li>
@@ -44,52 +44,31 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
+                                                <label for="inputDonationDisaster">Donation</label>
+                                                <select id="inputDonationDisaster" class="form-control">
+                                                    <option selected>Choose...</option>
+                                                    <option value="Mahalla">Mahalla</option>
+                                                    <option value="NonMahalla">Non-Mahalla</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6" id="inputMemID">
+                                                <label for="inputMemID">Membership ID </label>
+                                                <input type="text" class="form-control" placeholder="Membership ID">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
                                                 <label for="inputDate">Date </label>
                                                 <input type="date" class="form-control" id="inputDate">
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputTP">Telephone Number </label>
-                                                <input type="text" class="form-control" id="inputTP" placeholder="Telephone">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
                                                 <label for="inputAmount">Amount </label>
                                                 <input type="text" class="form-control" id="inputAmount" placeholder="Amount (Rs)">
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputDonation">Donation</label>
-                                                <select id="inputDonation" class="form-control">
-                                                    <option selected>Choose...</option>
-                                                    <option value="Local">Local</option>
-                                                    <option value="Foreign">Foreign</option>
-                                                </select>
-                                            </div>
                                         </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputAddress1">Address Line 1 </label>
-                                                <input type="text" class="form-control" id="inputAddress1" placeholder="Number">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputAddress2">Address Line 2 </label>
-                                                <input type="text" class="form-control" id="inputAddress2" placeholder="Street Address">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputAddress3">Address Line 3 </label>
-                                                <input type="text" class="form-control" id="inputAddress3" placeholder="City">
-                                            </div>
-                                            <div class="form-group col-md-6" id="inputCountry">
-                                                <label for="inputAddress4">Address Line 4 </label>
-                                                <input type="text" class="form-control" id="inputAddress4" placeholder="Country">
-                                            </div>
-                                        </div>
-
-                                        <div class=" form-group">
-                                            <label for="inputNotes">Notes </label>
-                                            <textarea class="form-control" id="inputNotes" rows="4"></textarea>
+                                        <div class="form-group">
+                                            <label for="inputSubject">Subject </label>
+                                            <input type="text" class="form-control" id="inputSubject" placeholder="Subject">
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-primary btn-lg">Accept Donation</button>

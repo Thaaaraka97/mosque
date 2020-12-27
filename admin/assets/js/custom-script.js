@@ -125,9 +125,19 @@ $(document).ready(function () {
     e.preventDefault();
     if ($(this).val() == "Foreign") {
       $("#inputCountry").show();
+    } else {
+      $("#inputCountry").hide();
     }
-    else{
-        $("#inputCountry").hide();
+  });
+
+  //   disaster-relief-donations.php
+  // show membership id textbox on dropdown change
+  $("#inputDonationDisaster").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Mahalla") {
+      $("#inputMemID").show();
+    } else {
+      $("#inputMemID").hide();
     }
   });
 });
