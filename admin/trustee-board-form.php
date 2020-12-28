@@ -50,7 +50,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                         </div>
                         <div class="form-group col-md-6">
                           <label for="inputPresidentTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputPresidentTP" placeholder="Telephone">
+                          <input type="text" class="form-control" id="inputPresidentTP" placeholder="077xxxxxxx">
                         </div>
                       </div>
                       <div class="form-row">
@@ -85,7 +85,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                         </div>
                         <div class="form-group col-md-6">
                           <label for="inputVPTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputVPTP" placeholder="Telephone">
+                          <input type="text" class="form-control" id="inputVPTP" placeholder="077xxxxxxx">
                         </div>
                       </div>
                       <div class="form-row">
@@ -121,7 +121,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                         </div>
                         <div class="form-group col-md-6">
                           <label for="inputSecretaryTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputSecretaryTP" placeholder="Telephone">
+                          <input type="text" class="form-control" id="inputSecretaryTP" placeholder="077xxxxxxx">
                         </div>
                       </div>
                       <div class="form-row">
@@ -157,7 +157,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                         </div>
                         <div class="form-group col-md-6">
                           <label for="inputASTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputASTP" placeholder="Telephone">
+                          <input type="text" class="form-control" id="inputASTP" placeholder="077xxxxxxx">
                         </div>
                       </div>
                       <div class="form-row">
@@ -193,7 +193,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                         </div>
                         <div class="form-group col-md-6">
                           <label for="inputTreasurerTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputTreasurerTP" placeholder="Telephone">
+                          <input type="text" class="form-control" id="inputTreasurerTP" placeholder="077xxxxxxx">
                         </div>
                       </div>
                       <div class="form-row">

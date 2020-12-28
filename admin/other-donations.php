@@ -49,7 +49,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputTP">Telephone Number </label>
-                                                <input type="text" class="form-control" id="inputTP" placeholder="Telephone">
+                                                <input type="text" class="form-control" id="inputTP" placeholder="077xxxxxxx">
                                             </div>
                                         </div>
                                         <div class="form-row">

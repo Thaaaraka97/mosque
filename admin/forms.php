@@ -143,10 +143,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                       Click to open..
                     </p>
                     <p>
-                      <a href="#" class="btn btn-primary btn-md">Pesh Imaam Details</a>
+                      <a href="/mosque/admin/pesh-imaam-details.php" class="btn btn-primary btn-md">Pesh Imaam Details</a>
                     </p>
                     <p>
-                      <a href="#" class="btn btn-primary btn-md">Muazzin Details</a>
+                      <a href="/mosque/admin/muazzin-details.php" class="btn btn-primary btn-md">Muazzin Details</a>
                     </p>
                   </div>
 

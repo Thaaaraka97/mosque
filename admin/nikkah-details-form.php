@@ -72,8 +72,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                                   </div>
                                 </div>
                             </div>
-
-
                           </div>
                         </div>
                       </div>
@@ -94,7 +92,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputGroomTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputGroomTP" placeholder="Telephone">
+                          <input type="text" class="form-control" id="inputGroomTP" placeholder="077xxxxxxx">
                         </div>
                       </div>
                       <div class="form-row">
@@ -164,7 +162,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputBrideTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputBrideTP" placeholder="Telephone">
+                          <input type="text" class="form-control" id="inputBrideTP" placeholder="077xxxxxxx">
                         </div>
                       </div>
                       <div class="form-row">
