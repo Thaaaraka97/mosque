@@ -37,15 +37,15 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
               <div class="card shadow">
                 <div class="card-body">
                   <h4 class="card-title">Saandha Registration Details Form</h4>
-                  <form class="pt-3">
+                  <form class="pt-3" name="saandhaRegistrationForm" id="saandhaRegistrationForm">
                     <div class="form-group">
                       <label for="inputName">Name </label>
-                      <input type="text" class="form-control" id="inputName" placeholder="Name">
+                      <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label for="inputDeceasedID">Membership ID </label>
-                        <input type="text" class="form-control" id="inputDeceasedID" placeholder="Membership ID">
+                        <label for="inputID">Membership ID </label>
+                        <input type="text" class="form-control" id="inputID" name="inputID" placeholder="Membership ID">
                       </div>
                       <div class="form-group col-md-6">
                         <div class="form-group row pt-3">
@@ -70,56 +70,56 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                     <div class="form-row">
                       <div class="form-group col-md-4">
                         <label for="inputNIC">National Identity Card </label>
-                        <input type="text" class="form-control" id="inputNIC" placeholder="NIC">
+                        <input type="text" class="form-control" id="inputNIC" name="inputNIC" placeholder="NIC">
                       </div>
                       <div class="form-group col-md-4">
                         <label for="inputTP">Telephone Number </label>
-                        <input type="text" class="form-control" id="inputTP" placeholder="Telephone">
+                        <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="Telephone">
                       </div>
                       <div class="form-group col-md-4">
                         <label for="inputEmail">Email </label>
-                        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                        <input type="text" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email">
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label for="inputDonation">Residence</label>
-                        <select id="inputDonation" class="form-control">
+                        <label for="inputResidence">Residence</label>
+                        <select id="inputResidence" name="inputResidence" class="form-control">
                           <option selected>Choose...</option>
                           <option value="Permenant">Permenant</option>
                           <option value="Rental">Rental</option>
-                          <option value="Rental">Rental</option>
+                          <option value="Lease">Lease</option>
                         </select>
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputAddress1">Address Line 1 </label>
-                        <input type="text" class="form-control" id="inputAddress1" placeholder="Number">
+                        <input type="text" class="form-control" id="inputAddress1" name="inputAddress1" placeholder="Number">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputAddress2">Address Line 2 </label>
-                        <input type="text" class="form-control" id="inputAddress2" placeholder="Street Address">
+                        <input type="text" class="form-control" id="inputAddress2" name="inputAddress2" placeholder="Street Address">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="inputAddress3">Address Line 3 </label>
-                      <input type="text" class="form-control" id="inputAddress3" placeholder="City">
+                      <input type="text" class="form-control" id="inputAddress3" name="inputAddress3" placeholder="City">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputJob">Occupation </label>
-                        <input type="text" class="form-control" id="inputJob" placeholder="Occupation">
+                        <input type="text" class="form-control" id="inputJob" name="inputJob" placeholder="Occupation">
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputIncome">Income </label>
-                        <input type="text" class="form-control" id="inputIncome" placeholder="Income (Rs)">
+                        <input type="text" class="form-control" id="inputIncome" name="inputIncome" placeholder="Income (Rs)">
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputUnmarriedChildren">No. of Unmarried people (In Family) </label>
-                        <input type="text" class="form-control" id="inputUnmarriedChildren" placeholder="No. of Unmarried people">
+                        <input type="text" class="form-control" id="inputUnmarriedChildren" name="inputUnmarriedChildren" placeholder="No. of Unmarried people">
                       </div>
                     </div>
                     <hr>
@@ -127,12 +127,14 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputUnmarriedMaleChildren">No. of Unmarried male children (In Family) </label>
-                        <input type="text" class="form-control" id="inputUnmarriedMaleChildren" placeholder="No. of Unmarried male children">
+                        <input type="text" class="form-control" id="inputUnmarriedMaleChildren" name="inputUnmarriedMaleChildren" placeholder="No. of Unmarried male children">
                       </div>
-                      <div class="form-group col-md-6">
-                        <p class="card-description"> Add a Child </p>
-                        <a class="btn btn btn-success btn-md" id="unmarriedMale">+ ADD</a>
-                      </div>
+                    </div>
+                    <hr>
+                    <div id="addChild"></div>
+                    <div class="form-group">
+                      <p class="card-description"> Add a Child </p>
+                      <a class="btn btn btn-success btn-md" id="unmarriedMale">+ ADD</a>
                     </div>
                     <hr>
                     <div class="form-row">
@@ -141,7 +143,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                       </div>
                     </div>
                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary btn-lg">Enter Details</button>
+                      <Submit class="btn btn-primary btn-lg" id="submitSaandha" name="submitSaandha">Enter Details</submit>
                     </div>
                   </form>
                 </div>

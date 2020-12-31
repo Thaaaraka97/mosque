@@ -36,7 +36,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
             <div class="col-md-8 grid-margin stretch-card">
               <div class="card shadow">
                 <div class="card-body">
-                  <form class="pt-3">
+                  <form class="pt-3" id="trusteeBoardForm" name="trusteeBoardForm">
                     <div id="presidentdetails">
                       <h4 class="card-title">President Details Form</h4>
                       <div class="form-group">
@@ -212,25 +212,26 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                       </div>
                       <div class="w-100 text-right">
                         <button class="btn btn-success btn-lg" id="TBPrev5">Previous</button>
+                        <button class="btn btn-primary btn-lg" id="TBNext5">Next</button>
                       </div>
-                      <div id="advisoryboard">
-                        <hr>
-                        <h4 class="card-title">Advisory Board</h4>
+                    </div>
+                    <div id="advisoryboard">
+                      <h4 class="card-title">Advisory Board Details Form</h4>
+                      <div class="form-group">
+                      <div id="addMember"></div>
+                        <div class="form-group" id="addNewMembers"></div>
                         <p class="card-description"> Add members to Advisory Board </p>
                         <a class="btn btn btn-success btn-lg" id="advisoryMember">+ ADD</a>
-                        <hr>
-                        <div class="text-center">
-                          <Submit class="btn btn-primary btn-lg" id="submit">Submit All</submit>
-                        </div>
                       </div>
-
+                      <div class="text-center">
+                        <button class="btn btn-success btn-lg" id="TBPrev6">Previous</button>
+                        <Submit class="btn btn-primary btn-lg" id="submit">Submit All</submit>
+                      </div>
                     </div>
                   </form>
-
                 </div>
               </div>
             </div>
-
           </div>
         </div>
         <!-- content-wrapper ends -->

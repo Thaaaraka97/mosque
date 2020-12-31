@@ -6,7 +6,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/include/include.php";
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Masjidhun Noor Jumma Mosque</title>
+    <title>An-Noor Jumma Masjid</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="/mosque/admin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/mosque/admin/assets/vendors/css/vendor.bundle.base.css">

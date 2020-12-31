@@ -21,6 +21,10 @@
 #treasurerdetails{
     display:none;
 }
+/* advisoryboard Form hide */
+#advisoryboard{
+    display:none;
+}
 
 /* other-donations.php */
 /* hide country textbox */
