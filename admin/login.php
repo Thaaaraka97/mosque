@@ -7,8 +7,8 @@ require 'include/include.php';
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
-
+// include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
+include $_SERVER['DOCUMENT_ROOT'] . "admin/template_parts/header.php";
 ?>
 
 <body>
