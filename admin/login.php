@@ -8,6 +8,7 @@ require 'include/include.php';
 <html lang="en">
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
+echo $_SERVER['DOCUMENT_ROOT'];
 ?>
 
 <body>
