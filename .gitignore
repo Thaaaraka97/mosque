@@ -3,3 +3,4 @@
 
 #exclude file
 **admin/samples/
+**admin/template_parts/
