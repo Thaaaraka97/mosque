@@ -27,7 +27,7 @@ include "template_parts/header.php";
             <h3 class="page-title">Janaza Details</h3>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo $server_name ?>admin/forms.php">Forms</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo $server_name ?>forms.php">Forms</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Janaza Details</li>
               </ol>
             </nav>
