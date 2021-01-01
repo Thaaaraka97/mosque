@@ -1,14 +1,14 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-                    <a class="sidebar-brand brand-logo text-center" href="<?php $server_name ?>admin/index.php"><img id="mainlogo" src="<?php $server_name ?>admin/assets/images/logo.png" alt="logo"/></a>
-                    <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>admin/index.php"><img id="minilogo" src="<?php $server_name ?>admin/assets/images/logo-mini.png" alt="logo" /></a>
+                    <a class="sidebar-brand brand-logo text-center" href="<?php $server_name ?>index.php"><img id="mainlogo" src="<?php $server_name ?>assets/images/logo.png" alt="logo"/></a>
+                    <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img id="minilogo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" /></a>
                 </div>
                 <ul class="nav">
                     <li class="nav-item profile">
                         <div class="profile-desc">
                             <div class="profile-pic">
                                 <div class="count-indicator">
-                                    <img class="img-xs rounded-circle " src="<?php $server_name ?>admin/assets/images/faces/user.png" alt="">
+                                    <img class="img-xs rounded-circle " src="<?php $server_name ?>assets/images/faces/user.png" alt="">
                                 </div>
                                 <div class="profile-name">
                                     <h5 class="mb-0 font-weight-normal">User</h5>
@@ -66,16 +66,16 @@
                         </div>
                     </li>
                     <li class="nav-item menu-items">
-                        <a class="nav-link" href="<?php $server_name ?>admin/forms.php"> <span class="menu-icon"> <i class="mdi mdi-file-document-box"></i> </span> <span class="menu-title">Forms</span> </a>
+                        <a class="nav-link" href="<?php $server_name ?>forms.php"> <span class="menu-icon"> <i class="mdi mdi-file-document-box"></i> </span> <span class="menu-title">Forms</span> </a>
                     </li>
                     <li class="nav-item menu-items">
-                        <a class="nav-link" href="<?php $server_name ?>admin/donations.php"> <span class="menu-icon"> <i class="mdi mdi-chart-bar"></i> </span> <span class="menu-title">Donations</span> </a>
+                        <a class="nav-link" href="<?php $server_name ?>donations.php"> <span class="menu-icon"> <i class="mdi mdi-chart-bar"></i> </span> <span class="menu-title">Donations</span> </a>
                     </li>
                     <li class="nav-item menu-items">
-                        <a class="nav-link" href="<?php $server_name ?>admin/trial_balance.php"> <span class="menu-icon"> <i class="mdi mdi-table-large"></i> </span> <span class="menu-title">Trail Balance</span> </a>
+                        <a class="nav-link" href="<?php $server_name ?>trial_balance.php"> <span class="menu-icon"> <i class="mdi mdi-table-large"></i> </span> <span class="menu-title">Trail Balance</span> </a>
                     </li>
                     <li class="nav-item menu-items">
-                        <a class="nav-link" href="<?php $server_name ?>admin/trustee_board.php"> <span class="menu-icon"> <i class="mdi mdi-contacts"></i> </span> <span class="menu-title">Trsutee Board</span> </a>
+                        <a class="nav-link" href="<?php $server_name ?>trustee_board.php"> <span class="menu-icon"> <i class="mdi mdi-contacts"></i> </span> <span class="menu-title">Trsutee Board</span> </a>
                     </li>
                     <li class="nav-item menu-items">
                         <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth"> <span class="menu-icon"> <i class="mdi mdi-security"></i> </span> <span class="menu-title">Members</span> <i class="menu-arrow"></i> </a>

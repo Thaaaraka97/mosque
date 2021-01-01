@@ -18,6 +18,6 @@ function siteURL()
     return $protocol.$domainName;
 }
 
-echo $server_name;
+// echo $server_name;
 ?>
 
