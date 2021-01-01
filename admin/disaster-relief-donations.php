@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
+include "template_parts/header.php";
 ?>
 
 <body>
@@ -10,7 +10,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
         <!-- navigation bar -->
         <?php
 
-        include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/navbar.php";
+        include "template_parts/navbar.php";
         ?>
 
         <!-- partial -->
@@ -18,7 +18,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
             <!-- top bar -->
             <?php
 
-            include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/topbar.php";
+            include "template_parts/topbar.php";
             ?>
             <!-- partial -->
             <div class="main-panel">
@@ -27,7 +27,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                         <h3 class="page-title">Disaster Relief Donations</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/mosque/admin/forms.php">Forms</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo $server_name ?>admin/forms.php">Forms</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Donations</li>
                             </ol>
                         </nav>
@@ -94,7 +94,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
     <!-- footer -->
     <?php
 
-    include "$server_name/mosque/admin/template_parts/footer.php";
+    include "template_parts/footer.php";
     ?>
     <!-- End custom js for this page -->
 </body>

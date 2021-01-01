@@ -8,14 +8,14 @@ include "template_parts/header.php";
     <div class="container-scroller">
         <!-- navigation bar -->
         <?php
-        include "template_parts/header.php";
+        include "template_parts/navbar.php";
         ?>
 
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- top bar -->
             <?php
-            include "template_parts/navbar.php";
+            include "template_parts/topbar.php";
             ?>
             <!-- partial -->
             <div class="main-panel">

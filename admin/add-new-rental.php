@@ -2,23 +2,20 @@
 <html lang="en">
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
+include "template_parts/header.php";
 ?>
 
 <body>
     <div class="container-scroller">
         <!-- navigation bar -->
         <?php
-
-        include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/navbar.php";
+        include "template_parts/navbar.php";
         ?>
-
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- top bar -->
             <?php
-
-            include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/topbar.php";
+            include "template_parts/topbar.php";
             ?>
             <!-- partial -->
             <div class="main-panel">
@@ -27,7 +24,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                         <h3 class="page-title"> New Rental </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/mosque/admin/forms.php">Forms</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo $server_name ?>admin/forms.php">Forms</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">New Rental</li>
                             </ol>
                         </nav>
@@ -93,11 +90,9 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <!-- content-wrapper ends -->
-
                 <!-- partial -->
             </div>
             <!-- main-panel ends -->
@@ -105,11 +100,9 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-
     <!-- footer -->
     <?php
-
-    include "$server_name/mosque/admin/template_parts/footer.php";
+    include "template_parts/footer.php";
     ?>
     <!-- End custom js for this page -->
 </body>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
+include "template_parts/header.php";
 ?>
 
 <body>
@@ -10,7 +10,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
     <!-- navigation bar -->
     <?php
 
-    include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/navbar.php";
+    include "template_parts/navbar.php";
     ?>
 
     <!-- partial -->
@@ -18,7 +18,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
       <!-- top bar -->
       <?php
 
-      include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/topbar.php";
+      include "template_parts/topbar.php";
       ?>
       <!-- partial -->
       <div class="main-panel">
@@ -142,7 +142,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
   <!-- footer -->
   <?php
 
-  include "$server_name/mosque/admin/template_parts/footer.php";
+  include "template_parts/footer.php";
   ?>
   <!-- End custom js for this page -->
 </body>
