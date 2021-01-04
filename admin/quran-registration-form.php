@@ -120,8 +120,9 @@ include "template_parts/header.php";
                       <label for="inputNotes">Notes </label>
                       <textarea class="form-control" id="inputNotes" rows="4"></textarea>
                     </div>
-
-                    <button type="submit" class="btn btn-primary btn-lg">Enter</button>
+                    <div class="text-center">
+                      <Submit class="btn btn-primary btn-lg" id="submitQuran" name="submitQuran">Enter</submit>
+                    </div>
                   </form>
                 </div>
               </div>

@@ -3,3 +3,6 @@
 
 #exclude file
 **admin/samples/
+
+# test page
+blank-page.php

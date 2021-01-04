@@ -251,7 +251,7 @@ $(document).ready(function () {
         <button type="button" name="remove" id="${j}" class="btn btn-danger btn_remove">Remove</button>
         </div>
   </div>
-    `
+    `;
     $("#addNewMembers").append(formBlock);
     j++;
   });
@@ -274,4 +274,22 @@ $(document).ready(function () {
       },
     });
   });
+
+  //   other-donations.php
+  // show country textbox on dropdown change
+  $("#inputEduQual").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "None") {
+      $("#college").hide();
+    } else {
+      $("#college").show();
+    }
+  });
+
+  // datatables
+  $(document).ready(function () {
+    $("#myTable").DataTable();
+  });
+
+  
 });

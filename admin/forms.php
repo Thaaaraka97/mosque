@@ -96,13 +96,27 @@ include "template_parts/header.php";
                 </div>
               </div>
             </div>
-            <div class="col-md-3 grid-margin">
-              <div class="card text-center text-dark shadow-sm" style="height : 100%;">
-                <div class="card-body">
-                  <img src="<?php echo $server_name ?>assets/images/icons/member.png" alt="Member">
-
-                  <h5 class="card-title mt-3">Saandha Registration Details</h5>
-                  <a href="<?php echo $server_name ?>saandha-registration-form.php" class="btn btn-primary py-3">Open..</a>
+            <div class="col-md-3 grid-margin flip-card">
+              <div class="text-center text-dark shadow-sm flip-card-inner" style="height : 100%;">
+                <div class="card-body flip-card-front">
+                  <img class="pt-4" src="<?php echo $server_name ?>assets/images/icons/member.png" alt="Member">
+                  <h5 class="card-title mt-5">Member Details</h5>
+                </div>
+                <div class="flip-card-back">
+                  <div class="pt-3">
+                    <p>
+                      Click to open..
+                    </p>
+                    <p>
+                      <a href="<?php echo $server_name ?>saandha-registration-form.php" class="btn btn-primary btn-md float-left ml-3">Saandha Registration</a>
+                    </p>
+                    <p>
+                      <a href="<?php echo $server_name ?>widow-registration-form.php" class="btn btn-primary btn-md">Widow Registration</a>
+                    </p>
+                    <p>
+                      <a href="<?php echo $server_name ?>villagers-registration-form.php" class="btn btn-primary btn-md">Whole Villagers Registration</a>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -114,19 +128,20 @@ include "template_parts/header.php";
                   <h5 class="card-title mt-5">Donations</h5>
                 </div>
                 <div class="flip-card-back">
-                  <div class="pt-4">
+                  <div class="pt-3">
                     <p>
                       Click to open..
                     </p>
                     <p>
-                      <a href="<?php echo $server_name ?>disaster-relief-donations.php" class="btn btn-primary btn-md">Disaster Relief Donations</a>
+                      <a href="<?php echo $server_name ?>disaster-relief-donations.php" class="float-left btn btn-primary btn-md ml-3">Disaster Relief Donations</a>
+                    </p>
+                    <p>
+                      <a href="<?php echo $server_name ?>board-member-donations.php" class="btn btn-primary btn-md">Board Member Donations</a>
                     </p>
                     <p>
                       <a href="<?php echo $server_name ?>other-donations.php" class="btn btn-primary btn-md">Other Donations</a>
                     </p>
                   </div>
-
-
                 </div>
               </div>
             </div>
@@ -169,4 +184,5 @@ include "template_parts/header.php";
   ?>
   <!-- End custom js for this page -->
 </body>
+
 </html>

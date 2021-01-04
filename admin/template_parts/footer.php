@@ -26,4 +26,6 @@
     <script src="<?php $server_name ?>assets/js/select2.js"></script>
     <script src="<?php $server_name ?>assets/js/chart.js"></script>
     <script src="<?php $server_name ?>assets/js/custom-script.js"></script>
+    <!-- datatables -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 

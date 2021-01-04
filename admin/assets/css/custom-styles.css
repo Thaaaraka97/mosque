@@ -38,3 +38,9 @@
     display: none;
 }
 
+/* villagers-registration-form.php */
+/* hide college id textbox */
+#college{
+    display: none;
+}
+

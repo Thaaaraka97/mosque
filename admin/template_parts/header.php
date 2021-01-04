@@ -26,4 +26,8 @@
     <link rel="stylesheet" href="<?php $server_name ?>assets/css/custom-styles.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="<?php $server_name ?>assets/images/logo-mini.png" />
+    <!-- datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  
+
 </head>
