@@ -32,7 +32,7 @@ include "template_parts/header.php";
             <div class="col-md-3 grid-margin">
               <div class="card d-flex alig-content-end text-center text-dark shadow-sm" style="height : 100%;">
                 <div class="card-body">
-                  <img src="<?php echo $server_name ?>assets/images/icons/group-meeting.png" alt="Trustee Board">
+                  <img src="<?php echo $server_name ?>assets/images/icons/group-meeting.png" alt="Board-Member-img">
 
                   <h5 class="card-title mt-3">Trustee Board Details</h5>
                   <a href="<?php echo $server_name ?>trustee-board-form.php" class="btn btn-primary py-3 mt-3">Open..</a>
@@ -42,7 +42,7 @@ include "template_parts/header.php";
             <div class="col-md-3 grid-margin flip-card">
               <div class="text-center text-dark shadow-sm flip-card-inner" style="height : 100%;">
                 <div class="card-body flip-card-front">
-                  <img class="pt-4" src="<?php echo $server_name ?>assets/images/icons/shop.png" alt="Trustee Board">
+                  <img class="pt-4" src="<?php echo $server_name ?>assets/images/icons/shop.png" alt="Shop-img">
 
                   <h5 class="card-title mt-5">Rental Details</h5>
                 </div>
@@ -64,7 +64,7 @@ include "template_parts/header.php";
             <div class="col-md-3 grid-margin">
               <div class="card text-center text-dark shadow-sm" style="height : 100%;">
                 <div class="card-body">
-                  <img src="<?php echo $server_name ?>assets/images/icons/quran.png" alt="Trustee Board">
+                  <img src="<?php echo $server_name ?>assets/images/icons/quran.png" alt="Quran-img">
 
                   <h5 class="card-title mt-3">Quran Madhrasa Registration Details</h5>
                   <a href="<?php echo $server_name ?>quran-registration-form.php" class="btn btn-primary py-3">Open..</a>
@@ -74,7 +74,7 @@ include "template_parts/header.php";
             <div class="col-md-3 grid-margin">
               <div class="card text-center text-dark shadow-sm" style="height : 100%;">
                 <div class="card-body">
-                  <img src="<?php echo $server_name ?>assets/images/icons/wedding-couple.png" alt="Trustee Board">
+                  <img src="<?php echo $server_name ?>assets/images/icons/wedding-couple.png" alt="Wedding-img">
 
                   <h5 class="card-title mt-3">Nikkah Details</h5>
                   <a href="<?php echo $server_name ?>nikkah-details-form.php" class="btn btn-primary py-3 mt-3">Open..</a>
@@ -89,7 +89,7 @@ include "template_parts/header.php";
             <div class="col-md-3 grid-margin">
               <div class="card text-center text-dark shadow-sm" style="height : 100%;">
                 <div class="card-body">
-                  <img src="<?php echo $server_name ?>assets/images/icons/moon.png" alt="Trustee Board">
+                  <img src="<?php echo $server_name ?>assets/images/icons/moon.png" alt="Head-Stone-img">
 
                   <h5 class="card-title mt-3">Janaza Details</h5>
                   <a href="<?php echo $server_name ?>janaza-details-form.php" class="btn btn-primary py-3">Open..</a>
@@ -99,11 +99,11 @@ include "template_parts/header.php";
             <div class="col-md-3 grid-margin flip-card">
               <div class="text-center text-dark shadow-sm flip-card-inner" style="height : 100%;">
                 <div class="card-body flip-card-front">
-                  <img class="pt-4" src="<?php echo $server_name ?>assets/images/icons/member.png" alt="Member">
+                  <img class="pt-4" src="<?php echo $server_name ?>assets/images/icons/member.png" alt="Member-img">
                   <h5 class="card-title mt-5">Member Details</h5>
                 </div>
                 <div class="flip-card-back">
-                  <div class="pt-3">
+                  <div class="pt-4">
                     <p>
                       Click to open..
                     </p>
@@ -123,12 +123,12 @@ include "template_parts/header.php";
             <div class="col-md-3 grid-margin flip-card">
               <div class="text-center text-dark shadow-sm flip-card-inner" style="height : 100%;">
                 <div class="card-body flip-card-front">
-                  <img class="pt-4" src="<?php echo $server_name ?>assets/images/icons/online-donation.png" alt="Trustee Board">
+                  <img class="pt-4" src="<?php echo $server_name ?>assets/images/icons/online-donation.png" alt="Donate-img">
 
                   <h5 class="card-title mt-5">Donations</h5>
                 </div>
                 <div class="flip-card-back">
-                  <div class="pt-3">
+                  <div class="pt-4">
                     <p>
                       Click to open..
                     </p>
@@ -148,7 +148,7 @@ include "template_parts/header.php";
             <div class="col-md-3 grid-margin flip-card">
               <div class="text-center text-dark shadow-sm flip-card-inner" style="height : 100%;">
                 <div class="card-body flip-card-front">
-                  <img class="pt-4" src="<?php echo $server_name ?>assets/images/icons/muslim.png" alt="Trustee Board">
+                  <img class="pt-4" src="<?php echo $server_name ?>assets/images/icons/muslim.png" alt="Priest-img">
 
                   <h5 class="card-title mt-5">Head Priest</h5>
                 </div>

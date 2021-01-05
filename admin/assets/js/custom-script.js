@@ -288,7 +288,7 @@ $(document).ready(function () {
 
   // datatables
   $(document).ready(function () {
-    $("#myTable").DataTable();
+    $(".datatable").DataTable();
   });
 
   
