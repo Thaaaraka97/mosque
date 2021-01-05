@@ -50,7 +50,7 @@ include "template_parts/header.php";
                                                         <td>011xxxxxxx</td>
                                                         <td>2020/1/1 - 2020/12/31</td>
                                                         <td>
-                                                            <a href="#" class="btn btn-primary btn-sm">View</a>
+                                                            <a href="preview_step-2.php" class="btn btn-primary btn-sm">View</a>
                                                             <a href="#" class="btn btn-danger btn-sm">X</a>
                                                         </td>
                                                     </tr>

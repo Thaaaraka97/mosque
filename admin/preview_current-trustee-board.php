@@ -48,7 +48,7 @@ include "template_parts/header.php";
                                                         <td>Al Haj. xxxxxxxxxxxxxxxxxxx</td>
                                                         <td>011xxxxxxx</td>
                                                         <td>
-                                                            <a href="#" class="btn btn-primary btn-sm">View</a>
+                                                            <a href="preview_step-2.php" class="btn btn-primary btn-sm">View</a>
                                                             <a href="#" class="btn btn-danger btn-sm">X</a>
                                                         </td>
                                                     </tr>

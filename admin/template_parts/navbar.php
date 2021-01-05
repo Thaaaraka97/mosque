@@ -58,7 +58,7 @@
         <li class="nav-item menu-items">
             <a class="nav-link" href="index.php"> <span class="menu-icon"> <i class="mdi mdi-speedometer"></i> </span> <span class="menu-title">Dashboard</span> </a>
         </li>
-        <li class="nav-item menu-items">
+        <!-- <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic"> <span class="menu-icon"> <i class="mdi mdi-laptop"></i> </span> <span class="menu-title">Basic UI Elements</span> <i class="menu-arrow"></i> </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
@@ -73,19 +73,35 @@
                     </li>
                 </ul>
             </div>
-        </li>
+        </li> -->
         <li class="nav-item menu-items">
             <a class="nav-link" href="<?php $server_name ?>forms.php"> <span class="menu-icon"> <i class="mdi mdi-file-document-box"></i> </span> <span class="menu-title">Forms</span> </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="<?php $server_name ?>donations.php"> <span class="menu-icon"> <i class="mdi mdi-chart-bar"></i> </span> <span class="menu-title">Donations</span> </a>
+            <a class="nav-link" data-toggle="collapse" href="#member-dropdown" aria-expanded="false" aria-controls="member-dropdown"> <span class="menu-icon"> <i class="mdi mdi-account-card-details"></i> </span> <span class="menu-title">Member Details</span> <i class="menu-arrow"></i> </a>
+            <div class="collapse" id="member-dropdown">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_saandha-details.php"> Saandha Details </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_villager-details.php"> Whole Villagers Details </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_widow-details.php"> Widow Details </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="<?php $server_name ?>preview_donations.php"> <span class="menu-icon"> <i class="mdi mdi-chart-bar"></i> </span> <span class="menu-title">Donations</span> </a>
         </li>
         <li class="nav-item menu-items">
             <a class="nav-link" href="<?php $server_name ?>trial_balance.php"> <span class="menu-icon"> <i class="mdi mdi-table-large"></i> </span> <span class="menu-title">Trail Balance</span> </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth"> <span class="menu-icon"> <i class="mdi mdi-contacts"></i></span><span class="menu-title">Trustee Board</span><i class="menu-arrow"></i> </a>
-            <div class="collapse" id="auth">
+            <a class="nav-link" data-toggle="collapse" href="#trustee-board-dropdown" aria-expanded="false" aria-controls="trustee-board-dropdown"> <span class="menu-icon"> <i class="mdi mdi-contacts"></i></span><span class="menu-title">Trustee Board</span><i class="menu-arrow"></i> </a>
+            <div class="collapse" id="trustee-board-dropdown">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
                         <a class="nav-link" href="<?php $server_name ?>preview_current-trustee-board.php"> Present Details </a>
@@ -118,8 +134,8 @@
                 </ul>
             </div>
         </li> -->
-        <li class="nav-item menu-items">
+        <!-- <li class="nav-item menu-items">
             <a class="nav-link" href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html"> <span class="menu-icon"> <i class="mdi mdi-playlist-play "></i> </span> <span class="menu-title">Documentation</span> </a>
-        </li>
+        </li> -->
     </ul>
 </nav>

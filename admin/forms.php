@@ -35,7 +35,7 @@ include "template_parts/header.php";
                   <img src="<?php echo $server_name ?>assets/images/icons/group-meeting.png" alt="Board-Member-img">
 
                   <h5 class="card-title mt-3">Trustee Board Details</h5>
-                  <a href="<?php echo $server_name ?>trustee-board-form.php" class="btn btn-primary py-3 mt-3">Open..</a>
+                  <a href="<?php echo $server_name ?>form_trustee-board-form.php" class="btn btn-primary py-3 mt-3">Open..</a>
                 </div>
               </div>
             </div>
@@ -52,10 +52,10 @@ include "template_parts/header.php";
                       Click to open..
                     </p>
                     <p>
-                      <a href="<?php echo $server_name ?>add-new-rental.php" class="btn btn-primary btn-md">Add new Rental</a>
+                      <a href="<?php echo $server_name ?>form_add-new-rental.php" class="btn btn-primary btn-md">Add new Rental</a>
                     </p>
                     <p>
-                      <a href="<?php echo $server_name ?>add-payment.php" class="btn btn-primary btn-md">Add a payment</a>
+                      <a href="<?php echo $server_name ?>form_add-payment.php" class="btn btn-primary btn-md">Add a payment</a>
                     </p>
                   </div>
                 </div>
@@ -67,7 +67,7 @@ include "template_parts/header.php";
                   <img src="<?php echo $server_name ?>assets/images/icons/quran.png" alt="Quran-img">
 
                   <h5 class="card-title mt-3">Quran Madhrasa Registration Details</h5>
-                  <a href="<?php echo $server_name ?>quran-registration-form.php" class="btn btn-primary py-3">Open..</a>
+                  <a href="<?php echo $server_name ?>form_quran-registration-form.php" class="btn btn-primary py-3">Open..</a>
                 </div>
               </div>
             </div>
@@ -77,7 +77,7 @@ include "template_parts/header.php";
                   <img src="<?php echo $server_name ?>assets/images/icons/wedding-couple.png" alt="Wedding-img">
 
                   <h5 class="card-title mt-3">Nikkah Details</h5>
-                  <a href="<?php echo $server_name ?>nikkah-details-form.php" class="btn btn-primary py-3 mt-3">Open..</a>
+                  <a href="<?php echo $server_name ?>form_nikkah-details-form.php" class="btn btn-primary py-3 mt-3">Open..</a>
                 </div>
               </div>
             </div>
@@ -92,7 +92,7 @@ include "template_parts/header.php";
                   <img src="<?php echo $server_name ?>assets/images/icons/moon.png" alt="Head-Stone-img">
 
                   <h5 class="card-title mt-3">Janaza Details</h5>
-                  <a href="<?php echo $server_name ?>janaza-details-form.php" class="btn btn-primary py-3">Open..</a>
+                  <a href="<?php echo $server_name ?>form_janaza-details-form.php" class="btn btn-primary py-3">Open..</a>
                 </div>
               </div>
             </div>
@@ -108,13 +108,13 @@ include "template_parts/header.php";
                       Click to open..
                     </p>
                     <p>
-                      <a href="<?php echo $server_name ?>saandha-registration-form.php" class="btn btn-primary btn-md float-left ml-3">Saandha Registration</a>
+                      <a href="<?php echo $server_name ?>form_saandha-registration-form.php" class="btn btn-primary btn-md float-left ml-3">Saandha Registration</a>
                     </p>
                     <p>
-                      <a href="<?php echo $server_name ?>widow-registration-form.php" class="btn btn-primary btn-md">Widow Registration</a>
+                      <a href="<?php echo $server_name ?>form_widow-registration-form.php" class="btn btn-primary btn-md">Widow Registration</a>
                     </p>
                     <p>
-                      <a href="<?php echo $server_name ?>villagers-registration-form.php" class="btn btn-primary btn-md">Whole Villagers Registration</a>
+                      <a href="<?php echo $server_name ?>form_villagers-registration-form.php" class="btn btn-primary btn-md">Whole Villagers Registration</a>
                     </p>
                   </div>
                 </div>
@@ -133,13 +133,13 @@ include "template_parts/header.php";
                       Click to open..
                     </p>
                     <p>
-                      <a href="<?php echo $server_name ?>disaster-relief-donations.php" class="float-left btn btn-primary btn-md ml-3">Disaster Relief Donations</a>
+                      <a href="<?php echo $server_name ?>form_disaster-relief-donations.php" class="float-left btn btn-primary btn-md ml-3">Disaster Relief Donations</a>
                     </p>
                     <p>
-                      <a href="<?php echo $server_name ?>board-member-donations.php" class="btn btn-primary btn-md">Board Member Donations</a>
+                      <a href="<?php echo $server_name ?>form_board-member-donations.php" class="btn btn-primary btn-md">Board Member Donations</a>
                     </p>
                     <p>
-                      <a href="<?php echo $server_name ?>other-donations.php" class="btn btn-primary btn-md">Other Donations</a>
+                      <a href="<?php echo $server_name ?>form_other-donations.php" class="btn btn-primary btn-md">Other Donations</a>
                     </p>
                   </div>
                 </div>
@@ -158,10 +158,10 @@ include "template_parts/header.php";
                       Click to open..
                     </p>
                     <p>
-                      <a href="<?php echo $server_name ?>pesh-imaam-details.php" class="btn btn-primary btn-md">Pesh Imaam Details</a>
+                      <a href="<?php echo $server_name ?>form_pesh-imaam-details.php" class="btn btn-primary btn-md">Pesh Imaam Details</a>
                     </p>
                     <p>
-                      <a href="<?php echo $server_name ?>muazzin-details.php" class="btn btn-primary btn-md">Muazzin Details</a>
+                      <a href="<?php echo $server_name ?>form_muazzin-details.php" class="btn btn-primary btn-md">Muazzin Details</a>
                     </p>
                   </div>
                 </div>
