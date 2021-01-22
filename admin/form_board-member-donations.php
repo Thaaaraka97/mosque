@@ -3,6 +3,7 @@
 
 <?php
 include "template_parts/header.php";
+$database = new databases();
 ?>
 
 <body>
@@ -38,15 +39,28 @@ include "template_parts/header.php";
                                 <div class="card-body">
                                     <h4 class="card-title">Donation Acceptance Form</h4>
                                     <form class="pt-3">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputIndexNo"> Index Number </label>
+                                                <input type="text" class="form-control" id="inputIndexNo" placeholder="Index No">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputSubdivision"> Sub-division </label>
+                                                <select id="inputSubdivision" class="form-control">
+                                                    <option selected>Choose...</option>
+                                                    <?php
+                                                    $sub_division = $database->select_data('tbl_subDivision');
+                                                    foreach ($sub_division as $sub_division1) {
+                                                        echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                                                    }
+
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label for="inputName">Name</label>
                                             <input type="text" class="form-control" id="inputName" placeholder="Name">
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputMemID">Membership ID </label>
-                                                <input type="text" class="form-control" placeholder="Membership ID">
-                                            </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">

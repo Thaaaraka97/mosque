@@ -3,6 +3,7 @@
 
 <?php
 include "template_parts/header.php";
+$database = new databases();
 ?>
 
 <body>
@@ -24,11 +25,11 @@ include "template_parts/header.php";
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title">Whole Villagers Registration</h3>
+                        <h3 class="page-title">All Villagers Registration</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>forms.php">Forms</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Whole Villagers Registration</li>
+                                <li class="breadcrumb-item active" aria-current="page">All Villagers Registration</li>
                             </ol>
                         </nav>
                     </div>
@@ -36,45 +37,36 @@ include "template_parts/header.php";
                         <div class="col-md-8 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <h4 class="card-title">Whole Villagers Registration Form</h4>
+                                    <h4 class="card-title">All Villagers Registration Form</h4>
                                     <form class="pt-3" name="saandhaRegistrationForm" id="saandhaRegistrationForm">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputIndexNo"> Index Number </label>
+                                                <input type="text" class="form-control" id="inputIndexNo" placeholder="Index No">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputSubdivision"> Sub-division </label>
+                                                <select id="inputSubdivision" class="form-control">
+                                                    <option selected>Choose...</option>
+                                                    <?php
+                                                    $sub_division = $database->select_data('tbl_subDivision');
+                                                    foreach ($sub_division as $sub_division1) {
+                                                        echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                                                    }
+
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label for="inputName">Name </label>
                                             <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name">
                                         </div>
                                         <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <label for="inputIndex">Index </label>
-                                                <input type="text" class="form-control" name="inputIndex" placeholder="Index">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="inputAge">Age </label>
-                                                <input type="text" class="form-control" name="inputAge" placeholder="Age">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="inputDOB">Date of Birth </label>
-                                                <input type="date" class="form-control" name="inputDOB">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="inputAddress1">Address Line 1 </label>
-                                                <input type="text" class="form-control" id="inputAddress1" name="inputAddress1" placeholder="Number">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputAddress2">Address Line 2 </label>
-                                                <input type="text" class="form-control" id="inputAddress2" name="inputAddress2" placeholder="Street Address">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputAddress3">Address Line 3 </label>
-                                            <input type="text" class="form-control" id="inputAddress3" name="inputAddress3" placeholder="City">
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
                                                 <div class="form-group row pt-3">
-                                                    <div class="col-md-2 pt-2 d-flex align-items-center text-right">
-                                                        <label class="form-label">Sex</label>
+                                                    <div class="col-md-3 pt-2 d-flex align-items-center text-right">
+                                                        <label class="form-label"> Gender </label>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <div class="form-check">
@@ -92,26 +84,29 @@ include "template_parts/header.php";
                                             </div>
                                         </div>
                                         <div class="form-row">
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-4">
                                                 <label for="inputNIC">National Identity Card </label>
                                                 <input type="text" class="form-control" id="inputNIC" name="inputNIC" placeholder="NIC">
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputSubdivision">Sub division </label>
-                                                <input type="text" class="form-control" id="inputSubdivision" name="inputSubdivision" placeholder="Sub division">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputDOB">Date of Birth </label>
+                                                <input type="date" class="form-control" name="inputDOB">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputAge">Age </label>
+                                                <input type="text" class="form-control" name="inputAge" placeholder="Age">
                                             </div>
                                         </div>
-
+                                        <div class="form-group">
+                                            <label for="inputAddress"> Address </label>
+                                            <input type="text" class="form-control" id="inputAddress" name="inputAddress" placeholder="Address">
+                                        </div>
                                         <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <label for="inputID">Membership ID </label>
-                                                <input type="text" class="form-control" id="inputID" name="inputID" placeholder="Membership ID ">
-                                            </div>
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-6">
                                                 <label for="inputIncome">Personal Income </label>
                                                 <input type="text" class="form-control" id="inputIncome" name="inputIncome" placeholder="Income (Rs)">
                                             </div>
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-6">
                                                 <label for="inputEduQual">Educational Qualifications</label>
                                                 <select id="inputEduQual" class="form-control">
                                                     <option selected>Choose...</option>

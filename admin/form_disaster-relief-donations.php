@@ -3,6 +3,7 @@
 
 <?php
 include "template_parts/header.php";
+$database = new databases();
 ?>
 
 <body>
@@ -51,9 +52,26 @@ include "template_parts/header.php";
                                                     <option value="NonMahalla">Non-Mahalla</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group col-md-6" id="inputMemID">
-                                                <label for="inputMemID">Membership ID </label>
-                                                <input type="text" class="form-control" placeholder="Membership ID">
+                                        </div>
+                                        <div id="disaterDonationIndex">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputIndexNo"> Index Number </label>
+                                                    <input type="text" class="form-control" id="inputIndexNo" placeholder="Index No">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputSubdivision"> Sub-division </label>
+                                                    <select id="inputSubdivision" class="form-control">
+                                                        <option selected>Choose...</option>
+                                                        <?php
+                                                        $sub_division = $database->select_data('tbl_subDivision');
+                                                        foreach ($sub_division as $sub_division1) {
+                                                            echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                                                        }
+
+                                                        ?>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-row">

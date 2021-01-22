@@ -4,6 +4,12 @@
     display:none;
 }
 
+/* nikkah-details.php */
+/* Nikkah Donations Form hide */
+#nikkahDonation{
+    display:none;
+}
+
 /* trustee-board.php */
 /* VPdetails Form hide */
 #VPdetails{
@@ -33,14 +39,45 @@
 }
 
 /* disaster-relief-donations.php */
-/* hide membership id textbox */
-#inputMemID{
+/* hide disaterDonationIndex div */
+#disaterDonationIndex{
     display: none;
 }
 
 /* villagers-registration-form.php */
 /* hide college id textbox */
 #college{
+    display: none;
+}
+
+
+/* form_nikkah-details-form.php */
+/* hide groomIndex div  */
+#groomIndex{
+    display: none;
+}
+
+/* form_nikkah-details-form.php */
+/* hide brideIndex div  */
+#brideIndex{
+    display: none;
+}
+
+/* form_nikkah-details-form.php */
+/* hide brideGuardianIndex textbox  */
+#brideGuardianIndex{
+    display: none;
+}
+
+/* form_pesh-imaam-details.php */
+/* hide peshImaamIndex div */
+#peshImaamIndex{
+    display: none;
+}
+
+/* form_muazzin-details.php */
+/* hide muazzinIndex div */
+#muazzinIndex{
     display: none;
 }
 

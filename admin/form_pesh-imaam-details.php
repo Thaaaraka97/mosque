@@ -3,6 +3,7 @@
 
 <?php
 include "template_parts/header.php";
+$database = new databases();
 ?>
 
 <body>
@@ -38,26 +39,63 @@ include "template_parts/header.php";
                                 <div class="card-body">
                                     <h4 class="card-title">Pesh Imaam Details Form</h4>
                                     <form class="pt-3">
+                                        <div class="form-group col-md-6 pl-5">
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label class="form-label">New Pesh Imaam belongs to</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="radio" class="form-check-input" name="inputVillage" id="inputVillageY" value="Our Village"> Our Village </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="radio" class="form-check-input" name="inputVillage" id="inputVillageN" value="Not Our Village" checked> Not Our Village </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="peshImaamIndex">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputIndexNo"> Index Number </label>
+                                                    <input type="text" class="form-control" id="inputIndexNo" placeholder="Index No">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputSubdivision"> Sub-division </label>
+                                                    <select id="inputSubdivision" class="form-control">
+                                                        <option selected>Choose...</option>
+                                                        <?php
+                                                        $sub_division = $database->select_data('tbl_subDivision');
+                                                        foreach ($sub_division as $sub_division1) {
+                                                            echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                                                        }
+
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="form-group">
                                             <label for="inputName">Name </label>
                                             <input type="text" class="form-control" id="inputName" placeholder="Name">
                                         </div>
                                         <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputAddress1">Address Line 1 </label>
-                                                <input type="text" class="form-control" id="inputAddress1" placeholder="Number">
+                                            <div class="form-group col-md-8">
+                                                <label for="inputAddress"> Address </label>
+                                                <input type="text" class="form-control" id="inputAddress" placeholder="Address">
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputAddress2">Address Line 2 </label>
-                                                <input type="text" class="form-control" id="inputAddress2" placeholder="Street Address">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputAddress3">Address Line 3 </label>
-                                                <input type="text" class="form-control" id="inputAddress3" placeholder="City">
-                                            </div>
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-4">
                                                 <label for="inputDistrict">District </label>
                                                 <input type="text" class="form-control" id="inputDistrict" placeholder="District">
                                             </div>
@@ -75,7 +113,7 @@ include "template_parts/header.php";
                                                                 <label class="form-label">Married Status</label>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        <div class="row pl-3">
                                                             <div class="col-md-6">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
@@ -115,6 +153,51 @@ include "template_parts/header.php";
                                             <div class="form-group col-md-6">
                                                 <label for="inputBasicSalary">Basic Salary </label>
                                                 <input type="text" class="form-control" id="inputBasicSalary" placeholder="Basic Salary (Rs)">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <div class="form-group row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <label class="form-label"> Received Letters </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row pl-3">
+                                                            <div class="col-md-6">
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input type="checkbox" class="form-check-input" name="Maulavi" id="Maulavi" value="Maulavi Certificate"> Maulavi Certificate </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row pl-3">
+                                                            <div class="col-md-6">
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input type="checkbox" class="form-check-input" name="Police" id="Police" value="Police Certificate"> Police Certificate </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row pl-3">
+                                                            <div class="col-md-6">
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input type="checkbox" class="form-check-input" name="Gramasevaka" id="Gramasevaka" value="Gramasevaka Certificate"> Gramasevaka Certificate </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row pl-3">
+                                                            <div class="col-md-6">
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input type="checkbox" class="form-check-input" name="Mahalla" id="Mahalla" value="Mahalla Letter"> Mahalla Letter </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-row">

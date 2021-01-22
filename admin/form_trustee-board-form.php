@@ -3,6 +3,7 @@
 
 <?php
 include "template_parts/header.php";
+$database = new databases();
 ?>
 
 <body>
@@ -39,6 +40,25 @@ include "template_parts/header.php";
                   <form class="pt-3" id="trusteeBoardForm" name="trusteeBoardForm">
                     <div id="presidentdetails">
                       <h4 class="card-title">President Details Form</h4>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputPresidentIndexNo"> Index Number </label>
+                          <input type="text" class="form-control" id="inputPresidentIndexNo" placeholder="Index No">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputPresidentSubdivision"> Sub-division </label>
+                          <select id="inputPresidentSubdivision" class="form-control">
+                            <option selected>Choose...</option>
+                            <?php
+                            $sub_division = $database->select_data('tbl_subDivision');
+                            foreach ($sub_division as $sub_division1) {
+                              echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                            }
+
+                            ?>
+                          </select>
+                        </div>
+                      </div>
                       <div class="form-group">
                         <label for="inputPresidentName">Name of the President </label>
                         <input type="text" class="form-control" id="inputPresidentName" placeholder="Name">
@@ -53,27 +73,34 @@ include "template_parts/header.php";
                           <input type="text" class="form-control" id="inputPresidentTP" placeholder="077xxxxxxx">
                         </div>
                       </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="inputPresidentAddress1">Address Line 1 </label>
-                          <input type="text" class="form-control" id="inputPresidentAddress1" placeholder="Number">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="inputPresidentAddress2">Address Line 2 </label>
-                          <input type="text" class="form-control" id="inputPresidentAddress2" placeholder="Street Address">
-                        </div>
-                      </div>
                       <div class="form-group">
-                        <label for="inputPresidentAddress3">Address Line 3 </label>
-                        <input type="text" class="form-control" id="inputPresidentAddress3" placeholder="City">
+                        <label for="inputPresidentAddress"> Address </label>
+                        <input type="text" class="form-control" id="inputPresidentAddress" placeholder="Address">
                       </div>
-
                       <div class="w-100 text-right">
                         <button class="btn btn-primary btn-lg" id="TBNext1">Next</button>
                       </div>
                     </div>
                     <div id="VPdetails">
                       <h4 class="card-title">Vice President Details Form</h4>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputVPIndexNo"> Index Number </label>
+                          <input type="text" class="form-control" id="inputVPIndexNo" placeholder="Index No">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputVPSubdivision"> Sub-division </label>
+                          <select id="inputVPSubdivision" class="form-control">
+                            <option selected>Choose...</option>
+                            <?php
+                            foreach ($sub_division as $sub_division1) {
+                              echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                            }
+
+                            ?>
+                          </select>
+                        </div>
+                      </div>
                       <div class="form-group">
                         <label for="inputVPName">Name of the Vice President </label>
                         <input type="text" class="form-control" id="inputVPName" placeholder="Name">
@@ -88,21 +115,10 @@ include "template_parts/header.php";
                           <input type="text" class="form-control" id="inputVPTP" placeholder="077xxxxxxx">
                         </div>
                       </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="inputVPAddress1">Address Line 1 </label>
-                          <input type="text" class="form-control" id="inputVPAddress1" placeholder="Number">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="inputVPAddress2">Address Line 2 </label>
-                          <input type="text" class="form-control" id="inputVPAddress2" placeholder="Street Address">
-                        </div>
-                      </div>
                       <div class="form-group">
-                        <label for="inputVPAddress3">Address Line 3 </label>
-                        <input type="text" class="form-control" id="inputVPAddress3" placeholder="City">
+                        <label for="inputVPAddress"> Address </label>
+                        <input type="text" class="form-control" id="inputVPAddress" placeholder="Address">
                       </div>
-
                       <div class="w-100 text-right">
                         <button class="btn btn-success btn-lg" id="TBPrev2">Previous</button>
                         <button class="btn btn-primary btn-lg" id="TBNext2">Next</button>
@@ -110,6 +126,24 @@ include "template_parts/header.php";
                     </div>
                     <div id="secretarydetails">
                       <h4 class="card-title">Secretary Details Form</h4>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputSecretaryIndexNo"> Index Number </label>
+                          <input type="text" class="form-control" id="inputSecretaryIndexNo" placeholder="Index No">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputSecretarySubdivision"> Sub-division </label>
+                          <select id="inputSecretarySubdivision" class="form-control">
+                            <option selected>Choose...</option>
+                            <?php
+                            foreach ($sub_division as $sub_division1) {
+                              echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                            }
+
+                            ?>
+                          </select>
+                        </div>
+                      </div>
                       <div class="form-group">
                         <label for="inputSecretaryName">Name of the Secretary </label>
                         <input type="text" class="form-control" id="inputSecretaryName" placeholder="Name">
@@ -124,21 +158,10 @@ include "template_parts/header.php";
                           <input type="text" class="form-control" id="inputSecretaryTP" placeholder="077xxxxxxx">
                         </div>
                       </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="inputSecretaryAddress1">Address Line 1 </label>
-                          <input type="text" class="form-control" id="inputSecretaryAddress1" placeholder="Number">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="inputSecretaryAddress2">Address Line 2 </label>
-                          <input type="text" class="form-control" id="inputSecretaryAddress2" placeholder="Street Address">
-                        </div>
-                      </div>
                       <div class="form-group">
-                        <label for="inputSecretaryAddress3">Address Line 3 </label>
-                        <input type="text" class="form-control" id="inputSecretaryAddress3" placeholder="City">
+                        <label for="inputSecretaryAddress"> Address </label>
+                        <input type="text" class="form-control" id="inputSecretaryAddress" placeholder="Address">
                       </div>
-
                       <div class="w-100 text-right">
                         <button class="btn btn-success btn-lg" id="TBPrev3">Previous</button>
                         <button class="btn btn-primary btn-lg" id="TBNext3">Next</button>
@@ -146,6 +169,24 @@ include "template_parts/header.php";
                     </div>
                     <div id="ASdetails">
                       <h4 class="card-title">Assistant Secretary Details Form</h4>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputASIndexNo"> Index Number </label>
+                          <input type="text" class="form-control" id="inputASIndexNo" placeholder="Index No">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputASSubdivision"> Sub-division </label>
+                          <select id="inputASSubdivision" class="form-control">
+                            <option selected>Choose...</option>
+                            <?php
+                            foreach ($sub_division as $sub_division1) {
+                              echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                            }
+
+                            ?>
+                          </select>
+                        </div>
+                      </div>
                       <div class="form-group">
                         <label for="inputASName">Name of the Assistant Secretary </label>
                         <input type="text" class="form-control" id="inputASName" placeholder="Name">
@@ -160,21 +201,10 @@ include "template_parts/header.php";
                           <input type="text" class="form-control" id="inputASTP" placeholder="077xxxxxxx">
                         </div>
                       </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="inputASAddress1">Address Line 1 </label>
-                          <input type="text" class="form-control" id="inputASAddress1" placeholder="Number">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="inputASAddress2">Address Line 2 </label>
-                          <input type="text" class="form-control" id="inputASAddress2" placeholder="Street Address">
-                        </div>
-                      </div>
                       <div class="form-group">
-                        <label for="inputASAddress3">Address Line 3 </label>
-                        <input type="text" class="form-control" id="inputASAddress3" placeholder="City">
+                        <label for="inputASAddress"> Address </label>
+                        <input type="text" class="form-control" id="inputASAddress" placeholder="Address">
                       </div>
-
                       <div class="w-100 text-right">
                         <button class="btn btn-success btn-lg" id="TBPrev4">Previous</button>
                         <button class="btn btn-primary btn-lg" id="TBNext4">Next</button>
@@ -182,6 +212,24 @@ include "template_parts/header.php";
                     </div>
                     <div id="treasurerdetails">
                       <h4 class="card-title">Treasurer Details Form</h4>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputTreasurerIndexNo"> Index Number </label>
+                          <input type="text" class="form-control" id="inputTreasurerIndexNo" placeholder="Index No">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputTreasurerSubdivision"> Sub-division </label>
+                          <select id="inputTreasurerSubdivision" class="form-control">
+                            <option selected>Choose...</option>
+                            <?php
+                            foreach ($sub_division as $sub_division1) {
+                              echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                            }
+
+                            ?>
+                          </select>
+                        </div>
+                      </div>
                       <div class="form-group">
                         <label for="inputTreasurerName">Name of the Treasurer </label>
                         <input type="text" class="form-control" id="inputTreasurerName" placeholder="Name">
@@ -196,19 +244,9 @@ include "template_parts/header.php";
                           <input type="text" class="form-control" id="inputTreasurerTP" placeholder="077xxxxxxx">
                         </div>
                       </div>
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="inputTreasurerAddress1">Address Line 1 </label>
-                          <input type="text" class="form-control" id="inputTreasurerAddress1" placeholder="Number">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label for="inputTreasurerAddress2">Address Line 2 </label>
-                          <input type="text" class="form-control" id="inputTreasurerAddress2" placeholder="Street Address">
-                        </div>
-                      </div>
                       <div class="form-group">
-                        <label for="inputTreasurerAddress3">Address Line 3 </label>
-                        <input type="text" class="form-control" id="inputTreasurerAddress3" placeholder="City">
+                        <label for="inputTreasurerAddress"> Address </label>
+                        <input type="text" class="form-control" id="inputTreasurerAddress" placeholder="Address">
                       </div>
                       <div class="w-100 text-right">
                         <button class="btn btn-success btn-lg" id="TBPrev5">Previous</button>
@@ -218,7 +256,7 @@ include "template_parts/header.php";
                     <div id="advisoryboard">
                       <h4 class="card-title">Advisory Board Details Form</h4>
                       <div class="form-group">
-                      <div id="addMember"></div>
+                        <div id="addMember"></div>
                         <div class="form-group" id="addNewMembers"></div>
                         <p class="card-description"> Add members to Advisory Board </p>
                         <a class="btn btn btn-success btn-lg" id="advisoryMember">+ ADD</a>

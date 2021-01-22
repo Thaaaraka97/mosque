@@ -3,6 +3,7 @@
 
 <?php
 include "template_parts/header.php";
+$database = new databases();
 ?>
 
 <body>
@@ -38,19 +39,34 @@ include "template_parts/header.php";
                 <div class="card-body">
                   <h4 class="card-title">Janaza Details Form</h4>
                   <form class="pt-3">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputIndexNoDeceased"> Index Number of the Deceased </label>
+                        <input type="text" class="form-control" id="inputIndexNoDeceased" placeholder="Index No">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputSubdivision"> Sub-division </label>
+                        <select id="inputSubdivision" class="form-control">
+                          <option selected>Choose...</option>
+                          <?php
+                          $sub_division = $database->select_data('tbl_subDivision');
+                          foreach ($sub_division as $sub_division1) {
+                            echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                          }
+
+                          ?>
+                        </select>
+                      </div>
+                    </div>
                     <div class="form-group">
                       <label for="inputName">Name of the Deceased </label>
                       <input type="text" class="form-control" id="inputName" placeholder="Name">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label for="inputDeceasedID">Membership ID of the Deceased </label>
-                        <input type="text" class="form-control" id="inputDeceasedID" placeholder="Membership ID">
-                      </div>
-                      <div class="form-group col-md-6">
                         <div class="form-group row pt-3">
                           <div class="col-md-2 pt-2 d-flex align-items-center text-right">
-                            <label class="form-label">Sex</label>
+                            <label class="form-label">Gender</label>
                           </div>
                           <div class="col-sm-4">
                             <div class="form-check">
@@ -77,19 +93,9 @@ include "template_parts/header.php";
                         <input type="date" class="form-control" id="inputFuneralDate">
                       </div>
                     </div>
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputAddress1">Place of the Funeral </label>
-                        <input type="text" class="form-control" id="inputAddress1" placeholder="Place">
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label for="inputAddress2">Address Line 2 </label>
-                        <input type="text" class="form-control" id="inputAddress2" placeholder="Street Address">
-                      </div>
-                    </div>
                     <div class="form-group">
-                      <label for="inputAddress3">Address Line 3 </label>
-                      <input type="text" class="form-control" id="inputAddress3" placeholder="City">
+                      <label for="inputAddress"> Place of the Funeral </label>
+                      <input type="text" class="form-control" id="inputAddress" placeholder="Address">
                     </div>
                     <p class="card-description"> Details of person who give details </p>
                     <div class="form-row">
@@ -98,8 +104,14 @@ include "template_parts/header.php";
                         <input type="text" class="form-control" id="inputGName" placeholder="Name">
                       </div>
                       <div class="form-group col-md-6">
-                        <label for="inputMemberID">Membership ID </label>
-                        <input type="text" class="form-control" id="inputMemberID" placeholder="Membership ID">
+                        <label for="inputIndexNo"> Index Number </label>
+                        <input type="text" class="form-control" id="inputIndexNo" placeholder="Index No">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputRelationship"> Relationship to the Deceased </label>
+                        <input type="text" class="form-control" id="inputRelationship" placeholder="Relationship">
                       </div>
                     </div>
                     <div class="form-row">

@@ -67,23 +67,13 @@ include "template_parts/header.php";
                                             </div>
                                         </div>
                                         <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputAddress1">Address Line 1 </label>
-                                                <input type="text" class="form-control" id="inputAddress1" placeholder="Number">
+                                            <div class="form-group col-md-8">
+                                                <label for="inputAddress"> Address </label>
+                                                <input type="text" class="form-control" id="inputAddress" placeholder="Address">
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputAddress2">Address Line 2 </label>
-                                                <input type="text" class="form-control" id="inputAddress2" placeholder="Street Address">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputAddress3">Address Line 3 </label>
-                                                <input type="text" class="form-control" id="inputAddress3" placeholder="City">
-                                            </div>
-                                            <div class="form-group col-md-6" id="inputCountry">
-                                                <label for="inputAddress4">Address Line 4 </label>
-                                                <input type="text" class="form-control" id="inputAddress4" placeholder="Country">
+                                            <div class="form-group col-md-4" id="inputCountry">
+                                                <label for="inputAddress2"> Country </label>
+                                                <input type="text" class="form-control" id="inputAddress2" placeholder="Country">
                                             </div>
                                         </div>
 

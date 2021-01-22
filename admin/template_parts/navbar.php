@@ -58,22 +58,6 @@
         <li class="nav-item menu-items">
             <a class="nav-link" href="index.php"> <span class="menu-icon"> <i class="mdi mdi-speedometer"></i> </span> <span class="menu-title">Dashboard</span> </a>
         </li>
-        <!-- <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic"> <span class="menu-icon"> <i class="mdi mdi-laptop"></i> </span> <span class="menu-title">Basic UI Elements</span> <i class="menu-arrow"></i> </a>
-            <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="buttons.html">Buttons</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="dropdowns.html">Dropdowns</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="typography.html">Typography</a>
-                    </li>
-                </ul>
-            </div>
-        </li> -->
         <li class="nav-item menu-items">
             <a class="nav-link" href="<?php $server_name ?>forms.php"> <span class="menu-icon"> <i class="mdi mdi-file-document-box"></i> </span> <span class="menu-title">Forms</span> </a>
         </li>
@@ -85,7 +69,7 @@
                         <a class="nav-link" href="preview_saandha-details.php"> Saandha Details </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_villager-details.php"> Whole Villagers Details </a>
+                        <a class="nav-link" href="preview_villager-details.php"> All Villagers Details </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_widow-details.php"> Widow Details </a>
@@ -112,30 +96,5 @@
                 </ul>
             </div>
         </li>
-        <!-- <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth"> <span class="menu-icon"> <i class="mdi mdi-security"></i> </span> <span class="menu-title">Members</span> <i class="menu-arrow"></i> </a>
-            <div class="collapse" id="auth">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="blank-page.php"> Blank Page </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="error-404.php"> 404 </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="error-500.php"> 500 </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.php"> Login </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="register.php"> Register </a>
-                    </li>
-                </ul>
-            </div>
-        </li> -->
-        <!-- <li class="nav-item menu-items">
-            <a class="nav-link" href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html"> <span class="menu-icon"> <i class="mdi mdi-playlist-play "></i> </span> <span class="menu-title">Documentation</span> </a>
-        </li> -->
     </ul>
 </nav>

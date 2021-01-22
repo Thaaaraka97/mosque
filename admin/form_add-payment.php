@@ -3,6 +3,7 @@
 
 <?php
 include "template_parts/header.php";
+$database = new databases();
 ?>
 
 <body>
@@ -40,15 +41,31 @@ include "template_parts/header.php";
                                     <form class="pt-3">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="inputMemberID">Membership ID </label>
-                                                <input type="text" class="form-control" id="inputMemberID" placeholder="Membership ID">
+                                                <label for="inputIndexNo"> Index Number </label>
+                                                <input type="text" class="form-control" id="inputIndexNo" placeholder="Index No">
                                             </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputSubdivision"> Sub-division </label>
+                                                <select id="inputSubdivision" class="form-control">
+                                                    <option selected>Choose...</option>
+                                                    <?php
+                                                    $sub_division = $database->select_data('tbl_subDivision');
+                                                    foreach ($sub_division as $sub_division1) {
+                                                        echo "<option value='Moragala Main-Street'>" . $sub_division1["sb_name"] . "</option>";
+                                                    }
+
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputDonation">Rental</label>
                                                 <select id="inputDonation" class="form-control">
                                                     <option selected>Choose...</option>
-                                                    <option value="">1</option>
-                                                    <option value="">2</option>
+                                                    <option value="Land">Land</option>
+                                                    <option value="House">House</option>
+                                                    <option value="Shop">Shop</option>
                                                 </select>
                                             </div>
                                         </div>

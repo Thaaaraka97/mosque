@@ -5,15 +5,35 @@ $(document).ready(function () {
     e.preventDefault();
     // step show/hide bride/groom forms
     $("#groomdetails").hide();
+    $("#nikkahDonation").hide();
     $("#bridedetails").show();
   });
 
-  // previous button
-  $("#nikkahPrev").click(function (e) {
+  // next2 button
+  $("#nikkahNext2").click(function (e) {
+    e.preventDefault();
+    // step show/hide bride/groom forms
+    $("#groomdetails").hide();
+    $("#bridedetails").hide();
+    $("#nikkahDonation").show();
+  });
+
+  // previous2 button
+  $("#nikkahPrev2").click(function (e) {
     e.preventDefault();
     // step show/hide bride/groom forms for prvious button
     $("#bridedetails").hide();
+    $("#nikkahDonation").hide();
     $("#groomdetails").show();
+  });
+
+  // previous3 button
+  $("#nikkahPrev3").click(function (e) {
+    e.preventDefault();
+    // step show/hide bride/groom forms for prvious button
+    $("#groomdetails").hide();
+    $("#nikkahDonation").hide();
+    $("#bridedetails").show();
   });
 
   //   trustee-board.php
@@ -154,9 +174,9 @@ $(document).ready(function () {
   $("#inputDonationDisaster").change(function (e) {
     e.preventDefault();
     if ($(this).val() == "Mahalla") {
-      $("#inputMemID").show();
+      $("#disaterDonationIndex").show();
     } else {
-      $("#inputMemID").hide();
+      $("#disaterDonationIndex").hide();
     }
   });
 
@@ -219,6 +239,30 @@ $(document).ready(function () {
     var formBlock = `
     <div id="row${j}">
     <h4 class="card-title">Member ${j} Details Form</h4>
+    <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputMemberIndexNo"> Index Number </label>
+                                                <input type="text" class="form-control" id="inputMemberIndexNo[]" placeholder="Index No">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputMemberSubdivision"> Sub-division </label>
+                                                <select id="inputMemberSubdivision[]" class="form-control">
+                                                    <option selected>Choose...</option>
+                                                    <option value="Moragala Main-Street">Moragala Main-Street</option>
+                                                    <option value="Old Rail Road">Old Rail Road</option>
+                                                    <option value="Bandarawaththa">Bandarawaththa</option>
+                                                    <option value="Kothvila">Kothvila</option>
+                                                    <option value="Palpitiya">Palpitiya</option>
+                                                    <option value="Ranaviru Mawatha">Ranaviru Mawatha</option>
+                                                    <option value="Wekada-1">Wekada-1</option>
+                                                    <option value="Wekada-2">Wekada-2</option>
+                                                    <option value="Wekada-3">Wekada-3</option>
+                                                    <option value="Eheliyagoda Town">Eheliyagoda Town</option>
+                                                    <option value="Other-1">Other-1</option>
+                                                    <option value="Other-2">Other-2</option>
+                                                </select>
+                                            </div>
+                                        </div>
     <div class="form-group">
       <label for="inputMemberName">Name of the Member ${j} </label>
       <input type="text" class="form-control" id="inputMemberName[]" placeholder="Name">
@@ -233,19 +277,9 @@ $(document).ready(function () {
         <input type="text" class="form-control" id="inputMemberTP[]" placeholder="077xxxxxxx">
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputMemberAddress1">Address Line 1 </label>
-        <input type="text" class="form-control" id="inputMemberAddress1[]" placeholder="Number">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputMemberAddress2">Address Line 2 </label>
-        <input type="text" class="form-control" id="inputMemberAddress2[]" placeholder="Street Address">
-      </div>
-    </div>
     <div class="form-group">
-      <label for="inputMemberAddress3">Address Line 3 </label>
-      <input type="text" class="form-control" id="inputMemberAddress3[]" placeholder="City">
+      <label for="inputMemberAddress"> Address </label>
+      <input type="text" class="form-control" id="inputMemberAddress[]" placeholder="Address">
     </div>
     <div class="form-group col-md-6">
         <button type="button" name="remove" id="${j}" class="btn btn-danger btn_remove">Remove</button>
@@ -275,8 +309,8 @@ $(document).ready(function () {
     });
   });
 
-  //   other-donations.php
-  // show country textbox on dropdown change
+  //   form_villagers-registration-form.php
+  // show/hide College textbox on dropdown change
   $("#inputEduQual").change(function (e) {
     e.preventDefault();
     if ($(this).val() == "None") {
@@ -291,5 +325,58 @@ $(document).ready(function () {
     $(".datatable").DataTable();
   });
 
-  
+  //   form_nikkah-details-form.php
+  // show/hide Groom mosque textbox on radio change
+  $("input[type=radio][name=inputGroomVillage]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Not Our Village") {
+      $("#groomMosqueDetails").show();
+      $("#groomIndex").hide();
+      $("#groomGuardianIndex").hide();
+    } else {
+      $("#groomMosqueDetails").hide();
+      $("#groomIndex").show();
+      $("#groomGuardianIndex").show();
+    }
+  });
+
+  // show/hide Bride mosque textbox on radio change
+  $("input[type=radio][name=inputBrideVillage]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Not Our Village") {
+      $("#brideMosqueDetails").show();
+      $("#brideGuardianIndex").hide();
+      $("#brideIndex").hide();
+    } else {
+      $("#brideMosqueDetails").hide();
+      $("#brideGuardianIndex").show();
+      $("#brideIndex").show();
+    }
+  });
+
+
+  //   form_pesh-imaam-details.php
+  // show/hide peshImaamIndex div on radio change
+  $("input[type=radio][name=inputVillage]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Our Village") {
+      $("#peshImaamIndex").show();
+    } else {
+      $("#peshImaamIndex").hide();
+    }
+  });
+
+
+  //   form_muazzin-details.php
+  // show/hide muazzinIndex div on radio change
+  $("input[type=radio][name=inputVillage]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Our Village") {
+      $("#muazzinIndex").show();
+    } else {
+      $("#muazzinIndex").hide();
+    }
+  });
+
+
 });

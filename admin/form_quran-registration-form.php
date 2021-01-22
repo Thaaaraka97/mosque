@@ -3,6 +3,7 @@
 
 <?php
 include "template_parts/header.php";
+$database = new databases();
 ?>
 
 <body>
@@ -38,6 +39,25 @@ include "template_parts/header.php";
                 <div class="card-body">
                   <h4 class="card-title">Quran Madhrasa Registration Form</h4>
                   <form class="pt-3">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputIndexNo"> Index Number </label>
+                        <input type="text" class="form-control" id="inputIndexNo" placeholder="Index No">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputSubdivision"> Sub-division </label>
+                        <select id="inputSubdivision" class="form-control">
+                          <option selected>Choose...</option>
+                          <?php
+                          $sub_division = $database->select_data('tbl_subDivision');
+                          foreach ($sub_division as $sub_division1) {
+                            echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                          }
+
+                          ?>
+                        </select>
+                      </div>
+                    </div>
                     <div class="form-group">
                       <label for="inputName">Name of the Child </label>
                       <input type="text" class="form-control" id="inputName" placeholder="Name">
@@ -51,7 +71,7 @@ include "template_parts/header.php";
                         <div class="form-group row pt-3">
 
                           <div class="col-md-2 pt-2 d-flex align-items-center text-right">
-                            <label class="form-label">Sex</label>
+                            <label class="form-label">Gender</label>
                           </div>
                           <div class="col-sm-4">
                             <div class="form-check">
@@ -91,25 +111,9 @@ include "template_parts/header.php";
                       <label for="inputGuardianName">Name of the Guardian </label>
                       <input type="text" class="form-control" id="inputGuardianName" placeholder="Name of the Guardian">
                     </div>
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputGuardianID">Membership ID of the Guardian </label>
-                        <input type="text" class="form-control" id="inputGuardianID" placeholder="Membership ID">
-                      </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputAddress1">Address Line 1 </label>
-                        <input type="text" class="form-control" id="inputAddress1" placeholder="Number">
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label for="inputAddress2">Address Line 2 </label>
-                        <input type="text" class="form-control" id="inputAddress2" placeholder="Street Address">
-                      </div>
-                    </div>
                     <div class="form-group">
-                      <label for="inputAddress3">Address Line 3 </label>
-                      <input type="text" class="form-control" id="inputAddress3" placeholder="City">
+                      <label for="inputAddress"> Address </label>
+                      <input type="text" class="form-control" id="inputAddress" placeholder="Address">
                     </div>
 
                     <div class="form-group">

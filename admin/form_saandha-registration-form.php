@@ -50,7 +50,7 @@ include "template_parts/header.php";
                       <div class="form-group col-md-6">
                         <div class="form-group row pt-3">
                           <div class="col-md-2 pt-2 d-flex align-items-center text-right">
-                            <label class="form-label">Sex</label>
+                            <label class="form-label">Gender</label>
                           </div>
                           <div class="col-sm-4">
                             <div class="form-check">
