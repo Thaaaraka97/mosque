@@ -44,10 +44,24 @@ include "template_parts/header.php";
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label for="inputID">Membership ID </label>
-                        <input type="text" class="form-control" id="inputID" name="inputID" placeholder="Membership ID">
+                        <label for="inputIndexNo"> Index Number </label>
+                        <input type="text" class="form-control" id="inputIndexNo" placeholder="Index No">
                       </div>
                       <div class="form-group col-md-6">
+                        <label for="inputSubdivision"> Sub-division </label>
+                        <select id="inputSubdivision" class="form-control">
+                          <option selected>Choose...</option>
+                          <?php
+                          $sub_division = $database->select_data('tbl_subdivision');
+                          foreach ($sub_division as $sub_division1) {
+                            echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                          }
+
+                          ?>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-row">
                         <div class="form-group row pt-3">
                           <div class="col-md-2 pt-2 d-flex align-items-center text-right">
                             <label class="form-label">Gender</label>
@@ -65,7 +79,6 @@ include "template_parts/header.php";
                             </div>
                           </div>
                         </div>
-                      </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-4">

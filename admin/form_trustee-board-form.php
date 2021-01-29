@@ -51,8 +51,8 @@ $database = new databases();
                             <option selected>Choose...</option>
                             <?php
                             $sub_division = $database->select_data('tbl_subdivision');
-                            foreach ($sub_division as $sub_division1) {
-                              echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                            foreach ($sub_division as $sub_division) {
+                              echo "<option value='" . $sub_division["sb_name"] . "'>" . $sub_division["sb_name"] . "</option>";
                             }
 
                             ?>
@@ -93,8 +93,8 @@ $database = new databases();
                           <select id="inputVPSubdivision" class="form-control">
                             <option selected>Choose...</option>
                             <?php
-                            foreach ($sub_division as $sub_division1) {
-                              echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                            foreach ($sub_division as $sub_division) {
+                              echo "<option value='" . $sub_division["sb_name"] . "'>" . $sub_division["sb_name"] . "</option>";
                             }
 
                             ?>
@@ -136,8 +136,8 @@ $database = new databases();
                           <select id="inputSecretarySubdivision" class="form-control">
                             <option selected>Choose...</option>
                             <?php
-                            foreach ($sub_division as $sub_division1) {
-                              echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                            foreach ($sub_division as $sub_division) {
+                              echo "<option value='" . $sub_division["sb_name"] . "'>" . $sub_division["sb_name"] . "</option>";
                             }
 
                             ?>
@@ -179,8 +179,8 @@ $database = new databases();
                           <select id="inputASSubdivision" class="form-control">
                             <option selected>Choose...</option>
                             <?php
-                            foreach ($sub_division as $sub_division1) {
-                              echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                            foreach ($sub_division as $sub_division) {
+                              echo "<option value='" . $sub_division["sb_name"] . "'>" . $sub_division["sb_name"] . "</option>";
                             }
 
                             ?>
@@ -222,8 +222,8 @@ $database = new databases();
                           <select id="inputTreasurerSubdivision" class="form-control">
                             <option selected>Choose...</option>
                             <?php
-                            foreach ($sub_division as $sub_division1) {
-                              echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
+                            foreach ($sub_division as $sub_division) {
+                              echo "<option value='" . $sub_division["sb_name"] . "'>" . $sub_division["sb_name"] . "</option>";
                             }
 
                             ?>
