@@ -50,8 +50,8 @@ $database = new databases();
                                                     <option selected>Choose...</option>
                                                     <?php
                                                     $sub_division = $database->select_data('tbl_subdivision');
-                                                    foreach ($sub_division as $sub_division1) {
-                                                        echo "<option value='Moragala Main-Street'>" . $sub_division1["sb_name"] . "</option>";
+                                                    foreach ($sub_division as $sub_division_item) {
+                                                        echo "<option value='Moragala Main-Street'>" . $sub_division_item["sb_name"] . "</option>";
                                                     }
 
                                                     ?>

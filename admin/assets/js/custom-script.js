@@ -240,29 +240,29 @@ $(document).ready(function () {
     <div id="row${j}">
     <h4 class="card-title">Member ${j} Details Form</h4>
     <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputMemberIndexNo"> Index Number </label>
-                                                <input type="text" class="form-control" id="inputMemberIndexNo[]" placeholder="Index No">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputMemberSubdivision"> Sub-division </label>
-                                                <select id="inputMemberSubdivision[]" class="form-control">
-                                                    <option selected>Choose...</option>
-                                                    <option value="Moragala Main-Street">Moragala Main-Street</option>
-                                                    <option value="Old Rail Road">Old Rail Road</option>
-                                                    <option value="Bandarawaththa">Bandarawaththa</option>
-                                                    <option value="Kothvila">Kothvila</option>
-                                                    <option value="Palpitiya">Palpitiya</option>
-                                                    <option value="Ranaviru Mawatha">Ranaviru Mawatha</option>
-                                                    <option value="Wekada-1">Wekada-1</option>
-                                                    <option value="Wekada-2">Wekada-2</option>
-                                                    <option value="Wekada-3">Wekada-3</option>
-                                                    <option value="Eheliyagoda Town">Eheliyagoda Town</option>
-                                                    <option value="Other-1">Other-1</option>
-                                                    <option value="Other-2">Other-2</option>
-                                                </select>
-                                            </div>
-                                        </div>
+    <div class="form-group col-md-6">
+        <label for="inputMemberIndexNo"> Index Number </label>
+        <input type="text" class="form-control" id="inputMemberIndexNo[]" placeholder="Index No">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="inputMemberSubdivision"> Sub-division </label>
+        <select id="inputMemberSubdivision[]" class="form-control">
+            <option selected>Choose...</option>
+            <option value="Moragala Main-Street">Moragala Main-Street</option>
+            <option value="Old Rail Road">Old Rail Road</option>
+            <option value="Bandarawaththa">Bandarawaththa</option>
+            <option value="Kothvila">Kothvila</option>
+            <option value="Palpitiya">Palpitiya</option>
+            <option value="Ranaviru Mawatha">Ranaviru Mawatha</option>
+            <option value="Wekada-1">Wekada-1</option>
+            <option value="Wekada-2">Wekada-2</option>
+            <option value="Wekada-3">Wekada-3</option>
+            <option value="Eheliyagoda Town">Eheliyagoda Town</option>
+            <option value="Other-1">Other-1</option>
+            <option value="Other-2">Other-2</option>
+        </select>
+    </div>
+    </div>
     <div class="form-group">
       <label for="inputMemberName">Name of the Member ${j} </label>
       <input type="text" class="form-control" id="inputMemberName[]" placeholder="Name">
@@ -285,6 +285,7 @@ $(document).ready(function () {
         <button type="button" name="remove" id="${j}" class="btn btn-danger btn_remove">Remove</button>
         </div>
   </div>
+
     `;
     $("#addNewMembers").append(formBlock);
     j++;
