@@ -50,7 +50,7 @@ $database = new databases();
                           <select id="inputPresidentSubdivision" class="form-control">
                             <option selected>Choose...</option>
                             <?php
-                            $sub_division = $database->select_data('tbl_subDivision');
+                            $sub_division = $database->select_data('tbl_subdivision');
                             foreach ($sub_division as $sub_division1) {
                               echo "<option value='" . $sub_division1["sb_name"] . "'>" . $sub_division1["sb_name"] . "</option>";
                             }
