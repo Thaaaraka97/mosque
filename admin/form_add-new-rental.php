@@ -61,7 +61,7 @@ $database = new databases();
                                         </div>
                                         <div class="form-group">
                                             <label for="inputAddress"> Address </label>
-                                            <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+                                            <textarea rows = "5" class="form-control" id="inputAddress"></textarea>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">

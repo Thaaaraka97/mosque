@@ -139,7 +139,7 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputGroomAddress">Address </label>
-                        <input type="text" class="form-control" id="inputGroomAddress" placeholder="Address">
+                        <textarea rows="5" class="form-control" id="inputGroomAddress"></textarea>
                       </div>
                       <p class="card-description"> Details of the Guardian </p>
                       <div class="form-group">
@@ -170,7 +170,7 @@ $database = new databases();
                         </div>
                         <div class="form-group">
                           <label for="inputGroomMosqueAddress"> Address </label>
-                          <input type="text" class="form-control" id="inputGroomMosqueAddress" placeholder="Address">
+                          <textarea rows="5" class="form-control" id="inputGroomMosqueAddress"></textarea>
                         </div>
                       </div>
                       <div class="w-100 text-right">
@@ -252,7 +252,7 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputBrideAddress"> Address </label>
-                        <input type="text" class="form-control" id="inputBrideAddress" placeholder="Address">
+                        <textarea rows="5" class="form-control" id="inputBrideAddress"></textarea>
                       </div>
                       <p class="card-description"> Details of the Guardian </p>
                       <div class="form-group">
@@ -273,7 +273,7 @@ $database = new databases();
                         </div>
                         <div class="form-group">
                           <label for="inputBrideMosqueAddress"> Address </label>
-                          <input type="text" class="form-control" id="inputBrideMosqueAddress" placeholder="Address">
+                          <textarea rows="5" class="form-control" id="inputBrideMosqueAddress"></textarea>
                         </div>
                       </div>
                       <div class="w-100 text-right">

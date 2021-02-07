@@ -240,28 +240,28 @@ $(document).ready(function () {
     <div id="row${j}">
     <h4 class="card-title">Member ${j} Details Form</h4>
     <div class="form-row">
-    <div class="form-group col-md-6">
-        <label for="inputMemberIndexNo"> Index Number </label>
-        <input type="text" class="form-control" id="inputMemberIndexNo[]" placeholder="Index No">
-    </div>
-    <div class="form-group col-md-6">
-        <label for="inputMemberSubdivision"> Sub-division </label>
-        <select id="inputMemberSubdivision[]" class="form-control">
-            <option selected>Choose...</option>
-            <option value="Moragala Main-Street">Moragala Main-Street</option>
-            <option value="Old Rail Road">Old Rail Road</option>
-            <option value="Bandarawaththa">Bandarawaththa</option>
-            <option value="Kothvila">Kothvila</option>
-            <option value="Palpitiya">Palpitiya</option>
-            <option value="Ranaviru Mawatha">Ranaviru Mawatha</option>
-            <option value="Wekada-1">Wekada-1</option>
-            <option value="Wekada-2">Wekada-2</option>
-            <option value="Wekada-3">Wekada-3</option>
-            <option value="Eheliyagoda Town">Eheliyagoda Town</option>
-            <option value="Other-1">Other-1</option>
-            <option value="Other-2">Other-2</option>
-        </select>
-    </div>
+      <div class="form-group col-md-6">
+          <label for="inputMemberIndexNo"> Index Number </label>
+          <input type="text" class="form-control" id="inputMemberIndexNo[]" placeholder="Index No">
+      </div>
+      <div class="form-group col-md-6">
+          <label for="inputMemberSubdivision"> Sub-division </label>
+          <select id="inputMemberSubdivision[]" class="form-control">
+              <option selected>Choose...</option>
+              <option value="Moragala Main-Street">Moragala Main-Street</option>
+              <option value="Old Rail Road">Old Rail Road</option>
+              <option value="Bandarawaththa">Bandarawaththa</option>
+              <option value="Kothvila">Kothvila</option>
+              <option value="Palpitiya">Palpitiya</option>
+              <option value="Ranaviru Mawatha">Ranaviru Mawatha</option>
+              <option value="Wekada-1">Wekada-1</option>
+              <option value="Wekada-2">Wekada-2</option>
+              <option value="Wekada-3">Wekada-3</option>
+              <option value="Eheliyagoda Town">Eheliyagoda Town</option>
+              <option value="Other-1">Other-1</option>
+              <option value="Other-2">Other-2</option>
+          </select>
+      </div>
     </div>
     <div class="form-group">
       <label for="inputMemberName">Name of the Member ${j} </label>
@@ -279,7 +279,7 @@ $(document).ready(function () {
     </div>
     <div class="form-group">
       <label for="inputMemberAddress"> Address </label>
-      <input type="text" class="form-control" id="inputMemberAddress[]" placeholder="Address">
+      <textarea rows = "5" class="form-control" id="inputMemberAddress[]"></textarea>
     </div>
     <div class="form-group col-md-6">
         <button type="button" name="remove" id="${j}" class="btn btn-danger btn_remove">Remove</button>
@@ -376,6 +376,166 @@ $(document).ready(function () {
       $("#muazzinIndex").show();
     } else {
       $("#muazzinIndex").hide();
+    }
+  });
+
+  //  form_villagers-registration-form.php
+  //  Next Buttons
+  // next button 1
+  $("#avNext1").click(function (e) {
+    e.preventDefault();
+    // step show/hide
+    $("#saandhaStep1").hide();
+    $("#saandhaStep3").hide();
+    $("#saandhaStep4").hide();
+    $("#saandhaStep5").hide();
+
+    $("#saandhaStep2").show();
+  });
+  // next button 2
+  $("#avNext2").click(function (e) {
+    e.preventDefault();
+    // step show/hide
+    $("#saandhaStep1").hide();
+    $("#saandhaStep2").hide();
+    $("#saandhaStep4").hide();
+    $("#saandhaStep5").hide();
+
+    $("#saandhaStep3").show();
+  });
+  // next button 3
+  $("#avNext3").click(function (e) {
+    e.preventDefault();
+    // step show/hide
+    $("#saandhaStep1").hide();
+    $("#saandhaStep3").hide();
+    $("#saandhaStep2").hide();
+    $("#saandhaStep5").hide();
+
+    $("#saandhaStep4").show();
+  });
+  // next button 4
+  $("#avNext4").click(function (e) {
+    e.preventDefault();
+    // step show/hide
+    $("#saandhaStep1").hide();
+    $("#saandhaStep3").hide();
+    $("#saandhaStep4").hide();
+    $("#saandhaStep2").hide();
+
+    $("#saandhaStep5").show();
+  });
+
+  //   previous buttons
+  // previous button 2
+  $("#avPrev2").click(function (e) {
+    e.preventDefault();
+    // step show/hide
+    $("#saandhaStep2").hide();
+    $("#saandhaStep3").hide();
+    $("#saandhaStep4").hide();
+    $("#saandhaStep5").hide();
+
+    $("#saandhaStep1").show();
+  });
+  // previous button 3
+  $("#avPrev3").click(function (e) {
+    e.preventDefault();
+    // step show/hide
+    $("#saandhaStep1").hide();
+    $("#saandhaStep3").hide();
+    $("#saandhaStep4").hide();
+    $("#saandhaStep5").hide();
+
+    $("#saandhaStep2").show();
+  });
+  // previous button 4
+  $("#avPrev4").click(function (e) {
+    e.preventDefault();
+    // step show/hide
+    $("#saandhaStep2").hide();
+    $("#saandhaStep1").hide();
+    $("#saandhaStep4").hide();
+    $("#saandhaStep5").hide();
+
+    $("#saandhaStep3").show();
+  });
+  // previous button 5
+  $("#avPrev5").click(function (e) {
+    e.preventDefault();
+    // step show/hide
+    $("#saandhaStep2").hide();
+    $("#saandhaStep3").hide();
+    $("#saandhaStep1").hide();
+    $("#saandhaStep5").hide();
+
+    $("#saandhaStep4").show();
+  });
+  
+  //   form_villagers-registration-form.php
+  // show/hide saandhaGuardian div on radio change
+  $("input[type=radio][name=inputGuardianStatus]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "No") {
+      $("#saandhaGuardian").show();
+    } else {
+      $("#saandhaGuardian").hide();
+    }
+  });
+  
+  //   form_villagers-registration-form.php
+  // show/hide avStudent div on radio change
+  $("input[type=radio][name=inputStudent]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Yes") {
+      $("#avStudent").show();
+    } else {
+      $("#avStudent").hide();
+    }
+  });
+  // show/hide inputScholIncome div on radio change
+  $("input[type=radio][name=inputSchol]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Yes") {
+      $("#inputScholIncomeDiv").show();
+    } else {
+      $("#inputScholIncomeDiv").hide();
+    }
+  });
+  // show/hide madhrasa div on radio change
+  $("input[type=radio][name=inputMad]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Yes") {
+      $("#madhrasa").show();
+    } else {
+      $("#madhrasa").hide();
+    }
+  });
+  // show/hide married div on radio change
+  $("input[type=radio][name=inputMarried]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Yes") {
+      $("#married").show();
+    } else {
+      $("#married").hide();
+    }
+  });
+  // show/hide familyIncome div on radio change
+  $("input[type=radio][name=inputjobYN]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Yes") {
+      $("#familyIncome").show();
+    } else {
+      $("#familyIncome").hide();
+    }
+  });
+  // show/hide madhrasa div on radio change
+  $("input[type=radio][name=inputMigrant]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Yes") {
+      $("#newMigrant").show();
+    } else {
+      $("#newMigrant").hide();
     }
   });
 

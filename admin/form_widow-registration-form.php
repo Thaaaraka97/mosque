@@ -42,19 +42,9 @@ include "template_parts/header.php";
                                             <label for="inputName">Name</label>
                                             <input type="text" class="form-control" id="inputName" placeholder="Name">
                                         </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputAddress1">Address Line 1 </label>
-                                                <input type="text" class="form-control" id="inputAddress1" name="inputAddress1" placeholder="Number">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputAddress2">Address Line 2 </label>
-                                                <input type="text" class="form-control" id="inputAddress2" name="inputAddress2" placeholder="Street Address">
-                                            </div>
-                                        </div>
                                         <div class="form-group">
-                                            <label for="inputAddress3">Address Line 3 </label>
-                                            <input type="text" class="form-control" id="inputAddress3" name="inputAddress3" placeholder="City">
+                                            <label for="inputAddress"> Address </label>
+                                            <textarea rows="5" class="form-control" id="inputAddress"></textarea>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">

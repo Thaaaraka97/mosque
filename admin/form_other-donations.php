@@ -69,7 +69,7 @@ include "template_parts/header.php";
                                         <div class="form-row">
                                             <div class="form-group col-md-8">
                                                 <label for="inputAddress"> Address </label>
-                                                <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+                                                <textarea rows = "5" class="form-control" id="inputAddress"></textarea>
                                             </div>
                                             <div class="form-group col-md-4" id="inputCountry">
                                                 <label for="inputAddress2"> Country </label>

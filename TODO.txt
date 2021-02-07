@@ -1,0 +1,3 @@
+all villagers
+marital ststus 
+show hide div

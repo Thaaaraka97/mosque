@@ -81,3 +81,70 @@
     display: none;
 }
 
+/* form_villagers-registration-form.php */
+/* hide saandhaStep div */
+#saandhaStep2{
+    display: none;
+}
+
+/* form_villagers-registration-form.php */
+/* hide saandhaStep div */
+#saandhaStep3{
+    display: none;
+}
+
+/* form_villagers-registration-form.php */
+/* hide saandhaStep div */
+#saandhaStep4{
+    display: none;
+}
+
+/* form_villagers-registration-form.php */
+/* hide saandhaStep div */
+#saandhaStep5{
+    display: none;
+}
+
+/* form_villagers-registration-form.php */
+/* hide saandhaGuardian div */
+#saandhaGuardian{
+    display: none;
+}
+
+/* form_villagers-registration-form.php */
+/* hide avStudent div */
+#avStudent{
+    display: none;
+}
+
+/* form_villagers-registration-form.php */
+/* hide inputScholIncome div */
+#inputScholIncomeDiv{
+    display: none;
+}
+
+/* form_villagers-registration-form.php */
+/* hide madhrasa div */
+#madhrasa{
+    display: none;
+}
+
+/* form_villagers-registration-form.php */
+/* hide married div */
+#married{
+    display: none;
+}
+
+/* form_villagers-registration-form.php */
+/* hide married div */
+#familyIncome{
+    display: none;
+}
+
+/* form_villagers-registration-form.php */
+/* hide newMigrant div */
+#newMigrant{
+    display: none;
+}
+
+

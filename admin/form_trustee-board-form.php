@@ -75,7 +75,7 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputPresidentAddress"> Address </label>
-                        <input type="text" class="form-control" id="inputPresidentAddress" placeholder="Address">
+                        <textarea rows="5" class="form-control" id="inputPresidentAddress"></textarea>
                       </div>
                       <div class="w-100 text-right">
                         <button class="btn btn-primary btn-lg" id="TBNext1">Next</button>
@@ -117,7 +117,7 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputVPAddress"> Address </label>
-                        <input type="text" class="form-control" id="inputVPAddress" placeholder="Address">
+                        <textarea rows="5" class="form-control" id="inputVPAddress"></textarea>
                       </div>
                       <div class="w-100 text-right">
                         <button class="btn btn-success btn-lg" id="TBPrev2">Previous</button>
@@ -160,7 +160,7 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputSecretaryAddress"> Address </label>
-                        <input type="text" class="form-control" id="inputSecretaryAddress" placeholder="Address">
+                        <textarea rows="5" class="form-control" id="inputSecretaryAddress"></textarea>
                       </div>
                       <div class="w-100 text-right">
                         <button class="btn btn-success btn-lg" id="TBPrev3">Previous</button>
@@ -203,7 +203,7 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputASAddress"> Address </label>
-                        <input type="text" class="form-control" id="inputASAddress" placeholder="Address">
+                        <textarea rows="5" class="form-control" id="inputASAddress"></textarea>
                       </div>
                       <div class="w-100 text-right">
                         <button class="btn btn-success btn-lg" id="TBPrev4">Previous</button>
@@ -246,7 +246,7 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputTreasurerAddress"> Address </label>
-                        <input type="text" class="form-control" id="inputTreasurerAddress" placeholder="Address">
+                        <textarea rows="5" class="form-control" id="inputTreasurerAddress"></textarea>
                       </div>
                       <div class="w-100 text-right">
                         <button class="btn btn-success btn-lg" id="TBPrev5">Previous</button>

@@ -62,23 +62,23 @@ include "template_parts/header.php";
                       </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group row pt-3">
-                          <div class="col-md-2 pt-2 d-flex align-items-center text-right">
-                            <label class="form-label">Gender</label>
-                          </div>
-                          <div class="col-sm-4">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="inputSex" id="inputSex1" value="Male" checked> Male </label>
-                            </div>
-                          </div>
-                          <div class="col-sm-5">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="inputSex" id="inputSex2" value="Female"> Female </label>
-                            </div>
+                      <div class="form-group row pt-3">
+                        <div class="col-md-2 pt-2 d-flex align-items-center text-right">
+                          <label class="form-label">Gender</label>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="inputSex" id="inputSex1" value="Male" checked> Male </label>
                           </div>
                         </div>
+                        <div class="col-sm-5">
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="inputSex" id="inputSex2" value="Female"> Female </label>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-4">
@@ -105,19 +105,9 @@ include "template_parts/header.php";
                         </select>
                       </div>
                     </div>
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputAddress1">Address Line 1 </label>
-                        <input type="text" class="form-control" id="inputAddress1" name="inputAddress1" placeholder="Number">
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label for="inputAddress2">Address Line 2 </label>
-                        <input type="text" class="form-control" id="inputAddress2" name="inputAddress2" placeholder="Street Address">
-                      </div>
-                    </div>
                     <div class="form-group">
-                      <label for="inputAddress3">Address Line 3 </label>
-                      <input type="text" class="form-control" id="inputAddress3" name="inputAddress3" placeholder="City">
+                      <label for="inputAddress"> Address </label>
+                      <textarea rows="5" class="form-control" id="inputAddress"></textarea>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">

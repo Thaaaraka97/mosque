@@ -95,7 +95,7 @@ $database = new databases();
                     </div>
                     <div class="form-group">
                       <label for="inputAddress"> Place of the Funeral </label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+                      <textarea rows = "5" class="form-control" id="inputAddress"></textarea>
                     </div>
                     <p class="card-description"> Details of person who give details </p>
                     <div class="form-row">
