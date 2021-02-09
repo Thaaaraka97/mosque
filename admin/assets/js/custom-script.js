@@ -220,17 +220,17 @@ $(document).ready(function () {
   });
 
   // submit data to handler
-  $("#submitSaandha").click(function () {
-    $.ajax({
-      url: "/mosque/admin/handlers/add-child-handler.php",
-      method: "POST",
-      data: $("#saandhaRegistrationForm").serialize(),
-      success: function (data) {
-        alert(data);
-        $("#saandhaRegistrationForm")[0].reset();
-      },
-    });
-  });
+  // $("#submitSaandha").click(function () {
+  //   $.ajax({
+  //     url: "/mosque/admin/handlers/add-child-handler.php",
+  //     method: "POST",
+  //     data: $("#saandhaRegistrationForm").serialize(),
+  //     success: function (data) {
+  //       alert(data);
+  //       $("#saandhaRegistrationForm")[0].reset();
+  //     },
+  //   });
+  // });
 
   // trustee-board-form.php
   // add new advisory memebers form block
@@ -355,7 +355,6 @@ $(document).ready(function () {
     }
   });
 
-
   //   form_pesh-imaam-details.php
   // show/hide peshImaamIndex div on radio change
   $("input[type=radio][name=inputVillage]").change(function (e) {
@@ -366,7 +365,6 @@ $(document).ready(function () {
       $("#peshImaamIndex").hide();
     }
   });
-
 
   //   form_muazzin-details.php
   // show/hide muazzinIndex div on radio change
@@ -381,6 +379,18 @@ $(document).ready(function () {
 
   //  form_villagers-registration-form.php
   //  Next Buttons
+  // next button 0
+  $("#avNext0").click(function (e) {
+    e.preventDefault();
+    // step show/hide
+    $("#saandhaStep2").hide();
+    $("#saandhaStep3").hide();
+    $("#saandhaStep4").hide();
+    $("#saandhaStep5").hide();
+    $("#saandhaStep0").hide();
+
+    $("#saandhaStep1").show();
+  });
   // next button 1
   $("#avNext1").click(function (e) {
     e.preventDefault();
@@ -389,6 +399,7 @@ $(document).ready(function () {
     $("#saandhaStep3").hide();
     $("#saandhaStep4").hide();
     $("#saandhaStep5").hide();
+    $("#saandhaStep0").hide();
 
     $("#saandhaStep2").show();
   });
@@ -400,6 +411,7 @@ $(document).ready(function () {
     $("#saandhaStep2").hide();
     $("#saandhaStep4").hide();
     $("#saandhaStep5").hide();
+    $("#saandhaStep0").hide();
 
     $("#saandhaStep3").show();
   });
@@ -411,6 +423,7 @@ $(document).ready(function () {
     $("#saandhaStep3").hide();
     $("#saandhaStep2").hide();
     $("#saandhaStep5").hide();
+    $("#saandhaStep0").hide();
 
     $("#saandhaStep4").show();
   });
@@ -422,11 +435,24 @@ $(document).ready(function () {
     $("#saandhaStep3").hide();
     $("#saandhaStep4").hide();
     $("#saandhaStep2").hide();
+    $("#saandhaStep0").hide();
 
     $("#saandhaStep5").show();
   });
 
   //   previous buttons
+  // previous button 1
+  $("#avPrev1").click(function (e) {
+    e.preventDefault();
+    // step show/hide
+    $("#saandhaStep2").hide();
+    $("#saandhaStep3").hide();
+    $("#saandhaStep4").hide();
+    $("#saandhaStep5").hide();
+    $("#saandhaStep1").hide();
+
+    $("#saandhaStep0").show();
+  });
   // previous button 2
   $("#avPrev2").click(function (e) {
     e.preventDefault();
@@ -435,6 +461,7 @@ $(document).ready(function () {
     $("#saandhaStep3").hide();
     $("#saandhaStep4").hide();
     $("#saandhaStep5").hide();
+    $("#saandhaStep0").hide();
 
     $("#saandhaStep1").show();
   });
@@ -446,6 +473,7 @@ $(document).ready(function () {
     $("#saandhaStep3").hide();
     $("#saandhaStep4").hide();
     $("#saandhaStep5").hide();
+    $("#saandhaStep0").hide();
 
     $("#saandhaStep2").show();
   });
@@ -457,6 +485,7 @@ $(document).ready(function () {
     $("#saandhaStep1").hide();
     $("#saandhaStep4").hide();
     $("#saandhaStep5").hide();
+    $("#saandhaStep0").hide();
 
     $("#saandhaStep3").show();
   });
@@ -468,10 +497,11 @@ $(document).ready(function () {
     $("#saandhaStep3").hide();
     $("#saandhaStep1").hide();
     $("#saandhaStep5").hide();
+    $("#saandhaStep0").hide();
 
     $("#saandhaStep4").show();
   });
-  
+
   //   form_villagers-registration-form.php
   // show/hide saandhaGuardian div on radio change
   $("input[type=radio][name=inputGuardianStatus]").change(function (e) {
@@ -482,7 +512,7 @@ $(document).ready(function () {
       $("#saandhaGuardian").hide();
     }
   });
-  
+
   //   form_villagers-registration-form.php
   // show/hide avStudent div on radio change
   $("input[type=radio][name=inputStudent]").change(function (e) {
@@ -537,6 +567,14 @@ $(document).ready(function () {
     } else {
       $("#newMigrant").hide();
     }
+  });
+
+  //   form_villagers-registration-form.php
+  // resetting all fields to default
+  $("#addAnother").click(function () {
+    // $("#saandhaRegistrationFormStep2").trigger("reset");
+    document.location.href = "form_villagers-registration-form-step2.php";
+    
   });
 
 

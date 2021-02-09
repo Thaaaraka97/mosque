@@ -3,6 +3,8 @@
 
 <?php
 include "template_parts/header.php";
+// $database = new databases();
+include "include/controller.php"
 ?>
 
 <body>
@@ -24,11 +26,11 @@ include "template_parts/header.php";
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title"> Bhayan Details </h3>
+                        <h3 class="page-title"> Special Bhayan Details </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>forms.php">Forms</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Bhayan Details</li>
+                                <li class="breadcrumb-item active" aria-current="page">Special Bhayan Details</li>
                             </ol>
                         </nav>
                     </div>
@@ -36,32 +38,32 @@ include "template_parts/header.php";
                         <div class="col-md-8 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <h4 class="card-title">Bhayan Details Form</h4>
-                                    <form class="pt-3">
+                                    <h4 class="card-title">Special Bhayan Details Form</h4>
+                                    <form class="pt-3" method="POST" action="">
                                         <div class="form-group">
                                             <label for="inputTopic">Topic </label>
-                                            <input type="text" class="form-control" id="inputTopic" placeholder="Topic">
+                                            <input type="text" class="form-control" id="inputTopic" placeholder="Topic" >
                                         </div>
                                         <div class="form-group">
                                             <label for="inputName">Name </label>
-                                            <input type="text" class="form-control" id="inputName" placeholder="Name">
+                                            <input type="text" class="form-control" id="inputName" placeholder="Name" >
                                         </div>
                                         <div class="form-group">
                                             <label for="inputAddress"> Address </label>
-                                            <textarea rows = "5" class="form-control" id="inputAddress"></textarea>
+                                            <textarea rows = "5" class="form-control" id="inputAddress" ></textarea>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="inputTP">Telephone Number </label>
-                                                <input type="text" class="form-control" id="inputTP" placeholder="Telephone">
+                                                <input type="text" class="form-control" id="inputTP" placeholder="Telephone" >
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputDate">Date </label>
-                                                <input type="date" class="form-control" id="inputDate">
+                                                <input type="date" class="form-control" id="inputDate" >
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputTime">Time </label>
-                                                <input type="time" class="form-control" id="inputTime">
+                                                <input type="time" class="form-control" id="inputTime" >
                                             </div>
                                         </div>
                                         <p class="card-description"> Details of the Amount </p>
@@ -98,7 +100,8 @@ include "template_parts/header.php";
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <Submit class="btn btn-primary btn-lg" id="submitBhayan" name="submitBhayan">Enter</submit>
+                                            <button type="submit" id="submitBhayan" name="submitBhayan">Enter</button>
+                                            <!-- <Submit class="btn btn-primary btn-lg" id="submitBhayan" name="submitBhayan">Enter</submit> -->
                                         </div>
                                     </form>
                                 </div>

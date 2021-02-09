@@ -88,7 +88,7 @@ include "template_parts/header.php";
                   <h5 class="card-title mt-5">Donations</h5>
                 </div>
                 <div class="flip-card-back">
-                  <div class="pt-4">
+                  <div class="pt-4 pl-4">
                     <p>
                       Click to open..
                     </p>
