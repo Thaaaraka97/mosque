@@ -54,13 +54,13 @@ $database = new databases();
                                                             <div class="col-sm-4">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
-                                                                        <input type="radio" class="form-check-input" name="inputSex" id="inputSexM" value="Male" checked> Male </label>
+                                                                        <input type="radio" class="form-check-input" name="inputSex" id="inputSexM" value="M" checked> Male </label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-5">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
-                                                                        <input type="radio" class="form-check-input" name="inputSex" id="inputSexF" value="Female"> Female </label>
+                                                                        <input type="radio" class="form-check-input" name="inputSex" id="inputSexF" value="F"> Female </label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -129,7 +129,7 @@ $database = new databases();
                                                     </div>
                                                     <div class="form-group col-md-6" id="saandhaGuardian">
                                                         <label for="inputGuardianID"> Guardian Index Number </label>
-                                                        <input type="text" class="form-control" id="inputGuardianID" name="inputGuardianID" placeholder="Index No">
+                                                        <input type="text" class="form-control" id="inputGuardianID" name="inputGuardianID" placeholder="Index No" value="0">
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
@@ -198,7 +198,7 @@ $database = new databases();
                                                         <div class="form-group col-md-6">
                                                             <label for="inputMedium">Medium</label>
                                                             <select id="inputMedium" name="inputMedium" class="form-control">
-                                                                <option selected>Choose...</option>
+                                                                <option  value="0" selected>Choose...</option>
                                                                 <option value="Tamil">Tamil</option>
                                                                 <option value="English">English</option>
                                                                 <option value="Sinhala">Sinhala</option>
@@ -206,7 +206,7 @@ $database = new databases();
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="inputGrade"> Grade </label>
-                                                            <input type="text" class="form-control" name="inputGrade" id="inputGrade" placeholder="Grade">
+                                                            <input type="text" class="form-control" name="inputGrade" id="inputGrade" placeholder="Grade"  value="0">
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
@@ -231,7 +231,7 @@ $database = new databases();
                                                         </div>
                                                         <div class="form-group col-md-6" id="inputScholIncomeDiv">
                                                             <label for="inputScholIncome"> Scholarship Income </label>
-                                                            <input type="text" class="form-control" id="inputScholIncome" name="inputScholIncome" placeholder="Scholarship Income">
+                                                            <input type="text" class="form-control" id="inputScholIncome" name="inputScholIncome" placeholder="Scholarship Income"  value="0">
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
@@ -260,7 +260,7 @@ $database = new databases();
                                                             <div class="form-group col-md-6" id="inputMadType">
                                                                 <label for="inputMadType"> Madhrasa Type </label>
                                                                 <select id="inputMadType" name="inputMadType" class="form-control">
-                                                                    <option selected>Choose...</option>
+                                                                    <option value="0" selected>Choose...</option>
                                                                     <option value="Tamil">Kithah</option>
                                                                     <option value="English">Hiful</option>
                                                                 </select>
@@ -273,11 +273,11 @@ $database = new databases();
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
                                                                 <label for="inputMadStart"> Madhrasa Start Date </label>
-                                                                <input type="date" class="form-control" id="inputMadStart" name="inputMadStart">
+                                                                <input type="date" class="form-control" id="inputMadStart" name="inputMadStart" value="0001-01-01">
                                                             </div>
                                                             <div class="form-group col-md-6" id="inputMadExpense">
                                                                 <label for="inputMadExpense"> Average monthly Expenses </label>
-                                                                <input type="text" class="form-control" id="inputMadExpense" name="inputMadExpense" placeholder="Average monthly Expenses">
+                                                                <input type="text" class="form-control" id="inputMadExpense" name="inputMadExpense" placeholder="Average monthly Expenses" value="0">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -354,11 +354,7 @@ $database = new databases();
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="inputSpouse"> Spouse Index </label>
-                                                            <input type="text" class="form-control" id="inputSpouse" name="inputSpouse" placeholder="Spouse Index">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="inputUnmarried"> Total Unmarried Children </label>
-                                                            <input type="text" class="form-control" id="inputUnmarried" name="inputUnmarried" placeholder="Total Unmarried Children">
+                                                            <input type="text" class="form-control" id="inputSpouse" name="inputSpouse" placeholder="Spouse Index" value="0">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -398,7 +394,7 @@ $database = new databases();
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="inputMonthlyIncomePersonal"> Monthly Income (Personal) </label>
-                                                            <input type="text" class="form-control" id="inputMonthlyIncomePersonal" name="inputMonthlyIncomePersonal" placeholder="Personal Income">
+                                                            <input type="text" class="form-control" id="inputMonthlyIncomePersonal" name="inputMonthlyIncomePersonal" placeholder="Personal Income" value="0">
                                                         </div>
                                                     </div>
                                                 </div>

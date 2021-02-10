@@ -46,7 +46,10 @@ if (isset($_POST["addAVMember"])) {
     );
 
     if ($database->insert_data('tbl_temp_allvillagers', $insert_data)) {
-        header("Location: form_villagers-registration-form-step2.php");
+        // header("Location: form_villagers-registration-form-step2.php");
+        $URL="form_villagers-registration-form-step2.php";
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
 }
 
@@ -133,6 +136,20 @@ if (isset($_POST["addAnother"])) {
         $inputSchol = 1;
     } else {
         $inputSchol = 0;
+    }
+    if ($_POST['inputSex'] == "Male") {
+        $inputSex = "M";
+    } else {
+        $inputSex = "F";
+    }
+    if ($_POST['inputMedium'] == "Tamil") {
+        $inputMedium = "T";
+    } else if ($_POST['inputMedium'] == "Sinhala") {
+        $inputMedium = "S";
+    }else if ($_POST['inputMedium'] == "English"){
+        $inputMedium = "E";
+    }else {
+        $inputMedium = "0";
     }
 
     $data_from_temp = $database->select_data('tbl_temp_allvillagers');
@@ -296,6 +313,20 @@ if (isset($_POST["submitSaandha"])) {
     } else {
         $inputSchol = 0;
     }
+    if ($_POST['inputSex'] == "Male") {
+        $inputSex = "M";
+    } else {
+        $inputSex = "F";
+    }
+    if ($_POST['inputMedium'] == "Tamil") {
+        $inputMedium = "T";
+    } else if ($_POST['inputMedium'] == "Sinhala") {
+        $inputMedium = "S";
+    }else if ($_POST['inputMedium'] == "English"){
+        $inputMedium = "E";
+    }else {
+        $inputMedium = "0";
+    }
 
     $data_from_temp = $database->select_data('tbl_temp_allvillagers');
     $av_subDivision ="";
@@ -373,6 +404,9 @@ if (isset($_POST["submitSaandha"])) {
 
     if($database->insert_data('tbl_allvillagers', $insert_to_tbl_allvillagers)){
         $database->delete_all('tbl_temp_allvillagers');
-        header("Location: form_villagers-registration-form.php");
+        // header("Location: form_villagers-registration-form.php");
+        $URL="form_villagers-registration-form.php";
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
 }
