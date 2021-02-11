@@ -90,22 +90,24 @@ $database = new databases();
                                             <label for="inputName">Name </label>
                                             <input type="text" class="form-control" id="inputName" placeholder="Name">
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="inputAddress"> Address </label>
+                                            <textarea rows="5" class="form-control" id="inputAddress"></textarea>
+                                        </div>
+
                                         <div class="form-row">
-                                            <div class="form-group col-md-8">
-                                                <label for="inputAddress"> Address </label>
-                                                <textarea rows = "5" class="form-control" id="inputAddress"></textarea>
-                                            </div>
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-6">
                                                 <label for="inputDistrict">District </label>
                                                 <input type="text" class="form-control" id="inputDistrict" placeholder="District">
                                             </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-6">
                                                 <label for="inputNIC">National Identity Card </label>
                                                 <input type="text" class="form-control" id="inputNIC" placeholder="NIC">
                                             </div>
-                                            <div class="form-group col-md-4">
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
                                                         <div class="row">
@@ -130,7 +132,7 @@ $database = new databases();
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-6">
                                                 <label for="inputKids">No. of Kids </label>
                                                 <input type="text" class="form-control" id="inputKids" placeholder="No. of Kids">
                                             </div>

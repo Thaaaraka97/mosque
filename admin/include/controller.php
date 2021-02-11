@@ -46,8 +46,7 @@ if (isset($_POST["addAVMember"])) {
     );
 
     if ($database->insert_data('tbl_temp_allvillagers', $insert_data)) {
-        // header("Location: form_villagers-registration-form-step2.php");
-        $URL="form_villagers-registration-form-step2.php";
+        $URL = "form_villagers-registration-form-step2.php";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
@@ -137,34 +136,29 @@ if (isset($_POST["addAnother"])) {
     } else {
         $inputSchol = 0;
     }
-    if ($_POST['inputSex'] == "Male") {
-        $inputSex = "M";
-    } else {
-        $inputSex = "F";
-    }
     if ($_POST['inputMedium'] == "Tamil") {
         $inputMedium = "T";
     } else if ($_POST['inputMedium'] == "Sinhala") {
         $inputMedium = "S";
-    }else if ($_POST['inputMedium'] == "English"){
+    } else if ($_POST['inputMedium'] == "English") {
         $inputMedium = "E";
-    }else {
+    } else {
         $inputMedium = "0";
     }
 
     $data_from_temp = $database->select_data('tbl_temp_allvillagers');
-    $av_subDivision ="";
-    $av_address ="";
-    $av_monthlyIncomeFamily ="";
-    $av_avgInterpersonalIncome ="";
-    $av_noofChildren ="";
-    $av_unmarriedChildren ="";
-    $av_residentialStatus ="";
-    $av_prevRes_address ="";
-    $av_prevRes_gramasevaka ="";
-    $av_prevRes_police ="";
-    $av_prevRes_mahalla ="";
-    $av_newMigrant ="";
+    $av_subDivision = "";
+    $av_address = "";
+    $av_monthlyIncomeFamily = "";
+    $av_avgInterpersonalIncome = "";
+    $av_noofChildren = "";
+    $av_unmarriedChildren = "";
+    $av_residentialStatus = "";
+    $av_prevRes_address = "";
+    $av_prevRes_gramasevaka = "";
+    $av_prevRes_police = "";
+    $av_prevRes_mahalla = "";
+    $av_newMigrant = "";
     foreach ($data_from_temp as $data_from_temp_item) {
         $av_subDivision = $data_from_temp_item["av_subDivision"];
         $av_address = $data_from_temp_item["av_address"];
@@ -206,12 +200,10 @@ if (isset($_POST["addAnother"])) {
         'av_eduQual' => mysqli_real_escape_string($database->con, $_POST['inputEduQual']),
         'av_addQual' => mysqli_real_escape_string($database->con, $_POST['inputAddQual']),
         'av_eduPremises' => mysqli_real_escape_string($database->con, $inputCollege),
-        // 'av_name' => mysqli_real_escape_string($database->con, $_POST['inputStudent']), 
         'av_eduMedium' => mysqli_real_escape_string($database->con, $_POST['inputMedium']),
         'av_eduGrade' => mysqli_real_escape_string($database->con, $_POST['inputGrade']),
         'av_scholStatus' => mysqli_real_escape_string($database->con, $inputSchol),
         'av_scholAmount' => mysqli_real_escape_string($database->con, $inputScholIncome),
-        // 'av_name' => mysqli_real_escape_string($database->con, $_POST['inputMad']), 
         'av_madChild_type' => mysqli_real_escape_string($database->con, $inputMadType),
         'av_madChild_madrasaName' => mysqli_real_escape_string($database->con, $inputMadName),
         'av_madChild_startDate' => mysqli_real_escape_string($database->con, $inputMadStart),
@@ -220,10 +212,8 @@ if (isset($_POST["addAnother"])) {
         'av_divorced' => mysqli_real_escape_string($database->con, $inputDivorsed),
         'av_widowed' => mysqli_real_escape_string($database->con, $inputWidowed),
         'av_spouseIndex' => mysqli_real_escape_string($database->con, $inputSpouse),
-        // 'av_name' => mysqli_real_escape_string($database->con, $_POST['inputjobYN']), 
         'av_job' => mysqli_real_escape_string($database->con, $inputJob),
         'av_monthlyIncomePersonal' => mysqli_real_escape_string($database->con, $inputMonthlyIncomePersonal),
-        // 'av_name' => mysqli_real_escape_string($database->con, $_POST['inputUnmarried'])
     );
 
     $database->insert_data('tbl_allvillagers', $insert_to_tbl_allvillagers);
@@ -322,25 +312,25 @@ if (isset($_POST["submitSaandha"])) {
         $inputMedium = "T";
     } else if ($_POST['inputMedium'] == "Sinhala") {
         $inputMedium = "S";
-    }else if ($_POST['inputMedium'] == "English"){
+    } else if ($_POST['inputMedium'] == "English") {
         $inputMedium = "E";
-    }else {
+    } else {
         $inputMedium = "0";
     }
 
     $data_from_temp = $database->select_data('tbl_temp_allvillagers');
-    $av_subDivision ="";
-    $av_address ="";
-    $av_monthlyIncomeFamily ="";
-    $av_avgInterpersonalIncome ="";
-    $av_noofChildren ="";
-    $av_unmarriedChildren ="";
-    $av_residentialStatus ="";
-    $av_prevRes_address ="";
-    $av_prevRes_gramasevaka ="";
-    $av_prevRes_police ="";
-    $av_prevRes_mahalla ="";
-    $av_newMigrant ="";
+    $av_subDivision = "";
+    $av_address = "";
+    $av_monthlyIncomeFamily = "";
+    $av_avgInterpersonalIncome = "";
+    $av_noofChildren = "";
+    $av_unmarriedChildren = "";
+    $av_residentialStatus = "";
+    $av_prevRes_address = "";
+    $av_prevRes_gramasevaka = "";
+    $av_prevRes_police = "";
+    $av_prevRes_mahalla = "";
+    $av_newMigrant = "";
     foreach ($data_from_temp as $data_from_temp_item) {
         $av_subDivision = $data_from_temp_item["av_subDivision"];
         $av_address = $data_from_temp_item["av_address"];
@@ -382,12 +372,10 @@ if (isset($_POST["submitSaandha"])) {
         'av_eduQual' => mysqli_real_escape_string($database->con, $_POST['inputEduQual']),
         'av_addQual' => mysqli_real_escape_string($database->con, $_POST['inputAddQual']),
         'av_eduPremises' => mysqli_real_escape_string($database->con, $inputCollege),
-        // 'av_name' => mysqli_real_escape_string($database->con, $_POST['inputStudent']), 
         'av_eduMedium' => mysqli_real_escape_string($database->con, $_POST['inputMedium']),
         'av_eduGrade' => mysqli_real_escape_string($database->con, $_POST['inputGrade']),
         'av_scholStatus' => mysqli_real_escape_string($database->con, $inputSchol),
         'av_scholAmount' => mysqli_real_escape_string($database->con, $inputScholIncome),
-        // 'av_name' => mysqli_real_escape_string($database->con, $_POST['inputMad']), 
         'av_madChild_type' => mysqli_real_escape_string($database->con, $inputMadType),
         'av_madChild_madrasaName' => mysqli_real_escape_string($database->con, $inputMadName),
         'av_madChild_startDate' => mysqli_real_escape_string($database->con, $inputMadStart),
@@ -396,17 +384,98 @@ if (isset($_POST["submitSaandha"])) {
         'av_divorced' => mysqli_real_escape_string($database->con, $inputDivorsed),
         'av_widowed' => mysqli_real_escape_string($database->con, $inputWidowed),
         'av_spouseIndex' => mysqli_real_escape_string($database->con, $inputSpouse),
-        // 'av_name' => mysqli_real_escape_string($database->con, $_POST['inputjobYN']), 
         'av_job' => mysqli_real_escape_string($database->con, $inputJob),
         'av_monthlyIncomePersonal' => mysqli_real_escape_string($database->con, $inputMonthlyIncomePersonal),
-        // 'av_name' => mysqli_real_escape_string($database->con, $_POST['inputUnmarried'])
     );
 
-    if($database->insert_data('tbl_allvillagers', $insert_to_tbl_allvillagers)){
+    if ($database->insert_data('tbl_allvillagers', $insert_to_tbl_allvillagers)) {
         $database->delete_all('tbl_temp_allvillagers');
-        // header("Location: form_villagers-registration-form.php");
-        $URL="form_villagers-registration-form.php";
+        $URL = "form_villagers-registration-form.php";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
+}
+
+// insert into tbl_nikkahdetails
+// submitNikkah button click
+if (isset($_POST['submitNikkah'])) {
+    if ($_POST['inputMarriedStatus'] == "Yes") {
+        $inputMarriedStatus = 1;
+    } else {
+        $inputMarriedStatus = 0;
+    }
+    if (isset($_POST["inputIndexNo"])) {
+        $inputIndexNo = $_POST["inputIndexNo"];
+    } else {
+        $inputIndexNo = 0;
+    }
+    if (isset($_POST["inputBrideIndexNo"])) {
+        $inputBrideIndexNo = $_POST["inputBrideIndexNo"];
+    } else {
+        $inputBrideIndexNo = 0;
+    }
+
+    $insert_to_tbl_nikkahdetails = array(
+        'nd_groomVillage' => mysqli_real_escape_string($database->con, $_POST['inputGroomVillage']),
+        'nd_groomIndex' => mysqli_real_escape_string($database->con, $inputIndexNo),
+        'nd_groomSubDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+        'nd_groomName' => mysqli_real_escape_string($database->con, $_POST['inputGroomName']),
+        'nd_groomDOB' => mysqli_real_escape_string($database->con, $_POST['inputGroomBirthday']),
+        'nd_groomNIC' => mysqli_real_escape_string($database->con, $_POST['inputGroomNIC']),
+        'nd_groomAge' => mysqli_real_escape_string($database->con, $_POST['inputGroomAge']),
+        'nd_groomTP' => mysqli_real_escape_string($database->con, $_POST['inputGroomTP']),
+        'nd_groomPrevMarried' => mysqli_real_escape_string($database->con, $inputMarriedStatus),
+        'nd_groomAddress' => mysqli_real_escape_string($database->con, $_POST['inputGroomAddress']),
+        'nd_groomGuardName' => mysqli_real_escape_string($database->con, $_POST['inputGroomGuardianName']),
+        'nd_groomGuardIndex' => mysqli_real_escape_string($database->con, $_POST['inputGroomGuardianIndex']),
+        'nd_groomMosqueName' => mysqli_real_escape_string($database->con, $_POST['inputGroomMosque']),
+        'nd_groomMosqueAddress' => mysqli_real_escape_string($database->con, $_POST['inputGroomMosqueAddress']),
+        'nd_brideVillage' => mysqli_real_escape_string($database->con, $_POST['inputBrideVillage']),
+        'nd_brideIndex' => mysqli_real_escape_string($database->con, $inputBrideIndexNo),
+        'nd_brideSubDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+        'nd_brideName' => mysqli_real_escape_string($database->con, $_POST['inputBrideName']),
+        'nd_brideDOB' => mysqli_real_escape_string($database->con, $_POST['inpuBridetBirthday']),
+        'nd_brideNIC' => mysqli_real_escape_string($database->con, $_POST['inputBrideNIC']),
+        'nd_brideAge' => mysqli_real_escape_string($database->con, $_POST['inputBrideAge']),
+        'nd_brideTP' => mysqli_real_escape_string($database->con, $_POST['inputBrideTP']),
+        'nd_brideAddress' => mysqli_real_escape_string($database->con, $_POST['inputBrideAddress']),
+        'nd_brideGuardName' => mysqli_real_escape_string($database->con, $_POST['inputBrideGuardianName']),
+        'nd_brideGuardIndex' => mysqli_real_escape_string($database->con, $_POST['inputBrideGuardianIndex']),
+        'nd_brideMosqueName' => mysqli_real_escape_string($database->con, $_POST['inputBrideMosque']),
+        'nd_brideMosqueAddress' => mysqli_real_escape_string($database->con, $_POST['inputBrideMosqueAddress']),
+        'nd_marriageVenue' => mysqli_real_escape_string($database->con, $_POST['inputVenue']),
+        'nd_marriageDate' => mysqli_real_escape_string($database->con, $_POST['inputMarriageDate']),
+        'nd_donation' => mysqli_real_escape_string($database->con, $_POST['inputdonation'])
+    );
+
+    $database->insert_data('tbl_nikkahdetails', $insert_to_tbl_nikkahdetails);
+}
+
+
+// insert into tbl_janazadetails
+// submitJanaza button click
+if (isset($_POST['submitJanaza'])) {
+    $inputDateToday = date("Y-m-d");
+    $inputIndexNoDeceased = $_POST['inputIndexNoDeceased'];
+    $inputSubdivision = $_POST['inputSubdivision'];
+
+    
+    $insert_to_tbl_janazadetails = array(
+        'jd_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNoDeceased']),
+        'jd_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+        'jd_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        'jd_gender' => mysqli_real_escape_string($database->con, $_POST['inputSex']),
+        'jd_dateofDeath' => mysqli_real_escape_string($database->con, $_POST['inputDeathDate']),
+        'jd_dateofFuneral' => mysqli_real_escape_string($database->con, $_POST['inputFuneralDate']),
+        'jd_addressofFuneral' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+        'jd_relativeName' => mysqli_real_escape_string($database->con, $_POST['inputGName']),
+        'jd_relativeIndex' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+        'jd_relativeRelationship' => mysqli_real_escape_string($database->con, $_POST['inputRelationship']),
+        'jd_informedDate' => mysqli_real_escape_string($database->con, $inputDateToday),
+        'jd_relativeSubDivision' => mysqli_real_escape_string($database->con, $_POST['inputGSubdivision']),
+        'jd_specialNotes' => mysqli_real_escape_string($database->con, $_POST['inputNotes'])
+
+    );
+
+    $database->insert_data('tbl_janazadetails', $insert_to_tbl_janazadetails);
 }
