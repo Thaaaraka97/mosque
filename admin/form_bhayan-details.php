@@ -42,11 +42,11 @@ $database = new databases();
                                     <form class="pt-3" method="POST" action="">
                                         <div class="form-group">
                                             <label for="inputTopic">Topic </label>
-                                            <input type="text" class="form-control" id="inputTopic" name="inputTopic" placeholder="Topic" >
+                                            <input type="text" class="form-control" id="inputTopic" name="inputTopic" placeholder="Topic" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputName">Name </label>
-                                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" >
+                                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" required >
                                         </div>
                                         <div class="form-group">
                                             <label for="inputAddress"> Address </label>
@@ -55,15 +55,15 @@ $database = new databases();
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="inputTP">Telephone Number </label>
-                                                <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="Telephone" >
+                                                <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="Telephone" required >
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputDate">Date </label>
-                                                <input type="date" class="form-control" id="inputDate" name="inputDate">
+                                                <input type="date" class="form-control" id="inputDate" name="inputDate" required>
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputTime">Time </label>
-                                                <input type="time" class="form-control" id="inputTime" name="inputTime">
+                                                <input type="time" class="form-control" id="inputTime" name="inputTime" required>
                                             </div>
                                         </div>
                                         <p class="card-description"> Details of the Amount </p>
@@ -101,7 +101,7 @@ $database = new databases();
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-primary btn-lg" id="submitBhayan" name="submitBhayan">Enter</button>
-                                        </div>
+                                         </div>
                                     </form>
                                 </div>
                             </div>

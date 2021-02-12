@@ -78,6 +78,19 @@
             </div>
         </li>
         <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#preview-dropdown" aria-expanded="false" aria-controls="preview-dropdown"> <span class="menu-icon"> <i class="mdi mdi-file-document"></i> </span> <span class="menu-title">Preview Pages</span> <i class="menu-arrow"></i> </a>
+            <div class="collapse" id="preview-dropdown">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_nikkah-details.php"> Nikkah Details </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_janaza-details.php"> Janaza Details </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item menu-items">
             <a class="nav-link" href="<?php $server_name ?>preview_donations.php"> <span class="menu-icon"> <i class="mdi mdi-chart-bar"></i> </span> <span class="menu-title">Donations</span> </a>
         </li>
         <li class="nav-item menu-items">

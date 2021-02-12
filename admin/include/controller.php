@@ -501,18 +501,50 @@ if (isset($_POST['submitJanaza'])) {
 // insert into tbl_specialbhyan
 // submitBhayan button click
 if (isset($_POST['submitBhayan'])) {
+    $inputDateToday = date("Y-m-d");
+    if($_POST['inputDate'] != ""){
+        $inputDate = $_POST['inputDate'];
+    }
+    else{
+        $inputDate = $inputDateToday;
+    }
+    if($_POST['inputAmountMeals'] != ""){
+        $inputAmountMeals = $_POST['inputAmountMeals'];
+    }
+    else{
+        $inputAmountMeals = 0;
+    }
+    if($_POST['inputAmountTransport'] != ""){
+        $inputAmountTransport = $_POST['inputAmountTransport'];
+    }
+    else{
+        $inputAmountTransport = 0;
+    }
+    if($_POST['inputAmountTea'] != ""){
+        $inputAmountTea = $_POST['inputAmountTea'];
+    }
+    else{
+        $inputAmountTea = 0;
+    }
+    if($_POST['inputAmountOther'] != ""){
+        $inputAmountOther = $_POST['inputAmountOther'];
+    }
+    else{
+        $inputAmountOther = 0;
+    }
+    
 
     $insert_to_tbl_specialbhyan = array(
         'sb_topic' => mysqli_real_escape_string($database->con, $_POST['inputTopic']),
         'sb_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
         'sb_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
         'sb_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
-        'sb_date' => mysqli_real_escape_string($database->con, $_POST['inputDate']),
+        'sb_date' => mysqli_real_escape_string($database->con, $inputDateToday),
         'sb_time' => mysqli_real_escape_string($database->con, $_POST['inputTime']),
-        'sb_meals' => mysqli_real_escape_string($database->con, $_POST['inputAmountMeals']),
-        'sb_transport' => mysqli_real_escape_string($database->con, $_POST['inputAmountTransport']),
-        'sb_tea' => mysqli_real_escape_string($database->con, $_POST['inputAmountTea']),
-        'sb_other' => mysqli_real_escape_string($database->con, $_POST['inputAmountOther'])
+        'sb_meals' => mysqli_real_escape_string($database->con, $inputAmountMeals),
+        'sb_transport' => mysqli_real_escape_string($database->con, $inputAmountTransport),
+        'sb_tea' => mysqli_real_escape_string($database->con, $inputAmountTea),
+        'sb_other' => mysqli_real_escape_string($database->con, $inputAmountOther)
 
     );
 

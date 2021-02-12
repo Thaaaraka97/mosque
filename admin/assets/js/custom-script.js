@@ -603,4 +603,17 @@ $(document).ready(function () {
       },
     });
   });
+
+  (function () { 
+    if (action == "view") {
+      $('#viewDetails').show();
+      $('#editDetails').hide();
+    } else {
+      $('#viewDetails').hide();
+      $('#editDetails').show();
+      
+    }
+  })();
+  
+
 });

@@ -186,6 +186,16 @@ a.btn.btn-primary {
   height: 150px;
 }
 
-table.datatable{
+table.datatable {
   color: #111;
+}
+
+table.previewTable th {
+  text-align: right;
+}
+
+table.previewTable {
+    width: 50%;
+    margin: 0px auto;
+    float: none;
 }

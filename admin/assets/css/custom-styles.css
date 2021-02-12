@@ -154,4 +154,17 @@
     display: none;
 }
 
+/* preview_villager-details_step-2.php */
+/* hide newMigrant div */
+#viewDetails{
+    display: none;
+}
+
+/* preview_villager-details_step-2.php */
+/* hide newMigrant div */
+#editDetails{
+    display: none;
+}
+
+
 

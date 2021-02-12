@@ -25,40 +25,39 @@ $database = new databases();
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title"> All Villagers Details </h3>
+                        <h3 class="page-title"> Nikkah Details </h3>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> All Villagers Details Preview </h4>
+                                        <h4 class="card-title"> Nikkah Details Preview </h4>
                                         <div class="mt-5">
                                             <table class="display datatable">
                                                 <thead>
                                                     <tr>
-                                                        <th>Name</th>
-                                                        <th>Index Number</th>
-                                                        <th>Sub Division</th>
-                                                        <th>Age</th>
+                                                        <th>Date</th>
+                                                        <th>Bride Name</th>
+                                                        <th>Groom Name</th>
+                                                        <th>Address</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                     $all_villagers_details = $database->select_data('tbl_allvillagers');
-                                                     foreach ($all_villagers_details as $all_villagers_details_item) {
-                                                         $index = $all_villagers_details_item['av_index'];
-                                                         $subdivision = $all_villagers_details_item['av_subDivision'];
+                                                     $nikkah_details = $database->select_data('tbl_nikkahdetails');
+                                                     foreach ($nikkah_details as $nikkah_details_item) {
+                                                         $id = $nikkah_details_item['nd_nikkahId'];
                                                          echo "
                                                          <tr>
-                                                            <td>".$all_villagers_details_item['av_name']."</td>
-                                                            <td>".$index."</td>
-                                                            <td>".$subdivision."</td>
-                                                            <td>".$all_villagers_details_item['av_age']."</td>
+                                                            <td>".$nikkah_details_item['nd_marriageDate']."</td>
+                                                            <td>".$nikkah_details_item['nd_brideName']."</td>
+                                                            <td>".$nikkah_details_item['nd_groomName']."</td>
+                                                            <td>".$nikkah_details_item['nd_groomAddress']."</td>
                                                             <td>
-                                                                <a href='preview_villager-details_step-2.php?index=".$index."&subdivision=".$subdivision."&action=view' class='btn btn-primary btn-md'>View</a>
-                                                                <a href='preview_villager-details_step-2.php?index=".$index."&subdivision=".$subdivision."&action=edit'' class='btn btn-danger btn-md'>Edit</a>
+                                                                <a href='preview_nikkah-details_step-2.php?id=".$id."&action=view' class='btn btn-primary btn-md'>View</a>
+                                                                <a href='preview_nikkah-details_step-2.php?id=".$id."&action=edit'' class='btn btn-danger btn-md'>Edit</a>
                                                             </td>
                                                         </tr>
                                                          ";
