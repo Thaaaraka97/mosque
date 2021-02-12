@@ -3,8 +3,8 @@
 
 <?php
 include "template_parts/header.php";
-// $database = new databases();
-include "include/controller.php"
+$database = new databases();
+
 ?>
 
 <body>
@@ -42,28 +42,28 @@ include "include/controller.php"
                                     <form class="pt-3" method="POST" action="">
                                         <div class="form-group">
                                             <label for="inputTopic">Topic </label>
-                                            <input type="text" class="form-control" id="inputTopic" placeholder="Topic" >
+                                            <input type="text" class="form-control" id="inputTopic" name="inputTopic" placeholder="Topic" >
                                         </div>
                                         <div class="form-group">
                                             <label for="inputName">Name </label>
-                                            <input type="text" class="form-control" id="inputName" placeholder="Name" >
+                                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" >
                                         </div>
                                         <div class="form-group">
                                             <label for="inputAddress"> Address </label>
-                                            <textarea rows = "5" class="form-control" id="inputAddress" ></textarea>
+                                            <textarea rows = "5" class="form-control" id="inputAddress" name="inputAddress" ></textarea>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="inputTP">Telephone Number </label>
-                                                <input type="text" class="form-control" id="inputTP" placeholder="Telephone" >
+                                                <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="Telephone" >
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputDate">Date </label>
-                                                <input type="date" class="form-control" id="inputDate" >
+                                                <input type="date" class="form-control" id="inputDate" name="inputDate">
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputTime">Time </label>
-                                                <input type="time" class="form-control" id="inputTime" >
+                                                <input type="time" class="form-control" id="inputTime" name="inputTime">
                                             </div>
                                         </div>
                                         <p class="card-description"> Details of the Amount </p>
@@ -71,7 +71,7 @@ include "include/controller.php"
                                             <div class="form-group row col-md-6">
                                                 <label for="inputAmountMeals" class="col-sm-4 col-form-label">Meals</label>
                                                 <div class="col-sm-8">
-                                                    <input type="number" class="form-control" id="inputAmountMeals" placeholder="Amount">
+                                                    <input type="number" class="form-control" id="inputAmountMeals" name="inputAmountMeals" placeholder="Amount">
                                                 </div>
                                             </div>
                                         </div>
@@ -79,7 +79,7 @@ include "include/controller.php"
                                             <div class="form-group row col-md-6">
                                                 <label for="inputAmountTransport" class="col-sm-4 col-form-label">Transport</label>
                                                 <div class="col-sm-8">
-                                                    <input type="number" class="form-control" id="inputAmountTransport" placeholder="Amount">
+                                                    <input type="number" class="form-control" id="inputAmountTransport" name="inputAmountTransport" placeholder="Amount">
                                                 </div>
                                             </div>
                                         </div>
@@ -87,7 +87,7 @@ include "include/controller.php"
                                             <div class="form-group row col-md-6">
                                                 <label for="inputAmountTea" class="col-sm-4 col-form-label">Tea & Coffee</label>
                                                 <div class="col-sm-8">
-                                                    <input type="number" class="form-control" id="inputAmountTea" placeholder="Amount">
+                                                    <input type="number" class="form-control" id="inputAmountTea" name="inputAmountTea" placeholder="Amount">
                                                 </div>
                                             </div>
                                         </div>
@@ -95,13 +95,12 @@ include "include/controller.php"
                                             <div class="form-group row col-md-6">
                                                 <label for="inputAmountOther" class="col-sm-4 col-form-label">Other</label>
                                                 <div class="col-sm-8">
-                                                    <input type="number" class="form-control" id="inputAmountOther" placeholder="Amount">
+                                                    <input type="number" class="form-control" id="inputAmountOther" name="inputAmountOther" placeholder="Amount">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" id="submitBhayan" name="submitBhayan">Enter</button>
-                                            <!-- <Submit class="btn btn-primary btn-lg" id="submitBhayan" name="submitBhayan">Enter</submit> -->
+                                            <button type="submit" class="btn btn-primary btn-lg" id="submitBhayan" name="submitBhayan">Enter</button>
                                         </div>
                                     </form>
                                 </div>

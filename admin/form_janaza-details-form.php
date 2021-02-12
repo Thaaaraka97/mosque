@@ -42,7 +42,7 @@ $database = new databases();
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputIndexNoDeceased"> Index Number of the Deceased </label>
-                        <input type="text" class="form-control" id="inputIndexNoDeceased" name="inputIndexNoDeceased" placeholder="Index No">
+                        <input type="text" class="form-control" id="inputIndexNoDeceased" name="inputIndexNoDeceased" placeholder="Index No" required>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputJanazaSubdivision"> Sub-division </label>
@@ -59,7 +59,7 @@ $database = new databases();
                     </div>
                     <div class="form-group">
                       <label for="inputName">Name of the Deceased </label>
-                      <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name">
+                      <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" required>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
@@ -85,26 +85,26 @@ $database = new databases();
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputDeathDate">Date of Death </label>
-                        <input type="date" class="form-control" id="inputDeathDate" name="inputDeathDate">
+                        <input type="date" class="form-control" id="inputDeathDate" name="inputDeathDate" required>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputFuneralDate">Date of the Funeral </label>
-                        <input type="date" class="form-control" id="inputFuneralDate" name="inputFuneralDate">
+                        <input type="date" class="form-control" id="inputFuneralDate" name="inputFuneralDate" required>
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="inputAddress"> Place of the Funeral </label>
-                      <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress"></textarea>
+                      <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress" required></textarea>
                     </div>
                     <p class="card-description"> Details of person who give details </p>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputGName">Name </label>
-                        <input type="text" class="form-control" id="inputGName" name="inputGName" placeholder="Name">
+                        <input type="text" class="form-control" id="inputGName" name="inputGName" placeholder="Name" required>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputRelationship"> Relationship to the Deceased </label>
-                        <input type="text" class="form-control" id="inputRelationship" name="inputRelationship" placeholder="Relationship">
+                        <input type="text" class="form-control" id="inputRelationship" name="inputRelationship" placeholder="Relationship" required>
                       </div>
                     </div>
                     <div class="form-row">
@@ -132,7 +132,7 @@ $database = new databases();
                     </div>
                     <div class=" form-group">
                       <label for="inputNotes">Special Notes </label>
-                      <textarea class="form-control" id="inputNotes" name="inputNotes" rows="4"></textarea>
+                      <textarea class="form-control" id="inputNotes" name="inputNotes" rows="4" required></textarea>
                     </div>
                     <div class="text-center">
                       <button type="submit" name="submitJanaza" class="btn btn-primary btn-lg">Enter Details</button>

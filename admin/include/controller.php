@@ -390,7 +390,7 @@ if (isset($_POST["submitSaandha"])) {
 
     if ($database->insert_data('tbl_allvillagers', $insert_to_tbl_allvillagers)) {
         $database->delete_all('tbl_temp_allvillagers');
-        $URL = "form_villagers-registration-form.php";
+        $URL = "forms.php";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
@@ -464,6 +464,9 @@ if (isset($_POST['submitNikkah'])) {
     );
 
     $database->insert_data('tbl_nikkahdetails', $insert_to_tbl_nikkahdetails);
+    $URL = "forms.php";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
 
 
@@ -471,13 +474,10 @@ if (isset($_POST['submitNikkah'])) {
 // submitJanaza button click
 if (isset($_POST['submitJanaza'])) {
     $inputDateToday = date("Y-m-d");
-    $inputIndexNoDeceased = $_POST['inputIndexNoDeceased'];
-    $inputSubdivision = $_POST['inputSubdivision'];
 
-    
     $insert_to_tbl_janazadetails = array(
         'jd_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNoDeceased']),
-        'jd_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+        'jd_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputJanazaSubdivision']),
         'jd_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
         'jd_gender' => mysqli_real_escape_string($database->con, $_POST['inputSex']),
         'jd_dateofDeath' => mysqli_real_escape_string($database->con, $_POST['inputDeathDate']),
@@ -493,4 +493,31 @@ if (isset($_POST['submitJanaza'])) {
     );
 
     $database->insert_data('tbl_janazadetails', $insert_to_tbl_janazadetails);
+    $URL = "forms.php";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+}
+
+// insert into tbl_specialbhyan
+// submitBhayan button click
+if (isset($_POST['submitBhayan'])) {
+
+    $insert_to_tbl_specialbhyan = array(
+        'sb_topic' => mysqli_real_escape_string($database->con, $_POST['inputTopic']),
+        'sb_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        'sb_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+        'sb_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
+        'sb_date' => mysqli_real_escape_string($database->con, $_POST['inputDate']),
+        'sb_time' => mysqli_real_escape_string($database->con, $_POST['inputTime']),
+        'sb_meals' => mysqli_real_escape_string($database->con, $_POST['inputAmountMeals']),
+        'sb_transport' => mysqli_real_escape_string($database->con, $_POST['inputAmountTransport']),
+        'sb_tea' => mysqli_real_escape_string($database->con, $_POST['inputAmountTea']),
+        'sb_other' => mysqli_real_escape_string($database->con, $_POST['inputAmountOther'])
+
+    );
+
+    $database->insert_data('tbl_specialbhyan', $insert_to_tbl_specialbhyan);
+    $URL = "forms.php";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
