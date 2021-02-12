@@ -69,6 +69,12 @@
     display: none;
 }
 
+/* form_nikkah-details-form.php */
+/* hide groomGuardianIndex textbox  */
+#groomGuardianIndex{
+    display: none;
+}
+
 /* form_pesh-imaam-details.php */
 /* hide peshImaamIndex div */
 #peshImaamIndex{
