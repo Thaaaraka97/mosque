@@ -48,7 +48,7 @@ $database = new databases();
                         <div class="form-group col-md-6">
                           <label for="inputPresidentSubdivision"> Sub-division </label>
                           <select id="inputPresidentSubdivision" class="form-control">
-                            <option selected>Choose...</option>
+                            <option value="0" selected>Choose...</option>
                             <?php
                             $sub_division = $database->select_data('tbl_subdivision');
                             foreach ($sub_division as $sub_division_item) {
@@ -91,7 +91,7 @@ $database = new databases();
                         <div class="form-group col-md-6">
                           <label for="inputVPSubdivision"> Sub-division </label>
                           <select id="inputVPSubdivision" class="form-control">
-                            <option selected>Choose...</option>
+                            <option value="0" selected>Choose...</option>
                             <?php
                             foreach ($sub_division as $sub_division_item) {
                               echo "<option value='" . $sub_division_item["sb_name"] . "'>" . $sub_division_item["sb_name"] . "</option>";
@@ -134,7 +134,7 @@ $database = new databases();
                         <div class="form-group col-md-6">
                           <label for="inputSecretarySubdivision"> Sub-division </label>
                           <select id="inputSecretarySubdivision" class="form-control">
-                            <option selected>Choose...</option>
+                            <option value="0" selected>Choose...</option>
                             <?php
                             foreach ($sub_division as $sub_division_item) {
                               echo "<option value='" . $sub_division_item["sb_name"] . "'>" . $sub_division_item["sb_name"] . "</option>";
@@ -177,7 +177,7 @@ $database = new databases();
                         <div class="form-group col-md-6">
                           <label for="inputASSubdivision"> Sub-division </label>
                           <select id="inputASSubdivision" class="form-control">
-                            <option selected>Choose...</option>
+                            <option value="0" selected>Choose...</option>
                             <?php
                             foreach ($sub_division as $sub_division_item) {
                               echo "<option value='" . $sub_division_item["sb_name"] . "'>" . $sub_division_item["sb_name"] . "</option>";
@@ -220,7 +220,7 @@ $database = new databases();
                         <div class="form-group col-md-6">
                           <label for="inputTreasurerSubdivision"> Sub-division </label>
                           <select id="inputTreasurerSubdivision" class="form-control">
-                            <option selected>Choose...</option>
+                            <option value="0" selected>Choose...</option>
                             <?php
                             foreach ($sub_division as $sub_division_item) {
                               echo "<option value='" . $sub_division_item["sb_name"] . "'>" . $sub_division_item["sb_name"] . "</option>";

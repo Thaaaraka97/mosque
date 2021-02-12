@@ -50,7 +50,7 @@ include "template_parts/header.php";
                       <div class="form-group col-md-6">
                         <label for="inputSubdivision"> Sub-division </label>
                         <select id="inputSubdivision" class="form-control">
-                          <option selected>Choose...</option>
+                          <option value="0" selected>Choose...</option>
                           <?php
                           $sub_division = $database->select_data('tbl_subdivision');
                           foreach ($sub_division as $sub_division_item) {
@@ -98,7 +98,7 @@ include "template_parts/header.php";
                       <div class="form-group col-md-6">
                         <label for="inputResidence">Residence</label>
                         <select id="inputResidence" name="inputResidence" class="form-control">
-                          <option selected>Choose...</option>
+                          <option value="0" selected>Choose...</option>
                           <option value="Permenant">Permenant</option>
                           <option value="Rental">Rental</option>
                           <option value="Lease">Lease</option>

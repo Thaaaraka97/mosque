@@ -43,8 +43,8 @@ include "template_parts/header.php";
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="inputSubdivision"> Sub-division </label>
-                                                    <select id="inputSubdivision" name="inputSubdivision" class="form-control">
-                                                        <option selected>Choose...</option>
+                                                    <select id="inputSubdivision" name="inputSubdivision" class="form-control" required>
+                                                        <option value="0" selected>Choose...</option>
                                                         <?php
                                                         $sub_division = $database->select_data('tbl_subdivision');
                                                         foreach ($sub_division as $sub_division_item) {
@@ -56,8 +56,8 @@ include "template_parts/header.php";
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="inputResStatus">Residential Status</label>
-                                                    <select id="inputResStatus" name="inputResStatus" class="form-control">
-                                                        <option selected>Choose...</option>
+                                                    <select id="inputResStatus" name="inputResStatus" class="form-control" required>
+                                                        <option value="0" selected>Choose...</option>
                                                         <option value="Rent">Rent</option>
                                                         <option value="Permanant">Permanant</option>
                                                         <option value="Lease">Lease</option>
@@ -66,7 +66,7 @@ include "template_parts/header.php";
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputAddress"> Address </label>
-                                                <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress"></textarea>
+                                                <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress" required></textarea>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
@@ -135,26 +135,24 @@ include "template_parts/header.php";
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="inputMonthlyIncomeFamily"> Monthly Income (Family) </label>
-                                                    <input type="text" class="form-control" id="inputMonthlyIncomeFamily" name="inputMonthlyIncomeFamily" placeholder="Family Income">
+                                                    <input type="text" class="form-control" id="inputMonthlyIncomeFamily" name="inputMonthlyIncomeFamily" placeholder="Family Income" required>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="inputavgInterPersonal"> Average Interpersonal Income </label>
-                                                    <input type="text" class="form-control" id="inputavgInterPersonal" name="inputavgInterPersonal" placeholder="InterPersonal Income">
+                                                    <input type="text" class="form-control" id="inputavgInterPersonal" name="inputavgInterPersonal" placeholder="InterPersonal Income" required>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="inputnoofChildren"> No. of Children </label>
-                                                    <input type="text" class="form-control" id="inputnoofChildren" name="inputnoofChildren" placeholder="No. of Children">
+                                                    <input type="text" class="form-control" id="inputnoofChildren" name="inputnoofChildren" placeholder="No. of Children" required>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="inputnoofUnmarried"> No. of Unmarried Children </label>
-                                                    <input type="text" class="form-control" id="inputnoofUnmarried" name="inputnoofUnmarried" placeholder="No. of Unmarried Children">
+                                                    <input type="text" class="form-control" id="inputnoofUnmarried" name="inputnoofUnmarried" placeholder="No. of Unmarried Children" required>
                                                 </div>
                                             </div>
                                             <div class="w-100 text-right">
-                                                <!-- <a href="" class="btn btn-success btn-lg" id="addAVMember" name="addAVMember">+ ADD Member</a> -->
-                                                <!-- <button class="btn btn-success btn-lg" id="addAVMember" name="addAVMember">+ ADD Member</button> -->
                                                 <input type="submit" class="btn btn-success btn-lg" id="addAVMember" name="addAVMember" value="+ ADD Member">
                                             </div>
                                         </div>

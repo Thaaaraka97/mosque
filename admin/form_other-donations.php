@@ -60,7 +60,7 @@ include "template_parts/header.php";
                                             <div class="form-group col-md-6">
                                                 <label for="inputDonation">Donation</label>
                                                 <select id="inputDonation" class="form-control">
-                                                    <option selected>Choose...</option>
+                                                    <option value="0" selected>Choose...</option>
                                                     <option value="Local">Local</option>
                                                     <option value="Foreign">Foreign</option>
                                                 </select>

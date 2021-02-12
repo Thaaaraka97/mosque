@@ -404,15 +404,30 @@ if (isset($_POST['submitNikkah'])) {
     } else {
         $inputMarriedStatus = 0;
     }
-    if (isset($_POST["inputIndexNo"])) {
+    if ($_POST["inputIndexNo"] != "") {
         $inputIndexNo = $_POST["inputIndexNo"];
     } else {
         $inputIndexNo = 0;
     }
-    if (isset($_POST["inputBrideIndexNo"])) {
+    if ($_POST["inputBrideIndexNo"] != "") {
         $inputBrideIndexNo = $_POST["inputBrideIndexNo"];
     } else {
         $inputBrideIndexNo = 0;
+    }
+    if ($_POST["inputGroomGuardianIndex"] != "") {
+        $inputGroomGuardianIndex = $_POST["inputGroomGuardianIndex"];
+    } else {
+        $inputGroomGuardianIndex = 0;
+    }
+    if ($_POST["inputBrideGuardianIndex"] != "") {
+        $inputBrideGuardianIndex = $_POST["inputBrideGuardianIndex"];
+    } else {
+        $inputBrideGuardianIndex = 0;
+    }
+    if ($_POST["inputMarriageDate"] != "") {
+        $inputMarriageDate = $_POST["inputMarriageDate"];
+    } else {
+        $inputMarriageDate = "0001-01-01";
     }
 
     $insert_to_tbl_nikkahdetails = array(
@@ -427,7 +442,7 @@ if (isset($_POST['submitNikkah'])) {
         'nd_groomPrevMarried' => mysqli_real_escape_string($database->con, $inputMarriedStatus),
         'nd_groomAddress' => mysqli_real_escape_string($database->con, $_POST['inputGroomAddress']),
         'nd_groomGuardName' => mysqli_real_escape_string($database->con, $_POST['inputGroomGuardianName']),
-        'nd_groomGuardIndex' => mysqli_real_escape_string($database->con, $_POST['inputGroomGuardianIndex']),
+        'nd_groomGuardIndex' => mysqli_real_escape_string($database->con, $inputGroomGuardianIndex),
         'nd_groomMosqueName' => mysqli_real_escape_string($database->con, $_POST['inputGroomMosque']),
         'nd_groomMosqueAddress' => mysqli_real_escape_string($database->con, $_POST['inputGroomMosqueAddress']),
         'nd_brideVillage' => mysqli_real_escape_string($database->con, $_POST['inputBrideVillage']),
@@ -440,11 +455,11 @@ if (isset($_POST['submitNikkah'])) {
         'nd_brideTP' => mysqli_real_escape_string($database->con, $_POST['inputBrideTP']),
         'nd_brideAddress' => mysqli_real_escape_string($database->con, $_POST['inputBrideAddress']),
         'nd_brideGuardName' => mysqli_real_escape_string($database->con, $_POST['inputBrideGuardianName']),
-        'nd_brideGuardIndex' => mysqli_real_escape_string($database->con, $_POST['inputBrideGuardianIndex']),
+        'nd_brideGuardIndex' => mysqli_real_escape_string($database->con, $inputBrideGuardianIndex),
         'nd_brideMosqueName' => mysqli_real_escape_string($database->con, $_POST['inputBrideMosque']),
         'nd_brideMosqueAddress' => mysqli_real_escape_string($database->con, $_POST['inputBrideMosqueAddress']),
         'nd_marriageVenue' => mysqli_real_escape_string($database->con, $_POST['inputVenue']),
-        'nd_marriageDate' => mysqli_real_escape_string($database->con, $_POST['inputMarriageDate']),
+        'nd_marriageDate' => mysqli_real_escape_string($database->con, $inputMarriageDate),
         'nd_donation' => mysqli_real_escape_string($database->con, $_POST['inputdonation'])
     );
 

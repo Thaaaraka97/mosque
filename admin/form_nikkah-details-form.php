@@ -90,26 +90,26 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputGroomName">Name of the Groom </label>
-                        <input type="text" class="form-control" id="inputGroomName" name="inputGroomName" placeholder="Name">
+                        <input type="text" class="form-control" id="inputGroomName" name="inputGroomName" placeholder="Name" required>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-4">
                           <label for="inputGroomBirthday">Birthday </label>
-                          <input type="date" class="form-control" id="inputGroomBirthday" name="inputGroomBirthday" placeholder="">
+                          <input type="date" class="form-control" id="inputGroomBirthday" name="inputGroomBirthday" required>
                         </div>
                         <div class="form-group col-md-5">
                           <label for="inputGroomNIC">National Identity Card </label>
-                          <input type="text" class="form-control" id="inputGroomNIC" name="inputGroomNIC" placeholder="NIC">
+                          <input type="text" class="form-control" id="inputGroomNIC" name="inputGroomNIC" placeholder="NIC" required>
                         </div>
                         <div class="form-group col-md-3">
                           <label for="inputGroomAge">Age </label>
-                          <input type="text" class="form-control" id="inputGroomAge" name="inputGroomAge" placeholder="Age">
+                          <input type="text" class="form-control" id="inputGroomAge" name="inputGroomAge" placeholder="Age" required>
                         </div>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputGroomTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputGroomTP" name="inputGroomTP" placeholder="077xxxxxxx">
+                          <input type="text" class="form-control" id="inputGroomTP" name="inputGroomTP" placeholder="077xxxxxxx" required>
                         </div>
                         <div class="form-group col-md-6 pl-5">
                           <div class="form-group row">
@@ -139,12 +139,12 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputGroomAddress">Address </label>
-                        <textarea rows="5" class="form-control" id="inputGroomAddress" name="inputGroomAddress"></textarea>
+                        <textarea rows="5" class="form-control" id="inputGroomAddress" name="inputGroomAddress" required></textarea>
                       </div>
                       <p class="card-description"> Details of the Guardian </p>
                       <div class="form-group">
                         <label for="inputGroomGuardianName">Name of the Guardian </label>
-                        <input type="text" class="form-control" id="inputGroomGuardianName" name="inputGroomGuardianName" placeholder="Name of the Guardian">
+                        <input type="text" class="form-control" id="inputGroomGuardianName" name="inputGroomGuardianName" placeholder="Name of the Guardian" required>
                       </div>
                       <div class="form-row" id="groomGuardianIndex">
                         <div class="form-group col-md-6">
@@ -155,7 +155,7 @@ $database = new databases();
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputVenue"> Venue of the marriage </label>
-                          <input type="text" id="inputVenue" name="inputVenue" class="form-control" placeholder="Venue">
+                          <input type="text" id="inputVenue" name="inputVenue" class="form-control" placeholder="Venue" required>
                         </div>
                         <div class="form-group col-md-6">
                           <label for="inputMarriageDate"> Date of the marriage </label>
@@ -228,36 +228,36 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputBrideName">Name of the Bride </label>
-                        <input type="text" class="form-control" id="inputBrideName" name="inputBrideName" placeholder="Name">
+                        <input type="text" class="form-control" id="inputBrideName" name="inputBrideName" placeholder="Name" required>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-4">
                           <label for="inputBrideBirthday">Birthday </label>
-                          <input type="date" class="form-control" id="inpuBridetBirthday" name="inpuBridetBirthday" placeholder="">
+                          <input type="date" class="form-control" id="inpuBridetBirthday" name="inpuBridetBirthday" required>
                         </div>
                         <div class="form-group col-md-5">
                           <label for="inputBrideNIC">National Identity Card </label>
-                          <input type="text" class="form-control" id="inputBrideNIC" name="inputBrideNIC" placeholder="NIC">
+                          <input type="text" class="form-control" id="inputBrideNIC" name="inputBrideNIC" placeholder="NIC" required>
                         </div>
                         <div class="form-group col-md-3">
                           <label for="inputBrideAge">Age </label>
-                          <input type="text" class="form-control" id="inputBrideAge" name="inputBrideAge" placeholder="Age">
+                          <input type="text" class="form-control" id="inputBrideAge" name="inputBrideAge" placeholder="Age" required>
                         </div>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputBrideTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputBrideTP" name="inputBrideTP" placeholder="077xxxxxxx">
+                          <input type="text" class="form-control" id="inputBrideTP" name="inputBrideTP" placeholder="077xxxxxxx" required>
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="inputBrideAddress"> Address </label>
-                        <textarea rows="5" class="form-control" id="inputBrideAddress" name="inputBrideAddress"></textarea>
+                        <textarea rows="5" class="form-control" id="inputBrideAddress" name="inputBrideAddress" required></textarea>
                       </div>
                       <p class="card-description"> Details of the Guardian </p>
                       <div class="form-group">
                         <label for="inputBrideGuardianName"> Name of the Guardian </label>
-                        <input type="text" class="form-control" id="inputBrideGuardianName" name="inputBrideGuardianName" placeholder="Name of the Guardian">
+                        <input type="text" class="form-control" id="inputBrideGuardianName" name="inputBrideGuardianName" placeholder="Name of the Guardian" required>
                       </div>
                       <div class="form-row" id="brideGuardianIndex">
                         <div class="form-group col-md-6">
@@ -289,10 +289,8 @@ $database = new databases();
                           <input type="text" class="form-control" id="inputdonation" name="inputdonation" placeholder="Amount">
                         </div>
                       </div>
-
                       <div class="w-100 text-right">
                         <button class="btn btn-success btn-lg" id="nikkahPrev3">Previous</button>
-                        <!-- <button type="submit" class="btn btn-primary btn-lg" name="submitNikkah">Submit</button> -->
                         <input type="submit" class="btn btn-primary btn-lg" name="submitNikkah"></input>
                       </div>
                     </div>

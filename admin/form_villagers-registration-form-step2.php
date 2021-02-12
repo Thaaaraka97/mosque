@@ -135,7 +135,7 @@ $database = new databases();
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label for="inputEduQual">Educational Qualifications</label>
-                                                        <select id="inputEduQual" name="inputEduQual" class="form-control">
+                                                        <select value="0" id="inputEduQual" name="inputEduQual" class="form-control">
                                                             <option selected>Choose...</option>
                                                             <option value="O/L">O/L</option>
                                                             <option value="A/L">A/L</option>
@@ -149,7 +149,7 @@ $database = new databases();
                                                     <div class="form-group col-md-6">
                                                         <label for="inputAddQual">Additional Qualifications</label>
                                                         <select id="inputAddQual" name="inputAddQual" class="form-control">
-                                                            <option selected>Choose...</option>
+                                                            <option value="0" selected>Choose...</option>
                                                             <option value="Tailoring">Tailoring</option>
                                                             <option value="Automobile Mechanic">Automobile Mechanic</option>
                                                             <option value="A/C Mechanic">A/C Mechanic</option>

@@ -42,35 +42,19 @@ $database = new databases();
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputIndexNoDeceased"> Index Number of the Deceased </label>
-                        <input type="text" class="form-control" id="inputIndexNoDeceased" name="inputIndexNoDeceased" placeholder="Index No" value="7">
+                        <input type="text" class="form-control" id="inputIndexNoDeceased" name="inputIndexNoDeceased" placeholder="Index No">
                       </div>
                       <div class="form-group col-md-6">
-                        <label for="inputSubdivision"> Sub-division </label>
-                        <select id="inputSubdivision" name="inputSubdivision" class="form-control">
-                          <option value="Palpitiya" selected>Choose...</option>
+                        <label for="inputJanazaSubdivision"> Sub-division </label>
+                        <select id="inputJanazaSubdivision" name="inputJanazaSubdivision" class="form-control">
+                          <option value="0" selected>Choose...</option>
                           <?php
                           $sub_division = $database->select_data('tbl_subdivision');
                           foreach ($sub_division as $sub_division_item) {
                             echo "<option value='" . $sub_division_item["sb_name"] . "'>" . $sub_division_item["sb_name"] . "</option>";
                           }
-
-
                           ?>
                         </select>
-                        <div>
-                        <?php
-                        $where = array(
-                          // 'av_index' => "7"
-                          'av_index' => $_POST["inputIndexNoDeceased"],
-                          'av_subDivision' => $_POST["inputSubdivision"]
-                        );
-                        $single_data = $database->select_where("tbl_allvillagers", $where);
-                        foreach ($single_data as $post) {
-                          echo $post["av_address"];
-                          echo $post["av_dob"];
-                        }
-                        ?>
-                        </div>
                       </div>
                     </div>
                     <div class="form-group">
@@ -86,13 +70,13 @@ $database = new databases();
                           <div class="col-sm-4">
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="inputSex" id="inputSex1" value="M" checked> Male </label>
+                                <input type="radio" class="form-check-input" name="inputSex" id="inputSexM" value="M" checked> Male </label>
                             </div>
                           </div>
                           <div class="col-sm-5">
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="inputSex" id="inputSex2" value="F"> Female </label>
+                                <input type="radio" class="form-check-input" name="inputSex" id="inputSexF" value="F"> Female </label>
                             </div>
                           </div>
                         </div>
@@ -131,7 +115,7 @@ $database = new databases();
                       <div class="form-group col-md-6">
                         <label for="inputSubdivision"> Sub-division </label>
                         <select id="inputGSubdivision" name="inputGSubdivision" class="form-control">
-                          <option selected>Choose...</option>
+                          <option value="0" selected>Choose...</option>
                           <?php
                           foreach ($sub_division as $sub_division_item) {
                             echo "<option value='" . $sub_division_item["sb_name"] . "'>" . $sub_division_item["sb_name"] . "</option>";

@@ -574,8 +574,33 @@ $(document).ready(function () {
   $("#addAnother").click(function () {
     // $("#saandhaRegistrationFormStep2").trigger("reset");
     document.location.href = "form_villagers-registration-form-step2.php";
-    
   });
 
+  // form_janaza-details-form.php
+  // submit data to find the details
+  $("#inputJanazaSubdivision").change(function (e) {
+    e.preventDefault();
+    var index = $("#inputIndexNoDeceased").val();
+    var subdivision = $("#inputJanazaSubdivision").val();
+    var data_bundle = "index=" + index + "&subdivision=" + subdivision;
+    $.ajax({
+      type: "post",
+      //  url: "../handlers/janaza_form_handler.php",
+      url: "handlers/janaza_form_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        console.log(result_array);
+        $("#inputName").val(result_array[0]);
+        if (result_array[1] == "M") {
+          $("#inputSexF").removeAttr('checked');
+          $("#inputSexM").attr('checked', 'checked');
+        } else {
+          $("#inputSexM").removeAttr('checked');
+          $("#inputSexF").attr('checked', 'checked');
 
+        }
+      },
+    });
+  });
 });
