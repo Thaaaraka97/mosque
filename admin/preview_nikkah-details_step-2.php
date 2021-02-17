@@ -74,11 +74,18 @@ foreach ($nikkah_details as $nikkah_details_item) {
     $bride_mosque_add = $nikkah_details_item['nd_brideMosqueAddress'];
     $venue = $nikkah_details_item['nd_marriageVenue'];
     $donation = $nikkah_details_item['nd_donation'];
+
+    if ($groom_prev_married == "1") {
+        $groom_prev_married = "Yes";
+    } else {
+        $groom_prev_married = "No";
+    }
 }
 
 ?>
 <script type="text/javascript">
     var action = "<?php echo $action; ?>";
+    console.log(action);
 </script>
 
 <body>
@@ -113,8 +120,8 @@ foreach ($nikkah_details as $nikkah_details_item) {
                         <div class="col-md-8 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <h4 class="card-title"> Details Preview Step-2 </h4>
-                                    <div class="mt-5 text-dark col-auto d-flex justify-content-center " id="viewDetails">
+                                    <div class="text-dark col-auto" id="viewDetails">
+                                        <h4 class="card-title"> Details Preview Step-2 </h4>
                                         <table class="table table-responsive previewTable">
                                             <tr>
                                                 <th>Date</th>
@@ -141,8 +148,8 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                                 <td> : </td>
                                                 <td><?php echo $donation ?></td>
                                             </tr>
-                                            <tr>
-                                                <th colspan="3" class="align-items-center">Groom Details</th>
+                                            <tr class="text-center">
+                                                <td colspan="3" class="align-items-center badge badge-secondary ">Groom Details</td>
                                             </tr>
                                             <tr>
                                                 <th>Groom Village</th>
@@ -253,7 +260,7 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                                 <td><?php echo $bride_address ?></td>
                                             </tr>
                                             <tr>
-                                                <th>>Name of the Guardian</th>
+                                                <th>Name of the Guardian</th>
                                                 <td> : </td>
                                                 <td><?php echo $bride_guard_name ?></td>
                                             </tr>
@@ -276,8 +283,286 @@ foreach ($nikkah_details as $nikkah_details_item) {
 
                                     </div>
 
-                                    <div class="mt-5 text-dark" id="editDetails">
+                                    <div class="text-dark" id="editDetails">
+                                        <div id="groomdetails">
+                                            <h4 class="card-title">Edit Details </h4>
+                                            <div class="form-group col-md-6 pl-5">
+                                                <div class="form-group row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <label class="form-label">Groom belongs to</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input type="radio" class="form-check-input" name="inputGroomVillage" id="inputGroomVillageY" value="Our Village" <?php echo ($groom_village == 'Our Village') ? 'checked' : '' ?>> Our Village </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input type="radio" class="form-check-input" name="inputGroomVillage" id="inputGroomVillageN" value="Not Our Village" <?php echo ($groom_village == 'Not Our Village') ? 'checked' : '' ?>> Not Our Village </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="">
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputIndexNo"> Index Number </label>
+                                                        <input type="text" class="form-control" id="inputIndexNo" name="inputIndexNo" placeholder="Index No" value="<?php echo $groom_index ?>">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputSubdivision"> Sub-division </label>
+                                                        <select id="inputSubdivision" name="inputSubdivision" class="form-control">
+                                                            <option value="0" <?php echo ($groom_subdivision == '0') ? 'selected' : '' ?>>Choose...</option>
+                                                            <?php
+                                                            $sub_division = $database->select_data('tbl_subdivision');
+                                                            foreach ($sub_division as $sub_division_item) {
+                                                                $selected = "";
+                                                                if ($sub_division_item["sb_name"] == $groom_subdivision) {
+                                                            ?>
+                                                                    <option value=' <?php echo $sub_division_item["sb_name"]; ?>' selected> <?php echo $sub_division_item["sb_name"]; ?> </option>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <option value=' <?php echo $sub_division_item["sb_name"]; ?>'> <?php echo $sub_division_item["sb_name"]; ?> </option>
 
+                                                                <?php
+                                                                }
+                                                                ?>
+
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputGroomName">Name of the Groom </label>
+                                                <input type="text" class="form-control" id="inputGroomName" name="inputGroomName" placeholder="Name" value="<?php echo $groom_name ?>" required>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="inputGroomBirthday">Birthday </label>
+                                                    <input type="date" class="form-control" id="inputGroomBirthday" name="inputGroomBirthday" value="<?php echo $groom_dob ?>" required>
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="inputGroomNIC">National Identity Card </label>
+                                                    <input type="text" class="form-control" id="inputGroomNIC" name="inputGroomNIC" placeholder="NIC" value="<?php echo $groom_nic ?>" required>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="inputGroomAge">Age </label>
+                                                    <input type="text" class="form-control" id="inputGroomAge" name="inputGroomAge" placeholder="Age" value="<?php echo $groom_age ?>" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputGroomTP">Telephone Number </label>
+                                                    <input type="text" class="form-control" id="inputGroomTP" name="inputGroomTP" placeholder="077xxxxxxx" value="<?php echo $groom_tp ?>" required>
+                                                </div>
+                                                <div class="form-group col-md-6 pl-5">
+                                                    <div class="form-group row">
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <label class="form-label">Married Status(before)</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-check">
+                                                                        <label class="form-check-label">
+                                                                            <input type="radio" class="form-check-input" name="inputMarriedStatus" id="inputMarriedStatusY" value="Yes" <?php echo ($groom_prev_married == 'Yes') ? 'checked' : '' ?>> Yes </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-check">
+                                                                        <label class="form-check-label">
+                                                                            <input type="radio" class="form-check-input" name="inputMarriedStatus" id="inputMarriedStatusN" value="No" <?php echo ($groom_prev_married == 'No') ? 'checked' : '' ?>> No </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputGroomAddress">Address </label>
+                                                <textarea rows="5" class="form-control" id="inputGroomAddress" name="inputGroomAddress" value="<?php echo $groom_address ?>" required></textarea>
+                                            </div>
+                                            <p class="card-description"> Details of the Guardian </p>
+                                            <div class="form-group">
+                                                <label for="inputGroomGuardianName">Name of the Guardian </label>
+                                                <input type="text" class="form-control" id="inputGroomGuardianName" name="inputGroomGuardianName" value="<?php echo $groom_guard_name ?>" placeholder="Name of the Guardian" required>
+                                            </div>
+                                            <div class="form-row" id="groomGuardianIndex">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputGroomGuardianIndex"> Index No of the Guardian </label>
+                                                    <input type="text" class="form-control" id="inputGroomGuardianIndex" name="inputGroomGuardianIndex" placeholder="Index No" value="<?php echo $groom_guard_index ?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputVenue"> Venue of the marriage </label>
+                                                    <input type="text" id="inputVenue" name="inputVenue" class="form-control" placeholder="Venue" value="<?php echo $venue ?>" required>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputMarriageDate"> Date of the marriage </label>
+                                                    <input type="date" id="inputMarriageDate" name="inputMarriageDate" class="form-control" value="<?php echo $date ?>">
+                                                </div>
+                                            </div>
+                                            <div id="">
+                                                <p class="card-description"> Details of the Mosque </p>
+                                                <div class="form-group">
+                                                    <label for="inputGroomMosque">Name of the Mosque </label>
+                                                    <input type="text" class="form-control" id="inputGroomMosque" name="inputGroomMosque" placeholder="Mosque" value="<?php echo $groom_mosque_name ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputGroomMosqueAddress"> Address </label>
+                                                    <textarea rows="5" class="form-control" id="inputGroomMosqueAddress" name="inputGroomMosqueAddress" value="<?php echo $groom_mosque_add ?>"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="w-100 text-right">
+                                                <button class="btn btn-primary btn-lg" id="nikkahNext">Next</button>
+                                            </div>
+                                        </div>
+                                        <div id="bridedetails">
+                                            <h4 class="card-title pt-2">Bride Details Form</h4>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6 pl-5">
+                                                    <div class="form-group row">
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <label class="form-label">Bride belongs to</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-check">
+                                                                        <label class="form-check-label">
+                                                                            <input type="radio" class="form-check-input" name="inputBrideVillage" id="inputBrideVillageY" value="Our Village" <?php echo ($bride_village == 'Our Village') ? 'checked' : '' ?>> Our Village </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-check">
+                                                                        <label class="form-check-label">
+                                                                            <input type="radio" class="form-check-input" name="inputBrideVillage" id="inputBrideVillageN" value="Not Our Village" <?php echo ($bride_village == 'Not Our Village') ? 'checked' : '' ?>> Not Our Village </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="">
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputBrideIndexNo"> Index Number </label>
+                                                        <input type="text" class="form-control" id="inputBrideIndexNo" name="inputBrideIndexNo" placeholder="Index No" value="<?php echo $bride_index ?>">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputSubdivision"> Sub-division </label>
+                                                        <select id="inputSubdivision" name="inputSubdivision" class="form-control">
+                                                        <option value="0" <?php echo ($bride_subdivision == '0') ? 'selected' : '' ?>>Choose...</option>
+                                                            <?php
+                                                            $sub_division = $database->select_data('tbl_subdivision');
+                                                            foreach ($sub_division as $sub_division_item) {
+                                                                $selected = "";
+                                                                if ($sub_division_item["sb_name"] == $bride_subdivision) {
+                                                            ?>
+                                                                    <option value=' <?php echo $sub_division_item["sb_name"]; ?>' selected> <?php echo $sub_division_item["sb_name"]; ?> </option>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <option value=' <?php echo $sub_division_item["sb_name"]; ?>'> <?php echo $sub_division_item["sb_name"]; ?> </option>
+
+                                                                <?php
+                                                                }
+                                                                ?>
+
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputBrideName">Name of the Bride </label>
+                                                <input type="text" class="form-control" id="inputBrideName" name="inputBrideName" placeholder="Name" value="<?php echo $bride_name ?>" required>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="inputBrideBirthday">Birthday </label>
+                                                    <input type="date" class="form-control" id="inpuBridetBirthday" name="inpuBridetBirthday" value="<?php echo $bride_dob ?>" required>
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="inputBrideNIC">National Identity Card </label>
+                                                    <input type="text" class="form-control" id="inputBrideNIC" name="inputBrideNIC" placeholder="NIC" value="<?php echo $bride_nic ?>" required>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="inputBrideAge">Age </label>
+                                                    <input type="text" class="form-control" id="inputBrideAge" name="inputBrideAge" placeholder="Age" value="<?php echo $bride_age ?>" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputBrideTP">Telephone Number </label>
+                                                    <input type="text" class="form-control" id="inputBrideTP" name="inputBrideTP" placeholder="077xxxxxxx" value="<?php echo $bride_tp ?>" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputBrideAddress"> Address </label>
+                                                <textarea rows="5" class="form-control" id="inputBrideAddress" name="inputBrideAddress" value="<?php echo $bride_address ?>" required></textarea>
+                                            </div>
+                                            <p class="card-description"> Details of the Guardian </p>
+                                            <div class="form-group">
+                                                <label for="inputBrideGuardianName"> Name of the Guardian </label>
+                                                <input type="text" class="form-control" id="inputBrideGuardianName" name="inputBrideGuardianName" value="<?php echo $bride_guard_name ?>" placeholder="Name of the Guardian" required>
+                                            </div>
+                                            <div class="form-row" id="brideGuardianIndex">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputBrideGuardianIndex"> Index No of the Guardian </label>
+                                                    <input type="text" class="form-control" id="inputBrideGuardianIndex" name="inputBrideGuardianIndex" value="<?php echo $bride_guard_index ?>" placeholder="Index No">
+                                                </div>
+                                            </div>
+                                            <div id="">
+                                                <p class="card-description"> Details of the Mosque </p>
+                                                <div class="form-group">
+                                                    <label for="inputBrideMosque">Name of the Mosque </label>
+                                                    <input type="text" class="form-control" id="inputBrideMosque" name="inputBrideMosque" placeholder="Mosque" value="<?php echo $bride_mosque_name ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputBrideMosqueAddress"> Address </label>
+                                                    <textarea rows="5" class="form-control" id="inputBrideMosqueAddress" name="inputBrideMosqueAddress" value="<?php echo $bride_mosque_add ?>"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="w-100 text-right">
+                                                <button class="btn btn-success btn-lg" id="nikkahPrev2">Previous</button>
+                                                <button class="btn btn-primary btn-lg" id="nikkahNext2">Next</button>
+                                            </div>
+                                        </div>
+                                        <div id="nikkahDonation">
+                                            <h4 class="card-title">Nikkah Donation Form</h4>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputdonation"> Donation Amount </label>
+                                                    <input type="text" class="form-control" id="inputdonation" name="inputdonation" placeholder="Amount" value="<?php echo $donation ?>">
+                                                </div>
+                                            </div>
+                                            <div class="w-100 text-right">
+                                                <button class="btn btn-success btn-lg" id="nikkahPrev3">Previous</button>
+                                                <button class="btn btn-primary btn-lg" id="editNikkah" name="editNikkah">Edit Details</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

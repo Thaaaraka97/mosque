@@ -37,8 +37,8 @@ $database = new databases();
             <div class="col-md-8 grid-margin stretch-card">
               <div class="card shadow">
                 <div class="card-body">
-                  <h4 class="card-title">Janaza Details Form</h4>
                   <form class="pt-3" method="post">
+                    <h4 class="card-title">Janaza Details Form</h4>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputIndexNoDeceased"> Index Number of the Deceased </label>

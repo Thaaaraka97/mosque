@@ -608,10 +608,14 @@ $(document).ready(function () {
     if (action == "view") {
       $('#viewDetails').show();
       $('#editDetails').hide();
-    } else {
+    } else if (action == "edit") {
       $('#viewDetails').hide();
       $('#editDetails').show();
-      
+      console.log("edit jq");
+
+    }
+    else{
+      console.log("invalid");
     }
   })();
   

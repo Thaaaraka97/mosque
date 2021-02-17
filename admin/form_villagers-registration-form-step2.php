@@ -274,8 +274,8 @@ $database = new databases();
                                                                 <label for="inputMadType"> Madhrasa Type </label>
                                                                 <select id="inputMadType" name="inputMadType" class="form-control">
                                                                     <option value="0" selected>Choose...</option>
-                                                                    <option value="Tamil">Kithah</option>
-                                                                    <option value="English">Hiful</option>
+                                                                    <option value="Kithah">Kithah</option>
+                                                                    <option value="Hiful">Hiful</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group col-md-6">

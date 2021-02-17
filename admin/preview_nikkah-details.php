@@ -57,7 +57,7 @@ $database = new databases();
                                                             <td>".$nikkah_details_item['nd_groomAddress']."</td>
                                                             <td>
                                                                 <a href='preview_nikkah-details_step-2.php?id=".$id."&action=view' class='btn btn-primary btn-md'>View</a>
-                                                                <a href='preview_nikkah-details_step-2.php?id=".$id."&action=edit'' class='btn btn-danger btn-md'>Edit</a>
+                                                                <a href='preview_nikkah-details_step-2.php?id=".$id."&action=edit' class='btn btn-danger btn-md'>Edit</a>
                                                             </td>
                                                         </tr>
                                                          ";
