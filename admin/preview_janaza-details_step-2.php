@@ -15,19 +15,35 @@ $date_of_death = "";
 $name = "";
 $gender = "";
 $subdivision = "";
+$date_of_funeral = "";
+$address = "";
+$relative = "";
+$relative_index = "";
+$relative_subdivision = "";
+$relative_relationship = "";
+$sp_notes = "";
+$informed_date = "";
 
 $janaza_details = $database->select_where('tbl_janazadetails', $where);
 foreach ($janaza_details as $janaza_details_item) {
     $name = $janaza_details_item['jd_name'];
     $date_of_death = $janaza_details_item['jd_dateofDeath'];
     $gender = $janaza_details_item['jd_gender'];
+    $subdivision = $janaza_details_item['jd_subDivision'];
+    $date_of_funeral = $janaza_details_item['jd_dateofFuneral'];
+    $address = $janaza_details_item['jd_addressofFuneral'];
+    $relative = $janaza_details_item['jd_relativeName'];
+    $relative_index = $janaza_details_item['jd_relativeIndex'];
+    $relative_subdivision = $janaza_details_item['jd_relativeSubDivision'];
+    $relative_relationship = $janaza_details_item['jd_relativeRelationship'];
+    $sp_notes = $janaza_details_item['jd_specialNotes'];
+    $informed_date = $janaza_details_item['jd_informedDate'];
     if ($gender == "M") {
         $gender = "Male";
     }
     else {
         $gender = "Female";
     }
-    $subdivision = $janaza_details_item['jd_subDivision'];
 }
 
 ?>
@@ -68,7 +84,7 @@ foreach ($janaza_details as $janaza_details_item) {
                             <div class="card shadow">
                                 <div class="card-body">
                                     <h4 class="card-title"> Details Preview Step-2 </h4>
-                                    <div class="mt-5 text-dark col-auto" id="viewDetails">
+                                    <div class="mt-5 text-dark col-auto content-center " id="viewDetails">
                                         <table class="table table-responsive previewTable">
                                             <tr>
                                                 <th>Name</th>
@@ -90,6 +106,47 @@ foreach ($janaza_details as $janaza_details_item) {
                                                 <td> : </td>
                                                 <td><?php echo $subdivision ?></td>
                                             </tr>
+                                            <tr>
+                                                <th>Date of Funeral</th>
+                                                <td> : </td>
+                                                <td><?php echo $date_of_funeral ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Address of the Funeral</th>
+                                                <td> : </td>
+                                                <td><?php echo $address ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Informer Name</th>
+                                                <td> : </td>
+                                                <td><?php echo $relative ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Informer Index</th>
+                                                <td> : </td>
+                                                <td><?php echo $relative_index ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Informer Sub Division</th>
+                                                <td> : </td>
+                                                <td><?php echo $relative_subdivision ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Relationship to the Informer</th>
+                                                <td> : </td>
+                                                <td><?php echo $relative_relationship ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Special Notes</th>
+                                                <td> : </td>
+                                                <td><?php echo $sp_notes ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Informed Date</th>
+                                                <td> : </td>
+                                                <td><?php echo $informed_date ?></td>
+                                            </tr>
+                                            
                                         </table>
 
                                     </div>
