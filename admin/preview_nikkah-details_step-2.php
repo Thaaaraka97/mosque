@@ -149,7 +149,7 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                                 <td><?php echo $donation ?></td>
                                             </tr>
                                             <tr class="text-center">
-                                                <td colspan="3" class="align-items-center badge badge-secondary ">Groom Details</td>
+                                                <td colspan="3" class="align-items-center">Groom Details</td>
                                             </tr>
                                             <tr>
                                                 <th>Groom Village</th>
