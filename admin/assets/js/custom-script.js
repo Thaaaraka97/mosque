@@ -36,31 +36,72 @@ $(document).ready(function () {
     $("#bridedetails").show();
   });
 
+
+  var x=0;
+  $("#trusteeBoardForm").validate({
+    rules: {
+      inputPresidentName: {
+        required: true
+      },
+      
+      
+      
+    },
+    messages: {
+      inputPresidentName: "*required",
+
+    },
+    submitHandler: function(form) {
+      x=1;
+    }
+    
+  });
+
+
   //   trustee-board.php
   //   Next Buttons
   // next button 1
   $("#TBNext1").click(function (e) {
-    e.preventDefault();
-    // step show/hide
-    $("#presidentdetails").hide();
-    $("#secretarydetails").hide();
-    $("#ASdetails").hide();
-    $("#treasurerdetails").hide();
-    $("#advisoryboard").hide();
+    
+    $('[name="inputVPIndexNo"]').each(function() {
+      $(this).rules('remove');
+    });
+    
+    $("#trusteeBoardForm").valid(); // validation test only
+    
+    if (x==1) {
+      e.preventDefault();
+        // step show/hide
+        $("#presidentdetails").hide();
+        $("#secretarydetails").hide();
+        $("#ASdetails").hide();
+        $("#treasurerdetails").hide();
+        $("#advisoryboard").hide();
 
-    $("#VPdetails").show();
+        $("#VPdetails").show();
+        x=0;
+    }
+        
   });
   // next button 2
   $("#TBNext2").click(function (e) {
-    e.preventDefault();
-    // step show/hide
-    $("#presidentdetails").hide();
-    $("#VPdetails").hide();
-    $("#ASdetails").hide();
-    $("#treasurerdetails").hide();
-    $("#advisoryboard").hide();
+    $( "#inputVPIndexNo" ).rules( "add", {
+      required: true,
+      messages: {
+        required: "*required",
+      }
+    });
+    $("#trusteeBoardForm").valid(); // validation test only
+        e.preventDefault();
+        // step show/hide
+        $("#presidentdetails").hide();
+        $("#VPdetails").hide();
+        $("#ASdetails").hide();
+        $("#treasurerdetails").hide();
+        $("#advisoryboard").hide();
 
-    $("#secretarydetails").show();
+        $("#secretarydetails").show();
+   
   }); // next button 3
   $("#TBNext3").click(function (e) {
     e.preventDefault();
@@ -219,21 +260,6 @@ $(document).ready(function () {
     $("#row" + button_id + "").remove();
   });
 
-  // submit data to handler
-  // $("#submitSaandha").click(function () {
-  //   $.ajax({
-  //     url: "/mosque/admin/handlers/add-child-handler.php",
-  //     method: "POST",
-  //     data: $("#saandhaRegistrationForm").serialize(),
-  //     success: function (data) {
-  //       alert(data);
-  //       $("#saandhaRegistrationForm")[0].reset();
-  //     },
-  //   });
-  // });
-
-  // trustee-board-form.php
-  // add new advisory memebers form block
   var j = 1;
   $("#advisoryMember").click(function () {
     var formBlock = `
@@ -570,9 +596,7 @@ $(document).ready(function () {
   });
 
   //   form_villagers-registration-form.php
-  // resetting all fields to default
   $("#addAnother").click(function () {
-    // $("#saandhaRegistrationFormStep2").trigger("reset");
     document.location.href = "form_villagers-registration-form-step2.php";
   });
 
@@ -593,31 +617,27 @@ $(document).ready(function () {
         console.log(result_array);
         $("#inputName").val(result_array[0]);
         if (result_array[1] == "M") {
-          $("#inputSexF").removeAttr('checked');
-          $("#inputSexM").attr('checked', 'checked');
+          $("#inputSexF").removeAttr("checked");
+          $("#inputSexM").attr("checked", "checked");
         } else {
-          $("#inputSexM").removeAttr('checked');
-          $("#inputSexF").attr('checked', 'checked');
-
+          $("#inputSexM").removeAttr("checked");
+          $("#inputSexF").attr("checked", "checked");
         }
       },
     });
   });
 
-  (function () { 
+  // function to hide/show view/edit pages in preview
+  (function () {
     if (action == "view") {
-      $('#viewDetails').show();
-      $('#editDetails').hide();
+      $("#viewDetails").show();
+      $("#editDetails").hide();
     } else if (action == "edit") {
-      $('#viewDetails').hide();
-      $('#editDetails').show();
+      $("#viewDetails").hide();
+      $("#editDetails").show();
       console.log("edit jq");
-
-    }
-    else{
+    } else {
       console.log("invalid");
     }
   })();
-  
-
 });

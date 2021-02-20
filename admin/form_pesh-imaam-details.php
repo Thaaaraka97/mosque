@@ -38,7 +38,7 @@ $database = new databases();
                             <div class="card shadow">
                                 <div class="card-body">
                                     <h4 class="card-title">Pesh Imaam Details Form</h4>
-                                    <form class="pt-3">
+                                    <form class="pt-3" method="POST">
                                         <div class="form-group col-md-6 pl-5">
                                             <div class="form-group row">
                                                 <div class="col-md-12">
@@ -68,11 +68,11 @@ $database = new databases();
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="inputIndexNo"> Index Number </label>
-                                                    <input type="text" class="form-control" id="inputIndexNo" placeholder="Index No">
+                                                    <input type="text" class="form-control" id="inputIndexNo" name="inputIndexNo" placeholder="Index No">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="inputSubdivision"> Sub-division </label>
-                                                    <select id="inputSubdivision" class="form-control">
+                                                    <select id="inputSubdivision" name="inputSubdivision" class="form-control">
                                                         <option value="0" selected>Choose...</option>
                                                         <?php
                                                         $sub_division = $database->select_data('tbl_subdivision');
@@ -88,22 +88,22 @@ $database = new databases();
 
                                         <div class="form-group">
                                             <label for="inputName">Name </label>
-                                            <input type="text" class="form-control" id="inputName" placeholder="Name">
+                                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" required>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="inputAddress"> Address </label>
-                                            <textarea rows="5" class="form-control" id="inputAddress"></textarea>
+                                            <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress" required></textarea>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputDistrict">District </label>
-                                                <input type="text" class="form-control" id="inputDistrict" placeholder="District">
+                                                <input type="text" class="form-control" id="inputDistrict" name="inputDistrict" placeholder="District" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputNIC">National Identity Card </label>
-                                                <input type="text" class="form-control" id="inputNIC" placeholder="NIC">
+                                                <input type="text" class="form-control" id="inputNIC" name="inputNIC" placeholder="NIC" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -134,27 +134,27 @@ $database = new databases();
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputKids">No. of Kids </label>
-                                                <input type="text" class="form-control" id="inputKids" placeholder="No. of Kids">
+                                                <input type="text" class="form-control" id="inputKids" name="inputKids" placeholder="No. of Kids" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputMobile">Mobile Number </label>
-                                                <input type="text" class="form-control" id="inputMobile" placeholder="07xxxxxxxx">
+                                                <input type="text" class="form-control" id="inputMobile" name="inputMobile" placeholder="07xxxxxxxx" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputHomeTP">Residential Contact </label>
-                                                <input type="text" class="form-control" id="inputHomeTP" placeholder="011xxxxxxx">
+                                                <input type="text" class="form-control" id="inputHomeTP" name="inputHomeTP" placeholder="011xxxxxxx">
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputAssignedDate">Assigned Date </label>
-                                                <input type="date" class="form-control" id="inputAssignedDate">
+                                                <input type="date" class="form-control" id="inputAssignedDate" name="inputAssignedDate" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputBasicSalary">Basic Salary </label>
-                                                <input type="text" class="form-control" id="inputBasicSalary" placeholder="Basic Salary (Rs)">
+                                                <input type="text" class="form-control" id="inputBasicSalary" name="inputBasicSalary" placeholder="Basic Salary (Rs)" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -209,10 +209,10 @@ $database = new databases();
                                         </div>
                                         <div class=" form-group">
                                             <label for="inputNotes">Notes </label>
-                                            <textarea class="form-control" id="inputNotes" rows="4"></textarea>
+                                            <textarea class="form-control" id="inputNotes" name="inputNotes" rows="4"></textarea>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-lg">Enter Details</button>
+                                            <button class="btn btn-primary btn-lg" name="submitPeshImaam">Enter Details</button>
                                         </div>
                                     </form>
                                 </div>

@@ -29,10 +29,14 @@
     <!-- datatables -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 
+    <!-- online jquery -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+
     <?php
-      $database->close_db();
-      print_r($database->errors);
+    $database->close_db();
+    print_r($database->errors);
 
     ?>
-
-

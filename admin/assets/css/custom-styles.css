@@ -1,170 +1,169 @@
 /* nikkah-details.php */
 /* Bride Form hide */
-#bridedetails{
-    display:none;
+#bridedetails {
+  display: none;
 }
 
 /* nikkah-details.php */
 /* Nikkah Donations Form hide */
-#nikkahDonation{
-    display:none;
+#nikkahDonation {
+  display: none;
 }
 
 /* trustee-board.php */
 /* VPdetails Form hide */
-#VPdetails{
-    display:none;
+#VPdetails {
+  display: none;
 }
 /* secretarydetails Form hide */
-#secretarydetails{
-    display:none;
+#secretarydetails {
+  display: none;
 }
 /* ASdetails Form hide */
-#ASdetails{
-    display:none;
+#ASdetails {
+  display: none;
 }
 /* treasurerdetails Form hide */
-#treasurerdetails{
-    display:none;
+#treasurerdetails {
+  display: none;
 }
 /* advisoryboard Form hide */
-#advisoryboard{
-    display:none;
+#advisoryboard {
+  display: none;
 }
 
 /* other-donations.php */
 /* hide country textbox */
-#inputCountry{
-    display: none;
+#inputCountry {
+  display: none;
 }
 
 /* disaster-relief-donations.php */
 /* hide disaterDonationIndex div */
-#disaterDonationIndex{
-    display: none;
+#disaterDonationIndex {
+  display: none;
 }
 
 /* villagers-registration-form.php */
 /* hide college id textbox */
-#college{
-    display: none;
+#college {
+  display: none;
 }
-
 
 /* form_nikkah-details-form.php */
 /* hide groomIndex div  */
-#groomIndex{
-    display: none;
+#groomIndex {
+  display: none;
 }
 
 /* form_nikkah-details-form.php */
 /* hide brideIndex div  */
-#brideIndex{
-    display: none;
+#brideIndex {
+  display: none;
 }
 
 /* form_nikkah-details-form.php */
 /* hide brideGuardianIndex textbox  */
-#brideGuardianIndex{
-    display: none;
+#brideGuardianIndex {
+  display: none;
 }
 
 /* form_nikkah-details-form.php */
 /* hide groomGuardianIndex textbox  */
-#groomGuardianIndex{
-    display: none;
+#groomGuardianIndex {
+  display: none;
 }
 
 /* form_pesh-imaam-details.php */
 /* hide peshImaamIndex div */
-#peshImaamIndex{
-    display: none;
+#peshImaamIndex {
+  display: none;
 }
 
 /* form_muazzin-details.php */
 /* hide muazzinIndex div */
-#muazzinIndex{
-    display: none;
-}
-
-
-/* form_villagers-registration-form.php */
-/* hide saandhaStep div */
-#saandhaStep2{
-    display: none;
+#muazzinIndex {
+  display: none;
 }
 
 /* form_villagers-registration-form.php */
 /* hide saandhaStep div */
-#saandhaStep3{
-    display: none;
+#saandhaStep2 {
+  display: none;
 }
 
 /* form_villagers-registration-form.php */
 /* hide saandhaStep div */
-#saandhaStep4{
-    display: none;
+#saandhaStep3 {
+  display: none;
 }
 
 /* form_villagers-registration-form.php */
 /* hide saandhaStep div */
-#saandhaStep5{
-    display: none;
+#saandhaStep4 {
+  display: none;
+}
+
+/* form_villagers-registration-form.php */
+/* hide saandhaStep div */
+#saandhaStep5 {
+  display: none;
 }
 
 /* form_villagers-registration-form.php */
 /* hide saandhaGuardian div */
-#saandhaGuardian{
-    display: none;
+#saandhaGuardian {
+  display: none;
 }
 
 /* form_villagers-registration-form.php */
 /* hide avStudent div */
-#avStudent{
-    display: none;
+#avStudent {
+  display: none;
 }
 
 /* form_villagers-registration-form.php */
 /* hide inputScholIncome div */
-#inputScholIncomeDiv{
-    display: none;
+#inputScholIncomeDiv {
+  display: none;
 }
 
 /* form_villagers-registration-form.php */
 /* hide madhrasa div */
-#madhrasa{
-    display: none;
+#madhrasa {
+  display: none;
 }
 
 /* form_villagers-registration-form.php */
 /* hide married div */
-#married{
-    display: none;
+#married {
+  display: none;
 }
 
 /* form_villagers-registration-form.php */
 /* hide married div */
-#familyIncome{
-    display: none;
+#familyIncome {
+  display: none;
 }
 
 /* form_villagers-registration-form.php */
 /* hide newMigrant div */
-#newMigrant{
-    display: none;
+#newMigrant {
+  display: none;
 }
 
 /* preview_villager-details_step-2.php */
 /* hide newMigrant div */
-#viewDetails{
-    display: none;
+#viewDetails {
+  display: none;
 }
 
 /* preview_villager-details_step-2.php */
 /* hide newMigrant div */
-#editDetails{
-    display: none;
+#editDetails {
+  display: none;
 }
 
-
-
+form .error {
+  color: #ff0000;
+}

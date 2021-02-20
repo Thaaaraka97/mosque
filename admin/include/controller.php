@@ -564,3 +564,149 @@ if (isset($_POST['submitBhayan'])) {
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
+
+// insert into tbl_peshimaaamdetails
+// submitPeshImaam button click
+if (isset($_POST['submitPeshImaam'])) {
+    
+    if ($_POST['inputMarriedStatus'] == "Yes") {
+        $inputMarriedStatus = 1;
+    } else {
+        $inputMarriedStatus = 0;
+    }
+    if ($_POST["inputIndexNo"] != "") {
+        $inputIndexNo = $_POST["inputIndexNo"];
+    } else {
+        $inputIndexNo = 0;
+    }
+    if ($_POST["inputHomeTP"] != "") {
+        $inputIndexNo = $_POST["inputHomeTP"];
+    } else {
+        $inputIndexNo = "0";
+    }
+    if (isset($_POST['Gramasevaka'])) {
+        $Gramasevaka = 1;
+    } else {
+        $Gramasevaka = 0;
+    }
+    if (isset($_POST['Police'])) {
+        $Police = 1;
+    } else {
+        $Police = 0;
+    }
+    if (isset($_POST['Mahalla'])) {
+        $Mahalla = 1;
+    } else {
+        $Mahalla = 0;
+    }
+    if (isset($_POST['Maulavi'])) {
+        $Maulavi = 1;
+    } else {
+        $Maulavi = 0;
+    }
+    if (isset($_POST['inputDistrict'])) {
+        $address = $_POST['inputAddress'].', '.$_POST['inputDistrict'];
+    } else {
+        $address = $_POST['inputAddress'];
+    }
+
+    
+
+    $insert_to_tbl_peshimaaamdetails = array(
+        'pi_village' => mysqli_real_escape_string($database->con, $_POST['inputVillage']),
+        'pi_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
+        'pi_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+        'pi_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        'pi_address' => mysqli_real_escape_string($database->con, $address),
+        'pi_nic' => mysqli_real_escape_string($database->con, $_POST['inputNIC']),
+        'pi_married' => mysqli_real_escape_string($database->con, $inputMarriedStatus),
+        'pi_noofkids' => mysqli_real_escape_string($database->con, $_POST['inputKids']),
+        'pi_mobileTP' => mysqli_real_escape_string($database->con, $_POST['inputMobile']),
+        'pi_homeTP' => mysqli_real_escape_string($database->con, $_POST['inputHomeTP']),
+        'pi_assignedDate' => mysqli_real_escape_string($database->con, $_POST['inputAssignedDate']),
+        'pi_salary' => mysqli_real_escape_string($database->con, $_POST['inputBasicSalary']),
+        'pi_activestatus' => mysqli_real_escape_string($database->con, 1),
+        'pi_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
+        'pi_receivedLetterMahalla' => mysqli_real_escape_string($database->con, $Mahalla),
+        'pi_receivedLetterGramasevaka' => mysqli_real_escape_string($database->con, $Gramasevaka),
+        'pi_receivedLetterPolice' => mysqli_real_escape_string($database->con, $Police),
+        'pi_receivedLetterMaulavi' => mysqli_real_escape_string($database->con, $Maulavi)
+        // 'pi_resignedDate' => mysqli_real_escape_string($database->con, "0001-01-01")
+
+    );
+
+    $database->insert_data('tbl_peshimaaamdetails', $insert_to_tbl_peshimaaamdetails);
+    $URL = "forms.php";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+}
+
+// insert into tbl_muazzindetails
+// submitMuazzin button click
+if (isset($_POST['submitMuazzin'])) {
+    
+    if ($_POST['inputMarriedStatus'] == "Yes") {
+        $inputMarriedStatus = 1;
+    } else {
+        $inputMarriedStatus = 0;
+    }
+    if ($_POST["inputIndexNo"] != "") {
+        $inputIndexNo = $_POST["inputIndexNo"];
+    } else {
+        $inputIndexNo = 0;
+    }
+    if ($_POST["inputHomeTP"] != "") {
+        $inputIndexNo = $_POST["inputHomeTP"];
+    } else {
+        $inputIndexNo = "0";
+    }
+    if (isset($_POST['Gramasevaka'])) {
+        $Gramasevaka = 1;
+    } else {
+        $Gramasevaka = 0;
+    }
+    if (isset($_POST['Police'])) {
+        $Police = 1;
+    } else {
+        $Police = 0;
+    }
+    if (isset($_POST['Mahalla'])) {
+        $Mahalla = 1;
+    } else {
+        $Mahalla = 0;
+    }
+    if (isset($_POST['inputDistrict'])) {
+        $address = $_POST['inputAddress'].', '.$_POST['inputDistrict'];
+    } else {
+        $address = $_POST['inputAddress'];
+    }
+
+    
+
+    $insert_to_tbl_muazzindetails = array(
+        'md_village' => mysqli_real_escape_string($database->con, $_POST['inputVillage']),
+        'md_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
+        'md_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+        'md_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        'md_address' => mysqli_real_escape_string($database->con, $address),
+        'md_nic' => mysqli_real_escape_string($database->con, $_POST['inputNIC']),
+        'md_married' => mysqli_real_escape_string($database->con, $inputMarriedStatus),
+        'md_noofkids' => mysqli_real_escape_string($database->con, $_POST['inputKids']),
+        'md_mobileTP' => mysqli_real_escape_string($database->con, $_POST['inputMobile']),
+        'md_homeTP' => mysqli_real_escape_string($database->con, $_POST['inputHomeTP']),
+        'md_assignedDate' => mysqli_real_escape_string($database->con, $_POST['inputAssignedDate']),
+        'md_salary' => mysqli_real_escape_string($database->con, $_POST['inputBasicSalary']),
+        'md_activestatus' => mysqli_real_escape_string($database->con, 1),
+        'md_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
+        'md_receivedLetterMahalla' => mysqli_real_escape_string($database->con, $Mahalla),
+        'md_receivedLetterGramasevaka' => mysqli_real_escape_string($database->con, $Gramasevaka),
+        'md_receivedLetterPolice' => mysqli_real_escape_string($database->con, $Police)
+        // 'md_resignedDate' => mysqli_real_escape_string($database->con, "0001-01-01")
+
+    );
+
+    $database->insert_data('tbl_muazzindetails', $insert_to_tbl_muazzindetails);
+    $URL = "forms.php";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+}

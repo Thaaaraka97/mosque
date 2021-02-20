@@ -43,11 +43,11 @@ $database = new databases();
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputPresidentIndexNo"> Index Number </label>
-                          <input type="text" class="form-control" id="inputPresidentIndexNo" placeholder="Index No">
+                          <input type="text" class="form-control" id="inputPresidentIndexNo" name="inputPresidentIndexNo" placeholder="Index No">
                         </div>
                         <div class="form-group col-md-6">
                           <label for="inputPresidentSubdivision"> Sub-division </label>
-                          <select id="inputPresidentSubdivision" class="form-control">
+                          <select id="inputPresidentSubdivision" name="inputPresidentSubdivision" class="form-control">
                             <option value="0" selected>Choose...</option>
                             <?php
                             $sub_division = $database->select_data('tbl_subdivision');
@@ -61,21 +61,21 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputPresidentName">Name of the President </label>
-                        <input type="text" class="form-control" id="inputPresidentName" placeholder="Name">
+                        <input type="text" class="form-control" id="inputPresidentName" name="inputPresidentName" placeholder="Name">
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputPresidentJob">Job </label>
-                          <input type="text" class="form-control" id="inputPresidentJob" placeholder="Job">
+                          <input type="text" class="form-control" id="inputPresidentJob" name="inputPresidentJob" placeholder="Job">
                         </div>
                         <div class="form-group col-md-6">
                           <label for="inputPresidentTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputPresidentTP" placeholder="077xxxxxxx">
+                          <input type="text" class="form-control" id="inputPresidentTP" name="inputPresidentTP" placeholder="077xxxxxxx">
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="inputPresidentAddress"> Address </label>
-                        <textarea rows="5" class="form-control" id="inputPresidentAddress"></textarea>
+                        <textarea rows="5" class="form-control" id="inputPresidentAddress" name="inputPresidentAddress"></textarea>
                       </div>
                       <div class="w-100 text-right">
                         <button class="btn btn-primary btn-lg" id="TBNext1">Next</button>
@@ -86,11 +86,11 @@ $database = new databases();
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputVPIndexNo"> Index Number </label>
-                          <input type="text" class="form-control" id="inputVPIndexNo" placeholder="Index No">
+                          <input type="text" class="form-control" id="inputVPIndexNo" name="inputVPIndexNo" placeholder="Index No">
                         </div>
                         <div class="form-group col-md-6">
                           <label for="inputVPSubdivision"> Sub-division </label>
-                          <select id="inputVPSubdivision" class="form-control">
+                          <select id="inputVPSubdivision" name="inputVPSubdivision" class="form-control">
                             <option value="0" selected>Choose...</option>
                             <?php
                             foreach ($sub_division as $sub_division_item) {
@@ -103,21 +103,21 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputVPName">Name of the Vice President </label>
-                        <input type="text" class="form-control" id="inputVPName" placeholder="Name">
+                        <input type="text" class="form-control" id="inputVPName" name="inputVPName" placeholder="Name">
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputVPJob">Job </label>
-                          <input type="text" class="form-control" id="inputVPJob" placeholder="Job">
+                          <input type="text" class="form-control" id="inputVPJob" name="inputVPJob" placeholder="Job">
                         </div>
                         <div class="form-group col-md-6">
                           <label for="inputVPTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputVPTP" placeholder="077xxxxxxx">
+                          <input type="text" class="form-control" id="inputVPTP" name="inputVPTP" placeholder="077xxxxxxx">
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="inputVPAddress"> Address </label>
-                        <textarea rows="5" class="form-control" id="inputVPAddress"></textarea>
+                        <textarea rows="5" class="form-control" id="inputVPAddress" name="inputVPAddress"></textarea>
                       </div>
                       <div class="w-100 text-right">
                         <button class="btn btn-success btn-lg" id="TBPrev2">Previous</button>
