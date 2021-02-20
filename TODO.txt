@@ -1,8 +1,0 @@
-***take jqAjax code from test.php and insert into all pages where auto filling is required...
-
-
-preview_villager_details.php -> edit details php code
-preview_janaza_details.php -> edit details php code
-preview_nikkah_details.php -> edit details php code
-
-ask pawwa -> jquery validation error -> change page
