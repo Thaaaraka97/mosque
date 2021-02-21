@@ -36,39 +36,34 @@ $(document).ready(function () {
     $("#bridedetails").show();
   });
 
-
   //   trustee-board.php
   //   Next Buttons
   // next button 1
   $("#TBNext1").click(function (e) {
+    e.preventDefault();
+    // step show/hide
+    $("#presidentdetails").hide();
+    $("#secretarydetails").hide();
+    $("#ASdetails").hide();
+    $("#treasurerdetails").hide();
+    $("#advisoryboard").hide();
 
-      e.preventDefault();
-        // step show/hide
-        $("#presidentdetails").hide();
-        $("#secretarydetails").hide();
-        $("#ASdetails").hide();
-        $("#treasurerdetails").hide();
-        $("#advisoryboard").hide();
-
-        $("#VPdetails").show();
-        
+    $("#VPdetails").show();
   });
 
   // next button 2
   $("#TBNext2").click(function (e) {
+    e.preventDefault();
+    // step show/hide
+    $("#presidentdetails").hide();
+    $("#VPdetails").hide();
+    $("#ASdetails").hide();
+    $("#treasurerdetails").hide();
+    $("#advisoryboard").hide();
 
-        e.preventDefault();
-        // step show/hide
-        $("#presidentdetails").hide();
-        $("#VPdetails").hide();
-        $("#ASdetails").hide();
-        $("#treasurerdetails").hide();
-        $("#advisoryboard").hide();
+    $("#secretarydetails").show();
+  });
 
-        $("#secretarydetails").show();
-   
-  }); 
-  
   // next button 3
   $("#TBNext3").click(function (e) {
     e.preventDefault();
@@ -80,8 +75,8 @@ $(document).ready(function () {
     $("#advisoryboard").hide();
 
     $("#ASdetails").show();
-  }); 
-  
+  });
+
   // next button 4
   $("#TBNext4").click(function (e) {
     e.preventDefault();
@@ -93,8 +88,8 @@ $(document).ready(function () {
     $("#advisoryboard").hide();
 
     $("#treasurerdetails").show();
-  }); 
-  
+  });
+
   // next button 5
   $("#TBNext5").click(function (e) {
     e.preventDefault();
@@ -243,11 +238,11 @@ $(document).ready(function () {
     <div class="form-row">
       <div class="form-group col-md-6">
           <label for="inputMemberIndexNo"> Index Number </label>
-          <input type="text" class="form-control" id="inputMemberIndexNo[]" placeholder="Index No">
+          <input type="text" class="form-control" id="inputMemberIndexNo[]" name="inputMemberIndexNo[]" placeholder="Index No">
       </div>
       <div class="form-group col-md-6">
           <label for="inputMemberSubdivision"> Sub-division </label>
-          <select id="inputMemberSubdivision[]" class="form-control">
+          <select id="inputMemberSubdivision[]" name="inputMemberSubdivision[]" class="form-control">
               <option selected>Choose...</option>
               <option value="Moragala Main-Street">Moragala Main-Street</option>
               <option value="Old Rail Road">Old Rail Road</option>
@@ -266,21 +261,27 @@ $(document).ready(function () {
     </div>
     <div class="form-group">
       <label for="inputMemberName">Name of the Member ${j} </label>
-      <input type="text" class="form-control" id="inputMemberName[]" placeholder="Name">
+      <input type="text" class="form-control" id="inputMemberName[]" name="inputMemberName[]" placeholder="Name">
     </div>
     <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputMemberJob">Job </label>
-        <input type="text" class="form-control" id="inputMemberJob[]" placeholder="Job">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputMemberTP">Telephone Number </label>
-        <input type="text" class="form-control" id="inputMemberTP[]" placeholder="077xxxxxxx">
-      </div>
-    </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputTreasurerTP">Telephone Number </label>
+                          <input type="text" class="form-control" id="inputMemberTP[]" name="inputMemberTP[]" placeholder="077xxxxxxx">
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputTreasurerJob">Job </label>
+                          <input type="text" class="form-control" id="inputMemberJob[]" name="inputMemberJob[]" placeholder="Job">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputTreasurerSalary">Salary </label>
+                          <input type="text" class="form-control" id="inputMemberSalary[]" name="inputMemberSalary[]" placeholder="Salary">
+                        </div>
+                      </div>
     <div class="form-group">
       <label for="inputMemberAddress"> Address </label>
-      <textarea rows = "5" class="form-control" id="inputMemberAddress[]"></textarea>
+      <textarea rows = "5" class="form-control" id="inputMemberAddress[]" name="inputMemberAddress[]"></textarea>
     </div>
     <div class="form-group col-md-6">
         <button type="button" name="remove" id="${j}" class="btn btn-danger btn_remove">Remove</button>
@@ -298,18 +299,6 @@ $(document).ready(function () {
     $("#row" + button_id + "").remove();
   });
 
-  // submit data to handler
-  $("#submitTrusteeBoard").click(function () {
-    $.ajax({
-      url: "/mosque/admin/handlers/advisory-member-handler.php",
-      method: "POST",
-      data: $("#trusteeBoardForm").serialize(),
-      success: function (data) {
-        alert(data);
-        $("#trusteeBoardForm")[0].reset();
-      },
-    });
-  });
 
   //   form_villagers-registration-form.php
   // show/hide College textbox on dropdown change
@@ -606,7 +595,140 @@ $(document).ready(function () {
     });
   });
 
+  // search and auto fill other fields in the form
+  // ajax submit index and subdivision of president to auto fill other part of the form
+  $("#inputPresidentSubdivision").change(function (e) { 
+    e.preventDefault();
+    var inputPresidentIndexNo = $("#inputPresidentIndexNo").val();
+    var inputPresidentSubdivision = $("#inputPresidentSubdivision").val();
+    var data_bundle = "index=" + inputPresidentIndexNo + "&subdivision=" + inputPresidentSubdivision + "&action=find_record";
 
+    $.ajax({
+      type: "post",
+      url: "handlers/trustee_board_form_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputPresidentName").val(result_array[0]);
+        $("#inputPresidentTP").val(result_array[1]);
+        $("#inputPresidentJob").val(result_array[2]);
+        $("#inputPresidentSalary").val(result_array[3]);
+        $("#inputPresidentAddress").val(result_array[4]);
+      }
+    });
+
+    
+  });
+
+  // ajax submit index and subdivision of vice president to auto fill other part of the form
+  $("#inputVPSubdivision").change(function (e) { 
+    e.preventDefault();
+    var inputVPIndexNo = $("#inputVPIndexNo").val();
+    var inputVPSubdivision = $("#inputVPSubdivision").val();
+    var data_bundle = "index=" + inputVPIndexNo + "&subdivision=" + inputVPSubdivision + "&action=find_record";
+
+    $.ajax({
+      type: "post",
+      url: "handlers/trustee_board_form_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputVPName").val(result_array[0]);
+        $("#inputVPTP").val(result_array[1]);
+        $("#inputVPJob").val(result_array[2]);
+        $("#inputVPSalary").val(result_array[3]);
+        $("#inputVPAddress").val(result_array[4]);
+      }
+    });
+
+    
+  });
+
+  // ajax submit index and subdivision of secretary to auto fill other part of the form
+  $("#inputSecretarySubdivision").change(function (e) { 
+    e.preventDefault();
+    var inputSecretaryIndexNo = $("#inputSecretaryIndexNo").val();
+    var inputSecretarySubdivision = $("#inputSecretarySubdivision").val();
+    var data_bundle = "index=" + inputSecretaryIndexNo + "&subdivision=" + inputSecretarySubdivision + "&action=find_record";
+
+    $.ajax({
+      type: "post",
+      url: "handlers/trustee_board_form_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputSecretaryName").val(result_array[0]);
+        $("#inputSecretaryTP").val(result_array[1]);
+        $("#inputSecretaryJob").val(result_array[2]);
+        $("#inputSecretarySalary").val(result_array[3]);
+        $("#inputSecretaryAddress").val(result_array[4]);
+      }
+    });
+
+    
+  });
+
+  // ajax submit index and subdivision of assistant secretary to auto fill other part of the form
+  $("#inputASSubdivision").change(function (e) { 
+    e.preventDefault();
+    var inputASIndexNo = $("#inputASIndexNo").val();
+    var inputASSubdivision = $("#inputASSubdivision").val();
+    var data_bundle = "index=" + inputASIndexNo + "&subdivision=" + inputASSubdivision + "&action=find_record";
+
+    $.ajax({
+      type: "post",
+      url: "handlers/trustee_board_form_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputASName").val(result_array[0]);
+        $("#inputASTP").val(result_array[1]);
+        $("#inputASJob").val(result_array[2]);
+        $("#inputASSalary").val(result_array[3]);
+        $("#inputASAddress").val(result_array[4]);
+      }
+    });
+
+    
+  });
+
+  // ajax submit index and subdivision of treasurer to auto fill other part of the form
+  $("#inputTreasurerSubdivision").change(function (e) { 
+    e.preventDefault();
+    var inputTreasurerIndexNo = $("#inputTreasurerIndexNo").val();
+    var inputTreasurerSubdivision = $("#inputTreasurerSubdivision").val();
+    var data_bundle = "index=" + inputTreasurerIndexNo + "&subdivision=" + inputTreasurerSubdivision + "&action=find_record";
+
+    $.ajax({
+      type: "post",
+      url: "handlers/trustee_board_form_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputTreasurerName").val(result_array[0]);
+        $("#inputTreasurerTP").val(result_array[1]);
+        $("#inputTreasurerJob").val(result_array[2]);
+        $("#inputTreasurerSalary").val(result_array[3]);
+        $("#inputTreasurerAddress").val(result_array[4]);
+      }
+    });
+
+    
+  });
+
+  // ajax submit to trustee_board_form_handler.php
+  $("#submitTrusteeBoard").click(function (e) {
+    var all_data= $("#trusteeBoardForm").serialize();
+    e.preventDefault();
+    $.ajax({
+      type: "post",
+      url: "handlers/trustee_board_form_handler.php",
+      data: $("#trusteeBoardForm").serialize() + "&action=submit",
+      success: function (response) {
+        window.location.href = response;
+      },
+    });
+  });
 
   // function to hide/show view/edit pages in preview
   (function () {
@@ -621,7 +743,4 @@ $(document).ready(function () {
       console.log("invalid");
     }
   })();
-
- 
-
 });

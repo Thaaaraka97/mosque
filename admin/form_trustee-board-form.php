@@ -65,12 +65,18 @@ $database = new databases();
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-6">
+                          <label for="inputPresidentTP">Telephone Number </label>
+                          <input type="text" class="form-control" id="inputPresidentTP" name="inputPresidentTP" placeholder="077xxxxxxx">
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
                           <label for="inputPresidentJob">Job </label>
                           <input type="text" class="form-control" id="inputPresidentJob" name="inputPresidentJob" placeholder="Job">
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="inputPresidentTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputPresidentTP" name="inputPresidentTP" placeholder="077xxxxxxx">
+                          <label for="inputPresidentSalary">Salary </label>
+                          <input type="text" class="form-control" id="inputPresidentSalary" name="inputPresidentSalary" placeholder="Salary">
                         </div>
                       </div>
                       <div class="form-group">
@@ -107,12 +113,18 @@ $database = new databases();
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-6">
+                          <label for="inputVPTP">Telephone Number </label>
+                          <input type="text" class="form-control" id="inputVPTP" name="inputVPTP" placeholder="077xxxxxxx">
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
                           <label for="inputVPJob">Job </label>
                           <input type="text" class="form-control" id="inputVPJob" name="inputVPJob" placeholder="Job">
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="inputVPTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputVPTP" name="inputVPTP" placeholder="077xxxxxxx">
+                          <label for="inputVPSalary">Salary </label>
+                          <input type="text" class="form-control" id="inputVPSalary" name="inputVPSalary" placeholder="Salary">
                         </div>
                       </div>
                       <div class="form-group">
@@ -129,11 +141,11 @@ $database = new databases();
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputSecretaryIndexNo"> Index Number </label>
-                          <input type="text" class="form-control" id="inputSecretaryIndexNo" placeholder="Index No">
+                          <input type="text" class="form-control" id="inputSecretaryIndexNo" name="inputSecretaryIndexNo" placeholder="Index No">
                         </div>
                         <div class="form-group col-md-6">
                           <label for="inputSecretarySubdivision"> Sub-division </label>
-                          <select id="inputSecretarySubdivision" class="form-control">
+                          <select id="inputSecretarySubdivision" name="inputSecretarySubdivision" class="form-control">
                             <option value="0" selected>Choose...</option>
                             <?php
                             foreach ($sub_division as $sub_division_item) {
@@ -146,21 +158,27 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputSecretaryName">Name of the Secretary </label>
-                        <input type="text" class="form-control" id="inputSecretaryName" placeholder="Name">
+                        <input type="text" class="form-control" id="inputSecretaryName" name="inputSecretaryName" placeholder="Name">
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputSecretaryTP">Telephone Number </label>
+                          <input type="text" class="form-control" id="inputSecretaryTP" name="inputSecretaryTP" placeholder="077xxxxxxx">
+                        </div>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputSecretaryJob">Job </label>
-                          <input type="text" class="form-control" id="inputSecretaryJob" placeholder="Job">
+                          <input type="text" class="form-control" id="inputSecretaryJob" name="inputSecretaryJob" placeholder="Job">
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="inputSecretaryTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputSecretaryTP" placeholder="077xxxxxxx">
+                          <label for="inputSecretarySalary">Salary </label>
+                          <input type="text" class="form-control" id="inputSecretarySalary" name="inputSecretarySalary" placeholder="Salary">
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="inputSecretaryAddress"> Address </label>
-                        <textarea rows="5" class="form-control" id="inputSecretaryAddress"></textarea>
+                        <textarea rows="5" class="form-control" id="inputSecretaryAddress" name="inputSecretaryAddress"></textarea>
                       </div>
                       <div class="w-100 text-right">
                         <button class="btn btn-success btn-lg" id="TBPrev3">Previous</button>
@@ -172,11 +190,11 @@ $database = new databases();
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputASIndexNo"> Index Number </label>
-                          <input type="text" class="form-control" id="inputASIndexNo" placeholder="Index No">
+                          <input type="text" class="form-control" id="inputASIndexNo" name="inputASIndexNo" placeholder="Index No">
                         </div>
                         <div class="form-group col-md-6">
                           <label for="inputASSubdivision"> Sub-division </label>
-                          <select id="inputASSubdivision" class="form-control">
+                          <select id="inputASSubdivision" name="inputASSubdivision" class="form-control">
                             <option value="0" selected>Choose...</option>
                             <?php
                             foreach ($sub_division as $sub_division_item) {
@@ -189,21 +207,27 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputASName">Name of the Assistant Secretary </label>
-                        <input type="text" class="form-control" id="inputASName" placeholder="Name">
+                        <input type="text" class="form-control" id="inputASName" name="inputASName" placeholder="Name">
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputASTP">Telephone Number </label>
+                          <input type="text" class="form-control" id="inputASTP" name="inputASTP" placeholder="077xxxxxxx">
+                        </div>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputASJob">Job </label>
-                          <input type="text" class="form-control" id="inputASJob" placeholder="Job">
+                          <input type="text" class="form-control" id="inputASJob" name="inputASJob" placeholder="Job">
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="inputASTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputASTP" placeholder="077xxxxxxx">
+                          <label for="inputASSalary">Salary </label>
+                          <input type="text" class="form-control" id="inputASSalary" name="inputASSalary" placeholder="Salary">
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="inputASAddress"> Address </label>
-                        <textarea rows="5" class="form-control" id="inputASAddress"></textarea>
+                        <textarea rows="5" class="form-control" id="inputASAddress" name="inputASAddress"></textarea>
                       </div>
                       <div class="w-100 text-right">
                         <button class="btn btn-success btn-lg" id="TBPrev4">Previous</button>
@@ -215,11 +239,11 @@ $database = new databases();
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputTreasurerIndexNo"> Index Number </label>
-                          <input type="text" class="form-control" id="inputTreasurerIndexNo" placeholder="Index No">
+                          <input type="text" class="form-control" id="inputTreasurerIndexNo" name="inputTreasurerIndexNo" placeholder="Index No">
                         </div>
                         <div class="form-group col-md-6">
                           <label for="inputTreasurerSubdivision"> Sub-division </label>
-                          <select id="inputTreasurerSubdivision" class="form-control">
+                          <select id="inputTreasurerSubdivision" name="inputTreasurerSubdivision" class="form-control">
                             <option value="0" selected>Choose...</option>
                             <?php
                             foreach ($sub_division as $sub_division_item) {
@@ -232,21 +256,27 @@ $database = new databases();
                       </div>
                       <div class="form-group">
                         <label for="inputTreasurerName">Name of the Treasurer </label>
-                        <input type="text" class="form-control" id="inputTreasurerName" placeholder="Name">
+                        <input type="text" class="form-control" id="inputTreasurerName" name="inputTreasurerName" placeholder="Name">
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputTreasurerTP">Telephone Number </label>
+                          <input type="text" class="form-control" id="inputTreasurerTP" name="inputTreasurerTP" placeholder="077xxxxxxx">
+                        </div>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputTreasurerJob">Job </label>
-                          <input type="text" class="form-control" id="inputTreasurerJob" placeholder="Job">
+                          <input type="text" class="form-control" id="inputTreasurerJob" name="inputTreasurerJob" placeholder="Job">
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="inputTreasurerTP">Telephone Number </label>
-                          <input type="text" class="form-control" id="inputTreasurerTP" placeholder="077xxxxxxx">
+                          <label for="inputTreasurerSalary">Salary </label>
+                          <input type="text" class="form-control" id="inputTreasurerSalary" name="inputTreasurerSalary" placeholder="Salary">
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="inputTreasurerAddress"> Address </label>
-                        <textarea rows="5" class="form-control" id="inputTreasurerAddress"></textarea>
+                        <textarea rows="5" class="form-control" id="inputTreasurerAddress" name="inputTreasurerAddress"></textarea>
                       </div>
                       <div class="w-100 text-right">
                         <button class="btn btn-success btn-lg" id="TBPrev5">Previous</button>
@@ -263,7 +293,7 @@ $database = new databases();
                       </div>
                       <div class="text-center">
                         <button class="btn btn-success btn-lg" id="TBPrev6">Previous</button>
-                        <button class="btn btn-primary btn-lg" id="submitTrusteeBoard" name="submitTrusteeBoard">Submit All</button>
+                        <button class="btn btn-primary btn-lg" id="submitTrusteeBoard">Submit All</button>
                       </div>
                     </div>
                   </form>
