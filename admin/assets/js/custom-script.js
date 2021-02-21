@@ -37,39 +37,11 @@ $(document).ready(function () {
   });
 
 
-  var x=0;
-  $("#trusteeBoardForm").validate({
-    rules: {
-      inputPresidentName: {
-        required: true
-      },
-      
-      
-      
-    },
-    messages: {
-      inputPresidentName: "*required",
-
-    },
-    submitHandler: function(form) {
-      x=1;
-    }
-    
-  });
-
-
   //   trustee-board.php
   //   Next Buttons
   // next button 1
   $("#TBNext1").click(function (e) {
-    
-    $('[name="inputVPIndexNo"]').each(function() {
-      $(this).rules('remove');
-    });
-    
-    $("#trusteeBoardForm").valid(); // validation test only
-    
-    if (x==1) {
+
       e.preventDefault();
         // step show/hide
         $("#presidentdetails").hide();
@@ -79,19 +51,12 @@ $(document).ready(function () {
         $("#advisoryboard").hide();
 
         $("#VPdetails").show();
-        x=0;
-    }
         
   });
+
   // next button 2
   $("#TBNext2").click(function (e) {
-    $( "#inputVPIndexNo" ).rules( "add", {
-      required: true,
-      messages: {
-        required: "*required",
-      }
-    });
-    $("#trusteeBoardForm").valid(); // validation test only
+
         e.preventDefault();
         // step show/hide
         $("#presidentdetails").hide();
@@ -102,7 +67,9 @@ $(document).ready(function () {
 
         $("#secretarydetails").show();
    
-  }); // next button 3
+  }); 
+  
+  // next button 3
   $("#TBNext3").click(function (e) {
     e.preventDefault();
     // step show/hide
@@ -113,7 +80,9 @@ $(document).ready(function () {
     $("#advisoryboard").hide();
 
     $("#ASdetails").show();
-  }); // next button 4
+  }); 
+  
+  // next button 4
   $("#TBNext4").click(function (e) {
     e.preventDefault();
     // step show/hide
@@ -124,7 +93,9 @@ $(document).ready(function () {
     $("#advisoryboard").hide();
 
     $("#treasurerdetails").show();
-  }); // next button 5
+  }); 
+  
+  // next button 5
   $("#TBNext5").click(function (e) {
     e.preventDefault();
     // step show/hide
@@ -150,6 +121,7 @@ $(document).ready(function () {
 
     $("#presidentdetails").show();
   });
+
   // previous button 3
   $("#TBPrev3").click(function (e) {
     e.preventDefault();
@@ -162,6 +134,7 @@ $(document).ready(function () {
 
     $("#VPdetails").show();
   });
+
   // previous button 4
   $("#TBPrev4").click(function (e) {
     e.preventDefault();
@@ -174,6 +147,7 @@ $(document).ready(function () {
 
     $("#secretarydetails").show();
   });
+
   // previous button 5
   $("#TBPrev5").click(function (e) {
     e.preventDefault();
@@ -186,6 +160,7 @@ $(document).ready(function () {
 
     $("#ASdetails").show();
   });
+
   // previous button 6
   $("#TBPrev6").click(function (e) {
     e.preventDefault();
@@ -324,7 +299,7 @@ $(document).ready(function () {
   });
 
   // submit data to handler
-  $("#submit").click(function () {
+  $("#submitTrusteeBoard").click(function () {
     $.ajax({
       url: "/mosque/admin/handlers/advisory-member-handler.php",
       method: "POST",
@@ -549,6 +524,7 @@ $(document).ready(function () {
       $("#avStudent").hide();
     }
   });
+
   // show/hide inputScholIncome div on radio change
   $("input[type=radio][name=inputSchol]").change(function (e) {
     e.preventDefault();
@@ -558,6 +534,7 @@ $(document).ready(function () {
       $("#inputScholIncomeDiv").hide();
     }
   });
+
   // show/hide madhrasa div on radio change
   $("input[type=radio][name=inputMad]").change(function (e) {
     e.preventDefault();
@@ -567,6 +544,7 @@ $(document).ready(function () {
       $("#madhrasa").hide();
     }
   });
+
   // show/hide married div on radio change
   $("input[type=radio][name=inputMarried]").change(function (e) {
     e.preventDefault();
@@ -576,6 +554,7 @@ $(document).ready(function () {
       $("#married").hide();
     }
   });
+
   // show/hide familyIncome div on radio change
   $("input[type=radio][name=inputjobYN]").change(function (e) {
     e.preventDefault();
@@ -585,6 +564,7 @@ $(document).ready(function () {
       $("#familyIncome").hide();
     }
   });
+
   // show/hide madhrasa div on radio change
   $("input[type=radio][name=inputMigrant]").change(function (e) {
     e.preventDefault();
@@ -614,7 +594,6 @@ $(document).ready(function () {
       data: data_bundle,
       success: function (response) {
         var result_array = response.split(",");
-        console.log(result_array);
         $("#inputName").val(result_array[0]);
         if (result_array[1] == "M") {
           $("#inputSexF").removeAttr("checked");
@@ -626,6 +605,8 @@ $(document).ready(function () {
       },
     });
   });
+
+
 
   // function to hide/show view/edit pages in preview
   (function () {
@@ -640,4 +621,7 @@ $(document).ready(function () {
       console.log("invalid");
     }
   })();
+
+ 
+
 });

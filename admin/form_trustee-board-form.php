@@ -37,7 +37,7 @@ $database = new databases();
             <div class="col-md-8 grid-margin stretch-card">
               <div class="card shadow">
                 <div class="card-body">
-                  <form class="pt-3" id="trusteeBoardForm" name="trusteeBoardForm">
+                  <form class="pt-3" id="trusteeBoardForm" name="trusteeBoardForm" method="POST">
                     <div id="presidentdetails">
                       <h4 class="card-title">President Details Form</h4>
                       <div class="form-row">
@@ -263,7 +263,7 @@ $database = new databases();
                       </div>
                       <div class="text-center">
                         <button class="btn btn-success btn-lg" id="TBPrev6">Previous</button>
-                        <Submit class="btn btn-primary btn-lg" id="submit">Submit All</submit>
+                        <button class="btn btn-primary btn-lg" id="submitTrusteeBoard" name="submitTrusteeBoard">Submit All</button>
                       </div>
                     </div>
                   </form>
