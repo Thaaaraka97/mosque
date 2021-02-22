@@ -93,9 +93,9 @@ $database = new databases();
                         <label for="inputMedium">Medium</label>
                         <select id="inputMedium" name="inputMedium" class="form-control">
                           <option value="0" selected>Choose...</option>
-                          <option>Tamil</option>
-                          <option>Sinhala</option>
-                          <option>English</option>
+                          <option value="T">Tamil</option>
+                          <option value="S">Sinhala</option>
+                          <option value="E">English</option>
                         </select>
                       </div>
                       <div class="form-group col-md-3">

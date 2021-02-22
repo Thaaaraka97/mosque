@@ -761,7 +761,13 @@ if (isset($_POST['submitNewRental'])) {
 // insert into tbl_quranmadrasadetails
 // submitQuran button click
 if (isset($_POST['submitQuran'])) {
-
+    if($_POST['inputSex'] == "Male"){
+        $inputSex = "M";
+    }
+    else{
+        $inputSex = "F";
+    }
+    
     $insert_to_tbl_quranmadrasadetails = array(
         'qm_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
         'qm_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputQuranSubdivision']),
