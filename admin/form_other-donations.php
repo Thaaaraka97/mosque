@@ -37,29 +37,29 @@ include "template_parts/header.php";
                             <div class="card shadow">
                                 <div class="card-body">
                                     <h4 class="card-title">Donation Acceptance Form</h4>
-                                    <form class="pt-3">
+                                    <form class="pt-3" method="POST">
                                         <div class="form-group">
                                             <label for="inputName">Name</label>
-                                            <input type="text" class="form-control" id="inputName" placeholder="Name">
+                                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name">
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputDate">Date </label>
-                                                <input type="date" class="form-control" id="inputDate">
+                                                <input type="date" class="form-control" id="inputDate" name="inputDate">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputTP">Telephone Number </label>
-                                                <input type="text" class="form-control" id="inputTP" placeholder="077xxxxxxx">
+                                                <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="077xxxxxxx">
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputAmount">Amount </label>
-                                                <input type="text" class="form-control" id="inputAmount" placeholder="Amount (Rs)">
+                                                <input type="text" class="form-control" id="inputAmount" name="inputAmount" placeholder="Amount (Rs)">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputDonation">Donation</label>
-                                                <select id="inputDonation" class="form-control">
+                                                <select id="inputDonation" name="inputDonation" class="form-control">
                                                     <option value="0" selected>Choose...</option>
                                                     <option value="Local">Local</option>
                                                     <option value="Foreign">Foreign</option>
@@ -69,20 +69,20 @@ include "template_parts/header.php";
                                         <div class="form-row">
                                             <div class="form-group col-md-8">
                                                 <label for="inputAddress"> Address </label>
-                                                <textarea rows = "5" class="form-control" id="inputAddress"></textarea>
+                                                <textarea rows = "5" class="form-control" id="inputAddress" name="inputAddress"></textarea>
                                             </div>
                                             <div class="form-group col-md-4" id="inputCountry">
                                                 <label for="inputAddress2"> Country </label>
-                                                <input type="text" class="form-control" id="inputAddress2" placeholder="Country">
+                                                <input type="text" class="form-control" id="inputAddress2" name="inputAddress2" placeholder="Country">
                                             </div>
                                         </div>
 
                                         <div class=" form-group">
                                             <label for="inputNotes">Notes </label>
-                                            <textarea class="form-control" id="inputNotes" rows="4"></textarea>
+                                            <textarea class="form-control" id="inputNotes" name="inputNotes" rows="4"></textarea>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-lg">Accept Donation</button>
+                                            <button class="btn btn-primary btn-lg" id="submitOtherDonations" name="submitOtherDonations">Accept Donation</button>
 
                                         </div>
                                     </form>

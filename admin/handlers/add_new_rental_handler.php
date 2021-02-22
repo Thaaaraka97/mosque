@@ -12,7 +12,8 @@ $person_details = $database->select_where('tbl_allvillagers', $where);
 
 foreach ($person_details as $person_details_item) {
     echo $person_details_item["av_name"] . ",";
-    echo $person_details_item["av_gender"];
+    echo $person_details_item["av_address"] . ",";
+    echo $person_details_item["av_telephone"];
 }
 
 ?>

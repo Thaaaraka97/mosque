@@ -38,15 +38,15 @@ $database = new databases();
                             <div class="card shadow">
                                 <div class="card-body">
                                     <h4 class="card-title">Donation Acceptance Form</h4>
-                                    <form class="pt-3">
+                                    <form class="pt-3" method="POST">
                                         <div class="form-group">
                                             <label for="inputName">Name</label>
-                                            <input type="text" class="form-control" id="inputName" placeholder="Name">
+                                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name">
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputDonationDisaster">Donation</label>
-                                                <select id="inputDonationDisaster" class="form-control">
+                                                <select id="inputDonationDisaster" name="inputDonationDisaster" class="form-control">
                                                     <option value="0" selected>Choose...</option>
                                                     <option value="Mahalla">Mahalla</option>
                                                     <option value="NonMahalla">Non-Mahalla</option>
@@ -57,11 +57,11 @@ $database = new databases();
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="inputIndexNo"> Index Number </label>
-                                                    <input type="text" class="form-control" id="inputIndexNo" placeholder="Index No">
+                                                    <input type="text" class="form-control" id="inputIndexNo" name="inputIndexNo" placeholder="Index No">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="inputSubdivision"> Sub-division </label>
-                                                    <select id="inputSubdivision" class="form-control">
+                                                    <select id="inputSubdivision" name="inputSubdivision" class="form-control">
                                                         <option value="0" selected>Choose...</option>
                                                         <?php
                                                         $sub_division = $database->select_data('tbl_subdivision');
@@ -77,19 +77,19 @@ $database = new databases();
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputDate">Date </label>
-                                                <input type="date" class="form-control" id="inputDate">
+                                                <input type="date" class="form-control" id="inputDate" name="inputDate">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputAmount">Amount </label>
-                                                <input type="text" class="form-control" id="inputAmount" placeholder="Amount (Rs)">
+                                                <input type="text" class="form-control" id="inputAmount" name="inputAmount" placeholder="Amount (Rs)">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputSubject">Subject </label>
-                                            <input type="text" class="form-control" id="inputSubject" placeholder="Subject">
+                                            <label for="inputSubject">Notes </label>
+                                            <textarea class="form-control" id="inputNotes" name="inputNotes" rows="4"></textarea>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-lg">Accept Donation</button>
+                                            <button class="btn btn-primary btn-lg" id="submitDisasterDonation" name="submitDisasterDonation">Accept Donation</button>
 
                                         </div>
                                     </form>

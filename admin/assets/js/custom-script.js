@@ -564,6 +564,19 @@ $(document).ready(function () {
     }
   });
 
+  //   form_add-new-rental.php
+  // show/hide lease/monthly div on radio change
+  $("input[type=radio][name=inputLease]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Yes") {
+      $("#lease").show();
+      $("#monthlyPayment").hide();
+    } else {
+      $("#monthlyPayment").show();
+      $("#lease").hide();
+    }
+  });
+
   //   form_villagers-registration-form.php
   $("#addAnother").click(function () {
     document.location.href = "form_villagers-registration-form-step2.php";
@@ -591,6 +604,75 @@ $(document).ready(function () {
           $("#inputSexM").removeAttr("checked");
           $("#inputSexF").attr("checked", "checked");
         }
+      },
+    });
+  });
+
+  // form_add-new-rental.php
+  // submit data to find the details
+  $("#inputnewRentalSubdivision").change(function (e) {
+    e.preventDefault();
+    var index = $("#inputIndexNo").val();
+    var subdivision = $("#inputnewRentalSubdivision").val();
+    var data_bundle = "index=" + index + "&subdivision=" + subdivision;
+    $.ajax({
+      type: "post",
+      url: "handlers/add_new_rental_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputName").val(result_array[0]);
+        $("#inputAddress").val(result_array[1]);
+        $("#inputTP").val(result_array[2]);
+        
+      },
+    });
+  });
+
+  // form_quran-registration-form.php
+  // submit data to find the details
+  $("#inputQuranSubdivision").change(function (e) {
+    e.preventDefault();
+    var index = $("#inputIndexNo").val();
+    var subdivision = $("#inputQuranSubdivision").val();
+    var data_bundle = "index=" + index + "&subdivision=" + subdivision;
+    $.ajax({
+      type: "post",
+      url: "handlers/quran_mdhrasa_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputName").val(result_array[0]);
+        $("#inputAddress").val(result_array[1]);
+        $("#inputBirthday").val(result_array[2]);
+        if (result_array[3] == "M") {
+          $("#inputSexF").removeAttr("checked");
+          $("#inputSexM").attr("checked", "checked");
+        } else {
+          $("#inputSexM").removeAttr("checked");
+          $("#inputSexF").attr("checked", "checked");
+        }
+        
+      },
+    });
+  });
+
+  // form_board-member-donations.php
+  // submit data to find the details
+  $("#inputTrusteeSubdivision").change(function (e) {
+    e.preventDefault();
+    var index = $("#inputIndexNo").val();
+    var subdivision = $("#inputTrusteeSubdivision").val();
+    var data_bundle = "index=" + index + "&subdivision=" + subdivision;
+    $.ajax({
+      type: "post",
+      url: "handlers/board_member_donation_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputName").val(result_array[0]);
+        $("#inputDesignation").val(result_array[1]);
+        $("#inputAddress").val(result_array[2]);
       },
     });
   });
@@ -725,7 +807,9 @@ $(document).ready(function () {
       url: "handlers/trustee_board_form_handler.php",
       data: $("#trusteeBoardForm").serialize() + "&action=submit",
       success: function (response) {
+        console.log(response);
         window.location.href = response;
+        window.location.href = "forms.php";
       },
     });
   });

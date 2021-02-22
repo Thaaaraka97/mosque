@@ -156,11 +156,22 @@ if ($action == "submit") {
 
     );
 
-    $database->insert_data('tbl_trusteeboarddetails', $insert_president_details);
-    $database->insert_data('tbl_trusteeboarddetails', $insert_VP_details);
-    $database->insert_data('tbl_trusteeboarddetails', $insert_Secretary_details);
-    $database->insert_data('tbl_trusteeboarddetails', $insert_AS_details);
-    $database->insert_data('tbl_trusteeboarddetails', $insert_Treasurer_details);
+    $insert1 = $database->insert_data('tbl_trusteeboarddetails', $insert_president_details);
+    $insert2 = $database->insert_data('tbl_trusteeboarddetails', $insert_VP_details);
+    $insert3 = $database->insert_data('tbl_trusteeboarddetails', $insert_Secretary_details);
+    $insert4 = $database->insert_data('tbl_trusteeboarddetails', $insert_AS_details);
+    $insert5 = $database->insert_data('tbl_trusteeboarddetails', $insert_Treasurer_details);
+
+    if ($insert1) {
+        if ($insert2) {
+            if ($insert3) {
+                if ($insert4) {
+                    if ($insert5) {
+                    }
+                }
+            }
+        }
+    }
 
     $advisoryMembers = count($_POST["inputMemberIndexNo"]);
     if ($advisoryMembers > 0) {
@@ -182,7 +193,6 @@ if ($action == "submit") {
 
             );
             $database->insert_data('tbl_trusteeboarddetails', $insert_advisory_details);
-
         }
     }
 

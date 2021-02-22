@@ -152,15 +152,19 @@
   display: none;
 }
 
-/* preview_villager-details_step-2.php */
-/* hide newMigrant div */
+/* hide viewDetails div */
 #viewDetails {
   display: none;
 }
 
-/* preview_villager-details_step-2.php */
-/* hide newMigrant div */
+/* hide editDetails div */
 #editDetails {
+  display: none;
+}
+
+/* form_add-new-rental.php */
+/* hide lease div */
+#lease {
   display: none;
 }
 

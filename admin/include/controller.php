@@ -710,3 +710,160 @@ if (isset($_POST['submitMuazzin'])) {
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
+
+// insert into tbl_rentalsregisteration
+// submitNewRental button click
+if (isset($_POST['submitNewRental'])) {
+
+    if ($_POST["inputIndexNo"] != "") {
+        $inputIndexNo = $_POST["inputIndexNo"];
+    } else {
+        $inputIndexNo = 0;
+    }
+    if ($_POST["inputLease"] == "Yes") {
+        $inputLease = 1;
+    } else {
+        $inputLease = 0;
+    }
+    if ($_POST["inputLeaseAmount"] != "") {
+        $inputLeaseAmount = $_POST["inputLeaseAmount"];
+    } else {
+        $inputLeaseAmount = 0;
+    }
+    if ($_POST["inputMonthlyAmount"] != "") {
+        $inputMonthlyAmount = $_POST["inputMonthlyAmount"];
+    } else {
+        $inputMonthlyAmount = 0;
+    }
+
+    $insert_to_tbl_rentalsregisteration = array(
+        'rr_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
+        'rr_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputnewRentalSubdivision']),
+        'rr_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        'rr_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+        'rr_startDate' => mysqli_real_escape_string($database->con, $_POST['inputRentalStartDate']),
+        'rr_endDate' => mysqli_real_escape_string($database->con, $_POST['inputRentalEndDate']),
+        'rr_downpayment' => mysqli_real_escape_string($database->con, $_POST['inputDownPayment']),
+        'rr_monthlyPayment' => mysqli_real_escape_string($database->con, $inputMonthlyAmount),
+        'rr_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
+        'rr_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
+        'rr_lease' => mysqli_real_escape_string($database->con, $inputLease),
+        'rr_leasePayment' => mysqli_real_escape_string($database->con, $inputLeaseAmount)
+
+    );
+
+    $database->insert_data('tbl_rentalsregisteration', $insert_to_tbl_rentalsregisteration);
+    $URL = "forms.php";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+}
+
+// insert into tbl_quranmadrasadetails
+// submitQuran button click
+if (isset($_POST['submitQuran'])) {
+
+    $insert_to_tbl_quranmadrasadetails = array(
+        'qm_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+        'qm_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputQuranSubdivision']),
+        'qm_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        'qm_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+        'qm_dob' => mysqli_real_escape_string($database->con, $_POST['inputBirthday']),
+        'qm_gender' => mysqli_real_escape_string($database->con, $_POST['inputSex']),
+        'qm_medium' => mysqli_real_escape_string($database->con, $_POST['inputMedium']),
+        'qm_grade' => mysqli_real_escape_string($database->con, $_POST['inputGrade']),
+        'qm_school' => mysqli_real_escape_string($database->con, $_POST['inputSchool']),
+        'qm_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
+        'qm_startDate' => mysqli_real_escape_string($database->con, $_POST['inputAdmissionDate']),
+        'qm_guardName' => mysqli_real_escape_string($database->con, $_POST['inputGuardianName'])
+
+    );
+
+    $database->insert_data('tbl_quranmadrasadetails', $insert_to_tbl_quranmadrasadetails);
+    $URL = "forms.php";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+}
+
+// insert into tbl_trusteeboarddonation
+// submitBoardDonations button click
+if (isset($_POST['submitBoardDonations'])) {
+
+    $insert_to_tbl_trusteeboarddonation = array(
+        'tbd_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+        'tbd_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputTrusteeSubdivision']),
+        'tbd_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        'tbd_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+        'tbd_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
+        'tbd_designation' => mysqli_real_escape_string($database->con, $_POST['inputDesignation']),
+        'tbd_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
+        'tbd_date' => mysqli_real_escape_string($database->con, $_POST['inputDate'])
+
+    );
+
+    $database->insert_data('tbl_trusteeboarddonation', $insert_to_tbl_trusteeboarddonation);
+    $URL = "forms.php";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+}
+
+// insert into tbl_donations
+// submitDisasterDonation button click
+if (isset($_POST['submitDisasterDonation'])) {
+    if ($_POST['inputIndexNo'] != "") {
+        $inputIndexNo = $_POST['inputIndexNo'];
+    }
+    else {
+        $inputIndexNo = 0;
+    }
+
+    $insert_to_tbl_donations_disaster = array(
+        'd_donationType' => mysqli_real_escape_string($database->con, "Disaster Relief Donation"),
+        'd_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
+        'd_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+        'd_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        'd_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
+        'd_mahallaorNonMahalla' => mysqli_real_escape_string($database->con, $_POST['inputDonationDisaster']),
+        'd_date' => mysqli_real_escape_string($database->con, $_POST['inputDate']),
+        'd_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
+        'd_localorForeign' => mysqli_real_escape_string($database->con, "0"),
+        'd_country' => mysqli_real_escape_string($database->con, "0"),
+        'd_address' => mysqli_real_escape_string($database->con, "0")
+    );
+
+    $database->insert_data('tbl_donations', $insert_to_tbl_donations_disaster);
+    $URL = "forms.php";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+}
+
+// insert into tbl_donations
+// submitNewRental button click
+if (isset($_POST['submitOtherDonations'])) {
+    
+    if ($_POST['inputAddress2'] != "") {
+        $inputAddress2 = $_POST['inputAddress2'];
+    }
+    else {
+        $inputAddress2 = 0;
+    }
+
+    $insert_to_tbl_donations_other = array(
+        'd_donationType' => mysqli_real_escape_string($database->con, "Other Donation"),
+        'd_index' => mysqli_real_escape_string($database->con, 0),
+        'd_subdivision' => mysqli_real_escape_string($database->con, "0"),
+        'd_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        'd_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
+        'd_mahallaorNonMahalla' => mysqli_real_escape_string($database->con, "0"),
+        'd_date' => mysqli_real_escape_string($database->con, $_POST['inputDate']),
+        'd_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
+        'd_localorForeign' => mysqli_real_escape_string($database->con, $_POST['inputDonation']),
+        'd_country' => mysqli_real_escape_string($database->con, $inputAddress2),
+        'd_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+        'd_tp' => mysqli_real_escape_string($database->con, $_POST['inputTP'])
+    );
+
+    $database->insert_data('tbl_donations', $insert_to_tbl_donations_other);
+    $URL = "forms.php";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+}
