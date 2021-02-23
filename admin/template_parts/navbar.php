@@ -68,9 +68,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="preview_saandha-details.php"> Saandha Details </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="preview_villager-details.php"> All Villagers Details </a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="preview_widow-details.php"> Widow Details </a>
                     </li>
@@ -82,10 +80,16 @@
             <div class="collapse" id="preview-dropdown">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
+                        <a class="nav-link" href="preview_villager-details.php?action=allvillagers"> All Villagers Details </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="preview_nikkah-details.php"> Nikkah Details </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_janaza-details.php"> Janaza Details </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_trustee_board-details.php"> Trustee Board Details </a>
                     </li>
                 </ul>
             </div>

@@ -814,6 +814,14 @@ $(document).ready(function () {
     });
   });
 
+    // ajax submit list down details according to the selection
+    $("#listDetails").change(function (e) { 
+      e.preventDefault();
+      var listDetails = $("#listDetails").val();
+      window.location.href = "preview_villager-details.php?action="+listDetails;
+      
+    });
+
   // function to hide/show view/edit pages in preview
   (function () {
     if (action == "view") {

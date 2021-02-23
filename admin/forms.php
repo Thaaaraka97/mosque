@@ -19,10 +19,42 @@ include "template_parts/header.php";
       <?php
 
       include "template_parts/topbar.php";
+      if (isset($_GET["deleted"])) {
+        $success_message = 'Record Deleted';
+      }
+      if (isset($_GET["inserted_records"])) {
+        $success_message = 'All the records are added to the Database!';
+      }
+      if (isset($_GET["inserted_record"])) {
+        $success_message = 'Record is added to the Database!';
+      }
       ?>
       <!-- partial -->
       <div class="main-panel" id="cardhover">
         <div class="content-wrapper">
+
+          <?php
+          if (isset($success_message)) {
+            if (isset($_GET["inserted_records"]) || isset($_GET["inserted_record"])) {
+              echo "
+            <div class='alert alert-primary alert-dismissible' role='alert'>" . $success_message . "
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+          </div>";
+            }
+            elseif (isset($_GET["deleted"])) {
+              echo "
+            <div class='alert alert-danger alert-dismissible' role='alert'>" . $success_message . "
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+          </div>";
+            }
+            
+          }
+          ?>
+
           <div class="page-header">
             <h3 class="page-title"> Forms </h3>
 

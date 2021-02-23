@@ -1,6 +1,7 @@
 <?php
 include "include/db-connection.php";
 $database = new databases();
+$URL = "forms.php?inserted_record=1";
 
 // insert data into tbl_temp_allvillagers
 // addAVMember button click
@@ -57,57 +58,57 @@ if (isset($_POST["addAVMember"])) {
 // addAnother button click
 if (isset($_POST["addAnother"])) {
 
-    if ($_POST["inputGuardianID"] != "" ) {
+    if ($_POST["inputGuardianID"] != "") {
         $inputGuardianID = $_POST["inputGuardianID"];
     } else {
         $inputGuardianID = 0;
     }
-    if ($_POST["inputGuardRelationship"] != "" ) {
+    if ($_POST["inputGuardRelationship"] != "") {
         $inputGuardRelationship = $_POST["inputGuardRelationship"];
     } else {
         $inputGuardRelationship = "0";
     }
-    if ($_POST["inputCollege"] != "" ) {
+    if ($_POST["inputCollege"] != "") {
         $inputCollege = $_POST["inputCollege"];
     } else {
         $inputCollege = "0";
     }
-    if ($_POST["inputScholIncome"] != "" ) {
+    if ($_POST["inputScholIncome"] != "") {
         $inputScholIncome = $_POST["inputScholIncome"];
     } else {
         $inputScholIncome = 0;
     }
-    if ($_POST["inputMadType"] != "" ) {
+    if ($_POST["inputMadType"] != "") {
         $inputMadType = $_POST["inputMadType"];
     } else {
         $inputMadType = "0";
     }
-    if ($_POST["inputMadName"] != "" ) {
+    if ($_POST["inputMadName"] != "") {
         $inputMadName = $_POST["inputMadName"];
     } else {
         $inputMadName = "0";
     }
-    if ($_POST["inputMadStart"] != "" ) {
+    if ($_POST["inputMadStart"] != "") {
         $inputMadStart = $_POST["inputMadStart"];
     } else {
         $inputMadStart = "0";
     }
-    if ($_POST["inputMadExpense"] != "" ) {
+    if ($_POST["inputMadExpense"] != "") {
         $inputMadExpense = $_POST["inputMadExpense"];
     } else {
         $inputMadExpense = 0;
     }
-    if ($_POST["inputSpouse"] != "" ) {
+    if ($_POST["inputSpouse"] != "") {
         $inputSpouse = $_POST["inputSpouse"];
     } else {
         $inputSpouse = 0;
     }
-    if ($_POST["inputJob"] != "" ) {
+    if ($_POST["inputJob"] != "") {
         $inputJob = $_POST["inputJob"];
     } else {
         $inputJob = "0";
     }
-    if ($_POST["inputMonthlyIncomePersonal"] != "" ) {
+    if ($_POST["inputMonthlyIncomePersonal"] != "") {
         $inputMonthlyIncomePersonal = $_POST["inputMonthlyIncomePersonal"];
     } else {
         $inputMonthlyIncomePersonal = 0;
@@ -141,6 +142,16 @@ if (isset($_POST["addAnother"])) {
         $inputSchol = 1;
     } else {
         $inputSchol = 0;
+    }
+    if ($_POST['inputSaandhaStatus'] == "Yes") {
+        $inputSaandhaStatus = 1;
+    } else {
+        $inputSaandhaStatus = 0;
+    }
+    if ($_POST['inputMad'] == "Yes") {
+        $inputMad = 1;
+    } else {
+        $inputMad = 0;
     }
     if ($_POST['inputGrade'] == "") {
         $inputGrade = 0;
@@ -200,6 +211,7 @@ if (isset($_POST["addAnother"])) {
         'av_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
         'av_isGuardian' => mysqli_real_escape_string($database->con, $inputGuardianStatus),
         'av_guardianIndex' => mysqli_real_escape_string($database->con, $inputGuardianID),
+        'av_saandhaStatus' => mysqli_real_escape_string($database->con, $inputSaandhaStatus),
         'av_guardianRelationship' => mysqli_real_escape_string($database->con, $_POST['inputGuardRelationship']),
         'av_eduQual' => mysqli_real_escape_string($database->con, $_POST['inputEduQual']),
         'av_addQual' => mysqli_real_escape_string($database->con, $_POST['inputAddQual']),
@@ -208,6 +220,7 @@ if (isset($_POST["addAnother"])) {
         'av_eduGrade' => mysqli_real_escape_string($database->con, $inputGrade),
         'av_scholStatus' => mysqli_real_escape_string($database->con, $inputSchol),
         'av_scholAmount' => mysqli_real_escape_string($database->con, $inputScholIncome),
+        'av_madChild_status' => mysqli_real_escape_string($database->con, $inputMad),
         'av_madChild_type' => mysqli_real_escape_string($database->con, $inputMadType),
         'av_madChild_madrasaName' => mysqli_real_escape_string($database->con, $inputMadName),
         'av_madChild_startDate' => mysqli_real_escape_string($database->con, $inputMadStart),
@@ -234,7 +247,7 @@ if (isset($_POST["submitSaandha"])) {
     } else {
         $inputGuardianID = 0;
     }
-    if ($_POST["inputGuardRelationship"]!= "" ) {
+    if ($_POST["inputGuardRelationship"] != "") {
         $inputGuardRelationship = $_POST["inputGuardRelationship"];
     } else {
         $inputGuardRelationship = "0";
@@ -314,6 +327,11 @@ if (isset($_POST["submitSaandha"])) {
     } else {
         $inputSchol = 0;
     }
+    if ($_POST['inputSaandhaStatus'] == "Yes") {
+        $inputSaandhaStatus = 1;
+    } else {
+        $inputSaandhaStatus = 0;
+    }
     if ($_POST['inputSex'] == "Male") {
         $inputSex = "M";
     } else {
@@ -323,6 +341,11 @@ if (isset($_POST["submitSaandha"])) {
         $inputGrade = 0;
     } else {
         $inputGrade = $_POST['inputGrade'];
+    }
+    if ($_POST['inputMad'] == "Yes") {
+        $inputMad = 1;
+    } else {
+        $inputMad = 0;
     }
 
     $data_from_temp = $database->select_data('tbl_temp_allvillagers');
@@ -377,6 +400,7 @@ if (isset($_POST["submitSaandha"])) {
         'av_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
         'av_isGuardian' => mysqli_real_escape_string($database->con, $inputGuardianStatus),
         'av_guardianIndex' => mysqli_real_escape_string($database->con, $inputGuardianID),
+        'av_saandhaStatus' => mysqli_real_escape_string($database->con, $inputSaandhaStatus),
         'av_guardianRelationship' => mysqli_real_escape_string($database->con, $_POST['inputGuardRelationship']),
         'av_eduQual' => mysqli_real_escape_string($database->con, $_POST['inputEduQual']),
         'av_addQual' => mysqli_real_escape_string($database->con, $_POST['inputAddQual']),
@@ -385,7 +409,8 @@ if (isset($_POST["submitSaandha"])) {
         'av_eduGrade' => mysqli_real_escape_string($database->con, $inputGrade),
         'av_scholStatus' => mysqli_real_escape_string($database->con, $inputSchol),
         'av_scholAmount' => mysqli_real_escape_string($database->con, $inputScholIncome),
-        'av_madChild_type' => mysqli_real_escape_string($database->con, $inputMadType),
+        'av_scholAmount' => mysqli_real_escape_string($database->con, $inputScholIncome),
+        'av_madChild_status' => mysqli_real_escape_string($database->con, $inputMad),
         'av_madChild_madrasaName' => mysqli_real_escape_string($database->con, $inputMadName),
         'av_madChild_startDate' => mysqli_real_escape_string($database->con, $inputMadStart),
         'av_madChild_avgMonthlyExpense	' => mysqli_real_escape_string($database->con, $inputMadExpense),
@@ -401,7 +426,7 @@ if (isset($_POST["submitSaandha"])) {
 
     if ($database->insert_data('tbl_allvillagers', $insert_to_tbl_allvillagers)) {
         $database->delete_all('tbl_temp_allvillagers');
-        $URL = "forms.php";
+        $URL = "forms.php?inserted_records=1";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
@@ -475,7 +500,7 @@ if (isset($_POST['submitNikkah'])) {
     );
 
     $database->insert_data('tbl_nikkahdetails', $insert_to_tbl_nikkahdetails);
-    $URL = "forms.php";
+    $URL = "forms.php?inserted_records=1";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
@@ -502,48 +527,53 @@ if (isset($_POST['submitJanaza'])) {
         'jd_specialNotes' => mysqli_real_escape_string($database->con, $_POST['inputNotes'])
 
     );
+    if ($database->insert_data('tbl_janazadetails', $insert_to_tbl_janazadetails)) {
+        $update_data = array(
+            'av_aliveOrDeceased' => mysqli_real_escape_string($database->con, 0)
+        );
+        $where_condition = array(
+            'av_index'     =>     $_POST["inputIndexNoDeceased"],
+            'av_subDivision'     =>     $_POST["inputJanazaSubdivision"]
+        );
+        if ($database->update("tbl_allvillagers", $update_data, $where_condition)) {
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+        }
+    }
+    // $URL = "forms.php?inserted_record=1";
 
-    $database->insert_data('tbl_janazadetails', $insert_to_tbl_janazadetails);
-    $URL = "forms.php";
-    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
 
 // insert into tbl_specialbhyan
 // submitBhayan button click
 if (isset($_POST['submitBhayan'])) {
     $inputDateToday = date("Y-m-d");
-    if($_POST['inputDate'] != ""){
+    if ($_POST['inputDate'] != "") {
         $inputDate = $_POST['inputDate'];
-    }
-    else{
+    } else {
         $inputDate = $inputDateToday;
     }
-    if($_POST['inputAmountMeals'] != ""){
+    if ($_POST['inputAmountMeals'] != "") {
         $inputAmountMeals = $_POST['inputAmountMeals'];
-    }
-    else{
+    } else {
         $inputAmountMeals = 0;
     }
-    if($_POST['inputAmountTransport'] != ""){
+    if ($_POST['inputAmountTransport'] != "") {
         $inputAmountTransport = $_POST['inputAmountTransport'];
-    }
-    else{
+    } else {
         $inputAmountTransport = 0;
     }
-    if($_POST['inputAmountTea'] != ""){
+    if ($_POST['inputAmountTea'] != "") {
         $inputAmountTea = $_POST['inputAmountTea'];
-    }
-    else{
+    } else {
         $inputAmountTea = 0;
     }
-    if($_POST['inputAmountOther'] != ""){
+    if ($_POST['inputAmountOther'] != "") {
         $inputAmountOther = $_POST['inputAmountOther'];
-    }
-    else{
+    } else {
         $inputAmountOther = 0;
     }
-    
+
 
     $insert_to_tbl_specialbhyan = array(
         'sb_topic' => mysqli_real_escape_string($database->con, $_POST['inputTopic']),
@@ -560,7 +590,7 @@ if (isset($_POST['submitBhayan'])) {
     );
 
     $database->insert_data('tbl_specialbhyan', $insert_to_tbl_specialbhyan);
-    $URL = "forms.php";
+    // $URL = "forms.php?inserted_record=1";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
@@ -568,7 +598,7 @@ if (isset($_POST['submitBhayan'])) {
 // insert into tbl_peshimaaamdetails
 // submitPeshImaam button click
 if (isset($_POST['submitPeshImaam'])) {
-    
+
     if ($_POST['inputMarriedStatus'] == "Yes") {
         $inputMarriedStatus = 1;
     } else {
@@ -605,12 +635,12 @@ if (isset($_POST['submitPeshImaam'])) {
         $Maulavi = 0;
     }
     if (isset($_POST['inputDistrict'])) {
-        $address = $_POST['inputAddress'].', '.$_POST['inputDistrict'];
+        $address = $_POST['inputAddress'] . ', ' . $_POST['inputDistrict'];
     } else {
         $address = $_POST['inputAddress'];
     }
 
-    
+
 
     $insert_to_tbl_peshimaaamdetails = array(
         'pi_village' => mysqli_real_escape_string($database->con, $_POST['inputVillage']),
@@ -636,7 +666,7 @@ if (isset($_POST['submitPeshImaam'])) {
     );
 
     $database->insert_data('tbl_peshimaaamdetails', $insert_to_tbl_peshimaaamdetails);
-    $URL = "forms.php";
+    // $URL = "forms.php?inserted_record=1";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
@@ -644,7 +674,7 @@ if (isset($_POST['submitPeshImaam'])) {
 // insert into tbl_muazzindetails
 // submitMuazzin button click
 if (isset($_POST['submitMuazzin'])) {
-    
+
     if ($_POST['inputMarriedStatus'] == "Yes") {
         $inputMarriedStatus = 1;
     } else {
@@ -676,12 +706,12 @@ if (isset($_POST['submitMuazzin'])) {
         $Mahalla = 0;
     }
     if (isset($_POST['inputDistrict'])) {
-        $address = $_POST['inputAddress'].', '.$_POST['inputDistrict'];
+        $address = $_POST['inputAddress'] . ', ' . $_POST['inputDistrict'];
     } else {
         $address = $_POST['inputAddress'];
     }
 
-    
+
 
     $insert_to_tbl_muazzindetails = array(
         'md_village' => mysqli_real_escape_string($database->con, $_POST['inputVillage']),
@@ -706,7 +736,7 @@ if (isset($_POST['submitMuazzin'])) {
     );
 
     $database->insert_data('tbl_muazzindetails', $insert_to_tbl_muazzindetails);
-    $URL = "forms.php";
+    // $URL = "forms.php?inserted_record=1";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
@@ -753,7 +783,6 @@ if (isset($_POST['submitNewRental'])) {
     );
 
     $database->insert_data('tbl_rentalsregisteration', $insert_to_tbl_rentalsregisteration);
-    $URL = "forms.php";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
@@ -761,20 +790,19 @@ if (isset($_POST['submitNewRental'])) {
 // insert into tbl_quranmadrasadetails
 // submitQuran button click
 if (isset($_POST['submitQuran'])) {
-    if($_POST['inputSex'] == "Male"){
+    if ($_POST['inputSex'] == "Male") {
         $inputSex = "M";
-    }
-    else{
+    } else {
         $inputSex = "F";
     }
-    
+
     $insert_to_tbl_quranmadrasadetails = array(
         'qm_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
         'qm_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputQuranSubdivision']),
         'qm_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
         'qm_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
         'qm_dob' => mysqli_real_escape_string($database->con, $_POST['inputBirthday']),
-        'qm_gender' => mysqli_real_escape_string($database->con, $_POST['inputSex']),
+        'qm_gender' => mysqli_real_escape_string($database->con, $inputSex),
         'qm_medium' => mysqli_real_escape_string($database->con, $_POST['inputMedium']),
         'qm_grade' => mysqli_real_escape_string($database->con, $_POST['inputGrade']),
         'qm_school' => mysqli_real_escape_string($database->con, $_POST['inputSchool']),
@@ -785,7 +813,7 @@ if (isset($_POST['submitQuran'])) {
     );
 
     $database->insert_data('tbl_quranmadrasadetails', $insert_to_tbl_quranmadrasadetails);
-    $URL = "forms.php";
+    // $URL = "forms.php";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
@@ -807,7 +835,7 @@ if (isset($_POST['submitBoardDonations'])) {
     );
 
     $database->insert_data('tbl_trusteeboarddonation', $insert_to_tbl_trusteeboarddonation);
-    $URL = "forms.php";
+    // $URL = "forms.php";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
@@ -817,8 +845,7 @@ if (isset($_POST['submitBoardDonations'])) {
 if (isset($_POST['submitDisasterDonation'])) {
     if ($_POST['inputIndexNo'] != "") {
         $inputIndexNo = $_POST['inputIndexNo'];
-    }
-    else {
+    } else {
         $inputIndexNo = 0;
     }
 
@@ -837,7 +864,7 @@ if (isset($_POST['submitDisasterDonation'])) {
     );
 
     $database->insert_data('tbl_donations', $insert_to_tbl_donations_disaster);
-    $URL = "forms.php";
+    // $URL = "forms.php";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
@@ -845,11 +872,10 @@ if (isset($_POST['submitDisasterDonation'])) {
 // insert into tbl_donations
 // submitNewRental button click
 if (isset($_POST['submitOtherDonations'])) {
-    
+
     if ($_POST['inputAddress2'] != "") {
         $inputAddress2 = $_POST['inputAddress2'];
-    }
-    else {
+    } else {
         $inputAddress2 = 0;
     }
 
@@ -869,7 +895,7 @@ if (isset($_POST['submitOtherDonations'])) {
     );
 
     $database->insert_data('tbl_donations', $insert_to_tbl_donations_other);
-    $URL = "forms.php";
+    // $URL = "forms.php";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }

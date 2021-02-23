@@ -147,6 +147,27 @@ $database = new databases();
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
+                                                        <div class="form-group row pt-3">
+                                                            <div class="col-md-4 pt-2 d-flex align-items-center text-right">
+                                                                <label class="form-label"> Saandha registered ? </label>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input type="radio" class="form-check-input" name="inputSaandhaStatus" id="inputSaandhaStatusY" value="Yes"> Yes </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input type="radio" class="form-check-input" name="inputSaandhaStatus" id="inputSaandhaStatusN" value="No" checked> No </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
                                                         <label for="inputEduQual">Educational Qualifications</label>
                                                         <select id="inputEduQual" name="inputEduQual" class="form-control">
                                                             <option value="0" selected>Choose...</option>
