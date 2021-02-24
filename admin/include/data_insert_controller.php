@@ -411,6 +411,7 @@ if (isset($_POST["submitSaandha"])) {
         'av_scholAmount' => mysqli_real_escape_string($database->con, $inputScholIncome),
         'av_scholAmount' => mysqli_real_escape_string($database->con, $inputScholIncome),
         'av_madChild_status' => mysqli_real_escape_string($database->con, $inputMad),
+        'av_madChild_type' => mysqli_real_escape_string($database->con, $inputMadType),
         'av_madChild_madrasaName' => mysqli_real_escape_string($database->con, $inputMadName),
         'av_madChild_startDate' => mysqli_real_escape_string($database->con, $inputMadStart),
         'av_madChild_avgMonthlyExpense	' => mysqli_real_escape_string($database->con, $inputMadExpense),

@@ -76,7 +76,7 @@ foreach ($trustee_board_details as $trustee_board_details_item) {
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>forms.php">Forms</a></li>
-                                <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_nikkah-details.php">Details Preview</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_trustee_board-details.php">Details Preview</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Details Preview Step-2</li>
                             </ol>
                         </nav>

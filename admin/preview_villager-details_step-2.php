@@ -208,7 +208,7 @@ $age = $database->calculate_age($dob);
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>forms.php">Forms</a></li>
-                                <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_villager-details.php">Details Preview</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_villager-details.php?action=allvillagers">Details Preview</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Details Preview Step-2</li>
                             </ol>
                         </nav>
