@@ -1,6 +1,7 @@
 <?php
 include "../include/db-connection.php";
 $database = new Databases;
+$today = date("Y-m-d");
 
 $id = "";
 $action = $_POST["action"];
@@ -206,7 +207,8 @@ elseif ($action == "submit") {
 
 elseif ($action == "terminate") {
     $update_data = array(
-        'tb_isActive' => mysqli_real_escape_string($database->con, 0)
+        'tb_isActive' => mysqli_real_escape_string($database->con, 0),
+        'tb_endDate' => mysqli_real_escape_string($database->con, $today)
     );
     $where_condition = array(
         'tb_id'     =>     $id
