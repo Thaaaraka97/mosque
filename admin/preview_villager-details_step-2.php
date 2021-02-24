@@ -8,6 +8,8 @@ $database = new databases();
 $index = $_GET['index'];
 $subdivision = $_GET['subdivision'];
 $action = $_GET['action'];
+
+
 $where = array(
     'av_index' => $index,
     'av_subDivision' => $subdivision
@@ -207,7 +209,6 @@ $age = $database->calculate_age($dob);
                         <h3 class="page-title"> All Villagers Details </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="<?php echo $server_name ?>forms.php">Forms</a></li>
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_villager-details.php?action=allvillagers">Details Preview</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Details Preview Step-2</li>
                             </ol>
@@ -481,7 +482,8 @@ $age = $database->calculate_age($dob);
                                     </div>
 
                                     <div class="text-dark" id="editDetails">
-                                    <h4 class="center card-title"> Edit Details </h4>
+
+                                        <h4 class="center card-title"> Edit Details </h4>
                                         <div id="saandhaStep1">
                                             <h4 class="card-title">Personal Details</h4>
                                             <div class="form-group">
@@ -522,7 +524,7 @@ $age = $database->calculate_age($dob);
                                                         <div class="col-sm-5">
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input type="radio" class="form-check-input" name="inputOrphan" id="inputOrphanN" value="No"  <?php echo ($av_orphaned == 'No') ? 'checked' : '' ?>> No </label>
+                                                                    <input type="radio" class="form-check-input" name="inputOrphan" id="inputOrphanN" value="No" <?php echo ($av_orphaned == 'No') ? 'checked' : '' ?>> No </label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -760,7 +762,7 @@ $age = $database->calculate_age($dob);
                                                         <div class="col-sm-5">
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input type="radio" class="form-check-input" name="inputMarried" id="inputMarriedN" value="No"  <?php echo ($av_married == 'No') ? 'checked' : '' ?>> No </label>
+                                                                    <input type="radio" class="form-check-input" name="inputMarried" id="inputMarriedN" value="No" <?php echo ($av_married == 'No') ? 'checked' : '' ?>> No </label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -782,7 +784,7 @@ $age = $database->calculate_age($dob);
                                                             <div class="col-sm-5">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
-                                                                        <input type="radio" class="form-check-input" name="inputDivorsed" id="inputDivorsedN" value="No"  <?php echo ($av_divorced == 'No') ? 'checked' : '' ?>> No </label>
+                                                                        <input type="radio" class="form-check-input" name="inputDivorsed" id="inputDivorsedN" value="No" <?php echo ($av_divorced == 'No') ? 'checked' : '' ?>> No </label>
                                                                 </div>
                                                             </div>
                                                         </div>

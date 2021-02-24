@@ -299,7 +299,6 @@ $(document).ready(function () {
     $("#row" + button_id + "").remove();
   });
 
-
   //   form_villagers-registration-form.php
   // show/hide College textbox on dropdown change
   $("#inputEduQual").change(function (e) {
@@ -624,7 +623,6 @@ $(document).ready(function () {
         $("#inputName").val(result_array[0]);
         $("#inputAddress").val(result_array[1]);
         $("#inputTP").val(result_array[2]);
-        
       },
     });
   });
@@ -652,7 +650,6 @@ $(document).ready(function () {
           $("#inputSexM").removeAttr("checked");
           $("#inputSexF").attr("checked", "checked");
         }
-        
       },
     });
   });
@@ -679,11 +676,16 @@ $(document).ready(function () {
 
   // search and auto fill other fields in the form
   // ajax submit index and subdivision of president to auto fill other part of the form
-  $("#inputPresidentSubdivision").change(function (e) { 
+  $("#inputPresidentSubdivision").change(function (e) {
     e.preventDefault();
     var inputPresidentIndexNo = $("#inputPresidentIndexNo").val();
     var inputPresidentSubdivision = $("#inputPresidentSubdivision").val();
-    var data_bundle = "index=" + inputPresidentIndexNo + "&subdivision=" + inputPresidentSubdivision + "&action=find_record";
+    var data_bundle =
+      "index=" +
+      inputPresidentIndexNo +
+      "&subdivision=" +
+      inputPresidentSubdivision +
+      "&action=find_record";
 
     $.ajax({
       type: "post",
@@ -696,18 +698,21 @@ $(document).ready(function () {
         $("#inputPresidentJob").val(result_array[2]);
         $("#inputPresidentSalary").val(result_array[3]);
         $("#inputPresidentAddress").val(result_array[4]);
-      }
+      },
     });
-
-    
   });
 
   // ajax submit index and subdivision of vice president to auto fill other part of the form
-  $("#inputVPSubdivision").change(function (e) { 
+  $("#inputVPSubdivision").change(function (e) {
     e.preventDefault();
     var inputVPIndexNo = $("#inputVPIndexNo").val();
     var inputVPSubdivision = $("#inputVPSubdivision").val();
-    var data_bundle = "index=" + inputVPIndexNo + "&subdivision=" + inputVPSubdivision + "&action=find_record";
+    var data_bundle =
+      "index=" +
+      inputVPIndexNo +
+      "&subdivision=" +
+      inputVPSubdivision +
+      "&action=find_record";
 
     $.ajax({
       type: "post",
@@ -720,18 +725,21 @@ $(document).ready(function () {
         $("#inputVPJob").val(result_array[2]);
         $("#inputVPSalary").val(result_array[3]);
         $("#inputVPAddress").val(result_array[4]);
-      }
+      },
     });
-
-    
   });
 
   // ajax submit index and subdivision of secretary to auto fill other part of the form
-  $("#inputSecretarySubdivision").change(function (e) { 
+  $("#inputSecretarySubdivision").change(function (e) {
     e.preventDefault();
     var inputSecretaryIndexNo = $("#inputSecretaryIndexNo").val();
     var inputSecretarySubdivision = $("#inputSecretarySubdivision").val();
-    var data_bundle = "index=" + inputSecretaryIndexNo + "&subdivision=" + inputSecretarySubdivision + "&action=find_record";
+    var data_bundle =
+      "index=" +
+      inputSecretaryIndexNo +
+      "&subdivision=" +
+      inputSecretarySubdivision +
+      "&action=find_record";
 
     $.ajax({
       type: "post",
@@ -744,18 +752,21 @@ $(document).ready(function () {
         $("#inputSecretaryJob").val(result_array[2]);
         $("#inputSecretarySalary").val(result_array[3]);
         $("#inputSecretaryAddress").val(result_array[4]);
-      }
+      },
     });
-
-    
   });
 
   // ajax submit index and subdivision of assistant secretary to auto fill other part of the form
-  $("#inputASSubdivision").change(function (e) { 
+  $("#inputASSubdivision").change(function (e) {
     e.preventDefault();
     var inputASIndexNo = $("#inputASIndexNo").val();
     var inputASSubdivision = $("#inputASSubdivision").val();
-    var data_bundle = "index=" + inputASIndexNo + "&subdivision=" + inputASSubdivision + "&action=find_record";
+    var data_bundle =
+      "index=" +
+      inputASIndexNo +
+      "&subdivision=" +
+      inputASSubdivision +
+      "&action=find_record";
 
     $.ajax({
       type: "post",
@@ -768,18 +779,21 @@ $(document).ready(function () {
         $("#inputASJob").val(result_array[2]);
         $("#inputASSalary").val(result_array[3]);
         $("#inputASAddress").val(result_array[4]);
-      }
+      },
     });
-
-    
   });
 
   // ajax submit index and subdivision of treasurer to auto fill other part of the form
-  $("#inputTreasurerSubdivision").change(function (e) { 
+  $("#inputTreasurerSubdivision").change(function (e) {
     e.preventDefault();
     var inputTreasurerIndexNo = $("#inputTreasurerIndexNo").val();
     var inputTreasurerSubdivision = $("#inputTreasurerSubdivision").val();
-    var data_bundle = "index=" + inputTreasurerIndexNo + "&subdivision=" + inputTreasurerSubdivision + "&action=find_record";
+    var data_bundle =
+      "index=" +
+      inputTreasurerIndexNo +
+      "&subdivision=" +
+      inputTreasurerSubdivision +
+      "&action=find_record";
 
     $.ajax({
       type: "post",
@@ -792,15 +806,13 @@ $(document).ready(function () {
         $("#inputTreasurerJob").val(result_array[2]);
         $("#inputTreasurerSalary").val(result_array[3]);
         $("#inputTreasurerAddress").val(result_array[4]);
-      }
+      },
     });
-
-    
   });
 
   // ajax submit to trustee_board_form_handler.php
   $("#submitTrusteeBoard").click(function (e) {
-    var all_data= $("#trusteeBoardForm").serialize();
+    var all_data = $("#trusteeBoardForm").serialize();
     e.preventDefault();
     $.ajax({
       type: "post",
@@ -814,13 +826,17 @@ $(document).ready(function () {
     });
   });
 
-    // ajax submit list down details according to the selection
-    $("#listDetails").change(function (e) { 
-      e.preventDefault();
-      var listDetails = $("#listDetails").val();
-      window.location.href = "preview_villager-details.php?action="+listDetails;
-      
-    });
+  // preview_villager-details_step-2.php
+  // ajax submit list down details according to the selection
+  $("#listDetails").change(function (e) {
+    e.preventDefault();
+    var listDetails = $("#listDetails").val();
+    window.location.href = "preview_villager-details.php?action=" + listDetails;
+  });
+
+  // preview_villager-details_step-2.php
+  // show hide edit details depending on the designation
+
 
   // function to hide/show view/edit pages in preview
   (function () {
@@ -830,6 +846,42 @@ $(document).ready(function () {
     } else if (action == "edit") {
       $("#viewDetails").hide();
       $("#editDetails").show();
+      console.log(designation)
+      if (designation == "President") {
+        $("#presidentdetails").show();
+        $("#VPdetails").hide();
+        $("#secretarydetails").hide();
+        $("#ASdetails").hide();
+        $("#treasurerdetails").hide();
+      }
+      else if (designation == "Vice President") {
+        $("#VPdetails").show();
+        $("#presidentdetails").hide();
+        $("#secretarydetails").hide();
+        $("#ASdetails").hide();
+        $("#treasurerdetails").hide();
+      }
+      else if (designation == "Secretary") {
+        $("#secretarydetails").show();
+        $("#presidentdetails").hide();
+        $("#VPdetails").hide();
+        $("#ASdetails").hide();
+        $("#treasurerdetails").hide();
+      }
+      else if (designation == "Assistant Secretary") {
+        $("#ASdetails").show();
+        $("#presidentdetails").hide();
+        $("#VPdetails").hide();
+        $("#secretarydetails").hide();
+        $("#treasurerdetails").hide();
+      }
+      else if (designation == "Treasurer") {
+        $("#treasurerdetails").show();
+        $("#presidentdetails").hide();
+        $("#VPdetails").hide();
+        $("#secretarydetails").hide();
+        $("#ASdetails").hide();
+      }
       console.log("edit jq");
     } else {
       console.log("invalid");

@@ -25,45 +25,40 @@ $database = new databases();
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title"> Trustee Board Details </h3>
+                        <h3 class="page-title"> Quran Madrasa Details </h3>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Trustee Board Details Preview </h4>
+                                        <h4 class="card-title"> Quran Madrasa Details Preview </h4>
                                         <div class="mt-5">
                                             <table class="display datatable">
                                                 <thead>
                                                     <tr>
-                                                        <th>From - To</th>
-                                                        <th>Designation</th>
                                                         <th>Name</th>
-                                                        <th>Telephone</th>
+                                                        <th>Address</th>
+                                                        <th>Guardian Name</th>
+                                                        <th>Enrolled Date</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                     $trustee_board_details = $database->select_data('tbl_trusteeboarddetails');
-                                                     foreach ($trustee_board_details as $trustee_board_details_item) {
-                                                         $id = $trustee_board_details_item['tb_id'];
-                                                         $start = $trustee_board_details_item['tb_startDate'];
-                                                         $end = $trustee_board_details_item['tb_endDate'];
-                                                         $designation = $trustee_board_details_item['tb_designation'];
-                                                         if ($end == "") {
-                                                             $end = "Present";
-                                                         }
+                                                     $q_madrasa_details = $database->select_data('tbl_quranmadrasadetails');
+                                                     foreach ($q_madrasa_details as $q_madrasa_details_item) {
+                                                         $id = $q_madrasa_details_item['qm_qmadrasaId'];
+                                                         
                                                          echo "
                                                          <tr>
-                                                            <td>".$start." - ".$end."</td>
-                                                            <td>".$designation."</td>
-                                                            <td>".$trustee_board_details_item['tb_name']."</td>
-                                                            <td>".$trustee_board_details_item['tb_telephone']."</td>
+                                                            <td>".$q_madrasa_details_item['qm_name']."</td>
+                                                            <td>".$q_madrasa_details_item['qm_address']."</td>
+                                                            <td>".$q_madrasa_details_item['qm_guardName']."</td>
+                                                            <td>".$q_madrasa_details_item['qm_startDate']."</td>
                                                             <td>
-                                                                <a href='preview_trustee_board-details_step-2.php?id=".$id."&action=view' class='btn btn-primary btn-md'>View</a>
-                                                                <a href='preview_trustee_board-details_step-2.php?id=".$id."&action=edit&designation=".$designation."' class='btn btn-danger btn-md'>Edit</a>
+                                                                <a href='preview_q_madrasa-details_step-2.php?id=".$id."&action=view' class='btn btn-primary btn-md'>View</a>
+                                                                <a href='preview_q_madrasa-details_step-2.php?id=".$id."&action=edit' class='btn btn-danger btn-md'>Edit</a>
                                                             </td>
                                                         </tr>
                                                          ";

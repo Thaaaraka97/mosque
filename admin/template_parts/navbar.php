@@ -91,6 +91,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="preview_trustee_board-details.php"> Trustee Board Details </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_q_madrasa-details.php"> Quran Madrasa Details </a>
+                    </li>
                 </ul>
             </div>
         </li>

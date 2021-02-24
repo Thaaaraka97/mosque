@@ -110,7 +110,6 @@ foreach ($nikkah_details as $nikkah_details_item) {
                         <h3 class="page-title"> Nikkah Details </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="<?php echo $server_name ?>forms.php">Forms</a></li>
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_nikkah-details.php">Details Preview</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Details Preview Step-2</li>
                             </ol>
