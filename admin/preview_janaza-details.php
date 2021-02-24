@@ -4,6 +4,9 @@
 <?php
 include "template_parts/header.php";
 $database = new databases();
+if (isset($_GET['edited'])) {
+    $message = "Record successfully edited and Updated..!";
+}
 ?>
 
 <body>
@@ -24,6 +27,16 @@ $database = new databases();
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    <?php
+                    if (isset($_GET['edited'])) {
+                        echo "
+                        <div class='alert alert-warning alert-dismissible' role='alert'>" . $message . "
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                            </button>
+                        </div>";
+                    }
+                    ?>
                     <div class="page-header">
                         <h3 class="page-title"> Janaza Details </h3>
                     </div>
@@ -63,7 +76,7 @@ $database = new databases();
                                                             <td>" . $janaza_details_item['jd_subDivision'] . "</td>
                                                             <td>
                                                                 <a href='preview_janaza-details_step-2.php?id=" . $id . "&action=view' class='btn btn-primary btn-md'>View</a>
-                                                                <a href='preview_janaza-details_step-2.php?id=" . $id . "&action=edit'' class='btn btn-danger btn-md'>Edit</a>
+                                                                <a href='preview_janaza-details_step-2.php?id=" . $id . "&action=edit'' class='btn btn-warning btn-md'>Edit</a>
                                                             </td>
                                                         </tr>
                                                          ";

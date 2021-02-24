@@ -4,6 +4,12 @@
 <?php
 include "template_parts/header.php";
 $database = new databases();
+if (isset($_GET['left'])) {
+    $message = "Record successsfully updated..!";
+}
+elseif (isset($_GET['edited'])) {
+    $message = "Record successsfully Edited and Updated..!";
+}
 ?>
 
 <body>
@@ -27,6 +33,26 @@ $database = new databases();
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    <?php
+                    if (isset($message)) {
+                        if (isset($_GET['left'])) {
+                            echo "
+                            <div class='alert alert-danger alert-dismissible' role='alert'>" . $message . "
+                                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                            </button>
+                            </div>";
+                        }
+                        elseif (isset($_GET['edited'])) {
+                            echo "
+                            <div class='alert alert-warning alert-dismissible' role='alert'>" . $message . "
+                                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                            </button>
+                            </div>";
+                        }
+                    }
+                    ?>
                     <div class="page-header">
                         <h3 class="page-title"> All Villagers Details </h3>
                     </div>
@@ -39,11 +65,11 @@ $database = new databases();
                                         <div class="mt-5">
                                             <label for="listDetails">List Down</label>
                                             <select name="listDetails" id="listDetails">
-                                                <option value="allvillagers" <?=$action == 'allvillagers' ? ' selected="selected"' : '';?>>All Villagers Details</option>
-                                                <option value="widow" <?=$action == 'widow' ? ' selected="selected"' : '';?>>Widow Details</option>
-                                                <option value="divorse" <?=$action == 'divorse' ? ' selected="selected"' : '';?>>Divorsed Details</option>
-                                                <option value="madrasa" <?=$action == 'madrasa' ? ' selected="selected"' : '';?>>Madrasa Children Details</option>
-                                                <option value="orphan" <?=$action == 'orphan' ? ' selected="selected"' : '';?>>Orphan Children Details</option>
+                                                <option value="allvillagers" <?= $action == 'allvillagers' ? ' selected="selected"' : ''; ?>>All Villagers Details</option>
+                                                <option value="widow" <?= $action == 'widow' ? ' selected="selected"' : ''; ?>>Widow Details</option>
+                                                <option value="divorse" <?= $action == 'divorse' ? ' selected="selected"' : ''; ?>>Divorsed Details</option>
+                                                <option value="madrasa" <?= $action == 'madrasa' ? ' selected="selected"' : ''; ?>>Madrasa Children Details</option>
+                                                <option value="orphan" <?= $action == 'orphan' ? ' selected="selected"' : ''; ?>>Orphan Children Details</option>
                                             </select>
                                             <table class="display datatable">
                                                 <thead>
@@ -62,32 +88,28 @@ $database = new databases();
                                                         $all_villagers_details = "";
                                                         if ($action == "allvillagers") {
                                                             $all_villagers_details = $database->select_data('tbl_allvillagers');
-                                                        }
-                                                        elseif ($action == "widow") {
+                                                        } elseif ($action == "widow") {
                                                             $where = array(
-                                                                'av_widowed'     =>    1 
+                                                                'av_widowed'     =>    1
+                                                            );
+                                                            $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
+                                                        } elseif ($action == "divorse") {
+                                                            $where = array(
+                                                                'av_divorced'     =>    1
+                                                            );
+                                                            $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
+                                                        } elseif ($action == "orphan") {
+                                                            $where = array(
+                                                                'av_orphaned'     =>    1
+                                                            );
+                                                            $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
+                                                        } elseif ($action == "madrasa") {
+                                                            $where = array(
+                                                                'av_madChild_status'     =>    1
                                                             );
                                                             $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
                                                         }
-                                                        elseif ($action == "divorse") {
-                                                            $where = array(
-                                                                'av_divorced'     =>    1 
-                                                            );
-                                                            $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
-                                                        }
-                                                        elseif ($action == "orphan") {
-                                                            $where = array(
-                                                                'av_orphaned'     =>    1 
-                                                            );
-                                                            $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
-                                                        }
-                                                        elseif ($action == "madrasa") {
-                                                            $where = array(
-                                                                'av_madChild_status'     =>    1 
-                                                            );
-                                                            $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
-                                                        }
-                                                        
+
                                                         foreach ($all_villagers_details as $all_villagers_details_item) {
                                                             $index = $all_villagers_details_item['av_index'];
                                                             $subdivision = $all_villagers_details_item['av_subDivision'];
@@ -100,11 +122,13 @@ $database = new databases();
                                                             <td>" . $all_villagers_details_item['av_age'] . "</td>
                                                             <td>
                                                                 <a href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&action=view' class='btn btn-primary btn-md'>View</a>
-                                                                <a href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&action=edit' class='btn btn-danger btn-md'>Edit</a>
+                                                                <a href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&action=edit' class='btn btn-warning btn-md'>Edit</a>
                                                             </td>
                                                             <td>";
                                                             if (!$left_village) {
-                                                                echo "<a href='handlers/preview_villagers_handler.php?index=" . $index . "&subdivision=" . $subdivision . "&action=left_village' class='btn btn-warning btn-md' id='left_village'>Yes</a>";
+                                                                echo "<a href='handlers/preview_villagers_handler.php?index=" . $index . "&subdivision=" . $subdivision . "&action=left_village' class='btn btn-danger btn-md' id='left_village'>Yes</a>";
+                                                            } else {
+                                                                echo "Already Left";
                                                             }
                                                             echo "</td>
                                                         </tr>

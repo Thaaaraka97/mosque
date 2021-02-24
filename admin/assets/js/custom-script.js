@@ -633,7 +633,7 @@ $(document).ready(function () {
     e.preventDefault();
     var index = $("#inputIndexNo").val();
     var subdivision = $("#inputQuranSubdivision").val();
-    var data_bundle = "index=" + index + "&subdivision=" + subdivision;
+    var data_bundle = "index=" + index + "&subdivision=" + subdivision + "&action=find_record";
     $.ajax({
       type: "post",
       url: "handlers/quran_mdhrasa_handler.php",
@@ -834,9 +834,62 @@ $(document).ready(function () {
     window.location.href = "preview_villager-details.php?action=" + listDetails;
   });
 
-  // preview_villager-details_step-2.php
-  // show hide edit details depending on the designation
+  // nikkah preview
+  // submit data to delete a row
+  $(".delete_row_nikkah").click(function () {
+    var id = $(this).attr("id");
+    var data_bundle = "id=" + id + "&action=delete";
 
+    $("#del").click(function (e) {
+      e.preventDefault();
+      $.ajax({
+        type: "post",
+        url: "handlers/nikkah_details_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        },
+      });
+    });
+  });
+
+    // quran madrasa preview
+  // submit data to delete a row
+  $(".delete_q_madrasa").click(function () {
+    var id = $(this).attr("id");
+    var data_bundle = "id=" + id + "&action=delete";
+
+    $("#del").click(function (e) {
+      e.preventDefault();
+      $.ajax({
+        type: "post",
+        url: "handlers/quran_mdhrasa_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        },
+      });
+    });
+  });
+
+    // trustee board preview
+  // submit data to update and terminate a row
+  $(".terminate_row_trustee").click(function () {
+    var id = $(this).attr("id");
+    var data_bundle = "id=" + id + "&action=terminate";
+
+    $("#del").click(function (e) {
+      e.preventDefault();
+      $.ajax({
+        type: "post",
+        url: "handlers/trustee_board_form_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        },
+      });
+    });
+  });
 
   // function to hide/show view/edit pages in preview
   (function () {
@@ -846,36 +899,32 @@ $(document).ready(function () {
     } else if (action == "edit") {
       $("#viewDetails").hide();
       $("#editDetails").show();
-      console.log(designation)
+      console.log(designation);
       if (designation == "President") {
         $("#presidentdetails").show();
         $("#VPdetails").hide();
         $("#secretarydetails").hide();
         $("#ASdetails").hide();
         $("#treasurerdetails").hide();
-      }
-      else if (designation == "Vice President") {
+      } else if (designation == "Vice President") {
         $("#VPdetails").show();
         $("#presidentdetails").hide();
         $("#secretarydetails").hide();
         $("#ASdetails").hide();
         $("#treasurerdetails").hide();
-      }
-      else if (designation == "Secretary") {
+      } else if (designation == "Secretary") {
         $("#secretarydetails").show();
         $("#presidentdetails").hide();
         $("#VPdetails").hide();
         $("#ASdetails").hide();
         $("#treasurerdetails").hide();
-      }
-      else if (designation == "Assistant Secretary") {
+      } else if (designation == "Assistant Secretary") {
         $("#ASdetails").show();
         $("#presidentdetails").hide();
         $("#VPdetails").hide();
         $("#secretarydetails").hide();
         $("#treasurerdetails").hide();
-      }
-      else if (designation == "Treasurer") {
+      } else if (designation == "Treasurer") {
         $("#treasurerdetails").show();
         $("#presidentdetails").hide();
         $("#VPdetails").hide();

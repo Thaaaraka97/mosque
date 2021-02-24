@@ -1,7 +1,7 @@
 <?php
 include "../include/db-connection.php";
 $database = new databases();
-$URL = "../preview_villager-details.php?action=allvillagers";
+$URL = "../preview_villager-details.php?action=allvillagers&left=1";
 
 if (isset($_GET['action'])) {
     if ($_GET['action'] == "left_village") {

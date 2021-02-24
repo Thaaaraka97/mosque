@@ -4,6 +4,14 @@
 <?php
 include "template_parts/header.php";
 $database = new databases();
+$id = "";
+
+if (isset($_GET['deleted'])) {
+    $message = "Record successfully Deleted..!";
+}
+elseif (isset($_GET['edited'])) {
+    $message = "Record successfully Updated..!";
+}
 ?>
 
 <body>
@@ -24,6 +32,24 @@ $database = new databases();
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    <?php
+                    if (isset($_GET['deleted'])) {
+                        echo "
+                        <div class='alert alert-danger alert-dismissible' role='alert'>" . $message . "
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                            </button>
+                        </div>";
+                    }
+                    elseif (isset($_GET['edited'])) {
+                        echo "
+                        <div class='alert alert-warning alert-dismissible' role='alert'>" . $message . "
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                            </button>
+                        </div>";
+                    }
+                    ?>
                     <div class="page-header">
                         <h3 class="page-title"> Nikkah Details </h3>
                     </div>
@@ -42,28 +68,35 @@ $database = new databases();
                                                         <th>Groom Name</th>
                                                         <th>Address</th>
                                                         <th>Actions</th>
+                                                        <th>Delete</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                     $nikkah_details = $database->select_data('tbl_nikkahdetails');
-                                                     foreach ($nikkah_details as $nikkah_details_item) {
-                                                         $id = $nikkah_details_item['nd_nikkahId'];
-                                                         echo "
+                                                    $nikkah_details = $database->select_data('tbl_nikkahdetails');
+                                                    foreach ($nikkah_details as $nikkah_details_item) {
+                                                        $id = $nikkah_details_item['nd_nikkahId'];
+
+                                                        echo "
                                                          <tr>
-                                                            <td>".$nikkah_details_item['nd_marriageDate']."</td>
-                                                            <td>".$nikkah_details_item['nd_brideName']."</td>
-                                                            <td>".$nikkah_details_item['nd_groomName']."</td>
-                                                            <td>".$nikkah_details_item['nd_groomAddress']."</td>
+                                                            <td>" . $nikkah_details_item['nd_marriageDate'] . "</td>
+                                                            <td>" . $nikkah_details_item['nd_brideName'] . "</td>
+                                                            <td>" . $nikkah_details_item['nd_groomName'] . "</td>
+                                                            <td>" . $nikkah_details_item['nd_groomAddress'] . "</td>
                                                             <td>
-                                                                <a href='preview_nikkah-details_step-2.php?id=".$id."&action=view' class='btn btn-primary btn-md'>View</a>
-                                                                <a href='preview_nikkah-details_step-2.php?id=".$id."&action=edit' class='btn btn-danger btn-md'>Edit</a>
+                                                                <a href='preview_nikkah-details_step-2.php?id=" . $id . "&action=view' class='btn btn-primary btn-md'>View</a>
+                                                                <a href='preview_nikkah-details_step-2.php?id=" . $id . "&action=edit' class='btn btn-warning btn-md'>Edit</a>
+                                                            </td>
+                                                            <td>
+                                                                <a href='' id ='".$id."' class='btn btn-danger btn-md delete_row_nikkah' data-toggle='modal' data-target='#deleteRecord'>Delete</a>
+                                                                
+
                                                             </td>
                                                         </tr>
                                                          ";
-                                                     }
+                                                    }
 
-                                                    ?> 
+                                                    ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -88,6 +121,26 @@ $database = new databases();
     include "template_parts/footer.php";
     ?>
     <!-- End custom js for this page -->
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Delete Record ?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this record? Once you click delete there's no going back.
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                    <a class="btn btn-danger" id="del">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

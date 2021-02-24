@@ -2,7 +2,11 @@
 include "../include/db-connection.php";
 $database = new Databases;
 
+$id = "";
 $action = $_POST["action"];
+if (isset($_POST['id'])) {
+    $id = $_POST['id'];
+}
 
 if ($action == "find_record") {
 
@@ -25,7 +29,7 @@ if ($action == "find_record") {
 
 // insert into tbl_trusteeboarddetails
 // submitTrusteeBoard button click
-if ($action == "submit") {
+elseif ($action == "submit") {
 
     // president data
     $inputPresidentIndexNo = $_POST["inputPresidentIndexNo"];
@@ -198,4 +202,17 @@ if ($action == "submit") {
 
     $URL = "forms.php";
     echo $URL;
+}
+
+elseif ($action == "terminate") {
+    $update_data = array(
+        'tb_isActive' => mysqli_real_escape_string($database->con, 0)
+    );
+    $where_condition = array(
+        'tb_id'     =>     $id
+    );
+    if ($database->update("tbl_trusteeboarddetails", $update_data, $where_condition)) {
+        $URL = "preview_trustee_board-details.php?terminated=1";
+        echo $URL;
+    }
 }

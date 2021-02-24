@@ -171,3 +171,25 @@
 form .error {
   color: #ff0000;
 }
+
+.modal-content {
+  background-color: #fff;
+  color: #111;
+
+}
+.modal-header {
+  border-bottom: 1px solid #dee2e6;
+}
+.modal-footer {
+  border-top: 1px solid #dee2e6;
+}
+div.modal-footer button.btn-secondary {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+div.modal-footer button.btn-secondary:hover {
+  color: #fff;
+    background-color: #4c5357;
+    border-color: #4c5357;
+}
