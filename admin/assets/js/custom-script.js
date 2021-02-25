@@ -891,6 +891,44 @@ $(document).ready(function () {
     });
   });
 
+    // pesh imaam preview
+  // submit data to update and terminate a row
+  $(".terminate_row_peshimaam").click(function () {
+    var id = $(this).attr("id");
+    var data_bundle = "id=" + id + "&action=terminate";
+
+    $("#del").click(function (e) {
+      e.preventDefault();
+      $.ajax({
+        type: "post",
+        url: "handlers/pesh_imaam_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        },
+      });
+    });
+  });
+
+    // muazzin preview
+  // submit data to update and terminate a row
+  $(".terminate_row_muazzin").click(function () {
+    var id = $(this).attr("id");
+    var data_bundle = "id=" + id + "&action=terminate";
+
+    $("#del").click(function (e) {
+      e.preventDefault();
+      $.ajax({
+        type: "post",
+        url: "handlers/muazzin_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        },
+      });
+    });
+  });
+
   // function to hide/show view/edit pages in preview
   (function () {
     if (action == "view") {
@@ -899,13 +937,13 @@ $(document).ready(function () {
     } else if (action == "edit") {
       $("#viewDetails").hide();
       $("#editDetails").show();
-      console.log(designation);
       if (designation == "President") {
         $("#presidentdetails").show();
         $("#VPdetails").hide();
         $("#secretarydetails").hide();
         $("#ASdetails").hide();
         $("#treasurerdetails").hide();
+        $("#advisoryMemberdetails").hide();
       } else if (designation == "Vice President") {
         $("#VPdetails").show();
         $("#presidentdetails").hide();
@@ -918,18 +956,33 @@ $(document).ready(function () {
         $("#VPdetails").hide();
         $("#ASdetails").hide();
         $("#treasurerdetails").hide();
+        $("#advisoryMemberdetails").hide();
+
       } else if (designation == "Assistant Secretary") {
         $("#ASdetails").show();
         $("#presidentdetails").hide();
         $("#VPdetails").hide();
         $("#secretarydetails").hide();
         $("#treasurerdetails").hide();
+        $("#advisoryMemberdetails").hide();
+
       } else if (designation == "Treasurer") {
         $("#treasurerdetails").show();
         $("#presidentdetails").hide();
         $("#VPdetails").hide();
         $("#secretarydetails").hide();
         $("#ASdetails").hide();
+        $("#advisoryMemberdetails").hide();
+
+      }
+      else if (designation == "Advisory Member") {
+        $("#advisoryMemberdetails").show();
+        $("#presidentdetails").hide();
+        $("#VPdetails").hide();
+        $("#secretarydetails").hide();
+        $("#ASdetails").hide();
+        $("#treasurerdetails").hide();
+
       }
       console.log("edit jq");
     } else {

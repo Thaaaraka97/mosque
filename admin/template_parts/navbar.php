@@ -94,6 +94,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="preview_q_madrasa-details.php"> Quran Madrasa Details </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_pesh_imaam-details.php"> Pesh Imaam Details </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_muazzin-details.php"> Muazzin Details </a>
+                    </li>
                 </ul>
             </div>
         </li>

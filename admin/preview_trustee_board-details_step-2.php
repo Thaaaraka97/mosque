@@ -177,13 +177,13 @@ foreach ($trustee_board_details as $trustee_board_details_item) {
                                                             } else {
                                                             ?>
                                                                 <option value=' <?php echo $sub_division_item["sb_name"]; ?>'> <?php echo $sub_division_item["sb_name"]; ?> </option>
-    
+
                                                             <?php
                                                             }
                                                             ?>
-    
+
                                                         <?php
-                                                        }                                                        
+                                                        }
 
                                                         ?>
                                                     </select>
@@ -225,7 +225,7 @@ foreach ($trustee_board_details as $trustee_board_details_item) {
                                                 <div class="form-group col-md-6">
                                                     <label for="inputVPSubdivision"> Sub-division </label>
                                                     <select id="inputVPSubdivision" name="inputVPSubdivision" class="form-control">
-                                                    <option value="0" <?php echo ($subdivision == '0') ? 'selected' : '' ?>>Choose...</option>
+                                                        <option value="0" <?php echo ($subdivision == '0') ? 'selected' : '' ?>>Choose...</option>
                                                         <?php
                                                         $sub_division = $database->select_data('tbl_subdivision');
                                                         foreach ($sub_division as $sub_division_item) {
@@ -237,13 +237,13 @@ foreach ($trustee_board_details as $trustee_board_details_item) {
                                                             } else {
                                                             ?>
                                                                 <option value=' <?php echo $sub_division_item["sb_name"]; ?>'> <?php echo $sub_division_item["sb_name"]; ?> </option>
-    
+
                                                             <?php
                                                             }
                                                             ?>
-    
+
                                                         <?php
-                                                        }                                                        
+                                                        }
 
                                                         ?>
                                                     </select>
@@ -286,7 +286,7 @@ foreach ($trustee_board_details as $trustee_board_details_item) {
                                                 <div class="form-group col-md-6">
                                                     <label for="inputSecretarySubdivision"> Sub-division </label>
                                                     <select id="inputSecretarySubdivision" name="inputSecretarySubdivision" class="form-control">
-                                                    <option value="0" <?php echo ($subdivision == '0') ? 'selected' : '' ?>>Choose...</option>
+                                                        <option value="0" <?php echo ($subdivision == '0') ? 'selected' : '' ?>>Choose...</option>
                                                         <?php
                                                         $sub_division = $database->select_data('tbl_subdivision');
                                                         foreach ($sub_division as $sub_division_item) {
@@ -298,13 +298,13 @@ foreach ($trustee_board_details as $trustee_board_details_item) {
                                                             } else {
                                                             ?>
                                                                 <option value=' <?php echo $sub_division_item["sb_name"]; ?>'> <?php echo $sub_division_item["sb_name"]; ?> </option>
-    
+
                                                             <?php
                                                             }
                                                             ?>
-    
+
                                                         <?php
-                                                        }                                                        
+                                                        }
 
                                                         ?>
                                                     </select>
@@ -359,13 +359,13 @@ foreach ($trustee_board_details as $trustee_board_details_item) {
                                                             } else {
                                                             ?>
                                                                 <option value=' <?php echo $sub_division_item["sb_name"]; ?>'> <?php echo $sub_division_item["sb_name"]; ?> </option>
-    
+
                                                             <?php
                                                             }
                                                             ?>
-    
+
                                                         <?php
-                                                        }                                                        
+                                                        }
 
                                                         ?>
                                                     </select>
@@ -408,7 +408,7 @@ foreach ($trustee_board_details as $trustee_board_details_item) {
                                                 <div class="form-group col-md-6">
                                                     <label for="inputTreasurerSubdivision"> Sub-division </label>
                                                     <select id="inputTreasurerSubdivision" name="inputTreasurerSubdivision" class="form-control">
-                                                    <option value="0" <?php echo ($subdivision == '0') ? 'selected' : '' ?>>Choose...</option>
+                                                        <option value="0" <?php echo ($subdivision == '0') ? 'selected' : '' ?>>Choose...</option>
                                                         <?php
                                                         $sub_division = $database->select_data('tbl_subdivision');
                                                         foreach ($sub_division as $sub_division_item) {
@@ -420,13 +420,13 @@ foreach ($trustee_board_details as $trustee_board_details_item) {
                                                             } else {
                                                             ?>
                                                                 <option value=' <?php echo $sub_division_item["sb_name"]; ?>'> <?php echo $sub_division_item["sb_name"]; ?> </option>
-    
+
                                                             <?php
                                                             }
                                                             ?>
-    
+
                                                         <?php
-                                                        }                                                        
+                                                        }
 
                                                         ?>
                                                     </select>
@@ -456,6 +456,65 @@ foreach ($trustee_board_details as $trustee_board_details_item) {
                                             <div class="form-group">
                                                 <label for="inputTreasurerAddress"> Address </label>
                                                 <textarea rows="5" class="form-control" id="inputTreasurerAddress" name="inputTreasurerAddress" value="<?php echo $address ?>"><?php echo $address ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div id="advisoryMemberdetails">
+                                            <h4 class="card-title"> Advisory Member Details Form</h4>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputMemberIndexNo"> Index Number </label>
+                                                    <input type="text" class="form-control" id="inputMemberIndexNo" name="inputMemberIndexNo" placeholder="Index No" value="<?php echo $index ?>">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputMemberSubdivision"> Sub-division </label>
+                                                    <select id="inputMemberSubdivision" name="inputMemberSubdivision" class="form-control">
+                                                    <option value="0" <?php echo ($subdivision == '0') ? 'selected' : '' ?>>Choose...</option>
+                                                        <?php
+                                                        $sub_division = $database->select_data('tbl_subdivision');
+                                                        foreach ($sub_division as $sub_division_item) {
+                                                            $selected = "";
+                                                            if ($sub_division_item["sb_name"] == $subdivision) {
+                                                        ?>
+                                                                <option value=' <?php echo $sub_division_item["sb_name"]; ?>' selected> <?php echo $sub_division_item["sb_name"]; ?> </option>
+                                                            <?php
+                                                            } else {
+                                                            ?>
+                                                                <option value=' <?php echo $sub_division_item["sb_name"]; ?>'> <?php echo $sub_division_item["sb_name"]; ?> </option>
+
+                                                            <?php
+                                                            }
+                                                            ?>
+
+                                                        <?php
+                                                        }
+
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputMemberName">Name of the Member </label>
+                                                <input type="text" class="form-control" id="inputMemberName" name="inputMemberName" placeholder="Name" value="<?php echo $name ?>">
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputTreasurerTP">Telephone Number </label>
+                                                    <input type="text" class="form-control" id="inputMemberTP" name="inputMemberTP" placeholder="077xxxxxxx" value="<?php echo $tp ?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputTreasurerJob">Job </label>
+                                                    <input type="text" class="form-control" id="inputMemberJob" name="inputMemberJob" placeholder="Job" value="<?php echo $job ?>">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputTreasurerSalary">Salary </label>
+                                                    <input type="text" class="form-control" id="inputMemberSalary" name="inputMemberSalary" placeholder="Salary" value="<?php echo $salary ?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputMemberAddress"> Address </label>
+                                                <textarea rows="5" class="form-control" id="inputMemberAddress" name="inputMemberAddress" value="<?php echo $address ?>"><?php echo $address ?></textarea>
                                             </div>
                                         </div>
                                         <input type="hidden" name="inputDesignation" id="inputDesignation" value="<?php echo $designation ?>">
