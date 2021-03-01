@@ -104,7 +104,7 @@
             </div>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="<?php $server_name ?>preview_donations.php"> <span class="menu-icon"> <i class="mdi mdi-chart-bar"></i> </span> <span class="menu-title">Donations</span> </a>
+            <a class="nav-link" href="<?php $server_name ?>preview_donation-details.php?action=alldonations"> <span class="menu-icon"> <i class="mdi mdi-chart-bar"></i> </span> <span class="menu-title">Donations</span> </a>
         </li>
         <li class="nav-item menu-items">
             <a class="nav-link" href="<?php $server_name ?>trial_balance.php"> <span class="menu-icon"> <i class="mdi mdi-table-large"></i> </span> <span class="menu-title">Trail Balance</span> </a>

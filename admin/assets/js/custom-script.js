@@ -834,6 +834,14 @@ $(document).ready(function () {
     window.location.href = "preview_villager-details.php?action=" + listDetails;
   });
 
+  // preview_donation-details.php
+  // ajax submit list down details according to the selection
+  $("#donationlistDetails").change(function (e) {
+    e.preventDefault();
+    var donationlistDetails = $("#donationlistDetails").val();
+    window.location.href = "preview_donation-details.php?action=" + donationlistDetails;
+  });
+
   // nikkah preview
   // submit data to delete a row
   $(".delete_row_nikkah").click(function () {
@@ -928,6 +936,32 @@ $(document).ready(function () {
       });
     });
   });
+
+  // show/ hide div on the change of dropdown list donations
+  if (donationaction == "other") {
+    $("#other").show();
+    $("#alldonations").hide();
+    $("#trusteeboard").hide();
+    $("#disaster").hide();
+  }
+  else if (donationaction == "alldonations") {
+    $("#alldonations").show();
+    $("#other").hide();
+    $("#trusteeboard").hide();
+    $("#disaster").hide();
+  }
+  else if (donationaction == "trusteeboard") {
+    $("#trusteeboard").show();
+    $("#alldonations").hide();
+    $("#other").hide();
+    $("#disaster").hide();
+  }
+  else if (donationaction == "disaster") {
+    $("#disaster").show();
+    $("#alldonations").hide();
+    $("#trusteeboard").hide();
+    $("#other").hide();
+  }
 
   // function to hide/show view/edit pages in preview
   (function () {

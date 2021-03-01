@@ -168,6 +168,25 @@
   display: none;
 }
 
+/* preview_donation-details.php */
+/* hide trusteeboard div */
+#trusteeboard {
+  /* display: none; */
+}
+
+/* preview_donation-details.php */
+/* hide disaster div */
+#disaster {
+  /* display: none; */
+}
+
+/* preview_donation-details.php */
+/* hide other div */
+#other {
+  /* display: none; */
+}
+
+
 form .error {
   color: #ff0000;
 }
