@@ -563,6 +563,44 @@ $(document).ready(function () {
     }
   });
 
+  // show/hide saandhaStep0 div on radio change
+  $("input[type=radio][name=inputRegFamily]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "No") {
+      $("#saandhaStep0").show();
+      $("#family").hide();
+      $("#findFamily").hide();
+    } else {
+      $("#saandhaStep0").hide();
+      $("#family").show();
+      $("#findFamily").show();
+    }
+  });
+
+  $("#findFamily").click(function (e) { 
+    e.preventDefault();
+    var familyID = $("#inputfamilyID").val();
+    var data_bundle = "id="+familyID;
+    
+    $.ajax({
+      type: "post",
+      url: "handlers/form_villagers_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        if (response == "No Data") {
+          document.location.href="form_villagers-registration-form.php?nodata=1";
+        }
+        else{
+          var result_array = response.split("+");
+          document.location.href="form_villagers-registration-form2.php?familyID="+result_array[0]+"&sub="+result_array[1]+"&add="+result_array[2]+"&incomePersonal="+result_array[3]+"&incomeFamily="+result_array[4]+"&children="+result_array[5]+"&unmarriedchildren="+result_array[6]+"&resStatus="+result_array[7]+"&prevAdd="+result_array[8]+"&prevGrama="+result_array[9]+"&prevPolice="+result_array[10]+"&prevMahalla="+result_array[11]+"&newMigrant="+result_array[12];
+          console.log(response)
+        }
+        
+      }
+    });
+  });
+
+
   //   form_add-new-rental.php
   // show/hide lease/monthly div on radio change
   $("input[type=radio][name=inputLease]").change(function (e) {

@@ -3,7 +3,14 @@
 
 <?php
 include "template_parts/header.php";
+$famID = "";
+if (isset($_GET['familyID'])) {
+    $famID = 1;
+}
 
+if (isset($_GET['nodata'])) {
+    $message = "No record on entered Family ID. Please Enter a Valid Family ID...!";
+}
 ?>
 
 <body>
@@ -24,6 +31,16 @@ include "template_parts/header.php";
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                <?php
+                    if (isset($_GET['nodata'])) {
+                        echo "
+                        <div class='alert alert-danger alert-dismissible' role='alert'>" . $message . "
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                            </button>
+                        </div>";
+                    }
+                    ?>
                     <div class="page-header">
                         <h3 class="page-title">All Villagers Registration</h3>
                         <nav aria-label="breadcrumb">
@@ -38,8 +55,39 @@ include "template_parts/header.php";
                             <div class="card shadow">
                                 <div class="card-body">
                                     <form class="pt-3" name="saandhaRegistrationForm" id="saandhaRegistrationForm" method="post">
+
+                                        <h4 class="card-title">All Villagers Registration Form</h4>
+                                        <div id="saandhaStep">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <div class="form-group row pt-3">
+                                                        <div class="col-md-3 pt-2 d-flex align-items-center text-right">
+                                                            <label class="form-label"> Family already registered? </label>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="radio" class="form-check-input" name="inputRegFamily" id="inputRegFamilyY" value="Yes" <?php echo ($famID == '') ? 'checked' : '' ?>> Yes </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="radio" class="form-check-input" name="inputRegFamily" id="inputRegFamilyN" value="No" <?php echo ($famID == '1') ? 'checked' : '' ?>> No </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6" id="family">
+                                                    <label for="inputfamilyID"> Family ID </label>
+                                                    <input type="text" class="form-control" id="inputfamilyID" name="inputfamilyID" placeholder="Family ID" required>
+                                                </div>
+                                            </div>
+                                            <div class="w-100 text-right">
+                                                <input type="submit" class="btn btn-primary btn-lg" id="findFamily" name="findFamily" value="Find Family">
+                                            </div>
+                                        </div>
                                         <div id="saandhaStep0">
-                                            <h4 class="card-title">All Villagers Registration Form</h4>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="inputSubdivision"> Sub-division </label>

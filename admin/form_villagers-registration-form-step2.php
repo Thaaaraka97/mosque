@@ -39,6 +39,9 @@ $database = new databases();
                                 <div class="card-body">
                                     <form class="pt-3" name="saandhaRegistrationFormStep2" id="saandhaRegistrationFormStep2" method="post">
                                         <div id="resetSection">
+                                            <div id="saandhaAdditionalStep">
+
+                                            </div>
                                             <div id="saandhaStep1">
                                                 <h4 class="card-title">Personal Details</h4>
                                                 <div class="form-group">

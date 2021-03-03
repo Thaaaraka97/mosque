@@ -171,8 +171,20 @@
   display: none;
 }
 
+/* form_add-new-rental.php */
+/* hide saandhaStep0 div */
+#saandhaStep0 {
+  display: none;
+}
 
-
+.alert {
+  position: absolute;
+  z-index: 1400;
+  top: 2%;
+  right: 4%;
+  margin: 0px auto;
+  text-align: center;
+}
 
 form .error {
   color: #ff0000;
@@ -181,7 +193,6 @@ form .error {
 .modal-content {
   background-color: #fff;
   color: #111;
-
 }
 .modal-header {
   border-bottom: 1px solid #dee2e6;
@@ -196,6 +207,6 @@ div.modal-footer button.btn-secondary {
 }
 div.modal-footer button.btn-secondary:hover {
   color: #fff;
-    background-color: #4c5357;
-    border-color: #4c5357;
+  background-color: #4c5357;
+  border-color: #4c5357;
 }

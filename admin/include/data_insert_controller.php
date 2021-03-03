@@ -2,6 +2,7 @@
 include "include/db-connection.php";
 $database = new databases();
 $URL = "forms.php?inserted_record=1";
+$insert_data = "";
 
 // insert data into tbl_temp_allvillagers
 // addAVMember button click
@@ -32,20 +33,40 @@ if (isset($_POST["addAVMember"])) {
     } else {
         $inputMigrant = 0;
     }
-    $insert_data = array(
-        'av_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
-        'av_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-        'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $_POST['inputMonthlyIncomeFamily']),
-        'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $_POST['inputavgInterPersonal']),
-        'av_noofChildren' => mysqli_real_escape_string($database->con, $_POST['inputnoofChildren']),
-        'av_unmarriedChildren' => mysqli_real_escape_string($database->con, $_POST['inputnoofUnmarried']),
-        'av_residentialStatus' => mysqli_real_escape_string($database->con, $_POST['inputResStatus']),
-        'av_prevRes_address' => mysqli_real_escape_string($database->con, $inputPrevAddress),
-        'av_prevRes_gramasevaka' => mysqli_real_escape_string($database->con, $Gramasevaka),
-        'av_prevRes_police' => mysqli_real_escape_string($database->con, $Police),
-        'av_prevRes_mahalla' => mysqli_real_escape_string($database->con, $Mahalla),
-        'av_newMigrant' => mysqli_real_escape_string($database->con, $inputMigrant)
-    );
+    if (isset($_POST['inputFamilyID']) && $_POST['inputFamilyID'] != "") {
+        $insert_data = array(
+            'id' => mysqli_real_escape_string($database->con, $_POST['inputFamilyID']),
+            'av_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+            'av_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+            'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $_POST['inputMonthlyIncomeFamily']),
+            'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $_POST['inputavgInterPersonal']),
+            'av_noofChildren' => mysqli_real_escape_string($database->con, $_POST['inputnoofChildren']),
+            'av_unmarriedChildren' => mysqli_real_escape_string($database->con, $_POST['inputnoofUnmarried']),
+            'av_residentialStatus' => mysqli_real_escape_string($database->con, $_POST['inputResStatus']),
+            'av_prevRes_address' => mysqli_real_escape_string($database->con, $inputPrevAddress),
+            'av_prevRes_gramasevaka' => mysqli_real_escape_string($database->con, $Gramasevaka),
+            'av_prevRes_police' => mysqli_real_escape_string($database->con, $Police),
+            'av_prevRes_mahalla' => mysqli_real_escape_string($database->con, $Mahalla),
+            'av_newMigrant' => mysqli_real_escape_string($database->con, $inputMigrant)
+        );
+    }
+    else {
+        $insert_data = array(
+            'av_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+            'av_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+            'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $_POST['inputMonthlyIncomeFamily']),
+            'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $_POST['inputavgInterPersonal']),
+            'av_noofChildren' => mysqli_real_escape_string($database->con, $_POST['inputnoofChildren']),
+            'av_unmarriedChildren' => mysqli_real_escape_string($database->con, $_POST['inputnoofUnmarried']),
+            'av_residentialStatus' => mysqli_real_escape_string($database->con, $_POST['inputResStatus']),
+            'av_prevRes_address' => mysqli_real_escape_string($database->con, $inputPrevAddress),
+            'av_prevRes_gramasevaka' => mysqli_real_escape_string($database->con, $Gramasevaka),
+            'av_prevRes_police' => mysqli_real_escape_string($database->con, $Police),
+            'av_prevRes_mahalla' => mysqli_real_escape_string($database->con, $Mahalla),
+            'av_newMigrant' => mysqli_real_escape_string($database->con, $inputMigrant)
+        );
+    }
+    
 
     if ($database->insert_data('tbl_temp_allvillagers', $insert_data)) {
         $URL = "form_villagers-registration-form-step2.php";
