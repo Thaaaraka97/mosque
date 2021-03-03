@@ -37,7 +37,6 @@
 
     <?php
     
-    print_r($database->errors);
     $database->close_db();
 
     ?>

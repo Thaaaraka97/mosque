@@ -937,6 +937,25 @@ $(document).ready(function () {
     });
   });
 
+    // villager preview
+  // submit data to update a row
+  $(".update_row_saandha").click(function () {
+    var id = $(this).attr("id");
+    var data_bundle = "id=" + id + "&action=saandha";
+
+    $("#accept").click(function (e) {
+      e.preventDefault();
+      $.ajax({
+        type: "get",
+        url: "handlers/preview_villagers_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        },
+      });
+    });
+  });
+
   // show/ hide div on the change of dropdown list donations
   if (donationaction == "other") {
     $("#other").show();
@@ -962,6 +981,58 @@ $(document).ready(function () {
     $("#trusteeboard").hide();
     $("#other").hide();
   }
+  else{
+    $("#alldonations").show();
+    $("#other").hide();
+    $("#trusteeboard").hide();
+    $("#disaster").hide();
+  }
+
+  // show/ hide div on the change of dropdown list villager details
+  if (villageraction == "allvillagers") {
+    $("#widow").hide();
+    $("#divorse").hide();
+    $("#madrasa").hide();
+    $("#orphan").hide();
+    $("#allVillagers").show();
+    
+  }
+  else if (villageraction == "widow") {
+    $("#widow").show();
+    $("#allVillagers").hide();
+    $("#divorse").hide();
+    $("#madrasa").hide();
+    $("#orphan").hide();
+  }
+  else if (villageraction == "divorse") {
+    $("#divorse").show();
+    $("#widow").hide();
+    $("#allVillagers").hide();
+    $("#madrasa").hide();
+    $("#orphan").hide();
+  }
+  else if (villageraction == "madrasa") {
+    $("#madrasa").show();
+    $("#widow").hide();
+    $("#divorse").hide();
+    $("#allVillagers").hide();
+    $("#orphan").hide();
+  }
+  else if (villageraction == "orphan") {
+    $("#orphan").show();
+    $("#widow").hide();
+    $("#divorse").hide();
+    $("#madrasa").hide();
+    $("#allVillagers").hide();
+  }
+  else{
+    $("#widow").hide();
+    $("#divorse").hide();
+    $("#madrasa").hide();
+    $("#orphan").hide();
+    $("#allVillagers").show();
+  }
+  
 
   // function to hide/show view/edit pages in preview
   (function () {
