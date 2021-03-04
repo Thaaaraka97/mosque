@@ -299,13 +299,13 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                                             <div class="col-md-6">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
-                                                                        <input type="radio" class="form-check-input" name="inputGroomVillage" id="inputGroomVillageY" value="Our Village" <?php echo ($groom_village == 'Our Village') ? 'checked' : '' ?>> Our Village </label>
+                                                                        <input type="radio" class="form-check-input" name="inputGroomVillage" id="inputGroomVillageY" value="Home Village" <?php echo ($groom_village == 'Home Village') ? 'checked' : '' ?>> Home Village </label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
-                                                                        <input type="radio" class="form-check-input" name="inputGroomVillage" id="inputGroomVillageN" value="Not Our Village" <?php echo ($groom_village == 'Not Our Village') ? 'checked' : '' ?>> Not Our Village </label>
+                                                                        <input type="radio" class="form-check-input" name="inputGroomVillage" id="inputGroomVillageN" value="Not Home Village" <?php echo ($groom_village == 'Not Home Village') ? 'checked' : '' ?>> Not Home Village </label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -449,13 +449,13 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                                                 <div class="col-md-6">
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                            <input type="radio" class="form-check-input" name="inputBrideVillage" id="inputBrideVillageY" value="Our Village" <?php echo ($bride_village == 'Our Village') ? 'checked' : '' ?>> Our Village </label>
+                                                                            <input type="radio" class="form-check-input" name="inputBrideVillage" id="inputBrideVillageY" value="Home Village" <?php echo ($bride_village == 'Home Village') ? 'checked' : '' ?>> Home Village </label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                            <input type="radio" class="form-check-input" name="inputBrideVillage" id="inputBrideVillageN" value="Not Our Village" <?php echo ($bride_village == 'Not Our Village') ? 'checked' : '' ?>> Not Our Village </label>
+                                                                            <input type="radio" class="form-check-input" name="inputBrideVillage" id="inputBrideVillageN" value="Not Home Village" <?php echo ($bride_village == 'Not Home Village') ? 'checked' : '' ?>> Not Home Village </label>
                                                                     </div>
                                                                 </div>
                                                             </div>

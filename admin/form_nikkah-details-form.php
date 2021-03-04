@@ -54,13 +54,13 @@ $database = new databases();
                               <div class="col-md-6">
                                 <div class="form-check">
                                   <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="inputGroomVillage" id="inputGroomVillageY" value="Our Village"> Our Village </label>
+                                    <input type="radio" class="form-check-input" name="inputGroomVillage" id="inputGroomVillageY" value="Home Village"> Home Village </label>
                                 </div>
                               </div>
                               <div class="col-md-6">
                                 <div class="form-check">
                                   <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="inputGroomVillage" id="inputGroomVillageN" value="Not Our Village" checked> Not Our Village </label>
+                                    <input type="radio" class="form-check-input" name="inputGroomVillage" id="inputGroomVillageN" value="Not Home Village" checked> Not Home Village </label>
                                 </div>
                               </div>
                             </div>
@@ -192,13 +192,13 @@ $database = new databases();
                                 <div class="col-md-6">
                                   <div class="form-check">
                                     <label class="form-check-label">
-                                      <input type="radio" class="form-check-input" name="inputBrideVillage" id="inputBrideVillageY" value="Our Village"> Our Village </label>
+                                      <input type="radio" class="form-check-input" name="inputBrideVillage" id="inputBrideVillageY" value="Home Village"> Home Village </label>
                                   </div>
                                 </div>
                                 <div class="col-md-6">
                                   <div class="form-check">
                                     <label class="form-check-label">
-                                      <input type="radio" class="form-check-input" name="inputBrideVillage" id="inputBrideVillageN" value="Not Our Village" checked> Not Our Village </label>
+                                      <input type="radio" class="form-check-input" name="inputBrideVillage" id="inputBrideVillageN" value="Not Home Village" checked> Not Home Village </label>
                                   </div>
                                 </div>
                               </div>

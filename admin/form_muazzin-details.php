@@ -51,13 +51,13 @@ $database = new databases();
                                                         <div class="col-md-6">
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input type="radio" class="form-check-input" name="inputVillage" id="inputVillageY" value="Our Village"> Our Village </label>
+                                                                    <input type="radio" class="form-check-input" name="inputVillage" id="inputVillageY" value="Home Village"> Home Village </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
-                                                                    <input type="radio" class="form-check-input" name="inputVillage" id="inputVillageN" value="Not Our Village" checked> Not Our Village </label>
+                                                                    <input type="radio" class="form-check-input" name="inputVillage" id="inputVillageN" value="Not Home Village" checked> Not Home Village </label>
                                                             </div>
                                                         </div>
                                                     </div>

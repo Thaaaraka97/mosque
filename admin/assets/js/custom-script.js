@@ -319,7 +319,7 @@ $(document).ready(function () {
   // show/hide Groom mosque textbox on radio change
   $("input[type=radio][name=inputGroomVillage]").change(function (e) {
     e.preventDefault();
-    if ($(this).val() == "Not Our Village") {
+    if ($(this).val() == "Not Home Village") {
       $("#groomMosqueDetails").show();
       $("#groomIndex").hide();
       $("#groomGuardianIndex").hide();
@@ -333,7 +333,7 @@ $(document).ready(function () {
   // show/hide Bride mosque textbox on radio change
   $("input[type=radio][name=inputBrideVillage]").change(function (e) {
     e.preventDefault();
-    if ($(this).val() == "Not Our Village") {
+    if ($(this).val() == "Not Home Village") {
       $("#brideMosqueDetails").show();
       $("#brideGuardianIndex").hide();
       $("#brideIndex").hide();
@@ -348,7 +348,7 @@ $(document).ready(function () {
   // show/hide peshImaamIndex div on radio change
   $("input[type=radio][name=inputVillage]").change(function (e) {
     e.preventDefault();
-    if ($(this).val() == "Our Village") {
+    if ($(this).val() == "Home Village") {
       $("#peshImaamIndex").show();
     } else {
       $("#peshImaamIndex").hide();
@@ -359,7 +359,7 @@ $(document).ready(function () {
   // show/hide muazzinIndex div on radio change
   $("input[type=radio][name=inputVillage]").change(function (e) {
     e.preventDefault();
-    if ($(this).val() == "Our Village") {
+    if ($(this).val() == "Home Village") {
       $("#muazzinIndex").show();
     } else {
       $("#muazzinIndex").hide();
