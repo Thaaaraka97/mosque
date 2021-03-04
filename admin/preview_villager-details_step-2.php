@@ -9,7 +9,6 @@ $index = $_GET['index'];
 $subdivision = $_GET['subdivision'];
 $action = $_GET['action'];
 
-
 $where = array(
     'av_index' => $index,
     'av_subDivision' => $subdivision
@@ -185,6 +184,9 @@ $age = $database->calculate_age($dob);
 ?>
 <script type="text/javascript">
     var action = "<?php echo $action; ?>";
+    var villageraction = "";
+    var donationaction = "";
+    console.log(action)
 </script>
 
 <body>

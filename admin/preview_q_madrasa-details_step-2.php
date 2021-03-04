@@ -56,6 +56,8 @@ foreach ($q_madrasa_details as $q_madrasa_details_item) {
 ?>
 <script type="text/javascript">
     var action = "<?php echo $action; ?>";
+    var villageraction = "";
+    var donationaction = "";
 </script>
 
 <body>
