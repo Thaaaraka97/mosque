@@ -37,7 +37,7 @@ $database = new databases();
                         <div class="col-md-8 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <h4 class="card-title">Donation Acceptance Form</h4>
+                                    <h4 class="card-title">Donation Form</h4>
                                     <form class="pt-3" method="POST">
                                         <div class="form-group">
                                             <label for="inputName">Name</label>
@@ -89,7 +89,7 @@ $database = new databases();
                                             <textarea class="form-control" id="inputNotes" name="inputNotes" rows="4"></textarea>
                                         </div>
                                         <div class="text-center">
-                                            <button class="btn btn-primary btn-lg" id="submitDisasterDonation" name="submitDisasterDonation">Accept Donation</button>
+                                            <button class="btn btn-primary btn-lg" id="submitDisasterDonation" name="submitDisasterDonation"> Donation</button>
 
                                         </div>
                                     </form>

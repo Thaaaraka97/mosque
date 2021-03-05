@@ -177,6 +177,12 @@
   display: none;
 }
 
+/* preview_trustee_board-history_step-2.php */
+/* hide editable div */
+#editable {
+  display: none;
+}
+
 .alert {
   position: absolute;
   z-index: 1400;
@@ -189,6 +195,10 @@
 form .error {
   color: #ff0000;
 }
+
+/* .modal-body input:focus {
+  border-color: #111;
+} */
 
 .modal-content {
   background-color: #fff;

@@ -92,6 +92,9 @@
                         <a class="nav-link" href="preview_trustee_board-details.php"> Trustee Board Details </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="preview_trustee_board-history.php"> Trustee Board History </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="preview_q_madrasa-details.php"> Quran Madrasa Details </a>
                     </li>
                     <li class="nav-item">
@@ -99,6 +102,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_muazzin-details.php"> Muazzin Details </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_saandha-amount-fixing-history.php"> Saandha Amount Fixings </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_rental-places.php"> Rental Places </a>
                     </li>
                 </ul>
             </div>

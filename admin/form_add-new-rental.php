@@ -65,6 +65,17 @@ $database = new databases();
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
+                                                <label for="inputRentalType">Rental</label>
+                                                <select id="inputRentalType" name="inputRentalType" class="form-control">
+                                                    <option value="0" selected>Choose...</option>
+                                                    <option value="Land">Land</option>
+                                                    <option value="House">House</option>
+                                                    <option value="Shop">Shop</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
                                                 <label for="inputRentalStartDate">Rental Start Date </label>
                                                 <input type="date" class="form-control" id="inputRentalStartDate" name="inputRentalStartDate">
                                             </div>
@@ -93,7 +104,7 @@ $database = new databases();
                                                     <div class="col-sm-4">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="inputLease" id="inputLeaseY" value="Yes" > Yes </label>
+                                                                <input type="radio" class="form-check-input" name="inputLease" id="inputLeaseY" value="Yes"> Yes </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-5">

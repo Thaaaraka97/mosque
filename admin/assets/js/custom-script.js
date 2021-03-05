@@ -975,6 +975,47 @@ $(document).ready(function () {
     });
   });
 
+    // preview_rental-places.php
+  // submit data to update and delete a row
+  $(".delete_place").click(function () {
+    var id = $(this).attr("id");
+    var data_bundle = "id=" + id + "&action=delete";
+
+    $("#del").click(function (e) {
+      e.preventDefault();
+      $.ajax({
+        type: "post",
+        url: "handlers/rental_places_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        },
+      });
+    });
+  });
+
+    // preview_rental-places.php
+  // submit data to update and delete a row
+  $("#addNewPlace").click(function () {
+    var id = $(this).attr("id");
+    var data_bundle = "id=" + id + "&action=delete";
+
+    $("#add").click(function (e) {
+      e.preventDefault();
+      var inputRentalType = $("#inputRentalType").val();
+      var inputAddress = $("#inputAddress").val();
+      var data_bundle = "inputRentalType="+inputRentalType+"&inputAddress="+inputAddress+"&action=add";
+      $.ajax({
+        type: "post",
+        url: "handlers/rental_places_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        },
+      });
+    });
+  });
+
     // villager preview
   // submit data to update a row
   $(".update_row_saandha").click(function () {
@@ -991,6 +1032,43 @@ $(document).ready(function () {
           window.location.href = response;
         },
       });
+    });
+  });
+
+    // preview_saandha-amount-fixing-history.php
+  // submit data to update a row
+  $("#editSaandhaAmount").click(function () {
+
+    $("#update").click(function (e) {
+      var Amount = $("#newAmount").val();
+      var data_bundle = "newAmount="+Amount;
+
+      e.preventDefault();
+      $.ajax({
+        type: "post",
+        url: "handlers/saandha_amount_fixings_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+          // console.log(response);
+        },
+      });
+    });
+  });
+
+  // preview_trustee_board-history_step-2.php
+  // submit details
+  $("#addTBHistory").click(function (e) { 
+    e.preventDefault();
+    var inputDetails = $("#inputDetails").val();
+    var data_bundle = "inputDetails="+inputDetails+"&id="+id;
+    $.ajax({
+      type: "post",
+      url: "handlers/trustee_board_history_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        window.location.href = response;
+      }
     });
   });
 
@@ -1080,54 +1158,57 @@ $(document).ready(function () {
     } else if (action == "edit") {
       $("#viewDetails").hide();
       $("#editDetails").show();
-      // if (designation == "President") {
-      //   $("#presidentdetails").show();
-      //   $("#VPdetails").hide();
-      //   $("#secretarydetails").hide();
-      //   $("#ASdetails").hide();
-      //   $("#treasurerdetails").hide();
-      //   $("#advisoryMemberdetails").hide();
-      // } else if (designation == "Vice President") {
-      //   $("#VPdetails").show();
-      //   $("#presidentdetails").hide();
-      //   $("#secretarydetails").hide();
-      //   $("#ASdetails").hide();
-      //   $("#treasurerdetails").hide();
-      // } else if (designation == "Secretary") {
-      //   $("#secretarydetails").show();
-      //   $("#presidentdetails").hide();
-      //   $("#VPdetails").hide();
-      //   $("#ASdetails").hide();
-      //   $("#treasurerdetails").hide();
-      //   $("#advisoryMemberdetails").hide();
+      if (designation == "President") {
+        $("#presidentdetails").show();
+        $("#VPdetails").hide();
+        $("#secretarydetails").hide();
+        $("#ASdetails").hide();
+        $("#treasurerdetails").hide();
+        $("#advisoryMemberdetails").hide();
+      } else if (designation == "Vice President") {
+        $("#VPdetails").show();
+        $("#presidentdetails").hide();
+        $("#secretarydetails").hide();
+        $("#ASdetails").hide();
+        $("#treasurerdetails").hide();
+      } else if (designation == "Secretary") {
+        $("#secretarydetails").show();
+        $("#presidentdetails").hide();
+        $("#VPdetails").hide();
+        $("#ASdetails").hide();
+        $("#treasurerdetails").hide();
+        $("#advisoryMemberdetails").hide();
 
-      // } else if (designation == "Assistant Secretary") {
-      //   $("#ASdetails").show();
-      //   $("#presidentdetails").hide();
-      //   $("#VPdetails").hide();
-      //   $("#secretarydetails").hide();
-      //   $("#treasurerdetails").hide();
-      //   $("#advisoryMemberdetails").hide();
+      } else if (designation == "Assistant Secretary") {
+        $("#ASdetails").show();
+        $("#presidentdetails").hide();
+        $("#VPdetails").hide();
+        $("#secretarydetails").hide();
+        $("#treasurerdetails").hide();
+        $("#advisoryMemberdetails").hide();
 
-      // } else if (designation == "Treasurer") {
-      //   $("#treasurerdetails").show();
-      //   $("#presidentdetails").hide();
-      //   $("#VPdetails").hide();
-      //   $("#secretarydetails").hide();
-      //   $("#ASdetails").hide();
-      //   $("#advisoryMemberdetails").hide();
+      } else if (designation == "Treasurer") {
+        $("#treasurerdetails").show();
+        $("#presidentdetails").hide();
+        $("#VPdetails").hide();
+        $("#secretarydetails").hide();
+        $("#ASdetails").hide();
+        $("#advisoryMemberdetails").hide();
 
-      // }else if (designation == "Advisory Member") {
-      //   $("#advisoryMemberdetails").show();
-      //   $("#presidentdetails").hide();
-      //   $("#VPdetails").hide();
-      //   $("#secretarydetails").hide();
-      //   $("#ASdetails").hide();
-      //   $("#treasurerdetails").hide();
+      }else if (designation == "Advisory Member") {
+        $("#advisoryMemberdetails").show();
+        $("#presidentdetails").hide();
+        $("#VPdetails").hide();
+        $("#secretarydetails").hide();
+        $("#ASdetails").hide();
+        $("#treasurerdetails").hide();
 
-      // }
+      }
       console.log("edit jq");
-    } else {
+    }else if (action == "editable") {
+      $("#editable").show();
+    }
+     else {
       console.log("invalid");
     }
   })();

@@ -49,8 +49,7 @@ if (isset($_POST["addAVMember"])) {
             'av_prevRes_mahalla' => mysqli_real_escape_string($database->con, $Mahalla),
             'av_newMigrant' => mysqli_real_escape_string($database->con, $inputMigrant)
         );
-    }
-    else {
+    } else {
         $insert_data = array(
             'av_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
             'av_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
@@ -66,7 +65,7 @@ if (isset($_POST["addAVMember"])) {
             'av_newMigrant' => mysqli_real_escape_string($database->con, $inputMigrant)
         );
     }
-    
+
 
     if ($database->insert_data('tbl_temp_allvillagers', $insert_data)) {
         $URL = "form_villagers-registration-form-step2.php";
@@ -562,6 +561,39 @@ if (isset($_POST['submitJanaza'])) {
             echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }
     }
+
+}
+
+// insert into tbl_bills
+// submitBills button click
+if (isset($_POST['submitBills'])) {
+
+    $insert_to_tbl_bills = array(
+        'bill_type' => mysqli_real_escape_string($database->con, $_POST['inputBillType']),
+        'bill_amountPaid' => mysqli_real_escape_string($database->con, $_POST['inputPaidAmount']),
+        'bill_date' => mysqli_real_escape_string($database->con, $_POST['inputBillDate']),
+        'bill_outstandingAmount' => mysqli_real_escape_string($database->con, $_POST['inputOutAmount']),
+        'bill_payedDate' => mysqli_real_escape_string($database->con, $_POST['inputPaidDate'])
+    );
+    if ($database->insert_data('tbl_bills', $insert_to_tbl_bills)) {
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
+
+}
+
+// insert into tbl_rentalplaceregistration
+// submitRentalPlace button click
+if (isset($_POST['submitRentalPlace'])) {
+
+    $insert_to_tbl_rentalplaceregistration = array(
+        'rp_type' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
+        'rp_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress'])
+    );
+    if ($database->insert_data('tbl_rentalplaceregistration', $insert_to_tbl_rentalplaceregistration)) {
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
     // $URL = "forms.php?inserted_record=1";
 
 }
@@ -793,6 +825,7 @@ if (isset($_POST['submitNewRental'])) {
         'rr_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputnewRentalSubdivision']),
         'rr_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
         'rr_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+        'rr_rentalType' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
         'rr_startDate' => mysqli_real_escape_string($database->con, $_POST['inputRentalStartDate']),
         'rr_endDate' => mysqli_real_escape_string($database->con, $_POST['inputRentalEndDate']),
         'rr_downpayment' => mysqli_real_escape_string($database->con, $_POST['inputDownPayment']),

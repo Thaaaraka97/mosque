@@ -172,6 +172,11 @@ elseif ($action == "submit") {
             if ($insert3) {
                 if ($insert4) {
                     if ($insert5) {
+                        $insert_to_tbHistory = array(
+                            'tb_electedYYMM' => mysqli_real_escape_string($database->con, $tb_electedYYMM)
+                        );
+                        $database->insert_data('tbl_trusteeboardhistory', $insert_to_tbHistory);
+                        
                     }
                 }
             }

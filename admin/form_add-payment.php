@@ -42,11 +42,11 @@ $database = new databases();
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputIndexNo"> Index Number </label>
-                                                <input type="text" class="form-control" id="inputIndexNo" placeholder="Index No">
+                                                <input type="text" class="form-control" id="inputIndexNo" name="inputIndexNo" placeholder="Index No">
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputSubdivision"> Sub-division </label>
-                                                <select id="inputSubdivision" class="form-control">
+                                                <label for="inputRentalPaymentSubdivision"> Sub-division </label>
+                                                <select id="inputRentalPaymentSubdivision" name="inputRentalPaymentSubdivision" class="form-control">
                                                     <option value="0" selected>Choose...</option>
                                                     <?php
                                                     $sub_division = $database->select_data('tbl_subdivision');
@@ -60,8 +60,12 @@ $database = new databases();
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="inputDonation">Rental</label>
-                                                <select id="inputDonation" class="form-control">
+                                                <label for="inputRentalPaymentTP">Telephone Number </label>
+                                                <input type="text" class="form-control" id="inputRentalPaymentTP" name="inputRentalPaymentTP" placeholder="077xxxxxxx">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputRentalType">Rental</label>
+                                                <select id="inputRentalType" name="inputRentalType" class="form-control">
                                                     <option value="0" selected>Choose...</option>
                                                     <option value="Land">Land</option>
                                                     <option value="House">House</option>
@@ -72,19 +76,19 @@ $database = new databases();
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputPayment">Payment </label>
-                                                <input type="text" class="form-control" id="inputPayment" placeholder="Payment (Rs)">
+                                                <input type="text" class="form-control" id="inputPayment" name="inputPayment" placeholder="Payment (Rs)">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputDuePayment">Due Amount </label>
-                                                <input type="text" class="form-control" id="inputDuePayment" placeholder="Due Amount (Rs)">
+                                                <input type="text" class="form-control" id="inputDuePayment" name="inputDuePayment" placeholder="Due Amount (Rs)">
                                             </div>
                                         </div>
                                         <div class=" form-group">
                                             <label for="inputNotes">Notes </label>
-                                            <textarea class="form-control" id="inputNotes" rows="4"></textarea>
+                                            <textarea class="form-control" id="inputNotes" name="inputNotes" rows="4"></textarea>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-lg">Add Payment</button>
+                                            <button class="btn btn-primary btn-lg" id="submitRentalPayment" name="submitRentalPayment">Add Payment</button>
                                         </div>
                                     </form>
                                 </div>
