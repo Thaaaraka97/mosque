@@ -576,28 +576,96 @@ $(document).ready(function () {
       $("#findFamily").show();
     }
   });
-
-  $("#findFamily").click(function (e) { 
+  
+  $("#findFamily").click(function (e) {
     e.preventDefault();
     var familyID = $("#inputfamilyID").val();
-    var data_bundle = "id="+familyID;
-    
+    var data_bundle = "id=" + familyID;
+
     $.ajax({
       type: "post",
       url: "handlers/form_villagers_handler.php",
       data: data_bundle,
       success: function (response) {
         if (response == "No Data") {
-          document.location.href="form_villagers-registration-form.php?nodata=1";
-        }
-        else{
+          document.location.href =
+            "form_villagers-registration-form.php?nodata=1";
+        } else {
           var result_array = response.split("+");
-          document.location.href="form_villagers-registration-form2.php?familyID="+result_array[0]+"&sub="+result_array[1]+"&add="+result_array[2]+"&incomePersonal="+result_array[3]+"&incomeFamily="+result_array[4]+"&children="+result_array[5]+"&unmarriedchildren="+result_array[6]+"&resStatus="+result_array[7]+"&prevAdd="+result_array[8]+"&prevGrama="+result_array[9]+"&prevPolice="+result_array[10]+"&prevMahalla="+result_array[11]+"&newMigrant="+result_array[12];
-          console.log(response)
+          document.location.href =
+            "form_villagers-registration-form2.php?familyID=" +
+            result_array[0] +
+            "&sub=" +
+            result_array[1] +
+            "&add=" +
+            result_array[2] +
+            "&incomePersonal=" +
+            result_array[3] +
+            "&incomeFamily=" +
+            result_array[4] +
+            "&children=" +
+            result_array[5] +
+            "&unmarriedchildren=" +
+            result_array[6] +
+            "&resStatus=" +
+            result_array[7] +
+            "&prevAdd=" +
+            result_array[8] +
+            "&prevGrama=" +
+            result_array[9] +
+            "&prevPolice=" +
+            result_array[10] +
+            "&prevMahalla=" +
+            result_array[11] +
+            "&newMigrant=" +
+            result_array[12];
+          console.log(response);
         }
-        
-      }
+      },
     });
+  });
+
+  // form_funds-collection.php
+  // show/hide mahalla div on radio change
+  $("input[type=radio][name=inputFundsMahalla]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Non Mahalla") {
+      $("#nonmahalla").show();
+      $("#mahalla").hide();
+      $("#verify").hide();
+    } else {
+      $("#mahalla").show();
+      $("#verify").show();
+      $("#nonmahalla").show();
+    }
+  });
+  // show/hide mahalla div on radio change
+  $("input[type=radio][name=inputFundsVerification]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "TP") {
+      $("#nonmahalla").show();
+      $("#mahalla").hide();
+    } else {
+      $("#mahalla").show();
+      $("#nonmahalla").show();
+    }
+  });
+
+  // show/hide inputFundsNotes textbox on dropdown change
+  $("#inputFundsType").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Other") {
+      $("#inputFundsNotes").show();
+      $("#inputFundsFestival").hide();
+    } 
+    else if ($(this).val() == "Festival") {
+      $("#inputFundsFestival").show();
+      $("#inputFundsNotes").hide();
+    }
+     else {
+      $("#inputFundsNotes").hide();
+      $("#inputFundsFestival").hide();
+    }
   });
 
 
@@ -665,13 +733,37 @@ $(document).ready(function () {
     });
   });
 
+  // form_add-payment.php
+  // submit data to find the details
+  $("#inputRentalPaymentSubdivision").change(function (e) {
+    e.preventDefault();
+    var index = $("#inputIndexNo").val();
+    var subdivision = $("#inputRentalPaymentSubdivision").val();
+    var data_bundle =
+      "index=" +
+      index +
+      "&subdivision=" +
+      subdivision +
+      "&action=find_record_sub";
+    $.ajax({
+      type: "post",
+      url: "handlers/add_payment_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputRentalPaymentTP").val(result_array[0]);
+      },
+    });
+  });
+
   // form_quran-registration-form.php
   // submit data to find the details
   $("#inputQuranSubdivision").change(function (e) {
     e.preventDefault();
     var index = $("#inputIndexNo").val();
     var subdivision = $("#inputQuranSubdivision").val();
-    var data_bundle = "index=" + index + "&subdivision=" + subdivision + "&action=find_record";
+    var data_bundle =
+      "index=" + index + "&subdivision=" + subdivision + "&action=find_record";
     $.ajax({
       type: "post",
       url: "handlers/quran_mdhrasa_handler.php",
@@ -877,7 +969,8 @@ $(document).ready(function () {
   $("#donationlistDetails").change(function (e) {
     e.preventDefault();
     var donationlistDetails = $("#donationlistDetails").val();
-    window.location.href = "preview_donation-details.php?action=" + donationlistDetails;
+    window.location.href =
+      "preview_donation-details.php?action=" + donationlistDetails;
   });
 
   // nikkah preview
@@ -899,7 +992,7 @@ $(document).ready(function () {
     });
   });
 
-    // quran madrasa preview
+  // quran madrasa preview
   // submit data to delete a row
   $(".delete_q_madrasa").click(function () {
     var id = $(this).attr("id");
@@ -918,7 +1011,7 @@ $(document).ready(function () {
     });
   });
 
-    // trustee board preview
+  // trustee board preview
   // submit data to update and terminate a row
   $(".terminate_row_trustee").click(function () {
     var id = $(this).attr("id");
@@ -937,7 +1030,7 @@ $(document).ready(function () {
     });
   });
 
-    // pesh imaam preview
+  // pesh imaam preview
   // submit data to update and terminate a row
   $(".terminate_row_peshimaam").click(function () {
     var id = $(this).attr("id");
@@ -956,7 +1049,7 @@ $(document).ready(function () {
     });
   });
 
-    // muazzin preview
+  // muazzin preview
   // submit data to update and terminate a row
   $(".terminate_row_muazzin").click(function () {
     var id = $(this).attr("id");
@@ -975,7 +1068,7 @@ $(document).ready(function () {
     });
   });
 
-    // preview_rental-places.php
+  // preview_rental-places.php
   // submit data to update and delete a row
   $(".delete_place").click(function () {
     var id = $(this).attr("id");
@@ -994,17 +1087,16 @@ $(document).ready(function () {
     });
   });
 
-    // preview_rental-places.php
+  // preview_rental-places.php
   // submit data to update and delete a row
   $("#addNewPlace").click(function () {
     var id = $(this).attr("id");
-    var data_bundle = "id=" + id + "&action=delete";
 
     $("#add").click(function (e) {
       e.preventDefault();
       var inputRentalType = $("#inputRentalType").val();
       var inputAddress = $("#inputAddress").val();
-      var data_bundle = "inputRentalType="+inputRentalType+"&inputAddress="+inputAddress+"&action=add";
+      var data_bundle = "inputRentalType=" + inputRentalType + "&inputAddress=" + inputAddress + "&action=add";
       $.ajax({
         type: "post",
         url: "handlers/rental_places_handler.php",
@@ -1016,7 +1108,51 @@ $(document).ready(function () {
     });
   });
 
-    // villager preview
+  // preview_undiyal-collection.php
+  // submit data to update and delete a row
+  $("#addNewUndiyal").click(function () {
+
+    $("#add").click(function (e) {
+      e.preventDefault();
+      var inputDate = $("#inputDate").val();
+      var inputAmount = $("#inputAmount").val();
+      var inputUser = $("#inputUser").val();
+      var data_bundle =
+        "inputDate=" + inputDate + "&inputAmount=" + inputAmount + "&inputUser=" + inputUser + "&action=add_undiyal";
+      $.ajax({
+        type: "post",
+        url: "handlers/collections_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        },
+      });
+    });
+  });
+
+  // preview_kanduri-collection.php
+  // submit data to update and delete a row
+  $("#addNewKanduri").click(function () {
+
+    $("#add").click(function (e) {
+      e.preventDefault();
+      var inputDate = $("#inputDate").val();
+      var inputAmount = $("#inputAmount").val();
+      var inputUser = $("#inputUser").val();
+      var data_bundle =
+        "inputDate=" + inputDate + "&inputAmount=" + inputAmount + "&inputUser=" + inputUser + "&action=add_kanduri";
+      $.ajax({
+        type: "post",
+        url: "handlers/collections_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        },
+      });
+    });
+  });
+
+  // villager preview
   // submit data to update a row
   $(".update_row_saandha").click(function () {
     var id = $(this).attr("id");
@@ -1035,13 +1171,12 @@ $(document).ready(function () {
     });
   });
 
-    // preview_saandha-amount-fixing-history.php
+  // preview_saandha-amount-fixing-history.php
   // submit data to update a row
   $("#editSaandhaAmount").click(function () {
-
     $("#update").click(function (e) {
       var Amount = $("#newAmount").val();
-      var data_bundle = "newAmount="+Amount;
+      var data_bundle = "newAmount=" + Amount;
 
       e.preventDefault();
       $.ajax({
@@ -1058,17 +1193,17 @@ $(document).ready(function () {
 
   // preview_trustee_board-history_step-2.php
   // submit details
-  $("#addTBHistory").click(function (e) { 
+  $("#addTBHistory").click(function (e) {
     e.preventDefault();
     var inputDetails = $("#inputDetails").val();
-    var data_bundle = "inputDetails="+inputDetails+"&id="+id;
+    var data_bundle = "inputDetails=" + inputDetails + "&id=" + id;
     $.ajax({
       type: "post",
       url: "handlers/trustee_board_history_handler.php",
       data: data_bundle,
       success: function (response) {
         window.location.href = response;
-      }
+      },
     });
   });
 
@@ -1078,26 +1213,22 @@ $(document).ready(function () {
     $("#alldonations").hide();
     $("#trusteeboard").hide();
     $("#disaster").hide();
-  }
-  else if (donationaction == "alldonations") {
+  } else if (donationaction == "alldonations") {
     $("#alldonations").show();
     $("#other").hide();
     $("#trusteeboard").hide();
     $("#disaster").hide();
-  }
-  else if (donationaction == "trusteeboard") {
+  } else if (donationaction == "trusteeboard") {
     $("#trusteeboard").show();
     $("#alldonations").hide();
     $("#other").hide();
     $("#disaster").hide();
-  }
-  else if (donationaction == "disaster") {
+  } else if (donationaction == "disaster") {
     $("#disaster").show();
     $("#alldonations").hide();
     $("#trusteeboard").hide();
     $("#other").hide();
-  }
-  else{
+  } else {
     $("#alldonations").show();
     $("#other").hide();
     $("#trusteeboard").hide();
@@ -1111,44 +1242,37 @@ $(document).ready(function () {
     $("#madrasa").hide();
     $("#orphan").hide();
     $("#allVillagers").show();
-    
-  }
-  else if (villageraction == "widow") {
+  } else if (villageraction == "widow") {
     $("#widow").show();
     $("#allVillagers").hide();
     $("#divorse").hide();
     $("#madrasa").hide();
     $("#orphan").hide();
-  }
-  else if (villageraction == "divorse") {
+  } else if (villageraction == "divorse") {
     $("#divorse").show();
     $("#widow").hide();
     $("#allVillagers").hide();
     $("#madrasa").hide();
     $("#orphan").hide();
-  }
-  else if (villageraction == "madrasa") {
+  } else if (villageraction == "madrasa") {
     $("#madrasa").show();
     $("#widow").hide();
     $("#divorse").hide();
     $("#allVillagers").hide();
     $("#orphan").hide();
-  }
-  else if (villageraction == "orphan") {
+  } else if (villageraction == "orphan") {
     $("#orphan").show();
     $("#widow").hide();
     $("#divorse").hide();
     $("#madrasa").hide();
     $("#allVillagers").hide();
-  }
-  else{
+  } else {
     $("#widow").hide();
     $("#divorse").hide();
     $("#madrasa").hide();
     $("#orphan").hide();
     $("#allVillagers").show();
   }
-  
 
   // function to hide/show view/edit pages in preview
   (function () {
@@ -1178,7 +1302,6 @@ $(document).ready(function () {
         $("#ASdetails").hide();
         $("#treasurerdetails").hide();
         $("#advisoryMemberdetails").hide();
-
       } else if (designation == "Assistant Secretary") {
         $("#ASdetails").show();
         $("#presidentdetails").hide();
@@ -1186,7 +1309,6 @@ $(document).ready(function () {
         $("#secretarydetails").hide();
         $("#treasurerdetails").hide();
         $("#advisoryMemberdetails").hide();
-
       } else if (designation == "Treasurer") {
         $("#treasurerdetails").show();
         $("#presidentdetails").hide();
@@ -1194,21 +1316,18 @@ $(document).ready(function () {
         $("#secretarydetails").hide();
         $("#ASdetails").hide();
         $("#advisoryMemberdetails").hide();
-
-      }else if (designation == "Advisory Member") {
+      } else if (designation == "Advisory Member") {
         $("#advisoryMemberdetails").show();
         $("#presidentdetails").hide();
         $("#VPdetails").hide();
         $("#secretarydetails").hide();
         $("#ASdetails").hide();
         $("#treasurerdetails").hide();
-
       }
       console.log("edit jq");
-    }else if (action == "editable") {
+    } else if (action == "editable") {
       $("#editable").show();
-    }
-     else {
+    } else {
       console.log("invalid");
     }
   })();

@@ -109,6 +109,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="preview_rental-places.php"> Rental Places </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_funds.php"> Funds </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_lailathul-kadhir-collection.php"> Laylat al-Qadr Collection </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_undiyal-collection.php"> Undiyal Collection </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_kanduri-collection.php"> Kanduri Collection </a>
+                    </li>
                 </ul>
             </div>
         </li>

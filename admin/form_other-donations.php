@@ -24,7 +24,7 @@ include "template_parts/header.php";
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title">Non-Mahalla Donations</h3>
+                        <h3 class="page-title"> Non-Mahalla Donations </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>forms.php">Forms</a></li>
@@ -36,7 +36,7 @@ include "template_parts/header.php";
                         <div class="col-md-8 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <h4 class="card-title">Donation Acceptance Form</h4>
+                                    <h4 class="card-title"> Donation Form </h4>
                                     <form class="pt-3" method="POST">
                                         <div class="form-group">
                                             <label for="inputName">Name</label>
@@ -82,7 +82,7 @@ include "template_parts/header.php";
                                             <textarea class="form-control" id="inputNotes" name="inputNotes" rows="4"></textarea>
                                         </div>
                                         <div class="text-center">
-                                            <button class="btn btn-primary btn-lg" id="submitOtherDonations" name="submitOtherDonations">Accept Donation</button>
+                                            <button class="btn btn-primary btn-lg" id="submitOtherDonations" name="submitOtherDonations"> Enter </button>
 
                                         </div>
                                     </form>
