@@ -195,6 +195,19 @@
   display: none;
 }
 
+ /*  form_friday-collection.php */
+/* hide fridayRegular div */
+#fridayRegular {
+  display: none;
+}
+
+ /*  form_add-new-rental.php */
+/* hide inputRentalMonthsDiv div */
+#inputRentalMonthsDiv {
+  display: none;
+}
+
+
 .alert {
   position: absolute;
   z-index: 1400;

@@ -110,6 +110,9 @@
                         <a class="nav-link" href="preview_rental-places.php"> Rental Places </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="preview_new-rental-registration.php"> Rental Status </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="preview_funds.php"> Funds </a>
                     </li>
                     <li class="nav-item">
@@ -120,6 +123,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_kanduri-collection.php"> Kanduri Collection </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_expenses.php"> Expenses </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_friday-collection.php"> Friday Collection </a>
                     </li>
                 </ul>
             </div>

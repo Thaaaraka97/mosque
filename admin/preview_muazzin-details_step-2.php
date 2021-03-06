@@ -95,7 +95,7 @@ foreach ($muazzin_details as $muazzin_details_item) {
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title"> Trustee Board Details </h3>
+                        <h3 class="page-title"> Muazzin Details </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_muazzin-details.php">Details Preview</a></li>

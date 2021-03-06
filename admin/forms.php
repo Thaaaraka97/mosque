@@ -83,7 +83,7 @@ include "template_parts/header.php";
                       Click to open..
                     </p>
                     <p>
-                      <a href="<?php echo $server_name ?>form_add-new-rental.php" class="btn btn-primary btn-md">Add new Rental</a>
+                      <a href="<?php echo $server_name ?>form_new-rental-registration.php" class="btn btn-primary btn-md">Add new Rental</a>
                     </p>
                     <p>
                       <a href="<?php echo $server_name ?>form_add-payment.php" class="btn btn-primary btn-md">Add a payment</a>

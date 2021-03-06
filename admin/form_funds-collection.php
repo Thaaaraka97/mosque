@@ -84,8 +84,8 @@ include "template_parts/header.php";
                                                 <input type="text" class="form-control" id="inputIndexNo" name="inputIndexNo" placeholder="Index No">
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputQuranSubdivision"> Sub-division </label>
-                                                <select id="inputQuranSubdivision" name="inputQuranSubdivision" class="form-control">
+                                                <label for="inputSubdivision"> Sub-division </label>
+                                                <select id="inputSubdivision" name="inputSubdivision" class="form-control">
                                                     <option value="0" selected>Choose...</option>
                                                     <?php
                                                     $sub_division = $database->select_data('tbl_subdivision');

@@ -682,6 +682,19 @@ $(document).ready(function () {
     }
   });
 
+  //   form_friday-collection.php
+  // show/hide lease/monthly div on radio change
+  $("input[type=radio][name=inputFridayCollectionType]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "Collection") {
+      $("#fridayRegular").hide();
+      $("#fridayRegularDate").show();
+    } else {
+      $("#fridayRegular").show();
+      $("#fridayRegularDate").hide();
+    }
+  });
+
   //   form_villagers-registration-form.php
   $("#addAnother").click(function () {
     document.location.href = "form_villagers-registration-form-step2.php";
@@ -940,6 +953,31 @@ $(document).ready(function () {
     });
   });
 
+  // ajax submit index and subdivision of friday collection to auto fill other part of the form
+  $("#inputFridayColSubdivision").change(function (e) {
+    e.preventDefault();
+    var inputIndexNo = $("#inputIndexNo").val();
+    var inputFridayColSubdivision = $("#inputFridayColSubdivision").val();
+    var data_bundle =
+      "index=" +
+      inputIndexNo +
+      "&subdivision=" +
+      inputFridayColSubdivision +
+      "&action=find_record";
+
+    $.ajax({
+      type: "post",
+      url: "handlers/friday_collection_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputTP").val(result_array[0]);
+        $("#inputName").val(result_array[1]);
+        $("#inputAddress").val(result_array[2]);
+        },
+    });
+  });
+
   // ajax submit to trustee_board_form_handler.php
   $("#submitTrusteeBoard").click(function (e) {
     var all_data = $("#trusteeBoardForm").serialize();
@@ -962,6 +1000,19 @@ $(document).ready(function () {
     e.preventDefault();
     var listDetails = $("#listDetails").val();
     window.location.href = "preview_villager-details.php?action=" + listDetails;
+  });
+
+  // form_friday-collection.php
+  // ajax submit list down details according to the selection
+  $("#inputRentalDuration").change(function (e) {
+    e.preventDefault();
+    var inputRentalDuration = $("#inputRentalDuration").val();
+    if (inputRentalDuration == "Other") {
+      $("#inputRentalMonthsDiv").show();
+    }
+    else{
+      $("#inputRentalMonthsDiv").hide();
+    }
   });
 
   // preview_donation-details.php

@@ -97,7 +97,7 @@ foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title"> Trustee Board Details </h3>
+                        <h3 class="page-title"> Pesh Imaam Details </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_pesh_imaam-details.php">Details Preview</a></li>

@@ -65,6 +65,13 @@ $database = new databases();
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
+                                                <label for="inputTP">Telephone Number </label>
+                                                <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="077xxxxxxx">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
                                                 <label for="inputRentalType">Rental</label>
                                                 <select id="inputRentalType" name="inputRentalType" class="form-control">
                                                     <option value="0" selected>Choose...</option>
@@ -72,6 +79,27 @@ $database = new databases();
                                                     <option value="House">House</option>
                                                     <option value="Shop">Shop</option>
                                                 </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputDownPayment">Down Payment </label>
+                                                <input type="text" class="form-control" id="inputDownPayment" name="inputDownPayment" placeholder="Down Payment (Rs)">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputRentalDuration">Rental Duration</label>
+                                                <select id="inputRentalDuration" name="inputRentalDuration" class="form-control">
+                                                    <option value="0" selected>Choose...</option>
+                                                    <option value="6 months">6 months</option>
+                                                    <option value="12 months">12 months</option>
+                                                    <option value="24 months">24 months</option>
+                                                    <option value="36 months">36 months</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6" id="inputRentalMonthsDiv">
+                                                <label for="inputRentalMonths"> Enter Rental Duration (in months) </label>
+                                                <input type="text" class="form-control" id="inputRentalMonths" name="inputRentalMonths" placeholder="Down Payment (Rs)">
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -82,16 +110,6 @@ $database = new databases();
                                             <div class="form-group col-md-6">
                                                 <label for="inputRentalEndDate">Rental End Date </label>
                                                 <input type="date" class="form-control" id="inputRentalEndDate" name="inputRentalEndDate">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputDownPayment">Down Payment </label>
-                                                <input type="text" class="form-control" id="inputDownPayment" name="inputDownPayment" placeholder="Down Payment (Rs)">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputTP">Telephone Number </label>
-                                                <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="077xxxxxxx">
                                             </div>
                                         </div>
                                         <div class="form-row">

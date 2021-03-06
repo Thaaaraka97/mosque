@@ -561,7 +561,6 @@ if (isset($_POST['submitJanaza'])) {
             echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }
     }
-
 }
 
 // insert into tbl_bills
@@ -579,7 +578,6 @@ if (isset($_POST['submitBills'])) {
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
-
 }
 
 // insert into tbl_rentalplaceregistration
@@ -819,6 +817,11 @@ if (isset($_POST['submitNewRental'])) {
     } else {
         $inputMonthlyAmount = 0;
     }
+    if ($_POST["inputRentalDuration"] == "Other") {
+        $inputRentalDuration = $_POST["inputRentalMonths"];
+    } else {
+        $inputRentalDuration = $_POST["inputRentalDuration"];
+    }
 
     $insert_to_tbl_rentalsregisteration = array(
         'rr_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
@@ -827,6 +830,7 @@ if (isset($_POST['submitNewRental'])) {
         'rr_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
         'rr_rentalType' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
         'rr_startDate' => mysqli_real_escape_string($database->con, $_POST['inputRentalStartDate']),
+        'rr_rentalDuration' => mysqli_real_escape_string($database->con, $inputRentalDuration),
         'rr_endDate' => mysqli_real_escape_string($database->con, $_POST['inputRentalEndDate']),
         'rr_downpayment' => mysqli_real_escape_string($database->con, $_POST['inputDownPayment']),
         'rr_monthlyPayment' => mysqli_real_escape_string($database->con, $inputMonthlyAmount),
@@ -953,4 +957,85 @@ if (isset($_POST['submitOtherDonations'])) {
     // $URL = "forms.php";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+}
+
+// insert into tbl_expenses
+// submitNewRental button click
+if (isset($_POST['submitExpenses'])) {
+
+    $insert_to_tbl_expenses = array(
+        'ex_date' => mysqli_real_escape_string($database->con, $_POST['inputDate']),
+        'ex_type' => mysqli_real_escape_string($database->con, $_POST['inputExpensesType']),
+        'ex_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
+        'ex_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes'])
+
+    );
+
+    if ($database->insert_data('tbl_expenses', $insert_to_tbl_expenses)) {
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
+}
+
+// insert into tbl_otherservantsalary
+// submitServantSalary button click
+if (isset($_POST['submitServantSalary'])) {
+
+    $insert_to_tbl_otherservantsalary = array(
+        'oss_date' => mysqli_real_escape_string($database->con, $_POST['inputDate']),
+        'oss_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        'oss_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
+        'oss_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes'])
+
+    );
+
+    if ($database->insert_data('tbl_otherservantsalary', $insert_to_tbl_otherservantsalary)) {
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
+}
+
+// insert into tbl_fridaycollectionregular
+// submitFridayCollection button click
+if (isset($_POST['submitFridayCollection'])) {
+    $today = date("Y-m-d");
+    echo $today;
+    if ($_POST['inputFridayCollectionType'] == "Regular Donation") {
+        $insert_to_tbl_fridaycollectionregular = array(
+            'fr_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+            'fr_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputFridayColSubdivision']),
+            'fr_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+            'fr_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+            'fr_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
+            'fr_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
+            'fr_date' => mysqli_real_escape_string($database->con, $today),
+            'fr_username' => mysqli_real_escape_string($database->con, "user")
+    
+        );
+    
+        if ($database->insert_data('tbl_fridaycollectionregular', $insert_to_tbl_fridaycollectionregular)) {
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+        }
+    }
+    elseif ($_POST['inputFridayCollectionType'] == "Collection") {
+        // $insert_to_tbl_fridaycollectionregular = array(
+        //     'fr_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+        //     'fr_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputFridayColSubdivision']),
+        //     'fr_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        //     'fr_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+        //     'fr_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
+        //     'fr_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
+        //     'fr_date' => mysqli_real_escape_string($database->con, $today),
+        //     'fr_username' => mysqli_real_escape_string($database->con, "user")
+    
+        // );
+    
+        // if ($database->insert_data('tbl_fridaycollectionregular', $insert_to_tbl_fridaycollectionregular)) {
+        //     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        //     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+        // }
+    }
+
+    
 }
