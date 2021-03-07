@@ -113,6 +113,9 @@
                         <a class="nav-link" href="preview_new-rental-registration.php"> Rental Status </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="preview_rental-incomes.php"> Rental Income </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="preview_funds.php"> Funds </a>
                     </li>
                     <li class="nav-item">
