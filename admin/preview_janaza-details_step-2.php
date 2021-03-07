@@ -52,6 +52,8 @@ foreach ($janaza_details as $janaza_details_item) {
     var action = "<?php echo $action; ?>";
     var villageraction = "";
     var donationaction = "";
+    var fridaycollectionaction = "";
+
 </script>
 
 <body>

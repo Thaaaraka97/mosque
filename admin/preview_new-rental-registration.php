@@ -8,6 +8,13 @@ if (isset($_GET['edited'])) {
     $message = "Record successfully edited and Updated..!";
 }
 ?>
+<script type="text/javascript">
+    var action = "<?php echo $action; ?>";
+    var villageraction = "";
+    var donationaction = "";
+    var fridaycollectionaction = "";
+
+</script>
 
 <body>
     <div class="container-scroller">
@@ -69,7 +76,7 @@ if (isset($_GET['edited'])) {
                                                             <td>" . $rental_details_item['rr_name'] . "</td>
                                                             <td>" . $rental_details_item['rr_telephone'] . "</td>
                                                             <td>
-                                                                <a href='preview_new-rental-registration_step-2.php?id=" . $id . "&action=view' class='btn btn-primary btn-md'>View</a>
+                                                                <a href='preview_new-rental-registration_step-2.php?id=" . $id . "&action=view&view=rental_status' class='btn btn-primary btn-md'>View</a>
                                                             </td>
                                                         </tr>
                                                          ";

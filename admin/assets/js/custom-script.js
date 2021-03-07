@@ -765,6 +765,29 @@ $(document).ready(function () {
       success: function (response) {
         var result_array = response.split(",");
         $("#inputRentalPaymentTP").val(result_array[0]);
+        $("#inputName").val(result_array[1]);
+        $("#inputAddress").val(result_array[2]);
+      },
+    });
+  });
+
+  // form_add-payment.php
+  // submit data to find the details
+  $("#inputRentalPaymentTP").change(function (e) {
+    e.preventDefault();
+    var inputRentalPaymentTP = $("#inputRentalPaymentTP").val();
+    var data_bundle =
+      "inputRentalPaymentTP=" +
+      inputRentalPaymentTP +
+      "&action=find_record_tp";
+    $.ajax({
+      type: "post",
+      url: "handlers/add_payment_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputName").val(result_array[0]);
+        $("#inputAddress").val(result_array[1]);
       },
     });
   });
@@ -1024,6 +1047,15 @@ $(document).ready(function () {
       "preview_donation-details.php?action=" + donationlistDetails;
   });
 
+  // preview_friday-collection.php
+  // ajax submit list down details according to the selection
+  $("#FridayCollectionList").change(function (e) {
+    e.preventDefault();
+    var FridayCollectionList = $("#FridayCollectionList").val();
+    window.location.href =
+      "preview_friday-collection.php?action=" + FridayCollectionList;
+  });
+
   // nikkah preview
   // submit data to delete a row
   $(".delete_row_nikkah").click(function () {
@@ -1257,6 +1289,60 @@ $(document).ready(function () {
       },
     });
   });
+
+  // form_add-payment.php
+  // 
+  $("#inputRentalType").change(function (e) { 
+    e.preventDefault();
+    var inputRentalType = $("#inputRentalType").val();
+    var inputRentalPaymentTP = $("#inputRentalPaymentTP").val();
+    var data_bundle = "inputRentalType=" + inputRentalType + "&inputRentalPaymentTP=" + inputRentalPaymentTP + "&action=find_rental_records";
+    $.ajax({
+      type: "post",
+      url: "handlers/add_payment_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        $("#inputRentalID").html(response);
+      }
+    });
+  });
+  // form_add-payment.php
+  // 
+  $("#inputRentalID").change(function (e) { 
+    e.preventDefault();
+    var inputRentalID = $("#inputRentalID").val();
+    var payment = "";
+    var duration = "";
+    var data_bundle = "inputRentalID=" + inputRentalID + "&action=find_rental_records_with_id";
+    $.ajax({
+      type: "post",
+      url: "handlers/add_payment_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        if (result_array[0] == "0") {
+          payment = result_array[1];
+        }
+        else{
+          payment = result_array[2];
+        }
+        due = result_array[3];
+        $("#inputPayment").val(payment);
+        $("#inputDuePayment").val(due);
+        
+      }
+    });
+  });
+
+    // show/ hide div on the change of dropdown list donations
+  if (fridaycollectionaction == "fridayregular") {
+    $("#fridayregular").show();
+    $("#fridaycollections").hide();
+  }
+  else if (fridaycollectionaction == "fridaycollections") {
+    $("#fridayregular").hide();
+    $("#fridaycollections").show();
+  }
 
   // show/ hide div on the change of dropdown list donations
   if (donationaction == "other") {

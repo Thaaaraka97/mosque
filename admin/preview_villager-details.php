@@ -17,9 +17,11 @@ if (isset($_GET['action'])) {
 }
 ?>
 <script type="text/javascript">
+    var action = "";
     var villageraction = "<?php echo $action; ?>";
     var donationaction = "";
-    console.log(villageraction)
+    var fridaycollectionaction = "";
+
 </script>
 
 <body>

@@ -61,6 +61,8 @@ foreach ($trustee_board_details as $trustee_board_details_item) {
     var designation = "<?php echo $designation; ?>";
     var villageraction = "";
     var donationaction = "";
+    var fridaycollectionaction = "";
+
 </script>
 
 <body>

@@ -88,6 +88,8 @@ foreach ($nikkah_details as $nikkah_details_item) {
     console.log(action);
     var villageraction = "";
     var donationaction = "";
+    var fridaycollectionaction = "";
+
 </script>
 
 <body>

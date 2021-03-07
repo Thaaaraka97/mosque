@@ -12,6 +12,8 @@ if (isset($_GET['action'])) {
 <script type="text/javascript">
     var donationaction = "<?php echo $action; ?>";
     var villageraction = "";
+    var action = "";
+    var fridaycollectionaction = "";
     console.log(donationaction)
 </script>
 

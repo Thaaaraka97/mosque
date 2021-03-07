@@ -186,7 +186,8 @@ $age = $database->calculate_age($dob);
     var action = "<?php echo $action; ?>";
     var villageraction = "";
     var donationaction = "";
-    console.log(action)
+    var fridaycollectionaction = "";
+
 </script>
 
 <body>

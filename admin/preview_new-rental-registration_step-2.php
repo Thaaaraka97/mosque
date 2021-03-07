@@ -9,6 +9,9 @@ $id = $_GET['id'];
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
+if (isset($_GET['view'])) {
+    $view = $_GET['view'];
+}
 
 
 $where = array(
@@ -55,12 +58,15 @@ foreach ($rental_registration_details as $rental_registration_details_item) {
     }
 }
 
+
 ?>
 <script type="text/javascript">
     var action = "<?php echo $action; ?>";
     var villageraction = "";
     var donationaction = "";
+    var fridaycollectionaction = "";
 </script>
+
 
 <body>
     <div class="container-scroller">
@@ -81,7 +87,14 @@ foreach ($rental_registration_details as $rental_registration_details_item) {
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title"> Rental Status Details </h3>
+                        <?php
+                        if ($view == "rental_income") {
+                            echo "<h3 class='page-title'> Rental Income Details </h3>";
+                        } else {
+                            echo "<h3 class='page-title'> Rental Status Details </h3>";
+                        }
+                        ?>
+
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_new-rental-registration.php">Details Preview</a></li>
@@ -165,25 +178,28 @@ foreach ($rental_registration_details as $rental_registration_details_item) {
                                             <table class="display datatable">
                                                 <thead>
                                                     <tr>
-                                                        <th>Rental Type</th>
-                                                        <th>Rental Start</th>
-                                                        <th>Name</th>
-                                                        <th>Contact Number</th>
+                                                        <th>Date</th>
+                                                        <th>Payment</th>
+                                                        <th>Notes</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $rental_details = $database->select_data('tbl_rentalsregisteration');
-                                                    foreach ($rental_details as $rental_details_item) {
-                                                        $id = $rental_details_item['rr_id'];
+
+                                                    $where2 = array(
+                                                        'ri_rentalid' => $id
+                                                    );
+                                                    $rental_income_details = $database->select_where('tbl_rentalincome', $where2);
+                                                    foreach ($rental_income_details as $rental_income_details_item) {
+                                                        $id = $rental_income_details_item['ri_id'];
+
                                                         echo "
-                                                         <tr>
-                                                            <td>" . $rental_details_item['rr_rentalType'] . "</td>
-                                                            <td>" . $rental_details_item['rr_startDate'] . "</td>
-                                                            <td>" . $rental_details_item['rr_name'] . "</td>
-                                                            <td>" . $rental_details_item['rr_telephone'] . "</td>
-                                                        </tr>
-                                                         ";
+                                                            <tr>
+                                                                <td>" . $rental_income_details_item['ri_date'] . "</td>
+                                                                <td>" . $rental_income_details_item['ri_payment'] . "</td>
+                                                                <td>" . $rental_income_details_item['ri_notes'] . "</td>
+                                                            </tr>
+                                                            ";
                                                     }
 
                                                     ?>

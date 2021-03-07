@@ -5,6 +5,12 @@
 include "template_parts/header.php";
 $database = new databases();
 ?>
+<script type="text/javascript">
+    var donationaction = "";
+    var villageraction = "";
+    var action = "";
+    var fridaycollectionaction = "";
+</script>
 
 <body>
     <div class="container-scroller">
@@ -38,7 +44,7 @@ $database = new databases();
                             <div class="card shadow">
                                 <div class="card-body">
                                     <h4 class="card-title">New Payment Form</h4>
-                                    <form class="pt-3">
+                                    <form class="pt-3" method="POST">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputIndexNo"> Index Number </label>
@@ -51,7 +57,7 @@ $database = new databases();
                                                     <?php
                                                     $sub_division = $database->select_data('tbl_subdivision');
                                                     foreach ($sub_division as $sub_division_item) {
-                                                        echo "<option value='Moragala Main-Street'>" . $sub_division_item["sb_name"] . "</option>";
+                                                        echo "<option value='" . $sub_division_item["sb_name"] . "'>" . $sub_division_item["sb_name"] . "</option>";
                                                     }
 
                                                     ?>
@@ -64,12 +70,30 @@ $database = new databases();
                                                 <input type="text" class="form-control" id="inputRentalPaymentTP" name="inputRentalPaymentTP" placeholder="077xxxxxxx">
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputRentalType">Rental</label>
+                                                <label for="inputName">Name </label>
+                                                <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" readonly>
+                                            </div>
+                                        </div>
+                                        <div id="form-row">
+                                            <div class="form-group">
+                                                <label for="inputAddress"> Address </label>
+                                                <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress" readonly></textarea>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputRentalType">Rental Type</label>
                                                 <select id="inputRentalType" name="inputRentalType" class="form-control">
                                                     <option value="0" selected>Choose...</option>
                                                     <option value="Land">Land</option>
                                                     <option value="House">House</option>
                                                     <option value="Shop">Shop</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputRentalID">Rental ID</label>
+                                                <select id="inputRentalID" name="inputRentalID" class="form-control">
                                                 </select>
                                             </div>
                                         </div>
@@ -80,7 +104,7 @@ $database = new databases();
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputDuePayment">Due Amount </label>
-                                                <input type="text" class="form-control" id="inputDuePayment" name="inputDuePayment" placeholder="Due Amount (Rs)">
+                                                <input type="text" class="form-control" id="inputDuePayment" name="inputDuePayment" placeholder="Due Amount (Rs)" readonly>
                                             </div>
                                         </div>
                                         <div class=" form-group">

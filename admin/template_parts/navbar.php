@@ -128,7 +128,7 @@
                         <a class="nav-link" href="preview_expenses.php"> Expenses </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_friday-collection.php"> Friday Collection </a>
+                        <a class="nav-link" href="preview_friday-collection.php?action=fridayregular"> Friday Collection </a>
                     </li>
                 </ul>
             </div>

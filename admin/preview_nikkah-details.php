@@ -13,6 +13,13 @@ elseif (isset($_GET['edited'])) {
     $message = "Record successfully Updated..!";
 }
 ?>
+<script type="text/javascript">
+    var action = "<?php echo $action; ?>";
+    var villageraction = "";
+    var donationaction = "";
+    var fridaycollectionaction = "";
+
+</script>
 
 <body>
     <div class="container-scroller">

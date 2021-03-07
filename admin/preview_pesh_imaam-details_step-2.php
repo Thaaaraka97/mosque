@@ -76,7 +76,10 @@ foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
     var action = "<?php echo $action; ?>";
     var villageraction = "";
     var donationaction = "";
+    var fridaycollectionaction = "";
+
 </script>
+
 
 <body>
     <div class="container-scroller">

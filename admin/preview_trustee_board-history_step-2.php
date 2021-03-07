@@ -40,7 +40,10 @@ foreach ($trustee_board_history as $trustee_board_history_item) {
     var id = "<?php echo $id; ?>";
     var villageraction = "";
     var donationaction = "";
+    var fridaycollectionaction = "";
+
 </script>
+
 
 <body>
     <div class="container-scroller">

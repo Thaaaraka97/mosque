@@ -8,6 +8,13 @@ if (isset($_GET['edited'])) {
     $message = "Record successfully edited and Updated..!";
 }
 ?>
+<script type="text/javascript">
+    var donationaction = "<?php echo $action; ?>";
+    var villageraction = "";
+    var action = "";
+    var fridaycollectionaction = "";
+    console.log(donationaction)
+</script>
 
 <body>
     <div class="container-scroller">

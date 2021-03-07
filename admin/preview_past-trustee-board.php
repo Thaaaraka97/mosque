@@ -4,6 +4,13 @@
 <?php
 include "template_parts/header.php";
 ?>
+<script type="text/javascript">
+    var action = "<?php echo $action; ?>";
+    var villageraction = "";
+    var donationaction = "";
+    var fridaycollectionaction = "";
+
+</script>
 
 <body>
     <div class="container-scroller">

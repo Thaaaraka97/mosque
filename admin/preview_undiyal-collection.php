@@ -10,7 +10,13 @@ if (isset($_GET['inserted'])) {
     $message = "Record successfully deleted..!";
 }
 ?>
+<script type="text/javascript">
+    var action = "<?php echo $action; ?>";
+    var villageraction = "";
+    var donationaction = "";
+    var fridaycollectionaction = "";
 
+</script>
 <body>
     <div class="container-scroller">
         <!-- navigation bar -->

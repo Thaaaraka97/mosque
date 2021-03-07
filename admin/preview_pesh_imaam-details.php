@@ -11,6 +11,14 @@ elseif (isset($_GET['terminated'])) {
     $message = "Member terminated and Updated the Record..!";
 }
 ?>
+<script type="text/javascript">
+    var action = "<?php echo $action; ?>";
+    var villageraction = "";
+    var donationaction = "";
+    var fridaycollectionaction = "";
+
+</script>
+
 
 <body>
     <div class="container-scroller">

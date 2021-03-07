@@ -13,8 +13,8 @@ if (isset($_GET['edited'])) {
     var villageraction = "";
     var donationaction = "";
     var fridaycollectionaction = "";
-
 </script>
+
 <body>
     <div class="container-scroller">
         <!-- navigation bar -->
@@ -44,34 +44,52 @@ if (isset($_GET['edited'])) {
                     }
                     ?>
                     <div class="page-header">
-                        <h3 class="page-title"> Other Servant Salary Details </h3>
+                        <h3 class="page-title"> Rental Income Details </h3>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Other Servant Salary Details Preview </h4>
+                                        <h4 class="card-title"> Rental Income Details Preview </h4>
                                         <div class="mt-5">
                                             <table class="display datatable">
                                                 <thead>
                                                     <tr>
-                                                        <th>Date</th>
+                                                        <th>Rental Type</th>
                                                         <th>Name</th>
+                                                        <th>Contact Number</th>
                                                         <th>Amount</th>
-                                                        <th>Notes</th>
+                                                        <th>Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $servant_salary_details = $database->select_data('tbl_otherservantsalary');
-                                                    foreach ($servant_salary_details as $servant_salary_details_item) {
+                                                    
+                                                    $rental_income_details = $database->select_data('tbl_rentalincome');
+                                                    foreach ($rental_income_details as $rental_income_details_item) {
+                                                        $id = $rental_income_details_item['ri_rentalid'];
+                                                        $name = "";
+                                                        $address = "";
+
+                                                        $where = array(
+                                                            'av_telephone'     =>     $rental_income_details_item['ri_telephone']
+                                                        );
+                                                        $person_details = $database->select_where('tbl_allvillagers', $where);
+                                                        foreach ($person_details as $person_details_item) {
+                                                            $name = $person_details_item["av_name"];
+                                                            $address = $person_details_item["av_address"];
+                                                        }
+
                                                         echo "
                                                          <tr>
-                                                            <td>" . $servant_salary_details_item['oss_date'] . "</td>
-                                                            <td>" . $servant_salary_details_item['oss_name'] . "</td>
-                                                            <td>" . $servant_salary_details_item['oss_amount'] . "</td>
-                                                            <td>" . $servant_salary_details_item['oss_notes'] . "</td>
+                                                            <td>" . $rental_income_details_item['ri_type'] . "</td>
+                                                            <td>" . $name . "</td>
+                                                            <td>" . $rental_income_details_item['ri_telephone'] . "</td>
+                                                            <td>" . $rental_income_details_item['ri_payment'] . "</td>
+                                                            <td>
+                                                                <a href='preview_new-rental-registration_step-2.php?id=" . $id . "&name=". $name ."&address=". $address ."&action=view&view=rental_income' class='btn btn-primary btn-md'>View</a>
+                                                            </td>
                                                         </tr>
                                                          ";
                                                     }
