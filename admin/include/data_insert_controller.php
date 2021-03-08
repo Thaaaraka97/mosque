@@ -819,9 +819,9 @@ if (isset($_POST['submitNewRental'])) {
         $inputMonthlyAmount = 0;
     }
     if ($_POST["inputRentalDuration"] == "Other") {
-        $inputRentalDuration = $_POST["inputRentalMonths"];
+        (int)$inputRentalDuration = $_POST["inputRentalMonths"];
     } else {
-        $inputRentalDuration = $_POST["inputRentalDuration"];
+        (int)$inputRentalDuration = $_POST["inputRentalDuration"];
     }
 
     $insert_to_tbl_rentalsregisteration = array(

@@ -13,7 +13,6 @@ if (isset($_GET['view'])) {
     $view = $_GET['view'];
 }
 
-
 $where = array(
     'rr_id' => $id
 );
@@ -89,15 +88,17 @@ foreach ($rental_registration_details as $rental_registration_details_item) {
                     <div class="page-header">
                         <?php
                         if ($view == "rental_income") {
+                            $url = "preview_rental-incomes.php";
                             echo "<h3 class='page-title'> Rental Income Details </h3>";
                         } else {
+                            $url = "preview_new-rental-registration.php";
                             echo "<h3 class='page-title'> Rental Status Details </h3>";
                         }
                         ?>
 
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_new-rental-registration.php">Details Preview</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo $server_name ?><?php  echo $url ?>">Details Preview</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Details Preview Step-2</li>
                             </ol>
                         </nav>
