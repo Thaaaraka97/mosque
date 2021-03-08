@@ -90,10 +90,10 @@ $database = new databases();
                                                 <label for="inputRentalDuration">Rental Duration</label>
                                                 <select id="inputRentalDuration" name="inputRentalDuration" class="form-control">
                                                     <option value="0" selected>Choose...</option>
-                                                    <option value="6 months">6 months</option>
-                                                    <option value="12 months">12 months</option>
-                                                    <option value="24 months">24 months</option>
-                                                    <option value="36 months">36 months</option>
+                                                    <option value="6">6 months</option>
+                                                    <option value="12">12 months</option>
+                                                    <option value="24">24 months</option>
+                                                    <option value="36">36 months</option>
                                                     <option value="Other">Other</option>
                                                 </select>
                                             </div>
