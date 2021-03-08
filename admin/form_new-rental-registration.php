@@ -55,31 +55,35 @@ $database = new databases();
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="inputName">Name </label>
-                                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputAddress"> Address </label>
-                                            <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress"></textarea>
-                                        </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputTP">Telephone Number </label>
                                                 <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="077xxxxxxx">
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="inputName">Name </label>
+                                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name">
+                                        </div>
                                         <hr>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="inputRentalType">Rental</label>
-                                                <select id="inputRentalType" name="inputRentalType" class="form-control">
+                                                <label for="inputNewRentalType">Rental Type</label>
+                                                <select id="inputNewRentalType" name="inputNewRentalType" class="form-control">
                                                     <option value="0" selected>Choose...</option>
                                                     <option value="Land">Land</option>
                                                     <option value="House">House</option>
                                                     <option value="Shop">Shop</option>
                                                 </select>
                                             </div>
+                                            <div class="form-group col-md-6" id="rentalPlace">
+                                                <label for="inputRentalPlace"> Rental Place </label>
+                                                <select id="inputRentalPlace" name="inputRentalPlace" class="form-control">
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputDownPayment">Down Payment </label>
                                                 <input type="text" class="form-control" id="inputDownPayment" name="inputDownPayment" placeholder="Down Payment (Rs)">
@@ -146,6 +150,7 @@ $database = new databases();
                                             <label for="inputNotes">Notes </label>
                                             <textarea class="form-control" id="inputNotes" name="inputNotes" rows="4"></textarea>
                                         </div>
+                                        <input type="hidden" name="inputAddress" id="inputAddress">
                                         <div class="text-center">
                                             <button class="btn btn-primary btn-lg" id="submitNewRental" name="submitNewRental">Add Rental</button>
                                         </div>

@@ -207,6 +207,12 @@
   display: none;
 }
 
+ /*  form_add-new-rental.php */
+/* hide rentalPlace div */
+#rentalPlace {
+  display: none;
+}
+
 
 .alert {
   position: absolute;

@@ -829,7 +829,7 @@ if (isset($_POST['submitNewRental'])) {
         'rr_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputnewRentalSubdivision']),
         'rr_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
         'rr_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-        'rr_rentalType' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
+        'rr_rentalType' => mysqli_real_escape_string($database->con, $_POST['inputNewRentalType']),
         'rr_startDate' => mysqli_real_escape_string($database->con, $_POST['inputRentalStartDate']),
         'rr_rentalDuration' => mysqli_real_escape_string($database->con, $inputRentalDuration),
         'rr_endDate' => mysqli_real_escape_string($database->con, $_POST['inputRentalEndDate']),
@@ -860,7 +860,7 @@ if (isset($_POST['submitNewRental'])) {
             'ri_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputnewRentalSubdivision']),
             'ri_payment' => mysqli_real_escape_string($database->con, $_POST['inputDownPayment']),
             'ri_dueAmount' => mysqli_real_escape_string($database->con, $due),
-            'ri_type' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
+            'ri_type' => mysqli_real_escape_string($database->con, $_POST['inputNewRentalType']),
             'ri_notes' => mysqli_real_escape_string($database->con, "Downpayment"),
             'ri_username' => mysqli_real_escape_string($database->con, "user"),
             'ri_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
@@ -869,8 +869,8 @@ if (isset($_POST['submitNewRental'])) {
 
         );
         if ($database->insert_data('tbl_rentalincome', $insert_to_tbl_rentalincome)) {
-            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+            // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+            // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }
     }
 }
@@ -1060,8 +1060,6 @@ if (isset($_POST['submitServantSalary'])) {
 
 // submitFridayCollection button click
 if (isset($_POST['submitFridayCollection'])) {
-    $today = date("Y-m-d");
-    echo $today;
     // insert into tbl_fridaycollectionregular
     if ($_POST['inputFridayCollectionType'] == "Regular Donation") {
         $insert_to_tbl_fridaycollectionregular = array(
@@ -1091,6 +1089,92 @@ if (isset($_POST['submitFridayCollection'])) {
         );
 
         if ($database->insert_data('tbl_fridaycollectiondonation', $insert_to_tbl_fridaycollectiondonation)) {
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+        }
+    }
+}
+
+// insert into tbl_funds
+// submitFunds button click
+if (isset($_POST['submitFunds'])) {
+    if (isset($_POST['inputFundsSubdivision'])) {
+        $subdivision = $_POST['inputFundsSubdivision'];
+    } else {
+        $subdivision = "0";
+    }
+    $insert_to_tbl_funds = array(
+        'funds_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+        'funds_subDivision' => mysqli_real_escape_string($database->con, $subdivision),
+        'funds_name	' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        'funds_address	' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+        'funds_telephone' => mysqli_real_escape_string($database->con, $_POST['inputFundsTP']),
+        'funds_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
+        'funds_type' => mysqli_real_escape_string($database->con, $_POST['inputFundsType']),
+        'funds_festival' => mysqli_real_escape_string($database->con, $_POST['inputFestival']),
+        'funds_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
+        'funds_date' => mysqli_real_escape_string($database->con, $today),
+        'funds_username' => mysqli_real_escape_string($database->con, "user")
+
+    );
+
+    if ($database->insert_data('tbl_funds', $insert_to_tbl_funds)) {
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
+}
+
+// insert into tbl_lailathulkadhrcollection
+// submitLailathulKadhir button click
+if (isset($_POST['submitLailathulKadhir'])) {
+    if (isset($_POST['inputlailathulSubdivision'])) {
+        $subdivision = $_POST['inputlailathulSubdivision'];
+    } else {
+        $subdivision = "0";
+    }
+    $insert_to_tbl_lailathulkadhrcollection = array(
+        'lk_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+        'lk_subDivision' => mysqli_real_escape_string($database->con, $subdivision),
+        'lk_name	' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        'lk_address	' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+        'lk_telephone' => mysqli_real_escape_string($database->con, $_POST['inputlailathulTP']),
+        'lk_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
+        'lk_date' => mysqli_real_escape_string($database->con, $today),
+        'lk_username' => mysqli_real_escape_string($database->con, "user")
+
+    );
+
+    if ($database->insert_data('tbl_lailathulkadhrcollection', $insert_to_tbl_lailathulkadhrcollection)) {
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
+}
+
+// insert into tbl_nonmahallasaandhacollection
+// submitNonmahallaCol button click
+if (isset($_POST['submitNonmahallaCol'])) {
+    $where = array(
+        'nmsr_telephone'     =>     $_POST["inputNonmahallaColTP"]
+    );
+    $person_details = $database->select_where('tbl_nonmahallasaandharegistration', $where);
+    $nmsr_id = "";
+    if ($person_details) {
+        foreach ($person_details as $person_details_item) {
+            $nmsr_id = $person_details_item["nmsr_id"];
+        }
+        
+        $insert_to_tbl_nonmahallasaandhacollection = array(
+            'nms_name	' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+            'nms_address	' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+            'nms_telephone' => mysqli_real_escape_string($database->con, $_POST['inputNonmahallaColTP']),
+            'nms_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
+            'nms_nmsrid' => mysqli_real_escape_string($database->con, $nmsr_id),
+            'nms_date' => mysqli_real_escape_string($database->con, $today),
+            'nms_username' => mysqli_real_escape_string($database->con, "user")
+
+        );
+
+        if ($database->insert_data('tbl_nonmahallasaandhacollection', $insert_to_tbl_nonmahallasaandhacollection)) {
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }

@@ -84,8 +84,8 @@ include "template_parts/header.php";
                                                 <input type="text" class="form-control" id="inputIndexNo" name="inputIndexNo" placeholder="Index No">
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputQuranSubdivision"> Sub-division </label>
-                                                <select id="inputQuranSubdivision" name="inputQuranSubdivision" class="form-control">
+                                                <label for="inputlailathulSubdivision"> Sub-division </label>
+                                                <select id="inputlailathulSubdivision" name="inputlailathulSubdivision" class="form-control">
                                                     <option value="0" selected>Choose...</option>
                                                     <?php
                                                     $sub_division = $database->select_data('tbl_subdivision');
@@ -99,8 +99,8 @@ include "template_parts/header.php";
                                         </div>
                                         <div class="form-row" id="nonmahalla">
                                             <div class="form-group col-md-6">
-                                                <label for="inputTP">Telephone Number </label>
-                                                <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="077xxxxxxx">
+                                                <label for="inputlailathulTP">Telephone Number </label>
+                                                <input type="text" class="form-control" id="inputlailathulTP" name="inputlailathulTP" placeholder="077xxxxxxx">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputName">Name</label>

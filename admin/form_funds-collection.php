@@ -84,8 +84,8 @@ include "template_parts/header.php";
                                                 <input type="text" class="form-control" id="inputIndexNo" name="inputIndexNo" placeholder="Index No">
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputSubdivision"> Sub-division </label>
-                                                <select id="inputSubdivision" name="inputSubdivision" class="form-control">
+                                                <label for="inputFundsSubdivision"> Sub-division </label>
+                                                <select id="inputFundsSubdivision" name="inputFundsSubdivision" class="form-control">
                                                     <option value="0" selected>Choose...</option>
                                                     <?php
                                                     $sub_division = $database->select_data('tbl_subdivision');
@@ -99,8 +99,8 @@ include "template_parts/header.php";
                                         </div>
                                         <div class="form-row" id="nonmahalla">
                                             <div class="form-group col-md-6">
-                                                <label for="inputTP">Telephone Number </label>
-                                                <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="077xxxxxxx">
+                                                <label for="inputFundsTP">Telephone Number </label>
+                                                <input type="text" class="form-control" id="inputFundsTP" name="inputFundsTP" placeholder="077xxxxxxx">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputName">Name</label>

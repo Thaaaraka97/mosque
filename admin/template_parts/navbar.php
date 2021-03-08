@@ -133,6 +133,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="preview_friday-collection.php?action=fridayregular"> Friday Collection </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_non-mahalla-saandha-registration.php"> Non-Mahalla Saandha Details </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_nonmahalla_saandha_collection.php"> Non-Mahalla Saandha Collections </a>
+                    </li>
                 </ul>
             </div>
         </li>

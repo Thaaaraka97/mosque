@@ -576,7 +576,7 @@ $(document).ready(function () {
       $("#findFamily").show();
     }
   });
-  
+
   $("#findFamily").click(function (e) {
     e.preventDefault();
     var familyID = $("#inputfamilyID").val();
@@ -657,17 +657,14 @@ $(document).ready(function () {
     if ($(this).val() == "Other") {
       $("#inputFundsNotes").show();
       $("#inputFundsFestival").hide();
-    } 
-    else if ($(this).val() == "Festival") {
+    } else if ($(this).val() == "Festival") {
       $("#inputFundsFestival").show();
       $("#inputFundsNotes").hide();
-    }
-     else {
+    } else {
       $("#inputFundsNotes").hide();
       $("#inputFundsFestival").hide();
     }
   });
-
 
   //   form_add-new-rental.php
   // show/hide lease/monthly div on radio change
@@ -732,7 +729,12 @@ $(document).ready(function () {
     e.preventDefault();
     var index = $("#inputIndexNo").val();
     var subdivision = $("#inputnewRentalSubdivision").val();
-    var data_bundle = "index=" + index + "&subdivision=" + subdivision;
+    var data_bundle =
+      "index=" +
+      index +
+      "&subdivision=" +
+      subdivision +
+      "&action=find_record_sub";
     $.ajax({
       type: "post",
       url: "handlers/add_new_rental_handler.php",
@@ -740,8 +742,25 @@ $(document).ready(function () {
       success: function (response) {
         var result_array = response.split(",");
         $("#inputName").val(result_array[0]);
-        $("#inputAddress").val(result_array[1]);
-        $("#inputTP").val(result_array[2]);
+        $("#inputTP").val(result_array[1]);
+      },
+    });
+  });
+
+  // form_add-new-rental.php
+  // submit data to find the details
+  $("#inputRentalPlace").change(function (e) {
+    e.preventDefault();
+    var rental_place_id = $("#inputRentalPlace").val();
+    var data_bundle =
+      "rental_place_id=" + rental_place_id + "&action=find_record_rental_id";
+    $.ajax({
+      type: "post",
+      url: "handlers/add_new_rental_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputAddress").val(result_array[0]);
       },
     });
   });
@@ -777,9 +796,7 @@ $(document).ready(function () {
     e.preventDefault();
     var inputRentalPaymentTP = $("#inputRentalPaymentTP").val();
     var data_bundle =
-      "inputRentalPaymentTP=" +
-      inputRentalPaymentTP +
-      "&action=find_record_tp";
+      "inputRentalPaymentTP=" + inputRentalPaymentTP + "&action=find_record_tp";
     $.ajax({
       type: "post",
       url: "handlers/add_payment_handler.php",
@@ -997,7 +1014,7 @@ $(document).ready(function () {
         $("#inputTP").val(result_array[0]);
         $("#inputName").val(result_array[1]);
         $("#inputAddress").val(result_array[2]);
-        },
+      },
     });
   });
 
@@ -1032,8 +1049,7 @@ $(document).ready(function () {
     var inputRentalDuration = $("#inputRentalDuration").val();
     if (inputRentalDuration == "Other") {
       $("#inputRentalMonthsDiv").show();
-    }
-    else{
+    } else {
       $("#inputRentalMonthsDiv").hide();
     }
   });
@@ -1179,7 +1195,12 @@ $(document).ready(function () {
       e.preventDefault();
       var inputRentalType = $("#inputRentalType").val();
       var inputAddress = $("#inputAddress").val();
-      var data_bundle = "inputRentalType=" + inputRentalType + "&inputAddress=" + inputAddress + "&action=add";
+      var data_bundle =
+        "inputRentalType=" +
+        inputRentalType +
+        "&inputAddress=" +
+        inputAddress +
+        "&action=add";
       $.ajax({
         type: "post",
         url: "handlers/rental_places_handler.php",
@@ -1194,14 +1215,19 @@ $(document).ready(function () {
   // preview_undiyal-collection.php
   // submit data to update and delete a row
   $("#addNewUndiyal").click(function () {
-
     $("#add").click(function (e) {
       e.preventDefault();
       var inputDate = $("#inputDate").val();
       var inputAmount = $("#inputAmount").val();
       var inputUser = $("#inputUser").val();
       var data_bundle =
-        "inputDate=" + inputDate + "&inputAmount=" + inputAmount + "&inputUser=" + inputUser + "&action=add_undiyal";
+        "inputDate=" +
+        inputDate +
+        "&inputAmount=" +
+        inputAmount +
+        "&inputUser=" +
+        inputUser +
+        "&action=add_undiyal";
       $.ajax({
         type: "post",
         url: "handlers/collections_handler.php",
@@ -1216,14 +1242,19 @@ $(document).ready(function () {
   // preview_kanduri-collection.php
   // submit data to update and delete a row
   $("#addNewKanduri").click(function () {
-
     $("#add").click(function (e) {
       e.preventDefault();
       var inputDate = $("#inputDate").val();
       var inputAmount = $("#inputAmount").val();
       var inputUser = $("#inputUser").val();
       var data_bundle =
-        "inputDate=" + inputDate + "&inputAmount=" + inputAmount + "&inputUser=" + inputUser + "&action=add_kanduri";
+        "inputDate=" +
+        inputDate +
+        "&inputAmount=" +
+        inputAmount +
+        "&inputUser=" +
+        inputUser +
+        "&action=add_kanduri";
       $.ajax({
         type: "post",
         url: "handlers/collections_handler.php",
@@ -1291,29 +1322,54 @@ $(document).ready(function () {
   });
 
   // form_add-payment.php
-  // 
-  $("#inputRentalType").change(function (e) { 
+  // ajax subnit to find rental records
+  $("#inputRentalType").change(function (e) {
     e.preventDefault();
     var inputRentalType = $("#inputRentalType").val();
     var inputRentalPaymentTP = $("#inputRentalPaymentTP").val();
-    var data_bundle = "inputRentalType=" + inputRentalType + "&inputRentalPaymentTP=" + inputRentalPaymentTP + "&action=find_rental_records";
+    var data_bundle =
+      "inputRentalType=" +
+      inputRentalType +
+      "&inputRentalPaymentTP=" +
+      inputRentalPaymentTP +
+      "&action=find_rental_records";
     $.ajax({
       type: "post",
       url: "handlers/add_payment_handler.php",
       data: data_bundle,
       success: function (response) {
         $("#inputRentalID").html(response);
-      }
+      },
     });
   });
+
+  // form_new-rental-registration.php
+  // ajax subnit to find rental records
+  $("#inputNewRentalType").change(function (e) {
+    e.preventDefault();
+    var inputRentalType = $("#inputNewRentalType").val();
+    var data_bundle =
+      "inputRentalType=" + inputRentalType + "&action=find_rental_places";
+    $.ajax({
+      type: "post",
+      url: "handlers/add_new_rental_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        $("#rentalPlace").show();
+        $("#inputRentalPlace").html(response);
+      },
+    });
+  });
+
   // form_add-payment.php
-  // 
-  $("#inputRentalID").change(function (e) { 
+  // ajax submit to retrieve payment and due payment
+  $("#inputRentalID").change(function (e) {
     e.preventDefault();
     var inputRentalID = $("#inputRentalID").val();
     var payment = "";
     var duration = "";
-    var data_bundle = "inputRentalID=" + inputRentalID + "&action=find_rental_records_with_id";
+    var data_bundle =
+      "inputRentalID=" + inputRentalID + "&action=find_rental_records_with_id";
     $.ajax({
       type: "post",
       url: "handlers/add_payment_handler.php",
@@ -1322,24 +1378,193 @@ $(document).ready(function () {
         var result_array = response.split(",");
         if (result_array[0] == "0") {
           payment = result_array[1];
-        }
-        else{
+        } else {
           payment = result_array[2];
         }
         due = result_array[3];
         $("#inputPayment").val(payment);
         $("#inputDuePayment").val(due);
-        
-      }
+      },
     });
   });
 
-    // show/ hide div on the change of dropdown list donations
+  // form_funds-collection.php
+  // ajax submit to retrieve name, address, tp
+  $("#inputFundsSubdivision").change(function (e) {
+    e.preventDefault();
+    var index = $("#inputIndexNo").val();
+    var subdivision = $("#inputFundsSubdivision").val();
+    var data_bundle =
+      "index=" +
+      index +
+      "&subdivision=" +
+      subdivision +
+      "&action=find_record_sub";
+    $.ajax({
+      type: "post",
+      url: "handlers/funds_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputFundsTP").val(result_array[0]);
+        $("#inputName").val(result_array[1]);
+        $("#inputAddress").val(result_array[2]);
+      },
+    });
+  });
+
+  // form_funds-collection.php
+  // ajax submit to retrieve name, address, index, sub
+  $("#inputFundsTP").change(function (e) {
+    e.preventDefault();
+    var tp = $("#inputFundsTP").val();
+    var data_bundle = "tp=" + tp + "&action=find_record_tp";
+    $.ajax({
+      type: "post",
+      url: "handlers/funds_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputIndexNo").val(result_array[0]);
+        $("#inputFundsSubdivision").val(result_array[1]);
+        $("#inputName").val(result_array[2]);
+        $("#inputAddress").val(result_array[2]);
+      },
+    });
+  });
+
+  // form_funds-collection.php
+  // ajax submit to retrieve name, address, tp
+  $("#inputlailathulSubdivision").change(function (e) {
+    e.preventDefault();
+    var index = $("#inputIndexNo").val();
+    var subdivision = $("#inputlailathulSubdivision").val();
+    var data_bundle =
+      "index=" +
+      index +
+      "&subdivision=" +
+      subdivision +
+      "&action=find_record_sub";
+    $.ajax({
+      type: "post",
+      url: "handlers/lailathul_kadhir_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputlailathulTP").val(result_array[0]);
+        $("#inputName").val(result_array[1]);
+        $("#inputAddress").val(result_array[2]);
+      },
+    });
+  });
+
+  // form_funds-collection.php
+  // ajax submit to retrieve name, address, index, sub
+  $("#inputlailathulTP").change(function (e) {
+    e.preventDefault();
+    var tp = $("#inputlailathulTP").val();
+    var data_bundle = "tp=" + tp + "&action=find_record_tp";
+    $.ajax({
+      type: "post",
+      url: "handlers/lailathul_kadhir_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputIndexNo").val(result_array[0]);
+        $("#inputlailathulSubdivision").val(result_array[1]);
+        $("#inputName").val(result_array[2]);
+        $("#inputAddress").val(result_array[2]);
+      },
+    });
+  });
+
+  // form_nonmahalla_collection.php
+  // ajax submit to retrieve name, address, index, sub
+  $("#inputNonmahallaColTP").change(function (e) {
+    e.preventDefault();
+    var tp = $("#inputNonmahallaColTP").val();
+    var data_bundle = "tp=" + tp + "&action=find_record_tp";
+    $.ajax({
+      type: "post",
+      url: "handlers/nonmahalla_saandha_collection_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputName").val(result_array[0]);
+        $("#inputAddress").val(result_array[1]);
+      },
+    });
+  });
+
+  // preview_non-mahalla-saandha-registration.php
+  // ajax submit to add record
+  $("#addNewNonMahallaSaandha").click(function (e) {
+    e.preventDefault();
+    $("#add").click(function (e) {
+      e.preventDefault();
+      var tp = $("#inputTP").val();
+      var address = $("#inputAddress").val();
+      var name = $("#inputName").val();
+      var data_bundle =
+        "tp=" + tp + "&address=" + address + "&name=" + name + "&action=add";
+      $.ajax({
+        type: "post",
+        url: "handlers/nonmahalla_saandha_registration_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        },
+      });
+    });
+  });
+
+  // preview_non-mahalla-saandha-registration.php
+  // submit to find records
+  $(".edit_nonmahalla_saandha_reg").click(function (e) {
+    e.preventDefault();
+    var id = $(this).attr("id");
+    var data_bundle = "id=" + id + "&action=find_record";
+    $.ajax({
+      type: "post",
+      url: "handlers/nonmahalla_saandha_registration_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputNameE").val(result_array[0]);
+        $("#inputAddressE").val(result_array[1]);
+        $("#inputTPE").val(result_array[2]);
+      },
+    });
+  });
+
+  // preview_non-mahalla-saandha-registration.php
+  // submit to find records
+  $(".edit_nonmahalla_saandha_reg").click(function (e) {
+    var id = $(this).attr("id");
+    $("#update").click(function (e) {
+      e.preventDefault();
+      e.preventDefault();
+      var name = $("#inputNameE").val();
+      var tp = $("#inputTPE").val();
+      var address = $("#inputAddressE").val();
+      console.log(address)
+      var data_bundle = "id=" + id + "&name=" + name +"&tp=" + tp + "&address=" + address + "&action=update";
+      $.ajax({
+        type: "post",
+        url: "handlers/nonmahalla_saandha_registration_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        },
+      });
+    });
+  });
+
+  // show/ hide div on the change of dropdown list donations
   if (fridaycollectionaction == "fridayregular") {
     $("#fridayregular").show();
     $("#fridaycollections").hide();
-  }
-  else if (fridaycollectionaction == "fridaycollections") {
+  } else if (fridaycollectionaction == "fridaycollections") {
     $("#fridayregular").hide();
     $("#fridaycollections").show();
   }
