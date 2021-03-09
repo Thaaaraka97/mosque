@@ -1162,7 +1162,7 @@ if (isset($_POST['submitNonmahallaCol'])) {
         foreach ($person_details as $person_details_item) {
             $nmsr_id = $person_details_item["nmsr_id"];
         }
-        
+
         $insert_to_tbl_nonmahallasaandhacollection = array(
             'nms_name	' => mysqli_real_escape_string($database->con, $_POST['inputName']),
             'nms_address	' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
@@ -1178,5 +1178,108 @@ if (isset($_POST['submitNonmahallaCol'])) {
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }
+    }
+}
+
+// insert into tbl_saandhacollector
+// submitSaandhaCollector button click
+if (isset($_POST['submitSaandhaCollector'])) {
+    if (isset($_POST['saandhapage'])) {
+        $saandhapage = 1;
+    } else {
+        $saandhapage = 0;
+    }
+    if (isset($_POST['nonmahallaSaandha'])) {
+        $nonmahallaSaandha = 1;
+    } else {
+        $nonmahallaSaandha = 0;
+    }
+    if (isset($_POST['rentalIncome'])) {
+        $rentalIncome = 1;
+    } else {
+        $rentalIncome = 0;
+    }
+    if (isset($_POST['fridayCollection'])) {
+        $fridayCollection = 1;
+    } else {
+        $fridayCollection = 0;
+    }
+    if (isset($_POST['specialBhayan'])) {
+        $specialBhayan = 1;
+    } else {
+        $specialBhayan = 0;
+    }
+    if (isset($_POST['LaylatalQadr'])) {
+        $LaylatalQadr = 1;
+    } else {
+        $LaylatalQadr = 0;
+    }
+    if (isset($_POST['Funds'])) {
+        $Funds = 1;
+    } else {
+        $Funds = 0;
+    }
+    if (isset($_POST['otherFunds'])) {
+        $otherFunds = 1;
+    } else {
+        $otherFunds = 0;
+    }
+    if (isset($_POST['maulaviSalary'])) {
+        $maulaviSalary = 1;
+    } else {
+        $maulaviSalary = 0;
+    }
+    if (isset($_POST['privateLoans'])) {
+        $privateLoans = 1;
+    } else {
+        $privateLoans = 0;
+    }
+
+    if ($_POST["inputAdmin"] == "Yes") {
+        $inputAdmin = 1;
+        $saandhapage = 1;
+        $nonmahallaSaandha = 1;
+        $rentalIncome = 1;
+        $fridayCollection = 1;
+        $specialBhayan = 1;
+        $LaylatalQadr = 1;
+        $Funds = 1;
+        $otherFunds = 1;
+        $maulaviSalary = 1;
+        $privateLoans = 1;
+    } else {
+        $inputAdmin = 0;
+    }
+    if ($_POST["inputActive"] == "Yes") {
+        $inputActive = 1;
+    } else {
+        $inputActive = 0;
+    }
+    $password = $_POST['inputPassword'];
+    $password = md5($password);
+
+    $insert_to_tbl_saandhacollector = array(
+        'sc_index	' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+        'sc_subDivision	' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+        'sc_username' => mysqli_real_escape_string($database->con, $_POST['inputUsername']),
+        'sc_password' => mysqli_real_escape_string($database->con, $password),
+        'sc_isAdmin' => mysqli_real_escape_string($database->con, $inputAdmin),
+        'sc_isActive' => mysqli_real_escape_string($database->con, $inputActive),
+        'sc_sandhaPage' => mysqli_real_escape_string($database->con, $saandhapage),
+        'sc_nonMahallaSandha' => mysqli_real_escape_string($database->con, $nonmahallaSaandha),
+        'sc_rentalIncomes' => mysqli_real_escape_string($database->con, $rentalIncome),
+        'sc_fridayCollection' => mysqli_real_escape_string($database->con, $fridayCollection),
+        'sc_funds' => mysqli_real_escape_string($database->con, $Funds),
+        'sc_lailathulKadhr' => mysqli_real_escape_string($database->con, $LaylatalQadr),
+        'sc_otherFunds' => mysqli_real_escape_string($database->con, $otherFunds),
+        'sc_specialBayan' => mysqli_real_escape_string($database->con, $specialBhayan),
+        'sc_maulaviSalary' => mysqli_real_escape_string($database->con, $maulaviSalary),
+        'sc_privateLoans' => mysqli_real_escape_string($database->con, $privateLoans),
+
+    );
+
+    if ($database->insert_data('tbl_saandhacollector', $insert_to_tbl_saandhacollector)) {
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
 }

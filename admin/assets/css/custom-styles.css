@@ -213,6 +213,12 @@
   display: none;
 }
 
+ /*  form_saandha-collector-registration.php */
+/* hide admin div */
+#admin {
+  display: none;
+}
+
 
 .alert {
   position: absolute;

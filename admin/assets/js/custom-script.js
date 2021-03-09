@@ -1560,6 +1560,17 @@ $(document).ready(function () {
     });
   });
 
+  // form_saandha-collector-registration.php
+  // show/hide admin div on radio change
+  $("input[type=radio][name=inputAdmin]").change(function (e) {
+    e.preventDefault();
+    if ($(this).val() == "No") {
+      $("#admin").show();
+    } else {
+      $("#admin").hide();
+    }
+  });
+
   // show/ hide div on the change of dropdown list donations
   if (fridaycollectionaction == "fridayregular") {
     $("#fridayregular").show();
