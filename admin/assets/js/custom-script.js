@@ -1287,10 +1287,10 @@ $(document).ready(function () {
 
   // preview_saandha-amount-fixing-history.php
   // submit data to update a row
-  $("#editSaandhaAmount").click(function () {
-    $("#update").click(function (e) {
+  $("#addSaandhaAmount").click(function () {
+    $("#add").click(function (e) {
       var Amount = $("#newAmount").val();
-      var data_bundle = "newAmount=" + Amount;
+      var data_bundle = "newAmount=" + Amount + "&action=insert";
 
       e.preventDefault();
       $.ajax({
@@ -1299,7 +1299,6 @@ $(document).ready(function () {
         data: data_bundle,
         success: function (response) {
           window.location.href = response;
-          // console.log(response);
         },
       });
     });
@@ -1560,6 +1559,62 @@ $(document).ready(function () {
     });
   });
 
+  // preview_saandha-amount-fixing-history.php
+  // submit to find records
+  $(".edit_saandhaamountfixing").click(function (e) {
+    e.preventDefault();
+    var id = $(this).attr("id");
+    var data_bundle = "id=" + id + "&action=find_record";
+    $.ajax({
+      type: "post",
+      url: "handlers/saandha_amount_fixings_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#newAmountE").val(result_array[0]);
+      },
+    });
+  });
+
+  // preview_saandha-amount-fixing-history.php
+  // submit to edit records
+  $(".edit_saandhaamountfixing").click(function (e) {
+    var id = $(this).attr("id");
+    $("#update").click(function (e) {
+      e.preventDefault();
+      e.preventDefault();
+      var edited_amount = $("#newAmountE").val();
+      var data_bundle = "id=" + id + "&edited_amount=" + edited_amount + "&action=update";
+      $.ajax({
+        type: "post",
+        url: "handlers/saandha_amount_fixings_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        },
+      });
+    });
+  });
+
+  // preview_saandha-amount-fixing-history.php
+  // submit to delete record
+  $(".delete_saandhaamountfixing").click(function (e) {
+    var id = $(this).attr("id");
+    $("#del").click(function (e) {
+      e.preventDefault();
+      e.preventDefault();
+      var data_bundle = "id=" + id + "&action=delete";
+      $.ajax({
+        type: "post",
+        url: "handlers/saandha_amount_fixings_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        },
+      });
+    });
+  });
+
   // form_saandha-collector-registration.php
   // show/hide admin div on radio change
   $("input[type=radio][name=inputAdmin]").change(function (e) {
@@ -1569,6 +1624,38 @@ $(document).ready(function () {
     } else {
       $("#admin").hide();
     }
+  });
+
+  var post = "";
+  // form_salary.php
+  // show/hide admin div on radio change
+  $("input[type=radio][name=inputPost]").change(function (e) {
+    e.preventDefault();
+    $("#salarydiv").show();
+    if ($(this).val() == "Pesh Imaam") {
+      $("#specialbhyan").show();
+      post = "PeshImaam";
+    } else if ($(this).val() == "Muazzin") {
+      $("#specialbhyan").hide();
+      post = "Muazzin";
+    }
+    });
+
+  // form_salary.php
+  // show/hide admin div on radio change
+  $("#inputIndexNo").change(function (e) {
+    e.preventDefault();
+    var id = $("#inputIndexNo").val();
+    var data_bundle = "post=" + post + "&id=" + id;
+    $.ajax({
+      type: "post",
+      url: "handlers/salary_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split(",");
+        $("#inputBasicSalary").val(result_array[0]);
+      }
+    });
   });
 
   // show/ hide div on the change of dropdown list donations
@@ -1700,7 +1787,11 @@ $(document).ready(function () {
       console.log("edit jq");
     } else if (action == "editable") {
       $("#editable").show();
-    } else {
+    } else if (action == "view_salary") {
+      $("#viewDetails").show();
+      $("#viewPayments").show();
+    } 
+    else {
       console.log("invalid");
     }
   })();

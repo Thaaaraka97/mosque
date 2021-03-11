@@ -9,6 +9,9 @@ $id = $_GET['id'];
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
+if (isset($_GET['record_id'])) {
+    $record_id = $_GET['record_id'];
+}
 
 
 $where = array(
@@ -60,9 +63,9 @@ foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
         $end = "Present";
     }
     if ($is_active == "0") {
-        $is_active = "No";
+        $is_active = "Not Active";
     } else {
-        $is_active = "Yes";
+        $is_active = "Active";
     }
     if ($married == "0") {
         $married = "No";
@@ -77,7 +80,6 @@ foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
     var villageraction = "";
     var donationaction = "";
     var fridaycollectionaction = "";
-
 </script>
 
 
@@ -109,7 +111,7 @@ foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
                         </nav>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-8 grid-margin stretch-card">
+                        <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="mt-5 text-dark col-auto" id="viewDetails">
@@ -185,26 +187,66 @@ foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
                                                 <th>Received Letters</th>
                                                 <td> : </td>
                                                 <td>
-                                                    <?php 
-                                                        if ($mahalla == "1") {
-                                                            echo "Mahalla Letter<br>";
-                                                        }
-                                                        if ($gramasevaka == "1") {
-                                                            echo "Gramasevaka Letter<br>";
-                                                        }
-                                                        if ($police == "1") {
-                                                            echo "Police Certification<br>";
-                                                        }
-                                                        if ($maulavi == "1") {
-                                                            echo "Maulavi Letter<br>";
-                                                        }
-                                                         
+                                                    <?php
+                                                    if ($mahalla == "1") {
+                                                        echo "Mahalla Letter<br>";
+                                                    }
+                                                    if ($gramasevaka == "1") {
+                                                        echo "Gramasevaka Letter<br>";
+                                                    }
+                                                    if ($police == "1") {
+                                                        echo "Police Certification<br>";
+                                                    }
+                                                    if ($maulavi == "1") {
+                                                        echo "Maulavi Letter<br>";
+                                                    }
+
                                                     ?>
                                                 </td>
                                             </tr>
 
                                         </table>
 
+                                    </div>
+                                    <hr>
+                                    <div class="mt-5 text-dark col-auto" id="viewPayments">
+                                        <h4 class="card-title"> Payment History </h4>
+                                        <table class="display datatable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Basic Salary</th>
+                                                    <th>Incentive</th>
+                                                    <th>Madrasa Fee</th>
+                                                    <th>Advance</th>
+                                                    <th>Special Bhayan Fee</th>
+                                                    <th>EPF/ETF</th>
+                                                    <th>Loan Deduction</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                // displaying pesh imaam details
+                                                $where = array(
+                                                    'pSal_peshImaamId'     =>     $id
+                                                );
+                                                $pesh_imaam_salary = $database->select_where('tbl_peshimaamsalary', $where);
+                                                foreach ($pesh_imaam_salary as $pesh_imaam_salary_item) {
+                                                    echo "
+                                                         <tr>
+                                                            <td>" . $pesh_imaam_salary_item['pSal_basicSalary'] . "</td>
+                                                            <td>" . $pesh_imaam_salary_item['pSal_incentive'] . "</td>
+                                                            <td>" . $pesh_imaam_salary_item['pSal_madrasaFee'] . "</td>
+                                                            <td>" . $pesh_imaam_salary_item['pSal_advance'] . "</td>
+                                                            <td>" . $pesh_imaam_salary_item['pSal_specialBhayanFee'] . "</td>
+                                                            <td>" . $pesh_imaam_salary_item['pSal_EPFETF'] . "</td>
+                                                            <td>" . $pesh_imaam_salary_item['pSal_loanDeduction'] . "</td>
+                                                        </tr>
+                                                         ";
+                                                }
+
+                                                ?>
+                                            </tbody>
+                                        </table>
                                     </div>
 
                                 </div>

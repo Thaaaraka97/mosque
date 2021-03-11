@@ -6,8 +6,12 @@ include "template_parts/header.php";
 $database = new databases();
 if (isset($_GET['edited'])) {
     $message = "Record successfully edited and Updated..!";
-} elseif (isset($_GET['terminated'])) {
-    $message = "Member terminated and Updated the Record..!";
+} 
+elseif (isset($_GET['inserted'])) {
+    $message = "Record is successfully added to the Database!";
+}
+elseif (isset($_GET['deleted'])) {
+    $message = "Record is successfully deleted..!";
 }
 ?>
 <script type="text/javascript">
@@ -43,9 +47,18 @@ if (isset($_GET['edited'])) {
                             <span aria-hidden='true'>&times;</span>
                         </button>
                     </div>";
-                    } elseif (isset($_GET['terminated'])) {
+                    } 
+                    elseif (isset($_GET['deleted'])) {
                         echo "
                         <div class='alert alert-danger alert-dismissible' role='alert'>" . $message . "
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                        </button>
+                    </div>";
+                    }
+                    elseif (isset($_GET['inserted'])) {
+                        echo "
+                        <div class='alert alert-primary alert-dismissible' role='alert'>" . $message . "
                         <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                             <span aria-hidden='true'>&times;</span>
                         </button>
@@ -62,7 +75,7 @@ if (isset($_GET['edited'])) {
                                     <div class="text-center">
                                         <h4 class="card-title"> Saandha Amount Fixing History Preview </h4>
                                         <div class="w-100 text-right">
-                                            <button class='btn btn-success btn-md ' data-toggle='modal' data-target='#updateRecord' id="editSaandhaAmount">Edit Existing Amount</button>
+                                            <button class='btn btn-success btn-md ' data-toggle='modal' data-target='#insertRecord' id="addSaandhaAmount"> Add new Amount</button>
                                         </div>
                                         <div class="mt-5">
 
@@ -71,6 +84,7 @@ if (isset($_GET['edited'])) {
                                                     <tr>
                                                         <th>Date</th>
                                                         <th>Amount</th>
+                                                        <th>Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -85,6 +99,10 @@ if (isset($_GET['edited'])) {
                                                          <tr>
                                                             <td>" . $date . "</td>
                                                             <td>" . $amount . "</td>
+                                                            <td>
+                                                            <a href='' id ='".$id."' class='btn btn-warning btn-md edit_saandhaamountfixing' data-toggle='modal' data-target='#updateRecord'>Edit</a>
+                                                                <a href='' id ='" . $id . "' class='btn btn-danger btn-md delete_saandhaamountfixing' data-toggle='modal' data-target='#deleteRecord'>Delete</a>
+                                                            </td>
                                                         </tr>
                                                          ";
                                                     }
@@ -109,12 +127,59 @@ if (isset($_GET['edited'])) {
     </div>
     <!-- container-scroller -->
 
+    <!-- addrecord Modal -->
+    <div class="modal fade" id="insertRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel"> Change the current Value ?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to add new Saandha Amount?
+                    
+                    <div class="form-group">
+                        <label for="newAmount" class="col-form-label"> New Amount</label>
+                        <input type="text" class="form-control" name="newAmount" id="newAmount" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                    <a class="btn btn-primary" id="add">Add</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel"> Delete the selected Record ?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete the selected record?
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                    <a class="btn btn-danger" id="del">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Update Modal -->
     <div class="modal fade" id="updateRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel"> Change the current Value ?</h5>
+                    <h5 class="modal-title" id="ModalLabel"> Update Saandha Amount </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -128,13 +193,13 @@ if (isset($_GET['edited'])) {
                         Otherwise click close.
                     </p>
                     <div class="form-group">
-                        <label for="newAmount" class="col-form-label"> New Amount</label>
-                        <input type="text" class="form-control" name="newAmount" id="newAmount" required>
+                        <label for="newAmountE" class="col-form-label"> Amount </label>
+                        <input type="text" class="form-control" name="newAmountE" id="newAmountE" required>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-secondary" data-dismiss="modal">Close</a>
-                    <a class="btn btn-danger" id="update">Update</a>
+                    <a class="btn btn-danger" id="update" name="update"> Update </a>
                 </div>
             </div>
         </div>

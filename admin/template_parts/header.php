@@ -1,6 +1,6 @@
 <?php
-    include "include/include.php";
-    include 'include/data_insert_controller.php'
+include "include/include.php";
+include 'include/data_insert_controller.php'
 ?>
 
 <head>
@@ -29,6 +29,12 @@
     <link rel="shortcut icon" href="<?php $server_name ?>assets/images/logo-mini.png" />
     <!-- datatables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-  
 
 </head>
+
+<script type="text/javascript">
+    var donationaction = "";
+    var villageraction = "";
+    var action = "";
+    var fridaycollectionaction = "";
+</script>

@@ -71,7 +71,7 @@ $database = new databases();
                                             <div class="form-group row col-md-6">
                                                 <label for="inputAmountMeals" class="col-sm-4 col-form-label">Meals</label>
                                                 <div class="col-sm-8">
-                                                    <input type="number" class="form-control" id="inputAmountMeals" name="inputAmountMeals" placeholder="Amount">
+                                                    <input type="text" class="form-control" id="inputAmountMeals" name="inputAmountMeals" placeholder="Amount">
                                                 </div>
                                             </div>
                                         </div>
@@ -79,7 +79,7 @@ $database = new databases();
                                             <div class="form-group row col-md-6">
                                                 <label for="inputAmountTransport" class="col-sm-4 col-form-label">Transport</label>
                                                 <div class="col-sm-8">
-                                                    <input type="number" class="form-control" id="inputAmountTransport" name="inputAmountTransport" placeholder="Amount">
+                                                    <input type="text" class="form-control" id="inputAmountTransport" name="inputAmountTransport" placeholder="Amount">
                                                 </div>
                                             </div>
                                         </div>
@@ -87,7 +87,7 @@ $database = new databases();
                                             <div class="form-group row col-md-6">
                                                 <label for="inputAmountTea" class="col-sm-4 col-form-label">Tea & Coffee</label>
                                                 <div class="col-sm-8">
-                                                    <input type="number" class="form-control" id="inputAmountTea" name="inputAmountTea" placeholder="Amount">
+                                                    <input type="text" class="form-control" id="inputAmountTea" name="inputAmountTea" placeholder="Amount">
                                                 </div>
                                             </div>
                                         </div>
@@ -95,7 +95,7 @@ $database = new databases();
                                             <div class="form-group row col-md-6">
                                                 <label for="inputAmountOther" class="col-sm-4 col-form-label">Other</label>
                                                 <div class="col-sm-8">
-                                                    <input type="number" class="form-control" id="inputAmountOther" name="inputAmountOther" placeholder="Amount">
+                                                    <input type="text" class="form-control" id="inputAmountOther" name="inputAmountOther" placeholder="Amount">
                                                 </div>
                                             </div>
                                         </div>

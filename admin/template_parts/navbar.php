@@ -139,6 +139,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="preview_nonmahalla_saandha_collection.php"> Non-Mahalla Saandha Collections </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_salary.php"> Salary Page </a>
+                    </li>
                 </ul>
             </div>
         </li>

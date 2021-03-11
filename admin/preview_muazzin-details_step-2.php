@@ -9,6 +9,9 @@ $id = $_GET['id'];
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
+if (isset($_GET['record_id'])) {
+    $record_id = $_GET['record_id'];
+}
 
 
 $where = array(
@@ -58,9 +61,9 @@ foreach ($muazzin_details as $muazzin_details_item) {
         $end = "Present";
     }
     if ($is_active == "0") {
-        $is_active = "No";
+        $is_active = "Not Active";
     } else {
-        $is_active = "Yes";
+        $is_active = "Active";
     }
     if ($married == "0") {
         $married = "No";
@@ -75,7 +78,6 @@ foreach ($muazzin_details as $muazzin_details_item) {
     var villageraction = "";
     var donationaction = "";
     var fridaycollectionaction = "";
-
 </script>
 
 <body>
@@ -106,7 +108,7 @@ foreach ($muazzin_details as $muazzin_details_item) {
                         </nav>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-8 grid-margin stretch-card">
+                        <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="mt-5 text-dark col-auto" id="viewDetails">
@@ -182,17 +184,17 @@ foreach ($muazzin_details as $muazzin_details_item) {
                                                 <th>Received Letters</th>
                                                 <td> : </td>
                                                 <td>
-                                                    <?php 
-                                                        if ($mahalla == "1") {
-                                                            echo "Mahalla Letter<br>";
-                                                        }
-                                                        if ($gramasevaka == "1") {
-                                                            echo "Gramasevaka Letter<br>";
-                                                        }
-                                                        if ($police == "1") {
-                                                            echo "Police Certification<br>";
-                                                        }
-                                                         
+                                                    <?php
+                                                    if ($mahalla == "1") {
+                                                        echo "Mahalla Letter<br>";
+                                                    }
+                                                    if ($gramasevaka == "1") {
+                                                        echo "Gramasevaka Letter<br>";
+                                                    }
+                                                    if ($police == "1") {
+                                                        echo "Police Certification<br>";
+                                                    }
+
                                                     ?>
                                                 </td>
                                             </tr>
@@ -200,7 +202,43 @@ foreach ($muazzin_details as $muazzin_details_item) {
                                         </table>
 
                                     </div>
+                                    hr
+                                    <div class="mt-5 text-dark col-auto" id="viewPayments">
+                                        <table class="display datatable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Basic Salary</th>
+                                                    <th>Incentive</th>
+                                                    <th>Madrasa Fee</th>
+                                                    <th>Advance</th>
+                                                    <th>EPF/ETF</th>
+                                                    <th>Loan Deduction</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                // displaying muazzin details
+                                                $where = array(
+                                                    'mSal_muazzinId'     =>     $id
+                                                );
+                                                $muazzin_salary = $database->select_where('tbl_muazzinsalary', $where);
+                                                foreach ($muazzin_salary as $muazzin_salary_item) {
+                                                    echo "
+                                                         <tr>
+                                                            <td>" . $muazzin_salary_item['mSal_basicSalary'] . "</td>
+                                                            <td>" . $muazzin_salary_item['mSal_basicSalary'] . "</td>
+                                                            <td>" . $muazzin_salary_item['mSal_madrasaFee'] . "</td>
+                                                            <td>" . $muazzin_salary_item['mSal_advance'] . "</td>
+                                                            <td>" . $muazzin_salary_item['mSal_EPFETF'] . "</td>
+                                                            <td>" . $muazzin_salary_item['mSal_loanDeduction'] . "</td>
+                                                        </tr>
+                                                         ";
+                                                }
 
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

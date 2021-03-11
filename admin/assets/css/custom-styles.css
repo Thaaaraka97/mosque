@@ -219,6 +219,18 @@
   display: none;
 }
 
+ /*  form_salary.php */
+/* hide salarydiv div */
+#salarydiv {
+  display: none;
+}
+
+ /*  preview_pesh_imaam-details_step-2.php */
+/* hide salarydiv div */
+#viewPayments {
+  display: none;
+}
+
 
 .alert {
   position: absolute;
