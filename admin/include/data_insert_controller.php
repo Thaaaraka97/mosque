@@ -851,7 +851,6 @@ if (isset($_POST['submitNewRental'])) {
         } else {
             $amount = $inputLeaseAmount;
         }
-        (float)$due = (float)$amount * (int)$inputRentalDuration;
         foreach ($data_from_tbl_rentalincome as $data_from_tbl_rentalincome_item) {
             $rental_id = $data_from_tbl_rentalincome_item['rr_id'];
         }
@@ -859,7 +858,7 @@ if (isset($_POST['submitNewRental'])) {
             'ri_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
             'ri_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputnewRentalSubdivision']),
             'ri_payment' => mysqli_real_escape_string($database->con, $_POST['inputDownPayment']),
-            'ri_dueAmount' => mysqli_real_escape_string($database->con, $due),
+            'ri_dueAmount' => mysqli_real_escape_string($database->con, "0"),
             'ri_type' => mysqli_real_escape_string($database->con, $_POST['inputNewRentalType']),
             'ri_notes' => mysqli_real_escape_string($database->con, "Downpayment"),
             'ri_username' => mysqli_real_escape_string($database->con, "user"),
