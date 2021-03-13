@@ -865,6 +865,7 @@ if (isset($_POST['submitNewRental'])) {
             'ri_username' => mysqli_real_escape_string($database->con, "user"),
             'ri_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
             'ri_date' => mysqli_real_escape_string($database->con, $today),
+            'ri_payFor' => mysqli_real_escape_string($database->con, date('Y-M',strtotime($today))),
             'ri_rentalid' => mysqli_real_escape_string($database->con, $rental_id)
 
         );
