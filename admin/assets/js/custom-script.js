@@ -1381,7 +1381,6 @@ $(document).ready(function () {
         }
         $("#inputPayment").val(payment);
         $("#payedFor").val(result_array[3]);
-        $("#inputDuePayment").val("0");
       },
     });
   });

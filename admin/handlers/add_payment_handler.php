@@ -50,13 +50,11 @@ elseif ($action == "find_rental_records_with_id") {
     $is_lease = "";
     $rr_monthlyPayment = "";
     $rr_leasePayment = "";
-    $rr_rentalDuration = "";
     $rental_details = $database->select_where('tbl_rentalsregisteration', $where);
     foreach ($rental_details as $rental_details_item) {
         $is_lease = $rental_details_item["rr_lease"];
         $rr_monthlyPayment = $rental_details_item["rr_monthlyPayment"];
         $rr_leasePayment = $rental_details_item["rr_leasePayment"];
-        $rr_rentalDuration = $rental_details_item["rr_rentalDuration"];
     }
 
     $where2 = array(
