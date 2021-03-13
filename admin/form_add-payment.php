@@ -111,6 +111,7 @@ $database = new databases();
                                             <label for="inputNotes">Notes </label>
                                             <textarea class="form-control" id="inputNotes" name="inputNotes" rows="4"></textarea>
                                         </div>
+                                        <input type="hidden" name="payedFor" id="payedFor">
                                         <div class="text-center">
                                             <button class="btn btn-primary btn-lg" id="submitRentalPayment" name="submitRentalPayment">Add Payment</button>
                                         </div>

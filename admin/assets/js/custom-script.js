@@ -1360,13 +1360,12 @@ $(document).ready(function () {
     });
   });
 
+  var payment = "";
   // form_add-payment.php
   // ajax submit to retrieve payment and due payment
   $("#inputRentalID").change(function (e) {
     e.preventDefault();
     var inputRentalID = $("#inputRentalID").val();
-    var payment = "";
-    var duration = "";
     var data_bundle =
       "inputRentalID=" + inputRentalID + "&action=find_rental_records_with_id";
     $.ajax({
@@ -1380,11 +1379,28 @@ $(document).ready(function () {
         } else {
           payment = result_array[2];
         }
-        due = result_array[3];
         $("#inputPayment").val(payment);
-        $("#inputDuePayment").val(due);
+        $("#payedFor").val(result_array[3]);
+        $("#inputDuePayment").val("0");
       },
     });
+  });
+
+  // form_add-payment.php
+  // change due value
+  $("#inputPayment").change(function (e) { 
+    e.preventDefault();
+    var enteredpayment = "";
+    enteredpayment = $("#inputPayment").val();
+    enteredpayment = parseInt(enteredpayment);
+    payment = parseInt(payment);
+    if (enteredpayment < payment) {
+      var x = payment - enteredpayment;
+      $("#inputDuePayment").val(x);
+    }
+    else{
+      $("#inputDuePayment").val("0");
+    }
   });
 
   // form_funds-collection.php

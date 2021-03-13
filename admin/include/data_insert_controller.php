@@ -878,31 +878,127 @@ if (isset($_POST['submitNewRental'])) {
 // insert into tbl_rentalincome
 // submitRentalPayment button click
 if (isset($_POST['submitRentalPayment'])) {
-
+    $inputIndexNo = "";
     if ($_POST["inputIndexNo"] != "") {
         $inputIndexNo = $_POST["inputIndexNo"];
     } else {
         $inputIndexNo = 0;
     }
+    $inputRentalID = $_POST["inputRentalID"];
     $due = $_POST['inputDuePayment'];
     $payment = $_POST['inputPayment'];
-    (float)$due = (float)$due - (float)$payment;
+    $payedFor = $_POST['payedFor'];
+    $is_lease = "";
+    $rr_monthlyPayment = "";
+    $rr_leasePayment = "";
+    $rr_rentalDuration = "";
+    $monthly_payment = "";
 
-    $insert_to_tbl_rentalincome = array(
-        'ri_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
-        'ri_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputRentalPaymentSubdivision']),
-        'ri_rentalid' => mysqli_real_escape_string($database->con, $_POST['inputRentalID']),
-        'ri_dueAmount' => mysqli_real_escape_string($database->con, $due),
-        'ri_type' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
-        'ri_username' => mysqli_real_escape_string($database->con, "user"),
-        'ri_payment' => mysqli_real_escape_string($database->con, $_POST['inputPayment']),
-        'ri_telephone' => mysqli_real_escape_string($database->con, $_POST['inputRentalPaymentTP']),
-        'ri_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
-        'ri_date' => mysqli_real_escape_string($database->con, $today)
-
+    // retrieve monthly payment details for selected rental
+    $where = array(
+        'rr_id'     =>     $inputRentalID
     );
+    $rental_details = $database->select_where('tbl_rentalsregisteration', $where);
+    foreach ($rental_details as $rental_details_item) {
+        $is_lease = $rental_details_item["rr_lease"];
+        $rr_monthlyPayment = $rental_details_item["rr_monthlyPayment"];
+        $rr_leasePayment = $rental_details_item["rr_leasePayment"];
+    }
+    if ($is_lease == "0") {
+        $monthly_payment = $rr_monthlyPayment;
+    } else {
+        $monthly_payment = $rr_leasePayment;
+    }
 
-    if ($database->insert_data('tbl_rentalincome', $insert_to_tbl_rentalincome)) {
+    // find if there is any due remaining
+    $where2 = array(
+        'ri_rentalid'     =>     $inputRentalID
+    );
+    $ri_payFor = "";
+    $ri_dueAmount = "";
+    $rental_income_details = $database->select_where('tbl_rentalincome', $where2);
+    foreach ($rental_income_details as $rental_income_details_item) {
+        $ri_payFor = $rental_income_details_item["ri_payFor"];
+        $ri_dueAmount = $rental_income_details_item["ri_dueAmount"];
+    }
+    if ((float)$ri_dueAmount > 0) {
+        $insert_to_tbl_rentalincome = array(
+            'ri_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
+            'ri_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputRentalPaymentSubdivision']),
+            'ri_rentalid' => mysqli_real_escape_string($database->con, $inputRentalID),
+            'ri_dueAmount' => mysqli_real_escape_string($database->con, "0"),
+            'ri_type' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
+            'ri_username' => mysqli_real_escape_string($database->con, "user"),
+            'ri_payment' => mysqli_real_escape_string($database->con, $ri_dueAmount),
+            'ri_telephone' => mysqli_real_escape_string($database->con, $_POST['inputRentalPaymentTP']),
+            'ri_notes' => mysqli_real_escape_string($database->con, "Previous Due Amount"),
+            'ri_payFor' => mysqli_real_escape_string($database->con, $ri_payFor),
+            'ri_date' => mysqli_real_escape_string($database->con, $today)
+
+        );
+        $database->insert_data('tbl_rentalincome', $insert_to_tbl_rentalincome);
+        $payment = $payment - $ri_dueAmount;
+    }
+
+    // input data into table
+    for ($i = 0; $i < (int)($payment / $monthly_payment); $i++) {
+
+        $rental_details = $database->select_where('tbl_rentalsregisteration', $where);
+        foreach ($rental_details as $rental_details_item) {
+            $is_lease = $rental_details_item["rr_lease"];
+            $rr_monthlyPayment = $rental_details_item["rr_monthlyPayment"];
+            $rr_leasePayment = $rental_details_item["rr_leasePayment"];
+            $rr_rentalDuration = $rental_details_item["rr_rentalDuration"];
+        }
+        if ($is_lease == "0") {
+            $monthly_payment = $rr_monthlyPayment;
+        } else {
+            $monthly_payment = $rr_leasePayment;
+        }
+
+        $payedFor = date('Y-M', strtotime('+1 month', strtotime($payedFor)));
+
+        $insert_to_tbl_rentalincome = array(
+            'ri_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
+            'ri_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputRentalPaymentSubdivision']),
+            'ri_rentalid' => mysqli_real_escape_string($database->con, $inputRentalID),
+            'ri_dueAmount' => mysqli_real_escape_string($database->con, $due),
+            'ri_type' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
+            'ri_username' => mysqli_real_escape_string($database->con, "user"),
+            'ri_payment' => mysqli_real_escape_string($database->con, $monthly_payment),
+            'ri_telephone' => mysqli_real_escape_string($database->con, $_POST['inputRentalPaymentTP']),
+            'ri_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
+            'ri_payFor' => mysqli_real_escape_string($database->con, $payedFor),
+            'ri_date' => mysqli_real_escape_string($database->con, $today)
+
+        );
+        $database->insert_data('tbl_rentalincome', $insert_to_tbl_rentalincome);
+    }
+    if ((int)($payment % $monthly_payment) != 0) {
+        $remain = (int)($payment % $monthly_payment);
+        $due = $monthly_payment - $remain;
+
+        $payedFor = date('Y-M', strtotime('+1 month', strtotime($payedFor)));
+
+        $insert_to_tbl_rentalincome = array(
+            'ri_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
+            'ri_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputRentalPaymentSubdivision']),
+            'ri_rentalid' => mysqli_real_escape_string($database->con, $inputRentalID),
+            'ri_dueAmount' => mysqli_real_escape_string($database->con, $due),
+            'ri_type' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
+            'ri_username' => mysqli_real_escape_string($database->con, "user"),
+            'ri_payment' => mysqli_real_escape_string($database->con, $remain),
+            'ri_telephone' => mysqli_real_escape_string($database->con, $_POST['inputRentalPaymentTP']),
+            'ri_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
+            'ri_payFor' => mysqli_real_escape_string($database->con, $payedFor),
+            'ri_date' => mysqli_real_escape_string($database->con, $today)
+
+        );
+        if ($database->insert_data('tbl_rentalincome', $insert_to_tbl_rentalincome)) {
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+        }
+    } else {
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
@@ -1029,6 +1125,7 @@ if (isset($_POST['submitExpenses'])) {
         'ex_date' => mysqli_real_escape_string($database->con, $_POST['inputDate']),
         'ex_type' => mysqli_real_escape_string($database->con, $_POST['inputExpensesType']),
         'ex_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
+        'ex_username' => mysqli_real_escape_string($database->con, "user"),
         'ex_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes'])
 
     );
@@ -1153,28 +1250,104 @@ if (isset($_POST['submitLailathulKadhir'])) {
 // insert into tbl_nonmahallasaandhacollection
 // submitNonmahallaCol button click
 if (isset($_POST['submitNonmahallaCol'])) {
+    // retrieve the latest saandha amount
+    $saandha_amount = "";
+    $due = "";
+    $payedFor = "";
+    $rental_income_details = $database->select_data('tbl_saandhaamountfixing');
+    foreach ($rental_income_details as $rental_income_details_item) {
+        $saandha_amount = $rental_income_details_item["saf_amount"];
+    }
+
     $where = array(
         'nmsr_telephone'     =>     $_POST["inputNonmahallaColTP"]
     );
     $person_details = $database->select_where('tbl_nonmahallasaandharegistration', $where);
     $nmsr_id = "";
+    $amount = $_POST['inputAmount'];
+
+    // find if there is any due remaining
+    $where2 = array(
+        'nms_telephone'     =>     $_POST["inputNonmahallaColTP"]
+    );
+    $nonmahallasaandhacollection_details = $database->select_where('tbl_nonmahallasaandhacollection', $where2);
+    foreach ($nonmahallasaandhacollection_details as $nonmahallasaandhacollection_details_item) {
+        $due = $nonmahallasaandhacollection_details_item["nms_due"];
+        $payedFor = $nonmahallasaandhacollection_details_item["nms_payFor"];
+    }
+
     if ($person_details) {
-        foreach ($person_details as $person_details_item) {
-            $nmsr_id = $person_details_item["nmsr_id"];
+        if ((float)$due > 0) {
+            foreach ($person_details as $person_details_item) {
+                $nmsr_id = $person_details_item["nmsr_id"];
+            }
+
+            $insert_to_tbl_nonmahallasaandhacollection = array(
+                'nms_name	' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+                'nms_address	' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+                'nms_telephone' => mysqli_real_escape_string($database->con, $_POST['inputNonmahallaColTP']),
+                'nms_amount' => mysqli_real_escape_string($database->con, $due),
+                'nms_due' => mysqli_real_escape_string($database->con, "0"),
+                'nms_nmsrid' => mysqli_real_escape_string($database->con, $nmsr_id),
+                'nms_date' => mysqli_real_escape_string($database->con, $today),
+                'nms_payFor' => mysqli_real_escape_string($database->con, $payedFor),
+                'nms_username' => mysqli_real_escape_string($database->con, "user")
+
+            );
+            $database->insert_data('tbl_nonmahallasaandhacollection', $insert_to_tbl_nonmahallasaandhacollection);
+            $amount = $amount - $due;
         }
 
-        $insert_to_tbl_nonmahallasaandhacollection = array(
-            'nms_name	' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-            'nms_address	' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-            'nms_telephone' => mysqli_real_escape_string($database->con, $_POST['inputNonmahallaColTP']),
-            'nms_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
-            'nms_nmsrid' => mysqli_real_escape_string($database->con, $nmsr_id),
-            'nms_date' => mysqli_real_escape_string($database->con, $today),
-            'nms_username' => mysqli_real_escape_string($database->con, "user")
+        // input data into table
+        for ($i = 0; $i < (int)($amount / $saandha_amount); $i++) {
+            $payedFor = date('Y-M', strtotime('+1 month', strtotime($payedFor)));
 
-        );
+            foreach ($person_details as $person_details_item) {
+                $nmsr_id = $person_details_item["nmsr_id"];
+            }
 
-        if ($database->insert_data('tbl_nonmahallasaandhacollection', $insert_to_tbl_nonmahallasaandhacollection)) {
+            $insert_to_tbl_nonmahallasaandhacollection = array(
+                'nms_name	' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+                'nms_address	' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+                'nms_telephone' => mysqli_real_escape_string($database->con, $_POST['inputNonmahallaColTP']),
+                'nms_amount' => mysqli_real_escape_string($database->con, $saandha_amount),
+                'nms_due' => mysqli_real_escape_string($database->con, "0"),
+                'nms_nmsrid' => mysqli_real_escape_string($database->con, $nmsr_id),
+                'nms_date' => mysqli_real_escape_string($database->con, $today),
+                'nms_payFor' => mysqli_real_escape_string($database->con, $payedFor),
+                'nms_username' => mysqli_real_escape_string($database->con, "user")
+
+            );
+            $database->insert_data('tbl_nonmahallasaandhacollection', $insert_to_tbl_nonmahallasaandhacollection);
+        }
+
+        if ((int)($amount % $saandha_amount) != 0) {
+            $remain = (int)($amount % $saandha_amount);
+            $due = $saandha_amount - $remain;
+            $payedFor = date('Y-M', strtotime('+1 month', strtotime($payedFor)));
+
+            foreach ($person_details as $person_details_item) {
+                $nmsr_id = $person_details_item["nmsr_id"];
+            }
+
+            $insert_to_tbl_nonmahallasaandhacollection = array(
+                'nms_name	' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+                'nms_address	' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+                'nms_telephone' => mysqli_real_escape_string($database->con, $_POST['inputNonmahallaColTP']),
+                'nms_amount' => mysqli_real_escape_string($database->con, $remain),
+                'nms_due' => mysqli_real_escape_string($database->con, $due),
+                'nms_nmsrid' => mysqli_real_escape_string($database->con, $nmsr_id),
+                'nms_date' => mysqli_real_escape_string($database->con, $today),
+                'nms_payFor' => mysqli_real_escape_string($database->con, $payedFor),
+                'nms_username' => mysqli_real_escape_string($database->con, "user")
+
+            );
+
+            if ($database->insert_data('tbl_nonmahallasaandhacollection', $insert_to_tbl_nonmahallasaandhacollection)) {
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+            }
+        } else {
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }
@@ -1302,7 +1475,6 @@ if (isset($_POST['submitSalary'])) {
             'pSal_loanDeduction' => mysqli_real_escape_string($database->con, $_POST["inputLoan"])
         );
         $query = $database->insert_data('tbl_peshimaamsalary', $insert_to_tbl_peshimaamsalary);
-        
     } elseif ($_POST["inputPost"] == "Muazzin") {
         $insert_to_tbl_muazzinsalary = array(
             'mSal_muazzinId' => mysqli_real_escape_string($database->con, $_POST["inputIndexNo"]),
@@ -1314,7 +1486,6 @@ if (isset($_POST['submitSalary'])) {
             'mSal_loanDeduction	' => mysqli_real_escape_string($database->con, $_POST["inputLoan"])
         );
         $query = $database->insert_data('tbl_muazzinsalary', $insert_to_tbl_muazzinsalary);
-        
     }
     if ($query) {
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
