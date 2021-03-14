@@ -6,18 +6,20 @@ include "template_parts/header.php";
 $database = new databases();
 if (isset($_GET['edited'])) {
     $message = "Record successfully edited and Updated..!";
-}
-elseif (isset($_GET['terminated'])) {
+} elseif (isset($_GET['terminated'])) {
     $message = "Member terminated and Updated the Record..!";
 }
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+}
 ?>
+
 <script type="text/javascript">
     var action = "<?php echo $action; ?>";
     var designation = "<?php echo $designation; ?>";
     var villageraction = "";
     var donationaction = "";
     var fridaycollectionaction = "";
-
 </script>
 
 <body>
@@ -46,8 +48,7 @@ elseif (isset($_GET['terminated'])) {
                             <span aria-hidden='true'>&times;</span>
                         </button>
                     </div>";
-                    }
-                    elseif (isset($_GET['terminated'])) {
+                    } elseif (isset($_GET['terminated'])) {
                         echo "
                         <div class='alert alert-danger alert-dismissible' role='alert'>" . $message . "
                         <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -66,55 +67,157 @@ elseif (isset($_GET['terminated'])) {
                                     <div class="text-center">
                                         <h4 class="card-title"> Trustee Board Details Preview </h4>
                                         <div class="mt-5">
-                                            <table class="display datatable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>From - To</th>
-                                                        <th>Designation</th>
-                                                        <th>Name</th>
-                                                        <th>Telephone</th>
-                                                        <th>Actions</th>
-                                                        <th>Terminate</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                     $trustee_board_details = $database->select_data('tbl_trusteeboarddetails');
-                                                     foreach ($trustee_board_details as $trustee_board_details_item) {
-                                                         $id = $trustee_board_details_item['tb_id'];
-                                                         $start = $trustee_board_details_item['tb_startDate'];
-                                                         $end = $trustee_board_details_item['tb_endDate'];
-                                                         $designation = $trustee_board_details_item['tb_designation'];
-                                                         $isActive = $trustee_board_details_item['tb_isActive'];
-                                                         if ($end == "") {
-                                                             $end = "Present";
-                                                         }
-                                                         echo "
+                                            <label for="TBlistDetails">List Down</label>
+                                            <select name="TBlistDetails" id="TBlistDetails">
+                                                <option value="present" <?= $action == 'present' ? ' selected="selected"' : ''; ?>>Present Trusteeboard</option>
+                                                <option value="previous" <?= $action == 'previous' ? ' selected="selected"' : ''; ?>>Previous Trusteeboard</option>
+                                            </select>
+                                            <div id="presentTB">
+                                                <table class="display datatable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>From - To</th>
+                                                            <th>Designation</th>
+                                                            <th>Name</th>
+                                                            <th>Telephone</th>
+                                                            <th>Actions</th>
+                                                            <th>Terminate</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        $where = array(
+                                                            'tb_isActive'     =>    1
+                                                        );
+                                                        $trustee_board_details = $database->select_where('tbl_trusteeboarddetails', $where);
+                                                        foreach ($trustee_board_details as $trustee_board_details_item) {
+                                                            $id = $trustee_board_details_item['tb_id'];
+                                                            $start = $trustee_board_details_item['tb_startDate'];
+                                                            $end = $trustee_board_details_item['tb_endDate'];
+                                                            $designation = $trustee_board_details_item['tb_designation'];
+                                                            $isActive = $trustee_board_details_item['tb_isActive'];
+                                                            if ($end == "") {
+                                                                $end = "Present";
+                                                            }
+                                                            echo "
                                                          <tr>
-                                                            <td>".$start." - ".$end."</td>
-                                                            <td>".$designation."</td>
-                                                            <td>".$trustee_board_details_item['tb_name']."</td>
-                                                            <td>".$trustee_board_details_item['tb_telephone']."</td>
+                                                            <td>" . $start . " => " . $end . "</td>
+                                                            <td>" . $designation . "</td>
+                                                            <td>" . $trustee_board_details_item['tb_name'] . "</td>
+                                                            <td>" . $trustee_board_details_item['tb_telephone'] . "</td>
                                                             <td>
-                                                                <a href='preview_trustee_board-details_step-2.php?id=".$id."&action=view' class='btn btn-primary btn-md'>View</a>
-                                                                <a href='preview_trustee_board-details_step-2.php?id=".$id."&action=edit&designation=".$designation."' class='btn btn-warning btn-md'>Edit</a>
+                                                                <a href='preview_trustee_board-details_step-2.php?id=" . $id . "&action=view' class='btn btn-primary btn-md'>View</a>
+                                                                <a href='preview_trustee_board-details_step-2.php?id=" . $id . "&action=edit&designation=" . $designation . "' class='btn btn-warning btn-md'>Edit</a>
                                                             </td>
                                                             <td>";
                                                             if ($isActive) {
-                                                                echo "<a href='' id ='".$id."' class='btn btn-danger btn-md terminate_row_trustee' data-toggle='modal' data-target='#deleteRecord'>Terminate</a>";
-                                                            }
-                                                            else{
+                                                                echo "<a href='' id ='" . $id . "' class='btn btn-danger btn-md terminate_row_trustee' data-toggle='modal' data-target='#deleteRecord'>Terminate</a>";
+                                                            } else {
                                                                 echo "Already Terminated";
                                                             }
                                                             echo "</td>
                                                         </tr>
                                                          ";
-                                                     }
+                                                        }
 
-                                                    ?> 
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div id="previousTB">
+                                                <table class="display datatable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>From - To</th>
+                                                            <th>Designation</th>
+                                                            <th>Name</th>
+                                                            <th>Telephone</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        $where2 = array(
+                                                            'tb_isActive'     =>    0
+                                                        );
+                                                        $trustee_board_details2 = $database->select_where('tbl_trusteeboarddetails', $where2);
+                                                        foreach ($trustee_board_details2 as $trustee_board_details2_item) {
+                                                            $id = $trustee_board_details2_item['tb_id'];
+                                                            $start = $trustee_board_details2_item['tb_startDate'];
+                                                            $end = $trustee_board_details2_item['tb_endDate'];
+                                                            $designation = $trustee_board_details2_item['tb_designation'];
+                                                            $isActive = $trustee_board_details2_item['tb_isActive'];
+                                                            if ($end == "") {
+                                                                $end = "Present";
+                                                            }
+                                                            echo "
+                                                         <tr>
+                                                            <td>" . $start . " => " . $end . "</td>
+                                                            <td>" . $designation . "</td>
+                                                            <td>" . $trustee_board_details2_item['tb_name'] . "</td>
+                                                            <td>" . $trustee_board_details2_item['tb_telephone'] . "</td>
+                                                            <td>
+                                                                <a href='preview_trustee_board-details_step-2.php?id=" . $id . "&action=view' class='btn btn-primary btn-md'>View</a>
+                                                                <a href='preview_trustee_board-details_step-2.php?id=" . $id . "&action=edit&designation=" . $designation . "' class='btn btn-warning btn-md'>Edit</a>
+                                                            </td>
+                                                        </tr>
+                                                         ";
+                                                        }
+
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                        <!-- <div class="mt-5">
+                                            <h4 class="card-title"> Trustee Board History Preview </h4>
+                                            <table class="display datatable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Trusteeboard ID</th>
+                                                        <th>Details</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    // $tb_ID = "";
+
+                                                    // $where = array(
+                                                    //     'tb_isActive'     =>     1
+                                                    // );
+                                                    // $trustee_board_details2 = $database->select_where('tbl_trusteeboarddetails', $where);
+                                                    // foreach ($trustee_board_details2 as $trustee_board_details2_item) {
+                                                    //     $tb_ID = $trustee_board_details2_item['tb_electedYYMM'];
+                                                    // }
+
+                                                    // $trustee_board_history = $database->select_data('tbl_trusteeboardhistory');
+                                                    // foreach ($trustee_board_history as $trustee_board_history_item) {
+                                                    //     $id = $trustee_board_history_item['th_id'];
+                                                    //     $elected_ID = $trustee_board_history_item['th_electedYYMM'];
+                                                    //     $record = $trustee_board_history_item['th_record'];
+                                                    //     echo "
+                                                    //      <tr>
+                                                    //         <td>" . $elected_ID . "</td>
+                                                    //         <td>" . $record . "</td>
+                                                    //         <td>";
+                                                    //     if ($elected_ID == $tb_ID) {
+                                                    //         echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=editable' class='btn btn-primary btn-md'>View</a>";
+                                                    //     } else {
+                                                    //         echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=noneditable' class='btn btn-primary btn-md'>View</a>";
+                                                    //     }
+                                                    //     echo "
+                                                    //         </td>
+
+                                                    //     </tr>
+                                                    //      ";
+                                                    // }
+
+                                                    ?>
                                                 </tbody>
                                             </table>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +245,7 @@ elseif (isset($_GET['terminated'])) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to terminate this member from Trustee Board? 
+                    Are you sure you want to terminate this member from Trustee Board?
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-secondary" data-dismiss="modal">Close</a>

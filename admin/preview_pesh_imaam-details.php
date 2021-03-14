@@ -141,6 +141,10 @@ elseif (isset($_GET['terminated'])) {
                 </div>
                 <div class="modal-body">
                     Are you sure you want to terminate this Pesh Imaam? 
+                    <div class="form-group">
+                        <label for="inputReason" class="col-form-label"> Reason </label>
+                        <textarea class="form-control" name="inputReason" id="inputReason" rows="5"></textarea>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-secondary" data-dismiss="modal">Close</a>

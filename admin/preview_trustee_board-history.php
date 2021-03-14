@@ -85,7 +85,7 @@ if (isset($_GET['edited'])) {
                                                     $trustee_board_history = $database->select_data('tbl_trusteeboardhistory');
                                                     foreach ($trustee_board_history as $trustee_board_history_item) {
                                                         $id = $trustee_board_history_item['th_id'];
-                                                        $elected_ID = $trustee_board_history_item['tb_electedYYMM'];
+                                                        $elected_ID = $trustee_board_history_item['th_electedYYMM'];
                                                         $record = $trustee_board_history_item['th_record'];
                                                         echo "
                                                          <tr>

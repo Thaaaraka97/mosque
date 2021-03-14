@@ -8,10 +8,14 @@ $action = $_POST["action"];
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
 }
+if (isset($_POST['reason'])) {
+    $reason = $_POST['reason'];
+}
 
 if ($action == "terminate") {
     $update_data = array(
         'md_activestatus' => mysqli_real_escape_string($database->con, 0),
+        'md_resignedReason' => mysqli_real_escape_string($database->con, $reason),
         'md_resignedDate' => mysqli_real_escape_string($database->con, $today),
     );
     $where_condition = array(

@@ -60,12 +60,12 @@ $database = new databases();
                     </div>
                     <div class="form-group">
                       <label for="inputName">Name of the Child </label>
-                      <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name">
+                      <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" readonly>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputBirthday">Birthday </label>
-                        <input type="date" class="form-control" id="inputBirthday" name="inputBirthday">
+                        <input type="date" class="form-control" id="inputBirthday" name="inputBirthday" readonly>
                       </div>
                       <div class="form-group col-md-6">
                         <div class="form-group row pt-3">
@@ -108,17 +108,24 @@ $database = new databases();
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputGuardianName">Name of the Guardian </label>
+                      <label for="inputGuardianName"> Guardian - Name </label>
                       <input type="text" class="form-control" id="inputGuardianName" name="inputGuardianName" placeholder="Name of the Guardian">
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputGuardianTP">Guardian - Contact Number </label>
+                        <input type="text" class="form-control" id="inputGuardianTP" name="inputGuardianTP" placeholder="07xxxxxxxx">
+                      </div>
                     </div>
                     <div class="form-group">
                       <label for="inputAddress"> Address </label>
-                      <textarea rows = "5" class="form-control" id="inputAddress" name="inputAddress"></textarea>
+                      <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress"></textarea>
                     </div>
-
-                    <div class="form-group">
-                      <label for="inputAdmissionDate">Date of Admission </label>
-                      <input type="date" class="form-control" id="inputAdmissionDate" name="inputAdmissionDate">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputAdmissionDate">Date of Admission </label>
+                        <input type="date" class="form-control" id="inputAdmissionDate" name="inputAdmissionDate">
+                      </div>
                     </div>
                     <div class=" form-group">
                       <label for="inputNotes">Notes </label>

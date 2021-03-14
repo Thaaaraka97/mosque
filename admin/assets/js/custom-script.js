@@ -1063,6 +1063,20 @@ $(document).ready(function () {
       "preview_donation-details.php?action=" + donationlistDetails;
   });
 
+  // preview_trustee_board-details.php
+  // ajax submit list down details according to the selection
+  $("#TBlistDetails").change(function (e) {
+    e.preventDefault();
+    var TBlistDetails = $("#TBlistDetails").val();
+    if (TBlistDetails == "present") {
+      $("#previousTB").hide();
+      $("#presentTB").show();
+    } else if (TBlistDetails == "previous") {
+      $("#presentTB").hide();
+      $("#previousTB").show();
+    }
+  });
+
   // preview_friday-collection.php
   // ajax submit list down details according to the selection
   $("#FridayCollectionList").change(function (e) {
@@ -1133,9 +1147,10 @@ $(document).ready(function () {
   // submit data to update and terminate a row
   $(".terminate_row_peshimaam").click(function () {
     var id = $(this).attr("id");
-    var data_bundle = "id=" + id + "&action=terminate";
 
     $("#del").click(function (e) {
+      var reason = $("#inputReason").val();
+      var data_bundle = "id=" + id + "&reason=" + reason + "&action=terminate";
       e.preventDefault();
       $.ajax({
         type: "post",
@@ -1152,9 +1167,11 @@ $(document).ready(function () {
   // submit data to update and terminate a row
   $(".terminate_row_muazzin").click(function () {
     var id = $(this).attr("id");
-    var data_bundle = "id=" + id + "&action=terminate";
 
     $("#del").click(function (e) {
+      var reason = $("#inputReason").val();
+      var data_bundle = "id=" + id + "&reason=" + reason + "&action=terminate";
+
       e.preventDefault();
       $.ajax({
         type: "post",
@@ -1387,7 +1404,7 @@ $(document).ready(function () {
 
   // form_add-payment.php
   // change due value
-  $("#inputPayment").change(function (e) { 
+  $("#inputPayment").change(function (e) {
     e.preventDefault();
     var enteredpayment = "";
     enteredpayment = $("#inputPayment").val();
@@ -1396,8 +1413,7 @@ $(document).ready(function () {
     if (enteredpayment < payment) {
       var x = payment - enteredpayment;
       $("#inputDuePayment").val(x);
-    }
-    else{
+    } else {
       $("#inputDuePayment").val("0");
     }
   });
@@ -1561,8 +1577,17 @@ $(document).ready(function () {
       var name = $("#inputNameE").val();
       var tp = $("#inputTPE").val();
       var address = $("#inputAddressE").val();
-      console.log(address)
-      var data_bundle = "id=" + id + "&name=" + name +"&tp=" + tp + "&address=" + address + "&action=update";
+      console.log(address);
+      var data_bundle =
+        "id=" +
+        id +
+        "&name=" +
+        name +
+        "&tp=" +
+        tp +
+        "&address=" +
+        address +
+        "&action=update";
       $.ajax({
         type: "post",
         url: "handlers/nonmahalla_saandha_registration_handler.php",
@@ -1599,7 +1624,8 @@ $(document).ready(function () {
       e.preventDefault();
       e.preventDefault();
       var edited_amount = $("#newAmountE").val();
-      var data_bundle = "id=" + id + "&edited_amount=" + edited_amount + "&action=update";
+      var data_bundle =
+        "id=" + id + "&edited_amount=" + edited_amount + "&action=update";
       $.ajax({
         type: "post",
         url: "handlers/saandha_amount_fixings_handler.php",
@@ -1654,7 +1680,7 @@ $(document).ready(function () {
       $("#specialbhyan").hide();
       post = "Muazzin";
     }
-    });
+  });
 
   // form_salary.php
   // show/hide admin div on radio change
@@ -1669,7 +1695,7 @@ $(document).ready(function () {
       success: function (response) {
         var result_array = response.split(",");
         $("#inputBasicSalary").val(result_array[0]);
-      }
+      },
     });
   });
 
@@ -1805,8 +1831,7 @@ $(document).ready(function () {
     } else if (action == "view_salary") {
       $("#viewDetails").show();
       $("#viewPayments").show();
-    } 
-    else {
+    } else {
       console.log("invalid");
     }
   })();

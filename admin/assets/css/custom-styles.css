@@ -226,8 +226,14 @@
 }
 
  /*  preview_pesh_imaam-details_step-2.php */
-/* hide salarydiv div */
+/* hide viewPayments div */
 #viewPayments {
+  display: none;
+}
+
+ /*  preview_trustee_board-details.php */
+/* hide previousTB div */
+#previousTB {
   display: none;
 }
 

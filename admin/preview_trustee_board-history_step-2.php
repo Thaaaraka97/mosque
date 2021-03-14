@@ -27,7 +27,7 @@ $record = "";
 
 $trustee_board_history = $database->select_where('tbl_trusteeboardhistory', $where);
 foreach ($trustee_board_history as $trustee_board_history_item) {
-    $elected_ID = $trustee_board_history_item['tb_electedYYMM'];
+    $elected_ID = $trustee_board_history_item['th_electedYYMM'];
     $record = $trustee_board_history_item['th_record'];
     if ($record == "") {
         $record = "-";

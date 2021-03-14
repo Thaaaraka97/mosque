@@ -1025,12 +1025,12 @@ if (isset($_POST['submitQuran'])) {
         'qm_school' => mysqli_real_escape_string($database->con, $_POST['inputSchool']),
         'qm_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
         'qm_startDate' => mysqli_real_escape_string($database->con, $_POST['inputAdmissionDate']),
+        'qm_guardTelephone' => mysqli_real_escape_string($database->con, $_POST['inputGuardianTP']),
         'qm_guardName' => mysqli_real_escape_string($database->con, $_POST['inputGuardianName'])
 
     );
 
     $database->insert_data('tbl_quranmadrasadetails', $insert_to_tbl_quranmadrasadetails);
-    // $URL = "forms.php";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }

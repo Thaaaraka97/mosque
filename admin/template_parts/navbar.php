@@ -89,7 +89,7 @@
                         <a class="nav-link" href="preview_janaza-details.php"> Janaza Details </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_trustee_board-details.php"> Trustee Board Details </a>
+                        <a class="nav-link" href="preview_trustee_board-details.php?action=present"> Trustee Board Details </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_trustee_board-history.php"> Trustee Board History </a>

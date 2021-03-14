@@ -12,10 +12,8 @@ if (isset($_POST['id'])) {
 if ($action == "find_record") {
 
     $where = array(
-        // 'av_index'     =>     $_GET["index"],
         'av_index'     =>     $_POST["index"],
         'av_subDivision'     =>     $_POST["subdivision"]
-        // 'av_subDivision'     =>     $_GET["subdivision"]
     );
     $person_details = $database->select_where('tbl_allvillagers', $where);
 

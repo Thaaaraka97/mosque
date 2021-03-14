@@ -2,17 +2,19 @@
 include "../include/db-connection.php";
 $database = new Databases;
 $URL = "preview_q_madrasa-details.php?deleted=1";
+$id = "";
 
-$id = $_POST['id'];
+if (isset($_POST['id'])) {
+    $id = $_POST['id'];
+}
+
 $action = $_POST['action'];
 
 if (isset($action)) {
     if ($action == "find_record") {
         $where = array(
-            // 'av_index'     =>     $_GET["index"],
             'av_index'     =>     $_POST["index"],
             'av_subDivision'     =>     $_POST["subdivision"]
-            // 'av_subDivision'     =>     $_GET["subdivision"]
         );
         $person_details = $database->select_where('tbl_allvillagers', $where);
         

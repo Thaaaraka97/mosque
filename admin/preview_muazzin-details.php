@@ -57,14 +57,14 @@ elseif (isset($_GET['terminated'])) {
                     }
                     ?>
                     <div class="page-header">
-                        <h3 class="page-title"> Pesh Imaam Details </h3>
+                        <h3 class="page-title"> Muazzin Details </h3>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Pesh Imaam Details Preview </h4>
+                                        <h4 class="card-title"> Muazzin Details Preview </h4>
                                         <div class="mt-5">
                                             <table class="display datatable">
                                                 <thead>
@@ -141,6 +141,10 @@ elseif (isset($_GET['terminated'])) {
                 </div>
                 <div class="modal-body">
                     Are you sure you want to terminate this Muazzin? 
+                    <div class="form-group">
+                        <label for="inputReason" class="col-form-label"> Reason </label>
+                        <textarea class="form-control" name="inputReason" id="inputReason" rows="5"></textarea>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-secondary" data-dismiss="modal">Close</a>
