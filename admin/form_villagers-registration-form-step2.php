@@ -388,12 +388,6 @@ $database = new databases();
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="inputSpouse"> Spouse Index </label>
-                                                            <input type="text" class="form-control" id="inputSpouse" name="inputSpouse" placeholder="Spouse Index">
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="w-100 text-right">
                                                     <button class="btn btn-success btn-lg" id="avPrev3">Previous</button>

@@ -20,10 +20,51 @@ $database = new databases();
       <?php
 
       include "template_parts/topbar.php";
+      if (isset($_GET["deleted"])) {
+        $success_message = 'Record Deleted';
+      }
+      if (isset($_GET["inserted_records"])) {
+        $success_message = 'All the records are added to the Database!';
+      }
+      if (isset($_GET["inserted_record"])) {
+        $success_message = 'Record is added to the Database!';
+      }
+      if (isset($_GET["updated"])) {
+        $success_message = 'Record is updated successfully..!';
+      }
       ?>
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+        <?php
+          if (isset($success_message)) {
+            if (isset($_GET["inserted_records"]) || isset($_GET["inserted_record"])) {
+              echo "
+            <div class='alert alert-primary alert-dismissible' role='alert'>" . $success_message . "
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+          </button>
+          </div>";
+            }
+            elseif (isset($_GET["deleted"])) {
+              echo "
+              <div class='alert alert-danger alert-dismissible' role='alert'>" . $success_message . "
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>";
+            }
+            elseif (isset($_GET["updated"])) {
+              echo "
+              <div class='alert alert-warning alert-dismissible' role='alert'>" . $success_message . "
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>";
+            }
+            
+          }
+          ?>
           <div class="page-header">
             <h3 class="page-title"> Quran Madhrasa Registration Details </h3>
             <nav aria-label="breadcrumb">
@@ -88,6 +129,10 @@ $database = new databases();
                         </div>
                       </div>
                     </div>
+                    <div class="form-group">
+                      <label for="inputAddress"> Address </label>
+                      <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress"></textarea>
+                    </div>
                     <div class="form-row">
                       <div class="form-group col-md-3">
                         <label for="inputMedium">Medium</label>
@@ -116,10 +161,6 @@ $database = new databases();
                         <label for="inputGuardianTP">Guardian - Contact Number </label>
                         <input type="text" class="form-control" id="inputGuardianTP" name="inputGuardianTP" placeholder="07xxxxxxxx">
                       </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputAddress"> Address </label>
-                      <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress"></textarea>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">

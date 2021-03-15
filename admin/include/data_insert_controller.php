@@ -491,7 +491,7 @@ if (isset($_POST['submitNikkah'])) {
     $insert_to_tbl_nikkahdetails = array(
         'nd_groomVillage' => mysqli_real_escape_string($database->con, $_POST['inputGroomVillage']),
         'nd_groomIndex' => mysqli_real_escape_string($database->con, $inputIndexNo),
-        'nd_groomSubDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+        'nd_groomSubDivision' => mysqli_real_escape_string($database->con, $_POST['inputGroomSubdivision']),
         'nd_groomName' => mysqli_real_escape_string($database->con, $_POST['inputGroomName']),
         'nd_groomDOB' => mysqli_real_escape_string($database->con, $_POST['inputGroomBirthday']),
         'nd_groomNIC' => mysqli_real_escape_string($database->con, $_POST['inputGroomNIC']),
@@ -505,7 +505,7 @@ if (isset($_POST['submitNikkah'])) {
         'nd_groomMosqueAddress' => mysqli_real_escape_string($database->con, $_POST['inputGroomMosqueAddress']),
         'nd_brideVillage' => mysqli_real_escape_string($database->con, $_POST['inputBrideVillage']),
         'nd_brideIndex' => mysqli_real_escape_string($database->con, $inputBrideIndexNo),
-        'nd_brideSubDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+        'nd_brideSubDivision' => mysqli_real_escape_string($database->con, $_POST['inputBrideSubdivision']),
         'nd_brideName' => mysqli_real_escape_string($database->con, $_POST['inputBrideName']),
         'nd_brideDOB' => mysqli_real_escape_string($database->con, $_POST['inpuBridetBirthday']),
         'nd_brideNIC' => mysqli_real_escape_string($database->con, $_POST['inputBrideNIC']),

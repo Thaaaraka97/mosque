@@ -497,8 +497,10 @@ $(document).ready(function () {
     e.preventDefault();
     if ($(this).val() == "No") {
       $("#saandhaGuardian").show();
+      $("#saandhaGuardianEdit").show();
     } else {
       $("#saandhaGuardian").hide();
+      $("#saandhaGuardianEdit").hide();
     }
   });
 
@@ -1783,56 +1785,12 @@ $(document).ready(function () {
     } else if (action == "edit") {
       $("#viewDetails").hide();
       $("#editDetails").show();
-      if (designation == "President") {
-        $("#presidentdetails").show();
-        $("#VPdetails").hide();
-        $("#secretarydetails").hide();
-        $("#ASdetails").hide();
-        $("#treasurerdetails").hide();
-        $("#advisoryMemberdetails").hide();
-      } else if (designation == "Vice President") {
-        $("#VPdetails").show();
-        $("#presidentdetails").hide();
-        $("#secretarydetails").hide();
-        $("#ASdetails").hide();
-        $("#treasurerdetails").hide();
-      } else if (designation == "Secretary") {
-        $("#secretarydetails").show();
-        $("#presidentdetails").hide();
-        $("#VPdetails").hide();
-        $("#ASdetails").hide();
-        $("#treasurerdetails").hide();
-        $("#advisoryMemberdetails").hide();
-      } else if (designation == "Assistant Secretary") {
-        $("#ASdetails").show();
-        $("#presidentdetails").hide();
-        $("#VPdetails").hide();
-        $("#secretarydetails").hide();
-        $("#treasurerdetails").hide();
-        $("#advisoryMemberdetails").hide();
-      } else if (designation == "Treasurer") {
-        $("#treasurerdetails").show();
-        $("#presidentdetails").hide();
-        $("#VPdetails").hide();
-        $("#secretarydetails").hide();
-        $("#ASdetails").hide();
-        $("#advisoryMemberdetails").hide();
-      } else if (designation == "Advisory Member") {
-        $("#advisoryMemberdetails").show();
-        $("#presidentdetails").hide();
-        $("#VPdetails").hide();
-        $("#secretarydetails").hide();
-        $("#ASdetails").hide();
-        $("#treasurerdetails").hide();
-      }
-      console.log("edit jq");
     } else if (action == "editable") {
       $("#editable").show();
     } else if (action == "view_salary") {
       $("#viewDetails").show();
       $("#viewPayments").show();
     } else {
-      console.log("invalid");
     }
   })();
 });

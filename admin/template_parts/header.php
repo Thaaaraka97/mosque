@@ -1,6 +1,7 @@
 <?php
 include "include/include.php";
-include 'include/data_insert_controller.php'
+include 'include/data_insert_controller.php';
+include 'include/data_update_controller.php';
 ?>
 
 <head>

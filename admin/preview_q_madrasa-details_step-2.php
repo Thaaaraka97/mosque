@@ -24,6 +24,7 @@ $guard_name = "";
 $grade = "";
 $notes = "";
 $start_date = "";
+$guard_tp = "";
 
 $q_madrasa_details = $database->select_where('tbl_quranmadrasadetails', $where);
 foreach ($q_madrasa_details as $q_madrasa_details_item) {
@@ -39,6 +40,7 @@ foreach ($q_madrasa_details as $q_madrasa_details_item) {
     $grade = $q_madrasa_details_item['qm_grade'];
     $notes = $q_madrasa_details_item['qm_notes'];
     $start_date = $q_madrasa_details_item['qm_startDate'];
+    $guard_tp = $q_madrasa_details_item['qm_guardTelephone'];
     if ($gender == "M") {
         $gender = "Male";
     } else {
@@ -59,7 +61,6 @@ foreach ($q_madrasa_details as $q_madrasa_details_item) {
     var villageraction = "";
     var donationaction = "";
     var fridaycollectionaction = "";
-
 </script>
 
 
@@ -171,72 +172,36 @@ foreach ($q_madrasa_details as $q_madrasa_details_item) {
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="inputIndexNo"> Index Number </label>
-                                                    <input type="text" class="form-control" id="inputIndexNo" name="inputIndexNo" placeholder="Index No" value="<?php echo $index ?>">
+                                                    <input type="text" class="form-control" id="inputIndexNo" name="inputIndexNo" value="<?php echo $index ?>" readonly>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="inputQuranSubdivision"> Sub-division </label>
-                                                    <select id="inputQuranSubdivision" name="inputQuranSubdivision" class="form-control">
-                                                        <option value="0" <?php echo ($subdivision == '0') ? 'selected' : '' ?>>Choose...</option>
-                                                        <?php
-                                                        $sub_division = $database->select_data('tbl_subdivision');
-                                                        foreach ($sub_division as $sub_division_item) {
-                                                            $selected = "";
-                                                            if ($sub_division_item["sb_name"] == $subdivision) {
-                                                        ?>
-                                                                <option value=' <?php echo $sub_division_item["sb_name"]; ?>' selected> <?php echo $sub_division_item["sb_name"]; ?> </option>
-                                                            <?php
-                                                            } else {
-                                                            ?>
-                                                                <option value=' <?php echo $sub_division_item["sb_name"]; ?>'> <?php echo $sub_division_item["sb_name"]; ?> </option>
-
-                                                            <?php
-                                                            }
-                                                            ?>
-
-                                                        <?php
-                                                        }
-
-                                                        ?>
-
-                                                        ?>
-                                                    </select>
+                                                    <input type="text" class="form-control" id="inputQuranSubdivision" name="inputQuranSubdivision" value="<?php echo $subdivision ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputName">Name of the Child </label>
-                                                <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" value="<?php echo $name ?>">
+                                                <input type="text" class="form-control" id="inputName" name="inputName" value="<?php echo $name ?>" readonly>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="inputBirthday">Birthday </label>
-                                                    <input type="date" class="form-control" id="inputBirthday" name="inputBirthday" value="<?php echo $dob ?>">
+                                                    <input type="text" class="form-control" id="inputBirthday" name="inputBirthday" value="<?php echo $dob ?>" readonly>
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <div class="form-group row pt-3">
-
-                                                        <div class="col-md-2 pt-2 d-flex align-items-center text-right">
-                                                            <label class="form-label">Gender</label>
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <div class="form-check">
-                                                                <label class="form-check-label">
-                                                                    <input type="radio" class="form-check-input" name="inputSex" id="inputSexM" value="Male"  <?php echo ($gender == 'Male') ? 'checked' : '' ?>> Male </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-5">
-                                                            <div class="form-check">
-                                                                <label class="form-check-label">
-                                                                    <input type="radio" class="form-check-input" name="inputSex" id="inputSexF" value="Female" <?php echo ($gender == 'Female') ? 'checked' : '' ?>> Female </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <label for="inputSex"> Gender </label>
+                                                    <input type="text" class="form-control" id="inputSex" name="inputSex" value="<?php echo $gender ?>" readonly>
                                                 </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputAddress"> Address </label>
+                                                <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress" value="<?php echo $index ?>" readonly><?php echo $address ?></textarea>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-3">
                                                     <label for="inputMedium">Medium</label>
                                                     <select id="inputMedium" name="inputMedium" class="form-control">
-                                                        <option value="0"  <?php echo ($medium == '0') ? 'selected' : '' ?>>Choose...</option>
+                                                        <option value="0" <?php echo ($medium == '0') ? 'selected' : '' ?>>Choose...</option>
                                                         <option value="T" <?php echo ($medium == 'Tamil') ? 'selected' : '' ?>>Tamil</option>
                                                         <option value="S" <?php echo ($medium == 'Sinhala') ? 'selected' : '' ?>>Sinhala</option>
                                                         <option value="E" <?php echo ($medium == 'English') ? 'selected' : '' ?>>English</option>
@@ -255,11 +220,12 @@ foreach ($q_madrasa_details as $q_madrasa_details_item) {
                                                 <label for="inputGuardianName">Name of the Guardian </label>
                                                 <input type="text" class="form-control" id="inputGuardianName" name="inputGuardianName" placeholder="Name of the Guardian" value="<?php echo $guard_name ?>">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="inputAddress"> Address </label>
-                                                <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress" value="<?php echo $index ?>"><?php echo $address ?></textarea>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputGuardianTP">Guardian - Contact Number </label>
+                                                    <input type="text" class="form-control" id="inputGuardianTP" name="inputGuardianTP"  value="<?php echo $guard_tp ?>">
+                                                </div>
                                             </div>
-
                                             <div class="form-group">
                                                 <label for="inputAdmissionDate">Date of Admission </label>
                                                 <input type="date" class="form-control" id="inputAdmissionDate" name="inputAdmissionDate" value="<?php echo $start_date ?>">
@@ -268,6 +234,7 @@ foreach ($q_madrasa_details as $q_madrasa_details_item) {
                                                 <label for="inputNotes">Notes </label>
                                                 <textarea class="form-control" id="inputNotes" name="inputNotes" rows="4" value="<?php echo $notes ?>"><?php echo $notes ?></textarea>
                                             </div>
+                                            <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
                                             <div class="text-center">
                                                 <button class="btn btn-primary btn-lg" id="editQuran" name="editQuran">Edit Details</button>
                                             </div>
