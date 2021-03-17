@@ -15,8 +15,8 @@ if ($action == "find_record_sub") {
     );
     $person_details = $database->select_where('tbl_allvillagers', $where);
     foreach ($person_details as $person_details_item) {
-        echo $person_details_item["av_telephone"] . ",";
-        echo $person_details_item["av_name"] . ",";
+        echo $person_details_item["av_telephone"] . "+";
+        echo $person_details_item["av_name"] . "+";
         echo $person_details_item["av_address"];
     }
 } elseif ($action == "find_record_tp") {
@@ -36,5 +36,5 @@ if ($action == "find_record_sub") {
             $av_address = $person_details_item["av_address"];
         }
     }
-    echo $av_index . "," . $av_subDivision . "," .$av_name . "," . $av_address;
+    echo $av_index . "+" . $av_subDivision . "+" .$av_name . "+" . $av_address;
 }

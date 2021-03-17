@@ -22,5 +22,5 @@ if ($action == "find_record_tp") {
             $address = $person_details_item["nmsr_address"];
         }
     }
-    echo $name . "," . $address;
+    echo $name . "+" . $address;
 }

@@ -15,8 +15,8 @@ if ($action == "find_record_sub") {
     );
     $person_details = $database->select_where('tbl_allvillagers', $where);
     foreach ($person_details as $person_details_item) {
-        echo $person_details_item["av_telephone"] . ",";
-        echo $person_details_item["av_name"] . ",";
+        echo $person_details_item["av_telephone"] . "+";
+        echo $person_details_item["av_name"] . "+";
         echo $person_details_item["av_address"];
     }
 }
@@ -26,7 +26,7 @@ elseif ($action == "find_record_tp") {
     );
     $person_details = $database->select_where('tbl_allvillagers', $where);
     foreach ($person_details as $person_details_item) {
-        echo $person_details_item["av_name"] . ",";
+        echo $person_details_item["av_name"] . "+";
         echo $person_details_item["av_address"];
     }
 }
@@ -66,7 +66,7 @@ elseif ($action == "find_rental_records_with_id") {
         $ri_payFor = $rental_income_details_item["ri_payFor"];
         
     }
-    echo $is_lease.",".$rr_monthlyPayment.",".$rr_leasePayment.",".$ri_payFor;
+    echo $is_lease."+".$rr_monthlyPayment."+".$rr_leasePayment."+".$ri_payFor;
 }
 
 

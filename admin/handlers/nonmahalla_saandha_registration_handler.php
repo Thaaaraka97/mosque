@@ -63,5 +63,5 @@ elseif ($action == "find_record") {
             $tp = $person_details_item["nmsr_telephone"];
         }
     }
-    echo $name . "," . $address . "," . $tp;
+    echo $name . "+" . $address . "+" . $tp;
 }

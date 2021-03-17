@@ -712,7 +712,7 @@ $(document).ready(function () {
       url: "handlers/janaza_form_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputName").val(result_array[0]);
         if (result_array[1] == "M") {
           $("#inputSexF").removeAttr("checked");
@@ -742,7 +742,7 @@ $(document).ready(function () {
       url: "handlers/add_new_rental_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputName").val(result_array[0]);
         $("#inputTP").val(result_array[1]);
       },
@@ -761,7 +761,7 @@ $(document).ready(function () {
       url: "handlers/add_new_rental_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputAddress").val(result_array[0]);
       },
     });
@@ -784,7 +784,7 @@ $(document).ready(function () {
       url: "handlers/add_payment_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputRentalPaymentTP").val(result_array[0]);
         $("#inputName").val(result_array[1]);
         $("#inputAddress").val(result_array[2]);
@@ -804,7 +804,7 @@ $(document).ready(function () {
       url: "handlers/add_payment_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputName").val(result_array[0]);
         $("#inputAddress").val(result_array[1]);
       },
@@ -824,7 +824,7 @@ $(document).ready(function () {
       url: "handlers/quran_mdhrasa_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputName").val(result_array[0]);
         $("#inputAddress").val(result_array[1]);
         $("#inputBirthday").val(result_array[2]);
@@ -851,7 +851,7 @@ $(document).ready(function () {
       url: "handlers/board_member_donation_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputName").val(result_array[0]);
         $("#inputDesignation").val(result_array[1]);
         $("#inputAddress").val(result_array[2]);
@@ -1012,7 +1012,7 @@ $(document).ready(function () {
       url: "handlers/friday_collection_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputTP").val(result_array[0]);
         $("#inputName").val(result_array[1]);
         $("#inputAddress").val(result_array[2]);
@@ -1391,7 +1391,7 @@ $(document).ready(function () {
       url: "handlers/add_payment_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         if (result_array[0] == "0") {
           payment = result_array[1];
         } else {
@@ -1436,7 +1436,7 @@ $(document).ready(function () {
       url: "handlers/funds_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputFundsTP").val(result_array[0]);
         $("#inputName").val(result_array[1]);
         $("#inputAddress").val(result_array[2]);
@@ -1455,7 +1455,7 @@ $(document).ready(function () {
       url: "handlers/funds_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputIndexNo").val(result_array[0]);
         $("#inputFundsSubdivision").val(result_array[1]);
         $("#inputName").val(result_array[2]);
@@ -1481,7 +1481,7 @@ $(document).ready(function () {
       url: "handlers/lailathul_kadhir_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputlailathulTP").val(result_array[0]);
         $("#inputName").val(result_array[1]);
         $("#inputAddress").val(result_array[2]);
@@ -1500,7 +1500,7 @@ $(document).ready(function () {
       url: "handlers/lailathul_kadhir_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputIndexNo").val(result_array[0]);
         $("#inputlailathulSubdivision").val(result_array[1]);
         $("#inputName").val(result_array[2]);
@@ -1520,7 +1520,7 @@ $(document).ready(function () {
       url: "handlers/nonmahalla_saandha_collection_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputName").val(result_array[0]);
         $("#inputAddress").val(result_array[1]);
       },
@@ -1560,7 +1560,7 @@ $(document).ready(function () {
       url: "handlers/nonmahalla_saandha_registration_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputNameE").val(result_array[0]);
         $("#inputAddressE").val(result_array[1]);
         $("#inputTPE").val(result_array[2]);
@@ -1611,7 +1611,7 @@ $(document).ready(function () {
       url: "handlers/saandha_amount_fixings_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#newAmountE").val(result_array[0]);
       },
     });
@@ -1694,7 +1694,7 @@ $(document).ready(function () {
       url: "handlers/salary_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputBasicSalary").val(result_array[0]);
       },
     });
