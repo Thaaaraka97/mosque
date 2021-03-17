@@ -80,7 +80,7 @@ if (isset($_GET['nodata'])) {
                                                 </div>
                                                 <div class="form-group col-md-6" id="family">
                                                     <label for="inputfamilyID"> Family ID </label>
-                                                    <input type="text" class="form-control" id="inputfamilyID" name="inputfamilyID" placeholder="Family ID" required>
+                                                    <input type="text" class="form-control" id="inputfamilyID" name="inputfamilyID" placeholder="Family ID">
                                                 </div>
                                             </div>
                                             <div class="w-100 text-right">
