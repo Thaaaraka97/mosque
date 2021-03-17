@@ -877,7 +877,7 @@ $(document).ready(function () {
       url: "handlers/trustee_board_form_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputPresidentName").val(result_array[0]);
         $("#inputPresidentTP").val(result_array[1]);
         $("#inputPresidentJob").val(result_array[2]);
@@ -904,7 +904,7 @@ $(document).ready(function () {
       url: "handlers/trustee_board_form_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputVPName").val(result_array[0]);
         $("#inputVPTP").val(result_array[1]);
         $("#inputVPJob").val(result_array[2]);
@@ -931,7 +931,7 @@ $(document).ready(function () {
       url: "handlers/trustee_board_form_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputSecretaryName").val(result_array[0]);
         $("#inputSecretaryTP").val(result_array[1]);
         $("#inputSecretaryJob").val(result_array[2]);
@@ -958,7 +958,7 @@ $(document).ready(function () {
       url: "handlers/trustee_board_form_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputASName").val(result_array[0]);
         $("#inputASTP").val(result_array[1]);
         $("#inputASJob").val(result_array[2]);
@@ -985,7 +985,7 @@ $(document).ready(function () {
       url: "handlers/trustee_board_form_handler.php",
       data: data_bundle,
       success: function (response) {
-        var result_array = response.split(",");
+        var result_array = response.split("+");
         $("#inputTreasurerName").val(result_array[0]);
         $("#inputTreasurerTP").val(result_array[1]);
         $("#inputTreasurerJob").val(result_array[2]);

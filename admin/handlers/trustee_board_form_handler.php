@@ -18,10 +18,10 @@ if ($action == "find_record") {
     $person_details = $database->select_where('tbl_allvillagers', $where);
 
     foreach ($person_details as $person_details_item) {
-        echo $person_details_item["av_name"] . ",";
-        echo $person_details_item["av_telephone"] . ",";
-        echo $person_details_item["av_job"] . ",";
-        echo $person_details_item["av_monthlyIncomePersonal"] . ",";
+        echo $person_details_item["av_name"] . "+";
+        echo $person_details_item["av_telephone"] . "+";
+        echo $person_details_item["av_job"] . "+";
+        echo $person_details_item["av_monthlyIncomePersonal"] . "+";
         echo $person_details_item["av_address"];
     }
 }
