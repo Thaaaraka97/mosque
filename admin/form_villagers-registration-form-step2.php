@@ -4,6 +4,29 @@
 <?php
 include "template_parts/header.php";
 $database = new databases();
+
+$index = "";
+$name = "";
+$famID = "";
+$data_from_temp = $database->select_data('tbl_temp_allvillagers');
+foreach ($data_from_temp as $data_from_temp_item) {
+    $famID = $data_from_temp_item["id"];
+}
+
+if ($famID != "") {
+    $message = "The registered Family ID is " . $famID . "..!";
+}
+if (isset($_GET["inserted_record"])) {
+    $data_from_villagers = $database->select_data('tbl_allvillagers');
+    foreach ($data_from_villagers as $data_from_villagers_item) {
+        if (isset($data_from_villagers_item["av_index"])) {
+            $index = $data_from_villagers_item["av_index"];
+            $name = $data_from_villagers_item["av_name"];
+        }
+    }
+    $success_message = 'Record is added to the Database! <br><strong>' . $index . '</strong> is the registered <strong>Index</strong> of ' . $name;
+}
+
 ?>
 
 <body>
@@ -24,6 +47,24 @@ $database = new databases();
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    <?php
+                    if ($famID != "") {
+                        echo "
+                        <div class='alert alert-success alert-dismissible' role='alert'>" . $message . "
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                            </button>
+                        </div>";
+                    }
+                    if (isset($_GET["inserted_records"]) || isset($_GET["inserted_record"])) {
+                        echo "
+                        <div class='alert alert-success alert-dismissible' role='alert'>" . $success_message . "
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                        </button>
+                        </div>";
+                    }
+                    ?>
                     <div class="page-header">
                         <h3 class="page-title">All Villagers Registration</h3>
                         <nav aria-label="breadcrumb">

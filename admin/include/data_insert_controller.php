@@ -112,17 +112,12 @@ if (isset($_POST["addAnother"])) {
     if ($_POST["inputMadStart"] != "") {
         $inputMadStart = $_POST["inputMadStart"];
     } else {
-        $inputMadStart = "0";
+        $inputMadStart = "0001-01-01";
     }
     if ($_POST["inputMadExpense"] != "") {
         $inputMadExpense = $_POST["inputMadExpense"];
     } else {
         $inputMadExpense = 0;
-    }
-    if ($_POST["inputSpouse"] != "") {
-        $inputSpouse = $_POST["inputSpouse"];
-    } else {
-        $inputSpouse = 0;
     }
     if ($_POST["inputJob"] != "") {
         $inputJob = $_POST["inputJob"];
@@ -249,14 +244,17 @@ if (isset($_POST["addAnother"])) {
         'av_married' => mysqli_real_escape_string($database->con, $inputMarried),
         'av_divorced' => mysqli_real_escape_string($database->con, $inputDivorsed),
         'av_widowed' => mysqli_real_escape_string($database->con, $inputWidowed),
-        'av_spouseIndex' => mysqli_real_escape_string($database->con, $inputSpouse),
         'av_job' => mysqli_real_escape_string($database->con, $inputJob),
         'av_monthlyIncomePersonal' => mysqli_real_escape_string($database->con, $inputMonthlyIncomePersonal),
         'av_leftVillage' => mysqli_real_escape_string($database->con, 0),
         'av_aliveOrDeceased' => mysqli_real_escape_string($database->con, 1)
     );
 
-    $database->insert_data('tbl_allvillagers', $insert_to_tbl_allvillagers);
+    if ($database->insert_data('tbl_allvillagers', $insert_to_tbl_allvillagers)) {
+        $URL = "form_villagers-registration-form-step2.php?inserted_record=1";
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
 }
 
 // insert data into tbl_allvillagers
@@ -302,11 +300,6 @@ if (isset($_POST["submitSaandha"])) {
         $inputMadExpense = $_POST["inputMadExpense"];
     } else {
         $inputMadExpense = 0;
-    }
-    if ($_POST["inputSpouse"] != "") {
-        $inputSpouse = $_POST["inputSpouse"];
-    } else {
-        $inputSpouse = 0;
     }
     if ($_POST["inputJob"] != "") {
         $inputJob = $_POST["inputJob"];
@@ -439,7 +432,6 @@ if (isset($_POST["submitSaandha"])) {
         'av_married' => mysqli_real_escape_string($database->con, $inputMarried),
         'av_divorced' => mysqli_real_escape_string($database->con, $inputDivorsed),
         'av_widowed' => mysqli_real_escape_string($database->con, $inputWidowed),
-        'av_spouseIndex' => mysqli_real_escape_string($database->con, $inputSpouse),
         'av_job' => mysqli_real_escape_string($database->con, $inputJob),
         'av_monthlyIncomePersonal' => mysqli_real_escape_string($database->con, $inputMonthlyIncomePersonal),
         'av_leftVillage' => mysqli_real_escape_string($database->con, 0),
@@ -447,8 +439,8 @@ if (isset($_POST["submitSaandha"])) {
     );
 
     if ($database->insert_data('tbl_allvillagers', $insert_to_tbl_allvillagers)) {
-        $database->delete_all('tbl_temp_allvillagers');
-        $URL = "forms.php?inserted_records=1";
+        // $database->delete_all('tbl_temp_allvillagers');
+        $URL = "forms.php?inserted_records_villagers=1";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }

@@ -25,6 +25,16 @@ include "template_parts/header.php";
       if (isset($_GET["inserted_records"])) {
         $success_message = 'All the records are added to the Database!';
       }
+      if (isset($_GET["inserted_records_villagers"])) {
+        $data_from_villagers = $database->select_data('tbl_allvillagers');
+        foreach ($data_from_villagers as $data_from_villagers_item) {
+          if (isset($data_from_villagers_item["av_index"])) {
+            $index = $data_from_villagers_item["av_index"];
+            $name = $data_from_villagers_item["av_name"];
+          }
+        }
+        $success_message = 'All the records are added to the Database! <br><strong>' . $index . '</strong> is the registered <strong>Index</strong> of ' . $name;
+      }
       if (isset($_GET["inserted_record"])) {
         $success_message = 'Record is added to the Database!';
       }
@@ -40,12 +50,20 @@ include "template_parts/header.php";
           if (isset($success_message)) {
             if (isset($_GET["inserted_records"]) || isset($_GET["inserted_record"])) {
               echo "
-            <div class='alert alert-primary alert-dismissible' role='alert'>" . $success_message . "
-            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-            <span aria-hidden='true'>&times;</span>
-          </button>
-          </div>";
-            }
+            <div class='alert alert-success alert-dismissible' role='alert'>" . $success_message . "
+              <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+              <span aria-hidden='true'>&times;</span>
+            </button>
+            </div>";
+            } 
+            elseif (isset($_GET["inserted_records_villagers"])) {
+              echo "
+            <div class='alert alert-success alert-dismissible' role='alert'>" . $success_message . "
+              <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+              <span aria-hidden='true'>&times;</span>
+            </button>
+            </div>";
+            } 
             elseif (isset($_GET["deleted"])) {
               echo "
               <div class='alert alert-danger alert-dismissible' role='alert'>" . $success_message . "
@@ -53,7 +71,7 @@ include "template_parts/header.php";
                   <span aria-hidden='true'>&times;</span>
                 </button>
               </div>";
-            }
+            } 
             elseif (isset($_GET["updated"])) {
               echo "
               <div class='alert alert-warning alert-dismissible' role='alert'>" . $success_message . "
@@ -62,7 +80,6 @@ include "template_parts/header.php";
                 </button>
               </div>";
             }
-            
           }
           ?>
 
