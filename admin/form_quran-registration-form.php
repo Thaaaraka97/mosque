@@ -36,7 +36,7 @@ $database = new databases();
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-        <?php
+          <?php
           if (isset($success_message)) {
             if (isset($_GET["inserted_records"]) || isset($_GET["inserted_record"])) {
               echo "
@@ -45,16 +45,14 @@ $database = new databases();
             <span aria-hidden='true'>&times;</span>
           </button>
           </div>";
-            }
-            elseif (isset($_GET["deleted"])) {
+            } elseif (isset($_GET["deleted"])) {
               echo "
               <div class='alert alert-danger alert-dismissible' role='alert'>" . $success_message . "
                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                   <span aria-hidden='true'>&times;</span>
                 </button>
               </div>";
-            }
-            elseif (isset($_GET["updated"])) {
+            } elseif (isset($_GET["updated"])) {
               echo "
               <div class='alert alert-warning alert-dismissible' role='alert'>" . $success_message . "
                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -62,7 +60,6 @@ $database = new databases();
                 </button>
               </div>";
             }
-            
           }
           ?>
           <div class="page-header">
@@ -109,24 +106,8 @@ $database = new databases();
                         <input type="date" class="form-control" id="inputBirthday" name="inputBirthday" readonly>
                       </div>
                       <div class="form-group col-md-6">
-                        <div class="form-group row pt-3">
-
-                          <div class="col-md-2 pt-2 d-flex align-items-center text-right">
-                            <label class="form-label">Gender</label>
-                          </div>
-                          <div class="col-sm-4">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="inputSex" id="inputSexM" value="Male" checked> Male </label>
-                            </div>
-                          </div>
-                          <div class="col-sm-5">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="inputSex" id="inputSexF" value="Female"> Female </label>
-                            </div>
-                          </div>
-                        </div>
+                        <label for="inputName">Name of the Child </label>
+                        <input type="text" class="form-control" id="inputSex" name="inputSex" placeholder="Gender" readonly>
                       </div>
                     </div>
                     <div class="form-group">

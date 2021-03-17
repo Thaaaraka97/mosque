@@ -829,11 +829,9 @@ $(document).ready(function () {
         $("#inputAddress").val(result_array[1]);
         $("#inputBirthday").val(result_array[2]);
         if (result_array[3] == "M") {
-          $("#inputSexF").removeAttr("checked");
-          $("#inputSexM").attr("checked", "checked");
+          $("#inputSex").val("Male");
         } else {
-          $("#inputSexM").removeAttr("checked");
-          $("#inputSexF").attr("checked", "checked");
+          $("#inputSex").val("Female");
         }
       },
     });

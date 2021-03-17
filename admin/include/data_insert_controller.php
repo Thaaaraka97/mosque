@@ -871,13 +871,18 @@ if (isset($_POST['submitNewRental'])) {
 // submitRentalPayment button click
 if (isset($_POST['submitRentalPayment'])) {
     $inputIndexNo = "";
+    $due = "";
     if ($_POST["inputIndexNo"] != "") {
         $inputIndexNo = $_POST["inputIndexNo"];
     } else {
         $inputIndexNo = 0;
     }
+    if ($_POST["inputDuePayment"] != "") {
+        $due = $_POST["inputDuePayment"];
+    } else {
+        $due = 0;
+    }
     $inputRentalID = $_POST["inputRentalID"];
-    $due = $_POST['inputDuePayment'];
     $payment = $_POST['inputPayment'];
     $payedFor = $_POST['payedFor'];
     $is_lease = "";
