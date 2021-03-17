@@ -204,7 +204,7 @@ elseif ($action == "submit") {
         }
     }
 
-    $URL = "forms.php?inserted_record=1";
+    $URL = "forms.php?inserted_records=1";
     echo $URL;
 }
 

@@ -1031,7 +1031,6 @@ $(document).ready(function () {
       success: function (response) {
         console.log(response);
         window.location.href = response;
-        window.location.href = "forms.php";
       },
     });
   });
@@ -1699,6 +1698,26 @@ $(document).ready(function () {
         $("#inputBasicSalary").val(result_array[0]);
       },
     });
+  });
+
+  // form_new-rental-registration.php
+  // ajx submit to calculate months
+  $("#inputRentalStartDate").change(function (e) {
+    e.preventDefault();
+    var inputRentalStartDate = new Date($("#inputRentalStartDate").val());
+    var duration = "";
+    $("#inputRentalDuration").val();
+    if ($("#inputRentalDuration").val() == "Other") {
+      duration = $("#inputRentalMonths").val();
+    } else {
+      duration = $("#inputRentalDuration").val();
+    }
+    duration = parseInt(duration);
+    console.log("Current date:", inputRentalStartDate);
+    inputRentalStartDate.setMonth(inputRentalStartDate.getMonth() + duration);
+    console.log("Date after " + duration + " months:", inputRentalStartDate);
+    inputRentalStartDate = inputRentalStartDate.toISOString().slice(0, 10);
+    $("#inputRentalEndDate").val(inputRentalStartDate);
   });
 
   // show/ hide div on the change of dropdown list donations

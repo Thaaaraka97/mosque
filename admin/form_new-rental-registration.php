@@ -58,12 +58,12 @@ $database = new databases();
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputTP">Telephone Number </label>
-                                                <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="077xxxxxxx">
+                                                <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="077xxxxxxx" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputName">Name </label>
-                                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name">
+                                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" readonly>
                                         </div>
                                         <hr>
                                         <div class="form-row">
@@ -103,7 +103,7 @@ $database = new databases();
                                             </div>
                                             <div class="form-group col-md-6" id="inputRentalMonthsDiv">
                                                 <label for="inputRentalMonths"> Enter Rental Duration (in months) </label>
-                                                <input type="text" class="form-control" id="inputRentalMonths" name="inputRentalMonths" placeholder="Down Payment (Rs)">
+                                                <input type="text" class="form-control" id="inputRentalMonths" name="inputRentalMonths" placeholder=" Duration ">
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -113,7 +113,7 @@ $database = new databases();
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputRentalEndDate">Rental End Date </label>
-                                                <input type="date" class="form-control" id="inputRentalEndDate" name="inputRentalEndDate">
+                                                <input type="text" class="form-control" id="inputRentalEndDate" name="inputRentalEndDate" placeholder="End Date" readonly>
                                             </div>
                                         </div>
                                         <div class="form-row">
