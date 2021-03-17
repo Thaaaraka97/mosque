@@ -106,7 +106,7 @@ $database = new databases();
                         <input type="date" class="form-control" id="inputBirthday" name="inputBirthday" readonly>
                       </div>
                       <div class="form-group col-md-6">
-                        <label for="inputName">Name of the Child </label>
+                        <label for="inputSex"> Gender </label>
                         <input type="text" class="form-control" id="inputSex" name="inputSex" placeholder="Gender" readonly>
                       </div>
                     </div>
@@ -114,6 +114,7 @@ $database = new databases();
                       <label for="inputAddress"> Address </label>
                       <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress"></textarea>
                     </div>
+                    <hr>
                     <div class="form-row">
                       <div class="form-group col-md-3">
                         <label for="inputMedium">Medium</label>

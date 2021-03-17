@@ -313,6 +313,7 @@ $(document).ready(function () {
   // datatables
   $(document).ready(function () {
     $(".datatable").DataTable();
+    $('.dataTables_length').addClass('bs-select');
   });
 
   //   form_nikkah-details-form.php

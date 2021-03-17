@@ -464,6 +464,16 @@ if (isset($_POST['submitNikkah'])) {
     } else {
         $inputBrideIndexNo = 0;
     }
+    if ($_POST["inputBrideSubdivision"] != "") {
+        $inputBrideSubdivision = $_POST["inputBrideSubdivision"];
+    } else {
+        $inputBrideSubdivision = 0;
+    }
+    if ($_POST["inputGroomSubdivision"] != "") {
+        $inputGroomSubdivision = $_POST["inputGroomSubdivision"];
+    } else {
+        $inputGroomSubdivision = 0;
+    }
     if ($_POST["inputGroomGuardianIndex"] != "") {
         $inputGroomGuardianIndex = $_POST["inputGroomGuardianIndex"];
     } else {
@@ -483,7 +493,7 @@ if (isset($_POST['submitNikkah'])) {
     $insert_to_tbl_nikkahdetails = array(
         'nd_groomVillage' => mysqli_real_escape_string($database->con, $_POST['inputGroomVillage']),
         'nd_groomIndex' => mysqli_real_escape_string($database->con, $inputIndexNo),
-        'nd_groomSubDivision' => mysqli_real_escape_string($database->con, $_POST['inputGroomSubdivision']),
+        'nd_groomSubDivision' => mysqli_real_escape_string($database->con, $inputGroomSubdivision),
         'nd_groomName' => mysqli_real_escape_string($database->con, $_POST['inputGroomName']),
         'nd_groomDOB' => mysqli_real_escape_string($database->con, $_POST['inputGroomBirthday']),
         'nd_groomNIC' => mysqli_real_escape_string($database->con, $_POST['inputGroomNIC']),
@@ -497,7 +507,7 @@ if (isset($_POST['submitNikkah'])) {
         'nd_groomMosqueAddress' => mysqli_real_escape_string($database->con, $_POST['inputGroomMosqueAddress']),
         'nd_brideVillage' => mysqli_real_escape_string($database->con, $_POST['inputBrideVillage']),
         'nd_brideIndex' => mysqli_real_escape_string($database->con, $inputBrideIndexNo),
-        'nd_brideSubDivision' => mysqli_real_escape_string($database->con, $_POST['inputBrideSubdivision']),
+        'nd_brideSubDivision' => mysqli_real_escape_string($database->con, $inputBrideSubdivision),
         'nd_brideName' => mysqli_real_escape_string($database->con, $_POST['inputBrideName']),
         'nd_brideDOB' => mysqli_real_escape_string($database->con, $_POST['inpuBridetBirthday']),
         'nd_brideNIC' => mysqli_real_escape_string($database->con, $_POST['inputBrideNIC']),
@@ -655,9 +665,9 @@ if (isset($_POST['submitPeshImaam'])) {
         $inputIndexNo = 0;
     }
     if ($_POST["inputHomeTP"] != "") {
-        $inputIndexNo = $_POST["inputHomeTP"];
+        $inputHomeTP = $_POST["inputHomeTP"];
     } else {
-        $inputIndexNo = "0";
+        $inputHomeTP = "0";
     }
     if (isset($_POST['Gramasevaka'])) {
         $Gramasevaka = 1;
@@ -697,7 +707,7 @@ if (isset($_POST['submitPeshImaam'])) {
         'pi_married' => mysqli_real_escape_string($database->con, $inputMarriedStatus),
         'pi_noofkids' => mysqli_real_escape_string($database->con, $_POST['inputKids']),
         'pi_mobileTP' => mysqli_real_escape_string($database->con, $_POST['inputMobile']),
-        'pi_homeTP' => mysqli_real_escape_string($database->con, $_POST['inputHomeTP']),
+        'pi_homeTP' => mysqli_real_escape_string($database->con, $inputHomeTP),
         'pi_assignedDate' => mysqli_real_escape_string($database->con, $_POST['inputAssignedDate']),
         'pi_salary' => mysqli_real_escape_string($database->con, $_POST['inputBasicSalary']),
         'pi_activestatus' => mysqli_real_escape_string($database->con, 1),
@@ -731,9 +741,9 @@ if (isset($_POST['submitMuazzin'])) {
         $inputIndexNo = 0;
     }
     if ($_POST["inputHomeTP"] != "") {
-        $inputIndexNo = $_POST["inputHomeTP"];
+        $inputHomeTP = $_POST["inputHomeTP"];
     } else {
-        $inputIndexNo = "0";
+        $inputHomeTP = "0";
     }
     if (isset($_POST['Gramasevaka'])) {
         $Gramasevaka = 1;
@@ -768,7 +778,7 @@ if (isset($_POST['submitMuazzin'])) {
         'md_married' => mysqli_real_escape_string($database->con, $inputMarriedStatus),
         'md_noofkids' => mysqli_real_escape_string($database->con, $_POST['inputKids']),
         'md_mobileTP' => mysqli_real_escape_string($database->con, $_POST['inputMobile']),
-        'md_homeTP' => mysqli_real_escape_string($database->con, $_POST['inputHomeTP']),
+        'md_homeTP' => mysqli_real_escape_string($database->con, $inputHomeTP),
         'md_assignedDate' => mysqli_real_escape_string($database->con, $_POST['inputAssignedDate']),
         'md_salary' => mysqli_real_escape_string($database->con, $_POST['inputBasicSalary']),
         'md_activestatus' => mysqli_real_escape_string($database->con, 1),

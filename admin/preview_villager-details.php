@@ -21,7 +21,6 @@ if (isset($_GET['action'])) {
     var villageraction = "<?php echo $action; ?>";
     var donationaction = "";
     var fridaycollectionaction = "";
-
 </script>
 
 <body>
@@ -111,28 +110,29 @@ if (isset($_GET['action'])) {
                                                 <option value="orphan" <?= $action == 'orphan' ? ' selected="selected"' : ''; ?>>Orphan Children Details</option>
                                             </select>
                                             <div id="allVillagers">
-                                                <table class="display datatable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Index Number</th>
-                                                            <th>Sub Division</th>
-                                                            <th>Age</th>
-                                                            <th>Actions</th>
-                                                            <th>Left the Village</th>
-                                                            <th>Saandha Status</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        foreach ($all_villagers_details as $all_villagers_details_item) {
-                                                            $index = $all_villagers_details_item['av_index'];
-                                                            $subdivision = $all_villagers_details_item['av_subDivision'];
-                                                            $left_village = $all_villagers_details_item['av_leftVillage'];
-                                                            $saandha_status = $all_villagers_details_item['av_saandhaStatus'];
-                                                            $dob = $all_villagers_details_item['av_dob'];
-                                                            $age = $database -> calculate_age($dob);
-                                                            echo "
+                                                <div class="table-responsive">
+                                                    <table class="display datatable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Index Number</th>
+                                                                <th>Sub Division</th>
+                                                                <th>Age</th>
+                                                                <th>Actions</th>
+                                                                <th>Left the Village</th>
+                                                                <th>Saandha Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            foreach ($all_villagers_details as $all_villagers_details_item) {
+                                                                $index = $all_villagers_details_item['av_index'];
+                                                                $subdivision = $all_villagers_details_item['av_subDivision'];
+                                                                $left_village = $all_villagers_details_item['av_leftVillage'];
+                                                                $saandha_status = $all_villagers_details_item['av_saandhaStatus'];
+                                                                $dob = $all_villagers_details_item['av_dob'];
+                                                                $age = $database->calculate_age($dob);
+                                                                echo "
                                                          <tr>
                                                             <td>" . $all_villagers_details_item['av_name'] . "</td>
                                                             <td>" . $index . "</td>
@@ -143,19 +143,17 @@ if (isset($_GET['action'])) {
                                                                 <a href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&action=edit' class='btn btn-warning btn-md'>Edit</a>
                                                             </td>
                                                             <td>";
-                                                            if (!$left_village) {
-                                                                echo "<a href='handlers/preview_villagers_handler.php?index=" . $index . "&subdivision=" . $subdivision . "&action=left_village' class='btn btn-danger btn-md' id='left_village'>Yes</a>";
-                                                            } else {
-                                                                echo "Already Left";
-                                                            }
-                                                            echo "</td>
+                                                                if (!$left_village) {
+                                                                    echo "<a href='handlers/preview_villagers_handler.php?index=" . $index . "&subdivision=" . $subdivision . "&action=left_village' class='btn btn-danger btn-md' id='left_village'>Yes</a>";
+                                                                } else {
+                                                                    echo "Already Left";
+                                                                }
+                                                                echo "</td>
                                                                 <td>";
                                                                 if (!$saandha_status) {
                                                                     if ($age >= 18) {
-                                                                        echo "<a href='' id='".$index."' class='btn btn-warning btn-md update_row_saandha' data-toggle='modal' data-target='#deleteRecord'>Pending</a>";
-
-                                                                    }
-                                                                    else {
+                                                                        echo "<a href='' id='" . $index . "' class='btn btn-warning btn-md update_row_saandha' data-toggle='modal' data-target='#deleteRecord'>Pending</a>";
+                                                                    } else {
                                                                         echo "Not Eligible";
                                                                     }
                                                                 } else {
@@ -165,11 +163,13 @@ if (isset($_GET['action'])) {
                                                                 </td>
                                                         </tr>
                                                          ";
-                                                        }
+                                                            }
 
-                                                        ?>
-                                                    </tbody>
-                                                </table>
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
                                             </div>
                                             <div id="widow">
                                                 <table class="display datatable">

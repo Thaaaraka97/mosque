@@ -213,8 +213,8 @@ $database = new databases();
                             <input type="text" class="form-control" id="inputBrideIndexNo" name="inputBrideIndexNo" placeholder="Index No">
                           </div>
                           <div class="form-group col-md-6">
-                            <label for="inputSubdivision"> Sub-division </label>
-                            <select id="inputSubdivision" name="inputSubdivision" class="form-control">
+                            <label for="inputBrideSubdivision"> Sub-division </label>
+                            <select id="inputBrideSubdivision" name="inputBrideSubdivision" class="form-control">
                               <option value="0" selected>Choose...</option>
                               <?php
                               foreach ($sub_division as $sub_division_item) {

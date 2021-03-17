@@ -59,29 +59,17 @@ $database = new databases();
                     </div>
                     <div class="form-group">
                       <label for="inputName">Name of the Deceased </label>
-                      <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" required>
+                      <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" readonly>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <div class="form-group row pt-3">
-                          <div class="col-md-2 pt-2 d-flex align-items-center text-right">
-                            <label class="form-label">Gender</label>
-                          </div>
-                          <div class="col-sm-4">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="inputSex" id="inputSexM" value="M" checked> Male </label>
-                            </div>
-                          </div>
-                          <div class="col-sm-5">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="inputSex" id="inputSexF" value="F"> Female </label>
-                            </div>
-                          </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputSex"> Gender </label>
+                          <input type="text" class="form-control" id="inputSex" name="inputSex" placeholder="Gender" readonly>
                         </div>
                       </div>
                     </div>
+                    <hr>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputDeathDate">Date of Death </label>
