@@ -95,7 +95,7 @@ elseif (isset($_GET['terminated'])) {
                                                             <td>".$pesh_imaam_details_item['pi_mobileTP']."</td>
                                                             <td>".$start." - ".$end."</td>
                                                             <td>
-                                                                <a href='preview_pesh_imaam-details_step-2.php?id=".$id."&action=view' class='btn btn-primary btn-md'>View</a>
+                                                                <a href='preview_pesh_imaam-details_step-2.php?id=".$id."&action=view' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
                                                             </td>
                                                             <td>";
                                                             if ($isActive) {

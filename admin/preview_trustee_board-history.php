@@ -93,9 +93,9 @@ if (isset($_GET['edited'])) {
                                                             <td>" . $record . "</td>
                                                             <td>";
                                                             if ($elected_ID == $tb_ID) {
-                                                                echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=editable' class='btn btn-primary btn-md'>View</a>";
+                                                                echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=editable' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>";
                                                             } else {
-                                                                echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=noneditable' class='btn btn-primary btn-md'>View</a>";
+                                                                echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=noneditable' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>";
                                                             }
                                                             echo "
                                                             </td>

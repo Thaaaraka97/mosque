@@ -183,58 +183,129 @@
   display: none;
 }
 
- /* form_funds-collection.php */
+/* form_funds-collection.php */
 /* hide inputFundsNotes div */
 #inputFundsNotes {
   display: none;
 }
 
- /* form_funds-collection.php */
+/* form_funds-collection.php */
 /* hide inputFundsFestival div */
 #inputFundsFestival {
   display: none;
 }
 
- /*  form_friday-collection.php */
+/*  form_friday-collection.php */
 /* hide fridayRegular div */
 #fridayRegular {
   display: none;
 }
 
- /*  form_add-new-rental.php */
+/*  form_add-new-rental.php */
 /* hide inputRentalMonthsDiv div */
 #inputRentalMonthsDiv {
   display: none;
 }
 
- /*  form_add-new-rental.php */
+/*  form_add-new-rental.php */
 /* hide rentalPlace div */
 #rentalPlace {
   display: none;
 }
 
- /*  form_saandha-collector-registration.php */
+/*  form_saandha-collector-registration.php */
 /* hide admin div */
 #admin {
   display: none;
 }
 
- /*  form_salary.php */
+/*  form_salary.php */
 /* hide salarydiv div */
 #salarydiv {
   display: none;
 }
 
- /*  preview_pesh_imaam-details_step-2.php */
+/*  preview_pesh_imaam-details_step-2.php */
 /* hide viewPayments div */
 #viewPayments {
   display: none;
 }
 
- /*  preview_trustee_board-details.php */
+/*  preview_trustee_board-details.php */
 /* hide previousTB div */
 #previousTB {
   display: none;
+}
+
+.fa-pencil-square-o {
+  color: black;
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+.fa-trash {
+  color: red;
+}
+.top-span {
+  color: #111;
+}
+.image-td{
+  width: 15%;
+}
+
+.card {
+  border-radius: 1rem;
+}
+
+.card-body.top-card {
+  height: 100%;
+  padding-bottom: 2%;
+  margin-bottom: 0px;
+}
+.grid-margin {
+  margin-bottom: 0px;
+}
+a.brand-logo-mini{
+  display: block;
+}
+
+.card-table{
+  width: 100%;
+}
+.tr-shadow{
+  color: #111;
+}
+.total-td{
+  width: 15%;
+}
+.table-data2.table thead th {
+  padding: 15px 10px;
+}
+.table-data2.table tbody tr td:first-child {
+  vertical-align: middle;
+}
+
+table.dataTable tbody tr.odd {
+  background-color: #F1E0FF;
+}
+table.dataTable tbody tr.even {
+  background-color: #E5E5E5;
+}
+.table-data2.table tbody td {
+  padding: 10px 5px;
+  line-height: 4;
+}
+table.dataTable {
+  border-spacing: 0px 5px !important;
+
+}
+
+.top-card-logo {
+  max-width: 60%;
+  height: auto;
+}
+
+.dataTables_wrapper .dataTable .btn{
+  vertical-align: middle;
 }
 
 .alert {
@@ -249,7 +320,6 @@
 form .error {
   color: #ff0000;
 }
-
 
 .modal-content {
   background-color: #fff;

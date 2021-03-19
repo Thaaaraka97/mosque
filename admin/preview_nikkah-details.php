@@ -91,11 +91,11 @@ elseif (isset($_GET['edited'])) {
                                                             <td>" . $nikkah_details_item['nd_groomName'] . "</td>
                                                             <td>" . $nikkah_details_item['nd_groomAddress'] . "</td>
                                                             <td>
-                                                                <a href='preview_nikkah-details_step-2.php?id=" . $id . "&action=view' class='btn btn-primary btn-md'>View</a>
-                                                                <a href='preview_nikkah-details_step-2.php?id=" . $id . "&action=edit' class='btn btn-warning btn-md'>Edit</a>
+                                                                <a href='preview_nikkah-details_step-2.php?id=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
+                                                                <a href='preview_nikkah-details_step-2.php?id=" . $id . "&action=edit' class='item'><i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'></i></a>
                                                             </td>
                                                             <td>
-                                                                <a href='' id ='".$id."' class='btn btn-danger btn-md delete_row_nikkah' data-toggle='modal' data-target='#deleteRecord'>Delete</a>
+                                                                <a href='' id ='".$id."' class='item delete_row_nikkah' data-toggle='modal' data-target='#deleteRecord'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></a>
                                                                 
 
                                                             </td>

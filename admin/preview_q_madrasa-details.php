@@ -88,11 +88,11 @@ elseif (isset($_GET['deleted'])) {
                                                             <td>".$q_madrasa_details_item['qm_guardName']."</td>
                                                             <td>".$q_madrasa_details_item['qm_startDate']."</td>
                                                             <td>
-                                                                <a href='preview_q_madrasa-details_step-2.php?id=".$id."&action=view' class='btn btn-primary btn-md'>View</a>
-                                                                <a href='preview_q_madrasa-details_step-2.php?id=".$id."&action=edit' class='btn btn-warning btn-md'>Edit</a>
+                                                                <a href='preview_q_madrasa-details_step-2.php?id=".$id."&action=view' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
+                                                                <a href='preview_q_madrasa-details_step-2.php?id=".$id."&action=edit' class='item'><i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'></i></a>
                                                             </td>
                                                             <td>
-                                                                <a href='' id='".$id."' class='btn btn-danger btn-md delete_q_madrasa' data-toggle='modal' data-target='#deleteRecord'>Delete</a>
+                                                                <a href='' id='".$id."' class='item delete_q_madrasa' data-toggle='modal' data-target='#deleteRecord'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></a>
 
                                                             </td>
                                                         </tr>

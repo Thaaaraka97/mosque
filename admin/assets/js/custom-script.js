@@ -311,9 +311,15 @@ $(document).ready(function () {
   });
 
   // datatables
+  // $(document).ready(function () {
+  //   $(".datatable").DataTable();
+  //   $('.dataTables_length').addClass('bs-select');
+
+  // });
+  // datatables
   $(document).ready(function () {
-    $(".datatable").DataTable();
-    $('.dataTables_length').addClass('bs-select');
+    $('.table').DataTable();
+    // $('.dataTables_length').addClass('bs-select');
   });
 
   //   form_nikkah-details-form.php
@@ -1717,6 +1723,28 @@ $(document).ready(function () {
     console.log("Date after " + duration + " months:", inputRentalStartDate);
     inputRentalStartDate = inputRentalStartDate.toISOString().slice(0, 10);
     $("#inputRentalEndDate").val(inputRentalStartDate);
+  });
+
+  // preview_villager-details.php
+  // submit to change records as left the village
+  $(".left_village").click(function (e) { 
+    var id = $(this).attr("id");
+    e.preventDefault();
+    $("#update").click(function (e) { 
+      e.preventDefault();
+      var data_bundle = "action=left_village&index="+id;
+      $.ajax({
+        type: "get",
+        url: "handlers/preview_villagers_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+          
+        }
+      });
+      
+    });
+    
   });
 
   // show/ hide div on the change of dropdown list donations

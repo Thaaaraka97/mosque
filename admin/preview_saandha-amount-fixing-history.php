@@ -100,8 +100,8 @@ elseif (isset($_GET['deleted'])) {
                                                             <td>" . $date . "</td>
                                                             <td>" . $amount . "</td>
                                                             <td>
-                                                            <a href='' id ='".$id."' class='btn btn-warning btn-md edit_saandhaamountfixing' data-toggle='modal' data-target='#updateRecord'>Edit</a>
-                                                                <a href='' id ='" . $id . "' class='btn btn-danger btn-md delete_saandhaamountfixing' data-toggle='modal' data-target='#deleteRecord'>Delete</a>
+                                                            <a href='' id ='".$id."' class='item edit_saandhaamountfixing' data-toggle='modal' data-target='#updateRecord'><i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'></i></a>
+                                                                <a href='' id ='" . $id . "' class='item delete_saandhaamountfixing' data-toggle='modal' data-target='#deleteRecord'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></a>
                                                             </td>
                                                         </tr>
                                                          ";

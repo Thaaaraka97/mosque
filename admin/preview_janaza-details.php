@@ -82,8 +82,8 @@ if (isset($_GET['edited'])) {
                                                             <td>" . $gender . "</td>
                                                             <td>" . $janaza_details_item['jd_subDivision'] . "</td>
                                                             <td>
-                                                                <a href='preview_janaza-details_step-2.php?id=" . $id . "&action=view' class='btn btn-primary btn-md'>View</a>
-                                                                <a href='preview_janaza-details_step-2.php?id=" . $id . "&action=edit'' class='btn btn-warning btn-md'>Edit</a>
+                                                                <a href='preview_janaza-details_step-2.php?id=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
+                                                                <a href='preview_janaza-details_step-2.php?id=" . $id . "&action=edit'' class='item'><i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'></i></a>
                                                             </td>
                                                         </tr>
                                                          ";

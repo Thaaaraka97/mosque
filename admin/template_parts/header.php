@@ -24,6 +24,8 @@ include 'include/data_update_controller.php';
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="<?php $server_name ?>assets/css/style.css">
+    <!-- remove this -->
+    <link rel="stylesheet" href="<?php $server_name ?>assets/css/theme.css">
     <link rel="stylesheet" href="<?php $server_name ?>assets/css/light-version.css">
     <link rel="stylesheet" href="<?php $server_name ?>assets/css/custom-styles.css">
     <!-- End layout styles -->

@@ -104,7 +104,7 @@ if (isset($_GET['edited'])) {
                                                             <td> Pesh Imaam </td>
                                                             <td>" . $name . "</td>
                                                             <td>
-                                                                <a href='preview_pesh_imaam-details_step-2.php?id=" . $imaam_id . "&record_id=". $id ."&action=view_salary' class='btn btn-primary btn-md'>View</a>
+                                                                <a href='preview_pesh_imaam-details_step-2.php?id=" . $imaam_id . "&record_id=". $id ."&action=view_salary' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
                                                             </td>
                                                             
                                                         </tr>
@@ -141,7 +141,7 @@ if (isset($_GET['edited'])) {
                                                             <td> Muazzin </td>
                                                             <td>" . $name . "</td>
                                                             <td>
-                                                                <a href='preview_muazzin-details_step-2.php?id=" . $muazzin_id . "&record_id=". $id ."&action=view_salary' class='btn btn-primary btn-md'>View</a>
+                                                                <a href='preview_muazzin-details_step-2.php?id=" . $muazzin_id . "&record_id=". $id ."&action=view_salary' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
                                                             </td>
                                                             
                                                         </tr>
