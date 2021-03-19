@@ -103,9 +103,9 @@ foreach ($person_details as $person_details_item) {
     $av_aliveOrDeceased = $person_details_item['av_aliveOrDeceased'];
 
     if ($av_married == 1) {
-        $av_married = "Yes";
+        $av_married = "Married";
     } else {
-        $av_married = "No";
+        $av_married = "Not Married";
     }
     if ($av_saandhaStatus == 1) {
         $av_saandhaStatus = "Yes";
@@ -212,7 +212,7 @@ $age = $database->calculate_age($dob);
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title"> All Villagers Details </h3>
+                        <h3 class="page-title"> </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_villager-details.php?action=allvillagers">Details Preview</a></li>
@@ -222,268 +222,610 @@ $age = $database->calculate_age($dob);
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-8 grid-margin stretch-card">
-                            <div class="card shadow">
-                                <div class="card-body">
-                                    <div class="text-dark col-auto" id="viewDetails">
-                                        <h4 class="card-title"> Details Preview Step-2 </h4>
-                                        <table class="table table-responsive previewTable">
-                                            <tr>
-                                                <th>Name</th>
-                                                <td> : </td>
-                                                <td><?php echo $name ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Index Number</th>
-                                                <td> : </td>
-                                                <td><?php echo $index ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Sub Division</th>
-                                                <td> : </td>
-                                                <td><?php echo $subdivision ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Age</th>
-                                                <td> : </td>
-                                                <td><?php echo $age ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Telephone Number</th>
-                                                <td> : </td>
-                                                <td><?php echo $telephone ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Gender</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_gender ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Address</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_address ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>NIC</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_nic ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Age</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_age ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Job</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_job ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Monthly Income (Personal)</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_monthlyIncomePersonal ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Monthly Income (Family)</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_monthlyIncomeFamily ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Average INterpersonal Income</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_avgInterpersonalIncome ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>is Married</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_married ?></td>
-                                            </tr>
-                                            <?php
-                                            if ($av_married == "Yes") {
-                                                echo "
-                                                <tr>
-                                                    <th>is Divorsed</th>
-                                                    <td> : </td>
-                                                    <td>$av_divorced</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>is Widowed</th>
-                                                    <td> : </td>
-                                                    <td>$av_widowed</td>
-                                                </tr>
-                                                ";
-                                            }
-                                            ?>
-                                            <tr>
-                                                <th>No of Children</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_noofChildren ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>No of Unmarried Children</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_unmarriedChildren ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>is Orphaned</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_orphaned ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Educational Qualifications</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_eduQual ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>School</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_eduPremises ?></td>
-                                            </tr>
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> All Villagers Details Preview </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
 
-                                            <?php
-                                            if ($av_eduGrade != 0 && $av_madChild_madrasaName != "" && $av_scholStatus != "No") {
-                                                echo "
-                                                <tr>
-                                                    <th colspan='3' class='align-items-center'>Educational Details</th>
-                                                </tr>
-                                                <tr>
-                                                    <th>Medium</th>
-                                                    <td> : </td>
-                                                    <td>$av_eduMedium</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Additional Qualifications</th>
-                                                    <td> : </td>
-                                                    <td>$av_addQual</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Grade</th>
-                                                    <td> : </td>
-                                                    <td>$av_eduGrade</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Scholarship Status</th>
-                                                <td> : </td>
-                                                    <td>$av_scholStatus</td>
-                                                </tr>
 
-                                                <tr>
-                                                    <th>Scholarship Amount</th>
-                                                    <td> : </td>
-                                                    <td>$av_scholAmount</td>
-                                                </tr>
-                                                <tr>
-                                                <th colspan='3' class='align-items-center'>Madrasa Child Details</th>
-                                            </tr>
-                                            <tr>
-                                                <th>Madhrasa Name</th>
-                                                <td> : </td>
-                                                <td>$av_madChild_madrasaName</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Madhrasa Child Type</th>
-                                                <td> : </td>
-                                                <td>$av_madChild_type</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Start Date</th>
-                                                <td> : </td>
-                                                <td>$av_madChild_startDate</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Average Monthly Expenses</th>
-                                                <td> : </td>
-                                                <td>$av_madChild_avgMonthlyExpense</td>
-                                            </tr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-dark col-auto" id="viewDetails">
+
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Personal Details </h4>
+
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Index Number</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $index ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Sub Division</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $subdivision ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Name</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $name ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Age</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $age ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Telephone Number</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $telephone ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Gender</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_gender ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Address</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_address ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">NIC</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_nic ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Job</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_job ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Monthly Income (Personal)</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_monthlyIncomePersonal ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Monthly Income (Family)</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_monthlyIncomeFamily ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Average Interpersonal Income</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_avgInterpersonalIncome ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Marital Status</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_married ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Orphan Child</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_orphaned ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Residential Status</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_residentialStatus ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Left the Village</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_leftVillage ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Alive/Dead</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_aliveOrDeceased ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        if ($av_married == "Married") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>No of Children</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_noofChildren</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>No of Unmarried Children (in the Family)</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_unmarriedChildren</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Divorsed</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_divorced</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Widowed</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_widowed</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 ";
-                                            }
-                                            ?>
-                                            <tr>
-                                                <th>Residential Status</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_residentialStatus ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th colspan="3" class="align-items-center">Guardian Details</th>
-                                            </tr>
-                                            <tr>
-                                                <th>is Guardian</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_isGuardian ?></td>
-                                            </tr>
-                                            <?php
-                                            if ($av_isGuardian == "Yes") {
-                                                echo "
-                                                <tr>
-                                                    <th>Guardian Index</th>
-                                                    <td> : </td>
-                                                    <td><?php echo $av_guardianIndex ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Relationship to the Guardian</th>
-                                                    <td> : </td>
-                                                    <td><?php echo $av_guardianRelationship ?></td>
-                                                </tr>
-                                                ";
-                                            }
-                                            ?>
-                                            <tr>
-                                                <th colspan="3" class="align-items-center">New Migrant Details</th>
-                                            </tr>
-                                            <tr>
-                                                <th>New Migrant</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_newMigrant ?></td>
-                                            </tr>
-                                            <?php
-                                            if ($av_newMigrant == "Yes") {
-                                                echo "
-                                                <tr>
-                                                    <th>Previous Address</th>
-                                                    <td> : </td>
-                                                    <td><?php echo $av_prevRes_address ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Gramasevaka Certificate</th>
-                                                    <td> : </td>
-                                                    <td><?php echo $av_prevRes_gramasevaka ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Police Certificate</th>
-                                                    <td> : </td>
-                                                    <td><?php echo $av_prevRes_police ?></td>
-                                                </tr>
-                                                ";
-                                            }
-                                            ?>
-                                            <tr>
-                                                <th colspan="3" class="align-items-center">Saandha Details</th>
-                                            </tr>
-                                            <tr>
-                                                <th>Saandha Status</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_saandhaStatus ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Reason</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_saandhaStatusReason ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Left the Village</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_leftVillage ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Alive/Dead</th>
-                                                <td> : </td>
-                                                <td><?php echo $av_aliveOrDeceased ?></td>
-                                            </tr>
-                                        </table>
+                                        }
+                                        ?>
 
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Educational Details </h4>
 
-                                    <form method="post">
-                                        <div class="text-dark" id="editDetails">
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Educational Qualifications</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_eduQual ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        if ($av_eduQual != "None") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>School</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_eduPremises</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                ";
+                                        }
+                                        ?>
+
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Additional Qualifications</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_addQual ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <?php
+                                        if ($av_eduGrade != 0 ) {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Medium</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_eduMedium</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Grade</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_eduGrade</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               ";
+                                        }
+                                        if ($av_scholStatus != "No") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Scholarship Status</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_scholStatus</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Scholarship Amount</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_scholAmount</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ";
+                                        }
+                                        if ($av_madChild_madrasaName != "") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Madhrasa Name</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_madChild_madrasaName</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Madhrasa Child Type</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_madChild_type</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Start Date</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_madChild_startDate</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Average Monthly Expenses</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_madChild_avgMonthlyExpense</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                ";
+                                        }
+                                        ?>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Guardian Details </h4>
+
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Guardian</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_isGuardian ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <?php
+                                        if ($av_isGuardian == "Yes") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Guardian Index</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_guardianIndex</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Relationship to the Guardian</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_guardianRelationship</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                ";
+                                        }
+                                        ?>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Saandha Details </h4>
+
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Saandha Status</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_saandhaStatus ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        if ($av_saandhaStatus == "No") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Saandha Status Reason</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_saandhaStatusReason</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                ";
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> New Migrant Details </h4>
+
+
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">New Migrant</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_newMigrant ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <?php
+                                        if ($av_newMigrant == "Yes") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Previous Address</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$av_prevRes_address</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                ";
+                                        }
+                                        ?>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form method="post">
+                        <div class="text-dark" id="editDetails">
+
+                            <div class="row justify-content-center">
+                                <div class="col-md-8 grid-margin stretch-card">
+                                    <div class="card shadow">
+                                        <div class="card-body">
 
                                             <h4 class="center card-title"> Edit Details </h4>
                                             <div id="saandhaStep1">
@@ -889,19 +1231,19 @@ $age = $database->calculate_age($dob);
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-                <!-- content-wrapper ends -->
-
-                <!-- partial -->
             </div>
-            <!-- main-panel ends -->
         </div>
-        <!-- page-body-wrapper ends -->
+    </div>
+    </div>
+    <!-- content-wrapper ends -->
+
+    <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
 
