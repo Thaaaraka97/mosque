@@ -61,7 +61,7 @@ if (isset($_GET['nodata'])) {
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <div class="form-group row pt-3">
-                                                        <div class="col-md-3 pt-2 d-flex align-items-center text-right">
+                                                        <div class="col-md-4 pt-2 d-flex align-items-center">
                                                             <label class="form-label"> Family already registered? </label>
                                                         </div>
                                                         <div class="col-sm-4">
@@ -70,7 +70,7 @@ if (isset($_GET['nodata'])) {
                                                                     <input type="radio" class="form-check-input" name="inputRegFamily" id="inputRegFamilyY" value="Yes" <?php echo ($famID == '') ? 'checked' : '' ?>> Yes </label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-5">
+                                                        <div class="col-sm-4">
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
                                                                     <input type="radio" class="form-check-input" name="inputRegFamily" id="inputRegFamilyN" value="No" <?php echo ($famID == '1') ? 'checked' : '' ?>> No </label>
@@ -119,7 +119,7 @@ if (isset($_GET['nodata'])) {
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <div class="form-group row pt-3">
-                                                        <div class="col-md-3 pt-2 d-flex align-items-center text-right">
+                                                        <div class="col-md-4 pt-2 d-flex align-items-center">
                                                             <label class="form-label"> New Migrant </label>
                                                         </div>
                                                         <div class="col-sm-4">
@@ -128,7 +128,7 @@ if (isset($_GET['nodata'])) {
                                                                     <input type="radio" class="form-check-input" name="inputMigrant" id="inputMigrantY" value="Yes"> Yes </label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-5">
+                                                        <div class="col-sm-4">
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
                                                                     <input type="radio" class="form-check-input" name="inputMigrant" id="inputMigrantN" value="No" checked> No </label>

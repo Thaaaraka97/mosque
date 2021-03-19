@@ -91,8 +91,8 @@ if (isset($_GET["inserted_record"])) {
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
-                                                        <div class="form-group row pt-3">
-                                                            <div class="col-md-3 pt-2 d-flex align-items-center text-right">
+                                                        <div class="form-group row pt-4">
+                                                            <div class="col-md-3 pt-2 d-flex align-items-center">
                                                                 <label class="form-label"> Gender </label>
                                                             </div>
                                                             <div class="col-sm-4">
@@ -101,7 +101,7 @@ if (isset($_GET["inserted_record"])) {
                                                                         <input type="radio" class="form-check-input" name="inputSex" id="inputSexM" value="M" checked> Male </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-5">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
                                                                         <input type="radio" class="form-check-input" name="inputSex" id="inputSexF" value="F"> Female </label>
@@ -111,8 +111,8 @@ if (isset($_GET["inserted_record"])) {
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <div class="form-group row pt-3">
-                                                            <div class="col-md-3 pt-2 d-flex align-items-center text-right">
-                                                                <label class="form-label"> Is an Orphan Child </label>
+                                                            <div class="col-md-4 pt-2 d-flex align-items-center">
+                                                                <label class="form-label"> Is an Orphan Child ? </label>
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <div class="form-check">
@@ -120,7 +120,7 @@ if (isset($_GET["inserted_record"])) {
                                                                         <input type="radio" class="form-check-input" name="inputOrphan" id="inputOrphanY" value="Yes"> Yes </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-5">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
                                                                         <input type="radio" class="form-check-input" name="inputOrphan" id="inputOrphanN" value="No" checked> No </label>
@@ -136,11 +136,11 @@ if (isset($_GET["inserted_record"])) {
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label for="inputDOB">Date of Birth </label>
-                                                        <input type="date" class="form-control" name="inputDOB">
+                                                        <input type="date" class="form-control" name="inputDOB" id="inputvillagerDOB">
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label for="inputAge">Age </label>
-                                                        <input type="text" class="form-control" name="inputAge" placeholder="Age">
+                                                        <input type="text" class="form-control" name="inputAge" id="inputAge" placeholder="Age" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
@@ -154,8 +154,8 @@ if (isset($_GET["inserted_record"])) {
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <div class="form-group row pt-3">
-                                                            <div class="col-md-3 pt-2 d-flex align-items-center text-right">
-                                                                <label class="form-label"> Is a Guardian </label>
+                                                            <div class="col-md-4 pt-2 d-flex align-items-center t">
+                                                                <label class="form-label"> Is a Guardian ? </label>
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <div class="form-check">
@@ -163,7 +163,7 @@ if (isset($_GET["inserted_record"])) {
                                                                         <input type="radio" class="form-check-input" name="inputGuardianStatus" id="inputGuardianY" value="Yes" checked> Yes </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-5">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
                                                                         <input type="radio" class="form-check-input" name="inputGuardianStatus" id="inputGuardianN" value="No"> No </label>
@@ -192,7 +192,7 @@ if (isset($_GET["inserted_record"])) {
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <div class="form-group row pt-3">
-                                                            <div class="col-md-4 pt-2 d-flex align-items-center text-right">
+                                                            <div class="col-md-4 pt-2 d-flex align-items-center">
                                                                 <label class="form-label"> Saandha registered ? </label>
                                                             </div>
                                                             <div class="col-sm-4">
@@ -237,6 +237,7 @@ if (isset($_GET["inserted_record"])) {
                                                             <option value="Electrician">Electrician</option>
                                                             <option value="Plumbing">Plumbing</option>
                                                             <option value="Farming">Farming</option>
+                                                            <option value="None">None</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -253,8 +254,8 @@ if (isset($_GET["inserted_record"])) {
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <div class="form-group row pt-3">
-                                                            <div class="col-md-3 pt-2 d-flex align-items-center text-right">
-                                                                <label class="form-label"> Is Student </label>
+                                                            <div class="col-md-3 pt-2 d-flex align-items-center">
+                                                                <label class="form-label"> Is Student ? </label>
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <div class="form-check">
@@ -290,7 +291,7 @@ if (isset($_GET["inserted_record"])) {
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <div class="form-group row pt-3">
-                                                                <div class="col-md-3 pt-2 d-flex align-items-center text-right">
+                                                                <div class="col-md-3 pt-2 d-flex align-items-center">
                                                                     <label class="form-label"> Scholarship Status </label>
                                                                 </div>
                                                                 <div class="col-sm-4">
@@ -315,8 +316,8 @@ if (isset($_GET["inserted_record"])) {
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <div class="form-group row pt-3">
-                                                                <div class="col-md-3 pt-2 d-flex align-items-center text-right">
-                                                                    <label class="form-label"> Is a Madhrasa Student </label>
+                                                                <div class="col-md-3 pt-2 d-flex align-items-center">
+                                                                    <label class="form-label"> Is a Madhrasa Student ? </label>
                                                                 </div>
                                                                 <div class="col-sm-4">
                                                                     <div class="form-check">
@@ -370,8 +371,8 @@ if (isset($_GET["inserted_record"])) {
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <div class="form-group row pt-3">
-                                                            <div class="col-md-3 pt-2 d-flex align-items-center text-right">
-                                                                <label class="form-label"> Is Married </label>
+                                                            <div class="col-md-3 pt-2 d-flex align-items-center">
+                                                                <label class="form-label"> Is Married ? </label>
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <div class="form-check">
@@ -392,7 +393,7 @@ if (isset($_GET["inserted_record"])) {
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <div class="form-group row pt-3">
-                                                                <div class="col-md-3 pt-2 d-flex align-items-center text-right">
+                                                                <div class="col-md-3 pt-2 d-flex align-items-center">
                                                                     <label class="form-label"> Divorsed </label>
                                                                 </div>
                                                                 <div class="col-sm-4">
@@ -411,7 +412,7 @@ if (isset($_GET["inserted_record"])) {
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <div class="form-group row pt-3">
-                                                                <div class="col-md-3 pt-2 d-flex align-items-center text-right">
+                                                                <div class="col-md-3 pt-2 d-flex align-items-center">
                                                                     <label class="form-label"> Widowed </label>
                                                                 </div>
                                                                 <div class="col-sm-4">
@@ -440,8 +441,8 @@ if (isset($_GET["inserted_record"])) {
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <div class="form-group row pt-3">
-                                                            <div class="col-md-3 pt-2 d-flex align-items-center text-right">
-                                                                <label class="form-label"> Has a job </label>
+                                                            <div class="col-md-3 pt-2 d-flex align-items-center">
+                                                                <label class="form-label"> Has a job ? </label>
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <div class="form-check">

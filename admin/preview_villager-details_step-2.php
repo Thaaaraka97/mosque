@@ -8,6 +8,9 @@ $database = new databases();
 $index = $_GET['index'];
 $subdivision = $_GET['subdivision'];
 $action = $_GET['action'];
+if (isset($_GET["updated"])) {
+    $success_message = 'Record is updated successfully..!';
+  }
 
 $where = array(
     'av_index' => $index,
@@ -56,13 +59,13 @@ $av_saandhaStatus = "";
 $av_saandhaStatusReason = "";
 $av_leftVillage = "";
 $av_aliveOrDeceased = "";
+$is_student = 1;
 
 $person_details = $database->select_where('tbl_allvillagers', $where);
 foreach ($person_details as $person_details_item) {
     $name = $person_details_item['av_name'];
     $dob = $person_details_item['av_dob'];
     $telephone = $person_details_item['av_telephone'];
-
     $av_gender = $person_details_item['av_gender'];
     $av_address = $person_details_item['av_address'];
     $av_nic = $person_details_item['av_nic'];
@@ -94,6 +97,7 @@ foreach ($person_details as $person_details_item) {
     $av_prevRes_police = $person_details_item['av_prevRes_police'];
     $av_prevRes_mahalla = $person_details_item['av_prevRes_mahalla'];
     $av_madChild_madrasaName = $person_details_item['av_madChild_madrasaName'];
+    $av_madChild_status = $person_details_item['av_madChild_status'];
     $av_madChild_type = $person_details_item['av_madChild_type'];
     $av_madChild_startDate = $person_details_item['av_madChild_startDate'];
     $av_madChild_avgMonthlyExpense = $person_details_item['av_madChild_avgMonthlyExpense'];
@@ -102,6 +106,9 @@ foreach ($person_details as $person_details_item) {
     $av_leftVillage = $person_details_item['av_leftVillage'];
     $av_aliveOrDeceased = $person_details_item['av_aliveOrDeceased'];
 
+    if ($av_eduGrade == "0" && $av_madChild_status == "0") {
+        $is_student = 0;
+    }
     if ($av_married == 1) {
         $av_married = "Married";
     } else {
@@ -188,9 +195,14 @@ $age = $database->calculate_age($dob);
 ?>
 <script type="text/javascript">
     var action = "<?php echo $action; ?>";
-    var villageraction = "";
-    var donationaction = "";
-    var fridaycollectionaction = "";
+    var av_isGuardian = "<?php echo $av_isGuardian; ?>";
+    var av_eduQual = "<?php echo $av_eduQual; ?>";
+    var is_student = "<?php echo $is_student; ?>";
+    var av_scholStatus = "<?php echo $av_scholStatus; ?>";
+    var av_madChild_status = "<?php echo $av_madChild_status; ?>";
+    var av_married = "<?php echo $av_married; ?>";
+    var av_job = "<?php echo $av_job; ?>";
+
 </script>
 
 <body>
@@ -211,6 +223,16 @@ $age = $database->calculate_age($dob);
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    <?php
+                    if (isset($_GET["updated"])) {
+                        echo "
+                        <div class='alert alert-warning alert-dismissible' role='alert'>" . $success_message . "
+                          <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                          </button>
+                        </div>";
+                      }
+                    ?>
                     <div class="page-header">
                         <h3 class="page-title"> </h3>
                         <nav aria-label="breadcrumb">
@@ -231,26 +253,29 @@ $age = $database->calculate_age($dob);
                                             </td>
                                             <td>
                                                 <div>
-                                                    <h3 class="card-title top"> All Villagers Details Preview </h3>
+                                                    <?php
+                                                    if ($action == "view") {
+                                                        echo "<h3 class='card-title top'> All Villagers Details Preview </h3>";
+                                                    }
+                                                    if ($action == "edit") {
+                                                        echo "<h3 class='card-title top'> All Villagers Details (Edit) </h3>";
+                                                    }
+                                                    ?>
                                                     <span class="top-span">AN-NOOR JUMMA MASJID</span>
                                                 </div>
                                             </td>
                                         </tr>
                                     </table>
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="text-dark col-auto" id="viewDetails">
-
                         <div class="row justify-content-center">
                             <div class="col-md-8 grid-margin stretch-card">
                                 <div class="card shadow">
                                     <div class="card-body">
                                         <h4 class="card-title"> Personal Details </h4>
-
                                         <div class="preview-list">
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
@@ -407,7 +432,6 @@ $age = $database->calculate_age($dob);
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="preview-list">
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
@@ -510,7 +534,6 @@ $age = $database->calculate_age($dob);
                                                 ";
                                         }
                                         ?>
-
                                     </div>
                                 </div>
                             </div>
@@ -520,7 +543,6 @@ $age = $database->calculate_age($dob);
                                 <div class="card shadow">
                                     <div class="card-body">
                                         <h4 class="card-title"> Educational Details </h4>
-
                                         <div class="preview-list">
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
@@ -551,7 +573,6 @@ $age = $database->calculate_age($dob);
                                                 ";
                                         }
                                         ?>
-
                                         <div class="preview-list">
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
@@ -685,7 +706,6 @@ $age = $database->calculate_age($dob);
                                 <div class="card shadow">
                                     <div class="card-body">
                                         <h4 class="card-title"> Guardian Details </h4>
-
                                         <div class="preview-list">
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
@@ -698,7 +718,6 @@ $age = $database->calculate_age($dob);
                                                 </div>
                                             </div>
                                         </div>
-
                                         <?php
                                         if ($av_isGuardian == "Yes") {
                                             echo "
@@ -739,7 +758,6 @@ $age = $database->calculate_age($dob);
                                 <div class="card shadow">
                                     <div class="card-body">
                                         <h4 class="card-title"> Saandha Details </h4>
-
                                         <div class="preview-list">
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
@@ -779,8 +797,6 @@ $age = $database->calculate_age($dob);
                                 <div class="card shadow">
                                     <div class="card-body">
                                         <h4 class="card-title"> New Migrant Details </h4>
-
-
                                         <div class="preview-list">
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
@@ -793,7 +809,6 @@ $age = $database->calculate_age($dob);
                                                 </div>
                                             </div>
                                         </div>
-
                                         <?php
                                         if ($av_newMigrant == "Yes") {
                                             echo "
@@ -818,16 +833,12 @@ $age = $database->calculate_age($dob);
                             </div>
                         </div>
                     </div>
-
                     <form method="post">
                         <div class="text-dark" id="editDetails">
-
                             <div class="row justify-content-center">
                                 <div class="col-md-8 grid-margin stretch-card">
                                     <div class="card shadow">
                                         <div class="card-body">
-
-                                            <h4 class="center card-title"> Edit Details </h4>
                                             <div id="saandhaStep1">
                                                 <h4 class="card-title">Personal Details</h4>
                                                 <div class="form-row">
@@ -847,7 +858,7 @@ $age = $database->calculate_age($dob);
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <div class="form-group row pt-3">
-                                                            <div class="col-md-3 pt-2 d-flex align-items-center text-right">
+                                                            <div class="col-md-4 pt-2 d-flex align-items-center">
                                                                 <label class="form-label"> Gender </label>
                                                             </div>
                                                             <div class="col-sm-4">
@@ -856,7 +867,7 @@ $age = $database->calculate_age($dob);
                                                                         <input type="radio" class="form-check-input" name="inputSex" id="inputSexM" value="M" <?php echo ($av_gender == 'Male') ? 'checked' : '' ?>> Male </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-5">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
                                                                         <input type="radio" class="form-check-input" name="inputSex" id="inputSexF" value="F" <?php echo ($av_gender == 'Female') ? 'checked' : '' ?>> Female </label>
@@ -866,8 +877,8 @@ $age = $database->calculate_age($dob);
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <div class="form-group row pt-3">
-                                                            <div class="col-md-3 pt-2 d-flex align-items-center text-right">
-                                                                <label class="form-label"> Is an Orphan Child </label>
+                                                            <div class="col-md-4 pt-2 d-flex align-items-center">
+                                                                <label class="form-label"> Is an Orphan Child ? </label>
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <div class="form-check">
@@ -875,7 +886,7 @@ $age = $database->calculate_age($dob);
                                                                         <input type="radio" class="form-check-input" name="inputOrphan" id="inputOrphanY" value="Yes" <?php echo ($av_orphaned == 'Yes') ? 'checked' : '' ?>> Yes </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-5">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
                                                                         <input type="radio" class="form-check-input" name="inputOrphan" id="inputOrphanN" value="No" <?php echo ($av_orphaned == 'No') ? 'checked' : '' ?>> No </label>
@@ -903,14 +914,12 @@ $age = $database->calculate_age($dob);
                                                         <label for="inputTP">Telephone Number </label>
                                                         <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="077xxxxxxx" value="<?php echo $telephone ?>">
                                                     </div>
-
                                                 </div>
-
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <div class="form-group row pt-3">
-                                                            <div class="col-md-3 pt-2 d-flex align-items-center text-right">
-                                                                <label class="form-label"> Is a Guardian </label>
+                                                            <div class="col-md-4 pt-2 d-flex align-items-center">
+                                                                <label class="form-label"> Is a Guardian ? </label>
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <div class="form-check">
@@ -918,7 +927,7 @@ $age = $database->calculate_age($dob);
                                                                         <input type="radio" class="form-check-input" name="inputGuardianStatus" id="inputGuardianY" value="Yes" <?php echo ($av_isGuardian == 'Yes') ? 'checked' : '' ?>> Yes </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-5">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
                                                                         <input type="radio" class="form-check-input" name="inputGuardianStatus" id="inputGuardianN" value="No" <?php echo ($av_isGuardian == 'No') ? 'checked' : '' ?>> No </label>
@@ -926,7 +935,6 @@ $age = $database->calculate_age($dob);
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                                 <div id="saandhaGuardianEdit">
                                                     <div class="form-row">
@@ -947,7 +955,7 @@ $age = $database->calculate_age($dob);
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <div class="form-group row pt-3">
-                                                            <div class="col-md-4 pt-2 d-flex align-items-center text-right">
+                                                            <div class="col-md-4 pt-2 d-flex align-items-center">
                                                                 <label class="form-label"> Saandha registered ? </label>
                                                             </div>
                                                             <div class="col-sm-4">
@@ -992,10 +1000,11 @@ $age = $database->calculate_age($dob);
                                                             <option value="Electrician" <?php echo ($av_addQual == 'Electrician') ? 'selected' : '' ?>>Electrician</option>
                                                             <option value="Plumbing" <?php echo ($av_addQual == 'Plumbing') ? 'selected' : '' ?>>Plumbing</option>
                                                             <option value="Farming" <?php echo ($av_addQual == 'Farming') ? 'selected' : '' ?>>Farming</option>
+                                                            <option value="None" <?php echo ($av_addQual == 'None') ? 'selected' : '' ?>>None</option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="form-group" id="">
+                                                <div class="form-group" id="collegeEdit">
                                                     <label for="inputCollege">College </label>
                                                     <input type="text" class="form-control" id="inputCollege" name="inputCollege" placeholder="College" value="<?php echo $av_eduPremises ?>">
                                                 </div>
@@ -1008,25 +1017,25 @@ $age = $database->calculate_age($dob);
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <div class="form-group row pt-3">
-                                                            <div class="col-md-3 pt-2 d-flex align-items-center text-right">
-                                                                <label class="form-label"> Is Student </label>
+                                                            <div class="col-md-3 pt-2 d-flex align-items-center">
+                                                                <label class="form-label"> Is Student ? </label>
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
-                                                                        <input type="radio" class="form-check-input" name="inputStudent" id="inputStudentY" value="Yes" <?php echo ($av_eduGrade != '') ? 'checked' : '' ?>> Yes </label>
+                                                                        <input type="radio" class="form-check-input" name="inputStudent" id="inputStudentY" value="Yes" <?php echo ($is_student == 1) ? 'checked' : '' ?>> Yes </label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-5">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
-                                                                        <input type="radio" class="form-check-input" name="inputStudent" id="inputStudentN" value="No" <?php echo ($av_eduGrade == '') ? 'checked' : '' ?>> No </label>
+                                                                        <input type="radio" class="form-check-input" name="inputStudent" id="inputStudentN" value="No" <?php echo ($is_student == 0) ? 'checked' : '' ?>> No </label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div id="">
+                                                <div id="avStudentEdit">
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="inputMedium">Medium</label>
@@ -1045,7 +1054,7 @@ $age = $database->calculate_age($dob);
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <div class="form-group row pt-3">
-                                                                <div class="col-md-3 pt-2 d-flex align-items-center text-right">
+                                                                <div class="col-md-3 pt-2 d-flex align-items-center">
                                                                     <label class="form-label"> Scholarship Status </label>
                                                                 </div>
                                                                 <div class="col-sm-4">
@@ -1062,7 +1071,7 @@ $age = $database->calculate_age($dob);
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group col-md-6" id="">
+                                                        <div class="form-group col-md-6" id="inputScholIncomeEdit">
                                                             <label for="inputScholIncome"> Scholarship Income </label>
                                                             <input type="text" class="form-control" id="inputScholIncome" name="inputScholIncome" placeholder="Scholarship Income" value="<?php echo $av_scholAmount ?>">
                                                         </div>
@@ -1070,25 +1079,25 @@ $age = $database->calculate_age($dob);
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <div class="form-group row pt-3">
-                                                                <div class="col-md-3 pt-2 d-flex align-items-center text-right">
-                                                                    <label class="form-label"> Is a Madhrasa Student </label>
+                                                                <div class="col-md-3 pt-2 d-flex align-items-center">
+                                                                    <label class="form-label"> Is a Madhrasa Student ? </label>
                                                                 </div>
                                                                 <div class="col-sm-4">
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                            <input type="radio" class="form-check-input" name="inputMad" id="inputMadY" value="Yes" <?php echo ($av_widowed == 'Yes') ? 'checked' : '' ?>> Yes </label>
+                                                                            <input type="radio" class="form-check-input" name="inputMad" id="inputMadY" value="Yes" <?php echo ($av_madChild_status == '1') ? 'checked' : '' ?>> Yes </label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-5">
                                                                     <div class="form-check">
                                                                         <label class="form-check-label">
-                                                                            <input type="radio" class="form-check-input" name="inputMad" id="inputMadN" value="No" <?php echo ($av_widowed == 'No') ? 'checked' : '' ?>> No </label>
+                                                                            <input type="radio" class="form-check-input" name="inputMad" id="inputMadN" value="No" <?php echo ($av_madChild_status == '0') ? 'checked' : '' ?>> No </label>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div id="">
+                                                    <div id="madhrasaEdit">
                                                         <div class="form-group form-row">
                                                             <div class="form-group col-md-6" id="">
                                                                 <label for="inputMadType"> Madhrasa Type </label>
@@ -1125,29 +1134,29 @@ $age = $database->calculate_age($dob);
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <div class="form-group row pt-3">
-                                                            <div class="col-md-3 pt-2 d-flex align-items-center text-right">
-                                                                <label class="form-label"> Is Married </label>
+                                                            <div class="col-md-3 pt-2 d-flex align-items-center">
+                                                                <label class="form-label"> Is Married ? </label>
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
-                                                                        <input type="radio" class="form-check-input" name="inputMarried" id="inputMarriedY" value="Yes" <?php echo ($av_married == 'Yes') ? 'checked' : '' ?>> Yes </label>
+                                                                        <input type="radio" class="form-check-input" name="inputMarried" id="inputMarriedY" value="Yes" <?php echo ($av_married == 'Married') ? 'checked' : '' ?>> Yes </label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-5">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
-                                                                        <input type="radio" class="form-check-input" name="inputMarried" id="inputMarriedN" value="No" <?php echo ($av_married == 'No') ? 'checked' : '' ?>> No </label>
+                                                                        <input type="radio" class="form-check-input" name="inputMarried" id="inputMarriedN" value="No" <?php echo ($av_married == 'Not Married') ? 'checked' : '' ?>> No </label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div id="">
+                                                <div id="marriedEdit">
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <div class="form-group row pt-3">
-                                                                <div class="col-md-3 pt-2 d-flex align-items-center text-right">
+                                                                <div class="col-md-3 pt-2 d-flex align-items-center">
                                                                     <label class="form-label"> Divorsed </label>
                                                                 </div>
                                                                 <div class="col-sm-4">
@@ -1166,7 +1175,7 @@ $age = $database->calculate_age($dob);
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <div class="form-group row pt-3">
-                                                                <div class="col-md-3 pt-2 d-flex align-items-center text-right">
+                                                                <div class="col-md-3 pt-2 d-flex align-items-center">
                                                                     <label class="form-label"> Widowed </label>
                                                                 </div>
                                                                 <div class="col-sm-4">
@@ -1195,25 +1204,25 @@ $age = $database->calculate_age($dob);
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <div class="form-group row pt-3">
-                                                            <div class="col-md-3 pt-2 d-flex align-items-center text-right">
-                                                                <label class="form-label"> Has a job </label>
+                                                            <div class="col-md-3 pt-2 d-flex align-items-center">
+                                                                <label class="form-label"> Has a job ? </label>
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
-                                                                        <input type="radio" class="form-check-input" name="inputjobYN" id="inputjobYN1" value="Yes" <?php echo ($av_job != '') ? 'checked' : '' ?>> Yes </label>
+                                                                        <input type="radio" class="form-check-input" name="inputjobYN" id="inputjobYN1" value="Yes" <?php echo ($av_job != '0') ? 'checked' : '' ?>> Yes </label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-5">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
-                                                                        <input type="radio" class="form-check-input" name="inputjobYN" id="inputjobYN2" value="No" <?php echo ($av_job == '') ? 'checked' : '' ?>> No </label>
+                                                                        <input type="radio" class="form-check-input" name="inputjobYN" id="inputjobYN2" value="No" <?php echo ($av_job == '0') ? 'checked' : '' ?>> No </label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div id="">
+                                                <div id="familyIncomeEdit">
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="inputJob"> Job </label>

@@ -1747,6 +1747,22 @@ $(document).ready(function () {
     
   });
 
+  // 
+  // 
+  $("#inputvillagerDOB").change(function (e) { 
+    e.preventDefault();
+    var dob = $("#inputvillagerDOB").val();
+    var today = new Date();
+    var birthDate = new Date(dob);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+    {
+        age--;
+    }
+    $("#inputAge").val(age);
+  });
+
   // show/ hide div on the change of dropdown list donations
   if (fridaycollectionaction == "fridayregular") {
     $("#fridayregular").show();
@@ -1839,4 +1855,97 @@ $(document).ready(function () {
     } else {
     }
   })();
+
+  $("input[type=radio][name=inputjobYN]").change(function (e) { 
+    e.preventDefault();
+    if ($(this).val() == "No") {
+      $("#familyIncomeEdit").hide();
+    }else{
+      $("#familyIncomeEdit").show();
+    }
+  });
+  $("input[type=radio][name=inputMarried]").change(function (e) { 
+    e.preventDefault();
+    if ($(this).val() == "No") {
+      $("#marriedEdit").hide();
+    }else{
+      $("#marriedEdit").show();
+    }
+  });
+  $("input[type=radio][name=inputStudent]").change(function (e) { 
+    e.preventDefault();
+    if ($(this).val() == "No") {
+      $("#avStudentEdit").hide();
+    }else{
+      $("#avStudentEdit").show();
+    }
+  });
+  $("input[type=radio][name=inputSchol]").change(function (e) { 
+    e.preventDefault();
+    if ($(this).val() == "No") {
+      $("#inputScholIncomeEdit").hide();
+    }else{
+      $("#inputScholIncomeEdit").show();
+    }
+  });
+  $("input[type=radio][name=inputMad]").change(function (e) { 
+    e.preventDefault();
+    if ($(this).val() == "No") {
+      $("#madhrasaEdit").hide();
+    }else{
+      $("#madhrasaEdit").show();
+    }
+  });
+  $("input[type=radio][name=inputGuardianStatus]").change(function (e) { 
+    e.preventDefault();
+    if ($(this).val() == "No") {
+      $("#saandhaGuardianEdit").show();
+    }else{
+      $("#saandhaGuardianEdit").hide();
+    }
+  });
+  $("#inputEduQual").change(function (e) { 
+    e.preventDefault();
+    if ($(this).val() == "None") {
+      $("#collegeEdit").hide();
+    }else{
+      $("#collegeEdit").show();
+    }
+  });
+
+  if (av_isGuardian == "Yes") {
+    $("#saandhaGuardianEdit").hide();
+  }else{
+    $("#saandhaGuardianEdit").show();
+  }
+  if (av_job == "0") {
+    $("#familyIncomeEdit").hide();
+  }else{
+    $("#familyIncomeEdit").show();
+  }
+  if (av_married == "Not Married") {
+    $("#marriedEdit").hide();
+  }else{
+    $("#marriedEdit").show();
+  }
+  if (av_madChild_status == "0") {
+    $("#madhrasaEdit").hide();
+  }else{
+    $("#madhrasaEdit").show();
+  }
+  if (av_scholStatus == "No") {
+    $("#inputScholIncomeEdit").hide();
+  }else{
+    $("#inputScholIncomeEdit").show();
+  }
+  if (is_student == "0") {
+    $("#avStudentEdit").hide();
+  }else{
+    $("#avStudentEdit").show();
+  }
+  if (av_eduQual != "None") {
+    $("#collegeEdit").show();
+  }else{
+    $("#collegeEdit").hide();
+  }
 });

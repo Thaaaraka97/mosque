@@ -161,7 +161,14 @@ if (isset($_POST["addAnother"])) {
     }
     if ($_POST['inputSaandhaStatus'] == "Yes") {
         $inputSaandhaStatus = 1;
+        $saandhaStatusReason = "Saandha Registered";
+
     } else {
+        if ($_POST['inputAge'] > 18) {
+            $saandhaStatusReason = "Pending";
+        } else {
+            $saandhaStatusReason = "Under Age";
+        }
         $inputSaandhaStatus = 0;
     }
     if ($_POST['inputMad'] == "Yes") {
@@ -228,7 +235,8 @@ if (isset($_POST["addAnother"])) {
         'av_isGuardian' => mysqli_real_escape_string($database->con, $inputGuardianStatus),
         'av_guardianIndex' => mysqli_real_escape_string($database->con, $inputGuardianID),
         'av_saandhaStatus' => mysqli_real_escape_string($database->con, $inputSaandhaStatus),
-        'av_guardianRelationship' => mysqli_real_escape_string($database->con, $_POST['inputGuardRelationship']),
+        'av_saandhaStatusReason' => mysqli_real_escape_string($database->con, $saandhaStatusReason),
+        'av_guardianRelationship' => mysqli_real_escape_string($database->con, $inputGuardRelationship),
         'av_eduQual' => mysqli_real_escape_string($database->con, $_POST['inputEduQual']),
         'av_addQual' => mysqli_real_escape_string($database->con, $_POST['inputAddQual']),
         'av_eduPremises' => mysqli_real_escape_string($database->con, $inputCollege),
@@ -344,6 +352,11 @@ if (isset($_POST["submitSaandha"])) {
     if ($_POST['inputSaandhaStatus'] == "Yes") {
         $inputSaandhaStatus = 1;
     } else {
+        if ($_POST['inputAge'] > 18) {
+            $saandhaStatusReason = "Pending";
+        } else {
+            $saandhaStatusReason = "Under Age";
+        }
         $inputSaandhaStatus = 0;
     }
     if ($_POST['inputSex'] == "Male") {
@@ -415,6 +428,7 @@ if (isset($_POST["submitSaandha"])) {
         'av_isGuardian' => mysqli_real_escape_string($database->con, $inputGuardianStatus),
         'av_guardianIndex' => mysqli_real_escape_string($database->con, $inputGuardianID),
         'av_saandhaStatus' => mysqli_real_escape_string($database->con, $inputSaandhaStatus),
+        'av_saandhaStatusReason' => mysqli_real_escape_string($database->con, $saandhaStatusReason),
         'av_guardianRelationship' => mysqli_real_escape_string($database->con, $_POST['inputGuardRelationship']),
         'av_eduQual' => mysqli_real_escape_string($database->con, $_POST['inputEduQual']),
         'av_addQual' => mysqli_real_escape_string($database->con, $_POST['inputAddQual']),

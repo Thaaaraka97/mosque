@@ -164,100 +164,204 @@ if (isset($_POST['editQuran'])) {
 // editVillagers button click
 if (isset($_POST['editVillagers'])) {
 
-    if ($_POST["inputGuardianID"] != "") {
-        $inputGuardianID = $_POST["inputGuardianID"];
+    if (isset($_POST["inputGuardianID"])) {
+        if ($_POST["inputGuardianID"] != "") {
+            $inputGuardianID = $_POST["inputGuardianID"];
+        }
+        else {
+            $inputGuardianID = 0;
+        }
     } else {
         $inputGuardianID = 0;
     }
-    if ($_POST["inputGuardRelationship"] != "") {
-        $inputGuardRelationship = $_POST["inputGuardRelationship"];
+    if (isset($_POST["inputMedium"])) {
+        if ($_POST["inputMedium"] != "") {
+            $inputMedium = $_POST["inputMedium"];
+        }
+        else {
+            $inputMedium = 0;
+        }
+    } else {
+        $inputMedium = 0;
+    }
+    if (isset($_POST["inputGuardRelationship"])) {
+        if ($_POST["inputGuardRelationship"] != "") {
+            $inputGuardRelationship = $_POST["inputGuardRelationship"];
+        }
+        else {
+            $inputGuardRelationship = "0";
+        }
     } else {
         $inputGuardRelationship = "0";
     }
-    if ($_POST["inputCollege"] != "") {
-        $inputCollege = $_POST["inputCollege"];
+    if (isset($_POST["inputCollege"])) {
+        if ($_POST["inputCollege"] != "") {
+            $inputCollege = $_POST["inputCollege"];
+        }
+        else {
+            $inputCollege = "0";
+        }
     } else {
         $inputCollege = "0";
     }
-    if ($_POST["inputScholIncome"] != "") {
-        $inputScholIncome = $_POST["inputScholIncome"];
+    if (isset($_POST["inputScholIncome"])) {
+        if ($_POST["inputScholIncome"] != "") {
+            $inputScholIncome = $_POST["inputScholIncome"];
+        }
+        else {
+            $inputScholIncome = 0;
+        }
     } else {
         $inputScholIncome = 0;
     }
-    if ($_POST["inputMadType"] != "") {
-        $inputMadType = $_POST["inputMadType"];
+    if (isset($_POST["inputMadType"])) {
+        if ($_POST["inputMadType"] != "") {
+            $inputMadType = $_POST["inputMadType"];
+        }
+        else {
+            $inputMadType = "0";
+        }
     } else {
         $inputMadType = "0";
     }
-    if ($_POST["inputMadName"] != "") {
-        $inputMadName = $_POST["inputMadName"];
+    if (isset($_POST["inputMadName"])) {
+        if ($_POST["inputMadName"] != "") {
+            $inputMadName = $_POST["inputMadName"];
+        }
+        else {
+            $inputMadName = "0";
+        }
     } else {
         $inputMadName = "0";
     }
-    if ($_POST["inputMadStart"] != "") {
-        $inputMadStart = $_POST["inputMadStart"];
+    if (isset($_POST["inputMadStart"])) {
+        if ($_POST["inputMadStart"] != "") {
+            $inputMadStart = $_POST["inputMadStart"];
+        }
+        else {
+            $inputMadStart = "0001-01-01";
+        }
     } else {
         $inputMadStart = "0";
     }
-    if ($_POST["inputMadExpense"] != "") {
-        $inputMadExpense = $_POST["inputMadExpense"];
+    if (isset($_POST["inputMadExpense"])) {
+        if ($_POST["inputMadExpense"] != "") {
+            $inputMadExpense = $_POST["inputMadExpense"];
+        }
+        else {
+            $inputMadExpense = 0;
+        }
     } else {
         $inputMadExpense = 0;
     }
-    if ($_POST["inputJob"] != "") {
-        $inputJob = $_POST["inputJob"];
-    } else {
-        $inputJob = "0";
-    }
-    if ($_POST["inputMonthlyIncomePersonal"] != "") {
-        $inputMonthlyIncomePersonal = $_POST["inputMonthlyIncomePersonal"];
+    if (isset($_POST["inputMonthlyIncomePersonal"])) {
+        if ($_POST["inputMonthlyIncomePersonal"] != "") {
+            $inputMonthlyIncomePersonal = $_POST["inputMonthlyIncomePersonal"];
+        }
+        else {
+            $inputMonthlyIncomePersonal = 0;
+        }
     } else {
         $inputMonthlyIncomePersonal = 0;
     }
-    if ($_POST['inputDivorsed'] == "Yes") {
-        $inputDivorsed = 1;
-    } else {
+    if (isset($_POST['inputDivorsed'])) {
+        if ($_POST['inputDivorsed'] == "Yes") {
+            $inputDivorsed = 1;
+        } else {
+            $inputDivorsed = 0;
+        }
+    }
+    else {
         $inputDivorsed = 0;
     }
-    if ($_POST['inputWidowed'] == "Yes") {
-        $inputWidowed = 1;
-    } else {
+    if (isset($_POST['inputWidowed'])) {
+        if ($_POST['inputWidowed'] == "Yes") {
+            $inputWidowed = 1;
+        } else {
+            $inputWidowed = 0;
+        }
+    }
+    else {
         $inputWidowed = 0;
-    }
-    if ($_POST['inputMarried'] == "Yes") {
-        $inputMarried = 1;
-    } else {
-        $inputMarried = 0;
-    }
-    if ($_POST['inputGuardianStatus'] == "Yes") {
-        $inputGuardianStatus = 1;
-    } else {
-        $inputGuardianStatus = 0;
     }
     if ($_POST['inputOrphan'] == "Yes") {
         $inputOrphan = 1;
     } else {
         $inputOrphan = 0;
     }
-    if ($_POST['inputSchol'] == "Yes") {
-        $inputSchol = 1;
-    } else {
-        $inputSchol = 0;
-    }
     if ($_POST['inputSaandhaStatus'] == "Yes") {
         $inputSaandhaStatus = 1;
     } else {
         $inputSaandhaStatus = 0;
     }
-    if ($_POST['inputGrade'] == "") {
-        $inputGrade = 0;
+    if (isset($_POST['inputGrade'])) {
+        if ($_POST["inputGrade"] != "") {
+            $inputGrade = $_POST["inputGrade"];
+        }
+        else {
+            $inputGrade = 0;
+        }
     } else {
         $inputGrade = $_POST['inputGrade'];
     }
-    if ($_POST['inputMad'] == "") {
+    if ($_POST['inputMad'] == "No") {
         $inputMad = 0;
+        $inputMadStart = "0001-01-01";
+        $inputMadExpense = 0;
+        $inputMadType = "0";
+        $inputMadName = "0";
     } else {
         $inputMad = $_POST['inputMad'];
+    }
+    if ($_POST['inputStudent'] == "No") {
+        $inputMad = 0;
+        $inputMadStart = "0001-01-01";
+        $inputMadExpense = 0;
+        $inputMadType = "0";
+        $inputMadName = "0";
+        $inputSchol = 0;
+        $inputScholIncome = 0;
+        $inputMedium = 0;
+        $inputGrade = 0;
+    }
+    if ($_POST['inputEduQual'] == "None") {
+        $inputCollege = "0";
+    }
+    if ($_POST['inputSchol'] == "Yes") {
+        $inputSchol = 1;
+    } else {
+        $inputSchol = 0;
+        $inputScholIncome = 0;
+    }
+    if ($_POST['inputGuardianStatus'] == "Yes") {
+        $inputGuardianStatus = 1;
+        $inputGuardianID = 0;
+        $inputGuardRelationship = "0";
+    } else {
+        $inputGuardianStatus = 0;
+    }
+    if ($_POST['inputMarried'] == "Yes") {
+        $inputMarried = 1;
+    } else {
+        $inputMarried = 0;
+        $inputWidowed = 0;
+        $inputDivorsed = 0;
+    }
+    if ($_POST["inputjobYN"] == "Yes") {
+        if (isset($_POST["inputJob"])) {
+            if ($_POST["inputJob"] != "") {
+                $inputJob = $_POST["inputJob"];
+            }
+            else {
+                $inputJob = 0;
+            }
+        } else {
+            $inputJob = "0";
+        }
+    }
+    else {
+        $inputJob = 0;
+        $inputMonthlyIncomePersonal = 0;
     }
 
     $update_data = array(
@@ -284,11 +388,11 @@ if (isset($_POST['editVillagers'])) {
         'av_isGuardian' => mysqli_real_escape_string($database->con, $inputGuardianStatus),
         'av_guardianIndex' => mysqli_real_escape_string($database->con, $inputGuardianID),
         'av_saandhaStatus' => mysqli_real_escape_string($database->con, $inputSaandhaStatus),
-        'av_guardianRelationship' => mysqli_real_escape_string($database->con, $_POST['inputGuardRelationship']),
+        'av_guardianRelationship' => mysqli_real_escape_string($database->con, $inputGuardRelationship),
         'av_eduQual' => mysqli_real_escape_string($database->con, $_POST['inputEduQual']),
         'av_addQual' => mysqli_real_escape_string($database->con, $_POST['inputAddQual']),
         'av_eduPremises' => mysqli_real_escape_string($database->con, $inputCollege),
-        'av_eduMedium' => mysqli_real_escape_string($database->con, $_POST['inputMedium']),
+        'av_eduMedium' => mysqli_real_escape_string($database->con, $inputMedium),
         'av_eduGrade' => mysqli_real_escape_string($database->con, $inputGrade),
         'av_scholStatus' => mysqli_real_escape_string($database->con, $inputSchol),
         'av_scholAmount' => mysqli_real_escape_string($database->con, $inputScholIncome),
@@ -309,7 +413,7 @@ if (isset($_POST['editVillagers'])) {
         'av_subDivision' => $_POST['inputSubdivision']
     );
     if ($database->update("tbl_allvillagers", $update_data, $where_condition)) {
-        $URL = "preview_q_madrasa-details.php?updated=1";
+        $URL = "preview_villager-details.php?updated=1&action=allvillagers";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
