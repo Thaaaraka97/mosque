@@ -111,9 +111,7 @@ p.terms {
   opacity: 0;
   filter: alpha(opacity=0);
 }
-a.btn.btn-primary {
-  width: 8em;
-}
+
 #cardhover .card {
   transition: all 0.3s ease-in-out;
 }

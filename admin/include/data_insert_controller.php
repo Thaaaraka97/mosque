@@ -164,7 +164,6 @@ if (isset($_POST["addAnother"])) {
     if ($_POST['inputSaandhaStatus'] == "Yes") {
         $inputSaandhaStatus = 1;
         $saandhaStatusReason = "Saandha Registered";
-
     } else {
         if ($_POST['inputAge'] > 18) {
             $saandhaStatusReason = "Pending";
@@ -882,7 +881,7 @@ if (isset($_POST['submitNewRental'])) {
             'ri_username' => mysqli_real_escape_string($database->con, "user"),
             'ri_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
             'ri_date' => mysqli_real_escape_string($database->con, $today),
-            'ri_payFor' => mysqli_real_escape_string($database->con, date('Y-M',strtotime($today))),
+            'ri_payFor' => mysqli_real_escape_string($database->con, date('Y-M', strtotime($today))),
             'ri_rentalid' => mysqli_real_escape_string($database->con, $rental_id)
 
         );
@@ -1511,6 +1510,65 @@ if (isset($_POST['submitSalary'])) {
         $query = $database->insert_data('tbl_muazzinsalary', $insert_to_tbl_muazzinsalary);
     }
     if ($query) {
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
+}
+
+// insert into tbl_undiyalcollection
+// submitUndiyal button click
+if (isset($_POST['submitUndiyal'])) {
+
+    $insert_tbl_undiyalcollection = array(
+        'uc_date' => mysqli_real_escape_string($database->con, $_POST['inputDate']),
+        'uc_username' => mysqli_real_escape_string($database->con, "user"),
+        'uc_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount'])
+    );
+    if ($database->insert_data('tbl_undiyalcollection', $insert_tbl_undiyalcollection)) {
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
+}
+
+// insert into tbl_kanduricollection
+// submitKanduri button click
+if (isset($_POST['submitKanduri'])) {
+
+    $insert_tbl_kanduricollection = array(
+        'kc_date' => mysqli_real_escape_string($database->con, $_POST['inputDate']),
+        'kc_username' => mysqli_real_escape_string($database->con, "user"),
+        'kc_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount'])
+    );
+    if ($database->insert_data('tbl_kanduricollection', $insert_tbl_kanduricollection)) {
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
+}
+
+// insert into tbl_rentalplaceregistration
+// submitRentalPlace button click
+if (isset($_POST['submitRentalPlace'])) {
+
+    $insert_tbl_rentalplaceregistration = array(
+        'rp_type' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
+        'rp_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress'])
+    );
+    if ($database->insert_data('tbl_rentalplaceregistration', $insert_tbl_rentalplaceregistration)) {
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
+}
+
+// insert into tbl_nonmahallasaandharegistration
+// submitNonMahallaSaandha button click
+if (isset($_POST['submitNonMahallaSaandha'])) {
+
+    $insert_tbl_nonmahallasaandharegistration = array(
+        'nmsr_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
+        'nmsr_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        'nmsr_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress'])
+    );
+    if ($database->insert_data('tbl_nonmahallasaandharegistration', $insert_tbl_nonmahallasaandharegistration)) {
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }

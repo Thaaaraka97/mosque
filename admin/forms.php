@@ -43,8 +43,8 @@ include "template_parts/header.php";
       }
       ?>
       <!-- partial -->
-      <div class="main-panel" id="cardhover">
-        <div class="content-wrapper">
+      <div class="main-panel">
+        <div class="content-wrapper" id="cardhover">
 
           <?php
           if (isset($success_message)) {
@@ -55,24 +55,21 @@ include "template_parts/header.php";
               <span aria-hidden='true'>&times;</span>
             </button>
             </div>";
-            } 
-            elseif (isset($_GET["inserted_records_villagers"])) {
+            } elseif (isset($_GET["inserted_records_villagers"])) {
               echo "
             <div class='alert alert-success alert-dismissible' role='alert'>" . $success_message . "
               <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
               <span aria-hidden='true'>&times;</span>
             </button>
             </div>";
-            } 
-            elseif (isset($_GET["deleted"])) {
+            } elseif (isset($_GET["deleted"])) {
               echo "
               <div class='alert alert-danger alert-dismissible' role='alert'>" . $success_message . "
                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                   <span aria-hidden='true'>&times;</span>
                 </button>
               </div>";
-            } 
-            elseif (isset($_GET["updated"])) {
+            } elseif (isset($_GET["updated"])) {
               echo "
               <div class='alert alert-warning alert-dismissible' role='alert'>" . $success_message . "
                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -87,132 +84,365 @@ include "template_parts/header.php";
             <h3 class="page-title"> Forms </h3>
 
           </div>
-          <div class="row">
-            <!-- form row 1 -->
-            <div class="col-md-4 grid-margin">
-              <div class="card d-flex alig-content-end text-center text-dark shadow-sm" style="height : 100%;">
-                <div class="card-body">
-                  <img src="<?php echo $server_name ?>assets/images/icons/group-meeting.png" alt="Board-Member-img">
-
-                  <h5 class="card-title mt-3">Trustee Board Details</h5>
-                  <a href="<?php echo $server_name ?>form_trustee-board-form.php" class="btn btn-primary py-3 mt-3">Open..</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin flip-card">
-              <div class="text-center text-dark shadow-sm flip-card-inner" style="height : 100%;">
-                <div class="card-body flip-card-front">
-                  <img class="pt-4" src="<?php echo $server_name ?>assets/images/icons/shop.png" alt="Shop-img">
-                  <h5 class="card-title mt-5">Rental Details</h5>
-                </div>
-                <div class="flip-card-back">
-                  <div class="pt-5">
-                    <p>
-                      Click to open..
-                    </p>
-                    <p>
-                      <a href="<?php echo $server_name ?>form_new-rental-registration.php" class="btn btn-primary btn-md">Add new Rental</a>
-                    </p>
-                    <p>
-                      <a href="<?php echo $server_name ?>form_add-payment.php" class="btn btn-primary btn-md">Add a payment</a>
-                    </p>
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body text-center d-flex align-items-center">
+                  <div class="float-left col-md-4 align-middle">
+                    <img src="assets/images/icons/member.png" alt="Member-img">
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin">
-              <div class="card text-center text-dark shadow-sm" style="height : 100%;">
-                <div class="card-body">
-                  <img src="<?php echo $server_name ?>assets/images/icons/quran.png" alt="Quran-img">
-                  <h5 class="card-title mt-3">Quran Madhrasa Registration Details</h5>
-                  <a href="<?php echo $server_name ?>form_quran-registration-form.php" class="btn btn-primary py-3">Open..</a>
+                  <div class="float-left col-md-4 align-middle">
+                    <h5>Member Details</h5>
+                    <p>Register village memebers and the Families to the Database ...</p>
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <a href="<?php echo $server_name ?>form_villagers-registration-form.php" class="btn btn-lg btn-primary">Open..</a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <!-- form row 2 -->
-            <div class="col-md-4 grid-margin">
-              <div class="card text-center text-dark shadow-sm" style="height : 100%;">
-                <div class="card-body">
-                  <img src="<?php echo $server_name ?>assets/images/icons/moon.png" alt="Head-Stone-img">
-                  <h5 class="card-title mt-3">Janaza Details</h5>
-                  <a href="<?php echo $server_name ?>form_janaza-details-form.php" class="btn btn-primary py-3">Open..</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin flip-card">
-              <div class="text-center text-dark shadow-sm flip-card-inner" style="height : 100%;">
-                <div class="card-body flip-card-front">
-                  <img class="pt-4" src="<?php echo $server_name ?>assets/images/icons/online-donation.png" alt="Donate-img">
-                  <h5 class="card-title mt-5">Donations</h5>
-                </div>
-                <div class="flip-card-back">
-                  <div class="pt-4 pl-4">
-                    <p>
-                      Click to open..
-                    </p>
-                    <p>
-                      <a href="<?php echo $server_name ?>form_disaster-relief-donations.php" class="float-left btn btn-primary btn-md ml-3">Disaster Relief Donations</a>
-                    </p>
-                    <p>
-                      <a href="<?php echo $server_name ?>form_board-member-donations.php" class="btn btn-primary btn-md">Board Member Donations</a>
-                    </p>
-                    <p>
-                      <a href="<?php echo $server_name ?>form_other-donations.php" class="btn btn-primary btn-md">Other Donations</a>
-                    </p>
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body text-center d-flex align-items-center">
+                  <div class="float-left col-md-4 align-middle">
+                    <img src="assets/images/icons/wedding-couple.png" alt="Wedding-img">
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin">
-              <div class="card text-center text-dark shadow-sm" style="height : 100%;">
-                <div class="card-body">
-                  <img src="<?php echo $server_name ?>assets/images/icons/member.png" alt="Member-img">
-                  <h5 class="card-title mt-3">Member Details</h5>
-                  <a href="<?php echo $server_name ?>form_villagers-registration-form.php" class="btn btn-primary py-3">Open..</a>
+                  <div class="float-left col-md-4 align-middle">
+                    <h5>Nikkah Details</h5>
+                    <p>Register Weddings performed by the Mosque to the Database ...</p>
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <a href="<?php echo $server_name ?>form_nikkah-details-form.php" class="btn btn-lg btn-primary">Open..</a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-4 grid-margin">
-              <div class="card text-center text-dark shadow-sm" style="height : 100%;">
-                <div class="card-body">
-                  <img src="<?php echo $server_name ?>assets/images/icons/wedding-couple.png" alt="Wedding-img">
-                  <h5 class="card-title mt-3">Nikkah Details</h5>
-                  <a href="<?php echo $server_name ?>form_nikkah-details-form.php" class="btn btn-primary py-3 mt-3">Open..</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin flip-card">
-              <div class="text-center text-dark shadow-sm flip-card-inner" style="height : 100%;">
-                <div class="card-body flip-card-front">
-                  <img class="pt-4" src="<?php echo $server_name ?>assets/images/icons/muslim.png" alt="Priest-img">
-                  <h5 class="card-title mt-5">Head Priest</h5>
-                </div>
-                <div class="flip-card-back">
-                  <div class="pt-5">
-                    <p>
-                      Click to open..
-                    </p>
-                    <p>
-                      <a href="<?php echo $server_name ?>form_pesh-imaam-details.php" class="btn btn-primary btn-md">Pesh Imaam Details</a>
-                    </p>
-                    <p>
-                      <a href="<?php echo $server_name ?>form_muazzin-details.php" class="btn btn-primary btn-md">Muazzin Details</a>
-                    </p>
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body text-center d-flex align-items-center">
+                  <div class="float-left col-md-4 align-middle">
+                    <img src="assets/images/icons/group-meeting.png" alt="Board-Member-img">
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <h5>Trustee Board Details</h5>
+                    <p>Select this year's Trusteeboard ...</p>
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <a href="<?php echo $server_name ?>form_trustee-board-form.php" class="btn btn-lg btn-primary">Open..</a>
+
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4 grid-margin">
-              <div class="card text-center text-dark shadow-sm" style="height : 100%;">
-                <div class="card-body">
-                  <img src="<?php echo $server_name ?>assets/images/icons/speech.png" alt="Speach-img">
-
-                  <h5 class="card-title mt-3">Bhayan Details</h5>
-                  <a href="<?php echo $server_name ?>form_bhayan-details.php" class="btn btn-primary py-3">Open..</a>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body text-center d-flex align-items-center">
+                  <div class="float-left col-md-4 align-middle">
+                    <img src="assets/images/icons/quran.png" alt="Quran-img">
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <h5>Quran Madhrasa Registration Details</h5>
+                    <p> Register new Students for Quran Madrasa Education ...</p>
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <a href="<?php echo $server_name ?>form_quran-registration-form.php" class="btn btn-lg btn-primary py-3">Open..</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body text-center d-flex align-items-center">
+                  <div class="float-left col-md-4 align-middle">
+                    <img src="assets/images/icons/moon.png" alt="Head-Stone-img">
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <h5>Janaza Details</h5>
+                    <p> Funeral Details ...</p>
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <a href="<?php echo $server_name ?>form_janaza-details-form.php" class="btn btn-lg btn-primary py-3">Open..</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body text-center d-flex align-items-center">
+                  <div class="float-left col-md-4 align-middle">
+                    <img src="assets/images/icons/speech.png" alt="Speach-img">
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <h5>Bhayan Details</h5>
+                    <p> Enter Special Bhayan Details ...</p>
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <a href="<?php echo $server_name ?>form_bhayan-details.php" class="btn btn-lg btn-primary py-3">Open..</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body text-center d-flex align-items-center">
+                  <div class="float-left col-md-4 align-middle">
+                    <img src="assets/images/icons/bills.png" alt="Bills-img">
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <h5> Bills </h5>
+                    <p> Enter Bills Details ...</p>
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <a href="<?php echo $server_name ?>form_bills.php" class="btn btn-lg btn-primary py-3">Open..</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body text-center d-flex align-items-center">
+                  <div class="float-left col-md-4 align-middle">
+                    <img src="assets/images/icons/expenses.png" alt="Expenses-img">
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <h5> Expenses </h5>
+                    <p> Enter Other Expenses ...</p>
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <a href="<?php echo $server_name ?>form_expenses.php" class="btn btn-lg btn-primary py-3">Open..</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body text-center d-flex align-items-center">
+                  <div class="float-left col-md-4 align-middle">
+                    <img src="assets/images/icons/salary.png" alt="Expenses-img">
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <h5> Other Servant Salary </h5>
+                    <p> Enter Other Servant Salary Details to the Database ...</p>
+                  </div>
+                  <div class="float-left col-md-4 align-middle">
+                    <a href="<?php echo $server_name ?>form_other-servant-salary.php" class="btn btn-lg btn-primary py-3">Open..</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 2 rows -->
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body d-flex justify-content-center">
+                  <div class="float-left col-md-4 d-flex justify-content-center align-self-center">
+                    <img src="assets/images/icons/muslim.png" alt="Priest-img">
+                  </div>
+                  <div class=" float-left col-md-8">
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> New Pesh Imaam </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_pesh-imaam-details.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> New Muazzin </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_muazzin-details.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 2 rows -->
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body d-flex justify-content-center">
+                  <div class="float-left col-md-4 d-flex justify-content-center align-self-center">
+                    <img src="assets/images/icons/membership.png" alt="Membership-card-img">
+                  </div>
+                  <div class=" float-left col-md-8">
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Saandha Collector Registration </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_saandha-collector-registration.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Non-Mahalla Saandha Registration </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_nonmahalla-saandha-registration.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 3 rows -->
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body d-flex justify-content-center">
+                  <div class="float-left col-md-4 d-flex justify-content-center align-self-center">
+                    <img src="assets/images/icons/shop.png" alt="Shop-img">
+                  </div>
+                  <div class=" float-left col-md-8">
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Add New Rental Places </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_rental-places.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5>Register New Rental</h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_new-rental-registration.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5>Make a Payment</h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_add-payment.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 3 rows -->
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body d-flex justify-content-center">
+                  <div class="float-left col-md-4 d-flex justify-content-center align-self-center">
+                    <img src="assets/images/icons/online-donation.png" alt="Donate-img">
+                  </div>
+                  <div class=" float-left col-md-8">
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Disaster Relief Donations </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_disaster-relief-donations.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Board Member Donations </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_board-member-donations.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Other Donations </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_other-donations.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 5 rows -->
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body d-flex justify-content-center">
+                  <div class="float-left col-md-4 d-flex justify-content-center align-self-center">
+                    <img src="assets/images/icons/funding.png" alt="Collection-img">
+                  </div>
+                  <div class=" float-left col-md-8">
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Friday Collection </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_friday-collection.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Kanduri Collection </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_kanduri-collection.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Undiyal Collection </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_undiyal-collection.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Laylat al-Qadr Collection </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_lailathul-kadhir-collection.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Funds </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_funds-collection.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

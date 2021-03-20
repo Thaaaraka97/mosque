@@ -253,6 +253,9 @@
 .image-td{
   width: 15%;
 }
+.card-hr{
+  margin-right: 0;
+}
 
 .card {
   border-radius: 1rem;

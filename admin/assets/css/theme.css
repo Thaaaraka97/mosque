@@ -41,7 +41,7 @@ Notes:	decreasing heading by 0.4em with every subsequent heading level
 /*-----------------------------------------------------*/
 /* ----- Normalize ----- */
 * {
-    margin: 0;
+    /* margin: 0; */
     padding: 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
