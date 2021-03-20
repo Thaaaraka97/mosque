@@ -12,14 +12,15 @@ if (isset($_GET['edited'])) {
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
+
+$where = array(
+    'tb_id ' != 0
+);
+$item_count = $database->select_count('tbl_trusteeboarddetails', $where);
 ?>
 
 <script type="text/javascript">
-    var action = "<?php echo $action; ?>";
-    var designation = "<?php echo $designation; ?>";
-    var villageraction = "";
-    var donationaction = "";
-    var fridaycollectionaction = "";
+    var TBlistDetails = "<?php echo $action; ?>";
 </script>
 
 <body>
@@ -57,100 +58,121 @@ if (isset($_GET['action'])) {
                     </div>";
                     }
                     ?>
-                    <div class="page-header">
-                        <h3 class="page-title"> Trustee Board Details </h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 grid-margin stretch-card">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> Trusteeboard Details Preview </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                            <td class="total-td">
+                                                <div>
+                                                    <p class="text-dark">No. of Entries <?php echo " : " . $item_count ?></p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Trustee Board Details Preview </h4>
-                                        <div class="mt-5">
+                                        <div>
                                             <label for="TBlistDetails">List Down</label>
                                             <select name="TBlistDetails" id="TBlistDetails">
                                                 <option value="present" <?= $action == 'present' ? ' selected="selected"' : ''; ?>>Present Trusteeboard</option>
                                                 <option value="previous" <?= $action == 'previous' ? ' selected="selected"' : ''; ?>>Previous Trusteeboard</option>
                                             </select>
                                             <div id="presentTB">
-                                                <table class="display datatable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>From - To</th>
-                                                            <th>Designation</th>
-                                                            <th>Name</th>
-                                                            <th>Telephone</th>
-                                                            <th>Actions</th>
-                                                            <th>Terminate</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        $where = array(
-                                                            'tb_isActive'     =>    1
-                                                        );
-                                                        $trustee_board_details = $database->select_where('tbl_trusteeboarddetails', $where);
-                                                        foreach ($trustee_board_details as $trustee_board_details_item) {
-                                                            $id = $trustee_board_details_item['tb_id'];
-                                                            $start = $trustee_board_details_item['tb_startDate'];
-                                                            $end = $trustee_board_details_item['tb_endDate'];
-                                                            $designation = $trustee_board_details_item['tb_designation'];
-                                                            $isActive = $trustee_board_details_item['tb_isActive'];
-                                                            if ($end == "") {
-                                                                $end = "Present";
-                                                            }
-                                                            echo "
+                                                <div class="table-responsive table-responsive-data2">
+                                                    <table class="table table-data2">
+                                                        <thead>
+                                                            <tr class="tr-shadow">
+                                                                <th>From - To</th>
+                                                                <th>Designation</th>
+                                                                <th>Name</th>
+                                                                <th>Telephone</th>
+                                                                <th>Left Position</th>
+                                                                <th>Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            $where = array(
+                                                                'tb_isActive'     =>    1
+                                                            );
+                                                            $trustee_board_details = $database->select_where('tbl_trusteeboarddetails', $where);
+                                                            foreach ($trustee_board_details as $trustee_board_details_item) {
+                                                                $id = $trustee_board_details_item['tb_id'];
+                                                                $start = $trustee_board_details_item['tb_startDate'];
+                                                                $end = $trustee_board_details_item['tb_endDate'];
+                                                                $designation = $trustee_board_details_item['tb_designation'];
+                                                                $isActive = $trustee_board_details_item['tb_isActive'];
+                                                                if ($end == "" || $end == "0000-00-00") {
+                                                                    $end = "Present";
+                                                                }
+                                                                echo "
                                                          <tr>
                                                             <td>" . $start . " => " . $end . "</td>
                                                             <td>" . $designation . "</td>
                                                             <td>" . $trustee_board_details_item['tb_name'] . "</td>
                                                             <td>" . $trustee_board_details_item['tb_telephone'] . "</td>
                                                             <td>
+                                                                <a href='' id ='" . $id . "' class='btn btn-warning btn-md terminate_row_trustee' data-toggle='modal' data-target='#deleteRecord'>Left</a>
+                                                            </td>
+                                                            <td>
                                                                 <a href='preview_trustee_board-details_step-2.php?id=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                                 <a href='preview_trustee_board-details_step-2.php?id=" . $id . "&action=edit&designation=" . $designation . "' class='item'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
                                                             </td>
-                                                            <td>";
-                                                            if ($isActive) {
-                                                                echo "<a href='' id ='" . $id . "' class='btn btn-danger btn-md terminate_row_trustee' data-toggle='modal' data-target='#deleteRecord'>Terminate</a>";
-                                                            } else {
-                                                                echo "Already Terminated";
-                                                            }
-                                                            echo "</td>
                                                         </tr>
                                                          ";
-                                                        }
+                                                            }
 
-                                                        ?>
-                                                    </tbody>
-                                                </table>
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                             <div id="previousTB">
-                                                <table class="display datatable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>From - To</th>
-                                                            <th>Designation</th>
-                                                            <th>Name</th>
-                                                            <th>Telephone</th>
-                                                            <th>Actions</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        $where2 = array(
-                                                            'tb_isActive'     =>    0
-                                                        );
-                                                        $trustee_board_details2 = $database->select_where('tbl_trusteeboarddetails', $where2);
-                                                        foreach ($trustee_board_details2 as $trustee_board_details2_item) {
-                                                            $id = $trustee_board_details2_item['tb_id'];
-                                                            $start = $trustee_board_details2_item['tb_startDate'];
-                                                            $end = $trustee_board_details2_item['tb_endDate'];
-                                                            $designation = $trustee_board_details2_item['tb_designation'];
-                                                            $isActive = $trustee_board_details2_item['tb_isActive'];
-                                                            if ($end == "") {
-                                                                $end = "Present";
-                                                            }
-                                                            echo "
+                                                <div class="table-responsive table-responsive-data2">
+                                                    <table class="table table-data2">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>From - To</th>
+                                                                <th>Designation</th>
+                                                                <th>Name</th>
+                                                                <th>Telephone</th>
+                                                                <th>Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            $where2 = array(
+                                                                'tb_isActive'     =>    0
+                                                            );
+                                                            $trustee_board_details2 = $database->select_where('tbl_trusteeboarddetails', $where2);
+                                                            foreach ($trustee_board_details2 as $trustee_board_details2_item) {
+                                                                $id = $trustee_board_details2_item['tb_id'];
+                                                                $start = $trustee_board_details2_item['tb_startDate'];
+                                                                $end = $trustee_board_details2_item['tb_endDate'];
+                                                                $designation = $trustee_board_details2_item['tb_designation'];
+                                                                $isActive = $trustee_board_details2_item['tb_isActive'];
+                                                                if ($end == "") {
+                                                                    $end = "Present";
+                                                                }
+                                                                echo "
                                                          <tr>
                                                             <td>" . $start . " => " . $end . "</td>
                                                             <td>" . $designation . "</td>
@@ -162,15 +184,15 @@ if (isset($_GET['action'])) {
                                                             </td>
                                                         </tr>
                                                          ";
-                                                        }
+                                                            }
 
-                                                        ?>
-                                                    </tbody>
-                                                </table>
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
                                             </div>
-
-                                        </div>
-                                        <!-- <div class="mt-5">
+                                            <!-- <div class="mt-5">
                                             <h4 class="card-title"> Trustee Board History Preview </h4>
                                             <table class="display datatable">
                                                 <thead>
@@ -218,48 +240,94 @@ if (isset($_GET['action'])) {
                                                 </tbody>
                                             </table>
                                         </div> -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- content-wrapper ends -->
+                    <!-- content-wrapper ends -->
 
-                <!-- partial -->
+                    <!-- partial -->
+                </div>
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
+        <!-- container-scroller -->
 
-    <!-- Delete Modal -->
-    <div class="modal fade" id="deleteRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">Terminate Member ?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to terminate this member from Trustee Board?
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-secondary" data-dismiss="modal">Close</a>
-                    <a class="btn btn-danger" id="del">Terminate</a>
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel"> Recruting new member </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Fill the form below to recruit a new member to the Position
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputIndexNo"> Index Number </label>
+                                <input type="text" class="form-control" id="inputIndexNo" name="inputIndexNo" placeholder="Index No">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputSubdivision"> Sub-division </label>
+                                <select id="inputSubdivision" name="inputSubdivision" class="form-control">
+                                    <option value="0" selected>Choose...</option>
+                                    <?php
+                                    $sub_division = $database->select_data('tbl_subdivision');
+                                    foreach ($sub_division as $sub_division_item) {
+                                        echo "<option value='" . $sub_division_item["sb_name"] . "'>" . $sub_division_item["sb_name"] . "</option>";
+                                    }
+
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName">Name </label>
+                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" readonly>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputTP">Telephone Number </label>
+                                <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="077xxxxxxx" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputJob">Job </label>
+                                <input type="text" class="form-control" id="inputJob" name="inputJob" placeholder="Job">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputSalary">Salary </label>
+                                <input type="text" class="form-control" id="inputSalary" name="inputSalary" placeholder="Salary">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress"> Address </label>
+                            <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress" readonly></textarea>
+                        </div>
+                        Click Add to terminate current member and add new member to the position.
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                        <a class="btn btn-primary" id="del"> Add </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- footer -->
-    <?php
-    include "template_parts/footer.php";
-    ?>
-    <!-- End custom js for this page -->
+        <!-- footer -->
+        <?php
+        include "template_parts/footer.php";
+        ?>
+        <!-- End custom js for this page -->
 </body>
 
 </html>

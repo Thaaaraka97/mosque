@@ -3,7 +3,9 @@ include "include/db-connection.php";
 $database = new databases();
 $URL = "forms.php?inserted_record=1";
 $insert_data = "";
+date_default_timezone_set("Asia/Calcutta");
 $today = date('Y-m-d');
+$time = date("H:i");
 
 // insert data into tbl_temp_allvillagers
 // addAVMember button click
@@ -547,7 +549,6 @@ if (isset($_POST['submitNikkah'])) {
 // insert into tbl_janazadetails
 // submitJanaza button click
 if (isset($_POST['submitJanaza'])) {
-    $inputDateToday = date("Y-m-d");
 
     $insert_to_tbl_janazadetails = array(
         'jd_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNoDeceased']),
@@ -560,7 +561,8 @@ if (isset($_POST['submitJanaza'])) {
         'jd_relativeName' => mysqli_real_escape_string($database->con, $_POST['inputGName']),
         'jd_relativeIndex' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
         'jd_relativeRelationship' => mysqli_real_escape_string($database->con, $_POST['inputRelationship']),
-        'jd_informedDate' => mysqli_real_escape_string($database->con, $inputDateToday),
+        'jd_informedDate' => mysqli_real_escape_string($database->con, $today),
+        'jd_informedTime' => mysqli_real_escape_string($database->con, $time),
         'jd_relativeSubDivision' => mysqli_real_escape_string($database->con, $_POST['inputGSubdivision']),
         'jd_specialNotes' => mysqli_real_escape_string($database->con, $_POST['inputNotes'])
 
@@ -876,7 +878,7 @@ if (isset($_POST['submitNewRental'])) {
             'ri_payment' => mysqli_real_escape_string($database->con, $_POST['inputDownPayment']),
             'ri_dueAmount' => mysqli_real_escape_string($database->con, "0"),
             'ri_type' => mysqli_real_escape_string($database->con, $_POST['inputNewRentalType']),
-            'ri_notes' => mysqli_real_escape_string($database->con, "Downpayment"),
+            'ri_notes' => mysqli_real_escape_string($database->con, "Down Payment"),
             'ri_username' => mysqli_real_escape_string($database->con, "user"),
             'ri_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
             'ri_date' => mysqli_real_escape_string($database->con, $today),

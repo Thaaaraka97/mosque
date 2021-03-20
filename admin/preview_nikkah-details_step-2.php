@@ -110,7 +110,7 @@ foreach ($nikkah_details as $nikkah_details_item) {
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title"> Nikkah Details </h3>
+                        <h3 class="page-title"> </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_nikkah-details.php">Details Preview</a></li>
@@ -120,174 +120,517 @@ foreach ($nikkah_details as $nikkah_details_item) {
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-8 grid-margin stretch-card">
-                            <div class="card shadow">
-                                <div class="card-body">
-                                    <div class="text-dark col-auto" id="viewDetails">
-                                        <h4 class="card-title"> Details Preview Step-2 </h4>
-                                        <table class="table table-responsive previewTable">
-                                            <tr>
-                                                <th>Date</th>
-                                                <td> : </td>
-                                                <td><?php echo $date ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Groom Name</th>
-                                                <td> : </td>
-                                                <td><?php echo $groom_name ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Bride Name</th>
-                                                <td> : </td>
-                                                <td><?php echo $bride_name ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Venue</th>
-                                                <td> : </td>
-                                                <td><?php echo $venue ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Donation</th>
-                                                <td> : </td>
-                                                <td><?php echo $donation ?></td>
-                                            </tr>
-                                            <tr class="text-center">
-                                                <td colspan="3" class="align-items-center">Groom Details</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Groom Village</th>
-                                                <td> : </td>
-                                                <td><?php echo $groom_village ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Groom Index</th>
-                                                <td> : </td>
-                                                <td><?php echo $groom_index ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Sub Division</th>
-                                                <td> : </td>
-                                                <td><?php echo $groom_subdivision ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Groom Date of Birth</th>
-                                                <td> : </td>
-                                                <td><?php echo $groom_dob ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Groom NIC</th>
-                                                <td> : </td>
-                                                <td><?php echo $groom_nic ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Age</th>
-                                                <td> : </td>
-                                                <td><?php echo $groom_age ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Contact Number</th>
-                                                <td> : </td>
-                                                <td><?php echo $groom_tp ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Address</th>
-                                                <td> : </td>
-                                                <td><?php echo $groom_address ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Groom Previously married Status</th>
-                                                <td> : </td>
-                                                <td><?php echo $groom_prev_married ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Name of the Guardian</th>
-                                                <td> : </td>
-                                                <td><?php echo $groom_guard_name ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Index of the Guardian</th>
-                                                <td> : </td>
-                                                <td><?php echo $groom_guard_index ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Name of the Mosque</th>
-                                                <td> : </td>
-                                                <td><?php echo $groom_mosque_name ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Address of the Mosque</th>
-                                                <td> : </td>
-                                                <td><?php echo $groom_mosque_add ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th colspan="3" class="align-items-center">Bride Details</th>
-                                            </tr>
-                                            <tr>
-                                                <th>Groom Village</th>
-                                                <td> : </td>
-                                                <td><?php echo $bride_village ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Groom Index</th>
-                                                <td> : </td>
-                                                <td><?php echo $bride_index ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Sub Division</th>
-                                                <td> : </td>
-                                                <td><?php echo $bride_subdivision ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Groom Date of Birth</th>
-                                                <td> : </td>
-                                                <td><?php echo $bride_dob ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Groom NIC</th>
-                                                <td> : </td>
-                                                <td><?php echo $bride_nic ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Age</th>
-                                                <td> : </td>
-                                                <td><?php echo $bride_age ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Contact Number</th>
-                                                <td> : </td>
-                                                <td><?php echo $bride_tp ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Address</th>
-                                                <td> : </td>
-                                                <td><?php echo $bride_address ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Name of the Guardian</th>
-                                                <td> : </td>
-                                                <td><?php echo $bride_guard_name ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Index of the Guardian</th>
-                                                <td> : </td>
-                                                <td><?php echo $bride_guard_index ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Name of the Mosque</th>
-                                                <td> : </td>
-                                                <td><?php echo $bride_mosque_name ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Address of the Mosque</th>
-                                                <td> : </td>
-                                                <td><?php echo $bride_mosque_add ?></td>
-                                            </tr>
-                                        </table>
-
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <?php
+                                                    if ($action == "view") {
+                                                        echo "<h3 class='card-title top'> Nikkah Details Preview </h3>";
+                                                    }
+                                                    if ($action == "edit") {
+                                                        echo "<h3 class='card-title top'> Nikkah Details (Edit) </h3>";
+                                                    }
+                                                    ?>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-dark col-auto" id="viewDetails">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Wedding Details </h4>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Date</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $date ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Name of the Groom</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $groom_name ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Name of the Bride</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $bride_name ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Venue</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $venue ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <form method="post">
-                                        <div class="text-dark" id="editDetails">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Groom Details </h4>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Village</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $groom_village ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        if ($groom_village == "Home Village") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Index</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$groom_index</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Sub Division</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$groom_subdivision</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                ";
+                                        }
+                                        ?>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Name</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $groom_name ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Date of Birth</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $groom_dob ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Age</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $groom_age ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">NIC</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $groom_nic ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Contact Number</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $groom_tp ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Age</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $groom_age ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Address</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $groom_address ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Previously married Status</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $groom_prev_married ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Guardian :Name</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $groom_guard_name ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        if ($groom_village == "Home Village") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Guardian :Index</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$groom_guard_index</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>";
+                                            }
+                                            else {
+                                                echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Name of the Mosque</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$groom_mosque_name</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Address of the Mosque</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$groom_mosque_add</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                ";
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Bride Details </h4>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Village</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $bride_village ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        if ($groom_village == "Home Village") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Index</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$bride_index</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Sub Division</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$bride_subdivision</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                ";
+                                        }
+                                        ?>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Name</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $bride_name ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Date of Birth</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $bride_dob ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Age</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $bride_age ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">NIC</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $bride_nic ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Contact Number</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $bride_tp ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Age</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $bride_age ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Address</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $bride_address ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Guardian :Name</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $bride_guard_name ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        if ($groom_village == "Home Village") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Guardian :Index</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$bride_guard_index</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>";
+                                        }
+                                        else {
+                                            echo "<div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Name of the Mosque</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$bride_mosque_name</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Address of the Mosque</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$bride_mosque_add</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                ";
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Donation Details </h4>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject"> Nikkah Donation </h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $donation ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-dark" id="editDetails">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <form method="post">
                                             <div id="groomdetails">
-                                                <h4 class="card-title">Edit Details </h4>
+                                            <h4 class="card-title pt-2">Groom Details Form</h4>
+
                                                 <?php
                                                 if ($groom_village == "Home Village") {
                                                     echo "
@@ -309,36 +652,67 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class='form-group'>
+                                                    <label for='inputGroomName'>Name of the Groom </label>
+                                                    <input type='text' class='form-control' id='inputGroomName' name='inputGroomName' value='$groom_name' readonly>
+                                                </div>
+                                                <div class='form-row'>
+                                                    <div class='form-group col-md-4'>
+                                                        <label for='inputGroomBirthday'>Birthday </label>
+                                                        <input type='text' class='form-control' id='inputGroomBirthday' name='inputGroomBirthday' value='$groom_dob' readonly>
+                                                    </div>
+                                                    <div class='form-group col-md-5'>
+                                                        <label for='inputGroomNIC'>National Identity Card </label>
+                                                        <input type='text' class='form-control' id='inputGroomNIC' name='inputGroomNIC' value='$groom_nic' readonly>
+                                                    </div>
+                                                    <div class='form-group col-md-3'>
+                                                        <label for='inputGroomAge'>Age </label>
+                                                        <input type='text' class='form-control' id='inputGroomAge' name='inputGroomAge' value='$groom_age' readonly>
+                                                    </div>
+                                                </div>
+                                                <div class='form-group'>
+                                                    <label for='inputGroomAddress'>Address </label>
+                                                    <textarea rows='5' class='form-control' id='inputGroomAddress' name='inputGroomAddress' value='$groom_address' readonly>$groom_address</textarea>
+                                                </div>
+                                                <div class='form-row'>
+                                                        <div class='form-group col-md-6'>
+                                                            <label for='inputGroomTP'>Telephone Number </label>
+                                                            <input type='text' class='form-control' id='inputGroomTP' name='inputGroomTP' value='$groom_tp' readonly>
+                                                        </div>
                                                 ";
                                                 }
+                                                else {
+                                                    echo "
+                                                    <div class='form-group'>
+                                                        <label for='inputGroomName'>Name of the Groom </label>
+                                                        <input type='text' class='form-control' id='inputGroomName' name='inputGroomName' value='$groom_name'>
+                                                    </div>
+                                                    <div class='form-row'>
+                                                        <div class='form-group col-md-4'>
+                                                            <label for='inputGroomBirthday'>Birthday </label>
+                                                            <input type='text' class='form-control' id='inputGroomBirthday' name='inputGroomBirthday' value='$groom_dob'>
+                                                        </div>
+                                                        <div class='form-group col-md-5'>
+                                                            <label for='inputGroomNIC'>National Identity Card </label>
+                                                            <input type='text' class='form-control' id='inputGroomNIC' name='inputGroomNIC' value='$groom_nic'>
+                                                        </div>
+                                                        <div class='form-group col-md-3'>
+                                                            <label for='inputGroomAge'>Age </label>
+                                                            <input type='text' class='form-control' id='inputGroomAge' name='inputGroomAge' value='$groom_age'>
+                                                        </div>
+                                                    </div>
+                                                    <div class='form-group'>
+                                                        <label for='inputGroomAddress'>Address </label>
+                                                        <textarea rows='5' class='form-control' id='inputGroomAddress' name='inputGroomAddress' value='$groom_address'>$groom_address</textarea>
+                                                    </div>
+                                                    <div class='form-row'>
+                                                        <div class='form-group col-md-6'>
+                                                            <label for='inputGroomTP'>Telephone Number </label>
+                                                            <input type='text' class='form-control' id='inputGroomTP' name='inputGroomTP' value='$groom_tp'>
+                                                        </div>
+                                                    ";
+                                                }
                                                 ?>
-                                                <div class="form-group">
-                                                    <label for="inputGroomName">Name of the Groom </label>
-                                                    <input type="text" class="form-control" id="inputGroomName" name="inputGroomName" value="<?php echo $groom_name ?>" readonly>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-4">
-                                                        <label for="inputGroomBirthday">Birthday </label>
-                                                        <input type="text" class="form-control" id="inputGroomBirthday" name="inputGroomBirthday" value="<?php echo $groom_dob ?>" readonly>
-                                                    </div>
-                                                    <div class="form-group col-md-5">
-                                                        <label for="inputGroomNIC">National Identity Card </label>
-                                                        <input type="text" class="form-control" id="inputGroomNIC" name="inputGroomNIC" value="<?php echo $groom_nic ?>" readonly>
-                                                    </div>
-                                                    <div class="form-group col-md-3">
-                                                        <label for="inputGroomAge">Age </label>
-                                                        <input type="text" class="form-control" id="inputGroomAge" name="inputGroomAge" value="<?php echo $groom_age ?>" readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputGroomAddress">Address </label>
-                                                    <textarea rows="5" class="form-control" id="inputGroomAddress" name="inputGroomAddress" value="<?php echo $groom_address ?>" readonly><?php echo $groom_address ?></textarea>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputGroomTP">Telephone Number </label>
-                                                        <input type="text" class="form-control" id="inputGroomTP" name="inputGroomTP" value="<?php echo $groom_tp ?>" readonly>
-                                                    </div>
                                                     <div class="form-group col-md-6 pl-5">
                                                         <div class="form-group row">
                                                             <div class="col-md-12">
@@ -366,16 +740,24 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                                     </div>
                                                 </div>
                                                 <p class="card-description"> Details of the Guardian </p>
+                                                <hr>
                                                 <div class="form-group">
                                                     <label for="inputGroomGuardianName">Name of the Guardian </label>
                                                     <input type="text" class="form-control" id="inputGroomGuardianName" name="inputGroomGuardianName" value="<?php echo $groom_guard_name ?>" placeholder="Name of the Guardian" required>
                                                 </div>
-                                                <div class="form-row" id="groomGuardianIndex">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputGroomGuardianIndex"> Index No of the Guardian </label>
-                                                        <input type="text" class="form-control" id="inputGroomGuardianIndex" name="inputGroomGuardianIndex" placeholder="Index No" value="<?php echo $groom_guard_index ?>">
+                                                <?php
+                                                if ($groom_village == "Home Village") {
+                                                    echo "
+                                                    <div class='form-row'>
+                                                        <div class='form-group col-md-6'>
+                                                            <label for='inputGroomGuardianIndex'> Index No of the Guardian </label>
+                                                            <input type='text' class='form-control' id='inputGroomGuardianIndex' name='inputGroomGuardianIndex' placeholder='Index No' value='$groom_guard_index'>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                ";
+                                                }
+                                                ?>
+                                                <hr>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label for="inputVenue"> Venue of the marriage </label>
@@ -391,6 +773,7 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                                     echo "
                                                 <div>
                                                     <p class='card-description'> Details of the Mosque </p>
+                                                    <hr>
                                                     <div class='form-group'>
                                                         <label for='inputGroomMosque'>Name of the Mosque </label>
                                                         <input type='text' class='form-control' id='inputGroomMosque' name='inputGroomMosque' placeholder='Mosque' value='$groom_mosque_name'>
@@ -412,71 +795,105 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                                 <?php
                                                 if ($bride_village == "Home Village") {
                                                     echo "
-                                                <div id='groomVillage'>
-                                                <div class='form-row'>
-                                                    <div class='form-group col-md-6'>
-                                                        <label for='inputBrideVillage'> Village Details </label>
-                                                        <input type='text' class='form-control' id='inputBrideVillage' name='inputBrideVillage' value='" . $bride_village . "' readonly>
+                                                <div>
+                                                    <div class='form-row'>
+                                                        <div class='form-group col-md-6'>
+                                                            <label for='inputBrideIndexNo'> Index Number </label>
+                                                            <input type='text' class='form-control' id='inputBrideIndexNo' name='inputBrideIndexNo' value='" . $bride_index . "' readonly>
+                                                        </div>
+                                                        <div class='form-group col-md-6'>
+                                                            <label for='inputBrideSubdivision'> Sub-division </label>
+                                                            <input type='text' class='form-control' id='inputBrideSubdivision' name='inputBrideSubdivision' value='" . $bride_subdivision . "' readonly>
+                                                        </div>
                                                     </div>
+                                                </div>
+                                                <div class='form-group'>
+                                                    <label for='inputBrideName'>Name of the Bride </label>
+                                                    <input type='text' class='form-control' id='inputBrideName' name='inputBrideName' value='$bride_name' readonly>
+                                                </div>
+                                                <div class='form-row'>
+                                                    <div class='form-group col-md-4'>
+                                                        <label for='inputBrideBirthday'>Birthday </label>
+                                                        <input type='text' class='form-control' id='inpuBridetBirthday' name='inpuBridetBirthday' value='$bride_dob' readonly>
+                                                    </div>
+                                                    <div class='form-group col-md-5'>
+                                                        <label for='inputBrideNIC'>National Identity Card </label>
+                                                        <input type='text' class='form-control' id='inputBrideNIC' name='inputBrideNIC' value='$bride_nic' readonly>
+                                                    </div>
+                                                    <div class='form-group col-md-3'>
+                                                        <label for='inputBrideAge'>Age </label>
+                                                        <input type='text' class='form-control' id='inputBrideAge' name='inputBrideAge' value='$bride_age' readonly>
+                                                    </div>
+                                                </div>
+                                                <div class='form-group'>
+                                                    <label for='inputBrideAddress'> Address </label>
+                                                    <textarea rows='5' class='form-control' id='inputBrideAddress' name='inputBrideAddress' value='$bride_address' readonly>$bride_address</textarea>
                                                 </div>
                                                 <div class='form-row'>
                                                     <div class='form-group col-md-6'>
-                                                        <label for='inputBrideIndexNo'> Index Number </label>
-                                                        <input type='text' class='form-control' id='inputBrideIndexNo' name='inputBrideIndexNo' value='" . $bride_index . "' readonly>
-                                                    </div>
-                                                    <div class='form-group col-md-6'>
-                                                        <label for='inputBrideSubdivision'> Sub-division </label>
-                                                        <input type='text' class='form-control' id='inputBrideSubdivision' name='inputBrideSubdivision' value='" . $bride_subdivision . "' readonly>
+                                                        <label for='inputBrideTP'>Telephone Number </label>
+                                                        <input type='text' class='form-control' id='inputBrideTP' name='inputBrideTP' value='$bride_tp' readonly>
                                                     </div>
                                                 </div>
-                                            </div>
                                                 ";
                                                 }
+                                                else {
+                                                    echo "
+                                                    <div class='form-group'>
+                                                        <label for='inputBrideName'>Name of the Bride </label>
+                                                        <input type='text' class='form-control' id='inputBrideName' name='inputBrideName' value='$bride_name'>
+                                                    </div>
+                                                    <div class='form-row'>
+                                                        <div class='form-group col-md-4'>
+                                                            <label for='inputBrideBirthday'>Birthday </label>
+                                                            <input type='text' class='form-control' id='inpuBridetBirthday' name='inpuBridetBirthday' value='$bride_dob'>
+                                                        </div>
+                                                        <div class='form-group col-md-5'>
+                                                            <label for='inputBrideNIC'>National Identity Card </label>
+                                                            <input type='text' class='form-control' id='inputBrideNIC' name='inputBrideNIC' value='$bride_nic'>
+                                                        </div>
+                                                        <div class='form-group col-md-3'>
+                                                            <label for='inputBrideAge'>Age </label>
+                                                            <input type='text' class='form-control' id='inputBrideAge' name='inputBrideAge' value='$bride_age'>
+                                                        </div>
+                                                    </div>
+                                                    <div class='form-group'>
+                                                        <label for='inputBrideAddress'> Address </label>
+                                                        <textarea rows='5' class='form-control' id='inputBrideAddress' name='inputBrideAddress' value='$bride_address'>$bride_address</textarea>
+                                                    </div>
+                                                    <div class='form-row'>
+                                                        <div class='form-group col-md-6'>
+                                                            <label for='inputBrideTP'>Telephone Number </label>
+                                                            <input type='text' class='form-control' id='inputBrideTP' name='inputBrideTP' value='$bride_tp'>
+                                                        </div>
+                                                    </div>
+                                                    ";
+                                                }
                                                 ?>
-                                                <div class="form-group">
-                                                    <label for="inputBrideName">Name of the Bride </label>
-                                                    <input type="text" class="form-control" id="inputBrideName" name="inputBrideName" value="<?php echo $bride_name ?>" readonly>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-4">
-                                                        <label for="inputBrideBirthday">Birthday </label>
-                                                        <input type="text" class="form-control" id="inpuBridetBirthday" name="inpuBridetBirthday" value="<?php echo $bride_dob ?>" readonly>
-                                                    </div>
-                                                    <div class="form-group col-md-5">
-                                                        <label for="inputBrideNIC">National Identity Card </label>
-                                                        <input type="text" class="form-control" id="inputBrideNIC" name="inputBrideNIC" value="<?php echo $bride_nic ?>" readonly>
-                                                    </div>
-                                                    <div class="form-group col-md-3">
-                                                        <label for="inputBrideAge">Age </label>
-                                                        <input type="text" class="form-control" id="inputBrideAge" name="inputBrideAge" value="<?php echo $bride_age ?>" readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputBrideAddress"> Address </label>
-                                                    <textarea rows="5" class="form-control" id="inputBrideAddress" name="inputBrideAddress" value="<?php echo $bride_address ?>" readonly><?php echo $bride_address ?></textarea>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputBrideTP">Telephone Number </label>
-                                                        <input type="text" class="form-control" id="inputBrideTP" name="inputBrideTP" value="<?php echo $bride_tp ?>" readonly>
-                                                    </div>
-                                                </div>
                                                 <p class="card-description"> Details of the Guardian </p>
+                                                <hr>
                                                 <div class="form-group">
                                                     <label for="inputBrideGuardianName"> Name of the Guardian </label>
                                                     <input type="text" class="form-control" id="inputBrideGuardianName" name="inputBrideGuardianName" value="<?php echo $bride_guard_name ?>" placeholder="Name of the Guardian" required>
                                                 </div>
-                                                <div class="form-row" id="brideGuardianIndex">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="inputBrideGuardianIndex"> Index No of the Guardian </label>
-                                                        <input type="text" class="form-control" id="inputBrideGuardianIndex" name="inputBrideGuardianIndex" value="<?php echo $bride_guard_index ?>" placeholder="Index No">
+                                                <?php
+                                                if ($bride_village == "Home Village") {
+                                                    echo "
+                                                    <div class='form-row'>
+                                                        <div class='form-group col-md-6'>
+                                                            <label for='inputGroomGuardianIndex'> Index No of the Guardian </label>
+                                                            <input type='text' class='form-control' id='inputGroomGuardianIndex' name='inputGroomGuardianIndex' placeholder='Index No' value='$bride_guard_index'>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                ";
+                                                }
+                                                ?>
                                                 <?php
                                                 if ($bride_village == "Not Home Village") {
                                                     echo "
                                                 <div>
                                                     <p class='card-description'> Details of the Mosque </p>
+                                                    <hr>
                                                     <div class='form-group'>
                                                         <label for='inputBrideMosque'>Name of the Mosque </label>
                                                         <input type='text' class='form-control' id='inputBrideMosque' name='inputBrideMosque' value='$bride_mosque_name'>
@@ -508,29 +925,26 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                                     <button class="btn btn-primary btn-lg" id="editNikkah" name="editNikkah">Edit Details</button>
                                                 </div>
                                             </div>
-                                        </div>
+                                    </div>
                                     </form>
 
                                 </div>
                             </div>
+                            <!-- content-wrapper ends -->
+
+                            <!-- partial -->
                         </div>
+                        <!-- main-panel ends -->
                     </div>
+                    <!-- page-body-wrapper ends -->
                 </div>
-                <!-- content-wrapper ends -->
+                <!-- container-scroller -->
 
-                <!-- partial -->
-            </div>
-            <!-- main-panel ends -->
-        </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
-
-    <!-- footer -->
-    <?php
-    include "template_parts/footer.php";
-    ?>
-    <!-- End custom js for this page -->
+                <!-- footer -->
+                <?php
+                include "template_parts/footer.php";
+                ?>
+                <!-- End custom js for this page -->
 </body>
 
 </html>

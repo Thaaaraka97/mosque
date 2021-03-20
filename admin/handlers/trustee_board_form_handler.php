@@ -1,6 +1,7 @@
 <?php
 include "../include/db-connection.php";
 $database = new Databases;
+date_default_timezone_set("Asia/Calcutta");
 $today = date("Y-m-d");
 
 $id = "";
@@ -29,6 +30,23 @@ if ($action == "find_record") {
 // insert into tbl_trusteeboarddetails
 // submitTrusteeBoard button click
 elseif ($action == "submit") {
+
+    $tb_id = "";
+    $person_details = $database->select_data('tbl_trusteeboarddetails');
+    foreach ($person_details as $person_details_item) {
+        $tb_id = $person_details_item["tb_electedYYMM"];
+    }
+
+    // terminate the current trusteeboard
+    $update_data = array(
+        'tb_isActive' => mysqli_real_escape_string($database->con, 0),
+        'tb_endDate' => mysqli_real_escape_string($database->con, $today)
+    );
+    $where_condition = array(
+        'tb_electedYYMM'     =>     $tb_id
+    );
+    $database->update("tbl_trusteeboarddetails", $update_data, $where_condition);
+
 
     // president data
     $inputPresidentIndexNo = $_POST["inputPresidentIndexNo"];
@@ -71,7 +89,6 @@ elseif ($action == "submit") {
     $inputTreasurerAddress = $_POST["inputTreasurerAddress"];
     $inputTreasurerSalary = $_POST["inputTreasurerSalary"];
 
-    $today = date("Y-m-d");
     $tb_electedYYMM = date("Y-m");
 
     // collect president data into an array
@@ -170,45 +187,70 @@ elseif ($action == "submit") {
             if ($insert3) {
                 if ($insert4) {
                     if ($insert5) {
+                        // add advisory members
+                        if (isset($_POST["inputMemberIndexNo"])) {
+                            $advisoryMembers = count($_POST["inputMemberIndexNo"]);
+                            if ($advisoryMembers > 0) {
+                                for ($i = 0; $i < $advisoryMembers; $i++) {
+                                    // collect treasurer data into an array
+                                    $insert_advisory_details = array(
+                                        'tb_index' => mysqli_real_escape_string($database->con, $_POST["inputMemberIndexNo"][$i]),
+                                        'tb_subDivision' => mysqli_real_escape_string($database->con, $_POST["inputMemberSubdivision"][$i]),
+                                        'tb_designation' => mysqli_real_escape_string($database->con, "Advisory Member"),
+                                        'tb_name' => mysqli_real_escape_string($database->con, $_POST["inputMemberName"][$i]),
+                                        'tb_address' => mysqli_real_escape_string($database->con, $_POST["inputMemberAddress"][$i]),
+                                        'tb_job' => mysqli_real_escape_string($database->con, $_POST["inputMemberJob"][$i]),
+                                        'tb_salary' => mysqli_real_escape_string($database->con, $_POST["inputMemberSalary"][$i]),
+                                        'tb_telephone' => mysqli_real_escape_string($database->con, $_POST["inputMemberTP"][$i]),
+                                        'tb_electedYYMM' => mysqli_real_escape_string($database->con, $tb_electedYYMM),
+                                        'tb_startDate' => mysqli_real_escape_string($database->con, $today),
+                                        // 'tb_endDate' => mysqli_real_escape_string($database->con, $_POST['inputAssignedDate']),
+                                        'tb_isActive' => mysqli_real_escape_string($database->con, 1)
+
+                                    );
+                                    $database->insert_data('tbl_trusteeboarddetails', $insert_advisory_details);
+                                }
+                            }
+                        }
+
+                        // insert a record into the tbl_trusteeboardhistory
                         $insert_to_tbHistory = array(
-                            'tb_electedYYMM' => mysqli_real_escape_string($database->con, $tb_electedYYMM)
+                            'th_electedYYMM' => mysqli_real_escape_string($database->con, $tb_electedYYMM)
                         );
                         $database->insert_data('tbl_trusteeboardhistory', $insert_to_tbHistory);
-                        
+
+                        $URL = "forms.php?inserted_records=1";
+                        echo $URL;
                     }
                 }
             }
         }
     }
+} elseif ($action == "terminate") {
 
-    $advisoryMembers = count($_POST["inputMemberIndexNo"]);
-    if ($advisoryMembers > 0) {
-        for ($i = 0; $i < $advisoryMembers; $i++) {
-            // collect treasurer data into an array
-            $insert_advisory_details = array(
-                'tb_index' => mysqli_real_escape_string($database->con, $_POST["inputMemberIndexNo"][$i]),
-                'tb_subDivision' => mysqli_real_escape_string($database->con, $_POST["inputMemberSubdivision"][$i]),
-                'tb_designation' => mysqli_real_escape_string($database->con, "Advisory Member"),
-                'tb_name' => mysqli_real_escape_string($database->con, $_POST["inputMemberName"][$i]),
-                'tb_address' => mysqli_real_escape_string($database->con, $_POST["inputMemberAddress"][$i]),
-                'tb_job' => mysqli_real_escape_string($database->con, $_POST["inputMemberJob"][$i]),
-                'tb_salary' => mysqli_real_escape_string($database->con, $_POST["inputMemberSalary"][$i]),
-                'tb_telephone' => mysqli_real_escape_string($database->con, $_POST["inputMemberTP"][$i]),
-                'tb_electedYYMM' => mysqli_real_escape_string($database->con, $tb_electedYYMM),
-                'tb_startDate' => mysqli_real_escape_string($database->con, $today),
-                // 'tb_endDate' => mysqli_real_escape_string($database->con, $_POST['inputAssignedDate']),
-                'tb_isActive' => mysqli_real_escape_string($database->con, 1)
+    // find designation and electedID for the terminating member
+    $designation = "";
+    $elected = "";
+    $where = array(
+        'tb_id'     =>     $_POST["id"]
+    );
+    $person_details = $database->select_where('tbl_trusteeboarddetails', $where);
 
-            );
-            $database->insert_data('tbl_trusteeboarddetails', $insert_advisory_details);
-        }
+    foreach ($person_details as $person_details_item) {
+        $designation =  $person_details_item["tb_designation"];
+        $elected =  $person_details_item["tb_electedYYMM"];
     }
 
-    $URL = "forms.php?inserted_records=1";
-    echo $URL;
-}
+    // get details from ajax
+    $name = $_POST['name'] ?? $_POST['name'];
+    $tp = $_POST['tp'] ?? $_POST['tp'];
+    $job = $_POST['job'] ?? $_POST['job'];
+    $salary = $_POST['salary'] ?? $_POST['salary'];
+    $address = $_POST['address'] ?? $_POST['address'];
+    $subdivision = $_POST['subdivision'] ?? $_POST['subdivision'];
+    $index = $_POST['index'] ?? $_POST['index'];
 
-elseif ($action == "terminate") {
+    // terminate person
     $update_data = array(
         'tb_isActive' => mysqli_real_escape_string($database->con, 0),
         'tb_endDate' => mysqli_real_escape_string($database->con, $today)
@@ -217,7 +259,24 @@ elseif ($action == "terminate") {
         'tb_id'     =>     $id
     );
     if ($database->update("tbl_trusteeboarddetails", $update_data, $where_condition)) {
-        $URL = "preview_trustee_board-details.php?terminated=1";
-        echo $URL;
+        // add new member to the table
+        $insert_Member_details = array(
+            'tb_index' => mysqli_real_escape_string($database->con, $index),
+            'tb_subDivision' => mysqli_real_escape_string($database->con, $subdivision),
+            'tb_designation' => mysqli_real_escape_string($database->con, $designation),
+            'tb_name' => mysqli_real_escape_string($database->con, $name),
+            'tb_address' => mysqli_real_escape_string($database->con, $address),
+            'tb_job' => mysqli_real_escape_string($database->con, $job),
+            'tb_salary' => mysqli_real_escape_string($database->con, $salary),
+            'tb_telephone' => mysqli_real_escape_string($database->con, $tp),
+            'tb_electedYYMM' => mysqli_real_escape_string($database->con, $elected),
+            'tb_startDate' => mysqli_real_escape_string($database->con, $today),
+            'tb_isActive' => mysqli_real_escape_string($database->con, 1)
+
+        );
+        if ($database->insert_data('tbl_trusteeboarddetails', $insert_Member_details)) {
+            $URL = "preview_trustee_board-details.php?edited=1&action=present";
+            echo $URL;
+        }
     }
 }

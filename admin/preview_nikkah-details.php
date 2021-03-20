@@ -8,17 +8,20 @@ $id = "";
 
 if (isset($_GET['deleted'])) {
     $message = "Record successfully Deleted..!";
-}
-elseif (isset($_GET['edited'])) {
+} elseif (isset($_GET['edited'])) {
     $message = "Record successfully Updated..!";
 }
+
+$where = array(
+    'nd_nikkahId ' != 0
+);
+$item_count = $database->select_count('tbl_nikkahdetails', $where);
 ?>
 <script type="text/javascript">
     var action = "<?php echo $action; ?>";
     var villageraction = "";
     var donationaction = "";
     var fridaycollectionaction = "";
-
 </script>
 
 <body>
@@ -47,8 +50,7 @@ elseif (isset($_GET['edited'])) {
                                 <span aria-hidden='true'>&times;</span>
                             </button>
                         </div>";
-                    }
-                    elseif (isset($_GET['edited'])) {
+                    } elseif (isset($_GET['edited'])) {
                         echo "
                         <div class='alert alert-warning alert-dismissible' role='alert'>" . $message . "
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -57,34 +59,82 @@ elseif (isset($_GET['edited'])) {
                         </div>";
                     }
                     ?>
-                    <div class="page-header">
-                        <h3 class="page-title"> Nikkah Details </h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 grid-margin stretch-card">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> Nikkah Details Preview </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                            <td class="total-td">
+                                                <div>
+                                                    <p class="text-dark">No. of Entries <?php echo " : " . $item_count ?></p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Nikkah Details Preview </h4>
-                                        <div class="mt-5">
-                                            <table class="display datatable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Date</th>
-                                                        <th>Bride Name</th>
-                                                        <th>Groom Name</th>
-                                                        <th>Address</th>
-                                                        <th>Actions</th>
-                                                        <th>Delete</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $nikkah_details = $database->select_data('tbl_nikkahdetails');
-                                                    foreach ($nikkah_details as $nikkah_details_item) {
-                                                        $id = $nikkah_details_item['nd_nikkahId'];
+                                        <div>
+                                            <div class="table-responsive table-responsive-data2">
+                                                <div class="sorting">
+                                                    <div class="row">
+                                                        <div class="form-group col-md-1">
+                                                            <label for="sortvillagersubdivision">Sort By</label>
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <select name="sortvillagersubdivision" id="sortvillagersubdivision" class="form-control">
+                                                                <option value="0" selected>Sub-Division</option>
+                                                                <option value="widow" <?= $action == 'widow' ? ' selected="selected"' : ''; ?>>Widow Details</option>
+                                                                <option value="divorse" <?= $action == 'divorse' ? ' selected="selected"' : ''; ?>>Divorsed Details</option>
+                                                                <option value="madrasa" <?= $action == 'madrasa' ? ' selected="selected"' : ''; ?>>Madrasa Children Details</option>
+                                                                <option value="orphan" <?= $action == 'orphan' ? ' selected="selected"' : ''; ?>>Orphan Children Details</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <select name="sortvillagersubdivision" id="sortvillagersubdivision" class="form-control">
+                                                                <option value="0" selected>Time</option>
+                                                                <option value="widow" <?= $action == 'widow' ? ' selected="selected"' : ''; ?>>Widow Details</option>
+                                                                <option value="divorse" <?= $action == 'divorse' ? ' selected="selected"' : ''; ?>>Divorsed Details</option>
+                                                                <option value="madrasa" <?= $action == 'madrasa' ? ' selected="selected"' : ''; ?>>Madrasa Children Details</option>
+                                                                <option value="orphan" <?= $action == 'orphan' ? ' selected="selected"' : ''; ?>>Orphan Children Details</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <table class="table table-data2">
+                                                    <thead>
+                                                        <tr class="tr-shadow">
+                                                            <th>Date</th>
+                                                            <th>Bride Name</th>
+                                                            <th>Groom Name</th>
+                                                            <th>Address</th>
+                                                            <th>Actions</th>
+                                                            <th>Delete</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        $nikkah_details = $database->select_data('tbl_nikkahdetails');
+                                                        foreach ($nikkah_details as $nikkah_details_item) {
+                                                            $id = $nikkah_details_item['nd_nikkahId'];
 
-                                                        echo "
+                                                            echo "
                                                          <tr>
                                                             <td>" . $nikkah_details_item['nd_marriageDate'] . "</td>
                                                             <td>" . $nikkah_details_item['nd_brideName'] . "</td>
@@ -95,59 +145,59 @@ elseif (isset($_GET['edited'])) {
                                                                 <a href='preview_nikkah-details_step-2.php?id=" . $id . "&action=edit' class='item'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
                                                             </td>
                                                             <td>
-                                                                <a href='' id ='".$id."' class='item delete_row_nikkah' data-toggle='modal' data-target='#deleteRecord'><i class='fa fa-trash fa-lg' aria-hidden='true'></i></a>
+                                                                <a href='' id ='" . $id . "' class='item delete_row_nikkah' data-toggle='modal' data-target='#deleteRecord'><i class='fa fa-trash fa-lg' aria-hidden='true'></i></a>
                                                                 
 
                                                             </td>
                                                         </tr>
                                                          ";
-                                                    }
+                                                        }
 
-                                                    ?>
-                                                </tbody>
-                                            </table>
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- content-wrapper ends -->
+                    <!-- content-wrapper ends -->
 
-                <!-- partial -->
+                    <!-- partial -->
+                </div>
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
+        <!-- container-scroller -->
 
-    <!-- footer -->
-    <?php
-    include "template_parts/footer.php";
-    ?>
-    <!-- End custom js for this page -->
-    <!-- Delete Modal -->
-    <div class="modal fade" id="deleteRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">Delete Record ?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this record? Once you click delete there's no going back.
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-secondary" data-dismiss="modal">Close</a>
-                    <a class="btn btn-danger" id="del">Delete</a>
+        <!-- footer -->
+        <?php
+        include "template_parts/footer.php";
+        ?>
+        <!-- End custom js for this page -->
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">Delete Record ?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this record? Once you click delete there's no going back.
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                        <a class="btn btn-danger" id="del">Delete</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>

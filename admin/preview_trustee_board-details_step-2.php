@@ -93,68 +93,158 @@ foreach ($trustee_board_details as $trustee_board_details_item) {
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-8 grid-margin stretch-card">
-                            <div class="card shadow">
-                                <div class="card-body">
-                                    <div class="mt-5 text-dark col-auto" id="viewDetails">
-                                        <h4 class="card-title"> Details Preview Step-2 </h4>
-
-                                        <table class="table table-responsive previewTable">
-                                            <tr>
-                                                <th>Name</th>
-                                                <td> : </td>
-                                                <td><?php echo $name ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Index</th>
-                                                <td> : </td>
-                                                <td><?php echo $index ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Sub Division</th>
-                                                <td> : </td>
-                                                <td><?php echo $subdivision ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Designation</th>
-                                                <td> : </td>
-                                                <td><?php echo $designation ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Duration</th>
-                                                <td> : </td>
-                                                <td><?php echo $start_date . " - " . $end_date ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>is Active ?</th>
-                                                <td> : </td>
-                                                <td><?php echo $is_active ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Address</th>
-                                                <td> : </td>
-                                                <td><?php echo $address ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Job</th>
-                                                <td> : </td>
-                                                <td><?php echo $job ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Salary</th>
-                                                <td> : </td>
-                                                <td><?php echo $salary ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Contact Number</th>
-                                                <td> : </td>
-                                                <td><?php echo $tp ?></td>
-                                            </tr>
-
-                                        </table>
-
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <?php
+                                                    if ($action == "view") {
+                                                        echo "<h3 class='card-title top'> Trusteeboard Details Preview </h3>";
+                                                    }
+                                                    if ($action == "edit") {
+                                                        echo "<h3 class='card-title top'> Trusteeboard Details (Edit) </h3>";
+                                                    }
+                                                    ?>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-dark col-auto" id="viewDetails">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Person Details </h4>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Name</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $name ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Index</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $index ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Sub-Division</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $subdivision ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Designation</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $designation ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Duration</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $start_date . " - " . $end_date ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Address</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $address ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Job</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $job ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Salary</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $salary ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Contact Number</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $tp ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <form method="post">
-                                        <div class="text-dark" id="editDetails">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-dark" id="editDetails">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <form method="post">
+
                                             <h4 class="center card-title"> Edit Details </h4>
                                             <div>
                                                 <?php
@@ -214,7 +304,7 @@ foreach ($trustee_board_details as $trustee_board_details_item) {
                                             <div class="text-center">
                                                 <button class="btn btn-primary btn-lg" id="editTrustee" name="editTrustee">Edit Details</button>
                                             </div>
-                                        </div>
+                                    </div>
                                     </form>
                                 </div>
                             </div>

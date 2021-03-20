@@ -63,10 +63,8 @@ $database = new databases();
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <div class="form-group col-md-6">
-                          <label for="inputSex"> Gender </label>
-                          <input type="text" class="form-control" id="inputSex" name="inputSex" placeholder="Gender" readonly>
-                        </div>
+                        <label for="inputSex"> Gender </label>
+                        <input type="text" class="form-control" id="inputSex" name="inputSex" placeholder="Gender" readonly>
                       </div>
                     </div>
                     <hr>
@@ -85,6 +83,7 @@ $database = new databases();
                       <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress" required></textarea>
                     </div>
                     <p class="card-description"> Details of person who give details </p>
+                    <hr>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputGName">Name </label>

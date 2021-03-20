@@ -83,7 +83,7 @@ foreach ($q_madrasa_details as $q_madrasa_details_item) {
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title"> Quran Madrasa Details </h3>
+                        <h3 class="page-title"> </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_q_madrasa-details.php">Details Preview</a></li>
@@ -93,81 +93,201 @@ foreach ($q_madrasa_details as $q_madrasa_details_item) {
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-8 grid-margin stretch-card">
-                            <div class="card shadow">
-                                <div class="card-body">
-                                    <h4 class="card-title">Quran Madhrasa Registration Form</h4>
-
-                                    <div class="mt-5 text-dark col-auto" id="viewDetails">
-                                        <h4 class="card-title"> Details Preview Step-2 </h4>
-
-                                        <table class="table table-responsive previewTable">
-                                            <tr>
-                                                <th>Name</th>
-                                                <td> : </td>
-                                                <td><?php echo $name ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Index</th>
-                                                <td> : </td>
-                                                <td><?php echo $index ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Sub Division</th>
-                                                <td> : </td>
-                                                <td><?php echo $subdivision ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Address</th>
-                                                <td> : </td>
-                                                <td><?php echo $address ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Gender</th>
-                                                <td> : </td>
-                                                <td><?php echo $gender ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Date of Bith</th>
-                                                <td> : </td>
-                                                <td><?php echo $dob ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Current School</th>
-                                                <td> : </td>
-                                                <td><?php echo $school ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Medium</th>
-                                                <td> : </td>
-                                                <td><?php echo $medium ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Grade</th>
-                                                <td> : </td>
-                                                <td><?php echo $grade ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Enrolled Date</th>
-                                                <td> : </td>
-                                                <td><?php echo $start_date ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Name of the Guardian</th>
-                                                <td> : </td>
-                                                <td><?php echo $guard_name ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Notes</th>
-                                                <td> : </td>
-                                                <td><?php echo $notes ?></td>
-                                            </tr>
-
-                                        </table>
-
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <?php
+                                                    if ($action == "view") {
+                                                        echo "<h3 class='card-title top'> Quran Madrasa Details Preview </h3>";
+                                                    }
+                                                    if ($action == "edit") {
+                                                        echo "<h3 class='card-title top'> Quran Madrasa Details (Edit) </h3>";
+                                                    }
+                                                    ?>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-dark col-auto" id="viewDetails">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Child Details </h4>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Index</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $index ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Sub-Division</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $subdivision ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Name</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $name ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Address</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $address ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Gender</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $gender ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Date of Bith</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $dob ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Current School</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $school ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Name of the Guardian</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $guard_name ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <div class="text-dark" id="editDetails">
-                                        <h4 class="card-title">Edit Details</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Madrasa Details </h4>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Medium</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $medium ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Grade</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $grade ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Enrolled Date</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $start_date ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Notes</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $notes ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-dark" id="editDetails">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
                                         <form class="pt-3" method="POST">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
@@ -197,8 +317,23 @@ foreach ($q_madrasa_details as $q_madrasa_details_item) {
                                                 <label for="inputAddress"> Address </label>
                                                 <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress" value="<?php echo $index ?>" readonly><?php echo $address ?></textarea>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="inputGuardianName">Name of the Guardian </label>
+                                                <input type="text" class="form-control" id="inputGuardianName" name="inputGuardianName" placeholder="Name of the Guardian" value="<?php echo $guard_name ?>" readonly>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputGuardianTP">Guardian - Contact Number </label>
+                                                    <input type="text" class="form-control" id="inputGuardianTP" name="inputGuardianTP" value="<?php echo $guard_tp ?>" readonly>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputSchool">Current School </label>
+                                                    <input type="text" class="form-control" id="inputSchool" name="inputSchool" placeholder="School" value="<?php echo $school ?>">
+                                                </div>
+                                            </div>
+                                            <hr>
                                             <div class="form-row">
-                                                <div class="form-group col-md-3">
+                                                <div class="form-group col-md-6">
                                                     <label for="inputMedium">Medium</label>
                                                     <select id="inputMedium" name="inputMedium" class="form-control">
                                                         <option value="0" <?php echo ($medium == '0') ? 'selected' : '' ?>>Choose...</option>
@@ -207,28 +342,16 @@ foreach ($q_madrasa_details as $q_madrasa_details_item) {
                                                         <option value="E" <?php echo ($medium == 'English') ? 'selected' : '' ?>>English</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-md-3">
+                                                <div class="form-group col-md-6">
                                                     <label for="inputGrade">Grade </label>
                                                     <input type="text" class="form-control" id="inputGrade" name="inputGrade" placeholder="Grade" value="<?php echo $grade ?>">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputSchool">Current School </label>
-                                                    <input type="text" class="form-control" id="inputSchool" name="inputSchool" placeholder="School" value="<?php echo $school ?>">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputGuardianName">Name of the Guardian </label>
-                                                <input type="text" class="form-control" id="inputGuardianName" name="inputGuardianName" placeholder="Name of the Guardian" value="<?php echo $guard_name ?>">
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="inputGuardianTP">Guardian - Contact Number </label>
-                                                    <input type="text" class="form-control" id="inputGuardianTP" name="inputGuardianTP"  value="<?php echo $guard_tp ?>">
+                                                    <label for="inputAdmissionDate">Date of Admission </label>
+                                                    <input type="date" class="form-control" id="inputAdmissionDate" name="inputAdmissionDate" value="<?php echo $start_date ?>" readonly>
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputAdmissionDate">Date of Admission </label>
-                                                <input type="date" class="form-control" id="inputAdmissionDate" name="inputAdmissionDate" value="<?php echo $start_date ?>">
                                             </div>
                                             <div class=" form-group">
                                                 <label for="inputNotes">Notes </label>

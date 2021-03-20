@@ -318,8 +318,14 @@ $(document).ready(function () {
   // });
   // datatables
   $(document).ready(function () {
-    $('.table').DataTable();
+    $('.table').DataTable({
+      language: {
+        search: "_INPUT_",
+        searchPlaceholder: "Search..."
+    }
+    });
     // $('.dataTables_length').addClass('bs-select');
+
   });
 
   //   form_nikkah-details-form.php
@@ -1074,13 +1080,9 @@ $(document).ready(function () {
   $("#TBlistDetails").change(function (e) {
     e.preventDefault();
     var TBlistDetails = $("#TBlistDetails").val();
-    if (TBlistDetails == "present") {
-      $("#previousTB").hide();
-      $("#presentTB").show();
-    } else if (TBlistDetails == "previous") {
-      $("#presentTB").hide();
-      $("#previousTB").show();
-    }
+    window.location.href =
+      "preview_trustee_board-details.php?action=" + TBlistDetails;
+    
   });
 
   // preview_friday-collection.php
@@ -1134,10 +1136,38 @@ $(document).ready(function () {
   // submit data to update and terminate a row
   $(".terminate_row_trustee").click(function () {
     var id = $(this).attr("id");
-    var data_bundle = "id=" + id + "&action=terminate";
+    var index = "";
+    var subdivision = "";
+
+    $("#inputSubdivision").change(function (e) { 
+      e.preventDefault();
+      var index = $("#inputIndexNo").val();
+      var subdivision = $("#inputSubdivision").val();
+      var data = "action=find_record&index="+index+"&subdivision="+subdivision;
+      $.ajax({
+        type: "post",
+        url: "handlers/trustee_board_form_handler.php",
+        data: data,
+        success: function (response) {
+          var result_array = response.split("+");
+          $("#inputName").val(result_array[0]);
+          $("#inputTP").val(result_array[1]);
+          $("#inputJob").val(result_array[2]);
+          $("#inputSalary").val(result_array[3]);
+          $("#inputAddress").val(result_array[4]);
+        }
+      });
+    });
 
     $("#del").click(function (e) {
+
       e.preventDefault();
+      var name = $("#inputName").val();
+      var tp = $("#inputTP").val();
+      var job = $("#inputJob").val();
+      var salary = $("#inputSalary").val();
+      var address = $("#inputAddress").val();
+      var data_bundle = "id=" + id + "&action=terminate&name="+name+"&tp="+tp+"&job="+job+"&salary="+salary+"&address="+address+"&index="+index+"&subdivision="+subdivision;
       $.ajax({
         type: "post",
         url: "handlers/trustee_board_form_handler.php",
@@ -1855,6 +1885,15 @@ $(document).ready(function () {
     } else {
     }
   })();
+
+  if (TBlistDetails == "present") {
+    $("#presentTB").show();
+    $("#previousTB").hide();
+  }
+  else if (TBlistDetails == "previous") {
+    $("#previousTB").show();
+    $("#presentTB").hide();
+  }
 
   $("input[type=radio][name=inputjobYN]").change(function (e) { 
     e.preventDefault();

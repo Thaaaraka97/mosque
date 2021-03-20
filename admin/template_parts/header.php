@@ -40,4 +40,11 @@ include 'include/data_update_controller.php';
     var villageraction = "";
     var action = "";
     var fridaycollectionaction = "";
+    var av_isGuardian = "";
+    var av_job = "";
+    var av_married = "";
+    var av_madChild_status = "";
+    var av_scholStatus = "";
+    var is_student = "";
+    var av_eduQual = "";
 </script>

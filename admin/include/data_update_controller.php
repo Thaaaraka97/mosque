@@ -2,6 +2,7 @@
 // include "include/db-connection.php";
 $database = new databases();
 $URL = "forms.php?updated=1";
+date_default_timezone_set("Asia/Calcutta");
 $today = date('Y-m-d');
 
 // update data in tbl_janazadetails
@@ -16,6 +17,8 @@ if (isset($_POST['editJanaza'])) {
         'jd_relativeIndex' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
         'jd_relativeRelationship' => mysqli_real_escape_string($database->con, $_POST['inputRelationship']),
         'jd_relativeSubDivision' => mysqli_real_escape_string($database->con, $_POST['inputGSubdivision']),
+        'jd_informedDate' => mysqli_real_escape_string($database->con, $_POST['inputInformDate']),
+        'jd_informedTime' => mysqli_real_escape_string($database->con, $_POST['inputInformTime']),
         'jd_specialNotes' => mysqli_real_escape_string($database->con, $_POST['inputNotes'])
     );
     $where_condition = array(
@@ -36,16 +39,67 @@ if (isset($_POST['editNikkah'])) {
     } else {
         $inputMarriedStatus = 0;
     }
-    if ($_POST["inputGroomGuardianIndex"] != "") {
-        $inputGroomGuardianIndex = $_POST["inputGroomGuardianIndex"];
-    } else {
+    if (isset($_POST["inputGroomGuardianIndex"])) {
+        if ($_POST["inputGroomGuardianIndex"] != "") {
+            $inputGroomGuardianIndex = $_POST["inputGroomGuardianIndex"];
+        } else {
+            $inputGroomGuardianIndex = 0;
+        }
+    }
+    else {
         $inputGroomGuardianIndex = 0;
     }
-    if ($_POST["inputBrideGuardianIndex"] != "") {
-        $inputBrideGuardianIndex = $_POST["inputBrideGuardianIndex"];
-    } else {
+    if (isset($_POST["inputBrideGuardianIndex"])) {
+        if ($_POST["inputBrideGuardianIndex"] != "") {
+            $inputBrideGuardianIndex = $_POST["inputBrideGuardianIndex"];
+        } else {
+            $inputBrideGuardianIndex = 0;
+        }
+    }
+    else {
         $inputBrideGuardianIndex = 0;
     }
+    if (isset($_POST["inputGroomMosque"])) {
+        if ($_POST["inputGroomMosque"] != "") {
+            $inputGroomMosque = $_POST["inputGroomMosque"];
+        } else {
+            $inputGroomMosque = 0;
+        }
+    }
+    else {
+        $inputGroomMosque = 0;
+    }
+    if (isset($_POST["inputGroomMosqueAddress"])) {
+        if ($_POST["inputGroomMosqueAddress"] != "") {
+            $inputGroomMosqueAddress = $_POST["inputGroomMosqueAddress"];
+        } else {
+            $inputGroomMosqueAddress = 0;
+        }
+    }
+    else {
+        $inputGroomMosqueAddress = 0;
+    }
+    if (isset($_POST["inputBrideMosque"])) {
+        if ($_POST["inputBrideMosque"] != "") {
+            $inputBrideMosque = $_POST["inputBrideMosque"];
+        } else {
+            $inputBrideMosque = 0;
+        }
+    }
+    else {
+        $inputBrideMosque = 0;
+    }
+    if (isset($_POST["inputBrideMosqueAddress"])) {
+        if ($_POST["inputBrideMosqueAddress"] != "") {
+            $inputBrideMosqueAddress = $_POST["inputBrideMosqueAddress"];
+        } else {
+            $inputBrideMosqueAddress = 0;
+        }
+    }
+    else {
+        $inputBrideMosqueAddress = 0;
+    }
+    
     if ($_POST["inputMarriageDate"] != "") {
         $inputMarriageDate = $_POST["inputMarriageDate"];
     } else {
@@ -56,30 +110,30 @@ if (isset($_POST['editNikkah'])) {
         // 'nd_groomVillage' => mysqli_real_escape_string($database->con, $_POST['inputGroomVillage']),
         // 'nd_groomIndex' => mysqli_real_escape_string($database->con, $inputIndexNo),
         // 'nd_groomSubDivision' => mysqli_real_escape_string($database->con, $_POST['inputGroomSubdivision']),
-        // 'nd_groomName' => mysqli_real_escape_string($database->con, $_POST['inputGroomName']),
-        // 'nd_groomDOB' => mysqli_real_escape_string($database->con, $_POST['inputGroomBirthday']),
-        // 'nd_groomNIC' => mysqli_real_escape_string($database->con, $_POST['inputGroomNIC']),
-        // 'nd_groomAge' => mysqli_real_escape_string($database->con, $_POST['inputGroomAge']),
-        // 'nd_groomTP' => mysqli_real_escape_string($database->con, $_POST['inputGroomTP']),
+        'nd_groomName' => mysqli_real_escape_string($database->con, $_POST['inputGroomName']),
+        'nd_groomDOB' => mysqli_real_escape_string($database->con, $_POST['inputGroomBirthday']),
+        'nd_groomNIC' => mysqli_real_escape_string($database->con, $_POST['inputGroomNIC']),
+        'nd_groomAge' => mysqli_real_escape_string($database->con, $_POST['inputGroomAge']),
+        'nd_groomTP' => mysqli_real_escape_string($database->con, $_POST['inputGroomTP']),
         'nd_groomPrevMarried' => mysqli_real_escape_string($database->con, $inputMarriedStatus),
         'nd_groomAddress' => mysqli_real_escape_string($database->con, $_POST['inputGroomAddress']),
         'nd_groomGuardName' => mysqli_real_escape_string($database->con, $_POST['inputGroomGuardianName']),
         'nd_groomGuardIndex' => mysqli_real_escape_string($database->con, $inputGroomGuardianIndex),
-        'nd_groomMosqueName' => mysqli_real_escape_string($database->con, $_POST['inputGroomMosque']),
-        'nd_groomMosqueAddress' => mysqli_real_escape_string($database->con, $_POST['inputGroomMosqueAddress']),
+        'nd_groomMosqueName' => mysqli_real_escape_string($database->con, $inputGroomMosque),
+        'nd_groomMosqueAddress' => mysqli_real_escape_string($database->con, $inputGroomMosqueAddress),
         // 'nd_brideVillage' => mysqli_real_escape_string($database->con, $_POST['inputBrideVillage']),
         // 'nd_brideIndex' => mysqli_real_escape_string($database->con, $inputBrideIndexNo),
         // 'nd_brideSubDivision' => mysqli_real_escape_string($database->con, $_POST['inputBrideSubdivision']),
-        // 'nd_brideName' => mysqli_real_escape_string($database->con, $_POST['inputBrideName']),
-        // 'nd_brideDOB' => mysqli_real_escape_string($database->con, $_POST['inpuBridetBirthday']),
-        // 'nd_brideNIC' => mysqli_real_escape_string($database->con, $_POST['inputBrideNIC']),
-        // 'nd_brideAge' => mysqli_real_escape_string($database->con, $_POST['inputBrideAge']),
-        // 'nd_brideTP' => mysqli_real_escape_string($database->con, $_POST['inputBrideTP']),
-        // 'nd_brideAddress' => mysqli_real_escape_string($database->con, $_POST['inputBrideAddress']),
+        'nd_brideName' => mysqli_real_escape_string($database->con, $_POST['inputBrideName']),
+        'nd_brideDOB' => mysqli_real_escape_string($database->con, $_POST['inpuBridetBirthday']),
+        'nd_brideNIC' => mysqli_real_escape_string($database->con, $_POST['inputBrideNIC']),
+        'nd_brideAge' => mysqli_real_escape_string($database->con, $_POST['inputBrideAge']),
+        'nd_brideTP' => mysqli_real_escape_string($database->con, $_POST['inputBrideTP']),
+        'nd_brideAddress' => mysqli_real_escape_string($database->con, $_POST['inputBrideAddress']),
         'nd_brideGuardName' => mysqli_real_escape_string($database->con, $_POST['inputBrideGuardianName']),
         'nd_brideGuardIndex' => mysqli_real_escape_string($database->con, $inputBrideGuardianIndex),
-        'nd_brideMosqueName' => mysqli_real_escape_string($database->con, $_POST['inputBrideMosque']),
-        'nd_brideMosqueAddress' => mysqli_real_escape_string($database->con, $_POST['inputBrideMosqueAddress']),
+        'nd_brideMosqueName' => mysqli_real_escape_string($database->con, $inputBrideMosque),
+        'nd_brideMosqueAddress' => mysqli_real_escape_string($database->con, $inputBrideMosqueAddress),
         'nd_marriageVenue' => mysqli_real_escape_string($database->con, $_POST['inputVenue']),
         'nd_marriageDate' => mysqli_real_escape_string($database->con, $inputMarriageDate),
         'nd_donation' => mysqli_real_escape_string($database->con, $_POST['inputdonation'])
@@ -88,7 +142,7 @@ if (isset($_POST['editNikkah'])) {
         'nd_nikkahId'     =>     $_POST["id"]
     );
     if ($database->update("tbl_nikkahdetails", $update_data, $where_condition)) {
-        $URL = "preview_nikkah-details.php?updated=1";
+        $URL = "preview_nikkah-details.php?edited=1";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
@@ -153,7 +207,7 @@ if (isset($_POST['editQuran'])) {
         'qm_qmadrasaId'     =>     $_POST["id"]
     );
     if ($database->update("tbl_quranmadrasadetails", $update_data, $where_condition)) {
-        $URL = "preview_q_madrasa-details.php?updated=1";
+        $URL = "preview_q_madrasa-details.php?edited=1";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }

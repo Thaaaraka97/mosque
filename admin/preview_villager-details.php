@@ -121,8 +121,6 @@ if (isset($_GET['action'])) {
                                             </td>
                                         </tr>
                                     </table>
-
-
                                 </div>
                             </div>
                         </div>

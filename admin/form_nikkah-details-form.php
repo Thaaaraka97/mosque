@@ -142,6 +142,7 @@ $database = new databases();
                         <textarea rows="5" class="form-control" id="inputGroomAddress" name="inputGroomAddress" required></textarea>
                       </div>
                       <p class="card-description"> Details of the Guardian </p>
+                      <hr>
                       <div class="form-group">
                         <label for="inputGroomGuardianName">Name of the Guardian </label>
                         <input type="text" class="form-control" id="inputGroomGuardianName" name="inputGroomGuardianName" placeholder="Name of the Guardian" required>
@@ -152,6 +153,7 @@ $database = new databases();
                           <input type="text" class="form-control" id="inputGroomGuardianIndex" name="inputGroomGuardianIndex" placeholder="Index No">
                         </div>
                       </div>
+                      <hr>
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputVenue"> Venue of the marriage </label>
@@ -164,6 +166,7 @@ $database = new databases();
                       </div>
                       <div id="groomMosqueDetails">
                         <p class="card-description"> Details of the Mosque </p>
+                        <hr>
                         <div class="form-group">
                           <label for="inputGroomMosque">Name of the Mosque </label>
                           <input type="text" class="form-control" id="inputGroomMosque" name="inputGroomMosque" placeholder="Mosque">
@@ -255,6 +258,7 @@ $database = new databases();
                         <textarea rows="5" class="form-control" id="inputBrideAddress" name="inputBrideAddress" required></textarea>
                       </div>
                       <p class="card-description"> Details of the Guardian </p>
+                      <hr>
                       <div class="form-group">
                         <label for="inputBrideGuardianName"> Name of the Guardian </label>
                         <input type="text" class="form-control" id="inputBrideGuardianName" name="inputBrideGuardianName" placeholder="Name of the Guardian" required>
@@ -267,6 +271,7 @@ $database = new databases();
                       </div>
                       <div id="brideMosqueDetails">
                         <p class="card-description"> Details of the Mosque </p>
+                        <hr>
                         <div class="form-group">
                           <label for="inputBrideMosque">Name of the Mosque </label>
                           <input type="text" class="form-control" id="inputBrideMosque" name="inputBrideMosque" placeholder="Mosque">

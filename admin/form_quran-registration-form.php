@@ -114,26 +114,6 @@ $database = new databases();
                       <label for="inputAddress"> Address </label>
                       <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress"></textarea>
                     </div>
-                    <hr>
-                    <div class="form-row">
-                      <div class="form-group col-md-3">
-                        <label for="inputMedium">Medium</label>
-                        <select id="inputMedium" name="inputMedium" class="form-control">
-                          <option value="0" selected>Choose...</option>
-                          <option value="T">Tamil</option>
-                          <option value="S">Sinhala</option>
-                          <option value="E">English</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-3">
-                        <label for="inputGrade">Grade </label>
-                        <input type="text" class="form-control" id="inputGrade" name="inputGrade" placeholder="Grade">
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label for="inputSchool">Current School </label>
-                        <input type="text" class="form-control" id="inputSchool" name="inputSchool" placeholder="School">
-                      </div>
-                    </div>
                     <div class="form-group">
                       <label for="inputGuardianName"> Guardian - Name </label>
                       <input type="text" class="form-control" id="inputGuardianName" name="inputGuardianName" placeholder="Name of the Guardian">
@@ -142,6 +122,26 @@ $database = new databases();
                       <div class="form-group col-md-6">
                         <label for="inputGuardianTP">Guardian - Contact Number </label>
                         <input type="text" class="form-control" id="inputGuardianTP" name="inputGuardianTP" placeholder="07xxxxxxxx">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputSchool">Current School </label>
+                        <input type="text" class="form-control" id="inputSchool" name="inputSchool" placeholder="School">
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputMedium">Medium</label>
+                        <select id="inputMedium" name="inputMedium" class="form-control">
+                          <option value="0" selected>Choose...</option>
+                          <option value="T">Tamil</option>
+                          <option value="S">Sinhala</option>
+                          <option value="E">English</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputGrade">Grade </label>
+                        <input type="text" class="form-control" id="inputGrade" name="inputGrade" placeholder="Grade">
                       </div>
                     </div>
                     <div class="form-row">
