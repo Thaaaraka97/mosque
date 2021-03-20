@@ -88,7 +88,7 @@ if (isset($_GET['edited'])) {
                                                             <td>" . $rental_income_details_item['ri_telephone'] . "</td>
                                                             <td>" . $rental_income_details_item['ri_payment'] . "</td>
                                                             <td>
-                                                                <a href='preview_new-rental-registration_step-2.php?id=" . $id . "&name=". $name ."&address=". $address ."&action=view&view=rental_income' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
+                                                                <a href='preview_new-rental-registration_step-2.php?id=" . $id . "&name=". $name ."&address=". $address ."&action=view&view=rental_income' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                             </td>
                                                         </tr>
                                                          ";

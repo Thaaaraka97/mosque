@@ -76,7 +76,7 @@ if (isset($_GET['edited'])) {
                                                             <td>" . $rental_details_item['rr_name'] . "</td>
                                                             <td>" . $rental_details_item['rr_telephone'] . "</td>
                                                             <td>
-                                                                <a href='preview_new-rental-registration_step-2.php?id=" . $id . "&action=view&view=rental_status' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
+                                                                <a href='preview_new-rental-registration_step-2.php?id=" . $id . "&action=view&view=rental_status' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                             </td>
                                                         </tr>
                                                          ";

@@ -100,8 +100,8 @@ elseif (isset($_GET['edited'])) {
                                                             <td>" . $name . "</td>
                                                             <td>" . $address . "</td>
                                                             <td>
-                                                                <a href='preview_non-mahalla-saandha-registration_step-2.php?action=view&id=" . $id . "' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
-                                                                <a href='' id ='".$id."' class='item edit_nonmahalla_saandha_reg' data-toggle='modal' data-target='#updateRecord'><i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'></i></a>
+                                                                <a href='preview_non-mahalla-saandha-registration_step-2.php?action=view&id=" . $id . "' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                <a href='' id ='".$id."' class='item edit_nonmahalla_saandha_reg' data-toggle='modal' data-target='#updateRecord'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
                                                             </td>
                                                         </tr>
                                                          ";

@@ -87,7 +87,7 @@ if (isset($_GET['inserted'])) {
                                                             <td>" . $type . "</td>
                                                             <td>" . $address . "</td>
                                                             <td>
-                                                                <a href='' id ='" . $id . "' class='item delete_place' data-toggle='modal' data-target='#deleteRecord'><i class='fa fa-trash fa-2x' aria-hidden='true'></i></a>
+                                                                <a href='' id ='" . $id . "' class='item delete_place' data-toggle='modal' data-target='#deleteRecord'><i class='fa fa-trash fa-lg' aria-hidden='true'></i></a>
                                                             </td>
                                                         </tr>
                                                          ";

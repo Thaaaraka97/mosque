@@ -106,8 +106,8 @@ if (isset($_GET['action'])) {
                                                             <td>" . $trustee_board_details_item['tb_name'] . "</td>
                                                             <td>" . $trustee_board_details_item['tb_telephone'] . "</td>
                                                             <td>
-                                                                <a href='preview_trustee_board-details_step-2.php?id=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
-                                                                <a href='preview_trustee_board-details_step-2.php?id=" . $id . "&action=edit&designation=" . $designation . "' class='item'><i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'></i></a>
+                                                                <a href='preview_trustee_board-details_step-2.php?id=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                <a href='preview_trustee_board-details_step-2.php?id=" . $id . "&action=edit&designation=" . $designation . "' class='item'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
                                                             </td>
                                                             <td>";
                                                             if ($isActive) {
@@ -157,8 +157,8 @@ if (isset($_GET['action'])) {
                                                             <td>" . $trustee_board_details2_item['tb_name'] . "</td>
                                                             <td>" . $trustee_board_details2_item['tb_telephone'] . "</td>
                                                             <td>
-                                                                <a href='preview_trustee_board-details_step-2.php?id=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
-                                                                <a href='preview_trustee_board-details_step-2.php?id=" . $id . "&action=edit&designation=" . $designation . "' class='item'><i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'></i></a>
+                                                                <a href='preview_trustee_board-details_step-2.php?id=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                <a href='preview_trustee_board-details_step-2.php?id=" . $id . "&action=edit&designation=" . $designation . "' class='item'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
                                                             </td>
                                                         </tr>
                                                          ";
@@ -203,9 +203,9 @@ if (isset($_GET['action'])) {
                                                     //         <td>" . $record . "</td>
                                                     //         <td>";
                                                     //     if ($elected_ID == $tb_ID) {
-                                                    //         echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=editable' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>";
+                                                    //         echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=editable' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>";
                                                     //     } else {
-                                                    //         echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=noneditable' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>";
+                                                    //         echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=noneditable' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>";
                                                     //     }
                                                     //     echo "
                                                     //         </td>

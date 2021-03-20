@@ -293,6 +293,7 @@ table.dataTable tbody tr.even {
 .table-data2.table tbody td {
   padding: 10px 5px;
   line-height: 4;
+  font-size: 12px;
 }
 table.dataTable {
   border-spacing: 0px 5px !important;

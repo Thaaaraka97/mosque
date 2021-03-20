@@ -91,7 +91,7 @@ if (isset($_GET['action'])) {
                                                                     <td>" . $donation_details_item['tbd_notes'] . "</td>
                                                                     <td>" . $donation_details_item['tbd_date'] . "</td>
                                                                     <td>
-                                                                        <a href='preview_villager-details_step-2.php?index=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
+                                                                        <a href='preview_villager-details_step-2.php?index=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                                     </td>
                                                                 </tr>
                                                                  ";
@@ -106,7 +106,7 @@ if (isset($_GET['action'])) {
                                                                     <td>" . $donation_details_item2['d_notes'] . "</td>
                                                                     <td>" . $donation_details_item2['d_date'] . "</td>
                                                                     <td>
-                                                                        <a href='preview_villager-details_step-2.php?index=" . $id2 . "&action=view' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
+                                                                        <a href='preview_villager-details_step-2.php?index=" . $id2 . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                                     </td>
                                                                 </tr>
                                                                  ";
@@ -121,7 +121,7 @@ if (isset($_GET['action'])) {
                                                                     <td>" . $donation_details_item3['d_notes'] . "</td>
                                                                     <td>" . $donation_details_item3['d_date'] . "</td>
                                                                     <td>
-                                                                        <a href='preview_villager-details_step-2.php?index=" . $id3 . "&action=view' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
+                                                                        <a href='preview_villager-details_step-2.php?index=" . $id3 . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                                     </td>
                                                                 </tr>
                                                                  ";
@@ -156,7 +156,7 @@ if (isset($_GET['action'])) {
                                                                     <td>" . $donation_details_item['tbd_notes'] . "</td>
                                                                     <td>" . $donation_details_item['tbd_date'] . "</td>
                                                                     <td>
-                                                                        <a href='preview_villager-details_step-2.php?index=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
+                                                                        <a href='preview_villager-details_step-2.php?index=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                                     </td>
                                                                 </tr>
                                                                  ";
@@ -190,7 +190,7 @@ if (isset($_GET['action'])) {
                                                                     <td>" . $donation_details_item2['d_notes'] . "</td>
                                                                     <td>" . $donation_details_item2['d_date'] . "</td>
                                                                     <td>
-                                                                        <a href='preview_villager-details_step-2.php?index=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
+                                                                        <a href='preview_villager-details_step-2.php?index=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                                     </td>
                                                                 </tr>
                                                                  ";
@@ -225,7 +225,7 @@ if (isset($_GET['action'])) {
                                                                 <td>" . $donation_details_item3['d_notes'] . "</td>
                                                                 <td>" . $donation_details_item3['d_date'] . "</td>
                                                                 <td>
-                                                                    <a href='preview_villager-details_step-2.php?index=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-2x' aria-hidden='true'></i></a>
+                                                                    <a href='preview_villager-details_step-2.php?index=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                                 </td>
                                                             </tr>
                                                              ";
