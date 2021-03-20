@@ -52,17 +52,51 @@ if (isset($_GET['edited'])) {
                     </div>";
                     }
                     ?>
-                    <div class="page-header">
-                        <h3 class="page-title"> Trustee Board History </h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 grid-margin stretch-card">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> Trusteeboard History Preview </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-10 grid-margin stretch-card">
+                        <div class="col-md-8 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Trustee Board History Preview </h4>
-                                        <div class="mt-5">
-                                            <table class="display datatable">
+                                        <div>
+                                        <div class="table-responsive table-responsive-data2">
+                                                <div class="sorting">
+                                                    <div class="row">
+                                                        <div class="form-group col-md-1">
+                                                            <label for="sortvillagersubdivision">Sort By</label>
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <select name="sortvillagersubdivision" id="sortvillagersubdivision" class="form-control">
+                                                                <option value="0" selected>Time</option>
+                                                                <option value="widow" <?= $action == 'widow' ? ' selected="selected"' : ''; ?>>Widow Details</option>
+                                                                <option value="divorse" <?= $action == 'divorse' ? ' selected="selected"' : ''; ?>>Divorsed Details</option>
+                                                                <option value="madrasa" <?= $action == 'madrasa' ? ' selected="selected"' : ''; ?>>Madrasa Children Details</option>
+                                                                <option value="orphan" <?= $action == 'orphan' ? ' selected="selected"' : ''; ?>>Orphan Children Details</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <table class="table table-data2">
                                                 <thead>
                                                     <tr>
                                                         <th>Trusteeboard ID</th>
@@ -87,6 +121,9 @@ if (isset($_GET['edited'])) {
                                                         $id = $trustee_board_history_item['th_id'];
                                                         $elected_ID = $trustee_board_history_item['th_electedYYMM'];
                                                         $record = $trustee_board_history_item['th_record'];
+                                                        if ($record == "") {
+                                                            $record = "-";
+                                                        }
                                                         echo "
                                                          <tr>
                                                             <td>" . $elected_ID . "</td>

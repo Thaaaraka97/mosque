@@ -48,13 +48,6 @@ foreach ($rental_registration_details as $rental_registration_details_item) {
     $rr_lease = $rental_registration_details_item['rr_lease'];
     $notes = $rental_registration_details_item['rr_notes'];
     $rr_leasePayment = $rental_registration_details_item['rr_leasePayment'];
-
-    if ($index == "0") {
-        $index = "-";
-    }
-    if ($subdivision == "0") {
-        $subdivision = "-";
-    }
 }
 
 
@@ -89,96 +82,223 @@ foreach ($rental_registration_details as $rental_registration_details_item) {
                         <?php
                         if ($view == "rental_income") {
                             $url = "preview_rental-incomes.php";
-                            echo "<h3 class='page-title'> Rental Income Details </h3>";
+                            echo "<h3 class='page-title'>  </h3>";
                         } else {
                             $url = "preview_new-rental-registration.php";
-                            echo "<h3 class='page-title'> Rental Status Details </h3>";
+                            echo "<h3 class='page-title'>  </h3>";
                         }
                         ?>
-
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="<?php echo $server_name ?><?php  echo $url ?>">Details Preview</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo $server_name ?><?php echo $url ?>">Details Preview</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Details Preview Step-2</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-8 grid-margin stretch-card">
-                            <div class="card shadow">
-                                <div class="card-body">
-                                    <div class="mt-5 text-dark col-auto" id="viewDetails">
-                                        <h4 class="card-title"> Details Preview Step-2 </h4>
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <?php
+                                                    if ($view == "rental_income") {
+                                                        echo "<h3 class='card-title top'> Rental Income Details </h3>";
+                                                    } else {
+                                                        echo "<h3 class='card-title top'> Rental Status Details </h3>";
+                                                    }
+                                                    ?>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-dark col-auto" id="viewDetails">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Personal Details </h4>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Name</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $name ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Contact Number</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $tp ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        if ($index != "0") {
+                                            echo "
+                                            <div class='preview-list'>
+                                                <div class='preview-item border-bottom'>
+                                                    <div class='preview-item-content d-sm-flex flex-grow'>
+                                                        <div class='flex-grow'>
+                                                            <h6 class='preview-subject'>Index</h6>
+                                                        </div>
+                                                        <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                            <p class='text-muted'>$index</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='preview-list'>
+                                                <div class='preview-item border-bottom'>
+                                                    <div class='preview-item-content d-sm-flex flex-grow'>
+                                                        <div class='flex-grow'>
+                                                            <h6 class='preview-subject'>Sub Division</h6>
+                                                        </div>
+                                                        <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                            <p class='text-muted'>$subdivision</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            ";
+                                        }
+                                        ?>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Address</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $address ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Rental Place Details </h4>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Rental Type</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $rr_rentalType ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Duration</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo "From " . $start . " To " . $end ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Downpayment</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $rr_downpayment ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        if ($rr_lease == "1") {
+                                            echo "
+                                                            <div class='preview-list'>
+                                                                <div class='preview-item border-bottom'>
+                                                                    <div class='preview-item-content d-sm-flex flex-grow'>
+                                                                        <div class='flex-grow'>
+                                                                            <h6 class='preview-subject'>Lease Amount</h6>
+                                                                        </div>
+                                                                        <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                            <p class='text-muted'>$rr_leasePayment</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>";
+                                        } else {
+                                            echo "
+                                                            <div class='preview-list'>
+                                                                <div class='preview-item border-bottom'>
+                                                                    <div class='preview-item-content d-sm-flex flex-grow'>
+                                                                        <div class='flex-grow'>
+                                                                            <h6 class='preview-subject'>Monthly Payment</h6>
+                                                                        </div>
+                                                                        <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                            <p class='text-muted'>$rr_monthlyPayment</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            ";
+                                        }
+                                        ?>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Notes</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $notes ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                        <table class="table table-responsive previewTable">
-                                            <tr>
-                                                <th>Name</th>
-                                                <td> : </td>
-                                                <td><?php echo $name ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Contact Number</th>
-                                                <td> : </td>
-                                                <td><?php echo $tp ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Index</th>
-                                                <td> : </td>
-                                                <td><?php echo $index ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Sub Division</th>
-                                                <td> : </td>
-                                                <td><?php echo $subdivision ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Address</th>
-                                                <td> : </td>
-                                                <td><?php echo $address ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Rental Type</th>
-                                                <td> : </td>
-                                                <td><?php echo $rr_rentalType ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Duration</th>
-                                                <td> : </td>
-                                                <td><?php echo $start . " - " . $end ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Downpayment</th>
-                                                <td> : </td>
-                                                <td><?php echo $rr_downpayment ?></td>
-                                            </tr>
-                                            <?php
-                                            if ($rr_lease == "1") {
-                                                echo "
-                                                <tr>
-                                                    <th>Salary</th>
-                                                    <td> : </td>
-                                                    <td>" . $rr_leasePayment . "</td>
-                                                </tr>";
-                                            } else {
-                                                echo "
-                                                <tr>
-                                                    <th>Monthly Payment</th>
-                                                    <td> : </td>
-                                                    <td>" . $rr_monthlyPayment . "</td>
-                                                </tr>";
-                                            }
-                                            ?>
-                                            <tr>
-                                                <th>Notes</th>
-                                                <td> : </td>
-                                                <td><?php echo $notes ?></td>
-                                            </tr>
-                                        </table>
-                                        <div class="mt-5">
-                                            <h4 class="card-title"> Payment History </h4>
-                                            <table class="display datatable">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Payment History </h4>
+                                        <div class="table-responsive table-responsive-data2 text-center">
+                                            <table class="table table-data2">
                                                 <thead>
-                                                    <tr>
+                                                    <tr class="tr-shadow">
                                                         <th>Date</th>
                                                         <th>Payment</th>
                                                         <th>Notes</th>

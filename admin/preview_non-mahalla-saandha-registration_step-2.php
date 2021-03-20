@@ -54,7 +54,7 @@ foreach ($non_mahalla_reg_details as $non_mahalla_reg_details_item) {
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class='page-title'> Non-Mahalla Saandha Registrations </h3>
+                        <h3 class='page-title'>  </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_non-mahalla-saandha-registration.php">Details Preview</a></li>
@@ -64,33 +64,87 @@ foreach ($non_mahalla_reg_details as $non_mahalla_reg_details_item) {
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-8 grid-margin stretch-card">
-                            <div class="card shadow">
-                                <div class="card-body">
-                                    <div class="mt-5 text-dark col-auto" id="viewDetails">
-                                        <h4 class="card-title"> Details Preview Step-2 </h4>
-
-                                        <table class="table table-responsive previewTable">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
                                         <tr>
-                                                <th>Name</th>
-                                                <td> : </td>
-                                                <td><?php echo $name ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Contact Number</th>
-                                                <td> : </td>
-                                                <td><?php echo $tp ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Address</th>
-                                                <td> : </td>
-                                                <td><?php echo $address ?></td>
-                                            </tr>
-                                        </table>
-                                        <div class="mt-5">
-                                            <h4 class="card-title"> Payment History </h4>
-                                            <table class="display datatable">
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <?php
+                                                    if ($action == "view") {
+                                                        echo "<h3 class='card-title top'> Non-Mahalla Saandha Registrations </h3>";
+                                                    }
+                                                    if ($action == "edit") {
+                                                        echo "<h3 class='card-title top'> Non-Mahalla Saandha Registrations (Edit) </h3>";
+                                                    }
+                                                    ?>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-dark col-auto" id="viewDetails">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Person Details </h4>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Name</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $name ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Contact Number</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $tp ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Address</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $address ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Payment History </h4>
+                                        <div class="table-responsive table-responsive-data2 text-center">
+                                            <table class="table table-data2">
                                                 <thead>
-                                                    <tr>
+                                                    <tr class="tr-shadow">
                                                         <th>Date</th>
                                                         <th>Payment</th>
                                                     </tr>

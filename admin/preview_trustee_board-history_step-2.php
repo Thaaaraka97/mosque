@@ -12,8 +12,7 @@ if (isset($_GET['action'])) {
 
 if (isset($_GET['deleted'])) {
     $message = "Record successfully Deleted..!";
-}
-elseif (isset($_GET['edited'])) {
+} elseif (isset($_GET['edited'])) {
     $message = "Record successfully Updated..!";
 }
 
@@ -41,7 +40,6 @@ foreach ($trustee_board_history as $trustee_board_history_item) {
     var villageraction = "";
     var donationaction = "";
     var fridaycollectionaction = "";
-
 </script>
 
 
@@ -63,7 +61,7 @@ foreach ($trustee_board_history as $trustee_board_history_item) {
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                <?php
+                    <?php
                     if (isset($_GET['deleted'])) {
                         echo "
                         <div class='alert alert-danger alert-dismissible' role='alert'>" . $message . "
@@ -71,8 +69,7 @@ foreach ($trustee_board_history as $trustee_board_history_item) {
                                 <span aria-hidden='true'>&times;</span>
                             </button>
                         </div>";
-                    }
-                    elseif (isset($_GET['edited'])) {
+                    } elseif (isset($_GET['edited'])) {
                         echo "
                         <div class='alert alert-warning alert-dismissible' role='alert'>" . $message . "
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -82,7 +79,7 @@ foreach ($trustee_board_history as $trustee_board_history_item) {
                     }
                     ?>
                     <div class="page-header">
-                        <h3 class="page-title"> Trustee Board History </h3>
+                        <h3 class="page-title"> </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_trustee_board-history.php">Details Preview</a></li>
@@ -92,45 +89,84 @@ foreach ($trustee_board_history as $trustee_board_history_item) {
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-8 grid-margin stretch-card">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> Trusteeboard History Preview </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <div class="mt-5 text-dark col-auto " id="">
-                                        <h4 class="card-title"> Details Preview Step-2 </h4>
-                                        <table class="table table-responsive previewTable">
-                                            <tr>
-                                                <th>Trusteeboard ID</th>
-                                                <td> : </td>
-                                                <td><?php echo $elected_ID ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Details</th>
-                                                <td> : </td>
-                                                <td><?php echo $record ?></td>
-                                            </tr>
-                                        </table>
-                                        <div id="editable">
-                                            <div class="form-group">
-                                                <label for="inputDetails"> Enter Details </label>
-                                                <textarea rows="5" class="form-control" id="inputDetails" name="inputDetails"></textarea>
-                                            </div>
-                                            <div class="text-center">
-                                                <button class="btn btn-primary btn-lg" id="addTBHistory" name="addTBHistory">Enter Details</button>
+                                    <div class="preview-list">
+                                        <div class="preview-item border-bottom">
+                                            <div class="preview-item-content d-sm-flex flex-grow">
+                                                <div class="flex-grow">
+                                                    <h6 class="preview-subject">Trusteeboard ID</h6>
+                                                </div>
+                                                <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                    <p class="text-muted"><?php echo $elected_ID ?></p>
+                                                </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="preview-list">
+                                        <div class="preview-item border-bottom">
+                                            <div class="preview-item-content d-sm-flex flex-grow">
+                                                <div class="flex-grow">
+                                                    <h6 class="preview-subject">Details</h6>
+                                                </div>
+                                                <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                    <p class="text-muted"><?php echo $record ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div id="editable">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow top-card">
+                                    <div class="card-body top-card">
+                                        <div class="form-group">
+                                            <label for="inputDetails"> Enter Details </label>
+                                            <textarea rows="5" class="form-control" id="inputDetails" name="inputDetails"></textarea>
+                                        </div>
+                                        <div class="text-center">
+                                            <button class="btn btn-primary btn-lg" id="addTBHistory" name="addTBHistory">Enter Details</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- content-wrapper ends -->
-
-                <!-- partial -->
             </div>
-            <!-- main-panel ends -->
+            <!-- content-wrapper ends -->
+
+            <!-- partial -->
         </div>
-        <!-- page-body-wrapper ends -->
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
 

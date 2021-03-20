@@ -52,39 +52,56 @@ if (isset($_GET['inserted'])) {
                     </div>";
                     }
                     ?>
-                    <div class="page-header">
-                        <h3 class="page-title"> Non-Mahalla Saandha Collections </h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 grid-margin stretch-card">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> Non-Mahalla Saandha Collection Preview </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Non-Mahalla Saandha Collection Preview </h4>
-                                        <div class="mt-5">
+                                        <div>
+                                            <div class="table-responsive table-responsive-data2">
+                                                <table class="table table-data2">
+                                                    <thead>
+                                                        <tr class="tr-shadow">
+                                                            <th>Date</th>
+                                                            <th>Name</th>
+                                                            <th>Address</th>
+                                                            <th>Amount</th>
+                                                            <th>Contact Number</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
 
-                                            <table class="display datatable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Date</th>
-                                                        <th>Name</th>
-                                                        <th>Address</th>
-                                                        <th>Amount</th>
-                                                        <th>Contact Number</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-
-                                                    $non_mahalla_col = $database->select_data('tbl_nonmahallasaandhacollection');
-                                                    foreach ($non_mahalla_col as $non_mahalla_col_item) {
-                                                        $id = $non_mahalla_col_item['nms_id'];
-                                                        $tp = $non_mahalla_col_item['nms_telephone'];
-                                                        $name = $non_mahalla_col_item['nms_name'];
-                                                        $address = $non_mahalla_col_item['nms_address'];
-                                                        $date = $non_mahalla_col_item['nms_date'];
-                                                        $amount = $non_mahalla_col_item['nms_amount'];
-                                                        echo "
+                                                        $non_mahalla_col = $database->select_data('tbl_nonmahallasaandhacollection');
+                                                        foreach ($non_mahalla_col as $non_mahalla_col_item) {
+                                                            $id = $non_mahalla_col_item['nms_id'];
+                                                            $tp = $non_mahalla_col_item['nms_telephone'];
+                                                            $name = $non_mahalla_col_item['nms_name'];
+                                                            $address = $non_mahalla_col_item['nms_address'];
+                                                            $date = $non_mahalla_col_item['nms_date'];
+                                                            $amount = $non_mahalla_col_item['nms_amount'];
+                                                            echo "
                                                          <tr>
                                                             <td>" . $date . "</td>
                                                             <td>" . $name . "</td>
@@ -93,33 +110,33 @@ if (isset($_GET['inserted'])) {
                                                             <td>" . $tp . "</td>
                                                         </tr>
                                                          ";
-                                                    }
+                                                        }
 
-                                                    ?>
-                                                </tbody>
-                                            </table>
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- content-wrapper ends -->
+
+                    <!-- partial -->
                 </div>
-                <!-- content-wrapper ends -->
-
-                <!-- partial -->
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
+        <!-- container-scroller -->
 
-    <!-- footer -->
-    <?php
-    include "template_parts/footer.php";
-    ?>
-    <!-- End custom js for this page -->
+        <!-- footer -->
+        <?php
+        include "template_parts/footer.php";
+        ?>
+        <!-- End custom js for this page -->
 </body>
 
 </html>

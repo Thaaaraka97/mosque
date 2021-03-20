@@ -53,149 +53,192 @@ if (isset($_GET['edited'])) {
                     </div>";
                     }
                     ?>
-                    <div class="page-header">
-                        <h3 class="page-title"> Pesh Imaam Details </h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 grid-margin stretch-card">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> Salary Details Preview </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-10 grid-margin stretch-card">
+                        <div class="col-md-8 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Pesh Imaam Details Preview </h4>
-                                        <div class="mt-5">
-                                            <table class="display datatable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Status</th>
-                                                        <th>Posting</th>
-                                                        <th>Name</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    // displaying pesh imaam details
-                                                    $pesh_imaam_salary = $database->select_data('tbl_peshimaamsalary');
-                                                    foreach ($pesh_imaam_salary as $pesh_imaam_salary_item) {
-                                                        $imaam_id = "";
-                                                        $id = "";
-                                                        if (isset($pesh_imaam_salary_item['pSal_id']) || isset($pesh_imaam_salary_item['pSal_peshImaamId'])) {
-                                                            $id = $pesh_imaam_salary_item['pSal_id'];
-                                                            $imaam_id = $pesh_imaam_salary_item['pSal_peshImaamId'];
-                                                        }
+                                        <div>
+                                            <div class="table-responsive table-responsive-data2">
+                                                <div class="sorting">
+                                                    <div class="row">
+                                                        <div class="form-group col-md-1">
+                                                            <label for="sortvillagersubdivision">Sort By</label>
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <select name="sortvillagersubdivision" id="sortvillagersubdivision" class="form-control">
+                                                                <option value="0" selected>Posting</option>
+                                                                <option value="widow" <?= $action == 'widow' ? ' selected="selected"' : ''; ?>>Widow Details</option>
+                                                                <option value="divorse" <?= $action == 'divorse' ? ' selected="selected"' : ''; ?>>Divorsed Details</option>
+                                                                <option value="madrasa" <?= $action == 'madrasa' ? ' selected="selected"' : ''; ?>>Madrasa Children Details</option>
+                                                                <option value="orphan" <?= $action == 'orphan' ? ' selected="selected"' : ''; ?>>Orphan Children Details</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <select name="sortvillagersubdivision" id="sortvillagersubdivision" class="form-control">
+                                                                <option value="0" selected>Active Status</option>
+                                                                <option value="widow" <?= $action == 'widow' ? ' selected="selected"' : ''; ?>>Widow Details</option>
+                                                                <option value="divorse" <?= $action == 'divorse' ? ' selected="selected"' : ''; ?>>Divorsed Details</option>
+                                                                <option value="madrasa" <?= $action == 'madrasa' ? ' selected="selected"' : ''; ?>>Madrasa Children Details</option>
+                                                                <option value="orphan" <?= $action == 'orphan' ? ' selected="selected"' : ''; ?>>Orphan Children Details</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <table class="table table-data2">
+                                                    <thead>
+                                                        <tr class="tr-shadow">
+                                                            <th>Status</th>
+                                                            <th>Posting</th>
+                                                            <th>Name</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        // displaying pesh imaam details
+                                                        $pesh_imaam_salary = $database->select_data('tbl_peshimaamsalary');
+                                                        foreach ($pesh_imaam_salary as $pesh_imaam_salary_item) {
+                                                            $imaam_id = "";
+                                                            $id = "";
+                                                            if (isset($pesh_imaam_salary_item['pSal_id']) || isset($pesh_imaam_salary_item['pSal_peshImaamId'])) {
+                                                                $id = $pesh_imaam_salary_item['pSal_id'];
+                                                                $imaam_id = $pesh_imaam_salary_item['pSal_peshImaamId'];
+                                                            }
 
-                                                        $where = array(
-                                                            'pi_peshImaamId'     =>     $imaam_id
-                                                        );
-                                                        $pesh_imaam_details = $database->select_where('tbl_peshimaaamdetails', $where);
-                                                        foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
-                                                            $name = $pesh_imaam_details_item['pi_name'];
-                                                            $isActive = $pesh_imaam_details_item['pi_activestatus'];
+                                                            $where = array(
+                                                                'pi_peshImaamId'     =>     $imaam_id
+                                                            );
+                                                            $pesh_imaam_details = $database->select_where('tbl_peshimaaamdetails', $where);
+                                                            foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
+                                                                $name = $pesh_imaam_details_item['pi_name'];
+                                                                $isActive = $pesh_imaam_details_item['pi_activestatus'];
 
-                                                            echo "
+                                                                echo "
                                                          <tr>
                                                             <td>";
-                                                            if ($isActive) {
-                                                                echo "Active";
-                                                            } else {
-                                                                echo "Not Active";
-                                                            }
-                                                            echo "</td>
+                                                                if ($isActive) {
+                                                                    echo "Active";
+                                                                } else {
+                                                                    echo "Not Active";
+                                                                }
+                                                                echo "</td>
                                                             <td> Pesh Imaam </td>
                                                             <td>" . $name . "</td>
                                                             <td>
-                                                                <a href='preview_pesh_imaam-details_step-2.php?id=" . $imaam_id . "&record_id=". $id ."&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                <a href='preview_pesh_imaam-details_step-2.php?id=" . $imaam_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                             </td>
                                                             
                                                         </tr>
                                                          ";
+                                                            }
                                                         }
-                                                    }
-                                                    // displaying muazzin details
-                                                    $muazzin_salary = $database->select_data('tbl_muazzinsalary');
-                                                    foreach ($muazzin_salary as $muazzin_salary_item) {
-                                                        $muazzin_id = "";
-                                                        $id = "";
-                                                        if (isset($muazzin_salary_item['mSal_id']) || isset($muazzin_salary_item['mSal_muazzinId'])) {
-                                                            $id = $muazzin_salary_item['mSal_id'];
-                                                            $muazzin_id = $muazzin_salary_item['mSal_muazzinId'];
-                                                        }
+                                                        // displaying muazzin details
+                                                        $muazzin_salary = $database->select_data('tbl_muazzinsalary');
+                                                        foreach ($muazzin_salary as $muazzin_salary_item) {
+                                                            $muazzin_id = "";
+                                                            $id = "";
+                                                            if (isset($muazzin_salary_item['mSal_id']) || isset($muazzin_salary_item['mSal_muazzinId'])) {
+                                                                $id = $muazzin_salary_item['mSal_id'];
+                                                                $muazzin_id = $muazzin_salary_item['mSal_muazzinId'];
+                                                            }
 
-                                                        $where = array(
-                                                            'md_muazzinId'     =>     $muazzin_id
-                                                        );
-                                                        $muazzin_details = $database->select_where('tbl_muazzindetails', $where);
-                                                        foreach ($muazzin_details as $muazzin_details_item) {
-                                                            $name = $muazzin_details_item['md_name'];
-                                                            $isActive = $muazzin_details_item['md_activestatus'];
+                                                            $where = array(
+                                                                'md_muazzinId'     =>     $muazzin_id
+                                                            );
+                                                            $muazzin_details = $database->select_where('tbl_muazzindetails', $where);
+                                                            foreach ($muazzin_details as $muazzin_details_item) {
+                                                                $name = $muazzin_details_item['md_name'];
+                                                                $isActive = $muazzin_details_item['md_activestatus'];
 
-                                                            echo "
+                                                                echo "
                                                          <tr>
                                                             <td>";
-                                                            if ($isActive) {
-                                                                echo "Active";
-                                                            } else {
-                                                                echo "Not Active";
-                                                            }
-                                                            echo "</td>
+                                                                if ($isActive) {
+                                                                    echo "Active";
+                                                                } else {
+                                                                    echo "Not Active";
+                                                                }
+                                                                echo "</td>
                                                             <td> Muazzin </td>
                                                             <td>" . $name . "</td>
                                                             <td>
-                                                                <a href='preview_muazzin-details_step-2.php?id=" . $muazzin_id . "&record_id=". $id ."&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                <a href='preview_muazzin-details_step-2.php?id=" . $muazzin_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                             </td>
                                                             
                                                         </tr>
                                                          ";
+                                                            }
                                                         }
-                                                    }
 
 
-                                                    ?>
-                                                </tbody>
-                                            </table>
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- content-wrapper ends -->
+                    <!-- content-wrapper ends -->
 
-                <!-- partial -->
+                    <!-- partial -->
+                </div>
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
+        <!-- container-scroller -->
 
-    <!-- Delete Modal -->
-    <div class="modal fade" id="deleteRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">Terminate Pesh Imaam ?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to terminate this Pesh Imaam?
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-secondary" data-dismiss="modal">Close</a>
-                    <a class="btn btn-danger" id="del">Terminate</a>
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">Terminate Pesh Imaam ?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to terminate this Pesh Imaam?
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                        <a class="btn btn-danger" id="del">Terminate</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- footer -->
-    <?php
-    include "template_parts/footer.php";
-    ?>
-    <!-- End custom js for this page -->
+        <!-- footer -->
+        <?php
+        include "template_parts/footer.php";
+        ?>
+        <!-- End custom js for this page -->
 </body>
 
 </html>

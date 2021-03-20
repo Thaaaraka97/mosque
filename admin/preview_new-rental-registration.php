@@ -13,7 +13,6 @@ if (isset($_GET['edited'])) {
     var villageraction = "";
     var donationaction = "";
     var fridaycollectionaction = "";
-
 </script>
 
 <body>
@@ -44,32 +43,50 @@ if (isset($_GET['edited'])) {
                         </div>";
                     }
                     ?>
-                    <div class="page-header">
-                        <h3 class="page-title"> Rental Status Details </h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 grid-margin stretch-card">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> Rental Status Details </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Rental Status Details Preview </h4>
-                                        <div class="mt-5">
-                                            <table class="display datatable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Rental Type</th>
-                                                        <th>Rental Start</th>
-                                                        <th>Name</th>
-                                                        <th>Contact Number</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $rental_details = $database->select_data('tbl_rentalsregisteration');
-                                                    foreach ($rental_details as $rental_details_item) {
-                                                        $id = $rental_details_item['rr_id'];
-                                                        echo "
+                                        <div>
+                                            <div class="table-responsive table-responsive-data2">
+                                                <table class="table table-data2">
+                                                    <thead>
+                                                        <tr class="tr-shadow">
+                                                            <th>Rental Type</th>
+                                                            <th>Rental Start</th>
+                                                            <th>Name</th>
+                                                            <th>Contact Number</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        $rental_details = $database->select_data('tbl_rentalsregisteration');
+                                                        foreach ($rental_details as $rental_details_item) {
+                                                            $id = $rental_details_item['rr_id'];
+                                                            echo "
                                                          <tr>
                                                             <td>" . $rental_details_item['rr_rentalType'] . "</td>
                                                             <td>" . $rental_details_item['rr_startDate'] . "</td>
@@ -80,33 +97,33 @@ if (isset($_GET['edited'])) {
                                                             </td>
                                                         </tr>
                                                          ";
-                                                    }
+                                                        }
 
-                                                    ?>
-                                                </tbody>
-                                            </table>
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- content-wrapper ends -->
+
+                    <!-- partial -->
                 </div>
-                <!-- content-wrapper ends -->
-
-                <!-- partial -->
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
+        <!-- container-scroller -->
 
-    <!-- footer -->
-    <?php
-    include "template_parts/footer.php";
-    ?>
-    <!-- End custom js for this page -->
+        <!-- footer -->
+        <?php
+        include "template_parts/footer.php";
+        ?>
+        <!-- End custom js for this page -->
 </body>
 
 </html>

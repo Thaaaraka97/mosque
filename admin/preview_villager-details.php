@@ -189,7 +189,7 @@ if (isset($_GET['action'])) {
                                                                 if (!$left_village) {
                                                                     echo "<a href='' id=" . $index . " class='btn btn-danger btn-md left_village' data-toggle='modal' data-target='#updateRecord'>Yes</a>";
                                                                 } else {
-                                                                    echo "Already Left";
+                                                                    echo "<span class='status--denied'>Already Left</span>";
                                                                 }
                                                                 echo "</td>
                                                                 <td>";

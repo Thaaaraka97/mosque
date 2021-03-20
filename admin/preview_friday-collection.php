@@ -47,37 +47,56 @@ if (isset($_GET['action'])) {
                         </div>";
                     }
                     ?>
-                    <div class="page-header">
-                        <h3 class="page-title"> Friday Collection </h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 grid-margin stretch-card">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> Friday Collection Preview </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-10 grid-margin stretch-card">
+                        <div class="col-md-8 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Friday Collection Preview </h4>
-                                        <div class="mt-5">
+                                        <div>
                                             <label for="FridayCollectionList">List Down</label>
                                             <select name="FridayCollectionList" id="FridayCollectionList">
                                                 <option value="fridayregular" <?= $action == 'fridayregular' ? ' selected="selected"' : ''; ?>>Regular Donations</option>
                                                 <option value="fridaycollections" <?= $action == 'fridaycollections' ? ' selected="selected"' : ''; ?>>Collections</option>
                                             </select>
+                                            <hr>
                                             <div id="fridayregular">
-                                                <table class="display datatable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Date</th>
-                                                            <th>Name</th>
-                                                            <th>Address</th>
-                                                            <th>Contact Number</th>
-                                                            <th>Amount</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        $fridaycollectionregular_details = $database->select_data('tbl_fridaycollectionregular');
-                                                        foreach ($fridaycollectionregular_details as $fridaycollectionregular_details_item) {
-                                                            echo "
+                                                <div class="table-responsive table-responsive-data2">
+                                                    <table class="table table-data2">
+                                                        <thead>
+                                                            <tr class="tr-shadow">
+                                                                <th>Date</th>
+                                                                <th>Name</th>
+                                                                <th>Address</th>
+                                                                <th>Contact Number</th>
+                                                                <th>Amount</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            $fridaycollectionregular_details = $database->select_data('tbl_fridaycollectionregular');
+                                                            foreach ($fridaycollectionregular_details as $fridaycollectionregular_details_item) {
+                                                                echo "
                                                          <tr>
                                                             <td>" . $fridaycollectionregular_details_item['fr_date'] . "</td>
                                                             <td>" . $fridaycollectionregular_details_item['fr_name'] . "</td>
@@ -86,62 +105,61 @@ if (isset($_GET['action'])) {
                                                             <td>" . $fridaycollectionregular_details_item['fr_amount'] . "</td>
                                                         </tr>
                                                          ";
-                                                        }
+                                                            }
 
-                                                        ?>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div id="fridaycollections">
-                                                <table class="display datatable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Date</th>
-                                                            <th>Amount</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        $fridaycollection_details = $database->select_data('tbl_fridaycollectiondonation');
-                                                        foreach ($fridaycollection_details as $fridaycollection_details_item) {
-                                                            if (isset($fridaycollection_details_item['fd_date'])) {
-                                                                echo "
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div id="fridaycollections">
+                                                    <table class="display datatable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Date</th>
+                                                                <th>Amount</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            $fridaycollection_details = $database->select_data('tbl_fridaycollectiondonation');
+                                                            foreach ($fridaycollection_details as $fridaycollection_details_item) {
+                                                                if (isset($fridaycollection_details_item['fd_date'])) {
+                                                                    echo "
                                                                 <tr>
                                                                    <td>" . $fridaycollection_details_item['fd_date'] . "</td>
                                                                    <td>" . $fridaycollection_details_item['fd_amount'] . "</td>
                                                                </tr>
                                                                 ";
+                                                                }
                                                             }
-                                                           
-                                                        }
 
-                                                        ?>
-                                                    </tbody>
-                                                </table>
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- content-wrapper ends -->
+
+                    <!-- partial -->
                 </div>
-                <!-- content-wrapper ends -->
-
-                <!-- partial -->
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
+        <!-- container-scroller -->
 
-    <!-- footer -->
-    <?php
-    include "template_parts/footer.php";
-    ?>
-    <!-- End custom js for this page -->
+        <!-- footer -->
+        <?php
+        include "template_parts/footer.php";
+        ?>
+        <!-- End custom js for this page -->
 </body>
 
 </html>

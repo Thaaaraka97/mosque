@@ -44,19 +44,37 @@ if (isset($_GET['edited'])) {
                         </div>";
                     }
                     ?>
-                    <div class="page-header">
-                        <h3 class="page-title"> Laylat al-Qadr Collection Details </h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 grid-margin stretch-card">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> Laylat al-Qadr Collection Details </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Laylat al-Qadr Collection Details Preview </h4>
-                                        <div class="mt-5">
-                                            <table class="display datatable">
-                                                <thead>
-                                                    <tr>
+                                        <div>
+                                        <div class="table-responsive table-responsive-data2">
+                                                <table class="table table-data2">
+                                                    <thead>
+                                                        <tr class="tr-shadow">
                                                         <th>Date</th>
                                                         <th>Name</th>
                                                         <th>Address</th>

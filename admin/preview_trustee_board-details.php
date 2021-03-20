@@ -95,6 +95,7 @@ $item_count = $database->select_count('tbl_trusteeboarddetails', $where);
                                                 <option value="present" <?= $action == 'present' ? ' selected="selected"' : ''; ?>>Present Trusteeboard</option>
                                                 <option value="previous" <?= $action == 'previous' ? ' selected="selected"' : ''; ?>>Previous Trusteeboard</option>
                                             </select>
+                                            <hr>
                                             <div id="presentTB">
                                                 <div class="table-responsive table-responsive-data2">
                                                     <table class="table table-data2">

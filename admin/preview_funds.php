@@ -44,32 +44,50 @@ if (isset($_GET['edited'])) {
                         </div>";
                     }
                     ?>
-                    <div class="page-header">
-                        <h3 class="page-title"> Funds Details </h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 grid-margin stretch-card">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> Funds Details Preview </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Funds Details Preview </h4>
-                                        <div class="mt-5">
-                                            <table class="display datatable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Date</th>
-                                                        <th>Name</th>
-                                                        <th>Address</th>
-                                                        <th>Type</th>
-                                                        <th>Amount</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $funds_details = $database->select_data('tbl_funds');
-                                                    foreach ($funds_details as $funds_details_item) {
-                                                        $id = $funds_details_item['funds_id'];
-                                                        echo "
+                                        <div>
+                                            <div class="table-responsive table-responsive-data2">
+                                                <table class="table table-data2">
+                                                    <thead>
+                                                        <tr class="tr-shadow">
+                                                            <th>Date</th>
+                                                            <th>Name</th>
+                                                            <th>Address</th>
+                                                            <th>Type</th>
+                                                            <th>Amount</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        $funds_details = $database->select_data('tbl_funds');
+                                                        foreach ($funds_details as $funds_details_item) {
+                                                            $id = $funds_details_item['funds_id'];
+                                                            echo "
                                                          <tr>
                                                             <td>" . $funds_details_item['funds_date'] . "</td>
                                                             <td>" . $funds_details_item['funds_name'] . "</td>
@@ -78,33 +96,33 @@ if (isset($_GET['edited'])) {
                                                             <td>" . $funds_details_item['funds_amount'] . "</td>
                                                         </tr>
                                                          ";
-                                                    }
+                                                        }
 
-                                                    ?>
-                                                </tbody>
-                                            </table>
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- content-wrapper ends -->
+
+                    <!-- partial -->
                 </div>
-                <!-- content-wrapper ends -->
-
-                <!-- partial -->
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
+        <!-- container-scroller -->
 
-    <!-- footer -->
-    <?php
-    include "template_parts/footer.php";
-    ?>
-    <!-- End custom js for this page -->
+        <!-- footer -->
+        <?php
+        include "template_parts/footer.php";
+        ?>
+        <!-- End custom js for this page -->
 </body>
 
 </html>

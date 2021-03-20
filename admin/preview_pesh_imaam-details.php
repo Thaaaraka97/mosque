@@ -6,17 +6,20 @@ include "template_parts/header.php";
 $database = new databases();
 if (isset($_GET['edited'])) {
     $message = "Record successfully edited and Updated..!";
-}
-elseif (isset($_GET['terminated'])) {
+} elseif (isset($_GET['terminated'])) {
     $message = "Member terminated and Updated the Record..!";
 }
+
+$where = array(
+    'pi_peshImaamId ' != 0
+);
+$item_count = $database->select_count('tbl_peshimaaamdetails', $where);
 ?>
 <script type="text/javascript">
     var action = "<?php echo $action; ?>";
     var villageraction = "";
     var donationaction = "";
     var fridaycollectionaction = "";
-
 </script>
 
 
@@ -46,8 +49,7 @@ elseif (isset($_GET['terminated'])) {
                             <span aria-hidden='true'>&times;</span>
                         </button>
                     </div>";
-                    }
-                    elseif (isset($_GET['terminated'])) {
+                    } elseif (isset($_GET['terminated'])) {
                         echo "
                         <div class='alert alert-danger alert-dismissible' role='alert'>" . $message . "
                         <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -56,109 +58,133 @@ elseif (isset($_GET['terminated'])) {
                     </div>";
                     }
                     ?>
-                    <div class="page-header">
-                        <h3 class="page-title"> Pesh Imaam Details </h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 grid-margin stretch-card">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> Pesh Imaam Details Preview </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                            <td class="total-td">
+                                                <div>
+                                                    <p class="text-dark">No. of Entries <?php echo " : " . $item_count ?></p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Pesh Imaam Details Preview </h4>
-                                        <div class="mt-5">
-                                            <table class="display datatable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>Address</th>
-                                                        <th>Telephone</th>
-                                                        <th>Active Peroid</th>
-                                                        <th>View</th>
-                                                        <th>Terminate</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                     $pesh_imaam_details = $database->select_data('tbl_peshimaaamdetails');
-                                                     foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
-                                                         $id = $pesh_imaam_details_item['pi_peshImaamId'];
-                                                         $start = $pesh_imaam_details_item['pi_assignedDate'];
-                                                         $end = $pesh_imaam_details_item['pi_resignedDate'];
-                                                         $isActive = $pesh_imaam_details_item['pi_activestatus'];
-                                                         if ($end == "") {
-                                                             $end = "Present";
-                                                         }
-                                                         echo "
+                                        <div>
+                                            <div class="table-responsive table-responsive-data2">
+                                                <table class="table table-data2">
+                                                    <thead>
+                                                        <tr class="tr-shadow">
+                                                            <th>Name</th>
+                                                            <th>Address</th>
+                                                            <th>Telephone</th>
+                                                            <th>Active Peroid</th>
+                                                            <th>Left the Position</th>
+                                                            <th>View</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        $pesh_imaam_details = $database->select_data('tbl_peshimaaamdetails');
+                                                        foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
+                                                            $id = $pesh_imaam_details_item['pi_peshImaamId'];
+                                                            $start = $pesh_imaam_details_item['pi_assignedDate'];
+                                                            $end = $pesh_imaam_details_item['pi_resignedDate'];
+                                                            $isActive = $pesh_imaam_details_item['pi_activestatus'];
+                                                            if ($end == "") {
+                                                                $end = "Present";
+                                                            }
+                                                            echo "
                                                          <tr>
-                                                            <td>".$pesh_imaam_details_item['pi_name']."</td>
-                                                            <td>".$pesh_imaam_details_item['pi_address']."</td>
-                                                            <td>".$pesh_imaam_details_item['pi_mobileTP']."</td>
-                                                            <td>".$start." - ".$end."</td>
-                                                            <td>
-                                                                <a href='preview_pesh_imaam-details_step-2.php?id=".$id."&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
-                                                            </td>
+                                                            <td>" . $pesh_imaam_details_item['pi_name'] . "</td>
+                                                            <td>" . $pesh_imaam_details_item['pi_address'] . "</td>
+                                                            <td>" . $pesh_imaam_details_item['pi_mobileTP'] . "</td>
+                                                            <td>" . $start . " - " . $end . "</td>
                                                             <td>";
                                                             if ($isActive) {
-                                                                echo "<a href='' id ='".$id."' class='btn btn-danger btn-md terminate_row_peshimaam' data-toggle='modal' data-target='#deleteRecord'>Terminate</a>";
-                                                            }
-                                                            else{
-                                                                echo "Already Terminated";
+                                                                echo "<a href='' id ='" . $id . "' class='btn btn-warning btn-md terminate_row_peshimaam' data-toggle='modal' data-target='#deleteRecord'>Left</a>";
+                                                            } else {
+                                                                echo "<span class='status--denied'>Already Left</span>";
                                                             }
                                                             echo "</td>
+                                                            <td>
+                                                                <a href='preview_pesh_imaam-details_step-2.php?id=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                            </td>
                                                         </tr>
                                                          ";
-                                                     }
+                                                        }
 
-                                                    ?> 
-                                                </tbody>
-                                            </table>
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- content-wrapper ends -->
+                    <!-- content-wrapper ends -->
 
-                <!-- partial -->
+                    <!-- partial -->
+                </div>
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
+        <!-- container-scroller -->
 
-    <!-- Delete Modal -->
-    <div class="modal fade" id="deleteRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">Terminate Pesh Imaam ?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to terminate this Pesh Imaam? 
-                    <div class="form-group">
-                        <label for="inputReason" class="col-form-label"> Reason </label>
-                        <textarea class="form-control" name="inputReason" id="inputReason" rows="5"></textarea>
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel"> Remove Pesh Imaam </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to remove this Pesh Imaam? 
+                        If he left the position click Remove to empty his position.
+                        Please provide reasons for leaving..!
+                        <div class="form-group">
+                            <label for="inputReason" class="col-form-label"> Reason </label>
+                            <textarea class="form-control" name="inputReason" id="inputReason" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                        <a class="btn btn-danger" id="del">Remove</a>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <a class="btn btn-secondary" data-dismiss="modal">Close</a>
-                    <a class="btn btn-danger" id="del">Terminate</a>
-                </div>
             </div>
         </div>
-    </div>
 
-    <!-- footer -->
-    <?php
-    include "template_parts/footer.php";
-    ?>
-    <!-- End custom js for this page -->
+        <!-- footer -->
+        <?php
+        include "template_parts/footer.php";
+        ?>
+        <!-- End custom js for this page -->
 </body>
 
 </html>

@@ -15,7 +15,6 @@ if (isset($_GET['inserted'])) {
     var villageraction = "";
     var donationaction = "";
     var fridaycollectionaction = "";
-
 </script>
 
 <body>
@@ -53,98 +52,115 @@ if (isset($_GET['inserted'])) {
                     </div>";
                     }
                     ?>
-                    <div class="page-header">
-                        <h3 class="page-title"> Kanduri Collection </h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 grid-margin stretch-card">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> Kanduri Collection Preview </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-10 grid-margin stretch-card">
+                        <div class="col-md-8 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Kanduri Collection Preview </h4>
                                         <div class="w-100 text-right">
                                             <button class='btn btn-success btn-md ' data-toggle='modal' data-target='#addRecord' id="addNewKanduri"> Add New </button>
                                         </div>
-                                        <div class="mt-5">
+                                        <div class="mt-3">
+                                            <div class="table-responsive table-responsive-data2">
+                                                <table class="table table-data2">
+                                                    <thead>
+                                                        <tr class="tr-shadow">
+                                                            <th>Date</th>
+                                                            <th>Amount</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
 
-                                            <table class="display datatable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Date</th>
-                                                        <th>Amount</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-
-                                                    $kanduri = $database->select_data('tbl_kanduricollection');
-                                                    foreach ($kanduri as $kanduri_item) {
-                                                        $id = $kanduri_item['kc_id'];
-                                                        $date = $kanduri_item['kc_date'];
-                                                        $amount = $kanduri_item['kc_amount'];
-                                                        echo "
+                                                        $kanduri = $database->select_data('tbl_kanduricollection');
+                                                        foreach ($kanduri as $kanduri_item) {
+                                                            $id = $kanduri_item['kc_id'];
+                                                            $date = $kanduri_item['kc_date'];
+                                                            $amount = $kanduri_item['kc_amount'];
+                                                            echo "
                                                          <tr>
                                                             <td>" . $date . "</td>
                                                             <td>" . $amount . "</td>
                                                         </tr>
                                                          ";
-                                                    }
+                                                        }
 
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                            <input type="hidden" name="inputUser" id="inputUser" value="user">
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                                <input type="hidden" name="inputUser" id="inputUser" value="user">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- content-wrapper ends -->
+                    <!-- content-wrapper ends -->
 
-                <!-- partial -->
+                    <!-- partial -->
+                </div>
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
+        <!-- container-scroller -->
 
-    <!-- Add new Modal -->
-    <div class="modal fade" id="addRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel"> Add new Undiyal Collection </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Please fill out the form below.
-                    <div class="form-group col-md-12">
-                        <label for="inputDate"> Date </label>
-                        <input type="Date" class="form-control" id="inputDate" name="inputDate">
+        <!-- Add new Modal -->
+        <div class="modal fade" id="addRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel"> Add new Undiyal Collection </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="form-group col-md-12">
-                        <label for="inputAmount">Amount </label>
-                        <input type="text" class="form-control" id="inputAmount" name="inputAmount" placeholder="Amount (Rs)">
+                    <div class="modal-body">
+                        Please fill out the form below.
+                        <div class="form-group col-md-12">
+                            <label for="inputDate"> Date </label>
+                            <input type="Date" class="form-control" id="inputDate" name="inputDate">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="inputAmount">Amount </label>
+                            <input type="text" class="form-control" id="inputAmount" name="inputAmount" placeholder="Amount (Rs)">
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-secondary" data-dismiss="modal">Close</a>
-                    <a class="btn btn-primary" id="add"> Add </a>
+                    <div class="modal-footer">
+                        <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                        <a class="btn btn-primary" id="add"> Add </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- footer -->
-    <?php
-    include "template_parts/footer.php";
-    ?>
-    <!-- End custom js for this page -->
+        <!-- footer -->
+        <?php
+        include "template_parts/footer.php";
+        ?>
+        <!-- End custom js for this page -->
 </body>
 
 </html>

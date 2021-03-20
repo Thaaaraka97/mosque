@@ -68,9 +68,9 @@ foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
         $is_active = "Active";
     }
     if ($married == "0") {
-        $married = "No";
+        $married = "Not Married";
     } else {
-        $married = "Yes";
+        $married = "Married";
     }
 }
 
@@ -102,7 +102,7 @@ foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title"> Pesh Imaam Details </h3>
+                        <h3 class="page-title"> </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>preview_pesh_imaam-details.php">Details Preview</a></li>
@@ -111,127 +111,271 @@ foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
                         </nav>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-10 grid-margin stretch-card">
-                            <div class="card shadow">
-                                <div class="card-body">
-                                    <div class="mt-5 text-dark col-auto" id="viewDetails">
-                                        <h4 class="card-title"> Details Preview Step-2 </h4>
-
-                                        <table class="table table-responsive previewTable">
-                                            <tr>
-                                                <th>Name</th>
-                                                <td> : </td>
-                                                <td><?php echo $name ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Village</th>
-                                                <td> : </td>
-                                                <td><?php echo $village ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Index</th>
-                                                <td> : </td>
-                                                <td><?php echo $index ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Sub Division</th>
-                                                <td> : </td>
-                                                <td><?php echo $subdivision ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Duration</th>
-                                                <td> : </td>
-                                                <td><?php echo $start . " - " . $end ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>is Active ?</th>
-                                                <td> : </td>
-                                                <td><?php echo $is_active ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Address</th>
-                                                <td> : </td>
-                                                <td><?php echo $address ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>NIC</th>
-                                                <td> : </td>
-                                                <td><?php echo $nic ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Salary</th>
-                                                <td> : </td>
-                                                <td><?php echo $salary ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Contact Number</th>
-                                                <td> : </td>
-                                                <td>Home : <?php echo $home_tp ?><br>Mobile : <?php echo $mobile_tp ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>is Married ?</th>
-                                                <td> : </td>
-                                                <td><?php echo $married ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>No. of Kids</th>
-                                                <td> : </td>
-                                                <td><?php echo $noofkids ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Notes</th>
-                                                <td> : </td>
-                                                <td><?php echo $notes ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Received Letters</th>
-                                                <td> : </td>
-                                                <td>
-                                                    <?php
-                                                    if ($mahalla == "1") {
-                                                        echo "Mahalla Letter<br>";
-                                                    }
-                                                    if ($gramasevaka == "1") {
-                                                        echo "Gramasevaka Letter<br>";
-                                                    }
-                                                    if ($police == "1") {
-                                                        echo "Police Certification<br>";
-                                                    }
-                                                    if ($maulavi == "1") {
-                                                        echo "Maulavi Letter<br>";
-                                                    }
-
-                                                    ?>
-                                                </td>
-                                            </tr>
-
-                                        </table>
-
+                        <div class="col-md-8 grid-margin stretch-card">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> Pesh Imaam Details Preview </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-dark col-auto" id="viewDetails">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Person Details </h4>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Name</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $name ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Village</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $village ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        if ($village == "Home Village") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Index</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$index</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Sub-Division</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$subdivision</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                ";
+                                        }
+                                        ?>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Duration</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo "From " . $start . " To " . $end . ""?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Address</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $address ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">NIC</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $nic ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        if ($home_tp != "") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Contact Number :Home</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$home_tp</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>";
+                                        }
+                                        elseif ($mobile_tp != "") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Contact Number :Mobile</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$mobile_tp</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                ";
+                                        }
+                                        ?>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Salary</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $salary ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Marital Status</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $married ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        if ($married == "Married") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>No. of Kids</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$noofkids</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>";
+                                        }
+                                        if ($notes != "") {
+                                            echo "
+                                                <div class='preview-list'>
+                                                    <div class='preview-item border-bottom'>
+                                                        <div class='preview-item-content d-sm-flex flex-grow'>
+                                                            <div class='flex-grow'>
+                                                                <h6 class='preview-subject'>Notes</h6>
+                                                            </div>
+                                                            <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
+                                                                <p class='text-muted'>$notes</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>";
+                                        }
+                                        ?>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Received Letters</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted">
+                                                        <?php 
+                                                        if ($mahalla == "1") {
+                                                            echo "Mahalla Letter<br>";
+                                                        }
+                                                        if ($gramasevaka == "1") {
+                                                            echo "Gramasevaka Letter<br>";
+                                                        }
+                                                        if ($police == "1") {
+                                                            echo "Police Certification<br>";
+                                                        }
+                                                        if ($maulavi == "1") {
+                                                            echo "Maulavi Letter<br>";
+                                                        }
+                                                        ?>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <hr>
-                                    <div class="mt-5 text-dark col-auto" id="viewPayments">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-dark col-auto" id="viewPayments">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body text-center">
                                         <h4 class="card-title"> Payment History </h4>
-                                        <table class="display datatable">
-                                            <thead>
-                                                <tr>
-                                                    <th>Basic Salary</th>
-                                                    <th>Incentive</th>
-                                                    <th>Madrasa Fee</th>
-                                                    <th>Advance</th>
-                                                    <th>Special Bhayan Fee</th>
-                                                    <th>EPF/ETF</th>
-                                                    <th>Loan Deduction</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                // displaying pesh imaam details
-                                                $where = array(
-                                                    'pSal_peshImaamId'     =>     $id
-                                                );
-                                                $pesh_imaam_salary = $database->select_where('tbl_peshimaamsalary', $where);
-                                                foreach ($pesh_imaam_salary as $pesh_imaam_salary_item) {
-                                                    echo "
+                                        <div class="table-responsive table-responsive-data2">
+                                            <table class="table table-data2">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Basic Salary</th>
+                                                        <th>Incentive</th>
+                                                        <th>Madrasa Fee</th>
+                                                        <th>Advance</th>
+                                                        <th>Special Bhayan Fee</th>
+                                                        <th>EPF/ETF</th>
+                                                        <th>Loan Deduction</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    // displaying pesh imaam details
+                                                    $where = array(
+                                                        'pSal_peshImaamId'     =>     $id
+                                                    );
+                                                    $pesh_imaam_salary = $database->select_where('tbl_peshimaamsalary', $where);
+                                                    foreach ($pesh_imaam_salary as $pesh_imaam_salary_item) {
+                                                        echo "
                                                          <tr>
                                                             <td>" . $pesh_imaam_salary_item['pSal_basicSalary'] . "</td>
                                                             <td>" . $pesh_imaam_salary_item['pSal_incentive'] . "</td>
@@ -242,33 +386,33 @@ foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
                                                             <td>" . $pesh_imaam_salary_item['pSal_loanDeduction'] . "</td>
                                                         </tr>
                                                          ";
-                                                }
+                                                    }
 
-                                                ?>
-                                            </tbody>
-                                        </table>
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- content-wrapper ends -->
+
+                    <!-- partial -->
                 </div>
-                <!-- content-wrapper ends -->
-
-                <!-- partial -->
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
+        <!-- container-scroller -->
 
-    <!-- footer -->
-    <?php
-    include "template_parts/footer.php";
-    ?>
-    <!-- End custom js for this page -->
+        <!-- footer -->
+        <?php
+        include "template_parts/footer.php";
+        ?>
+        <!-- End custom js for this page -->
 </body>
 
 </html>

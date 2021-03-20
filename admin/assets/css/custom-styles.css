@@ -236,11 +236,13 @@
 #previousTB {
   display: none;
 }
-
-.fa-pencil-square-o {
-  color: black;
+.fa-lg {
   padding-left: 15px;
   padding-bottom: 15px;
+}
+.fa-pencil-square-o {
+  color: black;
+
 }
 .fa-trash {
   color: red;
