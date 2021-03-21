@@ -318,14 +318,13 @@ $(document).ready(function () {
   // });
   // datatables
   $(document).ready(function () {
-    $('.table').DataTable({
+    $(".table").DataTable({
       language: {
         search: "_INPUT_",
-        searchPlaceholder: "Search..."
-    }
+        searchPlaceholder: "Search...",
+      },
     });
     // $('.dataTables_length').addClass('bs-select');
-
   });
 
   //   form_nikkah-details-form.php
@@ -1033,7 +1032,6 @@ $(document).ready(function () {
 
   // ajax submit to trustee_board_form_handler.php
   $("#submitTrusteeBoard").click(function (e) {
-    var all_data = $("#trusteeBoardForm").serialize();
     e.preventDefault();
     $.ajax({
       type: "post",
@@ -1082,7 +1080,6 @@ $(document).ready(function () {
     var TBlistDetails = $("#TBlistDetails").val();
     window.location.href =
       "preview_trustee_board-details.php?action=" + TBlistDetails;
-    
   });
 
   // preview_friday-collection.php
@@ -1139,11 +1136,12 @@ $(document).ready(function () {
     var index = "";
     var subdivision = "";
 
-    $("#inputSubdivision").change(function (e) { 
+    $("#inputSubdivision").change(function (e) {
       e.preventDefault();
       var index = $("#inputIndexNo").val();
       var subdivision = $("#inputSubdivision").val();
-      var data = "action=find_record&index="+index+"&subdivision="+subdivision;
+      var data =
+        "action=find_record&index=" + index + "&subdivision=" + subdivision;
       $.ajax({
         type: "post",
         url: "handlers/trustee_board_form_handler.php",
@@ -1155,19 +1153,34 @@ $(document).ready(function () {
           $("#inputJob").val(result_array[2]);
           $("#inputSalary").val(result_array[3]);
           $("#inputAddress").val(result_array[4]);
-        }
+        },
       });
     });
 
     $("#del").click(function (e) {
-
       e.preventDefault();
       var name = $("#inputName").val();
       var tp = $("#inputTP").val();
       var job = $("#inputJob").val();
       var salary = $("#inputSalary").val();
       var address = $("#inputAddress").val();
-      var data_bundle = "id=" + id + "&action=terminate&name="+name+"&tp="+tp+"&job="+job+"&salary="+salary+"&address="+address+"&index="+index+"&subdivision="+subdivision;
+      var data_bundle =
+        "id=" +
+        id +
+        "&action=terminate&name=" +
+        name +
+        "&tp=" +
+        tp +
+        "&job=" +
+        job +
+        "&salary=" +
+        salary +
+        "&address=" +
+        address +
+        "&index=" +
+        index +
+        "&subdivision=" +
+        subdivision;
       $.ajax({
         type: "post",
         url: "handlers/trustee_board_form_handler.php",
@@ -1757,40 +1770,129 @@ $(document).ready(function () {
 
   // preview_villager-details.php
   // submit to change records as left the village
-  $(".left_village").click(function (e) { 
+  $(".left_village").click(function (e) {
     var id = $(this).attr("id");
     e.preventDefault();
-    $("#update").click(function (e) { 
+    $("#update").click(function (e) {
       e.preventDefault();
-      var data_bundle = "action=left_village&index="+id;
+      var data_bundle = "action=left_village&index=" + id;
       $.ajax({
         type: "get",
         url: "handlers/preview_villagers_handler.php",
         data: data_bundle,
         success: function (response) {
           window.location.href = response;
-          
-        }
+        },
       });
-      
     });
-    
   });
 
-  // 
-  // 
-  $("#inputvillagerDOB").change(function (e) { 
+  //
+  //
+  $("#inputvillagerDOB").change(function (e) {
     e.preventDefault();
     var dob = $("#inputvillagerDOB").val();
     var today = new Date();
     var birthDate = new Date(dob);
     var age = today.getFullYear() - birthDate.getFullYear();
     var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
-    {
-        age--;
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
     }
     $("#inputAge").val(age);
+  });
+
+  // submit kanji ingredients list to the database
+  var m = i;
+  $("#kanjilist").click(function (e) {
+    e.preventDefault();
+    var codeblock = `
+    <div id="row${m}">
+        <div class="form-row ">
+            <div class="form-group col-md-1 d-flex justify-content-center align-self-end">
+                <label for="number"> ${m+1} </label>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputIngredient"> Ingredient </label>
+                <input type="text" class="form-control" id="inputIngredient[]" name="inputIngredient[]">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputPaalKanji"> Paal Kanji </label>
+                <input type="text" class="form-control" id="inputPaalKanji[]" name="inputPaalKanji[]">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputVegitable"> Vegitable </label>
+                <input type="text" class="form-control" id="inputVegitable[]" name="inputVegitable[]">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputMeat"> Meat </label>
+                <input type="text" class="form-control" id="inputMeat[]" name="inputMeat[]">
+            </div>
+            <div class="form-group col-md-1 d-flex justify-content-center align-self-end">
+              <button type="button" name="remove" id="${m}" class="btn btn-md btn-danger btn_remove">X</button>
+            </div>
+        </div>
+    </div>
+    `;
+    $("#dynamic_fields").append(codeblock);
+    m++;
+  });
+  $('#submitkanjilist').click(function () {
+    $.ajax({
+      type: "post",
+      url: "handlers/kanji_ingredients_handler.php",
+      data: $("#kanjiingredients").serialize() + "&action=submit_ingredients",
+      success: function (response) {
+        console.log(response);
+        window.location.href = response;
+      },
+    });
+  });
+  // submit kanji people list to the database
+  var n = i;
+  $("#addkanjipeople").click(function (e) {
+    e.preventDefault();
+    var codeblock2 = `
+    <div id="row${n}">
+        <div class="form-row ">
+            <div class="form-group col-md-1 d-flex justify-content-center align-self-end">
+                <label for="number"> ${n+1} </label>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputName"> Name </label>
+                <input type="text" class="form-control" id="inputName[]" name="inputName[]">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputTP"> Contact Number </label>
+                <input type="text" class="form-control" id="inputTP[]" name="inputTP[]">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputAddress"> Address </label>
+                <input type="text" class="form-control" id="inputAddress[]" name="inputAddress[]">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputDate"> Date </label>
+                <input type="date" class="form-control" id="inputDate[]" name="inputDate[]">
+            </div>
+            <div class="form-group col-md-1 d-flex justify-content-center align-self-end">
+              <button type="button" name="remove" id="${n}" class="btn btn-md btn-danger btn_remove">X</button>
+            </div>
+        </div>
+    </div>
+    `;
+    $("#dynamic_fields").append(codeblock2);
+    n++;
+  });
+  $('#submitkanjiPeople').click(function () {
+    $.ajax({
+      type: "post",
+      url: "handlers/kanji_ingredients_handler.php",
+      data: $("#kanjipeople").serialize() + "&action=submit_people",
+      success: function (response) {
+        console.log(response);
+        window.location.href = response;
+      },
+    });
   });
 
   // show/ hide div on the change of dropdown list donations
@@ -1889,102 +1991,101 @@ $(document).ready(function () {
   if (TBlistDetails == "present") {
     $("#presentTB").show();
     $("#previousTB").hide();
-  }
-  else if (TBlistDetails == "previous") {
+  } else if (TBlistDetails == "previous") {
     $("#previousTB").show();
     $("#presentTB").hide();
   }
 
-  $("input[type=radio][name=inputjobYN]").change(function (e) { 
+  $("input[type=radio][name=inputjobYN]").change(function (e) {
     e.preventDefault();
     if ($(this).val() == "No") {
       $("#familyIncomeEdit").hide();
-    }else{
+    } else {
       $("#familyIncomeEdit").show();
     }
   });
-  $("input[type=radio][name=inputMarried]").change(function (e) { 
+  $("input[type=radio][name=inputMarried]").change(function (e) {
     e.preventDefault();
     if ($(this).val() == "No") {
       $("#marriedEdit").hide();
-    }else{
+    } else {
       $("#marriedEdit").show();
     }
   });
-  $("input[type=radio][name=inputStudent]").change(function (e) { 
+  $("input[type=radio][name=inputStudent]").change(function (e) {
     e.preventDefault();
     if ($(this).val() == "No") {
       $("#avStudentEdit").hide();
-    }else{
+    } else {
       $("#avStudentEdit").show();
     }
   });
-  $("input[type=radio][name=inputSchol]").change(function (e) { 
+  $("input[type=radio][name=inputSchol]").change(function (e) {
     e.preventDefault();
     if ($(this).val() == "No") {
       $("#inputScholIncomeEdit").hide();
-    }else{
+    } else {
       $("#inputScholIncomeEdit").show();
     }
   });
-  $("input[type=radio][name=inputMad]").change(function (e) { 
+  $("input[type=radio][name=inputMad]").change(function (e) {
     e.preventDefault();
     if ($(this).val() == "No") {
       $("#madhrasaEdit").hide();
-    }else{
+    } else {
       $("#madhrasaEdit").show();
     }
   });
-  $("input[type=radio][name=inputGuardianStatus]").change(function (e) { 
+  $("input[type=radio][name=inputGuardianStatus]").change(function (e) {
     e.preventDefault();
     if ($(this).val() == "No") {
       $("#saandhaGuardianEdit").show();
-    }else{
+    } else {
       $("#saandhaGuardianEdit").hide();
     }
   });
-  $("#inputEduQual").change(function (e) { 
+  $("#inputEduQual").change(function (e) {
     e.preventDefault();
     if ($(this).val() == "None") {
       $("#collegeEdit").hide();
-    }else{
+    } else {
       $("#collegeEdit").show();
     }
   });
 
   if (av_isGuardian == "Yes") {
     $("#saandhaGuardianEdit").hide();
-  }else{
+  } else {
     $("#saandhaGuardianEdit").show();
   }
   if (av_job == "0") {
     $("#familyIncomeEdit").hide();
-  }else{
+  } else {
     $("#familyIncomeEdit").show();
   }
   if (av_married == "Not Married") {
     $("#marriedEdit").hide();
-  }else{
+  } else {
     $("#marriedEdit").show();
   }
   if (av_madChild_status == "0") {
     $("#madhrasaEdit").hide();
-  }else{
+  } else {
     $("#madhrasaEdit").show();
   }
   if (av_scholStatus == "No") {
     $("#inputScholIncomeEdit").hide();
-  }else{
+  } else {
     $("#inputScholIncomeEdit").show();
   }
   if (is_student == "0") {
     $("#avStudentEdit").hide();
-  }else{
+  } else {
     $("#avStudentEdit").show();
   }
   if (av_eduQual != "None") {
     $("#collegeEdit").show();
-  }else{
+  } else {
     $("#collegeEdit").hide();
   }
 });

@@ -47,4 +47,5 @@ include 'include/data_update_controller.php';
     var av_scholStatus = "";
     var is_student = "";
     var av_eduQual = "";
+    var TBlistDetails = "";
 </script>

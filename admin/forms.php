@@ -309,6 +309,37 @@ include "template_parts/header.php";
               </div>
             </div>
           </div>
+          <!-- 2 rows -->
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body d-flex justify-content-center">
+                  <div class="float-left col-md-4 d-flex justify-content-center align-self-center">
+                    <img src="assets/images/icons/kanji.png" alt="Kanji-mug-img">
+                  </div>
+                  <div class=" float-left col-md-8">
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Kanji Ingredients List </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>kanji_ingredients.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Kanji List </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>kanji_people.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- 3 rows -->
           <div class="row justify-content-center">
             <div class="col-md-8 grid-margin stretch-card">

@@ -37,16 +37,33 @@ if (isset($_GET['action'])) {
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="page-header">
-                        <h3 class="page-title"> Donations Details </h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 grid-margin stretch-card">
+                            <div class="card shadow top-card">
+                                <div class="card-body top-card">
+                                    <table class="card-table">
+                                        <tr>
+                                            <td class="image-td">
+                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h3 class="card-title top"> Donation Details Preview </h3>
+                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <h4 class="card-title"> Donations Details Preview </h4>
-                                        <div class="mt-5">
+                                        <div>
                                             <label for="donationlistDetails">List Down</label>
                                             <select name="donationlistDetails" id="donationlistDetails">
                                                 <option value="alldonations" <?= $action == 'alldonations' ? ' selected="selected"' : ''; ?>>All Donations</option>
@@ -67,23 +84,24 @@ if (isset($_GET['action'])) {
 
                                             ?>
                                             <div id="alldonations">
-                                                <table class="display datatable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Donation Type</th>
-                                                            <th>Amount</th>
-                                                            <th>Notes</th>
-                                                            <th>Date</th>
-                                                            <th>Actions</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        if ($action == "alldonations") {
-                                                            foreach ($donation_details as $donation_details_item) {
-                                                                $id = $donation_details_item['tbd_id'];
-                                                                echo "
+                                                <div class="table-responsive table-responsive-data2">
+                                                    <table class="table table-data2">
+                                                        <thead>
+                                                            <tr class="tr-shadow">
+                                                                <th>Name</th>
+                                                                <th>Donation Type</th>
+                                                                <th>Amount</th>
+                                                                <th>Notes</th>
+                                                                <th>Date</th>
+                                                                <th>Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            if ($action == "alldonations") {
+                                                                foreach ($donation_details as $donation_details_item) {
+                                                                    $id = $donation_details_item['tbd_id'];
+                                                                    echo "
                                                                  <tr>
                                                                     <td>" . $donation_details_item['tbd_name'] . "</td>
                                                                     <td>" . "Trusteeboard Donations" . "</td>
@@ -95,10 +113,10 @@ if (isset($_GET['action'])) {
                                                                     </td>
                                                                 </tr>
                                                                  ";
-                                                            }
-                                                            foreach ($donation_details2 as $donation_details_item2) {
-                                                                $id2 = $donation_details_item2['d_id'];
-                                                                echo "
+                                                                }
+                                                                foreach ($donation_details2 as $donation_details_item2) {
+                                                                    $id2 = $donation_details_item2['d_id'];
+                                                                    echo "
                                                                  <tr>
                                                                     <td>" . $donation_details_item2['d_name'] . "</td>
                                                                     <td>" . $donation_details_item2['d_donationType'] . "</td>
@@ -110,10 +128,10 @@ if (isset($_GET['action'])) {
                                                                     </td>
                                                                 </tr>
                                                                  ";
-                                                            }
-                                                            foreach ($donation_details3 as $donation_details_item3) {
-                                                                $id3 = $donation_details_item3['d_id'];
-                                                                echo "
+                                                                }
+                                                                foreach ($donation_details3 as $donation_details_item3) {
+                                                                    $id3 = $donation_details_item3['d_id'];
+                                                                    echo "
                                                                  <tr>
                                                                     <td>" . $donation_details_item3['d_name'] . "</td>
                                                                     <td>" . $donation_details_item3['d_donationType'] . "</td>
@@ -125,30 +143,32 @@ if (isset($_GET['action'])) {
                                                                     </td>
                                                                 </tr>
                                                                  ";
+                                                                }
                                                             }
-                                                        }
-                                                        ?>
-                                                    </tbody>
-                                                </table>
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                             <div id="trusteeboard">
-                                                <table class="display datatable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Designation</th>
-                                                            <th>Amount</th>
-                                                            <th>Notes</th>
-                                                            <th>Date</th>
-                                                            <th>Actions</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        if ($action == "trusteeboard") {
-                                                            foreach ($donation_details as $donation_details_item) {
-                                                                $id = $donation_details_item['tbd_id'];
-                                                                echo "
+                                                <div class="table-responsive table-responsive-data2">
+                                                    <table class="table table-data2">
+                                                        <thead>
+                                                            <tr class="tr-shadow">
+                                                                <th>Name</th>
+                                                                <th>Designation</th>
+                                                                <th>Amount</th>
+                                                                <th>Notes</th>
+                                                                <th>Date</th>
+                                                                <th>Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            if ($action == "trusteeboard") {
+                                                                foreach ($donation_details as $donation_details_item) {
+                                                                    $id = $donation_details_item['tbd_id'];
+                                                                    echo "
                                                                  <tr>
                                                                     <td>" . $donation_details_item['tbd_name'] . "</td>
                                                                     <td>" . $donation_details_item['tbd_designation'] . "</td>
@@ -160,30 +180,32 @@ if (isset($_GET['action'])) {
                                                                     </td>
                                                                 </tr>
                                                                  ";
+                                                                }
                                                             }
-                                                        }
 
-                                                        ?>
-                                                    </tbody>
-                                                </table>
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                             <div id="disaster">
-                                                <table class="display datatable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Amount</th>
-                                                            <th>Notes</th>
-                                                            <th>Date</th>
-                                                            <th>Actions</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        if ($action == "disaster") {
-                                                            foreach ($donation_details2 as $donation_details_item2) {
-                                                                $id = $donation_details_item2['d_id'];
-                                                                echo "
+                                                <div class="table-responsive table-responsive-data2">
+                                                    <table class="table table-data2">
+                                                        <thead>
+                                                            <tr class="tr-shadow">
+                                                                <th>Name</th>
+                                                                <th>Amount</th>
+                                                                <th>Notes</th>
+                                                                <th>Date</th>
+                                                                <th>Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            if ($action == "disaster") {
+                                                                foreach ($donation_details2 as $donation_details_item2) {
+                                                                    $id = $donation_details_item2['d_id'];
+                                                                    echo "
                                                                  <tr>
                                                                     <td>" . $donation_details_item2['d_name'] . "</td>
                                                                     <td>" . $donation_details_item2['d_amount'] . "</td>
@@ -194,30 +216,32 @@ if (isset($_GET['action'])) {
                                                                     </td>
                                                                 </tr>
                                                                  ";
+                                                                }
                                                             }
-                                                        }
-                                                        
-                                                        ?>
-                                                    </tbody>
-                                                </table>
+
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                             <div id="other">
-                                                <table class="display datatable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Contact Number</th>
-                                                            <th>Amount</th>
-                                                            <th>Notes</th>
-                                                            <th>Date</th>
-                                                            <th>Actions</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        foreach ($donation_details3 as $donation_details_item3) {
-                                                            $id = $donation_details_item3['d_id'];
-                                                            echo "
+                                                <div class="table-responsive table-responsive-data2">
+                                                    <table class="table table-data2">
+                                                        <thead>
+                                                            <tr class="tr-shadow">
+                                                                <th>Name</th>
+                                                                <th>Contact Number</th>
+                                                                <th>Amount</th>
+                                                                <th>Notes</th>
+                                                                <th>Date</th>
+                                                                <th>Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            foreach ($donation_details3 as $donation_details_item3) {
+                                                                $id = $donation_details_item3['d_id'];
+                                                                echo "
                                                              <tr>
                                                                 <td>" . $donation_details_item3['d_name'] . "</td>
                                                                 <td>" . $donation_details_item3['d_tp'] . "</td>
@@ -229,36 +253,35 @@ if (isset($_GET['action'])) {
                                                                 </td>
                                                             </tr>
                                                              ";
-                                                        }
+                                                            }
 
 
-                                                        ?>
-                                                    </tbody>
-                                                </table>
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- content-wrapper ends -->
+
+                    <!-- partial -->
                 </div>
-                <!-- content-wrapper ends -->
-
-                <!-- partial -->
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
+        <!-- container-scroller -->
 
-    <!-- footer -->
-    <?php
-    include "template_parts/footer.php";
-    ?>
-    <!-- End custom js for this page -->
+        <!-- footer -->
+        <?php
+        include "template_parts/footer.php";
+        ?>
+        <!-- End custom js for this page -->
 </body>
 
 </html>
