@@ -427,7 +427,7 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                             </div>
                                         </div>
                                         <?php
-                                        if ($groom_village == "Home Village") {
+                                        if ($bride_village == "Home Village") {
                                             echo "
                                                 <div class='preview-list'>
                                                     <div class='preview-item border-bottom'>
@@ -553,7 +553,7 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                             </div>
                                         </div>
                                         <?php
-                                        if ($groom_village == "Home Village") {
+                                        if ($bride_village == "Home Village") {
                                             echo "
                                                 <div class='preview-list'>
                                                     <div class='preview-item border-bottom'>
