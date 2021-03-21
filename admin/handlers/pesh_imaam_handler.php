@@ -23,7 +23,7 @@ if ($action == "terminate") {
         'pi_peshImaamId'     =>     $id
     );
     if ($database->update("tbl_peshimaaamdetails", $update_data, $where_condition)) {
-        $URL = "preview_pesh_imaam-details.php?terminated=1";
+        $URL = "preview_pesh_imaam-details.php?terminated=1&id=".$id;
         echo $URL;
     }
 }

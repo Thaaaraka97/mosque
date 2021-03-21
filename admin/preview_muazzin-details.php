@@ -4,27 +4,54 @@
 <?php
 include "template_parts/header.php";
 $database = new databases();
-if (isset($_GET['edited'])) {
-    $message = "Record successfully edited and Updated..!";
-}
-elseif (isset($_GET['terminated'])) {
-    $message = "Member terminated and Updated the Record..!";
+
+$id = "";
+$muazzin_salary_details = "";
+$name = "";
+// $basic_salary = 0;
+// $incentive = 0;
+// $madrasa_fee = 0;
+// $advance = 0;
+(float)$epfetf = 0;
+// $loan_deduction = "";
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $where2 = array(
+        'mSal_muazzinId ' => $id
+    );
+    $muazzin_salary_details = $database->select_where('tbl_muazzinsalary', $where2);
+    foreach ($muazzin_salary_details as $muazzin_salary_details_item) {
+        // $basic_salary = $basic_salary + $muazzin_salary_details_item['mSal_basicSalary'];
+        // $incentive = $incentive + $muazzin_salary_details_item['mSal_incentive'];
+        // $madrasa_fee = $madrasa_fee + $muazzin_salary_details_item['mSal_madrasaFee'];
+        // $advance = $advance + $muazzin_salary_details_item['mSal_advance'];
+        (float)$epf = $muazzin_salary_details_item['mSal_EPFETF'];
+        // $loan_deduction = $loan_deduction + $muazzin_salary_details_item['mSal_loanDeduction'];
+        (float)$epfetf = (float)$epfetf + (float)$epf;
+
+    }
 }
 
 $where = array(
     'md_muazzinId ' != 0
 );
 $item_count = $database->select_count('tbl_muazzindetails', $where);
+
+$where3 = array(
+    'md_muazzinId ' => $id
+);
+$muazzin_details = $database->select_where('tbl_muazzindetails', $where3);
+foreach ($muazzin_details as $muazzin_details_item) {
+    $name = $muazzin_details_item['md_name'];
+}
+
+if (isset($_GET['edited'])) {
+    $message = "Record successfully edited and Updated..!";
+}
+elseif (isset($_GET['terminated'])) {
+    $message = "Muazzin has been terminated..!<br>Toal EPF/ETF paid on behalf of Muazzin $name with the ID-$id is Rs. $epfetf /=";
+}
 ?>
-<script type="text/javascript">
-    var action = "<?php echo $action; ?>";
-    var villageraction = "";
-    var donationaction = "";
-    var fridaycollectionaction = "";
-
-</script>
-
-
 <body>
     <div class="container-scroller">
         <!-- navigation bar -->
@@ -47,18 +74,18 @@ $item_count = $database->select_count('tbl_muazzindetails', $where);
                     if (isset($_GET['edited'])) {
                         echo "
                         <div class='alert alert-warning alert-dismissible' role='alert'>" . $message . "
-                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                            <span aria-hidden='true'>&times;</span>
-                        </button>
-                    </div>";
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                            </button>
+                        </div>";
                     }
                     elseif (isset($_GET['terminated'])) {
                         echo "
                         <div class='alert alert-danger alert-dismissible' role='alert'>" . $message . "
-                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                            <span aria-hidden='true'>&times;</span>
-                        </button>
-                    </div>";
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                            </button>
+                        </div>";
                     }
                     ?>
                     <div class="row justify-content-center">

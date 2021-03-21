@@ -1721,6 +1721,21 @@ $(document).ready(function () {
   // show/hide admin div on radio change
   $("input[type=radio][name=inputPost]").change(function (e) {
     e.preventDefault();
+    if ($(this).val() == "Pesh Imaam"){
+      post = "PeshImaam";
+    }
+    else if($(this).val() == "Muazzin"){
+      post = "Muazzin";
+    }
+    var data_bundle = "post=" + post + "&action=find_ids";
+    $.ajax({
+      type: "post",
+      url: "handlers/salary_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        $("#inputPriestIndexNo").html(response);
+      }
+    });
     $("#salarydiv").show();
     if ($(this).val() == "Pesh Imaam") {
       $("#specialbhyan").show();
@@ -1733,10 +1748,10 @@ $(document).ready(function () {
 
   // form_salary.php
   // show/hide admin div on radio change
-  $("#inputIndexNo").change(function (e) {
+  $("#inputPriestIndexNo").change(function (e) {
     e.preventDefault();
-    var id = $("#inputIndexNo").val();
-    var data_bundle = "post=" + post + "&id=" + id;
+    var id = $("#inputPriestIndexNo").val();
+    var data_bundle = "post=" + post + "&id=" + id + "&action=find_record";
     $.ajax({
       type: "post",
       url: "handlers/salary_handler.php",
@@ -1894,6 +1909,7 @@ $(document).ready(function () {
       },
     });
   });
+
 
   // show/ hide div on the change of dropdown list donations
   if (fridaycollectionaction == "fridayregular") {

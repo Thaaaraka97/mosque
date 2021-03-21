@@ -22,7 +22,7 @@ if ($action == "terminate") {
         'md_muazzinId'     =>     $id
     );
     if ($database->update("tbl_muazzindetails", $update_data, $where_condition)) {
-        $URL = "preview_muazzin-details.php?terminated=1";
+        $URL = "preview_muazzin-details.php?terminated=1&id=".$id;
         echo $URL;
     }
 }

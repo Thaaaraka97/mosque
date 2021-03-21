@@ -229,24 +229,6 @@ include "template_parts/header.php";
               </div>
             </div>
           </div>
-          <div class="row justify-content-center">
-            <div class="col-md-8 grid-margin stretch-card">
-              <div class="card ">
-                <div class="card-body text-center d-flex align-items-center">
-                  <div class="float-left col-md-4 align-middle">
-                    <img src="assets/images/icons/salary.png" alt="Expenses-img">
-                  </div>
-                  <div class="float-left col-md-4 align-middle">
-                    <h5> Other Servant Salary </h5>
-                    <p> Enter Other Servant Salary Details to the Database ...</p>
-                  </div>
-                  <div class="float-left col-md-4 align-middle">
-                    <a href="<?php echo $server_name ?>form_other-servant-salary.php" class="btn btn-lg btn-primary py-3">Open..</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <!-- 2 rows -->
           <div class="row justify-content-center">
             <div class="col-md-8 grid-margin stretch-card">
@@ -271,6 +253,37 @@ include "template_parts/header.php";
                       </div>
                       <div class="col-md-6 d-flex justify-content-center align-self-center">
                         <a href="<?php echo $server_name ?>form_muazzin-details.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 2 rows -->
+          <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+              <div class="card ">
+                <div class="card-body d-flex justify-content-center">
+                  <div class="float-left col-md-4 d-flex justify-content-center align-self-center">
+                    <img src="assets/images/icons/salary.png" alt="Expenses-img">
+                  </div>
+                  <div class=" float-left col-md-8">
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Head Priest Salary </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_salary.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Other Servant Salary </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_other-servant-salary.php" class="btn btn-lg btn-primary">Open..</a>
                       </div>
                     </div>
                   </div>

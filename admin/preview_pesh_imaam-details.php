@@ -4,25 +4,56 @@
 <?php
 include "template_parts/header.php";
 $database = new databases();
-if (isset($_GET['edited'])) {
-    $message = "Record successfully edited and Updated..!";
-} elseif (isset($_GET['terminated'])) {
-    $message = "Member terminated and Updated the Record..!";
+
+$id = "";
+$peshimaam_salary_details = "";
+$name = "";
+// $basic_salary = 0;
+// $incentive = 0;
+// $madrasa_fee = 0;
+// $advance = 0;
+// $special_bhayan = 0;
+(float)$epfetf = 0;
+// $loan_deduction = "";
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $where2 = array(
+        'pSal_peshImaamId ' => $id
+    );
+    $peshimaam_salary_details = $database->select_where('tbl_peshimaamsalary', $where2);
+    foreach ($peshimaam_salary_details as $peshimaam_salary_details_item) {
+        // $basic_salary = $basic_salary + $peshimaam_salary_details_item['pSal_basicSalary'];
+        // $incentive = $incentive + $peshimaam_salary_details_item['pSal_incentive'];
+        // $madrasa_fee = $madrasa_fee + $peshimaam_salary_details_item['pSal_madrasaFee'];
+        // $advance = $advance + $peshimaam_salary_details_item['pSal_advance'];
+        (float)$epf = $peshimaam_salary_details_item['pSal_EPFETF'];
+        // $loan_deduction = $loan_deduction + $peshimaam_salary_details_item['pSal_loanDeduction'];
+        // $special_bhayan = $special_bhayan + $peshimaam_salary_details_item['pSal_specialBhayanFee'];
+        (float)$epfetf = (float)$epfetf + (float)$epf;
+
+    }
 }
 
 $where = array(
     'pi_peshImaamId ' != 0
 );
 $item_count = $database->select_count('tbl_peshimaaamdetails', $where);
+
+$where3 = array(
+    'pi_peshImaamId ' => $id
+);
+$peshimaam_details = $database->select_where('tbl_peshimaaamdetails', $where3);
+foreach ($peshimaam_details as $peshimaam_details_item) {
+    $name = $peshimaam_details_item['pi_name'];
+}
+
+if (isset($_GET['edited'])) {
+    $message = "Record successfully edited and Updated..!";
+}
+elseif (isset($_GET['terminated'])) {
+    $message = "PeshImaam $name with the ID-$id has been terminated..!<br>Toal EPF/ETF paid is Rs. $epfetf /=";
+}
 ?>
-<script type="text/javascript">
-    var action = "<?php echo $action; ?>";
-    var villageraction = "";
-    var donationaction = "";
-    var fridaycollectionaction = "";
-</script>
-
-
 <body>
     <div class="container-scroller">
         <!-- navigation bar -->
