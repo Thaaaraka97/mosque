@@ -129,10 +129,10 @@ foreach ($q_madrasa_details as $q_madrasa_details_item) {
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
                                                     <div class="flex-grow">
-                                                        <h6 class="preview-subject">Index</h6>
+                                                        <h6 class="preview-subject">Index  (Click on the Index Number)</h6>
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                                        <p class="text-muted"><?php echo $index ?></p>
+                                                        <a data-toggle='tooltip' data-placement='top' title='Click to See More Details' href='preview_villager-details_step-2.php?index=<?php echo $index; ?>&subdivision=<?php echo $subdivision; ?>&action=view' class="text-muted"><?php echo $index ?></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -209,6 +209,15 @@ foreach ($q_madrasa_details as $q_madrasa_details_item) {
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Guardian Details </h4>
                                         <div class="preview-list">
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
@@ -217,6 +226,18 @@ foreach ($q_madrasa_details as $q_madrasa_details_item) {
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
                                                         <p class="text-muted"><?php echo $guard_name ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Contact Number of the Guardian</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $guard_tp ?></p>
                                                     </div>
                                                 </div>
                                             </div>

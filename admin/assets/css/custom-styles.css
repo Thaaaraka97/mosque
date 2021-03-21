@@ -314,6 +314,11 @@ table.dataTable {
   vertical-align: middle;
 }
 
+a.text-muted{
+  text-decoration-line: underline !important;
+  color: dodgerblue !important;
+}
+
 .alert {
   position: absolute;
   z-index: 1400;

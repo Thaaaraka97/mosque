@@ -228,10 +228,11 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                                     <div class='preview-item border-bottom'>
                                                         <div class='preview-item-content d-sm-flex flex-grow'>
                                                             <div class='flex-grow'>
-                                                                <h6 class='preview-subject'>Index</h6>
+                                                                <h6 class='preview-subject'>Index (Click on the Index Number)</h6>
                                                             </div>
                                                             <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
-                                                                <p class='text-muted'>$groom_index</p>
+                                                                <span class='d-inline-block' tabindex='0' data-toggle='tooltip' title='Click to See More Details'>
+                                                                <a href='preview_villager-details_step-2.php?index=" . $groom_index . "&subdivision=" . $groom_subdivision . "&action=view' class='text-muted'>$groom_index</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -369,7 +370,7 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                                                 <h6 class='preview-subject'>Guardian :Index</h6>
                                                             </div>
                                                             <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
-                                                                <p class='text-muted'>$groom_guard_index</p>
+                                                                <a data-toggle='tooltip' data-placement='top' title='Click to See More Details' href='preview_villager-details_step-2.php?index=$groom_guard_index&subdivision=$groom_subdivision&action=view' class='text-muted'>$groom_guard_index</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -432,10 +433,10 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                                     <div class='preview-item border-bottom'>
                                                         <div class='preview-item-content d-sm-flex flex-grow'>
                                                             <div class='flex-grow'>
-                                                                <h6 class='preview-subject'>Index</h6>
+                                                                <h6 class='preview-subject'>Index (Click on the Index Number)</h6>
                                                             </div>
                                                             <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
-                                                                <p class='text-muted'>$bride_index</p>
+                                                                <a data-toggle='tooltip' data-placement='top' title='Click to See More Details' href='preview_villager-details_step-2.php?index=" . $bride_index . "&subdivision=" . $bride_subdivision . "&action=view' class='text-muted'>$bride_index</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -561,7 +562,7 @@ foreach ($nikkah_details as $nikkah_details_item) {
                                                                 <h6 class='preview-subject'>Guardian :Index</h6>
                                                             </div>
                                                             <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
-                                                                <p class='text-muted'>$bride_guard_index</p>
+                                                                <a data-toggle='tooltip' data-placement='top' title='Click to See More Details' href='preview_villager-details_step-2.php?index=$bride_guard_index&subdivision=$bride_subdivision&action=view' class='text-muted'>$bride_guard_index</a>
                                                             </div>
                                                         </div>
                                                     </div>

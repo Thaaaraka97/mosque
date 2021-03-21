@@ -1920,6 +1920,10 @@ $(document).ready(function () {
     $("#fridaycollections").show();
   }
 
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+
   // show/ hide div on the change of dropdown list donations
   if (donationaction == "other") {
     $("#other").show();
