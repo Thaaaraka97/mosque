@@ -236,6 +236,13 @@
 #previousTB {
   display: none;
 }
+
+/*  form_villagers-registration-form-step2.php */
+/* hide noofchildren div */
+#noofchildren {
+  display: none;
+}
+
 .fa-lg {
   padding-left: 15px;
   padding-bottom: 15px;

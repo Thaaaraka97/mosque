@@ -1802,8 +1802,8 @@ $(document).ready(function () {
     });
   });
 
-  //
-  //
+  // form_villager-registration.php
+  // find age
   $("#inputvillagerDOB").change(function (e) {
     e.preventDefault();
     var dob = $("#inputvillagerDOB").val();
@@ -1907,6 +1907,84 @@ $(document).ready(function () {
         console.log(response);
         window.location.href = response;
       },
+    });
+  });
+
+  // form_pesh-imaam-details.php
+  // find records on given details
+  $("#inputImaamSubdivision").change(function (e) { 
+    e.preventDefault();
+    var index = $("#inputIndexNo").val();
+    var subdivision = $("#inputImaamSubdivision").val();
+    var data_bundle = "action=find_records&index=" + index + "&subdivision=" + subdivision;
+    $.ajax({
+      type: "post",
+      url: "handlers/pesh_imaam_handler.php",
+      data: data_bundle ,
+      success: function (response) {
+        var result_array = response.split("+");
+        $("#inputName").val(result_array[0]);
+        $('#inputName').attr('readonly', true);
+
+        $("#inputAddress").val(result_array[1]);
+        $('#inputAddress').attr('readonly', true);
+
+        $("#inputKids").val(result_array[2]);
+        $('#inputKids').attr('readonly', true);
+
+        $("#inputMobile").val(result_array[3]);
+        $('#inputMobile').attr('readonly', true);
+
+        if (result_array[4] == "0") {
+          $("#inputMarriedStatusN").attr('checked', 'checked');
+        }
+        else if (result_array[4] == "1") {
+          $("#inputMarriedStatusY").attr('checked', 'checked');
+        }
+        $('input[type=radio][name=inputMarriedStatus]').attr('disabled', true);
+
+        $("#inputNIC").val(result_array[5]);
+        $('#inputNIC').attr('readonly', true);
+      }
+    });
+  });
+
+  // form_pesh-imaam-details.php
+  // find records on given details
+  $("#inputMuazzinSubdivision").change(function (e) { 
+    e.preventDefault();
+    var index = $("#inputIndexNo").val();
+    var subdivision = $("#inputMuazzinSubdivision").val();
+    var data_bundle = "action=find_records&index=" + index + "&subdivision=" + subdivision;
+    $.ajax({
+      type: "post",
+      url: "handlers/muazzin_handler.php",
+      data: data_bundle ,
+      success: function (response) {
+        var result_array = response.split("+");
+        $("#inputName").val(result_array[0]);
+        $('#inputName').attr('readonly', true);
+
+        $("#inputAddress").val(result_array[1]);
+        $('#inputAddress').attr('readonly', true);
+
+        $("#inputKids").val(result_array[2]);
+        $('#inputKids').attr('readonly', true);
+
+        $("#inputMobile").val(result_array[3]);
+        $('#inputMobile').attr('readonly', true);
+
+        if (result_array[4] == "0") {
+          $("#inputMarriedStatusN").attr('checked', 'checked');
+        }
+        else if (result_array[4] == "1") {
+          $("#inputMarriedStatusY").attr('checked', 'checked');
+        }
+        $('input[type=radio][name=inputMarriedStatus]').attr('disabled', true);
+
+        $("#inputNIC").val(result_array[5]);
+        $('#inputNIC').attr('readonly', true);
+      }
     });
   });
 
@@ -2028,8 +2106,10 @@ $(document).ready(function () {
     e.preventDefault();
     if ($(this).val() == "No") {
       $("#marriedEdit").hide();
+      $("#noofchildren").hide();
     } else {
       $("#marriedEdit").show();
+      $("#noofchildren").show();
     }
   });
   $("input[type=radio][name=inputStudent]").change(function (e) {

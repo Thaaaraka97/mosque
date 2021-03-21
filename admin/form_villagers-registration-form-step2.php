@@ -388,6 +388,10 @@ if (isset($_GET["inserted_record"])) {
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group col-md-6" id="noofchildren">
+                                                        <label for="inputKids"> No. of Children </label>
+                                                        <input type="text" class="form-control" id="inputKids" name="inputKids" placeholder="No of Children">
+                                                    </div>
                                                 </div>
                                                 <div id="married">
                                                     <div class="form-row">
