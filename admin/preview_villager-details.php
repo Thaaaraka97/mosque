@@ -486,7 +486,7 @@ if (isset($_GET['sort1'])) {
                                                     </table>
                                                 </div>
                                             </div>
-                                            <div id="orphan1">
+                                            <div id="orphan">
                                                 <div class="form-group col-md-3">
                                                     <select name="sortOrphansubdivision" id="sortOrphansubdivision" class="form-control">
                                                         <option value="0" selected>All Sub-Divisions</option>

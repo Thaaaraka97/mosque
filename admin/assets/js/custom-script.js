@@ -2035,7 +2035,7 @@ $(document).ready(function () {
   $("#sortOrphansubdivision").change(function (e) { 
     e.preventDefault();
     var sort1 = $("#sortOrphansubdivision").val();
-    window.location.href = "preview_villager-details.php?action=madrasa&sort1=" + sort1;
+    window.location.href = "preview_villager-details.php?action=orphan&sort1=" + sort1;
   });
 
 
