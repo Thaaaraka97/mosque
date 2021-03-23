@@ -1049,7 +1049,7 @@ $(document).ready(function () {
   $("#listDetails").change(function (e) {
     e.preventDefault();
     var listDetails = $("#listDetails").val();
-    window.location.href = "preview_villager-details.php?action=" + listDetails;
+    window.location.href = "preview_villager-details.php?sort1=0&action=" + listDetails;
   });
 
   // form_friday-collection.php
@@ -1802,8 +1802,8 @@ $(document).ready(function () {
     });
   });
 
-  //
-  //
+  // form_villager-registration.php
+  // find age
   $("#inputvillagerDOB").change(function (e) {
     e.preventDefault();
     var dob = $("#inputvillagerDOB").val();
@@ -1910,6 +1910,134 @@ $(document).ready(function () {
     });
   });
 
+  // form_pesh-imaam-details.php
+  // find records on given details
+  $("#inputImaamSubdivision").change(function (e) { 
+    e.preventDefault();
+    var index = $("#inputIndexNo").val();
+    var subdivision = $("#inputImaamSubdivision").val();
+    var data_bundle = "action=find_records&index=" + index + "&subdivision=" + subdivision;
+    $.ajax({
+      type: "post",
+      url: "handlers/pesh_imaam_handler.php",
+      data: data_bundle ,
+      success: function (response) {
+        var result_array = response.split("+");
+        $("#inputName").val(result_array[0]);
+        $('#inputName').attr('readonly', true);
+
+        $("#inputAddress").val(result_array[1]);
+        $('#inputAddress').attr('readonly', true);
+
+        $("#inputKids").val(result_array[2]);
+        $('#inputKids').attr('readonly', true);
+
+        $("#inputMobile").val(result_array[3]);
+        $('#inputMobile').attr('readonly', true);
+
+        if (result_array[4] == "0") {
+          $("#inputMarriedStatusN").attr('checked', 'checked');
+        }
+        else if (result_array[4] == "1") {
+          $("#inputMarriedStatusY").attr('checked', 'checked');
+        }
+        $('input[type=radio][name=inputMarriedStatus]').attr('disabled', true);
+
+        $("#inputNIC").val(result_array[5]);
+        $('#inputNIC').attr('readonly', true);
+      }
+    });
+  });
+
+  // form_pesh-imaam-details.php
+  // find records on given details
+  $("#inputMuazzinSubdivision").change(function (e) { 
+    e.preventDefault();
+    var index = $("#inputIndexNo").val();
+    var subdivision = $("#inputMuazzinSubdivision").val();
+    var data_bundle = "action=find_records&index=" + index + "&subdivision=" + subdivision;
+    $.ajax({
+      type: "post",
+      url: "handlers/muazzin_handler.php",
+      data: data_bundle ,
+      success: function (response) {
+        var result_array = response.split("+");
+        $("#inputName").val(result_array[0]);
+        $('#inputName').attr('readonly', true);
+
+        $("#inputAddress").val(result_array[1]);
+        $('#inputAddress').attr('readonly', true);
+
+        $("#inputKids").val(result_array[2]);
+        $('#inputKids').attr('readonly', true);
+
+        $("#inputMobile").val(result_array[3]);
+        $('#inputMobile').attr('readonly', true);
+
+        if (result_array[4] == "0") {
+          $("#inputMarriedStatusN").attr('checked', 'checked');
+        }
+        else if (result_array[4] == "1") {
+          $("#inputMarriedStatusY").attr('checked', 'checked');
+        }
+        $('input[type=radio][name=inputMarriedStatus]').attr('disabled', true);
+
+        $("#inputNIC").val(result_array[5]);
+        $('#inputNIC').attr('readonly', true);
+      }
+    });
+  });
+
+  // nikka preview
+  // redirect with sort details
+  $("#sortNikkahsubdivision").change(function (e) { 
+    e.preventDefault();
+    var sort1 = $("#sortNikkahsubdivision").val();
+    window.location.href = "preview_nikkah-details.php?sort1=" + sort1;
+  });
+  // janaza preview
+  // redirect with sort details
+  $("#sortanazasubdivision").change(function (e) { 
+    e.preventDefault();
+    var sort1 = $("#sortanazasubdivision").val();
+    window.location.href = "preview_janaza-details.php?sort1=" + sort1;
+  });
+  // villger preview
+  // redirect with sort details
+  $("#sortvillagersubdivision").change(function (e) { 
+    e.preventDefault();
+    var sort1 = $("#sortvillagersubdivision").val();
+    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=" + sort1;
+  });
+  // widow preview
+  // redirect with sort details
+  $("#sortWidowsubdivision").change(function (e) { 
+    e.preventDefault();
+    var sort1 = $("#sortWidowsubdivision").val();
+    window.location.href = "preview_villager-details.php?action=widow&sort1=" + sort1;
+  });
+  // divorse preview
+  // redirect with sort details
+  $("#sortDivorsedsubdivision").change(function (e) { 
+    e.preventDefault();
+    var sort1 = $("#sortDivorsedsubdivision").val();
+    window.location.href = "preview_villager-details.php?action=divorse&sort1=" + sort1;
+  });
+  // madrasa preview
+  // redirect with sort details
+  $("#sortMadrasasubdivision").change(function (e) { 
+    e.preventDefault();
+    var sort1 = $("#sortMadrasasubdivision").val();
+    window.location.href = "preview_villager-details.php?action=madrasa&sort1=" + sort1;
+  });
+  // orphan preview
+  // redirect with sort details
+  $("#sortOrphansubdivision").change(function (e) { 
+    e.preventDefault();
+    var sort1 = $("#sortOrphansubdivision").val();
+    window.location.href = "preview_villager-details.php?action=madrasa&sort1=" + sort1;
+  });
+
 
   // show/ hide div on the change of dropdown list donations
   if (fridaycollectionaction == "fridayregular") {
@@ -1919,6 +2047,10 @@ $(document).ready(function () {
     $("#fridayregular").hide();
     $("#fridaycollections").show();
   }
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
 
   // show/ hide div on the change of dropdown list donations
   if (donationaction == "other") {
@@ -2024,8 +2156,10 @@ $(document).ready(function () {
     e.preventDefault();
     if ($(this).val() == "No") {
       $("#marriedEdit").hide();
+      $("#noofchildren").hide();
     } else {
       $("#marriedEdit").show();
+      $("#noofchildren").show();
     }
   });
   $("input[type=radio][name=inputStudent]").change(function (e) {

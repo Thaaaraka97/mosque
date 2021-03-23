@@ -236,6 +236,13 @@
 #previousTB {
   display: none;
 }
+
+/*  form_villagers-registration-form-step2.php */
+/* hide noofchildren div */
+#noofchildren {
+  display: none;
+}
+
 .fa-lg {
   padding-left: 15px;
   padding-bottom: 15px;
@@ -312,6 +319,11 @@ table.dataTable {
 
 .dataTables_wrapper .dataTable .btn{
   vertical-align: middle;
+}
+
+a.text-muted{
+  text-decoration-line: underline !important;
+  color: dodgerblue !important;
 }
 
 .alert {

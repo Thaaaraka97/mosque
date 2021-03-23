@@ -62,41 +62,56 @@
             <a class="nav-link" href="<?php $server_name ?>forms.php"> <span class="menu-icon"> <i class="mdi mdi-file-document-box"></i> </span> <span class="menu-title">Forms</span> </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#member-dropdown" aria-expanded="false" aria-controls="member-dropdown"> <span class="menu-icon"> <i class="mdi mdi-account-card-details"></i> </span> <span class="menu-title">Member Details</span> <i class="menu-arrow"></i> </a>
-            <div class="collapse" id="member-dropdown">
+            <a class="nav-link" data-toggle="collapse" href="#preview-dropdown" aria-expanded="false" aria-controls="preview-dropdown"> <span class="menu-icon"> <i class="mdi mdi-file-document"></i> </span> <span class="menu-title">Preview Pages</span> <i class="menu-arrow"></i> </a>
+            <div class="collapse" id="preview-dropdown">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_saandha-details.php"> Saandha Details </a>
+                        <a class="nav-link" href="preview_villager-details.php?action=allvillagers&sort1=0"> All Villagers Details </a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_widow-details.php"> Widow Details </a>
+                        <a class="nav-link" href="preview_nikkah-details.php?sort1=0"> Nikkah Details </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_janaza-details.php?sort1=0"> Janaza Details </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_q_madrasa-details.php"> Quran Madrasa Details </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_saandha-amount-fixing-history.php"> Saandha Amount Fixings </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_expenses.php"> Expenses </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_non-mahalla-saandha-registration.php"> Non-Mahalla Saandha Details </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_nonmahalla_saandha_collection.php"> Non-Mahalla Saandha Collections </a>
                     </li>
                 </ul>
             </div>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#preview-dropdown" aria-expanded="false" aria-controls="preview-dropdown"> <span class="menu-icon"> <i class="mdi mdi-file-document"></i> </span> <span class="menu-title">Preview Pages</span> <i class="menu-arrow"></i> </a>
-            <div class="collapse" id="preview-dropdown">
+            <a class="nav-link" href="<?php $server_name ?>preview_donation-details.php?action=alldonations"> <span class="menu-icon"> <i class="mdi mdi-chart-bar"></i> </span> <span class="menu-title">Donations</span> </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#trustee-board-dropdown" aria-expanded="false" aria-controls="trustee-board-dropdown"> <span class="menu-icon"> <i class="mdi mdi-contacts"></i></span><span class="menu-title">Trustee Board</span><i class="menu-arrow"></i> </a>
+            <div class="collapse" id="trustee-board-dropdown">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="preview_villager-details.php?action=allvillagers"> All Villagers Details </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="preview_nikkah-details.php"> Nikkah Details </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="preview_janaza-details.php"> Janaza Details </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_trustee_board-details.php?action=present"> Trustee Board Details </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_trustee_board-history.php"> Trustee Board History </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="preview_q_madrasa-details.php"> Quran Madrasa Details </a>
-                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#priest-dropdown" aria-expanded="false" aria-controls="priest-dropdown"> <span class="menu-icon"> <i class="mdi mdi-contact-mail"></i></span><span class="menu-title">Head Priest</span><i class="menu-arrow"></i> </a>
+            <div class="collapse" id="priest-dropdown">
+                <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
                         <a class="nav-link" href="preview_pesh_imaam-details.php"> Pesh Imaam Details </a>
                     </li>
@@ -104,8 +119,15 @@
                         <a class="nav-link" href="preview_muazzin-details.php"> Muazzin Details </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_saandha-amount-fixing-history.php"> Saandha Amount Fixings </a>
+                        <a class="nav-link" href="preview_salary.php"> Salary Page </a>
                     </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#rental-dropdown" aria-expanded="false" aria-controls="rental-dropdown"> <span class="menu-icon"> <i class="mdi mdi-home"></i></span><span class="menu-title">Rental Details</span><i class="menu-arrow"></i> </a>
+            <div class="collapse" id="rental-dropdown">
+                <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
                         <a class="nav-link" href="preview_rental-places.php"> Rental Places </a>
                     </li>
@@ -115,8 +137,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="preview_rental-incomes.php"> Rental Income </a>
                     </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#collection-dropdown" aria-expanded="false" aria-controls="collection-dropdown"> <span class="menu-icon"> <i class="mdi mdi-chart-line"></i></span><span class="menu-title">Collections</span><i class="menu-arrow"></i> </a>
+            <div class="collapse" id="collection-dropdown">
+                <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_funds.php"> Funds </a>
+                        <a class="nav-link" href="preview_friday-collection.php?action=fridayregular"> Friday Collection </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_kanduri-collection.php"> Kanduri Collection </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_lailathul-kadhir-collection.php"> Laylat al-Qadr Collection </a>
@@ -125,44 +157,13 @@
                         <a class="nav-link" href="preview_undiyal-collection.php"> Undiyal Collection </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_kanduri-collection.php"> Kanduri Collection </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="preview_expenses.php"> Expenses </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="preview_friday-collection.php?action=fridayregular"> Friday Collection </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="preview_non-mahalla-saandha-registration.php"> Non-Mahalla Saandha Details </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="preview_nonmahalla_saandha_collection.php"> Non-Mahalla Saandha Collections </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="preview_salary.php"> Salary Page </a>
+                        <a class="nav-link" href="preview_funds.php"> Funds </a>
                     </li>
                 </ul>
             </div>
-        </li>
-        <li class="nav-item menu-items">
-            <a class="nav-link" href="<?php $server_name ?>preview_donation-details.php?action=alldonations"> <span class="menu-icon"> <i class="mdi mdi-chart-bar"></i> </span> <span class="menu-title">Donations</span> </a>
         </li>
         <li class="nav-item menu-items">
             <a class="nav-link" href="<?php $server_name ?>trial_balance.php"> <span class="menu-icon"> <i class="mdi mdi-table-large"></i> </span> <span class="menu-title">Trail Balance</span> </a>
-        </li>
-        <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#trustee-board-dropdown" aria-expanded="false" aria-controls="trustee-board-dropdown"> <span class="menu-icon"> <i class="mdi mdi-contacts"></i></span><span class="menu-title">Trustee Board</span><i class="menu-arrow"></i> </a>
-            <div class="collapse" id="trustee-board-dropdown">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php $server_name ?>preview_current-trustee-board.php"> Present Details </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php $server_name ?>preview_past-trustee-board.php"> Past Details </a>
-                    </li>
-                </ul>
-            </div>
         </li>
     </ul>
 </nav>

@@ -133,10 +133,10 @@ foreach ($janaza_details as $janaza_details_item) {
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
                                                     <div class="flex-grow">
-                                                        <h6 class="preview-subject">Index Number</h6>
+                                                        <h6 class="preview-subject">Index Number (Click on the Index Number)</h6>
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                                        <p class="text-muted"><?php echo $index ?></p>
+                                                        <a data-toggle='tooltip' data-placement='top' title='Click to See More Details' href='preview_villager-details_step-2.php?index=<?php echo $index; ?>&subdivision=<?php echo $subdivision; ?>&action=view' class="text-muted"><?php echo $index ?></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -309,7 +309,6 @@ foreach ($janaza_details as $janaza_details_item) {
                         </div>
 
                     </div>
-
                     <div class="text-dark" id="editDetails">
                         <div class="row justify-content-center">
                             <div class="col-md-8 grid-margin stretch-card">

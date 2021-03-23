@@ -26,3 +26,19 @@ if ($action == "terminate") {
         echo $URL;
     }
 }
+elseif ($action == "find_records") {
+    $where = array(
+        'av_index'     =>     $_POST["index"],
+        'av_subDivision'     =>     $_POST["subdivision"]
+    );
+    $person_details = $database->select_where('tbl_allvillagers', $where);
+    
+    foreach ($person_details as $person_details_item) {
+        echo $person_details_item["av_name"] . "+";
+        echo $person_details_item["av_address"] . "+";
+        echo $person_details_item["av_noofChildren"] . "+";
+        echo $person_details_item["av_telephone"] . "+";
+        echo $person_details_item["av_married"] . "+";
+        echo $person_details_item["av_nic"];
+    }
+}

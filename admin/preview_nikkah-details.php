@@ -5,6 +5,8 @@
 include "template_parts/header.php";
 $database = new databases();
 $id = "";
+$where = "";
+$sort1 = "";
 
 if (isset($_GET['deleted'])) {
     $message = "Record successfully Deleted..!";
@@ -12,9 +14,20 @@ if (isset($_GET['deleted'])) {
     $message = "Record successfully Updated..!";
 }
 
-$where = array(
-    'nd_nikkahId ' != 0
-);
+if (isset($_GET['sort1'])) {
+    $sort1 = $_GET['sort1'];
+    if ($sort1 != "0") {
+        $where = array(
+            'nd_groomSubDivision' => $sort1
+        );
+    }
+    else {
+        $where = array(
+            'nd_nikkahId ' != 0
+        );
+    }
+    
+}
 $item_count = $database->select_count('tbl_nikkahdetails', $where);
 ?>
 <script type="text/javascript">
@@ -95,19 +108,27 @@ $item_count = $database->select_count('tbl_nikkahdetails', $where);
                                                 <div class="sorting">
                                                     <div class="row">
                                                         <div class="form-group col-md-1">
-                                                            <label for="sortvillagersubdivision">Sort By</label>
+                                                            <label for="sortNikkahsubdivision">Sort By</label>
                                                         </div>
                                                         <div class="form-group col-md-3">
-                                                            <select name="sortvillagersubdivision" id="sortvillagersubdivision" class="form-control">
-                                                                <option value="0" selected>Sub-Division</option>
-                                                                <option value="widow" <?= $action == 'widow' ? ' selected="selected"' : ''; ?>>Widow Details</option>
-                                                                <option value="divorse" <?= $action == 'divorse' ? ' selected="selected"' : ''; ?>>Divorsed Details</option>
-                                                                <option value="madrasa" <?= $action == 'madrasa' ? ' selected="selected"' : ''; ?>>Madrasa Children Details</option>
-                                                                <option value="orphan" <?= $action == 'orphan' ? ' selected="selected"' : ''; ?>>Orphan Children Details</option>
+                                                            <select name="sortNikkahsubdivision" id="sortNikkahsubdivision" class="form-control">
+                                                                <option value="0" selected>All Sub-Divisions</option>
+                                                                <option value="Moragala Main-Street" <?= $sort1 == 'Moragala Main-Street' ? ' selected="selected"' : ''; ?>>Moragala Main-Street </option>
+                                                                <option value="Old Rail Road" <?= $sort1 == 'Old Rail Road' ? ' selected="selected"' : ''; ?>>Old Rail Road </option>
+                                                                <option value="Bandarawaththa" <?= $sort1 == 'Bandarawaththa' ? ' selected="selected"' : ''; ?>>Bandarawaththa </option>
+                                                                <option value="Kothvila" <?= $sort1 == 'Kothvila' ? ' selected="selected"' : ''; ?>>Kothvila </option>
+                                                                <option value="Palpitiya" <?= $sort1 == 'Palpitiya' ? ' selected="selected"' : ''; ?>>Palpitiya </option>
+                                                                <option value="Ranaviru Mawatha" <?= $sort1 == 'Ranaviru Mawatha' ? ' selected="selected"' : ''; ?>>Ranaviru Mawatha </option>
+                                                                <option value="Wekada-1" <?= $sort1 == 'Wekada-1' ? ' selected="selected"' : ''; ?>>Wekada-1 </option>
+                                                                <option value="Wekada-2" <?= $sort1 == 'Wekada-2' ? ' selected="selected"' : ''; ?>>Wekada-2 </option>
+                                                                <option value="Wekada-3" <?= $sort1 == 'Wekada-3' ? ' selected="selected"' : ''; ?>>Wekada-3 </option>
+                                                                <option value="Eheliyagoda Town" <?= $sort1 == 'Eheliyagoda Town' ? ' selected="selected"' : ''; ?>>Eheliyagoda Town </option>
+                                                                <option value="Other-1" <?= $sort1 == 'Other-1' ? ' selected="selected"' : ''; ?>>Other-1 </option>
+                                                                <option value="Other-2" <?= $sort1 == 'Other-2' ? ' selected="selected"' : ''; ?>>Other-2 </option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-3">
-                                                            <select name="sortvillagersubdivision" id="sortvillagersubdivision" class="form-control">
+                                                            <select name="sortvillagerTime" id="sortvillagerTime" class="form-control">
                                                                 <option value="0" selected>Time</option>
                                                                 <option value="widow" <?= $action == 'widow' ? ' selected="selected"' : ''; ?>>Widow Details</option>
                                                                 <option value="divorse" <?= $action == 'divorse' ? ' selected="selected"' : ''; ?>>Divorsed Details</option>
@@ -130,7 +151,15 @@ $item_count = $database->select_count('tbl_nikkahdetails', $where);
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        $nikkah_details = $database->select_data('tbl_nikkahdetails');
+                                                        $where= array(
+                                                            'nd_groomSubDivision' => $sort1
+                                                        );
+                                                        $nikkah_details = $database->select_where('tbl_nikkahdetails',$where);
+
+                                                        if ($sort1 == "0") {
+                                                            $nikkah_details = $database->select_data('tbl_nikkahdetails');
+
+                                                        }
                                                         foreach ($nikkah_details as $nikkah_details_item) {
                                                             $id = $nikkah_details_item['nd_nikkahId'];
 

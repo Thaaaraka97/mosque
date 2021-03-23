@@ -168,10 +168,10 @@ foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
                                                     <div class='preview-item border-bottom'>
                                                         <div class='preview-item-content d-sm-flex flex-grow'>
                                                             <div class='flex-grow'>
-                                                                <h6 class='preview-subject'>Index</h6>
+                                                                <h6 class='preview-subject'>Index (Click on the Index Number)</h6>
                                                             </div>
                                                             <div class='mr-auto text-sm-right pt-2 pt-sm-0'>
-                                                                <p class='text-muted'>$index</p>
+                                                                <a data-toggle='tooltip' data-placement='top' title='Click to See More Details' href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&action=view' class='text-muted'>$index</a>
                                                             </div>
                                                         </div>
                                                     </div>

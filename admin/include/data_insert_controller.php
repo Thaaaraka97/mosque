@@ -111,6 +111,11 @@ if (isset($_POST["addAnother"])) {
     } else {
         $inputMadName = "0";
     }
+    if ($_POST["inputKids"] != "") {
+        $inputKids = $_POST["inputKids"];
+    } else {
+        $inputKids = "0";
+    }
     if ($_POST["inputMadStart"] != "") {
         $inputMadStart = $_POST["inputMadStart"];
     } else {
@@ -188,7 +193,6 @@ if (isset($_POST["addAnother"])) {
     $av_address = "";
     $av_monthlyIncomeFamily = "";
     $av_avgInterpersonalIncome = "";
-    $av_noofChildren = "";
     $av_unmarriedChildren = "";
     $av_residentialStatus = "";
     $av_prevRes_address = "";
@@ -202,7 +206,6 @@ if (isset($_POST["addAnother"])) {
         $av_address = $data_from_temp_item["av_address"];
         $av_monthlyIncomeFamily = $data_from_temp_item["av_monthlyIncomeFamily"];
         $av_avgInterpersonalIncome = $data_from_temp_item["av_avgInterpersonalIncome"];
-        $av_noofChildren = $data_from_temp_item["av_noofChildren"];
         $av_unmarriedChildren = $data_from_temp_item["av_unmarriedChildren"];
         $av_residentialStatus = $data_from_temp_item["av_residentialStatus"];
         $av_prevRes_address = $data_from_temp_item["av_prevRes_address"];
@@ -218,7 +221,7 @@ if (isset($_POST["addAnother"])) {
         'av_address' => mysqli_real_escape_string($database->con, $av_address),
         'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $av_monthlyIncomeFamily),
         'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $av_avgInterpersonalIncome),
-        'av_noofChildren' => mysqli_real_escape_string($database->con, $av_noofChildren),
+        'av_noofChildren' => mysqli_real_escape_string($database->con, $inputKids),
         'av_unmarriedChildren' => mysqli_real_escape_string($database->con, $av_unmarriedChildren),
         'av_residentialStatus' => mysqli_real_escape_string($database->con, $av_residentialStatus),
         'av_prevRes_address' => mysqli_real_escape_string($database->con, $av_prevRes_address),
@@ -294,6 +297,11 @@ if (isset($_POST["submitSaandha"])) {
         $inputMadType = $_POST["inputMadType"];
     } else {
         $inputMadType = "0";
+    }
+    if ($_POST["inputKids"] != "") {
+        $inputKids = $_POST["inputKids"];
+    } else {
+        $inputKids = "0";
     }
     if ($_POST["inputMadName"] != "") {
         $inputMadName = $_POST["inputMadName"];
@@ -381,7 +389,6 @@ if (isset($_POST["submitSaandha"])) {
     $av_address = "";
     $av_monthlyIncomeFamily = "";
     $av_avgInterpersonalIncome = "";
-    $av_noofChildren = "";
     $av_unmarriedChildren = "";
     $av_residentialStatus = "";
     $av_prevRes_address = "";
@@ -395,7 +402,6 @@ if (isset($_POST["submitSaandha"])) {
         $av_address = $data_from_temp_item["av_address"];
         $av_monthlyIncomeFamily = $data_from_temp_item["av_monthlyIncomeFamily"];
         $av_avgInterpersonalIncome = $data_from_temp_item["av_avgInterpersonalIncome"];
-        $av_noofChildren = $data_from_temp_item["av_noofChildren"];
         $av_unmarriedChildren = $data_from_temp_item["av_unmarriedChildren"];
         $av_residentialStatus = $data_from_temp_item["av_residentialStatus"];
         $av_prevRes_address = $data_from_temp_item["av_prevRes_address"];
@@ -411,7 +417,7 @@ if (isset($_POST["submitSaandha"])) {
         'av_address' => mysqli_real_escape_string($database->con, $av_address),
         'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $av_monthlyIncomeFamily),
         'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $av_avgInterpersonalIncome),
-        'av_noofChildren' => mysqli_real_escape_string($database->con, $av_noofChildren),
+        'av_noofChildren' => mysqli_real_escape_string($database->con, $inputKids),
         'av_unmarriedChildren' => mysqli_real_escape_string($database->con, $av_unmarriedChildren),
         'av_residentialStatus' => mysqli_real_escape_string($database->con, $av_residentialStatus),
         'av_prevRes_address' => mysqli_real_escape_string($database->con, $av_prevRes_address),
@@ -715,7 +721,7 @@ if (isset($_POST['submitPeshImaam'])) {
     $insert_to_tbl_peshimaaamdetails = array(
         'pi_village' => mysqli_real_escape_string($database->con, $_POST['inputVillage']),
         'pi_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
-        'pi_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+        'pi_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputImaamSubdivision']),
         'pi_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
         'pi_address' => mysqli_real_escape_string($database->con, $address),
         'pi_nic' => mysqli_real_escape_string($database->con, $_POST['inputNIC']),
@@ -786,7 +792,7 @@ if (isset($_POST['submitMuazzin'])) {
     $insert_to_tbl_muazzindetails = array(
         'md_village' => mysqli_real_escape_string($database->con, $_POST['inputVillage']),
         'md_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
-        'md_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+        'md_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputMuazzinSubdivision']),
         'md_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
         'md_address' => mysqli_real_escape_string($database->con, $address),
         'md_nic' => mysqli_real_escape_string($database->con, $_POST['inputNIC']),
