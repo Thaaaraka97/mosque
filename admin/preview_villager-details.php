@@ -15,6 +15,13 @@ if (isset($_GET['left'])) {
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
+
+$id = "";
+$where = "";
+$sort1 = "";
+if (isset($_GET['sort1'])) {
+    $sort1 = $_GET['sort1'];
+}
 ?>
 <script type="text/javascript">
     var action = "";
@@ -68,35 +75,90 @@ if (isset($_GET['action'])) {
 
                     $all_villagers_details = "";
                     if ($action == "allvillagers") {
+
                         $where = array(
-                            'av_index ' != 0
+                            'av_index ' != 0,
+                            'av_subDivision' => $sort1
+
                         );
-                        $all_villagers_details = $database->select_data('tbl_allvillagers');
+                        $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
                         $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
+
+                        if ($sort1 == "0") {
+                            $where = array(
+                                'av_index ' != 0
+
+                            );
+                            $all_villagers_details = $database->select_data('tbl_allvillagers');
+                            $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
+                        }
                     } elseif ($action == "widow") {
                         $where = array(
-                            'av_widowed'     =>    1
+                            'av_widowed'     =>    1,
+                            'av_subDivision' => $sort1
                         );
                         $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
                         $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
+
+                        if ($sort1 == "0") {
+                            $where = array(
+                                'av_widowed'     =>    1
+
+                            );
+                            $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
+                            $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
+                        }
                     } elseif ($action == "divorse") {
                         $where = array(
-                            'av_divorced'     =>    1
+                            'av_divorced'     =>    1,
+                            'av_subDivision' => $sort1
+
                         );
                         $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
                         $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
+
+                        if ($sort1 == "0") {
+                            $where = array(
+                                'av_divorced'     =>    1
+
+                            );
+                            $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
+                            $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
+                        }
                     } elseif ($action == "orphan") {
                         $where = array(
-                            'av_orphaned'     =>    1
+                            'av_orphaned'     =>    1,
+                            'av_subDivision' => $sort1
+
                         );
                         $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
                         $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
+
+                        if ($sort1 == "0") {
+                            $where = array(
+                                'av_orphaned'     =>    1
+
+                            );
+                            $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
+                            $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
+                        }
                     } elseif ($action == "madrasa") {
                         $where = array(
-                            'av_madChild_status'     =>    1
+                            'av_madChild_status'     =>    1,
+                            'av_subDivision' => $sort1
+
                         );
                         $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
                         $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
+
+                        if ($sort1 == "0") {
+                            $where = array(
+                                'av_madChild_status'     =>    1
+
+                            );
+                            $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
+                            $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
+                        }
                     }
                     ?>
                     <div class="row justify-content-center">
@@ -149,11 +211,19 @@ if (isset($_GET['action'])) {
                                                             </div>
                                                             <div class="form-group col-md-3">
                                                                 <select name="sortvillagersubdivision" id="sortvillagersubdivision" class="form-control">
-                                                                    <option value="0" selected>Sub-Division</option>
-                                                                    <option value="widow" <?= $action == 'widow' ? ' selected="selected"' : ''; ?>>Widow Details</option>
-                                                                    <option value="divorse" <?= $action == 'divorse' ? ' selected="selected"' : ''; ?>>Divorsed Details</option>
-                                                                    <option value="madrasa" <?= $action == 'madrasa' ? ' selected="selected"' : ''; ?>>Madrasa Children Details</option>
-                                                                    <option value="orphan" <?= $action == 'orphan' ? ' selected="selected"' : ''; ?>>Orphan Children Details</option>
+                                                                    <option value="0" selected>All Sub-Divisions</option>
+                                                                    <option value="Moragala Main-Street" <?= $sort1 == 'Moragala Main-Street' ? ' selected="selected"' : ''; ?>>Moragala Main-Street </option>
+                                                                    <option value="Old Rail Road" <?= $sort1 == 'Old Rail Road' ? ' selected="selected"' : ''; ?>>Old Rail Road </option>
+                                                                    <option value="Bandarawaththa" <?= $sort1 == 'Bandarawaththa' ? ' selected="selected"' : ''; ?>>Bandarawaththa </option>
+                                                                    <option value="Kothvila" <?= $sort1 == 'Kothvila' ? ' selected="selected"' : ''; ?>>Kothvila </option>
+                                                                    <option value="Palpitiya" <?= $sort1 == 'Palpitiya' ? ' selected="selected"' : ''; ?>>Palpitiya </option>
+                                                                    <option value="Ranaviru Mawatha" <?= $sort1 == 'Ranaviru Mawatha' ? ' selected="selected"' : ''; ?>>Ranaviru Mawatha </option>
+                                                                    <option value="Wekada-1" <?= $sort1 == 'Wekada-1' ? ' selected="selected"' : ''; ?>>Wekada-1 </option>
+                                                                    <option value="Wekada-2" <?= $sort1 == 'Wekada-2' ? ' selected="selected"' : ''; ?>>Wekada-2 </option>
+                                                                    <option value="Wekada-3" <?= $sort1 == 'Wekada-3' ? ' selected="selected"' : ''; ?>>Wekada-3 </option>
+                                                                    <option value="Eheliyagoda Town" <?= $sort1 == 'Eheliyagoda Town' ? ' selected="selected"' : ''; ?>>Eheliyagoda Town </option>
+                                                                    <option value="Other-1" <?= $sort1 == 'Other-1' ? ' selected="selected"' : ''; ?>>Other-1 </option>
+                                                                    <option value="Other-2" <?= $sort1 == 'Other-2' ? ' selected="selected"' : ''; ?>>Other-2 </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -220,6 +290,30 @@ if (isset($_GET['action'])) {
 
                                             </div>
                                             <div id="widow">
+                                                <div class="sorting">
+                                                    <div class="row">
+                                                        <div class="form-group col-md-1">
+                                                            <label for="sortWidowsubdivision">Sort By</label>
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <select name="sortWidowsubdivision" id="sortWidowsubdivision" class="form-control">
+                                                                <option value="0" selected>All Sub-Divisions</option>
+                                                                <option value="Moragala Main-Street" <?= $sort1 == 'Moragala Main-Street' ? ' selected="selected"' : ''; ?>>Moragala Main-Street </option>
+                                                                <option value="Old Rail Road" <?= $sort1 == 'Old Rail Road' ? ' selected="selected"' : ''; ?>>Old Rail Road </option>
+                                                                <option value="Bandarawaththa" <?= $sort1 == 'Bandarawaththa' ? ' selected="selected"' : ''; ?>>Bandarawaththa </option>
+                                                                <option value="Kothvila" <?= $sort1 == 'Kothvila' ? ' selected="selected"' : ''; ?>>Kothvila </option>
+                                                                <option value="Palpitiya" <?= $sort1 == 'Palpitiya' ? ' selected="selected"' : ''; ?>>Palpitiya </option>
+                                                                <option value="Ranaviru Mawatha" <?= $sort1 == 'Ranaviru Mawatha' ? ' selected="selected"' : ''; ?>>Ranaviru Mawatha </option>
+                                                                <option value="Wekada-1" <?= $sort1 == 'Wekada-1' ? ' selected="selected"' : ''; ?>>Wekada-1 </option>
+                                                                <option value="Wekada-2" <?= $sort1 == 'Wekada-2' ? ' selected="selected"' : ''; ?>>Wekada-2 </option>
+                                                                <option value="Wekada-3" <?= $sort1 == 'Wekada-3' ? ' selected="selected"' : ''; ?>>Wekada-3 </option>
+                                                                <option value="Eheliyagoda Town" <?= $sort1 == 'Eheliyagoda Town' ? ' selected="selected"' : ''; ?>>Eheliyagoda Town </option>
+                                                                <option value="Other-1" <?= $sort1 == 'Other-1' ? ' selected="selected"' : ''; ?>>Other-1 </option>
+                                                                <option value="Other-2" <?= $sort1 == 'Other-2' ? ' selected="selected"' : ''; ?>>Other-2 </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="table-responsive table-responsive-data2">
                                                     <table class="table table-data2">
                                                         <thead>
@@ -267,6 +361,23 @@ if (isset($_GET['action'])) {
                                                 </div>
                                             </div>
                                             <div id="divorse">
+                                                <div class="form-group col-md-3">
+                                                    <select name="sortDivorsedsubdivision" id="sortDivorsedsubdivision" class="form-control">
+                                                        <option value="0" selected>All Sub-Divisions</option>
+                                                        <option value="Moragala Main-Street" <?= $sort1 == 'Moragala Main-Street' ? ' selected="selected"' : ''; ?>>Moragala Main-Street </option>
+                                                        <option value="Old Rail Road" <?= $sort1 == 'Old Rail Road' ? ' selected="selected"' : ''; ?>>Old Rail Road </option>
+                                                        <option value="Bandarawaththa" <?= $sort1 == 'Bandarawaththa' ? ' selected="selected"' : ''; ?>>Bandarawaththa </option>
+                                                        <option value="Kothvila" <?= $sort1 == 'Kothvila' ? ' selected="selected"' : ''; ?>>Kothvila </option>
+                                                        <option value="Palpitiya" <?= $sort1 == 'Palpitiya' ? ' selected="selected"' : ''; ?>>Palpitiya </option>
+                                                        <option value="Ranaviru Mawatha" <?= $sort1 == 'Ranaviru Mawatha' ? ' selected="selected"' : ''; ?>>Ranaviru Mawatha </option>
+                                                        <option value="Wekada-1" <?= $sort1 == 'Wekada-1' ? ' selected="selected"' : ''; ?>>Wekada-1 </option>
+                                                        <option value="Wekada-2" <?= $sort1 == 'Wekada-2' ? ' selected="selected"' : ''; ?>>Wekada-2 </option>
+                                                        <option value="Wekada-3" <?= $sort1 == 'Wekada-3' ? ' selected="selected"' : ''; ?>>Wekada-3 </option>
+                                                        <option value="Eheliyagoda Town" <?= $sort1 == 'Eheliyagoda Town' ? ' selected="selected"' : ''; ?>>Eheliyagoda Town </option>
+                                                        <option value="Other-1" <?= $sort1 == 'Other-1' ? ' selected="selected"' : ''; ?>>Other-1 </option>
+                                                        <option value="Other-2" <?= $sort1 == 'Other-2' ? ' selected="selected"' : ''; ?>>Other-2 </option>
+                                                    </select>
+                                                </div>
                                                 <div class="table-responsive table-responsive-data2">
                                                     <table class="table table-data2">
                                                         <thead>
@@ -312,6 +423,23 @@ if (isset($_GET['action'])) {
                                                 </div>
                                             </div>
                                             <div id="madrasa">
+                                                <div class="form-group col-md-3">
+                                                    <select name="sortMadrasasubdivision" id="sortMadrasasubdivision" class="form-control">
+                                                        <option value="0" selected>All Sub-Divisions</option>
+                                                        <option value="Moragala Main-Street" <?= $sort1 == 'Moragala Main-Street' ? ' selected="selected"' : ''; ?>>Moragala Main-Street </option>
+                                                        <option value="Old Rail Road" <?= $sort1 == 'Old Rail Road' ? ' selected="selected"' : ''; ?>>Old Rail Road </option>
+                                                        <option value="Bandarawaththa" <?= $sort1 == 'Bandarawaththa' ? ' selected="selected"' : ''; ?>>Bandarawaththa </option>
+                                                        <option value="Kothvila" <?= $sort1 == 'Kothvila' ? ' selected="selected"' : ''; ?>>Kothvila </option>
+                                                        <option value="Palpitiya" <?= $sort1 == 'Palpitiya' ? ' selected="selected"' : ''; ?>>Palpitiya </option>
+                                                        <option value="Ranaviru Mawatha" <?= $sort1 == 'Ranaviru Mawatha' ? ' selected="selected"' : ''; ?>>Ranaviru Mawatha </option>
+                                                        <option value="Wekada-1" <?= $sort1 == 'Wekada-1' ? ' selected="selected"' : ''; ?>>Wekada-1 </option>
+                                                        <option value="Wekada-2" <?= $sort1 == 'Wekada-2' ? ' selected="selected"' : ''; ?>>Wekada-2 </option>
+                                                        <option value="Wekada-3" <?= $sort1 == 'Wekada-3' ? ' selected="selected"' : ''; ?>>Wekada-3 </option>
+                                                        <option value="Eheliyagoda Town" <?= $sort1 == 'Eheliyagoda Town' ? ' selected="selected"' : ''; ?>>Eheliyagoda Town </option>
+                                                        <option value="Other-1" <?= $sort1 == 'Other-1' ? ' selected="selected"' : ''; ?>>Other-1 </option>
+                                                        <option value="Other-2" <?= $sort1 == 'Other-2' ? ' selected="selected"' : ''; ?>>Other-2 </option>
+                                                    </select>
+                                                </div>
                                                 <div class="table-responsive table-responsive-data2">
                                                     <table class="table table-data2">
                                                         <thead>
@@ -359,6 +487,23 @@ if (isset($_GET['action'])) {
                                                 </div>
                                             </div>
                                             <div id="orphan">
+                                                <div class="form-group col-md-3">
+                                                    <select name="sortOrphansubdivision" id="sortOrphansubdivision" class="form-control">
+                                                        <option value="0" selected>All Sub-Divisions</option>
+                                                        <option value="Moragala Main-Street" <?= $sort1 == 'Moragala Main-Street' ? ' selected="selected"' : ''; ?>>Moragala Main-Street </option>
+                                                        <option value="Old Rail Road" <?= $sort1 == 'Old Rail Road' ? ' selected="selected"' : ''; ?>>Old Rail Road </option>
+                                                        <option value="Bandarawaththa" <?= $sort1 == 'Bandarawaththa' ? ' selected="selected"' : ''; ?>>Bandarawaththa </option>
+                                                        <option value="Kothvila" <?= $sort1 == 'Kothvila' ? ' selected="selected"' : ''; ?>>Kothvila </option>
+                                                        <option value="Palpitiya" <?= $sort1 == 'Palpitiya' ? ' selected="selected"' : ''; ?>>Palpitiya </option>
+                                                        <option value="Ranaviru Mawatha" <?= $sort1 == 'Ranaviru Mawatha' ? ' selected="selected"' : ''; ?>>Ranaviru Mawatha </option>
+                                                        <option value="Wekada-1" <?= $sort1 == 'Wekada-1' ? ' selected="selected"' : ''; ?>>Wekada-1 </option>
+                                                        <option value="Wekada-2" <?= $sort1 == 'Wekada-2' ? ' selected="selected"' : ''; ?>>Wekada-2 </option>
+                                                        <option value="Wekada-3" <?= $sort1 == 'Wekada-3' ? ' selected="selected"' : ''; ?>>Wekada-3 </option>
+                                                        <option value="Eheliyagoda Town" <?= $sort1 == 'Eheliyagoda Town' ? ' selected="selected"' : ''; ?>>Eheliyagoda Town </option>
+                                                        <option value="Other-1" <?= $sort1 == 'Other-1' ? ' selected="selected"' : ''; ?>>Other-1 </option>
+                                                        <option value="Other-2" <?= $sort1 == 'Other-2' ? ' selected="selected"' : ''; ?>>Other-2 </option>
+                                                    </select>
+                                                </div>
                                                 <div class="table-responsive table-responsive-data2">
                                                     <table class="table table-data2">
                                                         <thead>
@@ -440,26 +585,26 @@ if (isset($_GET['action'])) {
         </div>
 
         <!-- Update Modal -->
-    <div class="modal fade" id="updateRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel"> Left Village ? </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure this person left the village?
-                    
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-secondary" data-dismiss="modal">Close</a>
-                    <a class="btn btn-danger" id="update" name="update"> Yes </a>
+        <div class="modal fade" id="updateRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel"> Left Village ? </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure this person left the village?
+
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                        <a class="btn btn-danger" id="update" name="update"> Yes </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
         <!-- footer -->
         <?php

@@ -1049,7 +1049,7 @@ $(document).ready(function () {
   $("#listDetails").change(function (e) {
     e.preventDefault();
     var listDetails = $("#listDetails").val();
-    window.location.href = "preview_villager-details.php?action=" + listDetails;
+    window.location.href = "preview_villager-details.php?sort1=0&action=" + listDetails;
   });
 
   // form_friday-collection.php
@@ -1986,6 +1986,56 @@ $(document).ready(function () {
         $('#inputNIC').attr('readonly', true);
       }
     });
+  });
+
+  // nikka preview
+  // redirect with sort details
+  $("#sortNikkahsubdivision").change(function (e) { 
+    e.preventDefault();
+    var sort1 = $("#sortNikkahsubdivision").val();
+    window.location.href = "preview_nikkah-details.php?sort1=" + sort1;
+  });
+  // janaza preview
+  // redirect with sort details
+  $("#sortanazasubdivision").change(function (e) { 
+    e.preventDefault();
+    var sort1 = $("#sortanazasubdivision").val();
+    window.location.href = "preview_janaza-details.php?sort1=" + sort1;
+  });
+  // villger preview
+  // redirect with sort details
+  $("#sortvillagersubdivision").change(function (e) { 
+    e.preventDefault();
+    var sort1 = $("#sortvillagersubdivision").val();
+    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=" + sort1;
+  });
+  // widow preview
+  // redirect with sort details
+  $("#sortWidowsubdivision").change(function (e) { 
+    e.preventDefault();
+    var sort1 = $("#sortWidowsubdivision").val();
+    window.location.href = "preview_villager-details.php?action=widow&sort1=" + sort1;
+  });
+  // divorse preview
+  // redirect with sort details
+  $("#sortDivorsedsubdivision").change(function (e) { 
+    e.preventDefault();
+    var sort1 = $("#sortDivorsedsubdivision").val();
+    window.location.href = "preview_villager-details.php?action=divorse&sort1=" + sort1;
+  });
+  // madrasa preview
+  // redirect with sort details
+  $("#sortMadrasasubdivision").change(function (e) { 
+    e.preventDefault();
+    var sort1 = $("#sortMadrasasubdivision").val();
+    window.location.href = "preview_villager-details.php?action=madrasa&sort1=" + sort1;
+  });
+  // orphan preview
+  // redirect with sort details
+  $("#sortOrphansubdivision").change(function (e) { 
+    e.preventDefault();
+    var sort1 = $("#sortOrphansubdivision").val();
+    window.location.href = "preview_villager-details.php?action=madrasa&sort1=" + sort1;
   });
 
 
