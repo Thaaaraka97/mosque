@@ -364,7 +364,6 @@ foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
                                                         <th>Advance</th>
                                                         <th>Special Bhayan Fee</th>
                                                         <th>EPF/ETF</th>
-                                                        <th>Loan Deduction</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -383,7 +382,6 @@ foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
                                                             <td>" . $pesh_imaam_salary_item['pSal_advance'] . "</td>
                                                             <td>" . $pesh_imaam_salary_item['pSal_specialBhayanFee'] . "</td>
                                                             <td>" . $pesh_imaam_salary_item['pSal_EPFETF'] . "</td>
-                                                            <td>" . $pesh_imaam_salary_item['pSal_loanDeduction'] . "</td>
                                                         </tr>
                                                          ";
                                                     }

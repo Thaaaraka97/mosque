@@ -147,6 +147,7 @@ foreach ($non_mahalla_reg_details as $non_mahalla_reg_details_item) {
                                                     <tr class="tr-shadow">
                                                         <th>Date</th>
                                                         <th>Payment</th>
+                                                        <th>Collected By</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -163,6 +164,7 @@ foreach ($non_mahalla_reg_details as $non_mahalla_reg_details_item) {
                                                             <tr>
                                                                 <td>" . $non_mahalla_income_details_item['nms_date'] . "</td>
                                                                 <td>" . $non_mahalla_income_details_item['nms_amount'] . "</td>
+                                                                <td>" . $non_mahalla_income_details_item['nms_username'] . "</td>
                                                             </tr>
                                                             ";
                                                     }

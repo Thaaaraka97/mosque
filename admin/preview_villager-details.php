@@ -12,22 +12,30 @@ if (isset($_GET['left'])) {
     $message = "Saandha Status successsfully Edited and Updated..!";
 }
 
+$action = "";
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
 
 $id = "";
 $where = "";
-$sort1 = "";
-if (isset($_GET['sort1'])) {
-    $sort1 = $_GET['sort1'];
+$sort1 = "0";
+$sort2 = "0";
+$sort3 = "0";
+
+$sort1 = $_GET['sort1'] ?? $_GET['sort1'];
+if (isset($_GET['sort2'])) {
+    $sort2 = $_GET['sort2'];
+}
+if (isset($_GET['sort3'])) {
+    $sort3 = $_GET['sort3'];
 }
 ?>
 <script type="text/javascript">
-    var action = "";
+    var sort1 = "<?php echo $sort1; ?>";
+    var sort2 = "<?php echo $sort2; ?>";
+    var sort3 = "<?php echo $sort3; ?>";
     var villageraction = "<?php echo $action; ?>";
-    var donationaction = "";
-    var fridaycollectionaction = "";
 </script>
 
 <body>
@@ -77,21 +85,27 @@ if (isset($_GET['sort1'])) {
                     if ($action == "allvillagers") {
 
                         $where = array(
-                            'av_index ' != 0,
-                            'av_subDivision' => $sort1
+                            'av_subDivision' => $sort1,
+                            'av_gender' => $sort2
 
                         );
-                        $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
-                        $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
 
-                        if ($sort1 == "0") {
+                        if ($sort1 == "0" && $sort2 == "0") {
                             $where = array(
                                 'av_index ' != 0
-
                             );
-                            $all_villagers_details = $database->select_data('tbl_allvillagers');
-                            $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
                         }
+                        elseif ($sort1 == "0") {
+                            $where = array(
+                                'av_gender'     =>    $sort2
+                            );
+                        } elseif ($sort2 == "0") {
+                            $where = array(
+                                'av_subDivision'     =>    $sort1
+                            );
+                        }
+                        $all_villagers_details = $database->select_where('tbl_allvillagers',$where);
+                        $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
                     } elseif ($action == "widow") {
                         $where = array(
                             'av_widowed'     =>    1,
@@ -145,20 +159,58 @@ if (isset($_GET['sort1'])) {
                     } elseif ($action == "madrasa") {
                         $where = array(
                             'av_madChild_status'     =>    1,
-                            'av_subDivision' => $sort1
+                            'av_subDivision' => $sort1,
+                            'av_gender' => $sort2,
+                            'av_madChild_type' => $sort3
 
                         );
-                        $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
-                        $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
 
-                        if ($sort1 == "0") {
+                        if ($sort1 == "0" && $sort2 == "0" && $sort3 == "0") {
                             $where = array(
                                 'av_madChild_status'     =>    1
 
                             );
-                            $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
-                            $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
+                        } elseif ($sort1 == "0" && $sort2 == "0") {
+                            $where = array(
+                                'av_madChild_status'     =>    1,
+                                'av_madChild_type'     =>    $sort3
+                            );
+                        } elseif ($sort1 == "0" && $sort3 == "0") {
+                            $where = array(
+                                'av_madChild_status'     =>    1,
+                                'av_gender'     =>    $sort2
+
+                            );
+                        } elseif ($sort2 == "0" && $sort3 == "0") {
+                            $where = array(
+                                'av_madChild_status'     =>    1,
+                                'av_subDivision'     =>    $sort1
+
+                            );
+                        } elseif ($sort1 == "0") {
+                            $where = array(
+                                'av_madChild_status'     =>    1,
+                                'av_gender'     =>    $sort2,
+                                'av_madChild_type'     =>    $sort3
+
+                            );
+                        } elseif ($sort2 == "0") {
+                            $where = array(
+                                'av_madChild_status'     =>    1,
+                                'av_subDivision'     =>    $sort1,
+                                'av_madChild_type'     =>    $sort3
+
+                            );
+                        } elseif ($sort3 == "0") {
+                            $where = array(
+                                'av_madChild_status'     =>    1,
+                                'av_subDivision'     =>    $sort1,
+                                'av_gender'     =>    $sort2
+
+                            );
                         }
+                        $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
+                        $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
                     }
                     ?>
                     <div class="row justify-content-center">
@@ -207,7 +259,7 @@ if (isset($_GET['sort1'])) {
                                                     <div class="sorting">
                                                         <div class="row">
                                                             <div class="form-group col-md-1">
-                                                                <label for="sortvillagersubdivision">Sort By</label>
+                                                                <label for="sortvillagersubdivision">Filter By</label>
                                                             </div>
                                                             <div class="form-group col-md-3">
                                                                 <select name="sortvillagersubdivision" id="sortvillagersubdivision" class="form-control">
@@ -224,6 +276,13 @@ if (isset($_GET['sort1'])) {
                                                                     <option value="Eheliyagoda Town" <?= $sort1 == 'Eheliyagoda Town' ? ' selected="selected"' : ''; ?>>Eheliyagoda Town </option>
                                                                     <option value="Other-1" <?= $sort1 == 'Other-1' ? ' selected="selected"' : ''; ?>>Other-1 </option>
                                                                     <option value="Other-2" <?= $sort1 == 'Other-2' ? ' selected="selected"' : ''; ?>>Other-2 </option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-md-3">
+                                                                <select name="sortvillagerGender" id="sortvillagerGender" class="form-control">
+                                                                    <option value="0" selected>Gender</option>
+                                                                    <option value="M" <?= $sort2 == 'M' ? ' selected="selected"' : ''; ?>> Male </option>
+                                                                    <option value="F" <?= $sort2 == 'F' ? ' selected="selected"' : ''; ?>> Female </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -423,22 +482,41 @@ if (isset($_GET['sort1'])) {
                                                 </div>
                                             </div>
                                             <div id="madrasa">
-                                                <div class="form-group col-md-3">
-                                                    <select name="sortMadrasasubdivision" id="sortMadrasasubdivision" class="form-control">
-                                                        <option value="0" selected>All Sub-Divisions</option>
-                                                        <option value="Moragala Main-Street" <?= $sort1 == 'Moragala Main-Street' ? ' selected="selected"' : ''; ?>>Moragala Main-Street </option>
-                                                        <option value="Old Rail Road" <?= $sort1 == 'Old Rail Road' ? ' selected="selected"' : ''; ?>>Old Rail Road </option>
-                                                        <option value="Bandarawaththa" <?= $sort1 == 'Bandarawaththa' ? ' selected="selected"' : ''; ?>>Bandarawaththa </option>
-                                                        <option value="Kothvila" <?= $sort1 == 'Kothvila' ? ' selected="selected"' : ''; ?>>Kothvila </option>
-                                                        <option value="Palpitiya" <?= $sort1 == 'Palpitiya' ? ' selected="selected"' : ''; ?>>Palpitiya </option>
-                                                        <option value="Ranaviru Mawatha" <?= $sort1 == 'Ranaviru Mawatha' ? ' selected="selected"' : ''; ?>>Ranaviru Mawatha </option>
-                                                        <option value="Wekada-1" <?= $sort1 == 'Wekada-1' ? ' selected="selected"' : ''; ?>>Wekada-1 </option>
-                                                        <option value="Wekada-2" <?= $sort1 == 'Wekada-2' ? ' selected="selected"' : ''; ?>>Wekada-2 </option>
-                                                        <option value="Wekada-3" <?= $sort1 == 'Wekada-3' ? ' selected="selected"' : ''; ?>>Wekada-3 </option>
-                                                        <option value="Eheliyagoda Town" <?= $sort1 == 'Eheliyagoda Town' ? ' selected="selected"' : ''; ?>>Eheliyagoda Town </option>
-                                                        <option value="Other-1" <?= $sort1 == 'Other-1' ? ' selected="selected"' : ''; ?>>Other-1 </option>
-                                                        <option value="Other-2" <?= $sort1 == 'Other-2' ? ' selected="selected"' : ''; ?>>Other-2 </option>
-                                                    </select>
+                                                <div class="row">
+                                                    <div class="form-group col-md-1">
+                                                        <label for="sort">Filter By</label>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <select name="sortMadrasasubdivision" id="sortMadrasasubdivision" class="form-control">
+                                                            <option value="0" selected>All Sub-Divisions</option>
+                                                            <option value="Moragala Main-Street" <?= $sort1 == 'Moragala Main-Street' ? ' selected="selected"' : ''; ?>>Moragala Main-Street </option>
+                                                            <option value="Old Rail Road" <?= $sort1 == 'Old Rail Road' ? ' selected="selected"' : ''; ?>>Old Rail Road </option>
+                                                            <option value="Bandarawaththa" <?= $sort1 == 'Bandarawaththa' ? ' selected="selected"' : ''; ?>>Bandarawaththa </option>
+                                                            <option value="Kothvila" <?= $sort1 == 'Kothvila' ? ' selected="selected"' : ''; ?>>Kothvila </option>
+                                                            <option value="Palpitiya" <?= $sort1 == 'Palpitiya' ? ' selected="selected"' : ''; ?>>Palpitiya </option>
+                                                            <option value="Ranaviru Mawatha" <?= $sort1 == 'Ranaviru Mawatha' ? ' selected="selected"' : ''; ?>>Ranaviru Mawatha </option>
+                                                            <option value="Wekada-1" <?= $sort1 == 'Wekada-1' ? ' selected="selected"' : ''; ?>>Wekada-1 </option>
+                                                            <option value="Wekada-2" <?= $sort1 == 'Wekada-2' ? ' selected="selected"' : ''; ?>>Wekada-2 </option>
+                                                            <option value="Wekada-3" <?= $sort1 == 'Wekada-3' ? ' selected="selected"' : ''; ?>>Wekada-3 </option>
+                                                            <option value="Eheliyagoda Town" <?= $sort1 == 'Eheliyagoda Town' ? ' selected="selected"' : ''; ?>>Eheliyagoda Town </option>
+                                                            <option value="Other-1" <?= $sort1 == 'Other-1' ? ' selected="selected"' : ''; ?>>Other-1 </option>
+                                                            <option value="Other-2" <?= $sort1 == 'Other-2' ? ' selected="selected"' : ''; ?>>Other-2 </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <select name="sortMadrasaGender" id="sortMadrasaGender" class="form-control">
+                                                            <option value="0" selected>Gender</option>
+                                                            <option value="M" <?= $sort2 == 'M' ? ' selected="selected"' : ''; ?>> Male </option>
+                                                            <option value="F" <?= $sort2 == 'F' ? ' selected="selected"' : ''; ?>> Female </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <select name="sortMadrasaType" id="sortMadrasaType" class="form-control">
+                                                            <option value="0" selected> Madrasa Type </option>
+                                                            <option value="Hiflul" <?= $sort3 == 'Hiflul' ? ' selected="selected"' : ''; ?>> Hiflul </option>
+                                                            <option value="Kithah" <?= $sort3 == 'Kithah' ? ' selected="selected"' : ''; ?>> Kithah </option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                                 <div class="table-responsive table-responsive-data2">
                                                     <table class="table table-data2">

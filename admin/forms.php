@@ -480,6 +480,15 @@ include "template_parts/header.php";
                     <hr>
                     <div class="row">
                       <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Saandha Collection </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_saandha-collection.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
                         <h5> Funds </h5>
                       </div>
                       <div class="col-md-6 d-flex justify-content-center align-self-center">

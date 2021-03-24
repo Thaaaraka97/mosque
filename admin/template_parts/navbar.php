@@ -66,13 +66,13 @@
             <div class="collapse" id="preview-dropdown">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_villager-details.php?action=allvillagers&sort1=0"> All Villagers Details </a>
+                        <a class="nav-link" href="preview_villager-details.php?action=allvillagers&sort1=0&sort2=0"> All Villagers Details </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_nikkah-details.php?sort1=0"> Nikkah Details </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_janaza-details.php?sort1=0"> Janaza Details </a>
+                        <a class="nav-link" href="preview_janaza-details.php?sort1=0&sort2=0"> Janaza Details </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_q_madrasa-details.php"> Quran Madrasa Details </a>
@@ -81,7 +81,7 @@
                         <a class="nav-link" href="preview_saandha-amount-fixing-history.php"> Saandha Amount Fixings </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_expenses.php"> Expenses </a>
+                        <a class="nav-link" href="preview_expenses.php?sort3=0"> Expenses </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_non-mahalla-saandha-registration.php"> Non-Mahalla Saandha Details </a>
@@ -119,7 +119,7 @@
                         <a class="nav-link" href="preview_muazzin-details.php"> Muazzin Details </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_salary.php"> Salary Page </a>
+                        <a class="nav-link" href="preview_salary.php?sort3=0&sort4=0"> Salary Page </a>
                     </li>
                 </ul>
             </div>

@@ -106,14 +106,6 @@ $database = new databases();
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="d-flex justify-content-center">
-                                                <div class="form-group row col-md-6">
-                                                    <label for="inputAmountOther" class="col-sm-4 col-form-label"> Loan Deduction </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="inputLoan" name="inputLoan" placeholder="Amount">
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" name="submitSalary" id="submitSalary" class="btn btn-primary btn-lg">Enter Details</button>

@@ -341,68 +341,67 @@ foreach ($muazzin_details as $muazzin_details_item) {
                                 </div>
                             </div>
                         </div>
-                        <div class="text-dark col-auto" id="viewPayments">
-                            <div class="row justify-content-center">
-                                <div class="col-md-10 grid-margin stretch-card">
-                                    <div class="card shadow">
-                                        <div class="card-body text-center">
-                                            <h4 class="card-title"> Payment History </h4>
-                                            <div class="table-responsive table-responsive-data2">
-                                                <table class="table table-data2">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Basic Salary</th>
-                                                            <th>Incentive</th>
-                                                            <th>Madrasa Fee</th>
-                                                            <th>Advance</th>
-                                                            <th>EPF/ETF</th>
-                                                            <th>Loan Deduction</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        // displaying muazzin details
-                                                        $where = array(
-                                                            'mSal_muazzinId'     =>     $id
-                                                        );
-                                                        $muazzin_salary = $database->select_where('tbl_muazzinsalary', $where);
-                                                        foreach ($muazzin_salary as $muazzin_salary_item) {
-                                                            echo "
+                    </div>
+                    <div class="text-dark col-auto" id="viewPayments">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body text-center">
+                                        <h4 class="card-title"> Payment History </h4>
+                                        <div class="table-responsive table-responsive-data2">
+                                            <table class="table table-data2">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Basic Salary</th>
+                                                        <th>Incentive</th>
+                                                        <th>Madrasa Fee</th>
+                                                        <th>Advance</th>
+                                                        <th>EPF/ETF</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    // displaying muazzin details
+                                                    $where = array(
+                                                        'mSal_muazzinId'     =>     $id
+                                                    );
+                                                    $muazzin_salary = $database->select_where('tbl_muazzinsalary', $where);
+                                                    foreach ($muazzin_salary as $muazzin_salary_item) {
+                                                        echo "
                                                          <tr>
                                                             <td>" . $muazzin_salary_item['mSal_basicSalary'] . "</td>
                                                             <td>" . $muazzin_salary_item['mSal_basicSalary'] . "</td>
                                                             <td>" . $muazzin_salary_item['mSal_madrasaFee'] . "</td>
                                                             <td>" . $muazzin_salary_item['mSal_advance'] . "</td>
                                                             <td>" . $muazzin_salary_item['mSal_EPFETF'] . "</td>
-                                                            <td>" . $muazzin_salary_item['mSal_loanDeduction'] . "</td>
                                                         </tr>
                                                          ";
-                                                        }
+                                                    }
 
-                                                        ?>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                    ?>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- content-wrapper ends -->
-
-                        <!-- partial -->
                     </div>
-                    <!-- main-panel ends -->
-                </div>
-                <!-- page-body-wrapper ends -->
-            </div>
-            <!-- container-scroller -->
+                    <!-- content-wrapper ends -->
 
-            <!-- footer -->
-            <?php
-            include "template_parts/footer.php";
-            ?>
-            <!-- End custom js for this page -->
+                    <!-- partial -->
+                </div>
+                <!-- main-panel ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+        </div>
+        <!-- container-scroller -->
+
+        <!-- footer -->
+        <?php
+        include "template_parts/footer.php";
+        ?>
+        <!-- End custom js for this page -->
 </body>
 
 </html>

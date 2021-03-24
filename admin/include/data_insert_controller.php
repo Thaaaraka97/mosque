@@ -263,9 +263,38 @@ if (isset($_POST["addAnother"])) {
     );
 
     if ($database->insert_data('tbl_allvillagers', $insert_to_tbl_allvillagers)) {
-        $URL = "form_villagers-registration-form-step2.php?inserted_record=1";
-        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+        if ($inputSaandhaStatus == 1) {
+            // retrieve index of the registered person
+            $index = "";
+            $person_details = $database->select_data('tbl_allvillagers');
+            foreach ($person_details as $person_details_item) {
+                if (isset($person_details_item["av_index"])) {
+                    $index = $person_details_item["av_index"];
+                }
+            }
+            // input a record into saandha collection
+            $insert_to_tbl_saandhacollection = array(
+                'collection_index' => mysqli_real_escape_string($database->con, $index),
+                'collection_subdivision' => mysqli_real_escape_string($database->con, $av_subDivision),
+                'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+                'collection_address' => mysqli_real_escape_string($database->con, $av_address),
+                'collection_paidAmount' => mysqli_real_escape_string($database->con, "0"),
+                'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
+                'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                'collection_date' => mysqli_real_escape_string($database->con, $today),
+                'collection_paidFor' => mysqli_real_escape_string($database->con, date('Y-M', strtotime($today)))
+
+            );
+            if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
+                $URL = "form_villagers-registration-form-step2.php?inserted_record=1";
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+            }
+        } else {
+            $URL = "form_villagers-registration-form-step2.php?inserted_record=1";
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+        }
     }
 }
 
@@ -360,6 +389,7 @@ if (isset($_POST["submitSaandha"])) {
     }
     if ($_POST['inputSaandhaStatus'] == "Yes") {
         $inputSaandhaStatus = 1;
+        $saandhaStatusReason = "Saandha Registered";
     } else {
         if ($_POST['inputAge'] > 18) {
             $saandhaStatusReason = "Pending";
@@ -460,10 +490,38 @@ if (isset($_POST["submitSaandha"])) {
     );
 
     if ($database->insert_data('tbl_allvillagers', $insert_to_tbl_allvillagers)) {
-        // $database->delete_all('tbl_temp_allvillagers');
-        $URL = "forms.php?inserted_records_villagers=1";
-        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+        if ($inputSaandhaStatus == 1) {
+            // retrieve index of the registered person
+            $index = "";
+            $person_details = $database->select_data('tbl_allvillagers');
+            foreach ($person_details as $person_details_item) {
+                if (isset($person_details_item["av_index"])) {
+                    $index = $person_details_item["av_index"];
+                }
+            }
+            // input a record into saandha collection
+            $insert_to_tbl_saandhacollection = array(
+                'collection_index' => mysqli_real_escape_string($database->con, $index),
+                'collection_subdivision' => mysqli_real_escape_string($database->con, $av_subDivision),
+                'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+                'collection_address' => mysqli_real_escape_string($database->con, $av_address),
+                'collection_paidAmount' => mysqli_real_escape_string($database->con, "0"),
+                'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
+                'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                'collection_date' => mysqli_real_escape_string($database->con, $today),
+                'collection_paidFor' => mysqli_real_escape_string($database->con, date('Y-M', strtotime($today)))
+
+            );
+            if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
+                $URL = "form_villagers-registration-form.php?inserted_record=1";
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+            }
+        } else {
+            $URL = "form_villagers-registration-form.php?inserted_record=1";
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+        }
     }
 }
 
@@ -990,7 +1048,7 @@ if (isset($_POST['submitRentalPayment'])) {
             'ri_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
             'ri_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputRentalPaymentSubdivision']),
             'ri_rentalid' => mysqli_real_escape_string($database->con, $inputRentalID),
-            'ri_dueAmount' => mysqli_real_escape_string($database->con, $due),
+            'ri_dueAmount' => mysqli_real_escape_string($database->con, "0"),
             'ri_type' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
             'ri_username' => mysqli_real_escape_string($database->con, "user"),
             'ri_payment' => mysqli_real_escape_string($database->con, $monthly_payment),
@@ -1278,14 +1336,6 @@ if (isset($_POST['submitLailathulKadhir'])) {
 // insert into tbl_nonmahallasaandhacollection
 // submitNonmahallaCol button click
 if (isset($_POST['submitNonmahallaCol'])) {
-    // retrieve the latest saandha amount
-    $saandha_amount = "";
-    $due = "";
-    $payedFor = "";
-    $rental_income_details = $database->select_data('tbl_saandhaamountfixing');
-    foreach ($rental_income_details as $rental_income_details_item) {
-        $saandha_amount = $rental_income_details_item["saf_amount"];
-    }
 
     $where = array(
         'nmsr_telephone'     =>     $_POST["inputNonmahallaColTP"]
@@ -1294,88 +1344,23 @@ if (isset($_POST['submitNonmahallaCol'])) {
     $nmsr_id = "";
     $amount = $_POST['inputAmount'];
 
-    // find if there is any due remaining
-    $where2 = array(
-        'nms_telephone'     =>     $_POST["inputNonmahallaColTP"]
-    );
-    $nonmahallasaandhacollection_details = $database->select_where('tbl_nonmahallasaandhacollection', $where2);
-    foreach ($nonmahallasaandhacollection_details as $nonmahallasaandhacollection_details_item) {
-        $due = $nonmahallasaandhacollection_details_item["nms_due"];
-        $payedFor = $nonmahallasaandhacollection_details_item["nms_payFor"];
-    }
-
     if ($person_details) {
-        if ((float)$due > 0) {
-            foreach ($person_details as $person_details_item) {
-                $nmsr_id = $person_details_item["nmsr_id"];
-            }
-
-            $insert_to_tbl_nonmahallasaandhacollection = array(
-                'nms_name	' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-                'nms_address	' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-                'nms_telephone' => mysqli_real_escape_string($database->con, $_POST['inputNonmahallaColTP']),
-                'nms_amount' => mysqli_real_escape_string($database->con, $due),
-                'nms_due' => mysqli_real_escape_string($database->con, "0"),
-                'nms_nmsrid' => mysqli_real_escape_string($database->con, $nmsr_id),
-                'nms_date' => mysqli_real_escape_string($database->con, $today),
-                'nms_payFor' => mysqli_real_escape_string($database->con, $payedFor),
-                'nms_username' => mysqli_real_escape_string($database->con, "user")
-
-            );
-            $database->insert_data('tbl_nonmahallasaandhacollection', $insert_to_tbl_nonmahallasaandhacollection);
-            $amount = $amount - $due;
+        foreach ($person_details as $person_details_item) {
+            $nmsr_id = $person_details_item["nmsr_id"];
         }
 
-        // input data into table
-        for ($i = 0; $i < (int)($amount / $saandha_amount); $i++) {
-            $payedFor = date('Y-M', strtotime('+1 month', strtotime($payedFor)));
+        $insert_to_tbl_nonmahallasaandhacollection = array(
+            'nms_name	' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+            'nms_address	' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+            'nms_telephone' => mysqli_real_escape_string($database->con, $_POST['inputNonmahallaColTP']),
+            'nms_amount' => mysqli_real_escape_string($database->con, $amount),
+            'nms_nmsrid' => mysqli_real_escape_string($database->con, $nmsr_id),
+            'nms_date' => mysqli_real_escape_string($database->con, $today),
+            'nms_username' => mysqli_real_escape_string($database->con, "user")
 
-            foreach ($person_details as $person_details_item) {
-                $nmsr_id = $person_details_item["nmsr_id"];
-            }
+        );
 
-            $insert_to_tbl_nonmahallasaandhacollection = array(
-                'nms_name	' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-                'nms_address	' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-                'nms_telephone' => mysqli_real_escape_string($database->con, $_POST['inputNonmahallaColTP']),
-                'nms_amount' => mysqli_real_escape_string($database->con, $saandha_amount),
-                'nms_due' => mysqli_real_escape_string($database->con, "0"),
-                'nms_nmsrid' => mysqli_real_escape_string($database->con, $nmsr_id),
-                'nms_date' => mysqli_real_escape_string($database->con, $today),
-                'nms_payFor' => mysqli_real_escape_string($database->con, $payedFor),
-                'nms_username' => mysqli_real_escape_string($database->con, "user")
-
-            );
-            $database->insert_data('tbl_nonmahallasaandhacollection', $insert_to_tbl_nonmahallasaandhacollection);
-        }
-
-        if ((int)($amount % $saandha_amount) != 0) {
-            $remain = (int)($amount % $saandha_amount);
-            $due = $saandha_amount - $remain;
-            $payedFor = date('Y-M', strtotime('+1 month', strtotime($payedFor)));
-
-            foreach ($person_details as $person_details_item) {
-                $nmsr_id = $person_details_item["nmsr_id"];
-            }
-
-            $insert_to_tbl_nonmahallasaandhacollection = array(
-                'nms_name	' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-                'nms_address	' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-                'nms_telephone' => mysqli_real_escape_string($database->con, $_POST['inputNonmahallaColTP']),
-                'nms_amount' => mysqli_real_escape_string($database->con, $remain),
-                'nms_due' => mysqli_real_escape_string($database->con, $due),
-                'nms_nmsrid' => mysqli_real_escape_string($database->con, $nmsr_id),
-                'nms_date' => mysqli_real_escape_string($database->con, $today),
-                'nms_payFor' => mysqli_real_escape_string($database->con, $payedFor),
-                'nms_username' => mysqli_real_escape_string($database->con, "user")
-
-            );
-
-            if ($database->insert_data('tbl_nonmahallasaandhacollection', $insert_to_tbl_nonmahallasaandhacollection)) {
-                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-            }
-        } else {
+        if ($database->insert_data('tbl_nonmahallasaandhacollection', $insert_to_tbl_nonmahallasaandhacollection)) {
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }
@@ -1480,8 +1465,33 @@ if (isset($_POST['submitSaandhaCollector'])) {
     );
 
     if ($database->insert_data('tbl_saandhacollector', $insert_to_tbl_saandhacollector)) {
-        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+        // find records corresponding to index
+        $av_name = "";
+        $av_address = "";
+        $where = array(
+            'av_index'     =>     $_POST["inputIndexNo"],
+            'av_subDivision'     =>     $_POST["inputSubdivision"]
+        );
+        $person_details = $database->select_where('tbl_allvillagers', $where);
+        foreach ($person_details as $person_details_item) {
+            $av_name = $person_details_item["av_name"];
+            $av_address = $person_details_item["av_address"];
+        }
+
+        $insert_to_tbl_saandhacollectorcollection = array(
+            'scc_index	' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+            'scc_subDivision	' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
+            'scc_name' => mysqli_real_escape_string($database->con, $av_name),
+            'scc_address' => mysqli_real_escape_string($database->con, $av_address),
+            'scc_totCollectedAmount' => mysqli_real_escape_string($database->con, 0),
+            'scc_settledAmount' => mysqli_real_escape_string($database->con, 0),
+            'scc_username' => mysqli_real_escape_string($database->con, "user")
+
+        );
+        if ($database->insert_data('tbl_saandhacollectorcollection', $insert_to_tbl_saandhacollectorcollection)) {
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+        }
     }
 }
 
@@ -1500,7 +1510,6 @@ if (isset($_POST['submitSalary'])) {
             'pSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
             'pSal_specialBhayanFee' => mysqli_real_escape_string($database->con, $_POST["inputBhayanFee"]),
             'pSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
-            'pSal_loanDeduction' => mysqli_real_escape_string($database->con, $_POST["inputLoan"])
         );
         $query = $database->insert_data('tbl_peshimaamsalary', $insert_to_tbl_peshimaamsalary);
     } elseif ($_POST["inputPost"] == "Muazzin") {
@@ -1511,7 +1520,6 @@ if (isset($_POST['submitSalary'])) {
             'mSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
             'mSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
             'mSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
-            'mSal_loanDeduction	' => mysqli_real_escape_string($database->con, $_POST["inputLoan"])
         );
         $query = $database->insert_data('tbl_muazzinsalary', $insert_to_tbl_muazzinsalary);
     }
@@ -1575,6 +1583,122 @@ if (isset($_POST['submitNonMahallaSaandha'])) {
         'nmsr_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress'])
     );
     if ($database->insert_data('tbl_nonmahallasaandharegistration', $insert_tbl_nonmahallasaandharegistration)) {
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
+}
+
+// insert into tbl_saandhacollectorcollection
+// submitColSettlement button click
+if (isset($_POST['submitColSettlement'])) {
+
+    $inputSettledAmount = $_POST["inputSettledAmount"];
+    $inputSettlingAmount = $_POST["inputSettlingAmount"];
+    $selltle_amount = (float)$inputSettledAmount +  (float)$inputSettlingAmount;
+
+    $update_data = array(
+        'scc_settledAmount' => mysqli_real_escape_string($database->con, $selltle_amount)
+    );
+    $where_condition = array(
+        'scc_index'     =>     $_POST["inputIndexNo"],
+        'scc_subDivision'     =>     $_POST["inputSettlementSubdivision"]
+    );
+    if ($database->update("tbl_saandhacollectorcollection", $update_data, $where_condition)) {
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
+}
+
+// insert into tbl_saandhacollection
+// submitSandhaPayment button click
+if (isset($_POST['submitSandhaPayment'])) {
+    $due = "";
+    if ($_POST["inputDuePayment"] != "") {
+        $due = $_POST["inputDuePayment"];
+    } else {
+        $due = 0;
+    }
+    $payment = $_POST['inputPaymentSaandha'];
+    $payedFor = $_POST['payedFor'];
+
+    // find if there is any due remaining
+    $where = array(
+        'collection_index'     =>     $_POST['inputIndexNo'],
+        'collection_subdivision'     =>     $_POST['inputSaandhaSubdivision']
+    );
+    $collection_paidFor = "";
+    $collection_dueAmount = "";
+    $saandha_collection_details = $database->select_where('tbl_saandhacollection', $where);
+    foreach ($saandha_collection_details as $saandha_collection_details_item) {
+        $collection_paidFor = $saandha_collection_details_item["collection_paidFor"];
+        $collection_dueAmount = $saandha_collection_details_item["collection_dueAmount"];
+    }
+    if ((float)$collection_dueAmount > 0) {
+        $insert_to_tbl_saandhacollection = array(
+            'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+            'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
+            'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+            'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+            'collection_paidAmount' => mysqli_real_escape_string($database->con, $collection_dueAmount),
+            'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
+            'collection_username' => mysqli_real_escape_string($database->con, "user"),
+            'collection_date' => mysqli_real_escape_string($database->con, $today),
+            'collection_paidFor' => mysqli_real_escape_string($database->con, $collection_paidFor)
+
+        );
+        $database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection);
+        $payment = $payment - $collection_dueAmount;
+    }
+
+    $saandha_amount = "";
+    $saandha_amount_details = $database->select_data('tbl_saandhaamountfixing');
+    foreach ($saandha_amount_details as $saandha_amount_item) {
+        $saandha_amount = $saandha_amount_item["saf_amount"];
+    }
+
+    // input data into table
+    for ($i = 0; $i < (int)($payment / $saandha_amount); $i++) {
+
+        $payedFor = date('Y-M', strtotime('+1 month', strtotime($payedFor)));
+
+        $insert_to_tbl_saandhacollection = array(
+            'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+            'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
+            'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+            'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+            'collection_paidAmount' => mysqli_real_escape_string($database->con, $saandha_amount),
+            'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
+            'collection_username' => mysqli_real_escape_string($database->con, "user"),
+            'collection_date' => mysqli_real_escape_string($database->con, $today),
+            'collection_paidFor' => mysqli_real_escape_string($database->con, $payedFor)
+
+        );
+        $database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection);
+    }
+    if ((int)($payment % $saandha_amount) != 0) {
+        $remain = (int)($payment % $saandha_amount);
+        $due = $saandha_amount - $remain;
+
+        $payedFor = date('Y-M', strtotime('+1 month', strtotime($payedFor)));
+
+        $insert_to_tbl_saandhacollection = array(
+            'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+            'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
+            'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+            'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+            'collection_paidAmount' => mysqli_real_escape_string($database->con, $remain),
+            'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
+            'collection_username' => mysqli_real_escape_string($database->con, "user"),
+            'collection_date' => mysqli_real_escape_string($database->con, $today),
+            'collection_paidFor' => mysqli_real_escape_string($database->con, $payedFor)
+
+        );
+
+        if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+        }
+    } else {
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }

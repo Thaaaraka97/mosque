@@ -7,6 +7,7 @@ $database = new databases();
 $id = "";
 $where = "";
 $sort1 = "";
+$item_count = "";
 
 if (isset($_GET['deleted'])) {
     $message = "Record successfully Deleted..!";
@@ -20,15 +21,21 @@ if (isset($_GET['sort1'])) {
         $where = array(
             'nd_groomSubDivision' => $sort1
         );
-    }
-    else {
+        $where2 = array(
+            'nd_brideSubDivision' => $sort1
+        );
+        $item_count1 = $database->select_count('tbl_nikkahdetails', $where);
+        $item_count2 = $database->select_count('tbl_nikkahdetails', $where);
+        $item_count = (int)$item_count1 + (int)$item_count2;
+    } else {
         $where = array(
             'nd_nikkahId ' != 0
         );
+        $item_count = $database->select_count('tbl_nikkahdetails', $where);
+
     }
-    
 }
-$item_count = $database->select_count('tbl_nikkahdetails', $where);
+
 ?>
 <script type="text/javascript">
     var action = "<?php echo $action; ?>";
@@ -151,14 +158,17 @@ $item_count = $database->select_count('tbl_nikkahdetails', $where);
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        $where= array(
+                                                        $where = array(
                                                             'nd_groomSubDivision' => $sort1
                                                         );
-                                                        $nikkah_details = $database->select_where('tbl_nikkahdetails',$where);
+                                                        $nikkah_details = $database->select_where('tbl_nikkahdetails', $where);
+                                                        $where2 = array(
+                                                            'nd_brideSubDivision' => $sort1
+                                                        );
+                                                        $nikkah_details2 = $database->select_where('tbl_nikkahdetails', $where2);
 
                                                         if ($sort1 == "0") {
                                                             $nikkah_details = $database->select_data('tbl_nikkahdetails');
-
                                                         }
                                                         foreach ($nikkah_details as $nikkah_details_item) {
                                                             $id = $nikkah_details_item['nd_nikkahId'];
@@ -180,6 +190,29 @@ $item_count = $database->select_count('tbl_nikkahdetails', $where);
                                                             </td>
                                                         </tr>
                                                          ";
+                                                        }
+                                                        if ($sort1 != "0") {
+                                                            foreach ($nikkah_details2 as $nikkah_details2_item) {
+                                                                $id = $nikkah_details2_item['nd_nikkahId'];
+
+                                                                echo "
+                                                             <tr>
+                                                                <td>" . $nikkah_details2_item['nd_marriageDate'] . "</td>
+                                                                <td>" . $nikkah_details2_item['nd_brideName'] . "</td>
+                                                                <td>" . $nikkah_details2_item['nd_groomName'] . "</td>
+                                                                <td>" . $nikkah_details2_item['nd_groomAddress'] . "</td>
+                                                                <td>
+                                                                    <a href='preview_nikkah-details_step-2.php?id=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                    <a href='preview_nikkah-details_step-2.php?id=" . $id . "&action=edit' class='item'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href='' id ='" . $id . "' class='item delete_row_nikkah' data-toggle='modal' data-target='#deleteRecord'><i class='fa fa-trash fa-lg' aria-hidden='true'></i></a>
+                                                                    
+    
+                                                                </td>
+                                                            </tr>
+                                                             ";
+                                                            }
                                                         }
 
                                                         ?>

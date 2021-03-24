@@ -7,13 +7,12 @@ $database = new databases();
 if (isset($_GET['edited'])) {
     $message = "Record successfully edited and Updated..!";
 }
+
+$sort3 = "0";
+$sort3 = $_GET['sort3'] ?? $_GET['sort3'];
 ?>
 <script type="text/javascript">
-    var donationaction = "<?php echo $action; ?>";
-    var villageraction = "";
-    var action = "";
-    var fridaycollectionaction = "";
-    console.log(donationaction)
+
 </script>
 
 <body>
@@ -71,6 +70,20 @@ if (isset($_GET['edited'])) {
                                 <div class="card-body">
                                     <div class="text-center">
                                         <div>
+                                            <div class="row">
+                                                <div class="form-group col-md-1">
+                                                    <label for="sort">Filter By</label>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <select name="sortExpensesType" id="sortExpensesType" class="form-control">
+                                                        <option value="0" selected> Expenses Type </option>
+                                                        <option value="Maintainance" <?= $sort3 == 'Maintainance' ? ' selected="selected"' : ''; ?>> Maintainance </option>
+                                                        <option value="Stationary" <?= $sort3 == 'Stationary' ? ' selected="selected"' : ''; ?>> Stationary </option>
+                                                        <option value="Building Repair" <?= $sort3 == 'Building Repair' ? ' selected="selected"' : ''; ?>> Building Repair </option>
+                                                        <option value="Other" <?= $sort3 == 'Other' ? ' selected="selected"' : ''; ?>> Other </option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                             <div class="table-responsive table-responsive-data2">
                                                 <table class="table table-data2">
                                                     <thead>
@@ -83,7 +96,15 @@ if (isset($_GET['edited'])) {
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        $expenses_details = $database->select_data('tbl_expenses');
+                                                        $where = array(
+                                                            'ex_type'     =>    $sort3
+                                                        );
+                                                        if ($sort3 == "0") {
+                                                            $where = array(
+                                                                'ex_type'     !=    0
+                                                            );
+                                                        }
+                                                        $expenses_details = $database->select_where('tbl_expenses',$where);
                                                         foreach ($expenses_details as $expenses_details_item) {
                                                             echo "
                                                          <tr>

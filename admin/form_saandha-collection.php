@@ -31,11 +31,11 @@ $database = new databases();
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title">  </h3>
+                        <h3 class="page-title"> </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>forms.php">Forms</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">New Payment</li>
+                                <li class="breadcrumb-item active" aria-current="page">Saandha Collection</li>
                             </ol>
                         </nav>
                     </div>
@@ -43,7 +43,7 @@ $database = new databases();
                         <div class="col-md-8 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <h4 class="card-title">New Payment Form</h4>
+                                    <h4 class="card-title">Saandha Collection Form</h4>
                                     <form class="pt-3" method="POST">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
@@ -51,8 +51,8 @@ $database = new databases();
                                                 <input type="text" class="form-control" id="inputIndexNo" name="inputIndexNo" placeholder="Index No">
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputRentalPaymentSubdivision"> Sub-division </label>
-                                                <select id="inputRentalPaymentSubdivision" name="inputRentalPaymentSubdivision" class="form-control">
+                                                <label for="inputSaandhaSubdivision"> Sub-division </label>
+                                                <select id="inputSaandhaSubdivision" name="inputSaandhaSubdivision" class="form-control">
                                                     <option value="0" selected>Choose...</option>
                                                     <?php
                                                     $sub_division = $database->select_data('tbl_subdivision');
@@ -64,15 +64,9 @@ $database = new databases();
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputRentalPaymentTP">Telephone Number </label>
-                                                <input type="text" class="form-control" id="inputRentalPaymentTP" name="inputRentalPaymentTP" placeholder="077xxxxxxx">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputName">Name </label>
-                                                <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" readonly>
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="inputName">Name </label>
+                                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" readonly>
                                         </div>
                                         <div id="form-row">
                                             <div class="form-group">
@@ -83,37 +77,17 @@ $database = new databases();
                                         <hr>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="inputRentalType">Rental Type</label>
-                                                <select id="inputRentalType" name="inputRentalType" class="form-control">
-                                                    <option value="0" selected>Choose...</option>
-                                                    <option value="Land">Land</option>
-                                                    <option value="House">House</option>
-                                                    <option value="Shop">Shop</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputRentalID">Rental ID</label>
-                                                <select id="inputRentalID" name="inputRentalID" class="form-control">
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputPayment">Payment </label>
-                                                <input type="text" class="form-control" id="inputPayment" name="inputPayment" placeholder="Payment (Rs)">
+                                                <label for="inputPaymentSaandha">Payment </label>
+                                                <input type="text" class="form-control" id="inputPaymentSaandha" name="inputPaymentSaandha" placeholder="Payment (Rs)">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputDuePayment">Due Amount </label>
                                                 <input type="text" class="form-control" id="inputDuePayment" name="inputDuePayment" placeholder="Due Amount (Rs)" readonly>
                                             </div>
                                         </div>
-                                        <div class=" form-group">
-                                            <label for="inputNotes">Notes </label>
-                                            <textarea class="form-control" id="inputNotes" name="inputNotes" rows="4"></textarea>
-                                        </div>
                                         <input type="hidden" name="payedFor" id="payedFor">
                                         <div class="text-center">
-                                            <button class="btn btn-primary btn-lg" id="submitRentalPayment" name="submitRentalPayment">Add Payment</button>
+                                            <button class="btn btn-primary btn-lg" id="submitSandhaPayment" name="submitSandhaPayment">Add Payment</button>
                                         </div>
                                     </form>
                                 </div>

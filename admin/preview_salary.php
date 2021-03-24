@@ -9,12 +9,18 @@ if (isset($_GET['edited'])) {
 } elseif (isset($_GET['terminated'])) {
     $message = "Member terminated and Updated the Record..!";
 }
+$sort3 = "0";
+$sort4 = "0";
+if (isset($_GET['sort4'])) {
+    $sort4 = $_GET['sort4'];
+}
+if (isset($_GET['sort3'])) {
+    $sort3 = $_GET['sort3'];
+}
 ?>
 <script type="text/javascript">
-    var action = "<?php echo $action; ?>";
-    var villageraction = "";
-    var donationaction = "";
-    var fridaycollectionaction = "";
+    var sort4 = "<?php echo $sort4; ?>";
+    var sort3 = "<?php echo $sort3; ?>";
 </script>
 
 
@@ -84,24 +90,20 @@ if (isset($_GET['edited'])) {
                                                 <div class="sorting">
                                                     <div class="row">
                                                         <div class="form-group col-md-1">
-                                                            <label for="sortvillagersubdivision">Sort By</label>
+                                                            <label for="Filterby"> Filter By </label>
                                                         </div>
                                                         <div class="form-group col-md-3">
-                                                            <select name="sortvillagersubdivision" id="sortvillagersubdivision" class="form-control">
-                                                                <option value="0" selected>Posting</option>
-                                                                <option value="widow" <?= $action == 'widow' ? ' selected="selected"' : ''; ?>>Widow Details</option>
-                                                                <option value="divorse" <?= $action == 'divorse' ? ' selected="selected"' : ''; ?>>Divorsed Details</option>
-                                                                <option value="madrasa" <?= $action == 'madrasa' ? ' selected="selected"' : ''; ?>>Madrasa Children Details</option>
-                                                                <option value="orphan" <?= $action == 'orphan' ? ' selected="selected"' : ''; ?>>Orphan Children Details</option>
+                                                            <select name="sortSalaryPosting" id="sortSalaryPosting" class="form-control">
+                                                                <option value="0" selected> Posting </option>
+                                                                <option value="Pesh Imaam" <?= $sort3 == 'Pesh Imaam' ? ' selected="selected"' : ''; ?>> Pesh Imaam </option>
+                                                                <option value="Muazzin" <?= $sort3 == 'Muazzin' ? ' selected="selected"' : ''; ?>> Muazzin </option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-3">
-                                                            <select name="sortvillagersubdivision" id="sortvillagersubdivision" class="form-control">
-                                                                <option value="0" selected>Active Status</option>
-                                                                <option value="widow" <?= $action == 'widow' ? ' selected="selected"' : ''; ?>>Widow Details</option>
-                                                                <option value="divorse" <?= $action == 'divorse' ? ' selected="selected"' : ''; ?>>Divorsed Details</option>
-                                                                <option value="madrasa" <?= $action == 'madrasa' ? ' selected="selected"' : ''; ?>>Madrasa Children Details</option>
-                                                                <option value="orphan" <?= $action == 'orphan' ? ' selected="selected"' : ''; ?>>Orphan Children Details</option>
+                                                            <select name="sortSalaryActive" id="sortSalaryActive" class="form-control">
+                                                                <option value="0" selected> Status </option>
+                                                                <option value="Active" <?= $sort4 == 'Active' ? ' selected="selected"' : ''; ?>> Active </option>
+                                                                <option value="Not Active" <?= $sort4 == 'Not Active' ? ' selected="selected"' : ''; ?>> Not Active </option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -117,82 +119,307 @@ if (isset($_GET['edited'])) {
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        // displaying pesh imaam details
-                                                        $pesh_imaam_salary = $database->select_data('tbl_peshimaamsalary');
-                                                        foreach ($pesh_imaam_salary as $pesh_imaam_salary_item) {
-                                                            $imaam_id = "";
-                                                            $id = "";
-                                                            if (isset($pesh_imaam_salary_item['pSal_id']) || isset($pesh_imaam_salary_item['pSal_peshImaamId'])) {
-                                                                $id = $pesh_imaam_salary_item['pSal_id'];
-                                                                $imaam_id = $pesh_imaam_salary_item['pSal_peshImaamId'];
-                                                            }
-
-                                                            $where = array(
-                                                                'pi_peshImaamId'     =>     $imaam_id
-                                                            );
-                                                            $pesh_imaam_details = $database->select_where('tbl_peshimaaamdetails', $where);
-                                                            foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
-                                                                $name = $pesh_imaam_details_item['pi_name'];
-                                                                $isActive = $pesh_imaam_details_item['pi_activestatus'];
-
-                                                                echo "
-                                                         <tr>
-                                                            <td>";
-                                                                if ($isActive) {
-                                                                    echo "Active";
-                                                                } else {
-                                                                    echo "Not Active";
+                                                        if ($sort3 == "Pesh Imaam") {
+                                                            // displaying pesh imaam details
+                                                            $pesh_imaam_salary = $database->select_data('tbl_peshimaamsalary');
+                                                            foreach ($pesh_imaam_salary as $pesh_imaam_salary_item) {
+                                                                $imaam_id = "";
+                                                                $id = "";
+                                                                if (isset($pesh_imaam_salary_item['pSal_id']) || isset($pesh_imaam_salary_item['pSal_peshImaamId'])) {
+                                                                    $id = $pesh_imaam_salary_item['pSal_id'];
+                                                                    $imaam_id = $pesh_imaam_salary_item['pSal_peshImaamId'];
                                                                 }
-                                                                echo "</td>
-                                                            <td> Pesh Imaam </td>
-                                                            <td>" . $name . "</td>
-                                                            <td>
-                                                                <a href='preview_pesh_imaam-details_step-2.php?id=" . $imaam_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
-                                                            </td>
-                                                            
-                                                        </tr>
-                                                         ";
+
+                                                                $where = array(
+                                                                    'pi_peshImaamId'     =>     $imaam_id
+                                                                );
+                                                                $pesh_imaam_details = $database->select_where('tbl_peshimaaamdetails', $where);
+                                                                foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
+                                                                    $name = $pesh_imaam_details_item['pi_name'];
+                                                                    $isActive = $pesh_imaam_details_item['pi_activestatus'];
+                                                                    if ($sort4 == "0") {
+                                                                        echo "
+                                                                        <tr>
+                                                                            <td>";
+                                                                        if ($isActive) {
+                                                                            echo "Active";
+                                                                        } else {
+                                                                            echo "Not Active";
+                                                                        }
+                                                                        echo "</td>
+                                                                            <td> Pesh Imaam </td>
+                                                                            <td>" . $name . "</td>
+                                                                            <td>
+                                                                                <a href='preview_pesh_imaam-details_step-2.php?id=" . $imaam_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            </td>
+                                                                            
+                                                                        </tr>
+                                                                    ";
+                                                                    } elseif ($sort4 == "Not Active" && $isActive == 0) {
+                                                                        echo "
+                                                                        <tr>
+                                                                            <td>";
+                                                                        if ($isActive) {
+                                                                            echo "Active";
+                                                                        } else {
+                                                                            echo "Not Active";
+                                                                        }
+                                                                        echo "</td>
+                                                                            <td> Pesh Imaam </td>
+                                                                            <td>" . $name . "</td>
+                                                                            <td>
+                                                                                <a href='preview_pesh_imaam-details_step-2.php?id=" . $imaam_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            </td>
+                                                                            
+                                                                    </tr>
+                                                                    ";
+                                                                    } elseif ($sort4 == "Active" && $isActive == 1) {
+                                                                        echo "
+                                                                        <tr>
+                                                                            <td>";
+                                                                        if ($isActive) {
+                                                                            echo "Active";
+                                                                        } else {
+                                                                            echo "Not Active";
+                                                                        }
+                                                                        echo "</td>
+                                                                            <td> Pesh Imaam </td>
+                                                                            <td>" . $name . "</td>
+                                                                            <td>
+                                                                                <a href='preview_pesh_imaam-details_step-2.php?id=" . $imaam_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            </td>
+                                                                            
+                                                                        </tr>
+                                                                        ";
+                                                                    }
+                                                                }
+                                                            }
+                                                        } elseif ($sort3 == "Muazzin") {
+                                                            // displaying muazzin details
+                                                            $muazzin_salary = $database->select_data('tbl_muazzinsalary');
+                                                            foreach ($muazzin_salary as $muazzin_salary_item) {
+                                                                $muazzin_id = "";
+                                                                $id = "";
+                                                                if (isset($muazzin_salary_item['mSal_id']) || isset($muazzin_salary_item['mSal_muazzinId'])) {
+                                                                    $id = $muazzin_salary_item['mSal_id'];
+                                                                    $muazzin_id = $muazzin_salary_item['mSal_muazzinId'];
+                                                                }
+
+                                                                $where = array(
+                                                                    'md_muazzinId'     =>     $muazzin_id
+                                                                );
+                                                                $muazzin_details = $database->select_where('tbl_muazzindetails', $where);
+                                                                foreach ($muazzin_details as $muazzin_details_item) {
+                                                                    $name = $muazzin_details_item['md_name'];
+                                                                    $isActive = $muazzin_details_item['md_activestatus'];
+                                                                    if ($sort4 == "0") {
+                                                                        echo "
+                                                                        <tr>
+                                                                            <td>";
+                                                                            if ($isActive) {
+                                                                                echo "Active";
+                                                                            } else {
+                                                                                echo "Not Active";
+                                                                            }
+                                                                            echo "</td>
+                                                                            <td> Muazzin </td>
+                                                                            <td>" . $name . "</td>
+                                                                            <td>
+                                                                                <a href='preview_muazzin-details_step-2.php?id=" . $muazzin_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            </td>
+                                                                            
+                                                                        </tr>
+                                                                        ";
+                                                                    } elseif ($sort4 == "Not Active" && $isActive == 0) {
+                                                                        echo "
+                                                                        <tr>
+                                                                            <td>";
+                                                                            if ($isActive) {
+                                                                                echo "Active";
+                                                                            } else {
+                                                                                echo "Not Active";
+                                                                            }
+                                                                            echo "</td>
+                                                                            <td> Muazzin </td>
+                                                                            <td>" . $name . "</td>
+                                                                            <td>
+                                                                                <a href='preview_muazzin-details_step-2.php?id=" . $muazzin_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            </td>
+                                                                            
+                                                                        </tr>
+                                                                         ";
+                                                                    } elseif ($sort4 == "Active" && $isActive == 1) {
+                                                                        echo "
+                                                                        <tr>
+                                                                            <td>";
+                                                                            if ($isActive) {
+                                                                                echo "Active";
+                                                                            } else {
+                                                                                echo "Not Active";
+                                                                            }
+                                                                            echo "</td>
+                                                                            <td> Muazzin </td>
+                                                                            <td>" . $name . "</td>
+                                                                            <td>
+                                                                                <a href='preview_muazzin-details_step-2.php?id=" . $muazzin_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            </td>
+                                                                            
+                                                                        </tr>
+                                                                        ";
+                                                                    }
+                                                                }
                                                             }
                                                         }
-                                                        // displaying muazzin details
-                                                        $muazzin_salary = $database->select_data('tbl_muazzinsalary');
-                                                        foreach ($muazzin_salary as $muazzin_salary_item) {
-                                                            $muazzin_id = "";
-                                                            $id = "";
-                                                            if (isset($muazzin_salary_item['mSal_id']) || isset($muazzin_salary_item['mSal_muazzinId'])) {
-                                                                $id = $muazzin_salary_item['mSal_id'];
-                                                                $muazzin_id = $muazzin_salary_item['mSal_muazzinId'];
-                                                            }
-
-                                                            $where = array(
-                                                                'md_muazzinId'     =>     $muazzin_id
-                                                            );
-                                                            $muazzin_details = $database->select_where('tbl_muazzindetails', $where);
-                                                            foreach ($muazzin_details as $muazzin_details_item) {
-                                                                $name = $muazzin_details_item['md_name'];
-                                                                $isActive = $muazzin_details_item['md_activestatus'];
-
-                                                                echo "
-                                                         <tr>
-                                                            <td>";
-                                                                if ($isActive) {
-                                                                    echo "Active";
-                                                                } else {
-                                                                    echo "Not Active";
+                                                        else {
+                                                            // displaying pesh imaam details
+                                                            $pesh_imaam_salary = $database->select_data('tbl_peshimaamsalary');
+                                                            foreach ($pesh_imaam_salary as $pesh_imaam_salary_item) {
+                                                                $imaam_id = "";
+                                                                $id = "";
+                                                                if (isset($pesh_imaam_salary_item['pSal_id']) || isset($pesh_imaam_salary_item['pSal_peshImaamId'])) {
+                                                                    $id = $pesh_imaam_salary_item['pSal_id'];
+                                                                    $imaam_id = $pesh_imaam_salary_item['pSal_peshImaamId'];
                                                                 }
-                                                                echo "</td>
-                                                            <td> Muazzin </td>
-                                                            <td>" . $name . "</td>
-                                                            <td>
-                                                                <a href='preview_muazzin-details_step-2.php?id=" . $muazzin_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
-                                                            </td>
-                                                            
-                                                        </tr>
-                                                         ";
+
+                                                                $where = array(
+                                                                    'pi_peshImaamId'     =>     $imaam_id
+                                                                );
+                                                                $pesh_imaam_details = $database->select_where('tbl_peshimaaamdetails', $where);
+                                                                foreach ($pesh_imaam_details as $pesh_imaam_details_item) {
+                                                                    $name = $pesh_imaam_details_item['pi_name'];
+                                                                    $isActive = $pesh_imaam_details_item['pi_activestatus'];
+                                                                    if ($sort4 == "0") {
+                                                                        echo "
+                                                                        <tr>
+                                                                            <td>";
+                                                                        if ($isActive) {
+                                                                            echo "Active";
+                                                                        } else {
+                                                                            echo "Not Active";
+                                                                        }
+                                                                        echo "</td>
+                                                                            <td> Pesh Imaam </td>
+                                                                            <td>" . $name . "</td>
+                                                                            <td>
+                                                                                <a href='preview_pesh_imaam-details_step-2.php?id=" . $imaam_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            </td>
+                                                                            
+                                                                        </tr>
+                                                                    ";
+                                                                    } elseif ($sort4 == "Not Active" && $isActive == 0) {
+                                                                        echo "
+                                                                        <tr>
+                                                                            <td>";
+                                                                        if ($isActive) {
+                                                                            echo "Active";
+                                                                        } else {
+                                                                            echo "Not Active";
+                                                                        }
+                                                                        echo "</td>
+                                                                            <td> Pesh Imaam </td>
+                                                                            <td>" . $name . "</td>
+                                                                            <td>
+                                                                                <a href='preview_pesh_imaam-details_step-2.php?id=" . $imaam_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            </td>
+                                                                            
+                                                                    </tr>
+                                                                    ";
+                                                                    } elseif ($sort4 == "Active" && $isActive == 1) {
+                                                                        echo "
+                                                                        <tr>
+                                                                            <td>";
+                                                                        if ($isActive) {
+                                                                            echo "Active";
+                                                                        } else {
+                                                                            echo "Not Active";
+                                                                        }
+                                                                        echo "</td>
+                                                                            <td> Pesh Imaam </td>
+                                                                            <td>" . $name . "</td>
+                                                                            <td>
+                                                                                <a href='preview_pesh_imaam-details_step-2.php?id=" . $imaam_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            </td>
+                                                                            
+                                                                        </tr>
+                                                                        ";
+                                                                    }
+                                                                }
+                                                            }
+                                                            // displaying muazzin details
+                                                            $muazzin_salary = $database->select_data('tbl_muazzinsalary');
+                                                            foreach ($muazzin_salary as $muazzin_salary_item) {
+                                                                $muazzin_id = "";
+                                                                $id = "";
+                                                                if (isset($muazzin_salary_item['mSal_id']) || isset($muazzin_salary_item['mSal_muazzinId'])) {
+                                                                    $id = $muazzin_salary_item['mSal_id'];
+                                                                    $muazzin_id = $muazzin_salary_item['mSal_muazzinId'];
+                                                                }
+
+                                                                $where = array(
+                                                                    'md_muazzinId'     =>     $muazzin_id
+                                                                );
+                                                                $muazzin_details = $database->select_where('tbl_muazzindetails', $where);
+                                                                foreach ($muazzin_details as $muazzin_details_item) {
+                                                                    $name = $muazzin_details_item['md_name'];
+                                                                    $isActive = $muazzin_details_item['md_activestatus'];
+                                                                    if ($sort4 == "0") {
+                                                                        echo "
+                                                                        <tr>
+                                                                            <td>";
+                                                                            if ($isActive) {
+                                                                                echo "Active";
+                                                                            } else {
+                                                                                echo "Not Active";
+                                                                            }
+                                                                            echo "</td>
+                                                                            <td> Muazzin </td>
+                                                                            <td>" . $name . "</td>
+                                                                            <td>
+                                                                                <a href='preview_muazzin-details_step-2.php?id=" . $muazzin_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            </td>
+                                                                            
+                                                                        </tr>
+                                                                        ";
+                                                                    } elseif ($sort4 == "Not Active" && $isActive == 0) {
+                                                                        echo "
+                                                                        <tr>
+                                                                            <td>";
+                                                                            if ($isActive) {
+                                                                                echo "Active";
+                                                                            } else {
+                                                                                echo "Not Active";
+                                                                            }
+                                                                            echo "</td>
+                                                                            <td> Muazzin </td>
+                                                                            <td>" . $name . "</td>
+                                                                            <td>
+                                                                                <a href='preview_muazzin-details_step-2.php?id=" . $muazzin_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            </td>
+                                                                            
+                                                                        </tr>
+                                                                         ";
+                                                                    } elseif ($sort4 == "Active" && $isActive == 1) {
+                                                                        echo "
+                                                                        <tr>
+                                                                            <td>";
+                                                                            if ($isActive) {
+                                                                                echo "Active";
+                                                                            } else {
+                                                                                echo "Not Active";
+                                                                            }
+                                                                            echo "</td>
+                                                                            <td> Muazzin </td>
+                                                                            <td>" . $name . "</td>
+                                                                            <td>
+                                                                                <a href='preview_muazzin-details_step-2.php?id=" . $muazzin_id . "&record_id=" . $id . "&action=view_salary' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            </td>
+                                                                            
+                                                                        </tr>
+                                                                        ";
+                                                                    }
+                                                                }
                                                             }
                                                         }
-
-
                                                         ?>
                                                     </tbody>
                                                 </table>

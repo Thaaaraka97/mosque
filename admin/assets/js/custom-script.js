@@ -1049,7 +1049,7 @@ $(document).ready(function () {
   $("#listDetails").change(function (e) {
     e.preventDefault();
     var listDetails = $("#listDetails").val();
-    window.location.href = "preview_villager-details.php?sort1=0&action=" + listDetails;
+    window.location.href = "preview_villager-details.php?sort1=0&sort2=0&action=" + listDetails;
   });
 
   // form_friday-collection.php
@@ -1996,18 +1996,32 @@ $(document).ready(function () {
     window.location.href = "preview_nikkah-details.php?sort1=" + sort1;
   });
   // janaza preview
-  // redirect with sort details
-  $("#sortanazasubdivision").change(function (e) { 
+  // redirect with sort1 details
+  $("#sortJanazasubdivision").change(function (e) { 
     e.preventDefault();
-    var sort1 = $("#sortanazasubdivision").val();
-    window.location.href = "preview_janaza-details.php?sort1=" + sort1;
+    var sort1 = $("#sortJanazasubdivision").val();
+    window.location.href = "preview_janaza-details.php?sort1=" + sort1 + "&sort2=" + sort2;
+  });
+  // janaza preview
+  // redirect with sort2 details
+  $("#sortJanazaGender").change(function (e) { 
+    e.preventDefault();
+    var sort2 = $("#sortJanazaGender").val();
+    window.location.href = "preview_janaza-details.php?sort1=" + sort1 + "&sort2=" + sort2;
   });
   // villger preview
   // redirect with sort details
   $("#sortvillagersubdivision").change(function (e) { 
     e.preventDefault();
     var sort1 = $("#sortvillagersubdivision").val();
-    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=" + sort1;
+    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=" + sort1 + "&sort2=" + sort2;
+  });
+  // villger preview
+  // redirect with sort2 details
+  $("#sortvillagerGender").change(function (e) { 
+    e.preventDefault();
+    var sort2 = $("#sortvillagerGender").val();
+    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=" + sort1 + "&sort2=" + sort2;
   });
   // widow preview
   // redirect with sort details
@@ -2024,11 +2038,25 @@ $(document).ready(function () {
     window.location.href = "preview_villager-details.php?action=divorse&sort1=" + sort1;
   });
   // madrasa preview
-  // redirect with sort details
+  // redirect with sort1 details
   $("#sortMadrasasubdivision").change(function (e) { 
     e.preventDefault();
     var sort1 = $("#sortMadrasasubdivision").val();
-    window.location.href = "preview_villager-details.php?action=madrasa&sort1=" + sort1;
+    window.location.href = "preview_villager-details.php?action=madrasa&sort1=" + sort1 + "&sort2=" + sort2 + "&sort3=" + sort3;
+  });
+  // madrasa preview
+  // redirect with sort2 details
+  $("#sortMadrasaGender").change(function (e) { 
+    e.preventDefault();
+    var sort2 = $("#sortMadrasaGender").val();
+    window.location.href = "preview_villager-details.php?action=madrasa&sort1=" + sort1 + "&sort2=" + sort2 + "&sort3=" + sort3;
+  });
+  // madrasa preview
+  // redirect with sort3 details
+  $("#sortMadrasaType").change(function (e) { 
+    e.preventDefault();
+    var sort3 = $("#sortMadrasaType").val();
+    window.location.href = "preview_villager-details.php?action=madrasa&sort1=" + sort1 + "&sort2=" + sort2 + "&sort3=" + sort3;
   });
   // orphan preview
   // redirect with sort details
@@ -2036,6 +2064,91 @@ $(document).ready(function () {
     e.preventDefault();
     var sort1 = $("#sortOrphansubdivision").val();
     window.location.href = "preview_villager-details.php?action=orphan&sort1=" + sort1;
+  });
+  // expenses preview
+  // redirect with sort details
+  $("#sortExpensesType").change(function (e) { 
+    e.preventDefault();
+    var sort3 = $("#sortExpensesType").val();
+    window.location.href = "preview_expenses.phpsort3=" + sort3;
+  });
+  // salary page
+  // redirect with sort details
+  $("#sortSalaryActive").change(function (e) { 
+    e.preventDefault();
+    var sort4 = $("#sortSalaryActive").val();
+    window.location.href = "preview_salary.php?sort4=" + sort4 + "&sort3=" + sort3;
+  });
+  // salary page
+  // redirect with sort details
+  $("#sortSalaryPosting").change(function (e) { 
+    e.preventDefault();
+    var sort3 = $("#sortSalaryPosting").val();
+    window.location.href = "preview_salary.php?sort3=" + sort3 + "&sort4=" + sort4;
+  });
+
+  // saandha collection
+  // ajax to find records
+  $("#inputSaandhaSubdivision").change(function (e) {
+    e.preventDefault();
+    var index = $("#inputIndexNo").val();
+    var subdivision = $("#inputSaandhaSubdivision").val();
+    // var payment = 0;
+    var data_bundle =
+      "index=" +
+      index +
+      "&subdivision=" +
+      subdivision +
+      "&action=find_record_sub";
+    $.ajax({
+      type: "post",
+      url: "handlers/saandha_collection_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        console.log(response)
+        var result_array = response.split("+");
+        $("#inputName").val(result_array[0]);
+        $("#inputAddress").val(result_array[1]);
+        payment = result_array[3];
+        // $("#inputPayment").val(payment);
+        $("#inputPaymentSaandha").val(payment);
+        $("#inputDuePayment").val("0");
+        $("#payedFor").val(result_array[2]);
+      },
+    });
+  });
+
+  // saandha collection form
+  // calculate due amount
+  $("#inputPaymentSaandha").change(function (e) { 
+    e.preventDefault();
+    var entered_payment = $("#inputPaymentSaandha").val();
+    var due = payment - entered_payment;
+    if (entered_payment<payment) {
+      $("#inputDuePayment").val(due);
+    }
+    else{
+      $("#inputDuePayment").val("0");
+    }
+  });
+
+  // collector settlement form
+  // ajax find records
+  $("#inputSettlementSubdivision").change(function (e) { 
+    e.preventDefault();
+    var index = $("#inputIndexNo").val();
+    var subdivision = $("#inputSettlementSubdivision").val();
+    var data_bundle = "index=" + index + "&subdivision=" + subdivision + "&action=find_record_sub";
+    $.ajax({
+      type: "post",
+      url: "handlers/collector_settlement_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split("+");
+        $("#inputColAmount").val(result_array[0]);
+        $("#inputSettledAmount").val(result_array[1]);
+      }
+    });
   });
 
 

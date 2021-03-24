@@ -111,10 +111,12 @@ if (isset($_GET['action'])) {
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <div id="fridaycollections">
-                                                    <table class="display datatable">
+                                            </div>
+                                            <div id="fridaycollections">
+                                                <div class="table-responsive table-responsive-data2">
+                                                    <table class="table table-data2">
                                                         <thead>
-                                                            <tr>
+                                                            <tr class="tr-shadow">
                                                                 <th>Date</th>
                                                                 <th>Amount</th>
                                                             </tr>
@@ -137,29 +139,27 @@ if (isset($_GET['action'])) {
                                                         </tbody>
                                                     </table>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- content-wrapper ends -->
+
+                        <!-- partial -->
                     </div>
-                    <!-- content-wrapper ends -->
-
-                    <!-- partial -->
+                    <!-- main-panel ends -->
                 </div>
-                <!-- main-panel ends -->
+                <!-- page-body-wrapper ends -->
             </div>
-            <!-- page-body-wrapper ends -->
-        </div>
-        <!-- container-scroller -->
+            <!-- container-scroller -->
 
-        <!-- footer -->
-        <?php
-        include "template_parts/footer.php";
-        ?>
-        <!-- End custom js for this page -->
+            <!-- footer -->
+            <?php
+            include "template_parts/footer.php";
+            ?>
+            <!-- End custom js for this page -->
 </body>
 
 </html>
