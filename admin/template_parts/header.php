@@ -2,6 +2,9 @@
 include "include/include.php";
 include 'include/data_insert_controller.php';
 include 'include/data_update_controller.php';
+
+date_default_timezone_set("Asia/Calcutta");
+$today = date('Y-m-d');
 ?>
 
 <head>

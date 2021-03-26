@@ -60,10 +60,6 @@ $database = new databases();
                                         </div>
                                         <div id="salarydiv">
                                             <div class="form-row">
-                                                <!-- <div class="form-group col-md-6">
-                                                    <label for="inputIndexNo"> ID </label>
-                                                    <input type="text" class="form-control" id="inputIndexNo" name="inputIndexNo" placeholder="Index No" required>
-                                                </div> -->
                                                 <div class="form-group col-md-6">
                                                     <label for="inputPriestIndexNo"> ID </label>
                                                     <select id="inputPriestIndexNo" name="inputPriestIndexNo" class="form-control">                                                        

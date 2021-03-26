@@ -12,6 +12,7 @@ if ($action == "find_record_sub") {
     $av_name = "";
     $av_address = "";
     $payFor = "0";
+    $due = "0";
     $saandha_amount = "";
     $where = array(
         'av_index'     =>     $_POST["index"],
@@ -35,10 +36,11 @@ if ($action == "find_record_sub") {
     if ($payment_details = $database->select_where('tbl_saandhacollection', $where2)) {
         foreach ($payment_details as $payment_details_item) {
             $payFor = $payment_details_item["collection_paidFor"];
+            $due = $payment_details_item["collection_dueAmount"];
         }
     }
     
-    echo $av_name."+".$av_address."+".$payFor."+".$saandha_amount;
+    echo $av_name."+".$av_address."+".$payFor."+".$saandha_amount."+".$due;
 
 }
 

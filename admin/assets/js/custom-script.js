@@ -1447,6 +1447,7 @@ $(document).ready(function () {
         }
         $("#inputPayment").val(payment);
         $("#payedFor").val(result_array[3]);
+        $("#inputPreviousDue").val(result_array[4]);
       },
     });
   });
@@ -1721,10 +1722,10 @@ $(document).ready(function () {
   // show/hide admin div on radio change
   $("input[type=radio][name=inputPost]").change(function (e) {
     e.preventDefault();
-    if ($(this).val() == "Pesh Imaam"){
+    if ($(this).val() == "Pesh Imaam") {
       post = "PeshImaam";
     }
-    else if($(this).val() == "Muazzin"){
+    else if ($(this).val() == "Muazzin") {
       post = "Muazzin";
     }
     var data_bundle = "post=" + post + "&action=find_ids";
@@ -1825,7 +1826,7 @@ $(document).ready(function () {
     <div id="row${m}">
         <div class="form-row ">
             <div class="form-group col-md-1 d-flex justify-content-center align-self-end">
-                <label for="number"> ${m+1} </label>
+                <label for="number"> ${m + 1} </label>
             </div>
             <div class="form-group col-md-4">
                 <label for="inputIngredient"> Ingredient </label>
@@ -1871,7 +1872,7 @@ $(document).ready(function () {
     <div id="row${n}">
         <div class="form-row ">
             <div class="form-group col-md-1 d-flex justify-content-center align-self-end">
-                <label for="number"> ${n+1} </label>
+                <label for="number"> ${n + 1} </label>
             </div>
             <div class="form-group col-md-4">
                 <label for="inputName"> Name </label>
@@ -1912,7 +1913,7 @@ $(document).ready(function () {
 
   // form_pesh-imaam-details.php
   // find records on given details
-  $("#inputImaamSubdivision").change(function (e) { 
+  $("#inputImaamSubdivision").change(function (e) {
     e.preventDefault();
     var index = $("#inputIndexNo").val();
     var subdivision = $("#inputImaamSubdivision").val();
@@ -1920,7 +1921,7 @@ $(document).ready(function () {
     $.ajax({
       type: "post",
       url: "handlers/pesh_imaam_handler.php",
-      data: data_bundle ,
+      data: data_bundle,
       success: function (response) {
         var result_array = response.split("+");
         $("#inputName").val(result_array[0]);
@@ -1951,7 +1952,7 @@ $(document).ready(function () {
 
   // form_pesh-imaam-details.php
   // find records on given details
-  $("#inputMuazzinSubdivision").change(function (e) { 
+  $("#inputMuazzinSubdivision").change(function (e) {
     e.preventDefault();
     var index = $("#inputIndexNo").val();
     var subdivision = $("#inputMuazzinSubdivision").val();
@@ -1959,7 +1960,7 @@ $(document).ready(function () {
     $.ajax({
       type: "post",
       url: "handlers/muazzin_handler.php",
-      data: data_bundle ,
+      data: data_bundle,
       success: function (response) {
         var result_array = response.split("+");
         $("#inputName").val(result_array[0]);
@@ -1990,98 +1991,98 @@ $(document).ready(function () {
 
   // nikka preview
   // redirect with sort details
-  $("#sortNikkahsubdivision").change(function (e) { 
+  $("#sortNikkahsubdivision").change(function (e) {
     e.preventDefault();
     var sort1 = $("#sortNikkahsubdivision").val();
     window.location.href = "preview_nikkah-details.php?sort1=" + sort1;
   });
   // janaza preview
   // redirect with sort1 details
-  $("#sortJanazasubdivision").change(function (e) { 
+  $("#sortJanazasubdivision").change(function (e) {
     e.preventDefault();
     var sort1 = $("#sortJanazasubdivision").val();
     window.location.href = "preview_janaza-details.php?sort1=" + sort1 + "&sort2=" + sort2;
   });
   // janaza preview
   // redirect with sort2 details
-  $("#sortJanazaGender").change(function (e) { 
+  $("#sortJanazaGender").change(function (e) {
     e.preventDefault();
     var sort2 = $("#sortJanazaGender").val();
     window.location.href = "preview_janaza-details.php?sort1=" + sort1 + "&sort2=" + sort2;
   });
   // villger preview
   // redirect with sort details
-  $("#sortvillagersubdivision").change(function (e) { 
+  $("#sortvillagersubdivision").change(function (e) {
     e.preventDefault();
     var sort1 = $("#sortvillagersubdivision").val();
     window.location.href = "preview_villager-details.php?action=allvillagers&sort1=" + sort1 + "&sort2=" + sort2;
   });
   // villger preview
   // redirect with sort2 details
-  $("#sortvillagerGender").change(function (e) { 
+  $("#sortvillagerGender").change(function (e) {
     e.preventDefault();
     var sort2 = $("#sortvillagerGender").val();
     window.location.href = "preview_villager-details.php?action=allvillagers&sort1=" + sort1 + "&sort2=" + sort2;
   });
   // widow preview
   // redirect with sort details
-  $("#sortWidowsubdivision").change(function (e) { 
+  $("#sortWidowsubdivision").change(function (e) {
     e.preventDefault();
     var sort1 = $("#sortWidowsubdivision").val();
     window.location.href = "preview_villager-details.php?action=widow&sort1=" + sort1;
   });
   // divorse preview
   // redirect with sort details
-  $("#sortDivorsedsubdivision").change(function (e) { 
+  $("#sortDivorsedsubdivision").change(function (e) {
     e.preventDefault();
     var sort1 = $("#sortDivorsedsubdivision").val();
     window.location.href = "preview_villager-details.php?action=divorse&sort1=" + sort1;
   });
   // madrasa preview
   // redirect with sort1 details
-  $("#sortMadrasasubdivision").change(function (e) { 
+  $("#sortMadrasasubdivision").change(function (e) {
     e.preventDefault();
     var sort1 = $("#sortMadrasasubdivision").val();
     window.location.href = "preview_villager-details.php?action=madrasa&sort1=" + sort1 + "&sort2=" + sort2 + "&sort3=" + sort3;
   });
   // madrasa preview
   // redirect with sort2 details
-  $("#sortMadrasaGender").change(function (e) { 
+  $("#sortMadrasaGender").change(function (e) {
     e.preventDefault();
     var sort2 = $("#sortMadrasaGender").val();
     window.location.href = "preview_villager-details.php?action=madrasa&sort1=" + sort1 + "&sort2=" + sort2 + "&sort3=" + sort3;
   });
   // madrasa preview
   // redirect with sort3 details
-  $("#sortMadrasaType").change(function (e) { 
+  $("#sortMadrasaType").change(function (e) {
     e.preventDefault();
     var sort3 = $("#sortMadrasaType").val();
     window.location.href = "preview_villager-details.php?action=madrasa&sort1=" + sort1 + "&sort2=" + sort2 + "&sort3=" + sort3;
   });
   // orphan preview
   // redirect with sort details
-  $("#sortOrphansubdivision").change(function (e) { 
+  $("#sortOrphansubdivision").change(function (e) {
     e.preventDefault();
     var sort1 = $("#sortOrphansubdivision").val();
     window.location.href = "preview_villager-details.php?action=orphan&sort1=" + sort1;
   });
   // expenses preview
   // redirect with sort details
-  $("#sortExpensesType").change(function (e) { 
+  $("#sortExpensesType").change(function (e) {
     e.preventDefault();
     var sort3 = $("#sortExpensesType").val();
     window.location.href = "preview_expenses.phpsort3=" + sort3;
   });
   // salary page
   // redirect with sort details
-  $("#sortSalaryActive").change(function (e) { 
+  $("#sortSalaryActive").change(function (e) {
     e.preventDefault();
     var sort4 = $("#sortSalaryActive").val();
     window.location.href = "preview_salary.php?sort4=" + sort4 + "&sort3=" + sort3;
   });
   // salary page
   // redirect with sort details
-  $("#sortSalaryPosting").change(function (e) { 
+  $("#sortSalaryPosting").change(function (e) {
     e.preventDefault();
     var sort3 = $("#sortSalaryPosting").val();
     window.location.href = "preview_salary.php?sort3=" + sort3 + "&sort4=" + sort4;
@@ -2093,7 +2094,6 @@ $(document).ready(function () {
     e.preventDefault();
     var index = $("#inputIndexNo").val();
     var subdivision = $("#inputSaandhaSubdivision").val();
-    // var payment = 0;
     var data_bundle =
       "index=" +
       index +
@@ -2112,29 +2112,35 @@ $(document).ready(function () {
         payment = result_array[3];
         // $("#inputPayment").val(payment);
         $("#inputPaymentSaandha").val(payment);
-        $("#inputDuePayment").val("0");
         $("#payedFor").val(result_array[2]);
+        $("#inputPreviousDue").val(result_array[4]);
+        $("#inputDuePayment").val(result_array[4]);
+
       },
     });
   });
 
   // saandha collection form
   // calculate due amount
-  $("#inputPaymentSaandha").change(function (e) { 
-    e.preventDefault();
-    var entered_payment = $("#inputPaymentSaandha").val();
-    var due = payment - entered_payment;
-    if (entered_payment<payment) {
-      $("#inputDuePayment").val(due);
-    }
-    else{
-      $("#inputDuePayment").val("0");
-    }
-  });
+  // $("#inputPaymentSaandha").change(function (e) {
+  //   e.preventDefault();
+  //   var entered_payment = $("#inputPaymentSaandha").val();
+  //   var previous_due = $("#inputPreviousDue").val();
+  //   var due = $("#inputPreviousDue").val();
+  //   if (parseFloat(entered_payment) >= (parseFloat(previous_due) + parseFloat(due))) {
+  //     due2 = parseFloat(entered_payment) - parseFloat(previous_due) - parseFloat(payment);
+  //   }
+  //   else {
+  //     due2 = (parseFloat(previous_due) + parseFloat(payment)) - parseFloat(entered_payment);
+
+  //   }
+  //   due2 = Math.abs(due2);
+  //   $("#inputDuePayment").val(due2);
+  // });
 
   // collector settlement form
   // ajax find records
-  $("#inputSettlementSubdivision").change(function (e) { 
+  $("#inputSettlementSubdivision").change(function (e) {
     e.preventDefault();
     var index = $("#inputIndexNo").val();
     var subdivision = $("#inputSettlementSubdivision").val();
@@ -2245,6 +2251,9 @@ $(document).ready(function () {
     } else if (action == "view_salary") {
       $("#viewDetails").show();
       $("#viewPayments").show();
+    } else if (action == "view_saandha") {
+      $("#viewDetails").show();
+      $("#payment_history").show();
     } else {
     }
   })();

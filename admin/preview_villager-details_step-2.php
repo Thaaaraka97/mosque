@@ -10,7 +10,9 @@ $subdivision = $_GET['subdivision'];
 $action = $_GET['action'];
 if (isset($_GET["updated"])) {
     $success_message = 'Record is updated successfully..!';
-  }
+}
+$income = 0.00;
+$expense = 0.00;
 
 $where = array(
     'av_index' => $index,
@@ -202,7 +204,6 @@ $age = $database->calculate_age($dob);
     var av_madChild_status = "<?php echo $av_madChild_status; ?>";
     var av_married = "<?php echo $av_married; ?>";
     var av_job = "<?php echo $av_job; ?>";
-
 </script>
 
 <body>
@@ -231,7 +232,7 @@ $age = $database->calculate_age($dob);
                             <span aria-hidden='true'>&times;</span>
                           </button>
                         </div>";
-                      }
+                    }
                     ?>
                     <div class="page-header">
                         <h3 class="page-title"> </h3>
@@ -587,7 +588,7 @@ $age = $database->calculate_age($dob);
                                         </div>
 
                                         <?php
-                                        if ($av_eduGrade != 0 ) {
+                                        if ($av_eduGrade != 0) {
                                             echo "
                                                 <div class='preview-list'>
                                                     <div class='preview-item border-bottom'>
@@ -828,6 +829,52 @@ $age = $database->calculate_age($dob);
                                         }
                                         ?>
                                         </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="payment_history">
+                        <?php
+                        $where = array(
+                            'collection_index' => $index,
+                            'collection_subdivision' => $subdivision
+                        );
+                        $sanndha_collection = $database->select_where('tbl_saandhacollection', $where);
+                        ?>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                    <h4 class="card-title"> Saandha Payment History </h4>
+                                        <div class="text-center">
+                                            <div class="table-responsive table-responsive-data2">
+                                                <table class="table table-data2">
+                                                    <thead>
+                                                        <tr class="tr-shadow">
+                                                            <th>Date</th>
+                                                            <th>Paid Amount</th>
+                                                            <th>Paid For</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        foreach ($sanndha_collection as $sanndha_collection_item) {
+                                                            echo "
+                                                              <tr>
+                                                                <td> " . $sanndha_collection_item['collection_date'] . "</td>
+                                                                <td> " . $sanndha_collection_item['collection_paidAmount'] . " </td>
+                                                                <td>" . $sanndha_collection_item['collection_paidFor'] . "</td>
+                                                            </tr>
+                                                              ";
+                                                        }
+                                                        
+
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1241,6 +1288,7 @@ $age = $database->calculate_age($dob);
                                             </div>
                                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

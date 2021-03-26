@@ -243,6 +243,12 @@
   display: none;
 }
 
+/*  preview villager step2 */
+/* hide payment_history div */
+#payment_history {
+  display: none;
+}
+
 .fa-lg {
   padding-left: 15px;
   padding-bottom: 15px;

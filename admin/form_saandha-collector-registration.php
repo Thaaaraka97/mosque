@@ -172,7 +172,7 @@ $database = new databases();
                                                             <div class="col-md-6">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
-                                                                        <input type="checkbox" class="form-check-input" name="otherFunds" id="otherFunds" value="Other Funds"> Other Funds </label>
+                                                                        <input type="checkbox" class="form-check-input" name="FridayAttendance" id="FridayAttendance" value="Friday Attendance"> Friday Attendance </label>
                                                                 </div>
                                                             </div>
                                                         </div>

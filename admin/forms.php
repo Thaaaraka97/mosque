@@ -489,6 +489,24 @@ include "template_parts/header.php";
                     <hr>
                     <div class="row">
                       <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Non-Mahalla Saandha Collection </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_nonmahalla_saandha_collection.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <h5> Saandha Collector Collection/Settlement </h5>
+                      </div>
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
+                        <a href="<?php echo $server_name ?>form_collector-settlement.php" class="btn btn-lg btn-primary">Open..</a>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 d-flex justify-content-center align-self-center">
                         <h5> Funds </h5>
                       </div>
                       <div class="col-md-6 d-flex justify-content-center align-self-center">

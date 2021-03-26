@@ -86,9 +86,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="preview_non-mahalla-saandha-registration.php"> Non-Mahalla Saandha Details </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="preview_nonmahalla_saandha_collection.php"> Non-Mahalla Saandha Collections </a>
-                    </li>
                 </ul>
             </div>
         </li>
@@ -145,6 +142,9 @@
             <div class="collapse" id="collection-dropdown">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
+                        <a class="nav-link" href="preview_collector-collection.php"> Saandha Collctor Collections </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="preview_friday-collection.php?action=fridayregular"> Friday Collection </a>
                     </li>
                     <li class="nav-item">
@@ -157,13 +157,19 @@
                         <a class="nav-link" href="preview_undiyal-collection.php"> Undiyal Collection </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="preview_saandha-page.php"> Saandha Collection </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_nonmahalla_saandha_collection.php"> Non-Mahalla Saandha Collection </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="preview_funds.php"> Funds </a>
                     </li>
                 </ul>
             </div>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="<?php $server_name ?>trial_balance.php"> <span class="menu-icon"> <i class="mdi mdi-table-large"></i> </span> <span class="menu-title">Trail Balance</span> </a>
+            <a class="nav-link" href="<?php $server_name ?>trial_balance.php"> <span class="menu-icon"> <i class="mdi mdi-table-large"></i> </span> <span class="menu-title"> Monthly Report </span> </a>
         </li>
     </ul>
 </nav>

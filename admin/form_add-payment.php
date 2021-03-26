@@ -31,7 +31,7 @@ $database = new databases();
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title">  </h3>
+                        <h3 class="page-title"> </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>forms.php">Forms</a></li>
@@ -99,19 +99,22 @@ $database = new databases();
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="inputPayment">Payment </label>
-                                                <input type="text" class="form-control" id="inputPayment" name="inputPayment" placeholder="Payment (Rs)">
+                                                <label for="inputPreviousDue"> Previous Due Amount </label>
+                                                <input type="text" class="form-control" id="inputPreviousDue" name="inputPreviousDue" placeholder="Due Amount (Rs)" readonly>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputDuePayment">Due Amount </label>
-                                                <input type="text" class="form-control" id="inputDuePayment" name="inputDuePayment" placeholder="Due Amount (Rs)" readonly>
+                                                <label for="inputPayment"> Payment </label>
+                                                <input type="text" class="form-control" id="inputPayment" name="inputPayment" placeholder="Payment (Rs)">
                                             </div>
+
                                         </div>
                                         <div class=" form-group">
                                             <label for="inputNotes">Notes </label>
                                             <textarea class="form-control" id="inputNotes" name="inputNotes" rows="4"></textarea>
                                         </div>
                                         <input type="hidden" name="payedFor" id="payedFor">
+                                        <input type="hidden" id="inputDuePayment" name="inputDuePayment">
+
                                         <div class="text-center">
                                             <button class="btn btn-primary btn-lg" id="submitRentalPayment" name="submitRentalPayment">Add Payment</button>
                                         </div>

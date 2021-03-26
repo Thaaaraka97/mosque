@@ -94,8 +94,7 @@ if (isset($_GET['sort3'])) {
                             $where = array(
                                 'av_index ' != 0
                             );
-                        }
-                        elseif ($sort1 == "0") {
+                        } elseif ($sort1 == "0") {
                             $where = array(
                                 'av_gender'     =>    $sort2
                             );
@@ -104,7 +103,7 @@ if (isset($_GET['sort3'])) {
                                 'av_subDivision'     =>    $sort1
                             );
                         }
-                        $all_villagers_details = $database->select_where('tbl_allvillagers',$where);
+                        $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
                         $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
                     } elseif ($action == "widow") {
                         $where = array(

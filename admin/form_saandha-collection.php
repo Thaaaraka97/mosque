@@ -77,15 +77,17 @@ $database = new databases();
                                         <hr>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
+                                                <label for="inputPreviousDue"> Previous Due Amount </label>
+                                                <input type="text" class="form-control" id="inputPreviousDue" name="inputPreviousDue" placeholder="Due Amount (Rs)" readonly>
+                                            </div>
+                                            <div class="form-group col-md-6">
                                                 <label for="inputPaymentSaandha">Payment </label>
                                                 <input type="text" class="form-control" id="inputPaymentSaandha" name="inputPaymentSaandha" placeholder="Payment (Rs)">
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputDuePayment">Due Amount </label>
-                                                <input type="text" class="form-control" id="inputDuePayment" name="inputDuePayment" placeholder="Due Amount (Rs)" readonly>
-                                            </div>
                                         </div>
                                         <input type="hidden" name="payedFor" id="payedFor">
+                                        <input type="hidden" id="inputDuePayment" name="inputDuePayment">
+
                                         <div class="text-center">
                                             <button class="btn btn-primary btn-lg" id="submitSandhaPayment" name="submitSandhaPayment">Add Payment</button>
                                         </div>

@@ -61,12 +61,14 @@ elseif ($action == "find_rental_records_with_id") {
         'ri_rentalid'     =>     $inputRentalID
     );
     $ri_payFor = "";
+    $ri_dueAmount = "";
     $rental_income_details = $database->select_where('tbl_rentalincome', $where2);
     foreach ($rental_income_details as $rental_income_details_item) {
         $ri_payFor = $rental_income_details_item["ri_payFor"];
+        $ri_dueAmount = $rental_income_details_item["ri_dueAmount"];
         
     }
-    echo $is_lease."+".$rr_monthlyPayment."+".$rr_leasePayment."+".$ri_payFor;
+    echo $is_lease."+".$rr_monthlyPayment."+".$rr_leasePayment."+".$ri_payFor."+".$ri_dueAmount;
 }
 
 
