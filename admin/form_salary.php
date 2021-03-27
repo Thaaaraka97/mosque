@@ -58,6 +58,25 @@ $database = new databases();
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-group col-md-12">
+                                            <div class="form-group row pt-3">
+                                                <div class="col-md-3 pt-2 d-flex align-items-center text-right">
+                                                    <label class="form-label"> Payment </label>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" name="inputPayType" id="inputPayTypeSalary" value="Salary Payment"> Salary Payment </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" name="inputPayType" id="inputPayTypeAdvance" value="Advance Payment"> Advance Payment </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div id="salarydiv">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">

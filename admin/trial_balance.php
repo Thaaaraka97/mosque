@@ -201,191 +201,256 @@ foreach ($before_collection17 as $before_collection17_item) {
                               <td>-</td>
                             </tr>
                             <?php
+                            $collection_total = 0;
                             foreach ($collection as $collection_item) {
-                              echo "
-                                <tr>
-                                  <td>" . $collection_item['bill_type'] . "</td>
-                                  <td> - </td>
-                                  <td>" . $collection_item['bill_amountPaid'] . "</td>
-                              </tr>
-                                ";
                               $expense = (float)$expense + (float)$collection_item['bill_amountPaid'];
+                              $collection_total = $collection_total + (float)$collection_item['bill_amountPaid'];
                             }
-                            foreach ($collection2 as $collection2_item) {
+                            if ($collection_total != 0) {
                               echo "
                                 <tr>
-                                  <td> Expenses - " . $collection2_item['ex_type'] . "</td>
+                                  <td> Bills </td>
                                   <td> - </td>
-                                  <td>" . $collection2_item['ex_amount'] . "</td>
+                                  <td>" . $collection_total . "</td>
                               </tr>
                                 ";
-                              $expense = (float)$expense + (float)$collection2_item['ex_amount'];
                             }
+                            $collection2_total = 0;
+                            foreach ($collection2 as $collection2_item) {
+                              $expense = (float)$expense + (float)$collection2_item['ex_amount'];
+                              $collection2_total = $collection2_total + (float)$collection2_item['ex_amount'];
+                            }
+                            if ($collection2_total != 0) {
+                              echo "
+                                <tr>
+                                  <td> Expenses </td>
+                                  <td> - </td>
+                                  <td>" . $collection2_total . "</td>
+                              </tr>
+                                ";
+                            }
+                            $collection3_total = 0;
                             foreach ($collection3 as $collection3_item) {
+                              $income = (float)$income + (float)$collection3_item['kc_amount'];
+                              $collection3_total = $collection3_total + (float)$collection3_item['kc_amount'];
+                            }
+                            if ($collection3_total != 0) {
                               echo "
                                 <tr>
                                   <td> Kanduri Collection </td>
-                                  <td> " . $collection3_item['kc_amount'] . " </td>
+                                  <td> " . $collection3_total . " </td>
                                   <td> - </td>
                               </tr>
                                 ";
-                              $income = (float)$income + (float)$collection3_item['kc_amount'];
                             }
+                            $collection4_total = 0;
                             foreach ($collection4 as $collection4_item) {
+                              $income = (float)$income + (float)$collection4_item['d_amount'];
+                              $collection4_total = $collection4_total + (float)$collection4_item['d_amount'];
+                            }
+                            if ($collection4_total != 0) {
                               echo "
                                 <tr>
-                                  <td> Donation - " . $collection4_item['d_donationType'] . " </td>
-                                  <td> " . $collection4_item['d_amount'] . " </td>
+                                  <td> Donations  </td>
+                                  <td> " . $collection4_total . " </td>
                                   <td> - </td>
                               </tr>
                                 ";
-                              $income = (float)$income + (float)$collection4_item['d_amount'];
                             }
+                            $collection5_total = 0;
                             foreach ($collection5 as $collection5_item) {
+                              $income = (float)$income + (float)$collection5_item['tbd_amount'];
+                              $collection5_total = $collection5_total + (float)$collection5_item['tbd_amount'];                              
+                            }
+                            if ($collection5_total != 0) {
                               echo "
                                 <tr>
                                   <td> Trusteeboard Donation </td>
-                                  <td> " . $collection5_item['tbd_amount'] . " </td>
+                                  <td> " . $collection5_total . " </td>
                                   <td> - </td>
                               </tr>
                                 ";
-                              $income = (float)$income + (float)$collection5_item['tbd_amount'];
                             }
+                            $collection6_total = 0;
                             foreach ($collection6 as $collection6_item) {
+                              $income = (float)$income + (float)$collection6_item['fd_amount'];
+                              $collection6_total = $collection6_total + (float)$collection6_item['fd_amount'];                              
+                            }
+                            if ($collection6_total != 0) {
                               echo "
                                 <tr>
                                   <td> Friday Collection Donation </td>
-                                  <td> " . $collection6_item['fd_amount'] . " </td>
+                                  <td> " . $collection6_total . " </td>
                                   <td> - </td>
                               </tr>
                                 ";
-                              $income = (float)$income + (float)$collection6_item['fd_amount'];
                             }
+                            $collection7_total = 0;
                             foreach ($collection7 as $collection7_item) {
+                              $income = (float)$income + (float)$collection7_item['fr_amount'];
+                              $collection7_total = $collection7_total + (float)$collection7_item['fr_amount'];                              
+                            }
+                            if ($collection7_total != 0) {
                               echo "
                                 <tr>
                                   <td> Friday Collection Regular </td>
-                                  <td> " . $collection7_item['fr_amount'] . " </td>
+                                  <td> " . $collection7_total . " </td>
                                   <td> - </td>
                               </tr>
                                 ";
-                              $income = (float)$income + (float)$collection7_item['fr_amount'];
                             }
+                            $collection8_total = 0;
                             foreach ($collection8 as $collection8_item) {
+                              $income = (float)$income + (float)$collection8_item['fr_amount'];
+                              $collection8_total = $collection8_total + (float)$collection8_item['fr_amount'];                              
+                            }
+                            if ($collection8_total != 0) {
                               echo "
                                 <tr>
-                                  <td> Funds - " . $collection8_item['funds_type'] . " </td>
-                                  <td> " . $collection8_item['funds_amount'] . " </td>
+                                  <td> Funds  </td>
+                                  <td> " . $collection8_total . " </td>
                                   <td> - </td>
                               </tr>
                                 ";
-                              $income = (float)$income + (float)$collection8_item['funds_amount'];
                             }
+                            $collection9_total = 0;
                             foreach ($collection9 as $collection9_item) {
+                              $income = (float)$income + (float)$collection9_item['lk_amount'];
+                              $collection9_total = $collection9_total + (float)$collection9_item['lk_amount'];
+                            }
+                            if ($collection9_total != 0) {
                               echo "
                                 <tr>
                                   <td> Laylat al-Qadr Collection </td>
-                                  <td> " . $collection9_item['lk_amount'] . " </td>
+                                  <td> " . $collection9_total . " </td>
                                   <td> - </td>
                               </tr>
                                 ";
-                              $income = (float)$income + (float)$collection9_item['lk_amount'];
                             }
+                            $collection10_total = 0;
                             foreach ($collection10 as $collection10_item) {
                               $basic = $collection10_item['mSal_basicSalary'];
                               $incentive = $collection10_item['mSal_incentive'];
                               $madrasa_fee = $collection10_item['mSal_madrasaFee'];
                               $epf = $collection10_item['mSal_EPFETF'];
-                              $total = (float)$basic + (float)$incentive + (float)$madrasa_fee;
+                              $collection10_total = (float)$basic + (float)$incentive + (float)$madrasa_fee;
+                              $expense = (float)$expense + (float)$collection10_total;
+                            }
+                            if ($collection10_total != 0) {
                               echo "
                                 <tr>
                                   <td> Muazzin Salary </td>
                                   <td> - </td>
-                                  <td>" . $total . "</td>
+                                  <td>" . $collection10_total . "</td>
                               </tr>
                                 ";
-                              $expense = (float)$expense + (float)$total;
                             }
+                            $collection11_total = 0;
                             foreach ($collection11 as $collection11_item) {
                               $basic = $collection11_item['pSal_basicSalary'];
                               $incentive = $collection11_item['pSal_incentive'];
                               $madrasa_fee = $collection11_item['pSal_madrasaFee'];
                               $epf = $collection11_item['pSal_EPFETF'];
                               $bhayan = $collection11_item['pSal_specialBhayanFee'];
-                              $total = (float)$basic + (float)$incentive + (float)$madrasa_fee + (float)$bhayan;
+                              $collection11_total = (float)$basic + (float)$incentive + (float)$madrasa_fee + (float)$bhayan;
+                              $expense = (float)$expense + (float)$collection11_total;
+                            }
+                            if ($collection11_total != 0) {
                               echo "
                                 <tr>
                                   <td> Pesh Imaam Salary </td>
                                   <td> - </td>
-                                  <td>" . $total . "</td>
+                                  <td>" . $collection11_total . "</td>
                               </tr>
                                 ";
-                              $expense = (float)$expense + (float)$total;
                             }
+                            $collection12_total = 0;
                             foreach ($collection12 as $collection12_item) {
+                              $income = (float)$income + (float)$collection12_item['nms_amount'];
+                              $collection12_total = $collection12_total + (float)$collection12_item['nms_amount'];
+                            }
+                            if ($collection12_total != 0) {
                               echo "
                                 <tr>
                                   <td> Non-Mahalla Saandha Collections </td>
-                                  <td> " . $collection12_item['nms_amount'] . " </td>
+                                  <td> " . $collection12_total . " </td>
                                   <td> - </td>
                               </tr>
                                 ";
-                              $income = (float)$income + (float)$collection12_item['nms_amount'];
                             }
+                            $collection13_total = 0;
                             foreach ($collection13 as $collection13_item) {
+                              $income = (float)$income + (float)$collection13_item['oss_amount'];
+                              $collection13_total = $collection13_total + (float)$collection13_item['oss_amount'];
+                            }
+                            if ($collection13_total != 0) {
                               echo "
                                 <tr>
                                   <td> Other Servant Salary </td>
                                   <td> - </td>
-                                  <td>" . $collection13_item['oss_amount'] . "</td>
+                                  <td>" . $collection13_total . "</td>
                               </tr>
                                 ";
-                              $expense = (float)$expense + (float)$collection13_item['oss_amount'];
                             }
+                            $collection14_total = 0;
                             foreach ($collection14 as $collection14_item) {
+                              $income = (float)$income + (float)$collection14_item['ri_payment'];
+                              $collection14_total = $collection14_total + (float)$collection14_item['ri_payment'];                              
+                            }
+                            if ($collection14_total != 0) {
                               echo "
                                 <tr>
                                   <td> Rental Income </td>
-                                  <td> " . $collection14_item['ri_payment'] . " </td>
+                                  <td> " . $collection14_total . " </td>
                                   <td> - </td>
                               </tr>
                                 ";
-                              $income = (float)$income + (float)$collection14_item['ri_payment'];
                             }
+                            $collection15_total = 0;
                             foreach ($collection15 as $collection15_item) {
+                              $income = (float)$income + (float)$collection15_item['collection_paidAmount'];
+                              $collection15_total = $collection15_total + (float)$collection15_item['collection_paidAmount'];
+                            }
+                            if ($collection15_total != 0) {
                               echo "
                                 <tr>
                                   <td> Saandha Collection </td>
-                                  <td> " . $collection15_item['collection_paidAmount'] . " </td>
+                                  <td> " . $collection15_total . " </td>
                                   <td> - </td>
                               </tr>
                                 ";
-                              $income = (float)$income + (float)$collection15_item['collection_paidAmount'];
                             }
+                            $collection16_total = 0;
                             foreach ($collection16 as $collection16_item) {
                               $meals = $collection16_item['sb_meals'];
                               $transport = $collection16_item['sb_transport'];
                               $tea = $collection16_item['sb_tea'];
                               $other = $collection16_item['sb_other'];
-                              $total = (float)$meals + (float)$transport + (float)$tea + (float)$other;
+                              $collection16_total = (float)$meals + (float)$transport + (float)$tea + (float)$other;
+                              $expense = (float)$expense + (float)$collection16_total;
+                            }
+                            if ($collection16_total != 0) {
                               echo "
                                 <tr>
                                   <td> Special Bhayan Payment </td>
                                   <td> - </td>
-                                  <td>" . $total . "</td>
+                                  <td>" . $collection16_total . "</td>
                               </tr>
                                 ";
-                              $expense = (float)$expense + (float)$total;
                             }
+                            $collection17_total = 0;
                             foreach ($collection17 as $collection17_item) {
+                              $income = (float)$income + (float)$collection17_item['uc_amount'];
+                              $collection17_total = $collection17_total + (float)$collection17_item['uc_amount'];
+                            }
+                            if ($collection17_total != 0) {
                               echo "
                                 <tr>
                                   <td> Undiyal Collection </td>
-                                  <td> " . $collection17_item['uc_amount'] . " </td>
+                                  <td> " . $collection17_total . " </td>
                                   <td> - </td>
                               </tr>
                                 ";
-                              $income = (float)$income + (float)$collection17_item['uc_amount'];
                             }
                             ?>
                           </tbody>
