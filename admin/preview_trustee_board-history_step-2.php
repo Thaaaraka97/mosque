@@ -16,14 +16,11 @@ if (isset($_GET['deleted'])) {
     $message = "Record successfully Updated..!";
 }
 
-
+$elected_ID = "";
+$record = "";
 $where = array(
     'th_id' => $id
 );
-
-$elected_ID = "";
-$record = "";
-
 $trustee_board_history = $database->select_where('tbl_trusteeboardhistory', $where);
 foreach ($trustee_board_history as $trustee_board_history_item) {
     $elected_ID = $trustee_board_history_item['th_electedYYMM'];
@@ -131,7 +128,22 @@ foreach ($trustee_board_history as $trustee_board_history_item) {
                                                     <h6 class="preview-subject">Details</h6>
                                                 </div>
                                                 <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                                    <p class="text-muted"><?php echo $record ?></p>
+                                                    <p class="text-muted">
+                                                    <?php 
+                                                        $where = array(
+                                                            'th_electedYYMM' => $elected_ID
+                                                        );
+                                                        $trustee_board_history = $database->select_where('tbl_trusteeboardhistory', $where);
+                                                        foreach ($trustee_board_history as $trustee_board_history_item) {
+                                                            $elected_ID = $trustee_board_history_item['th_electedYYMM'];
+                                                            $record = $trustee_board_history_item['th_record'];
+                                                            if ($record == "") {
+                                                                $record = "-";
+                                                            }
+                                                            echo $record."<br>";
+                                                        }
+                                                    ?>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>

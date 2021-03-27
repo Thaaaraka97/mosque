@@ -9,8 +9,11 @@
         <ul class="navbar-nav w-100">
             <li class="nav-item w-100">
                 <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                    <input type="text" class="form-control" placeholder="Search products">
+                    <input type="text" class="form-control" placeholder="Search">
                 </form>
+            </li>
+            <li class="nav-item w-100">
+                <a class="btn btn-primary" href="link/to/your/download/file" download><i class="fa fa-download"></i>Download App</a>
             </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">

@@ -16,22 +16,17 @@ $where = array(
     'th_id'     =>     $id
 );
 $trustee_board_history = $database->select_where('tbl_trusteeboardhistory', $where);
-$record="";
+$th_electedYYMM="";
 foreach ($trustee_board_history as $trustee_board_history_item) {
-    $record = $trustee_board_history_item['th_record'];
+    $th_electedYYMM = $trustee_board_history_item['th_electedYYMM'];
 }
 
-$details = $record." \n".$inputDetails;
-
-$URL = "preview_trustee_board-history_step-2.php?action=editable&edited=1&id=".$id;
-// update record
-$update_data = array(
-    'th_record' => mysqli_real_escape_string($database->con, $details)
+$insert_tbl_trusteeboardhistory = array(
+    'th_electedYYMM' => mysqli_real_escape_string($database->con, $inputDetails),
+    'th_record' => mysqli_real_escape_string($database->con, $th_electedYYMM)
 );
-$where_condition = array(
-    'th_id'     =>     $id
-);
-if ($database->update("tbl_trusteeboardhistory", $update_data, $where_condition)) {
+if ($database->insert_data('tbl_trusteeboardhistory', $insert_tbl_trusteeboardhistory)) {
+    $URL = "preview_trustee_board-history_step-2.php?action=editable&edited=1&id=".$id;
     echo $URL;
 }
 

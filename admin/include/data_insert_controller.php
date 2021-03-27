@@ -1307,6 +1307,7 @@ if (isset($_POST['submitFunds'])) {
         'funds_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
         'funds_type' => mysqli_real_escape_string($database->con, $_POST['inputFundsType']),
         'funds_festival' => mysqli_real_escape_string($database->con, $_POST['inputFestival']),
+        'funds_date' => mysqli_real_escape_string($database->con, $today),
         'funds_username' => mysqli_real_escape_string($database->con, "user")
 
     );
@@ -1519,6 +1520,7 @@ if (isset($_POST['submitSalary'])) {
             'pSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
             'pSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
             'pSal_specialBhayanFee' => mysqli_real_escape_string($database->con, $_POST["inputBhayanFee"]),
+            'pSal_date' => mysqli_real_escape_string($database->con, $today),
             'pSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
         );
         $query = $database->insert_data('tbl_peshimaamsalary', $insert_to_tbl_peshimaamsalary);
@@ -1529,6 +1531,7 @@ if (isset($_POST['submitSalary'])) {
             'mSal_incentive' => mysqli_real_escape_string($database->con, $_POST["inputIncentive"]),
             'mSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
             'mSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+            'mSal_date' => mysqli_real_escape_string($database->con, $today),
             'mSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
         );
         $query = $database->insert_data('tbl_muazzinsalary', $insert_to_tbl_muazzinsalary);
@@ -1788,247 +1791,4 @@ if (isset($_POST['submitSandhaPayment'])) {
             echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }
     }
-    //     ******************************************
-    //     if ((float)$payment <= $saandha_amount) {
-    //         $insert_to_tbl_saandhacollection = array(
-    //             'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
-    //             'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
-    //             'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-    //             'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-    //             'collection_paidAmount' => mysqli_real_escape_string($database->con, $payment),
-    //             'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
-    //             'collection_username' => mysqli_real_escape_string($database->con, "user"),
-    //             'collection_date' => mysqli_real_escape_string($database->con, $today),
-    //             'collection_paidFor' => mysqli_real_escape_string($database->con, date('Y-M'))
-
-    //         );
-    //         $database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection);
-    //     } else {
-    //         $insert_to_tbl_saandhacollection = array(
-    //             'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
-    //             'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
-    //             'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-    //             'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-    //             'collection_paidAmount' => mysqli_real_escape_string($database->con, $saandha_amount),
-    //             'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
-    //             'collection_username' => mysqli_real_escape_string($database->con, "user"),
-    //             'collection_date' => mysqli_real_escape_string($database->con, $today),
-    //             'collection_paidFor' => mysqli_real_escape_string($database->con, date('Y-M'))
-
-    //         );
-    //         $database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection);
-
-    //         $saandha_collection_details = $database->select_where('tbl_saandhacollection', $where);
-    //         foreach ($saandha_collection_details as $saandha_collection_details_item) {
-    //             $collection_paidFor = $saandha_collection_details_item["collection_paidFor"];
-    //             $collection_dueAmount = $saandha_collection_details_item["collection_dueAmount"];
-    //         }
-    //         // input data into table
-    //         for ($i = 1; $i < (int)($payment / $saandha_amount); $i++) {
-
-    //             $paidFor = date('Y-M', strtotime('+1 month', strtotime($collection_paidFor)));
-
-    //             $insert_to_tbl_saandhacollection = array(
-    //                 'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
-    //                 'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
-    //                 'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-    //                 'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-    //                 'collection_paidAmount' => mysqli_real_escape_string($database->con, $saandha_amount),
-    //                 'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
-    //                 'collection_username' => mysqli_real_escape_string($database->con, "user"),
-    //                 'collection_date' => mysqli_real_escape_string($database->con, $today),
-    //                 'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
-
-    //             );
-    //             $database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection);
-    //         }
-    //         if ((int)($payment % $saandha_amount) != 0) {
-    //             $remain = (int)($payment % $saandha_amount);
-    //             $due = $saandha_amount - $remain;
-
-    //             $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
-
-    //             $insert_to_tbl_saandhacollection = array(
-    //                 'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
-    //                 'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
-    //                 'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-    //                 'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-    //                 'collection_paidAmount' => mysqli_real_escape_string($database->con, $remain),
-    //                 'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
-    //                 'collection_username' => mysqli_real_escape_string($database->con, "user"),
-    //                 'collection_date' => mysqli_real_escape_string($database->con, $today),
-    //                 'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
-
-    //             );
-
-    //             if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
-    //                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-    //                 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-    //             }
-    //         } else {
-    //             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-    //             echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-    //         }
-    //     }
-    // } else {
-    //     $saandha_collection_details = $database->select_where('tbl_saandhacollection', $where);
-    //     foreach ($saandha_collection_details as $saandha_collection_details_item) {
-    //         $collection_paidFor = $saandha_collection_details_item["collection_paidFor"];
-    //         $collection_dueAmount = $saandha_collection_details_item["collection_dueAmount"];
-    //         $where2 = array(
-    //             'collection_index'     =>     $_POST['inputIndexNo'],
-    //             'collection_subdivision'     =>     $_POST['inputSaandhaSubdivision'],
-    //             'collection_paidFor'     =>     $saandha_collection_details_item["collection_paidFor"]
-    //         );
-    //         $saandha_collection_details2 = $database->select_where('tbl_saandhacollection', $where2);
-    //         foreach ($saandha_collection_details2 as $saandha_collection_details2_item) {
-    //             $total_pay = 0;
-    //             $pay= $saandha_collection_details2_item['collection_paidAmount'];
-    //             $total_pay = (float)$total_pay + (float)$pay;
-    //         }
-    //     }
-    //     if ($total_pay >= $saandha_amount) {
-    //         $collection_paidFor = date('Y-M', strtotime('+1 month', strtotime($collection_paidFor)));
-    //     }
-    //     elseif (((float)$total_pay + (float)$payment) >= $saandha_amount) {
-    //         $insert_to_tbl_saandhacollection = array(
-    //             'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
-    //             'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
-    //             'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-    //             'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-    //             'collection_paidAmount' => mysqli_real_escape_string($database->con, (float)$saandha_amount - (float)$total_pay),
-    //             'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
-    //             'collection_username' => mysqli_real_escape_string($database->con, "user"),
-    //             'collection_date' => mysqli_real_escape_string($database->con, $today),
-    //             'collection_paidFor' => mysqli_real_escape_string($database->con, $collection_paidFor)
-
-    //         );
-    //         if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
-    //             $paidFor = date('Y-M', strtotime('+1 month', strtotime($collection_paidFor)));
-    //             for ($i = 0; $i < (int)($payment / $saandha_amount); $i++) {    
-    //                 $insert_to_tbl_saandhacollection = array(
-    //                     'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
-    //                     'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
-    //                     'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-    //                     'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-    //                     'collection_paidAmount' => mysqli_real_escape_string($database->con, $saandha_amount),
-    //                     'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
-    //                     'collection_username' => mysqli_real_escape_string($database->con, "user"),
-    //                     'collection_date' => mysqli_real_escape_string($database->con, $today),
-    //                     'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
-
-    //                 );
-    //                 $database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection);
-    //             }
-    //             if ((int)($payment % $saandha_amount) != 0) {
-    //                 $remain = (int)($payment % $saandha_amount);
-    //                 $due = $saandha_amount - $remain;
-
-    //                 $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
-
-    //                 $insert_to_tbl_saandhacollection = array(
-    //                     'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
-    //                     'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
-    //                     'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-    //                     'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-    //                     'collection_paidAmount' => mysqli_real_escape_string($database->con, $remain),
-    //                     'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
-    //                     'collection_username' => mysqli_real_escape_string($database->con, "user"),
-    //                     'collection_date' => mysqli_real_escape_string($database->con, $today),
-    //                     'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
-
-    //                 );
-
-    //                 if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
-    //                     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-    //                     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-    //                 }
-    //             } else {
-    //                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-    //                 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-    //             }
-    //         }
-    //     }
-    //     if ($payment < $due) {
-    //         $insert_to_tbl_saandhacollection = array(
-    //             'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
-    //             'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
-    //             'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-    //             'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-    //             'collection_paidAmount' => mysqli_real_escape_string($database->con, $payment),
-    //             'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
-    //             'collection_username' => mysqli_real_escape_string($database->con, "user"),
-    //             'collection_date' => mysqli_real_escape_string($database->con, $today),
-    //             'collection_paidFor' => mysqli_real_escape_string($database->con, $collection_paidFor)
-
-    //         );
-    //         if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
-    //             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-    //             echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-    //         }
-    //     } else {
-    //         if ((float)$collection_dueAmount > 0) {
-    //             $insert_to_tbl_saandhacollection = array(
-    //                 'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
-    //                 'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
-    //                 'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-    //                 'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-    //                 'collection_paidAmount' => mysqli_real_escape_string($database->con, $collection_dueAmount),
-    //                 'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
-    //                 'collection_username' => mysqli_real_escape_string($database->con, "user"),
-    //                 'collection_date' => mysqli_real_escape_string($database->con, $today),
-    //                 'collection_paidFor' => mysqli_real_escape_string($database->con, $collection_paidFor)
-
-    //             );
-    //             $database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection);
-    //             $payment = $payment - $collection_dueAmount;
-    //         }
-    //         // input data into table
-    //         for ($i = 0; $i < (int)($payment / $saandha_amount); $i++) {
-
-    //             $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
-
-    //             $insert_to_tbl_saandhacollection = array(
-    //                 'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
-    //                 'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
-    //                 'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-    //                 'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-    //                 'collection_paidAmount' => mysqli_real_escape_string($database->con, $saandha_amount),
-    //                 'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
-    //                 'collection_username' => mysqli_real_escape_string($database->con, "user"),
-    //                 'collection_date' => mysqli_real_escape_string($database->con, $today),
-    //                 'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
-
-    //             );
-    //             $database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection);
-    //         }
-    //         if ((int)($payment % $saandha_amount) != 0) {
-    //             $remain = (int)($payment % $saandha_amount);
-    //             $due = $saandha_amount - $remain;
-
-    //             $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
-
-    //             $insert_to_tbl_saandhacollection = array(
-    //                 'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
-    //                 'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
-    //                 'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-    //                 'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-    //                 'collection_paidAmount' => mysqli_real_escape_string($database->con, $remain),
-    //                 'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
-    //                 'collection_username' => mysqli_real_escape_string($database->con, "user"),
-    //                 'collection_date' => mysqli_real_escape_string($database->con, $today),
-    //                 'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
-
-    //             );
-
-    //             if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
-    //                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-    //                 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-    //             }
-    //         } else {
-    //             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-    //             echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-    //         }
-    //     }
-    // }
 }

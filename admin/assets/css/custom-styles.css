@@ -255,7 +255,6 @@
 }
 .fa-pencil-square-o {
   color: black;
-
 }
 .fa-trash {
   color: red;
@@ -263,10 +262,10 @@
 .top-span {
   color: #111;
 }
-.image-td{
+.image-td {
   width: 15%;
 }
-.card-hr{
+.card-hr {
   margin-right: 0;
 }
 
@@ -282,17 +281,17 @@
 .grid-margin {
   margin-bottom: 0px;
 }
-a.brand-logo-mini{
+a.brand-logo-mini {
   display: block;
 }
 
-.card-table{
+.card-table {
   width: 100%;
 }
-.tr-shadow{
+.tr-shadow {
   color: #111;
 }
-.total-td{
+.total-td {
   width: 15%;
 }
 .table-data2.table thead th {
@@ -303,19 +302,20 @@ a.brand-logo-mini{
 }
 
 table.dataTable tbody tr.odd {
-  background-color: #F1E0FF;
+  background-color: #f1e0ff;
 }
 table.dataTable tbody tr.even {
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
 }
 .table-data2.table tbody td {
   padding: 10px 5px;
   line-height: 4;
   font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 table.dataTable {
   border-spacing: 0px 5px !important;
-
 }
 
 .top-card-logo {
@@ -323,11 +323,11 @@ table.dataTable {
   height: auto;
 }
 
-.dataTables_wrapper .dataTable .btn{
+.dataTables_wrapper .dataTable .btn {
   vertical-align: middle;
 }
 
-a.text-muted{
+a.text-muted {
   text-decoration-line: underline !important;
   color: dodgerblue !important;
 }

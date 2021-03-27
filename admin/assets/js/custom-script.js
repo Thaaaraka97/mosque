@@ -2120,24 +2120,6 @@ $(document).ready(function () {
     });
   });
 
-  // saandha collection form
-  // calculate due amount
-  // $("#inputPaymentSaandha").change(function (e) {
-  //   e.preventDefault();
-  //   var entered_payment = $("#inputPaymentSaandha").val();
-  //   var previous_due = $("#inputPreviousDue").val();
-  //   var due = $("#inputPreviousDue").val();
-  //   if (parseFloat(entered_payment) >= (parseFloat(previous_due) + parseFloat(due))) {
-  //     due2 = parseFloat(entered_payment) - parseFloat(previous_due) - parseFloat(payment);
-  //   }
-  //   else {
-  //     due2 = (parseFloat(previous_due) + parseFloat(payment)) - parseFloat(entered_payment);
-
-  //   }
-  //   due2 = Math.abs(due2);
-  //   $("#inputDuePayment").val(due2);
-  // });
-
   // collector settlement form
   // ajax find records
   $("#inputSettlementSubdivision").change(function (e) {
@@ -2155,6 +2137,37 @@ $(document).ready(function () {
         $("#inputSettledAmount").val(result_array[1]);
       }
     });
+  });
+
+  $("#sortFrom").change(function (e) { 
+    e.preventDefault();
+    sort5 = $("#sortFrom").val();
+    window.location.href = "trial_balance.php?sort5=" + sort5 + "&sort6=" + sort6;
+
+  });
+  $("#sortTo").change(function (e) { 
+    e.preventDefault();
+    sort6 = $("#sortTo").val();
+    window.location.href = "trial_balance.php?sort5=" + sort5 + "&sort6=" + sort6;
+
+  });
+
+  $(".delete_row_collection").click(function (e) { 
+    e.preventDefault();
+    var id = $(this).attr("id");
+    $("#del").click(function (e) { 
+      var data_bundle = "id=" + id + "&action=delete_record";
+      e.preventDefault();
+      $.ajax({
+        type: "post",
+        url: "handlers/collections_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        }
+      });
+    });
+    
   });
 
 

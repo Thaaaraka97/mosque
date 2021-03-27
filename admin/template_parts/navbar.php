@@ -169,7 +169,7 @@
             </div>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="<?php $server_name ?>trial_balance.php"> <span class="menu-icon"> <i class="mdi mdi-table-large"></i> </span> <span class="menu-title"> Monthly Report </span> </a>
+            <a class="nav-link" href="<?php $server_name ?>trial_balance.php?sort5=<?php echo date('Y-m-01') ?>&sort6=<?php echo date('Y-m-t') ?>"> <span class="menu-icon"> <i class="mdi mdi-table-large"></i> </span> <span class="menu-title"> Monthly Report </span> </a>
         </li>
     </ul>
 </nav>

@@ -80,7 +80,18 @@ if (isset($_GET['nodata'])) {
                                                 </div>
                                                 <div class="form-group col-md-6" id="family">
                                                     <label for="inputfamilyID"> Family ID </label>
-                                                    <input type="text" class="form-control" id="inputfamilyID" name="inputfamilyID" placeholder="Family ID">
+                                                    <select id="inputfamilyID" name="inputfamilyID" class="form-control" required>
+                                                        <option value="0" selected>Choose...</option>
+                                                        <?php
+                                                        $where= array(
+                                                            'av_isGuardian'     =>     1
+                                                        );
+                                                        $guardian_details = $database->select_where('tbl_allvillagers',$where);
+                                                        foreach ($guardian_details as $guardian_details_item) {
+                                                            echo "<option value='" . $guardian_details_item["av_FamilyID"] . "'>Guardian ID-" . $guardian_details_item["av_index"] . " and SubDivision-" . $guardian_details_item["av_subDivision"] . "</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="w-100 text-right">

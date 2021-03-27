@@ -118,7 +118,9 @@ if (isset($_GET['deleted'])) {
                                                             <td>
                                                                 <a href='preview_collector-collection_step-2.php?username=" . $username . "&action=view_collector' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                             </td>
-                                                            <td></td>
+                                                            <td>
+                                                                <a href='' id ='" . $id . "' class='item delete_row_collection' data-toggle='modal' data-target='#deleteRecord'><i class='fa fa-trash fa-lg' aria-hidden='true'></i></a>
+                                                            </td>
                                                             
                                                         </tr>
                                                          ";
@@ -160,7 +162,7 @@ if (isset($_GET['deleted'])) {
                         </button>
                     </div>
                     <div class="modal-body">
-                        Are you sure you want to delete this record? Once you click delete there's no going back.
+                        Are you sure you want to delete this record? Delete the Record by Clicking Delete.
                     </div>
                     <div class="modal-footer">
                         <a class="btn btn-secondary" data-dismiss="modal">Close</a>

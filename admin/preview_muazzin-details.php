@@ -8,7 +8,7 @@ $database = new databases();
 $id = "";
 $muazzin_salary_details = "";
 $name = "";
-// $basic_salary = 0;
+$basic_salary = 0;
 // $incentive = 0;
 // $madrasa_fee = 0;
 // $advance = 0;
@@ -21,13 +21,14 @@ if (isset($_GET['id'])) {
     );
     $muazzin_salary_details = $database->select_where('tbl_muazzinsalary', $where2);
     foreach ($muazzin_salary_details as $muazzin_salary_details_item) {
-        // $basic_salary = $basic_salary + $muazzin_salary_details_item['mSal_basicSalary'];
+        (float)$basic_salary = $basic_salary + $muazzin_salary_details_item['mSal_basicSalary'];
         // $incentive = $incentive + $muazzin_salary_details_item['mSal_incentive'];
         // $madrasa_fee = $madrasa_fee + $muazzin_salary_details_item['mSal_madrasaFee'];
         // $advance = $advance + $muazzin_salary_details_item['mSal_advance'];
         (float)$epf = $muazzin_salary_details_item['mSal_EPFETF'];
         // $loan_deduction = $loan_deduction + $muazzin_salary_details_item['mSal_loanDeduction'];
         (float)$epfetf = (float)$epfetf + (float)$epf;
+        (float)$basic_salary = (float)$basic_salary + (float)$basic_salary;
 
     }
 }
@@ -49,7 +50,7 @@ if (isset($_GET['edited'])) {
     $message = "Record successfully edited and Updated..!";
 }
 elseif (isset($_GET['terminated'])) {
-    $message = "Muazzin has been terminated..!<br>Toal EPF/ETF paid on behalf of Muazzin $name with the ID-$id is Rs. $epfetf /=";
+    $message = "Muazzin has been terminated..!<br>Toal EPF/ETF paid on behalf of Muazzin $name with the ID-$id is Rs. $epfetf /=<br>Total Basic Salary paid is Rs. $basic_salary/=";
 }
 ?>
 <body>

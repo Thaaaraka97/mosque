@@ -185,8 +185,6 @@ if (isset($_GET['sort1'])) {
                                                             </td>
                                                             <td>
                                                                 <a href='' id ='" . $id . "' class='item delete_row_nikkah' data-toggle='modal' data-target='#deleteRecord'><i class='fa fa-trash fa-lg' aria-hidden='true'></i></a>
-                                                                
-
                                                             </td>
                                                         </tr>
                                                          ";

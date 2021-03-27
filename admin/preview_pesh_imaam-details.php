@@ -8,7 +8,7 @@ $database = new databases();
 $id = "";
 $peshimaam_salary_details = "";
 $name = "";
-// $basic_salary = 0;
+$basic_salary = 0;
 // $incentive = 0;
 // $madrasa_fee = 0;
 // $advance = 0;
@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
     );
     $peshimaam_salary_details = $database->select_where('tbl_peshimaamsalary', $where2);
     foreach ($peshimaam_salary_details as $peshimaam_salary_details_item) {
-        // $basic_salary = $basic_salary + $peshimaam_salary_details_item['pSal_basicSalary'];
+        $basic_salary = $basic_salary + $peshimaam_salary_details_item['pSal_basicSalary'];
         // $incentive = $incentive + $peshimaam_salary_details_item['pSal_incentive'];
         // $madrasa_fee = $madrasa_fee + $peshimaam_salary_details_item['pSal_madrasaFee'];
         // $advance = $advance + $peshimaam_salary_details_item['pSal_advance'];
@@ -30,6 +30,7 @@ if (isset($_GET['id'])) {
         // $loan_deduction = $loan_deduction + $peshimaam_salary_details_item['pSal_loanDeduction'];
         // $special_bhayan = $special_bhayan + $peshimaam_salary_details_item['pSal_specialBhayanFee'];
         (float)$epfetf = (float)$epfetf + (float)$epf;
+        (float)$basic_salary = (float)$basic_salary + (float)$basic_salary;
 
     }
 }
@@ -51,7 +52,7 @@ if (isset($_GET['edited'])) {
     $message = "Record successfully edited and Updated..!";
 }
 elseif (isset($_GET['terminated'])) {
-    $message = "PeshImaam $name with the ID-$id has been terminated..!<br>Toal EPF/ETF paid is Rs. $epfetf /=";
+    $message = "PeshImaam $name with the ID-$id has been terminated..!<br>Toal EPF/ETF paid is Rs. $epfetf /=<br>Total Basic Salary paid is Rs. $basic_salary/=";
 }
 ?>
 <body>

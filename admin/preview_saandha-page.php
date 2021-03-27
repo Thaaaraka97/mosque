@@ -221,7 +221,7 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
                                                     <div class="flex-grow">
-                                                        <h6 class="preview-subject">No of People Settlede</h6>
+                                                        <h6 class="preview-subject">No of People Settled</h6>
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
                                                         <p class="text-muted"><?php echo "" ?></p>

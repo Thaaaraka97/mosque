@@ -15,8 +15,8 @@ if (isset($_GET['edited'])) {
     var villageraction = "";
     var donationaction = "";
     var fridaycollectionaction = "";
-
 </script>
+
 <body>
     <div class="container-scroller">
         <!-- navigation bar -->
@@ -53,7 +53,7 @@ if (isset($_GET['edited'])) {
                     }
                     ?>
                     <div class="row justify-content-center">
-                        <div class="col-md-8 grid-margin stretch-card">
+                        <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow top-card">
                                 <div class="card-body top-card">
                                     <table class="card-table">
@@ -74,12 +74,12 @@ if (isset($_GET['edited'])) {
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-8 grid-margin stretch-card">
+                        <div class="col-md-10 grid-margin stretch-card">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
                                         <div>
-                                        <div class="table-responsive table-responsive-data2">
+                                            <div class="table-responsive table-responsive-data2">
                                                 <div class="sorting">
                                                     <div class="row">
                                                         <div class="form-group col-md-1">
@@ -97,34 +97,34 @@ if (isset($_GET['edited'])) {
                                                     </div>
                                                 </div>
                                                 <table class="table table-data2">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Trusteeboard ID</th>
-                                                        <th>Details</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $tb_ID = "";
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Trusteeboard ID</th>
+                                                            <th>Details</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        $tb_ID = "";
 
-                                                    $where = array(
-                                                        'tb_isActive'     =>     1
-                                                    );
-                                                    $trustee_board_details = $database->select_where('tbl_trusteeboarddetails', $where);
-                                                    foreach ($trustee_board_details as $trustee_board_details_item) {
-                                                        $tb_ID = $trustee_board_details_item['tb_electedYYMM'];
-                                                    }
-
-                                                    $trustee_board_history = $database->select_data('tbl_trusteeboardhistory');
-                                                    foreach ($trustee_board_history as $trustee_board_history_item) {
-                                                        $id = $trustee_board_history_item['th_id'];
-                                                        $elected_ID = $trustee_board_history_item['th_electedYYMM'];
-                                                        $record = $trustee_board_history_item['th_record'];
-                                                        if ($record == "") {
-                                                            $record = "-";
+                                                        $where = array(
+                                                            'tb_isActive'     =>     1
+                                                        );
+                                                        $trustee_board_details = $database->select_where('tbl_trusteeboarddetails', $where);
+                                                        foreach ($trustee_board_details as $trustee_board_details_item) {
+                                                            $tb_ID = $trustee_board_details_item['tb_electedYYMM'];
                                                         }
-                                                        echo "
+
+                                                        $trustee_board_history = $database->select_data('tbl_trusteeboardhistory');
+                                                        foreach ($trustee_board_history as $trustee_board_history_item) {
+                                                            $id = $trustee_board_history_item['th_id'];
+                                                            $elected_ID = $trustee_board_history_item['th_electedYYMM'];
+                                                            $record = $trustee_board_history_item['th_record'];
+                                                            if ($record == "") {
+                                                                $record = "-";
+                                                            }
+                                                            echo "
                                                          <tr>
                                                             <td>" . $elected_ID . "</td>
                                                             <td>" . $record . "</td>
@@ -139,54 +139,54 @@ if (isset($_GET['edited'])) {
                                                             
                                                         </tr>
                                                          ";
-                                                    }
+                                                        }
 
-                                                    ?>
-                                                </tbody>
-                                            </table>
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- content-wrapper ends -->
+                    <!-- content-wrapper ends -->
 
-                <!-- partial -->
+                    <!-- partial -->
+                </div>
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
+        <!-- container-scroller -->
 
-    <!-- Delete Modal -->
-    <div class="modal fade" id="deleteRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">Terminate Member ?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to terminate this member from Trustee Board?
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-secondary" data-dismiss="modal">Close</a>
-                    <a class="btn btn-danger" id="del">Terminate</a>
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteRecord" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">Terminate Member ?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to terminate this member from Trustee Board?
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                        <a class="btn btn-danger" id="del">Terminate</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- footer -->
-    <?php
-    include "template_parts/footer.php";
-    ?>
-    <!-- End custom js for this page -->
+        <!-- footer -->
+        <?php
+        include "template_parts/footer.php";
+        ?>
+        <!-- End custom js for this page -->
 </body>
 
 </html>

@@ -44,3 +44,13 @@ elseif ($action == "add_kanduri") {
         echo $URL;
     }
 }
+elseif ($action == "delete_record") {
+    $where = array(  
+        'scc_id'     =>     $id 
+   );  
+   if($database->delete_data("tbl_saandhacollectorcollection", $where))  
+   {  
+    $URL = "preview_collector-collection.php?deleted=1";
+    echo $URL;
+   }
+}
