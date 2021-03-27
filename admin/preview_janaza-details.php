@@ -13,6 +13,14 @@ $sort2 = "0";
 $where = "";
 $sort1 = $_GET['sort1'] ?? $_GET['sort1'];
 $sort2 = $_GET['sort2'] ?? $_GET['sort2'];
+$sort5 = 0;
+$sort6 = 0;
+if (isset($_GET['sort5'])) {
+    $sort5 = $_GET['sort5'];
+}
+if (isset($_GET['sort6'])) {
+    $sort6 = $_GET['sort6'];
+}
 
 if ($sort1 == "0" && $sort2 == "0") {
     $where = array(
@@ -34,10 +42,20 @@ if ($sort1 == "0" && $sort2 == "0") {
 }
 $janaza_details = $database->select_where('tbl_janazadetails', $where);
 $item_count = $database->select_count('tbl_janazadetails', $where);
+if ($sort1 == "0" && $sort2 == "0") {
+    $item_count = 0;
+    $janaza_details = $database->select_dates('tbl_janazadetails','jd_dateofDeath',$sort5,$sort6);
+    foreach ($janaza_details as $janaza_details_item) {
+        $item_count = $item_count + 1;
+    }
+}
+
 ?>
 <script type="text/javascript">
     var sort1 = "<?php echo $sort1; ?>";
     var sort2 = "<?php echo $sort2; ?>";
+    var sort5 = "<?php echo $sort5; ?>";
+    var sort6 = "<?php echo $sort6; ?>";
 </script>
 
 <body>
@@ -103,10 +121,8 @@ $item_count = $database->select_count('tbl_janazadetails', $where);
                                             <div class="table-responsive table-responsive-data2">
                                                 <div class="sorting">
                                                     <div class="row">
-                                                        <div class="form-group col-md-1">
-                                                            <label for="sortvillagersubdivision">Sort By</label>
-                                                        </div>
                                                         <div class="form-group col-md-3">
+                                                            <label for="sortJanazasubdivision">Filter By</label>
                                                             <select name="sortJanazasubdivision" id="sortJanazasubdivision" class="form-control">
                                                                 <option value="0" selected>All Sub-Divisions</option>
                                                                 <option value="Moragala Main-Street" <?= $sort1 == 'Moragala Main-Street' ? ' selected="selected"' : ''; ?>>Moragala Main-Street </option>
@@ -124,20 +140,20 @@ $item_count = $database->select_count('tbl_janazadetails', $where);
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-3">
-                                                            <select name="sortvillagersubdivision" id="sortvillagersubdivision" class="form-control">
-                                                                <option value="0" selected>Time</option>
-                                                                <option value="widow" <?= $action == 'widow' ? ' selected="selected"' : ''; ?>>Widow Details</option>
-                                                                <option value="divorse" <?= $action == 'divorse' ? ' selected="selected"' : ''; ?>>Divorsed Details</option>
-                                                                <option value="madrasa" <?= $action == 'madrasa' ? ' selected="selected"' : ''; ?>>Madrasa Children Details</option>
-                                                                <option value="orphan" <?= $action == 'orphan' ? ' selected="selected"' : ''; ?>>Orphan Children Details</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-3">
+                                                            <label for="sortJanazaGender">Filter By</label>
                                                             <select name="sortJanazaGender" id="sortJanazaGender" class="form-control">
                                                                 <option value="0" selected>Gender</option>
                                                                 <option value="M" <?= $sort2 == 'M' ? ' selected="selected"' : ''; ?>> Male </option>
                                                                 <option value="F" <?= $sort2 == 'F' ? ' selected="selected"' : ''; ?>> Female </option>
                                                             </select>
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label for="sortJanazaFrom">From</label>
+                                                            <input class="form-control" type="date" name="sortJanazaFrom" id="sortJanazaFrom" value="<?php echo $sort5 ?>">
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label for="sortJanazaTo">To</label>
+                                                            <input class="form-control" type="date" name="sortJanazaTo" id="sortJanazaTo" value="<?php echo $sort6 ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -153,6 +169,10 @@ $item_count = $database->select_count('tbl_janazadetails', $where);
                                                     </thead>
                                                     <tbody>
                                                         <?php
+                                                        if ($sort1 == "0" && $sort2 == "0") {
+                                                            $janaza_details = $database->select_dates('tbl_janazadetails','jd_dateofDeath',$sort5,$sort6);
+
+                                                        }
                                                         foreach ($janaza_details as $janaza_details_item) {
                                                             $gender = $janaza_details_item['jd_gender'];
                                                             if ($gender == "M") {

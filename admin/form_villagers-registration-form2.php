@@ -72,42 +72,16 @@ if (isset($_GET['familyID'])) {
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputSubdivision"> Sub-division </label>
-                                                <select id="inputSubdivision" name="inputSubdivision" class="form-control" required>
-                                                    <option value="0" <?php echo ($sub == '0') ? 'selected' : '' ?>>Choose...</option>
-                                                    <?php
-                                                    $sub_division = $database->select_data('tbl_subdivision');
-                                                    foreach ($sub_division as $sub_division_item) {
-                                                        $selected = "";
-                                                        if ($sub_division_item["sb_name"] == $sub) {
-                                                    ?>
-                                                            <option value=' <?php echo $sub_division_item["sb_name"]; ?>' selected> <?php echo $sub_division_item["sb_name"]; ?> </option>
-                                                        <?php
-                                                        } else {
-                                                        ?>
-                                                            <option value=' <?php echo $sub_division_item["sb_name"]; ?>'> <?php echo $sub_division_item["sb_name"]; ?> </option>
-
-                                                        <?php
-                                                        }
-                                                        ?>
-
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                </select>
+                                                <input type="text" class="form-control" id="inputSubdivision" name="inputSubdivision" placeholder="InterPersonal Income" value="<?php echo $sub ?>" readonly>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputResStatus">Residential Status</label>
-                                                <select id="inputResStatus" name="inputResStatus" class="form-control" required>
-                                                    <option value="0" <?php echo ($resStatus == '0') ? 'selected' : '' ?>>Choose...</option>
-                                                    <option value="Rent" <?php echo ($resStatus == 'Rent') ? 'selected' : '' ?>>Rent</option>
-                                                    <option value="Permanant" <?php echo ($resStatus == 'Permanant') ? 'selected' : '' ?>>Permanant</option>
-                                                    <option value="Lease" <?php echo ($resStatus == 'Lease') ? 'selected' : '' ?>>Lease</option>
-                                                </select>
+                                                <input type="text" class="form-control" id="inputResStatus" name="inputResStatus" placeholder="InterPersonal Income" value="<?php echo $resStatus ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputAddress"> Address </label>
-                                            <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress" value="<?php echo $add ?>"><?php echo $add ?></textarea>
+                                            <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress" value="<?php echo $add ?>" readonly><?php echo $add ?></textarea>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
@@ -118,53 +92,57 @@ if (isset($_GET['familyID'])) {
                                                     <div class="col-sm-4">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="inputMigrant" id="inputMigrantY" value="Yes" <?php echo ($newMigrant == 1) ? 'checked' : '' ?>> Yes </label>
+                                                                <input type="radio" class="form-check-input" name="inputMigrant" id="inputMigrantY" value="Yes" <?php echo ($newMigrant == 1) ? 'checked' : '' ?> disabled> Yes </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-5">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="inputMigrant" id="inputMigrantN" value="No" <?php echo ($newMigrant == 0) ? 'checked' : '' ?>> No </label>
+                                                                <input type="radio" class="form-check-input" name="inputMigrant" id="inputMigrantN" value="No" <?php echo ($newMigrant == 0) ? 'checked' : '' ?> disabled> No </label>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="newMigrant">
-                                            <div class="form-group">
-                                                <label for="inputPrevAddress"> Previous Residence Address </label>
-                                                <textarea rows="5" class="form-control" id="inputPrevAddress" name="inputPrevAddress"></textarea>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                    <div class="form-group row">
-                                                        <div class="col-md-12">
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <label class="form-label"> Received Letters </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row pl-3">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-check">
-                                                                        <label class="form-check-label">
-                                                                            <input type="checkbox" class="form-check-input" name="Police" id="Police" value="Police Certificate"> Police Certificate </label>
+                                        <?php
+                                        if ($newMigrant == "1") {
+                                            echo "
+                                            <div id=''>
+                                                <div class='form-group'>
+                                                    <label for='inputPrevAddress'> Previous Residence Address </label>
+                                                    <textarea rows='5' class='form-control' id='inputPrevAddress' name='inputPrevAddress' value='$prevAdd' readonly>$prevAdd</textarea>
+                                                </div>
+                                                <div class='form-row'>
+                                                    <div class='form-group col-md-12'>
+                                                        <div class='form-group row'>
+                                                            <div class='col-md-12'>
+                                                                <div class='row'>
+                                                                    <div class='col-md-12'>
+                                                                        <label class='form-label'> Received Letters </label>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row pl-3">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-check">
-                                                                        <label class="form-check-label">
-                                                                            <input type="checkbox" class="form-check-input" name="Gramasevaka" id="Gramasevaka" value="Gramasevaka Certificate"> Gramasevaka Certificate </label>
+                                                                <div class='row pl-3'>
+                                                                    <div class='col-md-6'>
+                                                                        <div class='form-check'>
+                                                                            <label class='form-check-label'>
+                                                                                <input type='checkbox' class='form-check-input' name='Police' id='Police' value='Police Certificate'"; echo ($prevPolice==1 ? 'checked' : ''); echo " disabled> Police Certificate </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row pl-3">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-check">
-                                                                        <label class="form-check-label">
-                                                                            <input type="checkbox" class="form-check-input" name="Mahalla" id="Mahalla" value="Mahalla Letter"> Mahalla Letter </label>
+                                                                <div class='row pl-3'>
+                                                                    <div class='col-md-6'>
+                                                                        <div class='form-check'>
+                                                                            <label class='form-check-label'>
+                                                                                <input type='checkbox' class='form-check-input' name='Gramasevaka' id='Gramasevaka' value='Gramasevaka Certificate'"; echo ($prevGrama==1 ? 'checked' : ''); echo " disabled> Gramasevaka Certificate </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='row pl-3'>
+                                                                    <div class='col-md-6'>
+                                                                        <div class='form-check'>
+                                                                            <label class='form-check-label'>
+                                                                                <input type='checkbox' class='form-check-input' name='Mahalla' id='Mahalla' value='Mahalla Letter'"; echo ($prevMahalla==1 ? 'checked' : ''); echo " disabled> Mahalla Letter </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -172,30 +150,32 @@ if (isset($_GET['familyID'])) {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                            ";
+                                        }
+                                        ?>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputMonthlyIncomeFamily"> Monthly Income (Family) </label>
-                                                <input type="text" class="form-control" id="inputMonthlyIncomeFamily" name="inputMonthlyIncomeFamily" placeholder="Family Income" value="<?php echo $incomeFamily ?>">
+                                                <input type="text" class="form-control" id="inputMonthlyIncomeFamily" name="inputMonthlyIncomeFamily" placeholder="Family Income" value="<?php echo $incomeFamily ?>" readonly>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputavgInterPersonal"> Average Interpersonal Income </label>
-                                                <input type="text" class="form-control" id="inputavgInterPersonal" name="inputavgInterPersonal" placeholder="InterPersonal Income" value="<?php echo $incomePersonal ?>">
+                                                <input type="text" class="form-control" id="inputavgInterPersonal" name="inputavgInterPersonal" placeholder="InterPersonal Income" value="<?php echo $incomePersonal ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputnoofChildren"> No. of Children </label>
-                                                <input type="text" class="form-control" id="inputnoofChildren" name="inputnoofChildren" placeholder="No. of Children" value="<?php echo $children ?>">
+                                                <input type="text" class="form-control" id="inputnoofChildren" name="inputnoofChildren" placeholder="No. of Children" value="<?php echo $children ?>" readonly>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputnoofUnmarried"> No. of Unmarried Children </label>
-                                                <input type="text" class="form-control" id="inputnoofUnmarried" name="inputnoofUnmarried" placeholder="No. of Unmarried Children" value="<?php echo $unmarriedchildren ?>">
+                                                <input type="text" class="form-control" id="inputnoofUnmarried" name="inputnoofUnmarried" placeholder="No. of Unmarried Children" value="<?php echo $unmarriedchildren ?>" readonly>
                                             </div>
                                         </div>
                                         <input type="hidden" name="inputFamilyID" id="inputFamilyID" value="<?php echo $famID ?>">
                                         <div class="w-100 text-right">
-                                            <input type="submit" class="btn btn-success btn-lg" id="addAVMember" name="addAVMember" value="+ ADD Member">
+                                            <input type="submit" class="btn btn-success btn-lg" id="addexistAVMember" name="addexistAVMember" value="+ ADD Member">
                                         </div>
                                     </form>
                                 </div>

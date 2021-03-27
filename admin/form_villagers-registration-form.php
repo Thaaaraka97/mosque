@@ -193,16 +193,6 @@ if (isset($_GET['nodata'])) {
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="inputMonthlyIncomeFamily"> Monthly Income (Family) </label>
-                                                    <input type="text" class="form-control" id="inputMonthlyIncomeFamily" name="inputMonthlyIncomeFamily" placeholder="Family Income" required>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputavgInterPersonal"> Average Interpersonal Income </label>
-                                                    <input type="text" class="form-control" id="inputavgInterPersonal" name="inputavgInterPersonal" placeholder="InterPersonal Income" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
                                                     <label for="inputnoofChildren"> No. of Children </label>
                                                     <input type="text" class="form-control" id="inputnoofChildren" name="inputnoofChildren" placeholder="No. of Children" required>
                                                 </div>

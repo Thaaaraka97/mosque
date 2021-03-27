@@ -1,4 +1,13 @@
 $(document).ready(function () {
+  var date = new Date();
+  var y = date.getUTCFullYear();
+  var m = date.getMonth() + 1;
+  var last_day = new Date(date.getFullYear(), date.getMonth() + 1, 0)
+  var d = last_day.getDate();
+  if (m < 10) {
+    m = "0" + m;
+  }
+  var last_day = y + "-" + m + "-" + d;
   // nikkah-details.php
   // next button
   $("#nikkahNext").click(function (e) {
@@ -1069,8 +1078,13 @@ $(document).ready(function () {
   $("#donationlistDetails").change(function (e) {
     e.preventDefault();
     var donationlistDetails = $("#donationlistDetails").val();
-    window.location.href =
-      "preview_donation-details.php?action=" + donationlistDetails;
+    if (donationlistDetails == "trusteeboard") {
+      window.location.href = "preview_donation-details.php?action=" + donationlistDetails + "&sort5=0&sort6=" + last_day;
+    }
+    else {
+      window.location.href =
+        "preview_donation-details.php?action=" + donationlistDetails;
+    }
   });
 
   // preview_trustee_board-details.php
@@ -1994,36 +2008,24 @@ $(document).ready(function () {
   $("#sortNikkahsubdivision").change(function (e) {
     e.preventDefault();
     var sort1 = $("#sortNikkahsubdivision").val();
-    window.location.href = "preview_nikkah-details.php?sort1=" + sort1;
+
+    window.location.href = "preview_nikkah-details.php?sort1=" + sort1 + "&sort5=0&sort6=" + last_day;
   });
   // janaza preview
   // redirect with sort1 details
   $("#sortJanazasubdivision").change(function (e) {
     e.preventDefault();
     var sort1 = $("#sortJanazasubdivision").val();
-    window.location.href = "preview_janaza-details.php?sort1=" + sort1 + "&sort2=" + sort2;
+    window.location.href = "preview_janaza-details.php?sort1=" + sort1 + "&sort2=" + sort2 + "&sort5=0&sort6=" + last_day;
   });
   // janaza preview
   // redirect with sort2 details
   $("#sortJanazaGender").change(function (e) {
     e.preventDefault();
     var sort2 = $("#sortJanazaGender").val();
-    window.location.href = "preview_janaza-details.php?sort1=" + sort1 + "&sort2=" + sort2;
+    window.location.href = "preview_janaza-details.php?sort1=" + sort1 + "&sort2=" + sort2 + "&sort5=0&sort6=" + last_day;
   });
-  // villger preview
-  // redirect with sort details
-  $("#sortvillagersubdivision").change(function (e) {
-    e.preventDefault();
-    var sort1 = $("#sortvillagersubdivision").val();
-    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=" + sort1 + "&sort2=" + sort2;
-  });
-  // villger preview
-  // redirect with sort2 details
-  $("#sortvillagerGender").change(function (e) {
-    e.preventDefault();
-    var sort2 = $("#sortvillagerGender").val();
-    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=" + sort1 + "&sort2=" + sort2;
-  });
+  
   // widow preview
   // redirect with sort details
   $("#sortWidowsubdivision").change(function (e) {
@@ -2139,23 +2141,160 @@ $(document).ready(function () {
     });
   });
 
-  $("#sortFrom").change(function (e) { 
+  // monthly report
+  $("#sortFrom").change(function (e) {
     e.preventDefault();
     sort5 = $("#sortFrom").val();
     window.location.href = "trial_balance.php?sort5=" + sort5 + "&sort6=" + sort6;
 
   });
-  $("#sortTo").change(function (e) { 
+  $("#sortTo").change(function (e) {
     e.preventDefault();
     sort6 = $("#sortTo").val();
     window.location.href = "trial_balance.php?sort5=" + sort5 + "&sort6=" + sort6;
 
   });
 
-  $(".delete_row_collection").click(function (e) { 
+  // nikkah preview
+  $("#sortNikkahFrom").change(function (e) {
+    e.preventDefault();
+    sort5 = $("#sortNikkahFrom").val();
+    window.location.href = "preview_nikkah-details.php?sort1=0&sort5=" + sort5 + "&sort6=" + sort6;
+  });
+  $("#sortNikkahTo").change(function (e) {
+    e.preventDefault();
+    sort6 = $("#sortNikkahTo").val();
+    window.location.href = "preview_nikkah-details.php?sort1=0&sort5=" + sort5 + "&sort6=" + sort6;
+  });
+
+  // donation preview
+  $("#sortTBDonFrom").change(function (e) {
+    e.preventDefault();
+    sort5 = $("#sortTBDonFrom").val();
+    window.location.href = "preview_donation-details.php?action=trusteeboard&sort5=" + sort5 + "&sort6=" + sort6;
+  });
+  $("#sortTBDonTo").change(function (e) {
+    e.preventDefault();
+    sort6 = $("#sortTBDonTo").val();
+    window.location.href = "preview_donation-details.php?action=trusteeboard&sort5=" + sort5 + "&sort6=" + sort6;
+  });
+
+  // nonmahalla saandha collection preview
+  $("#sortNMSaandhaFrom").change(function (e) {
+    e.preventDefault();
+    sort5 = $("#sortNMSaandhaFrom").val();
+    window.location.href = "preview_nonmahalla_saandha_collection.php?sort5=" + sort5 + "&sort6=" + sort6;
+  });
+  $("#sortNMSaandhaTo").change(function (e) {
+    e.preventDefault();
+    sort6 = $("#sortNMSaandhaTo").val();
+    window.location.href = "preview_nonmahalla_saandha_collection.php?sort5=" + sort5 + "&sort6=" + sort6;
+  });
+
+  // lailathul kadhir collection preview
+  $("#sortLKadhirFrom").change(function (e) {
+    e.preventDefault();
+    sort5 = $("#sortLKadhirFrom").val();
+    window.location.href = "preview_lailathul-kadhir-collection.php?sort5=" + sort5 + "&sort6=" + sort6;
+  });
+  $("#sortLKadhirTo").change(function (e) {
+    e.preventDefault();
+    sort6 = $("#sortLKadhirTo").val();
+    window.location.href = "preview_lailathul-kadhir-collection.php?sort5=" + sort5 + "&sort6=" + sort6;
+  });
+
+  // lailathul kadhir collection preview
+  $("#sortJanazaFrom").change(function (e) {
+    e.preventDefault();
+    sort5 = $("#sortJanazaFrom").val();
+    window.location.href = "preview_janaza-details.php?sort1=0&sort2=0&sort5=" + sort5 + "&sort6=" + sort6;
+  });
+  $("#sortJanazaTo").change(function (e) {
+    e.preventDefault();
+    sort6 = $("#sortJanazaTo").val();
+    window.location.href = "preview_janaza-details.php?sort1=0&sort2=0&sort5=" + sort5 + "&sort6=" + sort6;
+  });
+
+  // saandha collection preview
+  $("#sortSaandhaFrom").change(function (e) {
+    e.preventDefault();
+    sort5 = $("#sortSaandhaFrom").val();
+    window.location.href = "preview_saandha-page.php?sort1=0&sort5=" + sort5 + "&sort6=" + sort6;
+  });
+  $("#sortSaandhaTo").change(function (e) {
+    e.preventDefault();
+    sort6 = $("#sortSaandhaTo").val();
+    window.location.href = "preview_saandha-page.php?sort1=0&sort5=" + sort5 + "&sort6=" + sort6;
+  });
+  $("#sortSaandhasubdivision").change(function (e) {
+    e.preventDefault();
+    sort1 = $("#sortSaandhasubdivision").val();
+    window.location.href = "preview_saandha-page.php?sort1=" + sort1 + "&sort5=0&sort6=" + last_day;
+  });
+
+  // villger preview
+  // redirect with sort details
+  $("#sortvillagersubdivision").change(function (e) {
+    e.preventDefault();
+    var sort1 = $("#sortvillagersubdivision").val();
+    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=" + sort1 + "&sort2=" + sort2 + "&sort7=" + sort7 + "&sort8=" + sort8 + "&sort9=" + sort9 + "&sort10=0&sort11=" + last_day + "&sort12=0&sort13=0";
+  });
+  // villger preview
+  // redirect with sort2 details
+  $("#sortvillagerGender").change(function (e) {
+    e.preventDefault();
+    var sort2 = $("#sortvillagerGender").val();
+    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=" + sort1 + "&sort2=" + sort2 + "&sort7=" + sort7 + "&sort8=" + sort8 + "&sort9=" + sort9 + "&sort10=0&sort11=" + last_day + "&sort12=0&sort13=0";
+  });
+  // all villagers
+  $("#sortvillagerSaandha").change(function (e) {
+    e.preventDefault();
+    sort7 = $("#sortvillagerSaandha").val();
+    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=" + sort1 + "&sort2=" + sort2 + "&sort7=" + sort7 + "&sort8=" + sort8 + "&sort9=" + sort9 + "&sort10=0&sort11=" + last_day + "&sort12=0&sort13=0";
+  });
+  // all villagers
+  $("#sortvillagerEduQual").change(function (e) {
+    e.preventDefault();
+    sort8 = $("#sortvillagerEduQual").val();
+    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=" + sort1 + "&sort2=" + sort2 + "&sort7=" + sort7 + "&sort8=" + sort8 + "&sort9=" + sort9 + "&sort10=0&sort11=" + last_day + "&sort12=0&sort13=0";
+  });
+  // all villagers
+  $("#sortvillagerAddQual").change(function (e) {
+    e.preventDefault();
+    sort9 = $("#sortvillagerAddQual").val();
+    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=" + sort1 + "&sort2=" + sort2 + "&sort7=" + sort7 + "&sort8=" + sort8 + "&sort9=" + sort9 + "&sort10=0&sort11=" + last_day + "&sort12=0&sort13=0";
+  });
+  // all villagers
+  $("#sortvillagerDOBFrom").change(function (e) {
+    e.preventDefault();
+    sort10 = $("#sortvillagerDOBFrom").val();
+    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=0&sort2=0&sort7=0&sort8=0&sort9=0&sort10=" + sort10 + "&sort11=" + sort11 + "&sort12=0&sort13=0";
+  });
+  // all villagers
+  $("#sortvillagerDOBTo").change(function (e) {
+    e.preventDefault();
+    sort11 = $("#sortvillagerDOBTo").val();
+    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=0&sort2=0&sort7=0&sort8=0&sort9=0&sort10=" + sort10 + "&sort11=" + sort11 + "&sort12=0&sort13=0";
+  });
+  // all villagers
+  $("#sortvillagerAgeFrom").change(function (e) {
+    e.preventDefault();
+    sort12 = $("#sortvillagerAgeFrom").val();
+    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=0&sort2=0&sort7=0&sort8=0&sort9=0&sort10=0&sort11=" + last_day + "&sort12=" + sort12 + "&sort13=" + sort13;
+  });
+  // all villagers
+  $("#sortvillagerAgeTo").change(function (e) {
+    e.preventDefault();
+    sort13 = $("#sortvillagerAgeTo").val();
+    window.location.href = "preview_villager-details.php?action=allvillagers&sort1=0&sort2=0&sort7=0&sort8=0&sort9=0&sort10=0&sort11=" + last_day + "&sort12=" + sort12 + "&sort13=" + sort13;
+  });
+
+  // saandha collector collection
+  // delete record
+  $(".delete_row_collection").click(function (e) {
     e.preventDefault();
     var id = $(this).attr("id");
-    $("#del").click(function (e) { 
+    $("#del").click(function (e) {
       var data_bundle = "id=" + id + "&action=delete_record";
       e.preventDefault();
       $.ajax({
@@ -2167,7 +2306,15 @@ $(document).ready(function () {
         }
       });
     });
-    
+
+  });
+
+  // villager registration 2
+  // redirect to villager registration step2
+  $("#addexistAVMember").click(function (e) {
+    e.preventDefault();
+    var famID = $("#inputFamilyID").val();
+    window.location.href = "form_villagers-registration-form-step2.php?fam_id=" + famID;
   });
 
 

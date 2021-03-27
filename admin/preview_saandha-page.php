@@ -13,6 +13,18 @@ if (isset($_GET['deleted'])) {
 } elseif (isset($_GET['edited'])) {
     $message = "Record successfully Updated..!";
 }
+$sort1 = "";
+$sort5 = 0;
+$sort6 = 0;
+if (isset($_GET['sort5'])) {
+    $sort5 = $_GET['sort5'];
+}
+if (isset($_GET['sort6'])) {
+    $sort6 = $_GET['sort6'];
+}
+if (isset($_GET['sort1'])) {
+    $sort1 = $_GET['sort1'];
+}
 
 // saandha amount
 $saandha_amount = "";
@@ -46,10 +58,9 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
 
 ?>
 <script type="text/javascript">
-    var action = "<?php echo $action; ?>";
-    var villageraction = "";
-    var donationaction = "";
-    var fridaycollectionaction = "";
+    var sort1 = "<?php echo $sort1; ?>";
+    var sort5 = "<?php echo $sort5; ?>";
+    var sort6 = "<?php echo $sort6; ?>";
 </script>
 
 <body>
@@ -115,6 +126,36 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                     <div class="text-center">
                                         <div>
                                             <div class="table-responsive table-responsive-data2">
+                                                <div class="sorting">
+                                                    <div class="row">
+                                                        <div class="form-group col-md-3">
+                                                            <label for="sortSaandhasubdivision">Filter By</label>
+                                                            <select name="sortSaandhasubdivision" id="sortSaandhasubdivision" class="form-control">
+                                                                <option value="0" selected>All Sub-Divisions</option>
+                                                                <option value="Moragala Main-Street" <?= $sort1 == 'Moragala Main-Street' ? ' selected="selected"' : ''; ?>>Moragala Main-Street </option>
+                                                                <option value="Old Rail Road" <?= $sort1 == 'Old Rail Road' ? ' selected="selected"' : ''; ?>>Old Rail Road </option>
+                                                                <option value="Bandarawaththa" <?= $sort1 == 'Bandarawaththa' ? ' selected="selected"' : ''; ?>>Bandarawaththa </option>
+                                                                <option value="Kothvila" <?= $sort1 == 'Kothvila' ? ' selected="selected"' : ''; ?>>Kothvila </option>
+                                                                <option value="Palpitiya" <?= $sort1 == 'Palpitiya' ? ' selected="selected"' : ''; ?>>Palpitiya </option>
+                                                                <option value="Ranaviru Mawatha" <?= $sort1 == 'Ranaviru Mawatha' ? ' selected="selected"' : ''; ?>>Ranaviru Mawatha </option>
+                                                                <option value="Wekada-1" <?= $sort1 == 'Wekada-1' ? ' selected="selected"' : ''; ?>>Wekada-1 </option>
+                                                                <option value="Wekada-2" <?= $sort1 == 'Wekada-2' ? ' selected="selected"' : ''; ?>>Wekada-2 </option>
+                                                                <option value="Wekada-3" <?= $sort1 == 'Wekada-3' ? ' selected="selected"' : ''; ?>>Wekada-3 </option>
+                                                                <option value="Eheliyagoda Town" <?= $sort1 == 'Eheliyagoda Town' ? ' selected="selected"' : ''; ?>>Eheliyagoda Town </option>
+                                                                <option value="Other-1" <?= $sort1 == 'Other-1' ? ' selected="selected"' : ''; ?>>Other-1 </option>
+                                                                <option value="Other-2" <?= $sort1 == 'Other-2' ? ' selected="selected"' : ''; ?>>Other-2 </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label for="sortSaandhaFrom">From</label>
+                                                            <input class="form-control" type="date" name="sortSaandhaFrom" id="sortSaandhaFrom" value="<?php echo $sort5 ?>">
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label for="sortSaandhaTo">To</label>
+                                                            <input class="form-control" type="date" name="sortSaandhaTo" id="sortSaandhaTo" value="<?php echo $sort6 ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <table class="table table-data2">
                                                     <thead>
                                                         <tr class="tr-shadow">
@@ -129,7 +170,14 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        $saandha_collection_details = $database->select_data('tbl_saandhacollection');
+                                                        $where = array(
+                                                            'collection_subdivision' => $sort1
+                                                        );
+                                                        $saandha_collection_details = $database->select_where('tbl_saandhacollection',$where);
+
+                                                        if ($sort1 == "0") {
+                                                            $saandha_collection_details = $database->select_dates('tbl_saandhacollection','collection_date',$sort5,$sort6);
+                                                        }
                                                         foreach ($saandha_collection_details as $saandha_collection_item) {
                                                             if (isset($saandha_collection_item['collection_id'])) {
                                                                 $id = $saandha_collection_item['collection_id'];
@@ -145,7 +193,7 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                                     <td>" . $saandha_collection_item['collection_name'] . "</td>
                                                                     <td>" . $saandha_collection_item['collection_address'] . "</td>
                                                                     <td>
-                                                                        <a href='preview_villager-details_step-2.php?index=" . $index ."&subdivision=" . $subdivision . "&id=" . $id . "&action=view_saandha' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                        <a href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&id=" . $id . "&action=view_saandha' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                                         <a href='preview_villager-details_step-2.php?id=" . $id . "&action=edit' class='item'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
                                                                     </td>
                                                                 </tr>

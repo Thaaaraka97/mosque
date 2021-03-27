@@ -9,12 +9,18 @@ if (isset($_GET['inserted'])) {
 } elseif (isset($_GET['deleted'])) {
     $message = "Record successfully deleted..!";
 }
+$sort5 = 0;
+$sort6 = 0;
+if (isset($_GET['sort5'])) {
+    $sort5 = $_GET['sort5'];
+}
+if (isset($_GET['sort6'])) {
+    $sort6 = $_GET['sort6'];
+}
 ?>
 <script type="text/javascript">
-    var action = "<?php echo $action; ?>";
-    var villageraction = "";
-    var donationaction = "";
-    var fridaycollectionaction = "";
+    var sort5 = "<?php echo $sort5; ?>";
+    var sort6 = "<?php echo $sort6; ?>";
 </script>
 
 <body>
@@ -80,6 +86,18 @@ if (isset($_GET['inserted'])) {
                                     <div class="text-center">
                                         <div>
                                             <div class="table-responsive table-responsive-data2">
+                                                <div class="sorting">
+                                                    <div class="row">
+                                                        <div class="form-group col-md-3">
+                                                            <label for="sortNMSaandhaFrom">From</label>
+                                                            <input class="form-control" type="date" name="sortNMSaandhaFrom" id="sortNMSaandhaFrom" value="<?php echo $sort5 ?>">
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label for="sortNMSaandhaTo">To</label>
+                                                            <input class="form-control" type="date" name="sortNMSaandhaTo" id="sortNMSaandhaTo" value="<?php echo $sort6 ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <table class="table table-data2">
                                                     <thead>
                                                         <tr class="tr-shadow">
@@ -93,7 +111,7 @@ if (isset($_GET['inserted'])) {
                                                     <tbody>
                                                         <?php
 
-                                                        $non_mahalla_col = $database->select_data('tbl_nonmahallasaandhacollection');
+                                                        $non_mahalla_col = $database->select_dates('tbl_nonmahallasaandhacollection','nms_date',$sort5,$sort6);
                                                         foreach ($non_mahalla_col as $non_mahalla_col_item) {
                                                             $id = $non_mahalla_col_item['nms_id'];
                                                             $tp = $non_mahalla_col_item['nms_telephone'];

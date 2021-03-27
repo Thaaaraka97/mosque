@@ -22,6 +22,14 @@ $where = "";
 $sort1 = "0";
 $sort2 = "0";
 $sort3 = "0";
+$sort7 = "0";
+$sort8 = "0";
+$sort9 = "0";
+$sort10 = "0";
+$sort11 = "0";
+$sort12 = "0";
+$sort13 = "0";
+$all_villagers_count = 0;
 
 $sort1 = $_GET['sort1'] ?? $_GET['sort1'];
 if (isset($_GET['sort2'])) {
@@ -30,11 +38,39 @@ if (isset($_GET['sort2'])) {
 if (isset($_GET['sort3'])) {
     $sort3 = $_GET['sort3'];
 }
+if (isset($_GET['sort7'])) {
+    $sort7 = $_GET['sort7'];
+}
+if (isset($_GET['sort8'])) {
+    $sort8 = $_GET['sort8'];
+}
+if (isset($_GET['sort9'])) {
+    $sort9 = $_GET['sort9'];
+}
+if (isset($_GET['sort10'])) {
+    $sort10 = $_GET['sort10'];
+}
+if (isset($_GET['sort11'])) {
+    $sort11 = $_GET['sort11'];
+}
+if (isset($_GET['sort12'])) {
+    $sort12 = $_GET['sort12'];
+}
+if (isset($_GET['sort13'])) {
+    $sort13 = $_GET['sort13'];
+}
 ?>
 <script type="text/javascript">
     var sort1 = "<?php echo $sort1; ?>";
     var sort2 = "<?php echo $sort2; ?>";
     var sort3 = "<?php echo $sort3; ?>";
+    var sort7 = "<?php echo $sort7; ?>";
+    var sort8 = "<?php echo $sort8; ?>";
+    var sort9 = "<?php echo $sort9; ?>";
+    var sort10 = "<?php echo $sort10; ?>";
+    var sort11 = "<?php echo $sort11; ?>";
+    var sort12 = "<?php echo $sort12; ?>";
+    var sort13 = "<?php echo $sort13; ?>";
     var villageraction = "<?php echo $action; ?>";
 </script>
 
@@ -83,28 +119,201 @@ if (isset($_GET['sort3'])) {
 
                     $all_villagers_details = "";
                     if ($action == "allvillagers") {
-
                         $where = array(
                             'av_subDivision' => $sort1,
-                            'av_gender' => $sort2
-
+                            'av_gender' => $sort2,
+                            'av_saandhaStatusReason' => $sort7,
+                            'av_eduQual' => $sort8,
+                            'av_addQual' => $sort9
                         );
-
-                        if ($sort1 == "0" && $sort2 == "0") {
+                        if ($sort1 == "0" && $sort2 == "0" && $sort7 == "0" && $sort8 == "0" && $sort9 == "0") {
                             $where = array(
                                 'av_index ' != 0
                             );
+                        } elseif ($sort1 == "0" && $sort2 == "0"  && $sort8 == "0" && $sort9 == "0") {
+                            $where = array(
+                                'av_saandhaStatusReason'     =>    $sort7
+                            );
+                        } elseif ($sort1 == "0" && $sort2 == "0"  && $sort7 == "0" && $sort9 == "0") {
+                            $where = array(
+                                'av_eduQual' => $sort8
+                            );
+                        } elseif ($sort8 == "0" && $sort2 == "0"  && $sort7 == "0" && $sort9 == "0") {
+                            $where = array(
+                                'av_subDivision' => $sort1
+                            );
+                        } elseif ($sort8 == "0" && $sort1 == "0"  && $sort7 == "0" && $sort9 == "0") {
+                            $where = array(
+                                'av_gender' => $sort2
+                            );
+                        } elseif ($sort8 == "0" && $sort1 == "0"  && $sort7 == "0" && $sort2 == "0") {
+                            $where = array(
+                                'av_addQual' => $sort9
+                            );
+                        } elseif ($sort1 == "0" && $sort2 == "0" && $sort9 == "0") {
+                            $where = array(
+                                'av_saandhaStatusReason'     =>    $sort7,
+                                'av_eduQual' => $sort8
+                            );
+                        } elseif ($sort1 == "0" && $sort7 == "0" && $sort9 == "0") {
+                            $where = array(
+                                'av_gender' => $sort2,
+                                'av_eduQual' => $sort8
+                            );
+                        } elseif ($sort2 == "0" && $sort7 == "0" && $sort9 == "0") {
+                            $where = array(
+                                'av_subDivision' => $sort1,
+                                'av_eduQual' => $sort8
+                            );
+                        } elseif ($sort8 == "0" && $sort7 == "0" && $sort9 == "0") {
+                            $where = array(
+                                'av_subDivision' => $sort1,
+                                'av_gender' => $sort2
+                            );
+                        } elseif ($sort8 == "0" && $sort2 == "0" && $sort9 == "0") {
+                            $where = array(
+                                'av_subDivision' => $sort1,
+                                'av_saandhaStatusReason' => $sort7
+                            );
+                        } elseif ($sort8 == "0" && $sort1 == "0" && $sort9 == "0") {
+                            $where = array(
+                                'av_gender' => $sort2,
+                                'av_saandhaStatusReason' => $sort7
+                            );
+                        } elseif ($sort8 == "0" && $sort1 == "0" && $sort2 == "0") {
+                            $where = array(
+                                'av_addQual' => $sort9,
+                                'av_saandhaStatusReason' => $sort7
+                            );
+                        } elseif ($sort8 == "0" && $sort7 == "0" && $sort1 == "0") {
+                            $where = array(
+                                'av_addQual' => $sort9,
+                                'av_subDivision' => $sort1
+                            );
+                        } elseif ($sort8 == "0" && $sort7 == "0" && $sort2 == "0") {
+                            $where = array(
+                                'av_addQual' => $sort9,
+                                'av_gender' => $sort2
+                            );
+                        } elseif ($sort1 == "0" && $sort7 == "0" && $sort2 == "0") {
+                            $where = array(
+                                'av_addQual' => $sort9,
+                                'av_eduQual' => $sort8
+                            );
+                        } elseif ($sort1 == "0" && $sort2 == "0") {
+                            $where = array(
+                                'av_addQual' => $sort9,
+                                'av_saandhaStatusReason' => $sort7,
+                                'av_eduQual' => $sort8
+                            );
+                        } elseif ($sort1 == "0" && $sort7 == "0") {
+                            $where = array(
+                                'av_gender'     =>    $sort2,
+                                'av_addQual' => $sort9,
+                                'av_eduQual' => $sort8
+                            );
+                        } elseif ($sort1 == "0" && $sort8 == "0") {
+                            $where = array(
+                                'av_gender'     =>    $sort2,
+                                'av_saandhaStatusReason' => $sort7,
+                                'av_addQual' => $sort9
+                            );
+                        } elseif ($sort1 == "0" && $sort9 == "0") {
+                            $where = array(
+                                'av_gender'     =>    $sort2,
+                                'av_saandhaStatusReason' => $sort7,
+                                'av_eduQual' => $sort8
+                            );
+                        } elseif ($sort7 == "0" && $sort2 == "0") {
+                            $where = array(
+                                'av_subDivision'     =>    $sort1,
+                                'av_addQual' => $sort9,
+                                'av_eduQual' => $sort8
+                            );
+                        } elseif ($sort8 == "0" && $sort2 == "0") {
+                            $where = array(
+                                'av_subDivision'     =>    $sort1,
+                                'av_saandhaStatusReason' => $sort7,
+                                'av_addQual' => $sort9
+                            );
+                        } elseif ($sort9 == "0" && $sort2 == "0") {
+                            $where = array(
+                                'av_subDivision'     =>    $sort1,
+                                'av_saandhaStatusReason' => $sort7,
+                                'av_eduQual' => $sort8
+                            );
+                        } elseif ($sort7 == "0" && $sort8 == "0") {
+                            $where = array(
+                                'av_gender'     =>    $sort2,
+                                'av_addQual' => $sort9,
+                                'av_subDivision'     =>    $sort1
+                            );
+                        } elseif ($sort7 == "0" && $sort9 == "0") {
+                            $where = array(
+                                'av_gender'     =>    $sort2,
+                                'av_subDivision'     =>    $sort1,
+                                'av_eduQual' => $sort8
+                            );
+                        } elseif ($sort8 == "0" && $sort9 == "0") {
+                            $where = array(
+                                'av_gender'     =>    $sort2,
+                                'av_saandhaStatusReason' => $sort7,
+                                'av_subDivision'     =>    $sort1
+                            );
                         } elseif ($sort1 == "0") {
                             $where = array(
-                                'av_gender'     =>    $sort2
+                                'av_gender'     =>    $sort2,
+                                'av_saandhaStatusReason' => $sort7,
+                                'av_eduQual' => $sort8,
+                                'av_addQual' => $sort9
                             );
                         } elseif ($sort2 == "0") {
                             $where = array(
-                                'av_subDivision'     =>    $sort1
+                                'av_subDivision'     =>    $sort1,
+                                'av_saandhaStatusReason' => $sort7,
+                                'av_eduQual' => $sort8,
+                                'av_addQual' => $sort9
+                            );
+                        } elseif ($sort7 == "0") {
+                            $where = array(
+                                'av_subDivision'     =>    $sort1,
+                                'av_gender'     =>    $sort2,
+                                'av_eduQual' => $sort8,
+                                'av_addQual' => $sort9
+                            );
+                        } elseif ($sort8 == "0") {
+                            $where = array(
+                                'av_subDivision'     =>    $sort1,
+                                'av_gender'     =>    $sort2,
+                                'av_saandhaStatusReason' => $sort7,
+                                'av_addQual' => $sort9
+                            );
+                        } elseif ($sort9 == "0") {
+                            $where = array(
+                                'av_subDivision'     =>    $sort1,
+                                'av_gender'     =>    $sort2,
+                                'av_saandhaStatusReason' => $sort7,
+                                'av_eduQual' => $sort8
                             );
                         }
                         $all_villagers_details = $database->select_where('tbl_allvillagers', $where);
                         $all_villagers_count = $database->select_count('tbl_allvillagers', $where);
+                        if ($sort10 != "0") {
+                            $all_villagers_details = $database->select_dates('tbl_allvillagers','av_dob',$sort10,$sort11);
+                            $all_villagers_count = 0;
+                            foreach ($all_villagers_details as $all_villagers_details_item) {
+                                $all_villagers_count = (int)$all_villagers_count + 1;
+                            }
+
+                        }
+                        elseif ($sort12 != "0" || $sort13 != "0") {
+                            $all_villagers_details = $database->select_dates('tbl_allvillagers','av_age',$sort12,$sort13);
+                            $all_villagers_count = 0;
+                            foreach ($all_villagers_details as $all_villagers_details_item) {
+                                $all_villagers_count = (int)$all_villagers_count + 1;
+                            }
+
+                        }
                     } elseif ($action == "widow") {
                         $where = array(
                             'av_widowed'     =>    1,
@@ -257,10 +466,8 @@ if (isset($_GET['sort3'])) {
                                                 <div class="table-responsive table-responsive-data2">
                                                     <div class="sorting">
                                                         <div class="row">
-                                                            <div class="form-group col-md-1">
+                                                            <div class="form-group col-md-4">
                                                                 <label for="sortvillagersubdivision">Filter By</label>
-                                                            </div>
-                                                            <div class="form-group col-md-3">
                                                                 <select name="sortvillagersubdivision" id="sortvillagersubdivision" class="form-control">
                                                                     <option value="0" selected>All Sub-Divisions</option>
                                                                     <option value="Moragala Main-Street" <?= $sort1 == 'Moragala Main-Street' ? ' selected="selected"' : ''; ?>>Moragala Main-Street </option>
@@ -277,12 +484,67 @@ if (isset($_GET['sort3'])) {
                                                                     <option value="Other-2" <?= $sort1 == 'Other-2' ? ' selected="selected"' : ''; ?>>Other-2 </option>
                                                                 </select>
                                                             </div>
-                                                            <div class="form-group col-md-3">
+                                                            <div class="form-group col-md-2">
+                                                                <label for="sortvillagersubdivision">Filter By</label>
                                                                 <select name="sortvillagerGender" id="sortvillagerGender" class="form-control">
                                                                     <option value="0" selected>Gender</option>
                                                                     <option value="M" <?= $sort2 == 'M' ? ' selected="selected"' : ''; ?>> Male </option>
                                                                     <option value="F" <?= $sort2 == 'F' ? ' selected="selected"' : ''; ?>> Female </option>
                                                                 </select>
+                                                            </div>
+                                                            <div class="form-group col-md-2">
+                                                                <label for="sortvillagerSaandha">Filter By</label>
+                                                                <select name="sortvillagerSaandha" id="sortvillagerSaandha" class="form-control">
+                                                                    <option value="0" <?= $sort7 == '' ? ' selected="selected"' : ''; ?>>Status</option>
+                                                                    <option value="Saandha Registered" <?= $sort7 == 'Saandha Registered' ? ' selected="selected"' : ''; ?>> Saandha Member </option>
+                                                                    <option value="Pending" <?= $sort7 == 'Pending' ? ' selected="selected"' : ''; ?>> Pending </option>
+                                                                    <option value="Under Age" <?= $sort7 == 'Under Age' ? ' selected="selected"' : ''; ?>> Not Eligible </option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-md-2">
+                                                                <label for="sortvillagerEduQual">Filter By</label>
+                                                                <select name="sortvillagerEduQual" id="sortvillagerEduQual" class="form-control">
+                                                                    <option value="0" <?= $sort8 == '0' ? ' selected="selected"' : ''; ?>>Educational Qualifications</option>
+                                                                    <option value="O/L" <?= $sort8 == 'O/L' ? ' selected="selected"' : ''; ?>>O/L</option>
+                                                                    <option value="A/L" <?= $sort8 == 'A/L' ? ' selected="selected"' : ''; ?>>A/L</option>
+                                                                    <option value="University" <?= $sort8 == 'University' ? ' selected="selected"' : ''; ?>>University</option>
+                                                                    <option value="Technical College" <?= $sort8 == 'Technical College' ? ' selected="selected"' : ''; ?>>Technical College</option>
+                                                                    <option value="Teaching College" <?= $sort8 == 'Teaching College' ? ' selected="selected"' : ''; ?>>Teaching College</option>
+                                                                    <option value="Foreign Education" <?= $sort8 == 'Foreign Education' ? ' selected="selected"' : ''; ?>>Foreign Education</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-md-2">
+                                                                <label for="sortvillagerAddQual">Filter By</label>
+                                                                <select name="sortvillagerAddQual" id="sortvillagerAddQual" class="form-control">
+                                                                    <option value="0" <?= $sort9 == '0' ? ' selected="selected"' : ''; ?>>Additional Qualifications</option>
+                                                                    <option value="Tailoring" <?= $sort9 == 'Tailoring' ? ' selected="selected"' : ''; ?>>Tailoring</option>
+                                                                    <option value="Automobile Mechanic" <?= $sort9 == 'Automobile Mechanic' ? ' selected="selected"' : ''; ?>>Automobile Mechanic</option>
+                                                                    <option value="A/C Mechanic" <?= $sort9 == 'A/C Mechanic' ? ' selected="selected"' : ''; ?>>A/C Mechanic</option>
+                                                                    <option value="Carpenter" <?= $sort9 == 'Carpenter' ? ' selected="selected"' : ''; ?>>Carpenter</option>
+                                                                    <option value="Gem Cutting" <?= $sort9 == 'Gem Cutting' ? ' selected="selected"' : ''; ?>>Gem Cutting</option>
+                                                                    <option value="Mason" <?= $sort9 == 'Mason' ? ' selected="selected"' : ''; ?>>Mason</option>
+                                                                    <option value="Electrician" <?= $sort9 == 'Electrician' ? ' selected="selected"' : ''; ?>>Electrician</option>
+                                                                    <option value="Plumbing" <?= $sort9 == 'Plumbing' ? ' selected="selected"' : ''; ?>>Plumbing</option>
+                                                                    <option value="Farming" <?= $sort9 == 'Farming' ? ' selected="selected"' : ''; ?>>Farming</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-md-3">
+                                                                <label for="sortvillagerDOBFrom">DOB (From)</label>
+                                                                <input type="date" name="sortvillagerDOBFrom" id="sortvillagerDOBFrom" class="form-control" value="<?php echo $sort10 ?>">
+                                                            </div>
+                                                            <div class="form-group col-md-3">
+                                                                <label for="sortvillagerDOBTo">DOB (To)</label>
+                                                                <input type="date" name="sortvillagerDOBTo" id="sortvillagerDOBTo" class="form-control" value="<?php echo $sort11 ?>">
+                                                            </div>
+                                                            <div class="form-group col-md-3">
+                                                                <label for="sortvillagerAgeFrom">Age (From)</label>
+                                                                <input type="text" name="sortvillagerAgeFrom" id="sortvillagerAgeFrom" class="form-control" value="<?php echo $sort12 ?>">
+                                                            </div>
+                                                            <div class="form-group col-md-3">
+                                                                <label for="sortvillagerAgeTo">Age (To)</label>
+                                                                <input type="text" name="sortvillagerAgeTo" id="sortvillagerAgeTo" class="form-control" value="<?php echo $sort13 ?>">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -301,44 +563,46 @@ if (isset($_GET['sort3'])) {
                                                         <tbody>
                                                             <?php
                                                             foreach ($all_villagers_details as $all_villagers_details_item) {
-                                                                $index = $all_villagers_details_item['av_index'];
-                                                                $subdivision = $all_villagers_details_item['av_subDivision'];
-                                                                $left_village = $all_villagers_details_item['av_leftVillage'];
-                                                                $saandha_status = $all_villagers_details_item['av_saandhaStatus'];
-                                                                $dob = $all_villagers_details_item['av_dob'];
-                                                                $age = $database->calculate_age($dob);
-                                                                echo "
-                                                         <tr>
-                                                            <td>" . $index . "</td>
-                                                            <td>" . $subdivision . "</td>
-                                                            <td>" . $all_villagers_details_item['av_name'] . "</td>
-                                                            <td>" . $age . "</td>
-                                                            <td>";
-                                                                if (!$left_village) {
-                                                                    echo "<a href='' id=" . $index . " class='btn btn-danger btn-md left_village' data-toggle='modal' data-target='#updateRecord'>Yes</a>";
-                                                                } else {
-                                                                    echo "<span class='status--denied'>Already Left</span>";
-                                                                }
-                                                                echo "</td>
-                                                                <td>";
-                                                                if (!$saandha_status) {
-                                                                    if ($age >= 18) {
-                                                                        echo "<a href='' id='" . $index . "' class='btn btn-warning btn-md update_row_saandha' data-toggle='modal' data-target='#deleteRecord'>Pending</a>";
+                                                                if (isset($all_villagers_details_item['av_index'])) {
+                                                                    $index = $all_villagers_details_item['av_index'];
+                                                                    $subdivision = $all_villagers_details_item['av_subDivision'];
+                                                                    $left_village = $all_villagers_details_item['av_leftVillage'];
+                                                                    $saandha_status = $all_villagers_details_item['av_saandhaStatus'];
+                                                                    $dob = $all_villagers_details_item['av_dob'];
+                                                                    $age = $database->calculate_age($dob);
+                                                                    echo "
+                                                                    <tr>
+                                                                        <td>" . $index . "</td>
+                                                                        <td>" . $subdivision . "</td>
+                                                                        <td>" . $all_villagers_details_item['av_name'] . "</td>
+                                                                        <td>" . $age . "</td>
+                                                                        <td>";
+                                                                    if (!$left_village) {
+                                                                        echo "<a href='' id=" . $index . " class='btn btn-danger btn-md left_village' data-toggle='modal' data-target='#updateRecord'>Yes</a>";
                                                                     } else {
-                                                                        echo "<span class='status--denied'>Not Eligible</span>";
+                                                                        echo "<span class='status--denied'>Already Left</span>";
                                                                     }
-                                                                } else {
-                                                                    echo "<span class='status--process'>Saandhaa member</span>";
+                                                                    echo "</td>
+                                                                            <td>";
+                                                                    if (!$saandha_status) {
+                                                                        if ($age >= 18) {
+                                                                            echo "<a href='' id='" . $index . "' class='btn btn-warning btn-md update_row_saandha' data-toggle='modal' data-target='#deleteRecord'>Pending</a>";
+                                                                        } else {
+                                                                            echo "<span class='status--denied'>Not Eligible</span>";
+                                                                        }
+                                                                    } else {
+                                                                        echo "<span class='status--process'>Saandhaa member</span>";
+                                                                    }
+                                                                    echo "
+                                                                            </td>
+                                                                        <td class='pl-3'>
+                                                                            <a href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            <a href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&action=edit' class='item'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    
+                                                                    ";
                                                                 }
-                                                                echo "
-                                                                </td>
-                                                            <td class='pl-3'>
-                                                                <a href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
-                                                                <a href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&action=edit' class='item'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
-                                                            </td>
-                                                        </tr>
-                                                        
-                                                         ";
                                                             }
 
                                                             ?>

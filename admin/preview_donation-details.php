@@ -8,13 +8,22 @@ $database = new databases();
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
+$sort5 = 0;
+$sort6 = 0;
+if (isset($_GET['sort5'])) {
+    $sort5 = $_GET['sort5'];
+}
+if (isset($_GET['sort6'])) {
+    $sort6 = $_GET['sort6'];
+}
 ?>
 <script type="text/javascript">
+    var sort5 = "<?php echo $sort5; ?>";
+    var sort6 = "<?php echo $sort6; ?>";
     var donationaction = "<?php echo $action; ?>";
     var villageraction = "";
     var action = "";
     var fridaycollectionaction = "";
-    console.log(donationaction)
 </script>
 
 <body>
@@ -71,8 +80,9 @@ if (isset($_GET['action'])) {
                                                 <option value="disaster" <?= $action == 'disaster' ? ' selected="selected"' : ''; ?>>Disaster Relief Donations</option>
                                                 <option value="other" <?= $action == 'other' ? ' selected="selected"' : ''; ?>>Other Donations</option>
                                             </select>
+                                            <hr>
                                             <?php
-                                            $donation_details = $database->select_data('tbl_trusteeboarddonation');
+                                            $donation_details = $database->select_dates('tbl_trusteeboarddonation','tbd_date',$sort5,$sort6);
                                             $where2 = array(
                                                 'd_donationType'     =>    'Disaster Relief Donation'
                                             );
@@ -152,6 +162,18 @@ if (isset($_GET['action'])) {
                                             </div>
                                             <div id="trusteeboard">
                                                 <div class="table-responsive table-responsive-data2">
+                                                    <div class="sorting">
+                                                        <div class="row">
+                                                            <div class="form-group col-md-3">
+                                                                <label for="sortTBDonFrom">From</label>
+                                                                <input class="form-control" type="date" name="sortTBDonFrom" id="sortTBDonFrom" value="<?php echo $sort5 ?>">
+                                                            </div>
+                                                            <div class="form-group col-md-3">
+                                                                <label for="sortTBDonTo">To</label>
+                                                                <input class="form-control" type="date" name="sortTBDonTo" id="sortTBDonTo" value="<?php echo $sort6 ?>">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <table class="table table-data2">
                                                         <thead>
                                                             <tr class="tr-shadow">

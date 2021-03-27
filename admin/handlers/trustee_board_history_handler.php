@@ -22,8 +22,8 @@ foreach ($trustee_board_history as $trustee_board_history_item) {
 }
 
 $insert_tbl_trusteeboardhistory = array(
-    'th_electedYYMM' => mysqli_real_escape_string($database->con, $inputDetails),
-    'th_record' => mysqli_real_escape_string($database->con, $th_electedYYMM)
+    'th_electedYYMM' => mysqli_real_escape_string($database->con, $th_electedYYMM),
+    'th_record' => mysqli_real_escape_string($database->con, $inputDetails)
 );
 if ($database->insert_data('tbl_trusteeboardhistory', $insert_tbl_trusteeboardhistory)) {
     $URL = "preview_trustee_board-history_step-2.php?action=editable&edited=1&id=".$id;

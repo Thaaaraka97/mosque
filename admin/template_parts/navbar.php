@@ -66,13 +66,13 @@
             <div class="collapse" id="preview-dropdown">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_villager-details.php?action=allvillagers&sort1=0&sort2=0"> All Villagers Details </a>
+                        <a class="nav-link" href="preview_villager-details.php?action=allvillagers&sort1=0&sort2=0&sort7=0&sort8=0&sort9=0&sort10=0&sort11=<?php echo date('Y-m-t') ?>&sort12=0&sort13=0"> All Villagers Details </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_nikkah-details.php?sort1=0"> Nikkah Details </a>
+                        <a class="nav-link" href="preview_nikkah-details.php?sort1=0&sort5=0&sort6=<?php echo date('Y-m-t') ?>"> Nikkah Details </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_janaza-details.php?sort1=0&sort2=0"> Janaza Details </a>
+                        <a class="nav-link" href="preview_janaza-details.php?sort1=0&sort2=0&sort5=0&sort6=<?php echo date('Y-m-t') ?>"> Janaza Details </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_q_madrasa-details.php"> Quran Madrasa Details </a>
@@ -151,16 +151,16 @@
                         <a class="nav-link" href="preview_kanduri-collection.php"> Kanduri Collection </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_lailathul-kadhir-collection.php"> Laylat al-Qadr Collection </a>
+                        <a class="nav-link" href="preview_lailathul-kadhir-collection.php?sort5=<?php echo date('Y-m-01') ?>&sort6=<?php echo date('Y-m-t') ?>"> Laylat al-Qadr Collection </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_undiyal-collection.php"> Undiyal Collection </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_saandha-page.php"> Saandha Collection </a>
+                        <a class="nav-link" href="preview_saandha-page.php?sort1=0&sort5=<?php echo date('Y-m-01') ?>&sort6=<?php echo date('Y-m-t') ?>"> Saandha Collection </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_nonmahalla_saandha_collection.php"> Non-Mahalla Saandha Collection </a>
+                        <a class="nav-link" href="preview_nonmahalla_saandha_collection.php?sort5=<?php echo date('Y-m-01') ?>&sort6=<?php echo date('Y-m-t') ?>"> Non-Mahalla Saandha Collection </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_funds.php"> Funds </a>

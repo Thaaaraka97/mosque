@@ -7,7 +7,15 @@ $database = new databases();
 $id = "";
 $where = "";
 $sort1 = "";
-$item_count = "";
+$sort5 = 0;
+$sort6 = 0;
+if (isset($_GET['sort5'])) {
+    $sort5 = $_GET['sort5'];
+}
+if (isset($_GET['sort6'])) {
+    $sort6 = $_GET['sort6'];
+}
+$item_count = 0;
 
 if (isset($_GET['deleted'])) {
     $message = "Record successfully Deleted..!";
@@ -28,20 +36,18 @@ if (isset($_GET['sort1'])) {
         $item_count2 = $database->select_count('tbl_nikkahdetails', $where);
         $item_count = (int)$item_count1 + (int)$item_count2;
     } else {
-        $where = array(
-            'nd_nikkahId ' != 0
-        );
-        $item_count = $database->select_count('tbl_nikkahdetails', $where);
-
+        $nikkah_details = $database->select_dates('tbl_nikkahdetails', 'nd_marriageDate', $sort5, $sort6);
+        foreach ($nikkah_details as $nikkah_details_item) {
+            $item_count = $item_count + 1;
+        }
     }
 }
 
 ?>
 <script type="text/javascript">
-    var action = "<?php echo $action; ?>";
-    var villageraction = "";
-    var donationaction = "";
-    var fridaycollectionaction = "";
+    var sort1 = "<?php echo $sort1; ?>";
+    var sort5 = "<?php echo $sort5; ?>";
+    var sort6 = "<?php echo $sort6; ?>";
 </script>
 
 <body>
@@ -114,10 +120,8 @@ if (isset($_GET['sort1'])) {
                                             <div class="table-responsive table-responsive-data2">
                                                 <div class="sorting">
                                                     <div class="row">
-                                                        <div class="form-group col-md-1">
-                                                            <label for="sortNikkahsubdivision">Sort By</label>
-                                                        </div>
                                                         <div class="form-group col-md-3">
+                                                            <label for="sortNikkahsubdivision">Sort By</label>
                                                             <select name="sortNikkahsubdivision" id="sortNikkahsubdivision" class="form-control">
                                                                 <option value="0" selected>All Sub-Divisions</option>
                                                                 <option value="Moragala Main-Street" <?= $sort1 == 'Moragala Main-Street' ? ' selected="selected"' : ''; ?>>Moragala Main-Street </option>
@@ -135,13 +139,12 @@ if (isset($_GET['sort1'])) {
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-3">
-                                                            <select name="sortvillagerTime" id="sortvillagerTime" class="form-control">
-                                                                <option value="0" selected>Time</option>
-                                                                <option value="widow" <?= $action == 'widow' ? ' selected="selected"' : ''; ?>>Widow Details</option>
-                                                                <option value="divorse" <?= $action == 'divorse' ? ' selected="selected"' : ''; ?>>Divorsed Details</option>
-                                                                <option value="madrasa" <?= $action == 'madrasa' ? ' selected="selected"' : ''; ?>>Madrasa Children Details</option>
-                                                                <option value="orphan" <?= $action == 'orphan' ? ' selected="selected"' : ''; ?>>Orphan Children Details</option>
-                                                            </select>
+                                                            <label for="sortNikkahFrom">From</label>
+                                                            <input class="form-control" type="date" name="sortNikkahFrom" id="sortNikkahFrom" value="<?php echo $sort5 ?>">
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label for="sortNikkahTo">To</label>
+                                                            <input class="form-control" type="date" name="sortNikkahTo" id="sortNikkahTo" value="<?php echo $sort6 ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -168,7 +171,9 @@ if (isset($_GET['sort1'])) {
                                                         $nikkah_details2 = $database->select_where('tbl_nikkahdetails', $where2);
 
                                                         if ($sort1 == "0") {
-                                                            $nikkah_details = $database->select_data('tbl_nikkahdetails');
+                                                            $nikkah_details = $database->select_dates('tbl_nikkahdetails', 'nd_marriageDate', $sort5, $sort6);
+                                                            $nikkah_details2 = $database->select_dates('tbl_nikkahdetails', 'nd_marriageDate', $sort5, $sort6);
+
                                                         }
                                                         foreach ($nikkah_details as $nikkah_details_item) {
                                                             $id = $nikkah_details_item['nd_nikkahId'];
@@ -191,25 +196,27 @@ if (isset($_GET['sort1'])) {
                                                         }
                                                         if ($sort1 != "0") {
                                                             foreach ($nikkah_details2 as $nikkah_details2_item) {
-                                                                $id = $nikkah_details2_item['nd_nikkahId'];
+                                                                if (isset($nikkah_details2_item['nd_nikkahId'])) {
+                                                                    $id = $nikkah_details2_item['nd_nikkahId'];
 
-                                                                echo "
-                                                             <tr>
-                                                                <td>" . $nikkah_details2_item['nd_marriageDate'] . "</td>
-                                                                <td>" . $nikkah_details2_item['nd_brideName'] . "</td>
-                                                                <td>" . $nikkah_details2_item['nd_groomName'] . "</td>
-                                                                <td>" . $nikkah_details2_item['nd_groomAddress'] . "</td>
-                                                                <td>
-                                                                    <a href='preview_nikkah-details_step-2.php?id=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
-                                                                    <a href='preview_nikkah-details_step-2.php?id=" . $id . "&action=edit' class='item'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
-                                                                </td>
-                                                                <td>
-                                                                    <a href='' id ='" . $id . "' class='item delete_row_nikkah' data-toggle='modal' data-target='#deleteRecord'><i class='fa fa-trash fa-lg' aria-hidden='true'></i></a>
-                                                                    
-    
-                                                                </td>
-                                                            </tr>
-                                                             ";
+                                                                    echo "
+                                                                    <tr>
+                                                                        <td>" . $nikkah_details2_item['nd_marriageDate'] . "</td>
+                                                                        <td>" . $nikkah_details2_item['nd_brideName'] . "</td>
+                                                                        <td>" . $nikkah_details2_item['nd_groomName'] . "</td>
+                                                                        <td>" . $nikkah_details2_item['nd_groomAddress'] . "</td>
+                                                                        <td>
+                                                                            <a href='preview_nikkah-details_step-2.php?id=" . $id . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            <a href='preview_nikkah-details_step-2.php?id=" . $id . "&action=edit' class='item'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
+                                                                        </td>
+                                                                        <td>
+                                                                            <a href='' id ='" . $id . "' class='item delete_row_nikkah' data-toggle='modal' data-target='#deleteRecord'><i class='fa fa-trash fa-lg' aria-hidden='true'></i></a>
+                                                                            
+            
+                                                                        </td>
+                                                                    </tr>
+                                                                ";
+                                                                }
                                                             }
                                                         }
 

@@ -61,6 +61,7 @@ $av_saandhaStatus = "";
 $av_saandhaStatusReason = "";
 $av_leftVillage = "";
 $av_aliveOrDeceased = "";
+$av_disabled = "";
 $is_student = 1;
 
 $person_details = $database->select_where('tbl_allvillagers', $where);
@@ -107,6 +108,7 @@ foreach ($person_details as $person_details_item) {
     $av_saandhaStatusReason = $person_details_item['av_saandhaStatusReason'];
     $av_leftVillage = $person_details_item['av_leftVillage'];
     $av_aliveOrDeceased = $person_details_item['av_aliveOrDeceased'];
+    $av_disabled = $person_details_item['av_disabled'];
 
     if ($av_eduGrade == "0" && $av_madChild_status == "0") {
         $is_student = 0;
@@ -120,6 +122,11 @@ foreach ($person_details as $person_details_item) {
         $av_saandhaStatus = "Yes";
     } else {
         $av_saandhaStatus = "No";
+    }
+    if ($av_disabled == 1) {
+        $av_disabled = "Yes";
+    } else {
+        $av_disabled = "No";
     }
     if ($av_orphaned == 1) {
         $av_orphaned = "Yes";
@@ -441,6 +448,18 @@ $age = $database->calculate_age($dob);
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
                                                         <p class="text-muted"><?php echo $av_orphaned ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Disabled Status</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_disabled ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1015,6 +1034,25 @@ $age = $database->calculate_age($dob);
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
                                                                         <input type="radio" class="form-check-input" name="inputSaandhaStatus" id="inputSaandhaStatusN" value="No" <?php echo ($av_saandhaStatus == 'No') ? 'checked' : '' ?>> No </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <div class="form-group row pt-3">
+                                                            <div class="col-md-4 pt-2 d-flex align-items-center">
+                                                                <label class="form-label"> Disabled ? </label>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input type="radio" class="form-check-input" name="inputDiasbleStatus" id="inputDiasbleStatusY" value="Yes" <?php echo ($av_disabled == 'No') ? 'checked' : '' ?>> Yes </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label">
+                                                                        <input type="radio" class="form-check-input" name="inputDiasbleStatus" id="inputDiasbleStatusN" value="No" <?php echo ($av_disabled == 'No') ? 'checked' : '' ?>> No </label>
                                                                 </div>
                                                             </div>
                                                         </div>

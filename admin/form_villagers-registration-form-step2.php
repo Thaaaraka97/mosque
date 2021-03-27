@@ -12,6 +12,9 @@ $data_from_temp = $database->select_data('tbl_temp_allvillagers');
 foreach ($data_from_temp as $data_from_temp_item) {
     $famID = $data_from_temp_item["id"];
 }
+if (isset($_GET['fam_id'])) {
+    $famID = $_GET['fam_id'];
+}
 
 if ($famID != "") {
     $message = "The registered Family ID is " . $famID . "..!";
@@ -494,6 +497,7 @@ if (isset($_GET["inserted_record"])) {
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <input type="hidden" name="inputfamID" id="inputfamID" value="<?php echo $famID ?>">
                                                 <div class="w-100 text-center">
                                                     <button class="btn btn-success btn-lg" id="avPrev4">Previous</button>
                                                     <button class="btn btn-primary btn-lg" id="submitSaandha" name="submitSaandha">Submit All</button>

@@ -41,8 +41,8 @@ if (isset($_POST["addAVMember"])) {
             'id' => mysqli_real_escape_string($database->con, $_POST['inputFamilyID']),
             'av_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
             'av_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-            'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $_POST['inputMonthlyIncomeFamily']),
-            'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $_POST['inputavgInterPersonal']),
+            'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, 0),
+            'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, 0),
             'av_noofChildren' => mysqli_real_escape_string($database->con, $_POST['inputnoofChildren']),
             'av_unmarriedChildren' => mysqli_real_escape_string($database->con, $_POST['inputnoofUnmarried']),
             'av_residentialStatus' => mysqli_real_escape_string($database->con, $_POST['inputResStatus']),
@@ -56,8 +56,8 @@ if (isset($_POST["addAVMember"])) {
         $insert_data = array(
             'av_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
             'av_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-            'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $_POST['inputMonthlyIncomeFamily']),
-            'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $_POST['inputavgInterPersonal']),
+            'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, 0),
+            'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, 0),
             'av_noofChildren' => mysqli_real_escape_string($database->con, $_POST['inputnoofChildren']),
             'av_unmarriedChildren' => mysqli_real_escape_string($database->con, $_POST['inputnoofUnmarried']),
             'av_residentialStatus' => mysqli_real_escape_string($database->con, $_POST['inputResStatus']),
@@ -80,6 +80,40 @@ if (isset($_POST["addAVMember"])) {
 // insert data into tbl_allvillagers
 // addAnother button click
 if (isset($_POST["addAnother"])) {
+
+    $where = array(
+        'id'     =>     $_POST["inputfamID"]
+    );
+    $data_from_temp = $database->select_where('tbl_temp_allvillagers',$where);
+    $av_subDivision = "";
+    $av_address = "";
+    $av_monthlyIncomeFamily = "";
+    $av_avgInterpersonalIncome = "";
+    $av_unmarriedChildren = "";
+    $av_residentialStatus = "";
+    $av_prevRes_address = "";
+    $av_prevRes_gramasevaka = "";
+    $av_prevRes_police = "";
+    $av_prevRes_mahalla = "";
+    $av_newMigrant = "";
+    foreach ($data_from_temp as $data_from_temp_item) {
+        $family_id = $data_from_temp_item["id"];
+        $av_subDivision = $data_from_temp_item["av_subDivision"];
+        $av_address = $data_from_temp_item["av_address"];
+        $av_monthlyIncomeFamily = $data_from_temp_item["av_monthlyIncomeFamily"];
+        $av_avgInterpersonalIncome = $data_from_temp_item["av_avgInterpersonalIncome"];
+        $av_unmarriedChildren = $data_from_temp_item["av_unmarriedChildren"];
+        $av_residentialStatus = $data_from_temp_item["av_residentialStatus"];
+        $av_prevRes_address = $data_from_temp_item["av_prevRes_address"];
+        $av_prevRes_gramasevaka = $data_from_temp_item["av_prevRes_gramasevaka"];
+        $av_prevRes_police = $data_from_temp_item["av_prevRes_police"];
+        $av_prevRes_mahalla = $data_from_temp_item["av_prevRes_mahalla"];
+        $av_newMigrant = $data_from_temp_item["av_newMigrant"];
+    }
+    $where2 = array(
+        'av_FamilyID'     =>     $_POST["inputfamID"]
+    );
+    $family_members_count = $database->select_count('tbl_allvillagers',$where2);
 
     if ($_POST["inputGuardianID"] != "") {
         $inputGuardianID = $_POST["inputGuardianID"];
@@ -133,6 +167,8 @@ if (isset($_POST["addAnother"])) {
     }
     if ($_POST["inputMonthlyIncomePersonal"] != "") {
         $inputMonthlyIncomePersonal = $_POST["inputMonthlyIncomePersonal"];
+        $av_monthlyIncomeFamily = (float)$av_monthlyIncomeFamily + (float)$inputMonthlyIncomePersonal;
+        $av_avgInterpersonalIncome = $av_monthlyIncomeFamily/((int)$family_members_count+1);
     } else {
         $inputMonthlyIncomePersonal = 0;
     }
@@ -193,33 +229,6 @@ if (isset($_POST["addAnother"])) {
         $inputGrade = $_POST['inputGrade'];
     }
 
-    $data_from_temp = $database->select_data('tbl_temp_allvillagers');
-    $av_subDivision = "";
-    $av_address = "";
-    $av_monthlyIncomeFamily = "";
-    $av_avgInterpersonalIncome = "";
-    $av_unmarriedChildren = "";
-    $av_residentialStatus = "";
-    $av_prevRes_address = "";
-    $av_prevRes_gramasevaka = "";
-    $av_prevRes_police = "";
-    $av_prevRes_mahalla = "";
-    $av_newMigrant = "";
-    foreach ($data_from_temp as $data_from_temp_item) {
-        $family_id = $data_from_temp_item["id"];
-        $av_subDivision = $data_from_temp_item["av_subDivision"];
-        $av_address = $data_from_temp_item["av_address"];
-        $av_monthlyIncomeFamily = $data_from_temp_item["av_monthlyIncomeFamily"];
-        $av_avgInterpersonalIncome = $data_from_temp_item["av_avgInterpersonalIncome"];
-        $av_unmarriedChildren = $data_from_temp_item["av_unmarriedChildren"];
-        $av_residentialStatus = $data_from_temp_item["av_residentialStatus"];
-        $av_prevRes_address = $data_from_temp_item["av_prevRes_address"];
-        $av_prevRes_gramasevaka = $data_from_temp_item["av_prevRes_gramasevaka"];
-        $av_prevRes_police = $data_from_temp_item["av_prevRes_police"];
-        $av_prevRes_mahalla = $data_from_temp_item["av_prevRes_mahalla"];
-        $av_newMigrant = $data_from_temp_item["av_newMigrant"];
-    }
-
     $insert_to_tbl_allvillagers = array(
         'av_subDivision' => mysqli_real_escape_string($database->con, $av_subDivision),
         'av_familyID' => mysqli_real_escape_string($database->con, $family_id),
@@ -269,6 +278,28 @@ if (isset($_POST["addAnother"])) {
     );
 
     if ($database->insert_data('tbl_allvillagers', $insert_to_tbl_allvillagers)) {
+        // updating temp_allvillagers family monthly income and avg interpersonal income
+        $update_data = array(
+            'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $av_monthlyIncomeFamily),
+            'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $av_avgInterpersonalIncome)
+            
+        );
+        $where_condition = array(
+            'id'     =>     $family_id
+        );
+        $database->update("tbl_temp_allvillagers", $update_data, $where_condition);
+        // updating allvillgers family monthly income and avg interpersonal income
+        $update_data2 = array(
+            'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $av_monthlyIncomeFamily),
+            'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $av_avgInterpersonalIncome)
+            
+        );
+        $where_condition2 = array(
+            'av_FamilyID'     =>     $family_id
+        );
+        $database->update("tbl_allvillagers", $update_data2, $where_condition2);
+
+
         if ($inputSaandhaStatus == 1) {
             // retrieve index of the registered person
             $index = "";
@@ -307,6 +338,39 @@ if (isset($_POST["addAnother"])) {
 // insert data into tbl_allvillagers
 // submitSaandha button click
 if (isset($_POST["submitSaandha"])) {
+    $where = array(
+        'id'     =>     $_POST["inputfamID"]
+    );
+    $data_from_temp = $database->select_where('tbl_temp_allvillagers',$where);
+    $av_subDivision = "";
+    $av_address = "";
+    $av_monthlyIncomeFamily = "";
+    $av_avgInterpersonalIncome = "";
+    $av_unmarriedChildren = "";
+    $av_residentialStatus = "";
+    $av_prevRes_address = "";
+    $av_prevRes_gramasevaka = "";
+    $av_prevRes_police = "";
+    $av_prevRes_mahalla = "";
+    $av_newMigrant = "";
+    foreach ($data_from_temp as $data_from_temp_item) {
+        $family_id = $data_from_temp_item["id"];
+        $av_subDivision = $data_from_temp_item["av_subDivision"];
+        $av_address = $data_from_temp_item["av_address"];
+        $av_monthlyIncomeFamily = $data_from_temp_item["av_monthlyIncomeFamily"];
+        $av_avgInterpersonalIncome = $data_from_temp_item["av_avgInterpersonalIncome"];
+        $av_unmarriedChildren = $data_from_temp_item["av_unmarriedChildren"];
+        $av_residentialStatus = $data_from_temp_item["av_residentialStatus"];
+        $av_prevRes_address = $data_from_temp_item["av_prevRes_address"];
+        $av_prevRes_gramasevaka = $data_from_temp_item["av_prevRes_gramasevaka"];
+        $av_prevRes_police = $data_from_temp_item["av_prevRes_police"];
+        $av_prevRes_mahalla = $data_from_temp_item["av_prevRes_mahalla"];
+        $av_newMigrant = $data_from_temp_item["av_newMigrant"];
+    }
+    $where2 = array(
+        'av_FamilyID'     =>     $_POST["inputfamID"]
+    );
+    $family_members_count = $database->select_count('tbl_allvillagers',$where2);
 
     if ($_POST["inputGuardianID"] != "") {
         $inputGuardianID = $_POST["inputGuardianID"];
@@ -360,6 +424,8 @@ if (isset($_POST["submitSaandha"])) {
     }
     if ($_POST["inputMonthlyIncomePersonal"] != "") {
         $inputMonthlyIncomePersonal = $_POST["inputMonthlyIncomePersonal"];
+        $av_monthlyIncomeFamily = (float)$av_monthlyIncomeFamily + (float)$inputMonthlyIncomePersonal;
+        $av_avgInterpersonalIncome = $av_monthlyIncomeFamily/((int)$family_members_count+1);
     } else {
         $inputMonthlyIncomePersonal = 0;
     }
@@ -425,33 +491,6 @@ if (isset($_POST["submitSaandha"])) {
         $inputDiasbleStatus = 0;
     }
 
-    $data_from_temp = $database->select_data('tbl_temp_allvillagers');
-    $av_subDivision = "";
-    $av_address = "";
-    $av_monthlyIncomeFamily = "";
-    $av_avgInterpersonalIncome = "";
-    $av_unmarriedChildren = "";
-    $av_residentialStatus = "";
-    $av_prevRes_address = "";
-    $av_prevRes_gramasevaka = "";
-    $av_prevRes_police = "";
-    $av_prevRes_mahalla = "";
-    $av_newMigrant = "";
-    foreach ($data_from_temp as $data_from_temp_item) {
-        $family_id = $data_from_temp_item["id"];
-        $av_subDivision = $data_from_temp_item["av_subDivision"];
-        $av_address = $data_from_temp_item["av_address"];
-        $av_monthlyIncomeFamily = $data_from_temp_item["av_monthlyIncomeFamily"];
-        $av_avgInterpersonalIncome = $data_from_temp_item["av_avgInterpersonalIncome"];
-        $av_unmarriedChildren = $data_from_temp_item["av_unmarriedChildren"];
-        $av_residentialStatus = $data_from_temp_item["av_residentialStatus"];
-        $av_prevRes_address = $data_from_temp_item["av_prevRes_address"];
-        $av_prevRes_gramasevaka = $data_from_temp_item["av_prevRes_gramasevaka"];
-        $av_prevRes_police = $data_from_temp_item["av_prevRes_police"];
-        $av_prevRes_mahalla = $data_from_temp_item["av_prevRes_mahalla"];
-        $av_newMigrant = $data_from_temp_item["av_newMigrant"];
-    }
-
     $insert_to_tbl_allvillagers = array(
         'av_subDivision' => mysqli_real_escape_string($database->con, $av_subDivision),
         'av_familyID' => mysqli_real_escape_string($database->con, $family_id),
@@ -502,6 +541,28 @@ if (isset($_POST["submitSaandha"])) {
     );
 
     if ($database->insert_data('tbl_allvillagers', $insert_to_tbl_allvillagers)) {
+        // updating temp_allvillagers family monthly income and avg interpersonal income
+        $update_data = array(
+            'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $av_monthlyIncomeFamily),
+            'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $av_avgInterpersonalIncome)
+            
+        );
+        $where_condition = array(
+            'id'     =>     $family_id
+        );
+        $database->update("tbl_temp_allvillagers", $update_data, $where_condition);
+        // updating allvillgers family monthly income and avg interpersonal income
+        $update_data2 = array(
+            'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $av_monthlyIncomeFamily),
+            'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $av_avgInterpersonalIncome)
+            
+        );
+        $where_condition2 = array(
+            'av_FamilyID'     =>     $family_id
+        );
+        $database->update("tbl_allvillagers", $update_data2, $where_condition2);
+
+
         if ($inputSaandhaStatus == 1) {
             // retrieve index of the registered person
             $index = "";
@@ -1518,7 +1579,7 @@ if (isset($_POST['submitSalary'])) {
             'pSal_basicSalary' => mysqli_real_escape_string($database->con, $basic_salary),
             'pSal_incentive' => mysqli_real_escape_string($database->con, $_POST["inputIncentive"]),
             'pSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
-            'pSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+            // 'pSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
             'pSal_specialBhayanFee' => mysqli_real_escape_string($database->con, $_POST["inputBhayanFee"]),
             'pSal_date' => mysqli_real_escape_string($database->con, $today),
             'pSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
@@ -1530,7 +1591,7 @@ if (isset($_POST['submitSalary'])) {
             'mSal_basicSalary' => mysqli_real_escape_string($database->con, $basic_salary),
             'mSal_incentive' => mysqli_real_escape_string($database->con, $_POST["inputIncentive"]),
             'mSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
-            'mSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+            // 'mSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
             'mSal_date' => mysqli_real_escape_string($database->con, $today),
             'mSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
         );
