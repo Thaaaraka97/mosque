@@ -194,7 +194,6 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                                     <td>" . $saandha_collection_item['collection_address'] . "</td>
                                                                     <td>
                                                                         <a href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&id=" . $id . "&action=view_saandha' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
-                                                                        <a href='preview_villager-details_step-2.php?id=" . $id . "&action=edit' class='item'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
                                                                     </td>
                                                                 </tr>
                                                                 ";

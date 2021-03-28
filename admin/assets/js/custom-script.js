@@ -1896,8 +1896,7 @@ $(document).ready(function () {
       url: "handlers/kanji_ingredients_handler.php",
       data: $("#kanjiingredients").serialize() + "&action=submit_ingredients",
       success: function (response) {
-        console.log(response);
-        window.location.href = response;
+        window.open(response,'_blank');
       },
     });
   });
@@ -1942,8 +1941,7 @@ $(document).ready(function () {
       url: "handlers/kanji_ingredients_handler.php",
       data: $("#kanjipeople").serialize() + "&action=submit_people",
       success: function (response) {
-        console.log(response);
-        window.location.href = response;
+        window.open(response,'_blank');
       },
     });
   });

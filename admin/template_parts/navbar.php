@@ -171,5 +171,24 @@
         <li class="nav-item menu-items">
             <a class="nav-link" href="<?php $server_name ?>trial_balance.php?sort5=<?php echo date('Y-m-01') ?>&sort6=<?php echo date('Y-m-t') ?>"> <span class="menu-icon"> <i class="mdi mdi-table-large"></i> </span> <span class="menu-title"> Monthly Report </span> </a>
         </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="masjid-history.php"> <span class="menu-icon"> <i class="mdi mdi-history"></i> </span> <span class="menu-title"> History </span> </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#letters-dropdown" aria-expanded="false" aria-controls="letters-dropdown"> <span class="menu-icon"> <i class="mdi mdi-email"></i></span><span class="menu-title">Letters</span><i class="menu-arrow"></i> </a>
+            <div class="collapse" id="letters-dropdown">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_rental-places.php"> Rental Places </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_new-rental-registration.php"> Rental Status </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_rental-incomes.php"> Rental Income </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
     </ul>
 </nav>
