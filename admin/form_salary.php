@@ -85,43 +85,46 @@ $database = new databases();
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="inputBasicSalary"> Basic Salary </label>
-                                                    <input type="text" class="form-control" id="inputBasicSalary" name="inputBasicSalary" placeholder="Salary" readonly>
+                                                    <label for="BasicSalary"> Basic Salary to be Paid </label>
+                                                    <input type="text" class="form-control" id="BasicSalary" name="BasicSalary" placeholder="Salary" readonly>
                                                 </div>
                                             </div>
                                             <div class="d-flex justify-content-center">
                                                 <div class="form-group row col-md-6">
-                                                    <label for="inputAmountMeals" class="col-sm-4 col-form-label"> Incentive </label>
+                                                    <label for="inputAmountTea" id="advanceDIV" class="col-sm-4 col-form-label"> Advance </label>
+                                                    <label for="inputAmountTea" id="salaryDIV" class="col-sm-4 col-form-label"> Salary Payment </label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="inputIncentive" name="inputIncentive" placeholder="Amount">
+                                                        <input type="text" class="form-control" id="inputBasicSalary" name="inputBasicSalary" placeholder="Payment (Rs.)">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="d-flex justify-content-center">
                                                 <div class="form-group row col-md-6">
-                                                    <label for="inputAmountTransport" class="col-sm-4 col-form-label"> Madhrasa Fee </label>
+                                                    <label for="inputIncentive" class="col-sm-4 col-form-label"> Incentive </label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="inputMadrasaFee" name="inputMadrasaFee" placeholder="Amount">
+                                                        <input type="text" class="form-control" id="inputIncentive" name="inputIncentive" placeholder="Amount" value="0">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="d-flex justify-content-center">
                                                 <div class="form-group row col-md-6">
-                                                    <label for="inputAmountTea" class="col-sm-4 col-form-label"> Advance </label>
+                                                    <label for="inputMadrasaFee" class="col-sm-4 col-form-label"> Madhrasa Fee </label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="inputAdvance" name="inputAdvance" placeholder="Amount">
+                                                        <input type="text" class="form-control" id="inputMadrasaFee" name="inputMadrasaFee" placeholder="Amount" value="0">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="d-flex justify-content-center">
                                                 <div class="form-group row col-md-6" id="specialbhyan">
-                                                    <label for="inputAmountOther" class="col-sm-4 col-form-label"> Special Bhayan Fee</label>
+                                                    <label for="inputBhayanFee" class="col-sm-4 col-form-label"> Special Bhayan Fee</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="inputBhayanFee" name="inputBhayanFee" placeholder="Amount">
+                                                        <input type="text" class="form-control" id="inputBhayanFee" name="inputBhayanFee" placeholder="Amount" value="0">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <input type="hidden" name="paidFor" id="paidFor" value="0">
+                                        <input type="hidden" name="prevPayment" id="prevPayment" value="0">
                                         <div class="text-center">
                                             <button type="submit" name="submitSalary" id="submitSalary" class="btn btn-primary btn-lg">Enter Details</button>
                                         </div>

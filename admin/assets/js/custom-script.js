@@ -1751,13 +1751,34 @@ $(document).ready(function () {
         $("#inputPriestIndexNo").html(response);
       }
     });
+  });
+
+  // salary form
+  // show/hide div on input pay type change
+  $("input[type=radio][name=inputPayType]").change(function (e) {
+    e.preventDefault();
+    var inputPayType = $(this).val();
     $("#salarydiv").show();
-    if ($(this).val() == "Pesh Imaam") {
+    if (post == "PeshImaam") {
       $("#specialbhyan").show();
-      post = "PeshImaam";
-    } else if ($(this).val() == "Muazzin") {
+      if (inputPayType == "Salary Payment") {
+        $("#salaryDIV").show();
+        $("#advanceDIV").hide();
+      }
+      else if (inputPayType == "Advance Payment") {
+        $("#advanceDIV").show();
+        $("#salaryDIV").hide();
+      }
+    } else if (post == "Muazzin") {
       $("#specialbhyan").hide();
-      post = "Muazzin";
+      if (inputPayType == "Salary Payment") {
+        $("#salaryDIV").show();
+        $("#advanceDIV").hide();
+      }
+      else if (inputPayType == "Advance Payment") {
+        $("#advanceDIV").show();
+        $("#salaryDIV").hide();
+      }
     }
   });
 
@@ -1773,7 +1794,9 @@ $(document).ready(function () {
       data: data_bundle,
       success: function (response) {
         var result_array = response.split("+");
-        $("#inputBasicSalary").val(result_array[0]);
+        $("#BasicSalary").val(result_array[0]);
+        $("#paidFor").val(result_array[1]);
+        $("#prevPayment").val(result_array[2]);
       },
     });
   });
@@ -2025,7 +2048,7 @@ $(document).ready(function () {
     var sort2 = $("#sortJanazaGender").val();
     window.location.href = "preview_janaza-details.php?sort1=" + sort1 + "&sort2=" + sort2 + "&sort5=0&sort6=" + last_day;
   });
-  
+
   // widow preview
   // redirect with sort details
   $("#sortWidowsubdivision").change(function (e) {

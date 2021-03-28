@@ -84,7 +84,7 @@ if (isset($_POST["addAnother"])) {
     $where = array(
         'id'     =>     $_POST["inputfamID"]
     );
-    $data_from_temp = $database->select_where('tbl_temp_allvillagers',$where);
+    $data_from_temp = $database->select_where('tbl_temp_allvillagers', $where);
     $av_subDivision = "";
     $av_address = "";
     $av_monthlyIncomeFamily = "";
@@ -113,7 +113,7 @@ if (isset($_POST["addAnother"])) {
     $where2 = array(
         'av_FamilyID'     =>     $_POST["inputfamID"]
     );
-    $family_members_count = $database->select_count('tbl_allvillagers',$where2);
+    $family_members_count = $database->select_count('tbl_allvillagers', $where2);
 
     if ($_POST["inputGuardianID"] != "") {
         $inputGuardianID = $_POST["inputGuardianID"];
@@ -168,7 +168,7 @@ if (isset($_POST["addAnother"])) {
     if ($_POST["inputMonthlyIncomePersonal"] != "") {
         $inputMonthlyIncomePersonal = $_POST["inputMonthlyIncomePersonal"];
         $av_monthlyIncomeFamily = (float)$av_monthlyIncomeFamily + (float)$inputMonthlyIncomePersonal;
-        $av_avgInterpersonalIncome = $av_monthlyIncomeFamily/((int)$family_members_count+1);
+        $av_avgInterpersonalIncome = $av_monthlyIncomeFamily / ((int)$family_members_count + 1);
     } else {
         $inputMonthlyIncomePersonal = 0;
     }
@@ -282,7 +282,7 @@ if (isset($_POST["addAnother"])) {
         $update_data = array(
             'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $av_monthlyIncomeFamily),
             'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $av_avgInterpersonalIncome)
-            
+
         );
         $where_condition = array(
             'id'     =>     $family_id
@@ -292,7 +292,7 @@ if (isset($_POST["addAnother"])) {
         $update_data2 = array(
             'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $av_monthlyIncomeFamily),
             'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $av_avgInterpersonalIncome)
-            
+
         );
         $where_condition2 = array(
             'av_FamilyID'     =>     $family_id
@@ -341,7 +341,7 @@ if (isset($_POST["submitSaandha"])) {
     $where = array(
         'id'     =>     $_POST["inputfamID"]
     );
-    $data_from_temp = $database->select_where('tbl_temp_allvillagers',$where);
+    $data_from_temp = $database->select_where('tbl_temp_allvillagers', $where);
     $av_subDivision = "";
     $av_address = "";
     $av_monthlyIncomeFamily = "";
@@ -370,7 +370,7 @@ if (isset($_POST["submitSaandha"])) {
     $where2 = array(
         'av_FamilyID'     =>     $_POST["inputfamID"]
     );
-    $family_members_count = $database->select_count('tbl_allvillagers',$where2);
+    $family_members_count = $database->select_count('tbl_allvillagers', $where2);
 
     if ($_POST["inputGuardianID"] != "") {
         $inputGuardianID = $_POST["inputGuardianID"];
@@ -425,7 +425,7 @@ if (isset($_POST["submitSaandha"])) {
     if ($_POST["inputMonthlyIncomePersonal"] != "") {
         $inputMonthlyIncomePersonal = $_POST["inputMonthlyIncomePersonal"];
         $av_monthlyIncomeFamily = (float)$av_monthlyIncomeFamily + (float)$inputMonthlyIncomePersonal;
-        $av_avgInterpersonalIncome = $av_monthlyIncomeFamily/((int)$family_members_count+1);
+        $av_avgInterpersonalIncome = $av_monthlyIncomeFamily / ((int)$family_members_count + 1);
     } else {
         $inputMonthlyIncomePersonal = 0;
     }
@@ -545,7 +545,7 @@ if (isset($_POST["submitSaandha"])) {
         $update_data = array(
             'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $av_monthlyIncomeFamily),
             'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $av_avgInterpersonalIncome)
-            
+
         );
         $where_condition = array(
             'id'     =>     $family_id
@@ -555,7 +555,7 @@ if (isset($_POST["submitSaandha"])) {
         $update_data2 = array(
             'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, $av_monthlyIncomeFamily),
             'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, $av_avgInterpersonalIncome)
-            
+
         );
         $where_condition2 = array(
             'av_FamilyID'     =>     $family_id
@@ -1570,36 +1570,255 @@ if (isset($_POST['submitSaandhaCollector'])) {
 // insert into tbl_saandhacollector
 // submitSalary button click
 if (isset($_POST['submitSalary'])) {
-    (float)$basic_salary = $_POST["inputBasicSalary"];
+    $payment = $_POST['inputBasicSalary'];
+    $payment_count = $payment;
+    $paidFor = $_POST['paidFor'];
+    (float)$basic_salary = $_POST["BasicSalary"];
+    (float)$prevPayment = $_POST["prevPayment"];
+    $due = $basic_salary - $prevPayment;
     (float)$epf = (float)$basic_salary * 0.08;
 
-    if ($_POST["inputPost"] == "Pesh Imaam") {
-        $insert_to_tbl_peshimaamsalary = array(
-            'pSal_peshImaamId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
-            'pSal_basicSalary' => mysqli_real_escape_string($database->con, $basic_salary),
-            'pSal_incentive' => mysqli_real_escape_string($database->con, $_POST["inputIncentive"]),
-            'pSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
-            // 'pSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
-            'pSal_specialBhayanFee' => mysqli_real_escape_string($database->con, $_POST["inputBhayanFee"]),
-            'pSal_date' => mysqli_real_escape_string($database->con, $today),
-            'pSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
-        );
-        $query = $database->insert_data('tbl_peshimaamsalary', $insert_to_tbl_peshimaamsalary);
-    } elseif ($_POST["inputPost"] == "Muazzin") {
-        $insert_to_tbl_muazzinsalary = array(
-            'mSal_muazzinId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
-            'mSal_basicSalary' => mysqli_real_escape_string($database->con, $basic_salary),
-            'mSal_incentive' => mysqli_real_escape_string($database->con, $_POST["inputIncentive"]),
-            'mSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
-            // 'mSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
-            'mSal_date' => mysqli_real_escape_string($database->con, $today),
-            'mSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
-        );
-        $query = $database->insert_data('tbl_muazzinsalary', $insert_to_tbl_muazzinsalary);
+    if ($paidFor == "0") {
+        $paidFor = date('Y-M');
+        (float)$epf = (float)$basic_salary * 0.08;
+
+        if ((float)$payment >= (float)$basic_salary) {
+            // input data into table
+            for ($i = 0; $i < (int)($payment_count / $basic_salary); $i++) {
+                if ($_POST["inputPost"] == "Pesh Imaam") {
+                    $insert_to_tbl_peshimaamsalary = array(
+                        'pSal_peshImaamId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
+                        'pSal_basicSalary' => mysqli_real_escape_string($database->con, $basic_salary),
+                        'pSal_incentive' => mysqli_real_escape_string($database->con, $_POST["inputIncentive"]),
+                        'pSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
+                        // 'pSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+                        'pSal_specialBhayanFee' => mysqli_real_escape_string($database->con, $_POST["inputBhayanFee"]),
+                        'pSal_date' => mysqli_real_escape_string($database->con, $today),
+                        'pSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
+                        'pSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor),
+                    );
+                    $query = $database->insert_data('tbl_peshimaamsalary', $insert_to_tbl_peshimaamsalary);
+                    $payment = $payment - $basic_salary;
+                    $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
+                } elseif ($_POST["inputPost"] == "Muazzin") {
+                    $insert_to_tbl_muazzinsalary = array(
+                        'mSal_muazzinId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
+                        'mSal_basicSalary' => mysqli_real_escape_string($database->con, $basic_salary),
+                        'mSal_incentive' => mysqli_real_escape_string($database->con, $_POST["inputIncentive"]),
+                        'mSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
+                        // 'mSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+                        'mSal_date' => mysqli_real_escape_string($database->con, $today),
+                        'mSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
+                        'mSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                    );
+                    $query = $database->insert_data('tbl_muazzinsalary', $insert_to_tbl_muazzinsalary);
+                    $payment = $payment - $basic_salary;
+                    $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
+                }
+            }
+
+            // if there is a remaining in payment
+            if ((float)$payment > 0) {
+                if ($_POST["inputPost"] == "Pesh Imaam") {
+                    $insert_to_tbl_peshimaamsalary = array(
+                        'pSal_peshImaamId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
+                        'pSal_basicSalary' => mysqli_real_escape_string($database->con, $payment),
+                        'pSal_incentive' => mysqli_real_escape_string($database->con, $_POST["inputIncentive"]),
+                        'pSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
+                        // 'pSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+                        'pSal_specialBhayanFee' => mysqli_real_escape_string($database->con, $_POST["inputBhayanFee"]),
+                        'pSal_date' => mysqli_real_escape_string($database->con, $today),
+                        'pSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
+                        'pSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                    );
+                    $query = $database->insert_data('tbl_peshimaamsalary', $insert_to_tbl_peshimaamsalary);
+                } elseif ($_POST["inputPost"] == "Muazzin") {
+                    $insert_to_tbl_muazzinsalary = array(
+                        'mSal_muazzinId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
+                        'mSal_basicSalary' => mysqli_real_escape_string($database->con, $payment),
+                        'mSal_incentive' => mysqli_real_escape_string($database->con, $_POST["inputIncentive"]),
+                        'mSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
+                        // 'mSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+                        'mSal_date' => mysqli_real_escape_string($database->con, $today),
+                        'mSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
+                        'mSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                    );
+                    $query = $database->insert_data('tbl_muazzinsalary', $insert_to_tbl_muazzinsalary);
+                }
+                if ($query) {
+                    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                }
+            } else {
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+            }
+        }
+        else {
+            if ($_POST["inputPost"] == "Pesh Imaam") {
+                $insert_to_tbl_peshimaamsalary = array(
+                    'pSal_peshImaamId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
+                    'pSal_basicSalary' => mysqli_real_escape_string($database->con, $payment),
+                    'pSal_incentive' => mysqli_real_escape_string($database->con, $_POST["inputIncentive"]),
+                    'pSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
+                    // 'pSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+                    'pSal_specialBhayanFee' => mysqli_real_escape_string($database->con, $_POST["inputBhayanFee"]),
+                    'pSal_date' => mysqli_real_escape_string($database->con, $today),
+                    'pSal_EPFETF' => mysqli_real_escape_string($database->con, "0"),
+                    'pSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                );
+                $query = $database->insert_data('tbl_peshimaamsalary', $insert_to_tbl_peshimaamsalary);
+            } elseif ($_POST["inputPost"] == "Muazzin") {
+                $insert_to_tbl_muazzinsalary = array(
+                    'mSal_muazzinId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
+                    'mSal_basicSalary' => mysqli_real_escape_string($database->con, $payment),
+                    'mSal_incentive' => mysqli_real_escape_string($database->con, $_POST["inputIncentive"]),
+                    'mSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
+                    // 'mSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+                    'mSal_date' => mysqli_real_escape_string($database->con, $today),
+                    'mSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
+                    'mSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                );
+                $query = $database->insert_data('tbl_muazzinsalary', $insert_to_tbl_muazzinsalary);
+            }
+            if ($query) {
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+            } 
+        }
     }
-    if ($query) {
-        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    else {
+        if ((float)$payment <= $due) {
+            if ($_POST["inputPost"] == "Pesh Imaam") {
+                $insert_to_tbl_peshimaamsalary = array(
+                    'pSal_peshImaamId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
+                    'pSal_basicSalary' => mysqli_real_escape_string($database->con, $payment),
+                    'pSal_incentive' => mysqli_real_escape_string($database->con, "0"),
+                    'pSal_madrasaFee' => mysqli_real_escape_string($database->con, "0"),
+                    // 'pSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+                    'pSal_specialBhayanFee' => mysqli_real_escape_string($database->con, "0"),
+                    'pSal_date' => mysqli_real_escape_string($database->con, $today),
+                    'pSal_EPFETF' => mysqli_real_escape_string($database->con, "0"),
+                    'pSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                );
+                $query = $database->insert_data('tbl_peshimaamsalary', $insert_to_tbl_peshimaamsalary);
+            } elseif ($_POST["inputPost"] == "Muazzin") {
+                $insert_to_tbl_muazzinsalary = array(
+                    'mSal_muazzinId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
+                    'mSal_basicSalary' => mysqli_real_escape_string($database->con, $payment),
+                    'mSal_incentive' => mysqli_real_escape_string($database->con, "0"),
+                    'mSal_madrasaFee' => mysqli_real_escape_string($database->con, "0"),
+                    // 'mSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+                    'mSal_date' => mysqli_real_escape_string($database->con, $today),
+                    'mSal_EPFETF' => mysqli_real_escape_string($database->con, "0"),
+                    'mSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                );
+                $query = $database->insert_data('tbl_muazzinsalary', $insert_to_tbl_muazzinsalary);
+            }
+            if ($query) {
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+            }
+        }
+        else {
+            if ($_POST["inputPost"] == "Pesh Imaam") {
+                $insert_to_tbl_peshimaamsalary = array(
+                    'pSal_peshImaamId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
+                    'pSal_basicSalary' => mysqli_real_escape_string($database->con, $due),
+                    'pSal_incentive' => mysqli_real_escape_string($database->con, "0"),
+                    'pSal_madrasaFee' => mysqli_real_escape_string($database->con, "0"),
+                    // 'pSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+                    'pSal_specialBhayanFee' => mysqli_real_escape_string($database->con, "0"),
+                    'pSal_date' => mysqli_real_escape_string($database->con, $today),
+                    'pSal_EPFETF' => mysqli_real_escape_string($database->con, "0"),
+                    'pSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                );
+                $database->insert_data('tbl_peshimaamsalary', $insert_to_tbl_peshimaamsalary);
+            } elseif ($_POST["inputPost"] == "Muazzin") {
+                $insert_to_tbl_muazzinsalary = array(
+                    'mSal_muazzinId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
+                    'mSal_basicSalary' => mysqli_real_escape_string($database->con, $due),
+                    'mSal_incentive' => mysqli_real_escape_string($database->con, "0"),
+                    'mSal_madrasaFee' => mysqli_real_escape_string($database->con, "0"),
+                    // 'mSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+                    'mSal_date' => mysqli_real_escape_string($database->con, $today),
+                    'mSal_EPFETF' => mysqli_real_escape_string($database->con, "0"),
+                    'mSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                );
+                $database->insert_data('tbl_muazzinsalary', $insert_to_tbl_muazzinsalary);
+            } 
+            $payment = $payment - $due;
+            $payment_count = $payment_count - $due;
+            $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
+
+            if ((float)$payment > 0) {
+                for ($i = 0; $i < (int)($payment_count / $basic_salary); $i++) {
+                    if ($_POST["inputPost"] == "Pesh Imaam") {
+                        $insert_to_tbl_peshimaamsalary = array(
+                            'pSal_peshImaamId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
+                            'pSal_basicSalary' => mysqli_real_escape_string($database->con, $basic_salary),
+                            'pSal_incentive' => mysqli_real_escape_string($database->con, $_POST["inputIncentive"]),
+                            'pSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
+                            // 'pSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+                            'pSal_specialBhayanFee' => mysqli_real_escape_string($database->con, $_POST["inputBhayanFee"]),
+                            'pSal_date' => mysqli_real_escape_string($database->con, $today),
+                            'pSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
+                            'pSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                        );
+                        $database->insert_data('tbl_peshimaamsalary', $insert_to_tbl_peshimaamsalary);
+                    } elseif ($_POST["inputPost"] == "Muazzin") {
+                        $insert_to_tbl_muazzinsalary = array(
+                            'mSal_muazzinId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
+                            'mSal_basicSalary' => mysqli_real_escape_string($database->con, $basic_salary),
+                            'mSal_incentive' => mysqli_real_escape_string($database->con, $_POST["inputIncentive"]),
+                            'mSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
+                            // 'mSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+                            'mSal_date' => mysqli_real_escape_string($database->con, $today),
+                            'mSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
+                            'mSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                        );
+                        $database->insert_data('tbl_muazzinsalary', $insert_to_tbl_muazzinsalary);
+                    }
+                    $payment = $payment - $basic_salary;
+                    $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
+                }
+            }
+            if ((float)$payment > 0) {
+                $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
+                if ($_POST["inputPost"] == "Pesh Imaam") {
+                    $insert_to_tbl_peshimaamsalary = array(
+                        'pSal_peshImaamId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
+                        'pSal_basicSalary' => mysqli_real_escape_string($database->con, $payment),
+                        'pSal_incentive' => mysqli_real_escape_string($database->con,  $_POST["inputIncentive"]),
+                        'pSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
+                        // 'pSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+                        'pSal_specialBhayanFee' => mysqli_real_escape_string($database->con, $_POST["inputBhayanFee"]),
+                        'pSal_date' => mysqli_real_escape_string($database->con, $today),
+                        'pSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
+                        'pSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                    );
+                    $query = $database->insert_data('tbl_peshimaamsalary', $insert_to_tbl_peshimaamsalary);
+                } elseif ($_POST["inputPost"] == "Muazzin") {
+                    $insert_to_tbl_muazzinsalary = array(
+                        'mSal_muazzinId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
+                        'mSal_basicSalary' => mysqli_real_escape_string($database->con, $payment),
+                        'mSal_incentive' => mysqli_real_escape_string($database->con, $_POST["inputIncentive"]),
+                        'mSal_madrasaFee' => mysqli_real_escape_string($database->con, $_POST["inputMadrasaFee"]),
+                        // 'mSal_advance' => mysqli_real_escape_string($database->con, $_POST["inputAdvance"]),
+                        'mSal_date' => mysqli_real_escape_string($database->con, $today),
+                        'mSal_EPFETF' => mysqli_real_escape_string($database->con, $epf),
+                        'mSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                    );
+                    $query = $database->insert_data('tbl_muazzinsalary', $insert_to_tbl_muazzinsalary);
+                }
+                if ($query) {
+                    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                }
+            }
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+        }
     }
 }
 
@@ -1702,15 +1921,6 @@ if (isset($_POST['submitSandhaPayment'])) {
     foreach ($saandha_amount_details as $saandha_amount_item) {
         $saandha_amount = $saandha_amount_item["saf_amount"];
     }
-
-    // find if there is any due remaining
-    $where = array(
-        'collection_index'     =>     $_POST['inputIndexNo'],
-        'collection_subdivision'     =>     $_POST['inputSaandhaSubdivision']
-    );
-    $collection_paidFor = "";
-    $collection_dueAmount = "";
-    $total_pay = 0;
 
     if ($paidFor == "0") {
         $paidFor = date('Y-M');

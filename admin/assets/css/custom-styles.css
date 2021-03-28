@@ -248,6 +248,12 @@
 #payment_history {
   display: none;
 }
+#salaryDIV {
+  display: none;
+}
+#advanceDIV {
+  display: none;
+}
 
 .fa-lg {
   padding-left: 15px;
