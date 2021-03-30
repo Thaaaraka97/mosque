@@ -371,3 +371,14 @@ div.modal-footer button.btn-secondary:hover {
   background-color: #4c5357;
   border-color: #4c5357;
 }
+
+.special-text{
+  color: black;
+  font-weight: 500;
+  font-style: italic;
+  padding: 30px;
+}
+.special-text p{
+  font-size: 1em;
+  text-align: justify;
+}
