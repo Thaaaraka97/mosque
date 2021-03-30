@@ -1,33 +1,27 @@
-<!-- php includes -->
-<?php
-require 'include/include.php';
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <?php
-// include $_SERVER['DOCUMENT_ROOT'] . "/mosque/admin/template_parts/header.php";
-include "admin/template_parts/header.php";
+include "template_parts/header.php";
+session_start();
+
 ?>
 
 <body>
-<?php echo $_SERVER['DOCUMENT_ROOT']; ?>
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="row w-100 m-0">
         <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
-          <div class="card col-lg-4 mx-auto">
+          <div class="card shadow col-lg-4 mx-auto special-card">
             <div class="card-body px-5 py-5">
               <h3 class="card-title text-left mb-3">Login</h3>
               <form>
                 <div class="form-group">
-                  <label>Username or email *</label>
-                  <input type="text" class="form-control p_input">
+                  <label>Username *</label>
+                  <input type="text" id="inputUsername" name="inputUsername" class="form-control p_input">
                 </div>
                 <div class="form-group">
                   <label>Password *</label>
-                  <input type="text" class="form-control p_input">
+                  <input type="password" id="inputPW" name="inputPW" class="form-control p_input">
                 </div>
                 <div class="form-group d-flex align-items-center justify-content-between">
                   <div class="form-check">
@@ -37,15 +31,8 @@ include "admin/template_parts/header.php";
                   <a href="#" class="forgot-pass">Forgot password</a>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
+                  <button type="button" id="login_btn" name="login_btn" class="btn btn-lg btn-primary btn-block">Login</button>
                 </div>
-                <div class="d-flex">
-                  <button class="btn btn-facebook mr-2 col">
-                    <i class="mdi mdi-facebook"></i> Facebook </button>
-                  <button class="btn btn-google col">
-                    <i class="mdi mdi-google-plus"></i> Google plus </button>
-                </div>
-                <p class="sign-up">Don't have an Account?<a href="#"> Sign Up</a></p>
               </form>
             </div>
           </div>
@@ -56,19 +43,10 @@ include "admin/template_parts/header.php";
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-  <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page -->
-  <!-- End plugin js for this page -->
-  <!-- inject:js -->
-  <script src="../../assets/js/off-canvas.js"></script>
-  <script src="../../assets/js/hoverable-collapse.js"></script>
-  <script src="../../assets/js/misc.js"></script>
-  <script src="../../assets/js/settings.js"></script>
-  <script src="../../assets/js/todolist.js"></script>
-  <!-- endinject -->
+
+  <?php
+  include "template_parts/footer.php";
+  ?>
 </body>
 
 </html>

@@ -2330,6 +2330,28 @@ $(document).ready(function () {
 
   });
 
+  // login
+  $("#login_btn").click(function (e) { 
+    e.preventDefault();
+    username = $("#inputUsername").val();
+    pw = $("#inputPW").val();
+    var data_bandle = "username=" + username + "&pw=" + pw;
+    $.ajax({
+      type: "post",
+      url: "login_handler.php",
+      data: data_bandle,
+      success: function (response) {
+        window.location.href = response;
+      }
+    });
+  });
+
+  // logout
+  $("#logout").click(function (e) { 
+    e.preventDefault();
+    window.location.href = "logout.php";
+  });
+
   // villager registration 2
   // redirect to villager registration step2
   $("#addexistAVMember").click(function (e) {
