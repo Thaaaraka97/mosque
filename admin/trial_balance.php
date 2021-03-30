@@ -301,8 +301,8 @@ foreach ($before_collection17 as $before_collection17_item) {
                             }
                             $collection8_total = 0;
                             foreach ($collection8 as $collection8_item) {
-                              $income = (float)$income + (float)$collection8_item['fr_amount'];
-                              $collection8_total = $collection8_total + (float)$collection8_item['fr_amount'];                              
+                              $income = (float)$income + (float)$collection8_item['funds_amount'];
+                              $collection8_total = $collection8_total + (float)$collection8_item['funds_amount'];                              
                             }
                             if ($collection8_total != 0) {
                               echo "

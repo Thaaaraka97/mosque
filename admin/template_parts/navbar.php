@@ -142,7 +142,7 @@
             <div class="collapse" id="collection-dropdown">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_collector-collection.php"> Saandha Collctor Collections </a>
+                        <a class="nav-link" href="preview_collector-collection.php"> Saandha Collector Collections </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_friday-collection.php?action=fridayregular"> Friday Collection </a>

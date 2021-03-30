@@ -12,7 +12,6 @@ $action = $_GET['action'] ?? $_GET['action'];
 ?>
 <script type="text/javascript">
     var action = "<?php echo $action; ?>";
-    
 </script>
 
 <body>
@@ -139,107 +138,146 @@ $action = $_GET['action'] ?? $_GET['action'];
                                                     </thead>
                                                     <tbody>
                                                         <?php
+                                                        $collection2_total = 0;
                                                         foreach ($collection2 as $collection2_item) {
-                                                            echo "
-                                                              <tr>
-                                                                <td> Expenses - " . $collection2_item['ex_type'] . "</td>
-                                                                <td> - </td>
-                                                                <td>" . $collection2_item['ex_amount'] . "</td>
-                                                            </tr>
-                                                              ";
                                                             $expense = (float)$expense + (float)$collection2_item['ex_amount'];
+                                                            $collection2_total = $collection2_total + (float)$collection2_item['ex_amount'];
                                                         }
+                                                        if ($collection2_total != 0) {
+                                                            echo "
+                                                            <tr>
+                                                              <td> Expenses </td>
+                                                              <td> - </td>
+                                                              <td>" . $collection2_total . "</td>
+                                                          </tr>
+                                                            ";
+                                                        }
+                                                        $collection3_total = 0;
                                                         foreach ($collection3 as $collection3_item) {
-                                                            echo "
-                                                              <tr>
-                                                                <td> Kanduri Collection </td>
-                                                                <td> " . $collection3_item['kc_amount'] . " </td>
-                                                                <td> - </td>
-                                                            </tr>
-                                                              ";
                                                             $income = (float)$income + (float)$collection3_item['kc_amount'];
+                                                            $collection3_total = $collection3_total + (float)$collection3_item['kc_amount'];
                                                         }
+                                                        if ($collection3_total != 0) {
+                                                            echo "
+                                                            <tr>
+                                                                <td> Kanduri Collection </td>
+                                                                <td> " . $collection3_total . " </td>
+                                                                <td> - </td>
+                                                            </tr>
+                                                                ";
+                                                        }
+                                                        $collection6_total = 0;
                                                         foreach ($collection6 as $collection6_item) {
-                                                            echo "
-                                                              <tr>
-                                                                <td> Friday Collection Donation </td>
-                                                                <td> " . $collection6_item['fd_amount'] . " </td>
-                                                                <td> - </td>
-                                                            </tr>
-                                                              ";
-                                                            $income = (float)$income + (float)$collection6_item['fd_amount'];
+                                                        $income = (float)$income + (float)$collection6_item['fd_amount'];
+                                                        $collection6_total = $collection6_total + (float)$collection6_item['fd_amount'];                              
                                                         }
+                                                        if ($collection6_total != 0) {
+                                                        echo "
+                                                            <tr>
+                                                            <td> Friday Collection Donation </td>
+                                                            <td> " . $collection6_total . " </td>
+                                                            <td> - </td>
+                                                        </tr>
+                                                            ";
+                                                        }
+                                                        $collection7_total = 0;
                                                         foreach ($collection7 as $collection7_item) {
-                                                            echo "
-                                                              <tr>
-                                                                <td> Friday Collection Regular </td>
-                                                                <td> " . $collection7_item['fr_amount'] . " </td>
-                                                                <td> - </td>
-                                                            </tr>
-                                                              ";
-                                                            $income = (float)$income + (float)$collection7_item['fr_amount'];
+                                                        $income = (float)$income + (float)$collection7_item['fr_amount'];
+                                                        $collection7_total = $collection7_total + (float)$collection7_item['fr_amount'];                              
                                                         }
+                                                        if ($collection7_total != 0) {
+                                                        echo "
+                                                            <tr>
+                                                            <td> Friday Collection Regular </td>
+                                                            <td> " . $collection7_total . " </td>
+                                                            <td> - </td>
+                                                        </tr>
+                                                            ";
+                                                        }
+                                                        $collection8_total = 0;
                                                         foreach ($collection8 as $collection8_item) {
-                                                            echo "
-                                                              <tr>
-                                                                <td> Funds - " . $collection8_item['funds_type'] . " </td>
-                                                                <td> " . $collection8_item['funds_amount'] . " </td>
-                                                                <td> - </td>
-                                                            </tr>
-                                                              ";
-                                                            $income = (float)$income + (float)$collection8_item['funds_amount'];
+                                                        $income = (float)$income + (float)$collection8_item['funds_amount'];
+                                                        $collection8_total = $collection8_total + (float)$collection8_item['funds_amount'];                              
                                                         }
+                                                        if ($collection8_total != 0) {
+                                                        echo "
+                                                            <tr>
+                                                            <td> Funds  </td>
+                                                            <td> " . $collection8_total . " </td>
+                                                            <td> - </td>
+                                                        </tr>
+                                                            ";
+                                                        }
+                                                        $collection9_total = 0;
                                                         foreach ($collection9 as $collection9_item) {
-                                                            echo "
-                                                              <tr>
-                                                                <td> Laylat al-Qadr Collection </td>
-                                                                <td> " . $collection9_item['lk_amount'] . " </td>
-                                                                <td> - </td>
-                                                            </tr>
-                                                              ";
-                                                            $income = (float)$income + (float)$collection9_item['lk_amount'];
+                                                        $income = (float)$income + (float)$collection9_item['lk_amount'];
+                                                        $collection9_total = $collection9_total + (float)$collection9_item['lk_amount'];
                                                         }
+                                                        if ($collection9_total != 0) {
+                                                        echo "
+                                                            <tr>
+                                                            <td> Laylat al-Qadr Collection </td>
+                                                            <td> " . $collection9_total . " </td>
+                                                            <td> - </td>
+                                                        </tr>
+                                                            ";
+                                                        }
+                                                        $collection12_total = 0;
                                                         foreach ($collection12 as $collection12_item) {
-                                                            echo "
-                                                              <tr>
-                                                                <td> Non-Mahalla Saandha Collections </td>
-                                                                <td> " . $collection12_item['nms_amount'] . " </td>
-                                                                <td> - </td>
-                                                            </tr>
-                                                              ";
-                                                            $income = (float)$income + (float)$collection12_item['nms_amount'];
+                                                        $income = (float)$income + (float)$collection12_item['nms_amount'];
+                                                        $collection12_total = $collection12_total + (float)$collection12_item['nms_amount'];
                                                         }
+                                                        if ($collection12_total != 0) {
+                                                        echo "
+                                                            <tr>
+                                                            <td> Non-Mahalla Saandha Collections </td>
+                                                            <td> " . $collection12_total . " </td>
+                                                            <td> - </td>
+                                                        </tr>
+                                                            ";
+                                                        }
+                                                        $collection14_total = 0;
                                                         foreach ($collection14 as $collection14_item) {
-                                                            echo "
-                                                              <tr>
-                                                                <td> Rental Income </td>
-                                                                <td> " . $collection14_item['ri_payment'] . " </td>
-                                                                <td> - </td>
-                                                            </tr>
-                                                              ";
-                                                            $income = (float)$income + (float)$collection14_item['ri_payment'];
+                                                        $income = (float)$income + (float)$collection14_item['ri_payment'];
+                                                        $collection14_total = $collection14_total + (float)$collection14_item['ri_payment'];                              
                                                         }
+                                                        if ($collection14_total != 0) {
+                                                        echo "
+                                                            <tr>
+                                                            <td> Rental Income </td>
+                                                            <td> " . $collection14_total . " </td>
+                                                            <td> - </td>
+                                                        </tr>
+                                                            ";
+                                                        }
+                                                        $collection15_total = 0;
                                                         foreach ($collection15 as $collection15_item) {
-                                                            echo "
-                                                              <tr>
-                                                                <td> Saandha Collection </td>
-                                                                <td> " . $collection15_item['collection_paidAmount'] . " </td>
-                                                                <td> - </td>
-                                                            </tr>
-                                                              ";
-                                                            $income = (float)$income + (float)$collection15_item['collection_paidAmount'];
+                                                        $income = (float)$income + (float)$collection15_item['collection_paidAmount'];
+                                                        $collection15_total = $collection15_total + (float)$collection15_item['collection_paidAmount'];
                                                         }
+                                                        if ($collection15_total != 0) {
+                                                        echo "
+                                                            <tr>
+                                                            <td> Saandha Collection </td>
+                                                            <td> " . $collection15_total . " </td>
+                                                            <td> - </td>
+                                                        </tr>
+                                                            ";
+                                                        }
+                                                        $collection17_total = 0;
                                                         foreach ($collection17 as $collection17_item) {
-                                                            echo "
-                                                              <tr>
-                                                                <td> Undiyal Collection </td>
-                                                                <td> " . $collection17_item['uc_amount'] . " </td>
-                                                                <td> - </td>
-                                                            </tr>
-                                                              ";
-                                                            $income = (float)$income + (float)$collection17_item['uc_amount'];
+                                                        $income = (float)$income + (float)$collection17_item['uc_amount'];
+                                                        $collection17_total = $collection17_total + (float)$collection17_item['uc_amount'];
                                                         }
-                                                        echo "income = " . $income . "<br>Expense = " . $expense;
+                                                        if ($collection17_total != 0) {
+                                                        echo "
+                                                            <tr>
+                                                            <td> Undiyal Collection </td>
+                                                            <td> " . $collection17_total . " </td>
+                                                            <td> - </td>
+                                                        </tr>
+                                                            ";
+                                                        }
 
                                                         ?>
                                                     </tbody>

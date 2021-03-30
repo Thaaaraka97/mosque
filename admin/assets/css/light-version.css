@@ -198,3 +198,7 @@ table.previewTable {
     padding-left: 50px;
     float: none;
 }
+
+.sidebar {
+  width: 300px;
+}
