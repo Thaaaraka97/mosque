@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 include "template_parts/header.php";
-session_start();
+// session_start();
 
 ?>
 
