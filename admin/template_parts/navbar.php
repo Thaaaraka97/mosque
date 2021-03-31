@@ -57,6 +57,9 @@
         </li>
         
         <li class="nav-item menu-items">
+            <a class="nav-link" href="<?php $server_name ?>dashboard.php"> <span class="menu-icon"> <i class="mdi mdi-speedometer"></i> </span> <span class="menu-title"> Dashboard </span> </a>
+        </li>
+        <li class="nav-item menu-items">
             <a class="nav-link" href="<?php $server_name ?>forms.php"> <span class="menu-icon"> <i class="mdi mdi-file-document-box"></i> </span> <span class="menu-title">Forms</span> </a>
         </li>
         <li class="nav-item menu-items">

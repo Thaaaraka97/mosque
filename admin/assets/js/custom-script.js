@@ -336,6 +336,17 @@ $(document).ready(function () {
     // $('.dataTables_length').addClass('bs-select');
   });
 
+  $('#monthly_report').dataTable({
+
+    "ordering": false,
+    "bPaginate": false,
+    language: {
+      search: "_INPUT_",
+      searchPlaceholder: "Search..."
+    },
+  });
+
+
   //   form_nikkah-details-form.php
   // show/hide Groom mosque textbox on radio change
   $("input[type=radio][name=inputGroomVillage]").change(function (e) {
@@ -1896,7 +1907,7 @@ $(document).ready(function () {
       url: "handlers/kanji_ingredients_handler.php",
       data: $("#kanjiingredients").serialize() + "&action=submit_ingredients",
       success: function (response) {
-        window.open(response,'_blank');
+        window.open(response, '_blank');
       },
     });
   });
@@ -1941,7 +1952,7 @@ $(document).ready(function () {
       url: "handlers/kanji_ingredients_handler.php",
       data: $("#kanjipeople").serialize() + "&action=submit_people",
       success: function (response) {
-        window.open(response,'_blank');
+        window.open(response, '_blank');
       },
     });
   });
@@ -2331,7 +2342,7 @@ $(document).ready(function () {
   });
 
   // login
-  $("#login_btn").click(function (e) { 
+  $("#login_btn").click(function (e) {
     e.preventDefault();
     username = $("#inputUsername").val();
     pw = $("#inputPW").val();
@@ -2347,7 +2358,7 @@ $(document).ready(function () {
   });
 
   // logout
-  $("#logout").click(function (e) { 
+  $("#logout").click(function (e) {
     e.preventDefault();
     window.location.href = "logout.php";
   });

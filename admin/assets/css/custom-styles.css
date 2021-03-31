@@ -320,6 +320,29 @@ table.dataTable tbody tr.even {
   overflow: hidden;
   white-space: nowrap;
 }
+#monthly_report.dataTable {
+  border-spacing: 0px 5px !important;
+}
+#monthly_report.table thead th {
+  padding: 15px 10px;
+}
+#monthly_report.table tbody tr td:first-child {
+  vertical-align: middle;
+}
+
+#monthly_report.dataTable tbody tr.odd {
+  background-color: #f1e0ff;
+}
+#monthly_report.dataTable tbody tr.even {
+  background-color: #e5e5e5;
+}
+#monthly_report.table tbody td {
+  padding: 10px 5px;
+  line-height: 4;
+  font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+}
 table.dataTable {
   border-spacing: 0px 5px !important;
 }
@@ -381,4 +404,47 @@ div.modal-footer button.btn-secondary:hover {
 .special-text p{
   font-size: 1em;
   text-align: justify;
+}
+
+
+.board .panel {
+  padding: 30px;
+  border: none;
+  background: #fff;
+}
+.panel-primary {
+  display: inline-block;
+  margin-bottom: 30px;
+  width: 100%;
+}
+.board .icon {
+  float: right;
+}
+.board .panel .icon .fa {
+  font-size: 30px;
+  color: #FFFFFF;
+  background: #30A5FF;
+  padding: 19px;
+}
+.fa {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.col-md-3 {
+  width: 25%;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  
+}
+.board .number {
+  float: left;
+  
 }
