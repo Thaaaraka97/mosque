@@ -2,9 +2,14 @@
 <html lang="en">
 <?php
 include "template_parts/header.php";
-// session_start();
-
+$wrong_user = 0;
+if (isset($_GET['wrong_user'])) {
+    $wrong_user = 1;
+}
 ?>
+<script>
+  var wrong_user = "<?php echo $wrong_user ?>";
+</script>
 
 <body>
   <div class="container-scroller">
@@ -22,6 +27,9 @@ include "template_parts/header.php";
                 <div class="form-group">
                   <label>Password *</label>
                   <input type="password" id="inputPW" name="inputPW" class="form-control p_input">
+                </div>
+                <div class="form-group" id="wrong_user">
+                  <label class="text-danger"> * incorrect username or password </label>
                 </div>
                 <div class="form-group d-flex align-items-center justify-content-between">
                   <div class="form-check">

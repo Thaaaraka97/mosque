@@ -462,3 +462,7 @@ div.modal-footer button.btn-secondary:hover {
 #cardhover div.col-md-6.d-flex.justify-content-center.align-self-center{
   text-align: center !important;
 }
+
+#wrong_user{
+  display: none;
+}

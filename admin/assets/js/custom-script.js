@@ -2369,6 +2369,13 @@ $(document).ready(function () {
     window.location.href = "form_villagers-registration-form-step2.php?fam_id=" + famID;
   });
 
+  if (wrong_user == 1) {
+    $("#wrong_user").show();
+  }
+  else{
+    $("#wrong_user").hide();
+  }
+
 
   // show/ hide div on the change of dropdown list donations
   if (fridaycollectionaction == "fridayregular") {

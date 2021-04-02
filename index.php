@@ -1,10 +1,18 @@
 <?php
 session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: admin/login.php");
-    exit();
+$wrong_user = 0;
+if (isset($_GET['wrong_user'])) {
+    $wrong_user = 1;
 }
-else {
-    header("Location: admin/forms.php");
-    exit(); 
+if (!isset($_SESSION['username'])) {
+    if ($wrong_user == 1) {
+        header("Location: admin/login.php?wrong_user=1");
+        exit();
+    } else {
+        header("Location: admin/login.php");
+        exit();
+    }
+} else {
+    header("Location: admin/dashboard.php");
+    exit();
 }

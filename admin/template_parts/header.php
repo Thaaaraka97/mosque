@@ -58,4 +58,5 @@ $today = date('Y-m-d');
     var is_student = "";
     var av_eduQual = "";
     var TBlistDetails = "";
+    var wrong_user = "";
 </script>
