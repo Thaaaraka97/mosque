@@ -747,11 +747,9 @@ $(document).ready(function () {
         var result_array = response.split("+");
         $("#inputName").val(result_array[0]);
         if (result_array[1] == "M") {
-          $("#inputSexF").removeAttr("checked");
-          $("#inputSexM").attr("checked", "checked");
+          $("#inputSex").val("Male");
         } else {
-          $("#inputSexM").removeAttr("checked");
-          $("#inputSexF").attr("checked", "checked");
+          $("#inputSex").val("Female");
         }
       },
     });

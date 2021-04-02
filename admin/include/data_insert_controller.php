@@ -704,14 +704,116 @@ if (isset($_POST['submitJanaza'])) {
 
     );
     if ($database->insert_data('tbl_janazadetails', $insert_to_tbl_janazadetails)) {
+        // update the person as a deceased
         $update_data = array(
-            'av_aliveOrDeceased' => mysqli_real_escape_string($database->con, 0)
+            'av_aliveOrDeceased' => mysqli_real_escape_string($database->con, 0),
+            'av_isGuardian' => mysqli_real_escape_string($database->con, 0),
+            'av_guardianIndex' => mysqli_real_escape_string($database->con, 0),
+            'av_guardianRelationship' => mysqli_real_escape_string($database->con, "0")
         );
         $where_condition = array(
             'av_index'     =>     $_POST["inputIndexNoDeceased"],
             'av_subDivision'     =>     $_POST["inputJanazaSubdivision"]
         );
         if ($database->update("tbl_allvillagers", $update_data, $where_condition)) {
+            // retrieve family id
+            $family_id = "";
+            $where = array(
+                'av_index'     =>     $_POST["inputIndexNoDeceased"],
+                'av_subDivision'     =>     $_POST["inputJanazaSubdivision"]
+            );
+            $person_details = $database->select_where("tbl_allvillagers", $where);
+            foreach ($person_details as $person_details_item) {
+                $family_id = $person_details_item["av_FamilyID"];
+            }
+            // retrieve other members according to family id
+            $max_age = 0;
+            $max_index = 0;
+            $max_sub = "";
+            $where = array(
+                'av_FamilyID'     =>     $family_id,
+                'av_gender'     =>     'M',
+                'av_aliveOrDeceased'     =>     1
+
+            );
+            $person_details = $database->select_where("tbl_allvillagers", $where);
+            foreach ($person_details as $person_details_item) {
+                $dob = $person_details_item["av_dob"];
+                $index = $person_details_item["av_index"];
+                $sub = $person_details_item["av_subDivision"];
+                $age = date_diff(date_create($dob), date_create($today));
+                $age = $age->format('%y');
+                if ($age > $max_age) {
+                    $max_age = $age;
+                    $max_index = $index;
+                    $max_sub = $sub;
+                }
+            }
+            // update guardian information
+            if ((int)$max_age >= 18) {
+                $update_data = array(
+                    'av_isGuardian' => mysqli_real_escape_string($database->con, 1),
+                    'av_guardianIndex' => mysqli_real_escape_string($database->con, 0),
+                    'av_guardianRelationship' => mysqli_real_escape_string($database->con, "Guardian")
+                );
+                $where_condition = array(
+                    'av_index'     =>     $max_index,
+                    'av_subDivision'     =>     $max_sub
+                );
+                $database->update("tbl_allvillagers", $update_data, $where_condition);
+            } else {
+                $where = array(
+                    'av_FamilyID'     =>     $family_id,
+                    'av_gender'     =>     'F',
+                    'av_aliveOrDeceased'     =>     1
+
+                );
+                $person_details = $database->select_where("tbl_allvillagers", $where);
+                foreach ($person_details as $person_details_item) {
+                    $dob = $person_details_item["av_dob"];
+                    $index = $person_details_item["av_index"];
+                    $sub = $person_details_item["av_subDivision"];
+                    $age = date_diff(date_create($dob), date_create($today));
+                    $age = $age->format('%y');
+                    if ($age > $max_age) {
+                        $max_age = $age;
+                        $max_index = $index;
+                        $max_sub = $sub;
+                    }
+                }
+                if ((int)$max_age >= 18) {
+                    $update_data = array(
+                        'av_isGuardian' => mysqli_real_escape_string($database->con, 1),
+                        'av_guardianIndex' => mysqli_real_escape_string($database->con, 0),
+                        'av_guardianRelationship' => mysqli_real_escape_string($database->con, "Guardian")
+                    );
+                    $where_condition = array(
+                        'av_index'     =>     $max_index,
+                        'av_subDivision'     =>     $max_sub
+                    );
+                    $database->update("tbl_allvillagers", $update_data, $where_condition);
+                }
+            }
+            $where = array(
+                'av_FamilyID'     =>     $family_id,
+                'av_aliveOrDeceased'     =>     1,
+                'av_isGuardian'     =>     0
+            );
+            $person_details = $database->select_where("tbl_allvillagers", $where);
+            foreach ($person_details as $person_details_item) {
+                $index = $person_details_item["av_index"];
+                $sub = $person_details_item["av_subDivision"];
+                $update_data = array(
+                    'av_guardianIndex' => mysqli_real_escape_string($database->con, $max_index),
+                    'av_guardianRelationship' => mysqli_real_escape_string($database->con, "Not Announced")
+                );
+                $where_condition = array(
+                    'av_index'     =>     $index,
+                    'av_subDivision'     =>     $sub
+                );
+                $database->update("tbl_allvillagers", $update_data, $where_condition);
+            }
+
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }
@@ -1653,8 +1755,7 @@ if (isset($_POST['submitSalary'])) {
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
             }
-        }
-        else {
+        } else {
             if ($_POST["inputPost"] == "Pesh Imaam") {
                 $insert_to_tbl_peshimaamsalary = array(
                     'pSal_peshImaamId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
@@ -1684,10 +1785,9 @@ if (isset($_POST['submitSalary'])) {
             if ($query) {
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-            } 
+            }
         }
-    }
-    else {
+    } else {
         if ((float)$payment <= $due) {
             if ($_POST["inputPost"] == "Pesh Imaam") {
                 $insert_to_tbl_peshimaamsalary = array(
@@ -1719,8 +1819,7 @@ if (isset($_POST['submitSalary'])) {
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
             }
-        }
-        else {
+        } else {
             if ($_POST["inputPost"] == "Pesh Imaam") {
                 $insert_to_tbl_peshimaamsalary = array(
                     'pSal_peshImaamId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
@@ -1746,7 +1845,7 @@ if (isset($_POST['submitSalary'])) {
                     'mSal_PaidFor' => mysqli_real_escape_string($database->con, $paidFor)
                 );
                 $database->insert_data('tbl_muazzinsalary', $insert_to_tbl_muazzinsalary);
-            } 
+            }
             $payment = $payment - $due;
             $payment_count = $payment_count - $due;
             $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
@@ -1914,38 +2013,81 @@ if (isset($_POST['submitSandhaPayment'])) {
     $payment = $_POST['inputPaymentSaandha'];
     $payment_count = $payment;
     $paidFor = $_POST['payedFor'];
-
-    // retrieve current saandha amount
-    $saandha_amount = "";
     $saandha_amount_details = $database->select_data('tbl_saandhaamountfixing');
-    foreach ($saandha_amount_details as $saandha_amount_item) {
-        $saandha_amount = $saandha_amount_item["saf_amount"];
-    }
 
     if ($paidFor == "0") {
         $paidFor = date('Y-M');
-        if ((float)$payment >= (float)$saandha_amount) {
-            // input data into table
-            for ($i = 0; $i < (int)($payment_count / $saandha_amount); $i++) {
+        $loop = true;
+        while ($loop) {
+            // retrive saandha amount relevant to month
+            foreach ($saandha_amount_details as $saandha_amount_item) {
+                $saandha_amount = $saandha_amount_item["saf_amount"];
+                $saf_date = $saandha_amount_item["saf_date"];
+                $saf_date = date_create($saf_date);
+                $date = date_format($saf_date, "Y-M");
+                if ($paidFor == $date) {
+                    $current_saandha_amount = $saandha_amount;
+                    break;
+                } else {
+                    $current_saandha_amount = $saandha_amount;
+                }
+            }
+            if ((float)$payment >= (float)$current_saandha_amount) {
+                $loop = true;
                 $insert_to_tbl_saandhacollection = array(
                     'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
                     'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
                     'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
                     'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-                    'collection_paidAmount' => mysqli_real_escape_string($database->con, $saandha_amount),
+                    'collection_paidAmount' => mysqli_real_escape_string($database->con, $current_saandha_amount),
                     'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
                     'collection_username' => mysqli_real_escape_string($database->con, "user"),
                     'collection_date' => mysqli_real_escape_string($database->con, $today),
                     'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
 
                 );
-                $payment = $payment - $saandha_amount;
+                $payment = $payment - $current_saandha_amount;
                 $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
                 $database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection);
+            } else {
+                $loop = false;
             }
-            // if there is a remaining in payment
-            if ((float)$payment > 0) {
-                $due = (float)$saandha_amount - (float)$payment;
+        }
+        // if there is a remaining in payment
+        if ((float)$payment > 0) {
+            // retrive saandha amount relevant to month
+            foreach ($saandha_amount_details as $saandha_amount_item) {
+                $saandha_amount = $saandha_amount_item["saf_amount"];
+                $saf_date = $saandha_amount_item["saf_date"];
+                $saf_date = date_create($saf_date);
+                $date = date_format($saf_date, "Y-M");
+                if ($paidFor == $date) {
+                    $current_saandha_amount = $saandha_amount;
+                    break;
+                } else {
+                    $current_saandha_amount = $saandha_amount;
+                }
+            }
+            if ($paidFor != date('Y-M')) {
+                $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
+                $due = (float)$current_saandha_amount - (float)$payment;
+                $insert_to_tbl_saandhacollection = array(
+                    'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+                    'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
+                    'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+                    'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+                    'collection_paidAmount' => mysqli_real_escape_string($database->con, $payment),
+                    'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
+                    'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                    'collection_date' => mysqli_real_escape_string($database->con, $today),
+                    'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                );
+                if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
+                    // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                    // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                }
+            } else {
+                $due = (float)$current_saandha_amount - (float)$payment;
                 $insert_to_tbl_saandhacollection = array(
                     'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
                     'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
@@ -1961,27 +2103,10 @@ if (isset($_POST['submitSandhaPayment'])) {
                     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                     echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                 }
-            } else {
-                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
             }
         } else {
-            $due = $saandha_amount - $payment;
-            $insert_to_tbl_saandhacollection = array(
-                'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
-                'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
-                'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-                'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-                'collection_paidAmount' => mysqli_real_escape_string($database->con, $payment),
-                'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
-                'collection_username' => mysqli_real_escape_string($database->con, "user"),
-                'collection_date' => mysqli_real_escape_string($database->con, $today),
-                'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
-            );
-            if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
-                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-            }
+            echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }
     } else {
         if ((float)$payment <= $due) {
@@ -2019,45 +2144,98 @@ if (isset($_POST['submitSandhaPayment'])) {
             $payment = $payment - $due;
             $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
 
-            if ((float)$payment > 0) {
-                for ($i = 0; $i < (int)($payment_count / $saandha_amount); $i++) {
+            $loop = true;
+            while ($loop) {
+                // retrive saandha amount relevant to month
+                foreach ($saandha_amount_details as $saandha_amount_item) {
+                    $saandha_amount = $saandha_amount_item["saf_amount"];
+                    $saf_date = $saandha_amount_item["saf_date"];
+                    $saf_date = date_create($saf_date);
+                    $date = date_format($saf_date, "Y-M");
+                    if ($paidFor == $date) {
+                        $current_saandha_amount = $saandha_amount;
+                        break;
+                    } else {
+                        $current_saandha_amount = $saandha_amount;
+                    }
+                }
+                if ((float)$payment >= (float)$current_saandha_amount) {
+                    $loop = true;
                     $insert_to_tbl_saandhacollection = array(
                         'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
                         'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
                         'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
                         'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-                        'collection_paidAmount' => mysqli_real_escape_string($database->con, $saandha_amount),
+                        'collection_paidAmount' => mysqli_real_escape_string($database->con, $current_saandha_amount),
                         'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
                         'collection_username' => mysqli_real_escape_string($database->con, "user"),
                         'collection_date' => mysqli_real_escape_string($database->con, $today),
                         'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
 
                     );
-                    $payment = $payment - $saandha_amount;
+                    $payment = $payment - $current_saandha_amount;
                     $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
                     $database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection);
+                } else {
+                    $loop = false;
                 }
             }
+            // if there is a remaining in payment
             if ((float)$payment > 0) {
-                $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
-                $due = $saandha_amount - $payment;
-                $insert_to_tbl_saandhacollection = array(
-                    'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
-                    'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
-                    'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
-                    'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
-                    'collection_paidAmount' => mysqli_real_escape_string($database->con, $payment),
-                    'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
-                    'collection_username' => mysqli_real_escape_string($database->con, "user"),
-                    'collection_date' => mysqli_real_escape_string($database->con, $today),
-                    'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
-
-                );
-                if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
-                    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-                    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                // retrive saandha amount relevant to month
+                foreach ($saandha_amount_details as $saandha_amount_item) {
+                    $saandha_amount = $saandha_amount_item["saf_amount"];
+                    $saf_date = $saandha_amount_item["saf_date"];
+                    $saf_date = date_create($saf_date);
+                    $date = date_format($saf_date, "Y-M");
+                    if ($paidFor == $date) {
+                        $current_saandha_amount = $saandha_amount;
+                        break;
+                    } else {
+                        $current_saandha_amount = $saandha_amount;
+                    }
                 }
+                if ($paidFor != date('Y-M')) {
+                    $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
+                    $due = (float)$current_saandha_amount - (float)$payment;
+                    $insert_to_tbl_saandhacollection = array(
+                        'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+                        'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
+                        'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+                        'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+                        'collection_paidAmount' => mysqli_real_escape_string($database->con, $payment),
+                        'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
+                        'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                        'collection_date' => mysqli_real_escape_string($database->con, $today),
+                        'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                    );
+                    if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
+                        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                    }
+                } else {
+                    $due = (float)$current_saandha_amount - (float)$payment;
+                    $insert_to_tbl_saandhacollection = array(
+                        'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
+                        'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
+                        'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+                        'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+                        'collection_paidAmount' => mysqli_real_escape_string($database->con, $payment),
+                        'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
+                        'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                        'collection_date' => mysqli_real_escape_string($database->con, $today),
+                        'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
+                    );
+                    if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
+                        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                    }
+                }
+            } else {
+                echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
             }
+
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }

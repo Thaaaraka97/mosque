@@ -298,7 +298,19 @@ a.brand-logo-mini {
   color: #111;
 }
 .total-td {
-  width: 15%;
+  width: 18%;
+}
+.total-td div {
+  padding: 10px;
+  padding-left: 35px;
+  padding-right: 20px;
+  background-color: #191c24;
+  border-radius: 100px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.total-td div p {
+  color: white !important;
+  font-weight: 500;
 }
 .table-data2.table thead th {
   padding: 15px 10px;
@@ -395,17 +407,16 @@ div.modal-footer button.btn-secondary:hover {
   border-color: #4c5357;
 }
 
-.special-text{
+.special-text {
   color: black;
   font-weight: 500;
   font-style: italic;
   padding: 30px;
 }
-.special-text p{
+.special-text p {
   font-size: 1em;
   text-align: justify;
 }
-
 
 .board .panel {
   padding: 30px;
@@ -420,16 +431,16 @@ div.modal-footer button.btn-secondary:hover {
 .board .icon {
   float: right;
 }
-.board .panel .icon .fa {
+.board .panel .icon .fa, .fas, .fab {
   font-size: 30px;
-  color: #FFFFFF;
-  background: #30A5FF;
+  color: #ffffff;
+  background: #30a5ff;
   padding: 19px;
 }
-.fa {
+.fa, .fas, .fab {
   display: inline-block;
   font-style: normal;
-  font-weight: normal;
+  /* font-weight: normal; */
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -442,9 +453,12 @@ div.modal-footer button.btn-secondary:hover {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  
 }
 .board .number {
   float: left;
-  
+  width: 65%;
+}
+
+#cardhover div.col-md-6.d-flex.justify-content-center.align-self-center{
+  text-align: center !important;
 }

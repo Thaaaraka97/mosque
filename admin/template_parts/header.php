@@ -23,6 +23,8 @@ $today = date('Y-m-d');
     <link rel="stylesheet" href="<?php $server_name ?>assets/vendors/owl-carousel-2/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php $server_name ?>assets/vendors/owl-carousel-2/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->

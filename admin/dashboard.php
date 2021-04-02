@@ -93,7 +93,7 @@ include "template_parts/header.php";
                     <a href="<?php echo $server_name ?>form_saandha-collection.php" class="">Open ...</a>
                   </div>
                   <div class="icon">
-                    <i class="fa fa-eye fa-5x red"></i>
+                    <i class="fas fa-hand-holding-usd fa-5x red"></i>
                   </div>
                 </div>
               </div>
@@ -106,7 +106,7 @@ include "template_parts/header.php";
                     <a href="<?php echo $server_name ?>form_collector-settlement.php" class="">Open ...</a>
                   </div>
                   <div class="icon">
-                    <i class="fa fa-eye fa-5x red"></i>
+                    <i class="fab fa-paypal fa-5x red"></i>
                   </div>
                 </div>
               </div>
@@ -119,7 +119,7 @@ include "template_parts/header.php";
                     <a href="<?php echo $server_name ?>form_villagers-registration-form.php" class="">Open ...</a>
                   </div>
                   <div class="icon">
-                    <i class="fa fa-eye fa-5x red"></i>
+                    <i class="fas fa-info-circle fa-5x red"></i>
                   </div>
                 </div>
               </div>
@@ -132,7 +132,7 @@ include "template_parts/header.php";
                     <a href="<?php echo $server_name ?>form_friday-collection.php" class="">Open ...</a>
                   </div>
                   <div class="icon">
-                    <i class="fa fa-eye fa-5x red"></i>
+                    <i class="fas fa-hand-holding-usd fa-5x red"></i>
                   </div>
                 </div>
               </div>
@@ -144,10 +144,10 @@ include "template_parts/header.php";
                 <div class="panel panel-primary d-flex justify-content-center align-items-center">
                   <div class="number">
                     <h5>Trusteeboard Details</h5>
-                    <a href="<?php echo $server_name ?>form_villagers-registration-form.php" class="">Open ...</a>
+                    <a href="<?php echo $server_name ?>form_trustee-board-form.php" class="">Open ...</a>
                   </div>
                   <div class="icon">
-                    <i class="fa fa-eye fa-5x red"></i>
+                    <i class="fas fa-info-circle fa-5x red"></i>
                   </div>
                 </div>
               </div>
@@ -157,10 +157,10 @@ include "template_parts/header.php";
               <div class="panel panel-primary">
                   <div class="number pt-3">
                     <h5>Bhayan Details</h5>
-                    <a href="<?php echo $server_name ?>form_villagers-registration-form.php" class="">Open ...</a>
+                    <a href="<?php echo $server_name ?>form_bhayan-details.php" class="">Open ...</a>
                   </div>
                   <div class="icon">
-                    <i class="fa fa-eye fa-5x red"></i>
+                    <i class="fas fa-info-circle fa-5x red"></i>
                   </div>
                 </div>
               </div>
@@ -170,10 +170,10 @@ include "template_parts/header.php";
               <div class="panel panel-primary">
                   <div class="number pt-3">
                     <h5>Bills</h5>
-                    <a href="<?php echo $server_name ?>form_villagers-registration-form.php" class="">Open ...</a>
+                    <a href="<?php echo $server_name ?>form_bills.php" class="">Open ...</a>
                   </div>
                   <div class="icon">
-                    <i class="fa fa-eye fa-5x red"></i>
+                    <i class="fas fa-file-invoice-dollar fa-5x red"></i>
                   </div>
                 </div>
               </div>
@@ -183,10 +183,10 @@ include "template_parts/header.php";
                 <div class="panel panel-primary d-flex justify-content-center align-items-center">
                   <div class="number">
                     <h5>Saandha Collector Registration</h5>
-                    <a href="<?php echo $server_name ?>form_villagers-registration-form.php" class="">Open ...</a>
+                    <a href="<?php echo $server_name ?>form_saandha-collector-registration.php" class="">Open ...</a>
                   </div>
                   <div class="icon">
-                    <i class="fa fa-eye fa-5x red"></i>
+                    <i class="fas fa-registered  fa-5x red"></i>
                   </div>
                 </div>
               </div>
@@ -196,12 +196,12 @@ include "template_parts/header.php";
             <div class="col-md-3 col-sm-12 col-xs-12">
               <div class="board">
               <div class="panel panel-primary">
-                  <div class="number pt-3">
+                  <div class="number">
                     <h5>Pesh Imaam Details</h5>
-                    <a href="<?php echo $server_name ?>form_villagers-registration-form.php" class="">Open ...</a>
+                    <a href="<?php echo $server_name ?>form_pesh-imaam-details.php" class="">Open ...</a>
                   </div>
                   <div class="icon">
-                    <i class="fa fa-eye fa-5x red"></i>
+                    <i class="fas fa-info-circle fa-5x red"></i>
                   </div>
                 </div>
               </div>
@@ -211,10 +211,10 @@ include "template_parts/header.php";
               <div class="panel panel-primary">
                   <div class="number pt-3">
                     <h5>Muazzin Details</h5>
-                    <a href="<?php echo $server_name ?>form_villagers-registration-form.php" class="">Open ...</a>
+                    <a href="<?php echo $server_name ?>form_muazzin-details.php" class="">Open ...</a>
                   </div>
                   <div class="icon">
-                    <i class="fa fa-eye fa-5x red"></i>
+                    <i class="fas fa-info-circle fa-5x red"></i>
                   </div>
                 </div>
               </div>
@@ -224,10 +224,10 @@ include "template_parts/header.php";
               <div class="panel panel-primary">
                   <div class="number pt-3">
                     <h5>Priest Salary</h5>
-                    <a href="<?php echo $server_name ?>form_villagers-registration-form.php" class="">Open ...</a>
+                    <a href="<?php echo $server_name ?>form_salary.php" class="">Open ...</a>
                   </div>
                   <div class="icon">
-                    <i class="fa fa-eye fa-5x red"></i>
+                    <i class="fab fa-paypal fa-5x red"></i>
                   </div>
                 </div>
               </div>
@@ -237,10 +237,10 @@ include "template_parts/header.php";
                 <div class="panel panel-primary d-flex justify-content-center align-items-center">
                   <div class="number">
                     <h5>Board Member Donations</h5>
-                    <a href="<?php echo $server_name ?>form_villagers-registration-form.php" class="">Open ...</a>
+                    <a href="<?php echo $server_name ?>form_board-member-donations.php" class="">Open ...</a>
                   </div>
                   <div class="icon">
-                    <i class="fa fa-eye fa-5x red"></i>
+                    <i class="fas fa-donate fa-5x red"></i>
                   </div>
                 </div>
               </div>
@@ -252,10 +252,205 @@ include "template_parts/header.php";
                 <div class="panel panel-primary d-flex justify-content-center align-items-center">
                   <div class="number">
                     <h5>Non-Mahalla Saandha Collection</h5>
+                    <a href="<?php echo $server_name ?>form_nonmahalla_saandha_collection.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                  <i class="fas fa-hand-holding-usd fa-3x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-header">
+            <h3 class="page-title"> Preview Pages </h3>
+
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+                <div class="panel panel-primary">
+                  <div class="number pt-3">
+                    <h5>Saandha Collector</h5>
+                    <a href="<?php echo $server_name ?>form_saandha-collection.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-hand-holding-usd fa-5x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+                <div class="panel panel-primary d-flex justify-content-center align-items-center">
+                  <div class="number">
+                    <h5>Saandha Collector Settlements</h5>
+                    <a href="<?php echo $server_name ?>form_collector-settlement.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                    <i class="fab fa-paypal fa-5x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+                <div class="panel panel-primary d-flex justify-content-center align-items-center">
+                  <div class="number">
+                    <h5>Membership Details</h5>
                     <a href="<?php echo $server_name ?>form_villagers-registration-form.php" class="">Open ...</a>
                   </div>
                   <div class="icon">
-                    <i class="fa fa-eye fa-5x red"></i>
+                    <i class="fas fa-info-circle fa-5x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+                <div class="panel panel-primary">
+                  <div class="number pt-3">
+                    <h5>Friday Collection</h5>
+                    <a href="<?php echo $server_name ?>form_friday-collection.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-hand-holding-usd fa-5x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+                <div class="panel panel-primary d-flex justify-content-center align-items-center">
+                  <div class="number">
+                    <h5>Trusteeboard Details</h5>
+                    <a href="<?php echo $server_name ?>form_trustee-board-form.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-info-circle fa-5x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+              <div class="panel panel-primary">
+                  <div class="number pt-3">
+                    <h5>Bhayan Details</h5>
+                    <a href="<?php echo $server_name ?>form_bhayan-details.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-info-circle fa-5x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+              <div class="panel panel-primary">
+                  <div class="number pt-3">
+                    <h5>Bills</h5>
+                    <a href="<?php echo $server_name ?>form_bills.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-file-invoice-dollar fa-5x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+                <div class="panel panel-primary d-flex justify-content-center align-items-center">
+                  <div class="number">
+                    <h5>Saandha Collector Registration</h5>
+                    <a href="<?php echo $server_name ?>form_saandha-collector-registration.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-registered  fa-5x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+              <div class="panel panel-primary">
+                  <div class="number">
+                    <h5>Pesh Imaam Details</h5>
+                    <a href="<?php echo $server_name ?>form_pesh-imaam-details.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-info-circle fa-5x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+              <div class="panel panel-primary">
+                  <div class="number pt-3">
+                    <h5>Muazzin Details</h5>
+                    <a href="<?php echo $server_name ?>form_muazzin-details.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-info-circle fa-5x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+              <div class="panel panel-primary">
+                  <div class="number pt-3">
+                    <h5>Priest Salary</h5>
+                    <a href="<?php echo $server_name ?>form_salary.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                    <i class="fab fa-paypal fa-5x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+                <div class="panel panel-primary d-flex justify-content-center align-items-center">
+                  <div class="number">
+                    <h5>Board Member Donations</h5>
+                    <a href="<?php echo $server_name ?>form_board-member-donations.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-donate fa-5x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+                <div class="panel panel-primary d-flex justify-content-center align-items-center">
+                  <div class="number">
+                    <h5>Non-Mahalla Saandha Collection</h5>
+                    <a href="<?php echo $server_name ?>form_nonmahalla_saandha_collection.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                  <i class="fas fa-hand-holding-usd fa-3x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+                <div class="panel panel-primary d-flex justify-content-center align-items-center">
+                  <div class="number">
+                    <h5>Non-Mahalla Saandha Collection</h5>
+                    <a href="<?php echo $server_name ?>form_nonmahalla_saandha_collection.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                  <i class="fas fa-hand-holding-usd fa-3x red"></i>
                   </div>
                 </div>
               </div>
