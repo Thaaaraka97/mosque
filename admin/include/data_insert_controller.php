@@ -704,13 +704,30 @@ if (isset($_POST['submitJanaza'])) {
 
     );
     if ($database->insert_data('tbl_janazadetails', $insert_to_tbl_janazadetails)) {
-        // update the person as a deceased
-        $update_data = array(
-            'av_aliveOrDeceased' => mysqli_real_escape_string($database->con, 0),
-            'av_isGuardian' => mysqli_real_escape_string($database->con, 0),
-            'av_guardianIndex' => mysqli_real_escape_string($database->con, 0),
-            'av_guardianRelationship' => mysqli_real_escape_string($database->con, "0")
+        $update_data = "";
+        $where = array(
+            'av_index'     =>     $_POST["inputIndexNoDeceased"],
+            'av_subDivision'     =>     $_POST["inputJanazaSubdivision"]
         );
+        $person_details = $database->select_where("tbl_allvillagers", $where);
+        foreach ($person_details as $person_details_item) {
+            $is_guardian = $person_details_item["av_isGuardian"];
+        }
+
+        // update the person as a deceased
+        if ($is_guardian == "1") {
+            $update_data = array(
+                'av_aliveOrDeceased' => mysqli_real_escape_string($database->con, 0),
+                'av_isGuardian' => mysqli_real_escape_string($database->con, 0),
+                'av_guardianIndex' => mysqli_real_escape_string($database->con, 0),
+                'av_guardianRelationship' => mysqli_real_escape_string($database->con, "0")
+            );
+        } else {
+            $update_data = array(
+                'av_aliveOrDeceased' => mysqli_real_escape_string($database->con, 0)
+            );
+        }
+
         $where_condition = array(
             'av_index'     =>     $_POST["inputIndexNoDeceased"],
             'av_subDivision'     =>     $_POST["inputJanazaSubdivision"]
@@ -726,45 +743,14 @@ if (isset($_POST['submitJanaza'])) {
             foreach ($person_details as $person_details_item) {
                 $family_id = $person_details_item["av_FamilyID"];
             }
-            // retrieve other members according to family id
-            $max_age = 0;
-            $max_index = 0;
-            $max_sub = "";
-            $where = array(
-                'av_FamilyID'     =>     $family_id,
-                'av_gender'     =>     'M',
-                'av_aliveOrDeceased'     =>     1
-
-            );
-            $person_details = $database->select_where("tbl_allvillagers", $where);
-            foreach ($person_details as $person_details_item) {
-                $dob = $person_details_item["av_dob"];
-                $index = $person_details_item["av_index"];
-                $sub = $person_details_item["av_subDivision"];
-                $age = date_diff(date_create($dob), date_create($today));
-                $age = $age->format('%y');
-                if ($age > $max_age) {
-                    $max_age = $age;
-                    $max_index = $index;
-                    $max_sub = $sub;
-                }
-            }
-            // update guardian information
-            if ((int)$max_age >= 18) {
-                $update_data = array(
-                    'av_isGuardian' => mysqli_real_escape_string($database->con, 1),
-                    'av_guardianIndex' => mysqli_real_escape_string($database->con, 0),
-                    'av_guardianRelationship' => mysqli_real_escape_string($database->con, "Guardian")
-                );
-                $where_condition = array(
-                    'av_index'     =>     $max_index,
-                    'av_subDivision'     =>     $max_sub
-                );
-                $database->update("tbl_allvillagers", $update_data, $where_condition);
-            } else {
+            if ($is_guardian == "1") {
+                // retrieve other members according to family id
+                $max_age = 0;
+                $max_index = 0;
+                $max_sub = "";
                 $where = array(
                     'av_FamilyID'     =>     $family_id,
-                    'av_gender'     =>     'F',
+                    'av_gender'     =>     'M',
                     'av_aliveOrDeceased'     =>     1
 
                 );
@@ -781,6 +767,7 @@ if (isset($_POST['submitJanaza'])) {
                         $max_sub = $sub;
                     }
                 }
+                // update guardian information
                 if ((int)$max_age >= 18) {
                     $update_data = array(
                         'av_isGuardian' => mysqli_real_escape_string($database->con, 1),
@@ -792,26 +779,58 @@ if (isset($_POST['submitJanaza'])) {
                         'av_subDivision'     =>     $max_sub
                     );
                     $database->update("tbl_allvillagers", $update_data, $where_condition);
+                } else {
+                    $where = array(
+                        'av_FamilyID'     =>     $family_id,
+                        'av_gender'     =>     'F',
+                        'av_aliveOrDeceased'     =>     1
+
+                    );
+                    $person_details = $database->select_where("tbl_allvillagers", $where);
+                    foreach ($person_details as $person_details_item) {
+                        $dob = $person_details_item["av_dob"];
+                        $index = $person_details_item["av_index"];
+                        $sub = $person_details_item["av_subDivision"];
+                        $age = date_diff(date_create($dob), date_create($today));
+                        $age = $age->format('%y');
+                        if ($age > $max_age) {
+                            $max_age = $age;
+                            $max_index = $index;
+                            $max_sub = $sub;
+                        }
+                    }
+                    if ((int)$max_age >= 18) {
+                        $update_data = array(
+                            'av_isGuardian' => mysqli_real_escape_string($database->con, 1),
+                            'av_guardianIndex' => mysqli_real_escape_string($database->con, 0),
+                            'av_guardianRelationship' => mysqli_real_escape_string($database->con, "Guardian")
+                        );
+                        $where_condition = array(
+                            'av_index'     =>     $max_index,
+                            'av_subDivision'     =>     $max_sub
+                        );
+                        $database->update("tbl_allvillagers", $update_data, $where_condition);
+                    }
                 }
-            }
-            $where = array(
-                'av_FamilyID'     =>     $family_id,
-                'av_aliveOrDeceased'     =>     1,
-                'av_isGuardian'     =>     0
-            );
-            $person_details = $database->select_where("tbl_allvillagers", $where);
-            foreach ($person_details as $person_details_item) {
-                $index = $person_details_item["av_index"];
-                $sub = $person_details_item["av_subDivision"];
-                $update_data = array(
-                    'av_guardianIndex' => mysqli_real_escape_string($database->con, $max_index),
-                    'av_guardianRelationship' => mysqli_real_escape_string($database->con, "Not Announced")
+                $where = array(
+                    'av_FamilyID'     =>     $family_id,
+                    'av_aliveOrDeceased'     =>     1,
+                    'av_isGuardian'     =>     0
                 );
-                $where_condition = array(
-                    'av_index'     =>     $index,
-                    'av_subDivision'     =>     $sub
-                );
-                $database->update("tbl_allvillagers", $update_data, $where_condition);
+                $person_details = $database->select_where("tbl_allvillagers", $where);
+                foreach ($person_details as $person_details_item) {
+                    $index = $person_details_item["av_index"];
+                    $sub = $person_details_item["av_subDivision"];
+                    $update_data = array(
+                        'av_guardianIndex' => mysqli_real_escape_string($database->con, $max_index),
+                        'av_guardianRelationship' => mysqli_real_escape_string($database->con, "Not Announced")
+                    );
+                    $where_condition = array(
+                        'av_index'     =>     $index,
+                        'av_subDivision'     =>     $sub
+                    );
+                    $database->update("tbl_allvillagers", $update_data, $where_condition);
+                }
             }
 
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";

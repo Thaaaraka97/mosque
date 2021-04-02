@@ -477,7 +477,6 @@ foreach ($before_collection17 as $before_collection17_item) {
                                   <td> " . $total_expense . " </td>
                               </tr>
                                 ";
-                            echo $total_income . "<br>". $total_expense;
                             ?>
                           </tbody>
                         </table>

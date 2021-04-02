@@ -80,22 +80,6 @@ if (isset($_GET['edited'])) {
                                     <div class="text-center">
                                         <div>
                                             <div class="table-responsive table-responsive-data2">
-                                                <div class="sorting">
-                                                    <div class="row">
-                                                        <div class="form-group col-md-1">
-                                                            <label for="sortvillagersubdivision">Sort By</label>
-                                                        </div>
-                                                        <div class="form-group col-md-3">
-                                                            <select name="sortvillagersubdivision" id="sortvillagersubdivision" class="form-control">
-                                                                <option value="0" selected>Time</option>
-                                                                <option value="widow" <?= $action == 'widow' ? ' selected="selected"' : ''; ?>>Widow Details</option>
-                                                                <option value="divorse" <?= $action == 'divorse' ? ' selected="selected"' : ''; ?>>Divorsed Details</option>
-                                                                <option value="madrasa" <?= $action == 'madrasa' ? ' selected="selected"' : ''; ?>>Madrasa Children Details</option>
-                                                                <option value="orphan" <?= $action == 'orphan' ? ' selected="selected"' : ''; ?>>Orphan Children Details</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <table class="table table-data2">
                                                     <thead>
                                                         <tr>

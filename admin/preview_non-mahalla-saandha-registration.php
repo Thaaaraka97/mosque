@@ -88,10 +88,7 @@ elseif (isset($_GET['edited'])) {
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <div class="w-100 text-right">
-                                            <button class='btn btn-success btn-md ' data-toggle='modal' data-target='#addRecord' id="addNewNonMahallaSaandha" name="addNewNonMahallaSaandha"> Add New </button>
-                                        </div>
-                                        <div class="mt-3">
+                                        <div class="">
                                         <div class="table-responsive table-responsive-data2">
                                                 <table class="table table-data2">
                                                     <thead>

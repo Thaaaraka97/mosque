@@ -13,12 +13,12 @@
                 </form>
             </li>
             <li class="nav-item w-100">
-                <a class="btn btn-primary" href="link/to/your/download/file" download><i class="fa fa-download"></i>Download App</a>
+                <a class="btn btn-success" href="link/to/your/download/file" download><i class="fa fa-download"></i>Download App</a>
             </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item dropdown">
-                <a class="nav-link" id="profileDropdown" href="<?php $server_name ?>admin/" data-toggle="dropdown">
+                <a class="nav-link" id="profileDropdown" href="<?php $server_name ?>admin/" data-toggle="dropdown" aria-expanded="false">
                     <div class="navbar-profile">
                         <img class="img-xs rounded-circle" src="<?php $server_name ?>assets/images/faces/user.png" alt="">
                         <p class="mb-0 d-none d-sm-block navbar-profile-name">User</p>
