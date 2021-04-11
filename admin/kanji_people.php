@@ -95,9 +95,6 @@ if (isset($_GET['action'])) {
                                     <form method="post" id="kanjipeople">
                                         <div id="row">
                                             <div class="form-row">
-                                                <div class="form-group col-md-1 d-flex justify-content-center align-self-end">
-                                                    <label for="number"> 1 </label>
-                                                </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="inputName"> Name </label>
                                                     <input type="text" class="form-control" id="inputName[]" name="inputName[]">
