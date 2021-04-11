@@ -77,6 +77,12 @@ $database = new databases();
                                         <hr>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
+                                                <label for="saandhaAmount"> This Month Saandha Amount </label>
+                                                <input type="text" class="form-control" id="saandhaAmount" name="saandhaAmount" placeholder="Saandha Amount" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
                                                 <label for="inputPreviousDue"> Previous Due Amount </label>
                                                 <input type="text" class="form-control" id="inputPreviousDue" name="inputPreviousDue" placeholder="Due Amount (Rs)" readonly>
                                             </div>
@@ -87,6 +93,7 @@ $database = new databases();
                                         </div>
                                         <input type="hidden" name="payedFor" id="payedFor">
                                         <input type="hidden" id="inputDuePayment" name="inputDuePayment">
+                                        <input type="hidden" id="specialSaandha" name="specialSaandha">
 
                                         <div class="text-center">
                                             <button class="btn btn-primary btn-lg" id="submitSandhaPayment" name="submitSandhaPayment">Add Payment</button>

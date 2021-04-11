@@ -596,7 +596,7 @@ if (isset($_GET['sort13'])) {
                                                                     echo "
                                                                             </td>
                                                                         <td class='pl-3'>
-                                                                            <a href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                            <a href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&action=view_saandha' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                                             <a href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&action=edit' class='item'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
                                                                         </td>
                                                                     </tr>

@@ -87,13 +87,13 @@ include "template_parts/header.php";
           <div class="row">
             <div class="col-md-3 col-sm-12 col-xs-12">
               <div class="board">
-                <div class="panel panel-primary">
-                  <div class="number pt-3">
-                    <h5>Saandha Collector</h5>
-                    <a href="<?php echo $server_name ?>form_saandha-collection.php" class="">Open ...</a>
+                <div class="panel panel-primary d-flex justify-content-center align-items-center">
+                  <div class="number">
+                    <h5> Quick Form </h5>
+                    <a href="<?php echo $server_name ?>form_quick_form.php" class="">Open ...</a>
                   </div>
                   <div class="icon">
-                    <i class="fas fa-hand-holding-usd fa-5x red"></i>
+                    <i class="fas fa-registered  fa-5x red"></i>
                   </div>
                 </div>
               </div>
@@ -260,8 +260,20 @@ include "template_parts/header.php";
                 </div>
               </div>
             </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div class="board">
+                <div class="panel panel-primary">
+                  <div class="number pt-3">
+                    <h5>Saandha Collector</h5>
+                    <a href="<?php echo $server_name ?>form_saandha-collection.php" class="">Open ...</a>
+                  </div>
+                  <div class="icon">
+                    <i class="fas fa-hand-holding-usd fa-5x red"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
           <hr>
           <div class="page-header">
             <h3 class="page-title"> Preview Pages </h3>

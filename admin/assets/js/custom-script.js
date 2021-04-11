@@ -1791,6 +1791,19 @@ $(document).ready(function () {
     }
   });
 
+  // villager registration form
+  // show/hide div on input saandha registered change
+  $("input[type=radio][name=inputSaandhaStatus]").change(function (e) {
+    e.preventDefault();
+    var inputSaandhaStatus = $(this).val();
+    if (inputSaandhaStatus == "Yes") {
+      $("#saandhaAmountPrev").show();
+    }
+    else {
+      $("#saandhaAmountPrev").hide();
+    }
+  });
+
   // form_salary.php
   // show/hide admin div on radio change
   $("#inputPriestIndexNo").change(function (e) {
@@ -2142,8 +2155,17 @@ $(document).ready(function () {
         $("#inputName").val(result_array[0]);
         $("#inputAddress").val(result_array[1]);
         payment = result_array[3];
-        // $("#inputPayment").val(payment);
-        $("#inputPaymentSaandha").val(payment);
+        special_saandha = result_array[5];
+        if (special_saandha != 0) {
+          $("#inputPaymentSaandha").val(special_saandha);
+          $("#specialSaandha").val(1);
+          $('#inputPaymentSaandha').attr('readonly', true);
+        }
+        else{
+          $("#inputPaymentSaandha").val(payment);
+          $("#specialSaandha").val(0);
+        }
+        $("#saandhaAmount").val(payment);
         $("#payedFor").val(result_array[2]);
         $("#inputPreviousDue").val(result_array[4]);
         $("#inputDuePayment").val(result_array[4]);

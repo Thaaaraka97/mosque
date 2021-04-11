@@ -28,9 +28,20 @@ if (isset($_GET['sort1'])) {
 
 // saandha amount
 $saandha_amount = "";
+$current_saandha_amount = "";
+$YYMM = date('Y-M');
 $saandha_amount_details = $database->select_data('tbl_saandhaamountfixing');
 foreach ($saandha_amount_details as $saandha_amount_item) {
     $saandha_amount = $saandha_amount_item["saf_amount"];
+    $saf_date = $saandha_amount_item["saf_date"];
+    $saf_date = date_create($saf_date);
+    $date = date_format($saf_date, "Y-M");
+    if ($YYMM == $date) {
+        $current_saandha_amount = $saandha_amount;
+        break;
+    } else {
+        $current_saandha_amount = $saandha_amount;
+    }
 }
 
 // find saandha registered people
@@ -41,18 +52,32 @@ $person_count = $database->select_count('tbl_allvillagers', $where);
 
 // find saandha collection
 $settled_amount = 0;
-$where2 = array(
-    'av_saandhaStatus'     =>     1
-);
-$saandha_collections = $database->select_data('tbl_saandhacollection');
+$settled_people = 0;
+$current_collection_subdivision = 0;
+$current_collection_index = 0;
+$saandha_collections = $database->select_dates('tbl_saandhacollection','collection_date',$sort5,$sort6);
 foreach ($saandha_collections as $saandha_collections_item) {
     if (isset($saandha_collections_item["collection_paidAmount"])) {
         $amount = $saandha_collections_item["collection_paidAmount"];
         $settled_amount = (float)$settled_amount + (float)$amount;
+
+        $collection_index = $saandha_collections_item["collection_index"];
+        $collection_subdivision = $saandha_collections_item["collection_subdivision"];
+        if ($settled_people == 0) {
+            $current_collection_index = $collection_index;
+            $current_collection_subdivision = $collection_subdivision;
+            $settled_people = $settled_people + 1;
+        }
+        if ($current_collection_index != $collection_index) {
+            $settled_people = $settled_people + 1;
+            $current_collection_index = $collection_index;
+            $current_collection_subdivision = $collection_subdivision;
+        }
+
     }
 }
 
-$tot_amount_to_collect = (int)$person_count * (float)$saandha_amount;
+$tot_amount_to_collect = (int)$person_count * (float)$current_saandha_amount;
 $outstanding_amount = $tot_amount_to_collect - $settled_amount;
 
 
@@ -173,10 +198,10 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                         $where = array(
                                                             'collection_subdivision' => $sort1
                                                         );
-                                                        $saandha_collection_details = $database->select_where('tbl_saandhacollection',$where);
+                                                        $saandha_collection_details = $database->select_where('tbl_saandhacollection', $where);
 
                                                         if ($sort1 == "0") {
-                                                            $saandha_collection_details = $database->select_dates('tbl_saandhacollection','collection_date',$sort5,$sort6);
+                                                            $saandha_collection_details = $database->select_dates('tbl_saandhacollection', 'collection_date', $sort5, $sort6);
                                                         }
                                                         foreach ($saandha_collection_details as $saandha_collection_item) {
                                                             if (isset($saandha_collection_item['collection_id'])) {
@@ -220,10 +245,22 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
                                                     <div class="flex-grow">
+                                                        <h6 class="preview-subject"> Saandha Eligible Count </h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $person_count ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
                                                         <h6 class="preview-subject">Total Income to Collect</h6>
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                                        <p class="text-muted"><?php echo $tot_amount_to_collect ?></p>
+                                                        <p class="text-muted"><?php echo "Rs." .$tot_amount_to_collect ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -235,7 +272,7 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                         <h6 class="preview-subject">Settled Amount</h6>
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                                        <p class="text-muted"><?php echo $settled_amount ?></p>
+                                                        <p class="text-muted"><?php echo "Rs." .$settled_amount ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -247,7 +284,7 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                         <h6 class="preview-subject">Outstanding Due</h6>
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                                        <p class="text-muted"><?php echo $outstanding_amount ?></p>
+                                                        <p class="text-muted"><?php echo "Rs." .$outstanding_amount ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -259,7 +296,7 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                         <h6 class="preview-subject">No of People to be Settled</h6>
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                                        <p class="text-muted"><?php echo "" ?></p>
+                                                        <p class="text-muted"><?php echo $person_count - $settled_people ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -271,7 +308,7 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                         <h6 class="preview-subject">No of People Settled</h6>
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                                        <p class="text-muted"><?php echo "" ?></p>
+                                                        <p class="text-muted"><?php echo $settled_people ?></p>
                                                     </div>
                                                 </div>
                                             </div>

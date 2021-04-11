@@ -151,9 +151,7 @@ if (isset($_GET["inserted_record"])) {
                                                         <label for="inputTP">Telephone Number </label>
                                                         <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="077xxxxxxx">
                                                     </div>
-
                                                 </div>
-
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <div class="form-group row pt-3">
@@ -174,7 +172,6 @@ if (isset($_GET["inserted_record"])) {
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                                 <div id="saandhaGuardian">
                                                     <div class="form-row">
@@ -229,6 +226,18 @@ if (isset($_GET["inserted_record"])) {
                                                                         <input type="radio" class="form-check-input" name="inputDiasbleStatus" id="inputDiasbleStatusN" value="No" checked> No </label>
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="saandhaAmountPrev">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputOutstandingSaaandhaDue"> Saandha - Outstanding Due </label>
+                                                            <input type="text" class="form-control" id="inputOutstandingSaaandhaDue" name="inputOutstandingSaaandhaDue" placeholder="Amount (Rs)">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputSpecialSaandha"> Saandha - Special Amount </label>
+                                                            <input type="text" class="form-control" id="inputSpecialSaandha" name="inputSpecialSaandha" placeholder="Amount (Rs)">
                                                         </div>
                                                     </div>
                                                 </div>

@@ -25,7 +25,7 @@ if (isset($_POST['editJanaza'])) {
         'jd_janazaId'     =>     $_POST["id"]
     );
     if ($database->update("tbl_janazadetails", $update_data, $where_condition)) {
-        $URL = "preview_janaza-details.php?updated=1";
+        $URL = "preview_janaza-details.php?updated=1&sort1=0&sort2=0&sort5=0&sort6=".date('Y-m-t')."";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
@@ -142,7 +142,7 @@ if (isset($_POST['editNikkah'])) {
         'nd_nikkahId'     =>     $_POST["id"]
     );
     if ($database->update("tbl_nikkahdetails", $update_data, $where_condition)) {
-        $URL = "preview_nikkah-details.php?edited=1";
+        $URL = "preview_nikkah-details.php?edited=1&sort1=0&sort5=0&sort6=".date('Y-m-t')."";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
@@ -343,6 +343,16 @@ if (isset($_POST['editVillagers'])) {
     } else {
         $inputOrphan = 0;
     }
+    if ($_POST['inputOutstandingSaaandhaDue'] != "") {
+        $inputOutstandingSaaandhaDue = $_POST['inputOutstandingSaaandhaDue'];
+    } else {
+        $inputOutstandingSaaandhaDue = 0;
+    }
+    if ($_POST['inputSpecialSaandha'] != "") {
+        $inputSpecialSaandha = $_POST['inputSpecialSaandha'];
+    } else {
+        $inputSpecialSaandha = 0;
+    }
     if ($_POST['inputSaandhaStatus'] == "Yes") {
         $inputSaandhaStatus = 1;
     } else {
@@ -459,6 +469,8 @@ if (isset($_POST['editVillagers'])) {
         'av_divorced' => mysqli_real_escape_string($database->con, $inputDivorsed),
         'av_widowed' => mysqli_real_escape_string($database->con, $inputWidowed),
         'av_job' => mysqli_real_escape_string($database->con, $inputJob),
+        'av_OutstandingDue' => mysqli_real_escape_string($database->con, $inputOutstandingSaaandhaDue),
+        'av_specialSaandhaAmt' => mysqli_real_escape_string($database->con, $inputSpecialSaandha),
         'av_monthlyIncomePersonal' => mysqli_real_escape_string($database->con, $inputMonthlyIncomePersonal)
 
     );
@@ -467,7 +479,7 @@ if (isset($_POST['editVillagers'])) {
         'av_subDivision' => $_POST['inputSubdivision']
     );
     if ($database->update("tbl_allvillagers", $update_data, $where_condition)) {
-        $URL = "preview_villager-details.php?updated=1&action=allvillagers";
+        $URL = "preview_villager-details.php?updated=1&action=allvillagers&sort1=0&sort2=0&sort7=0&sort8=0&sort9=0&sort10=0&sort11=".date('Y-m-t')."&sort12=0&sort13=0";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }

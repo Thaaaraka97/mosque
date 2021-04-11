@@ -171,9 +171,15 @@
   display: none;
 }
 
-/* form_add-new-rental.php */
-/* hide saandhaStep0 div */
-#saandhaStep0 {
+/* villager registration */
+/* hide family div */
+#family {
+  display: none;
+}
+
+/* villager registration */
+/* hide findFamily button */
+#findFamily {
   display: none;
 }
 
@@ -464,5 +470,9 @@ div.modal-footer button.btn-secondary:hover {
 }
 
 #wrong_user{
+  display: none;
+}
+
+#saandhaAmountPrev{
   display: none;
 }

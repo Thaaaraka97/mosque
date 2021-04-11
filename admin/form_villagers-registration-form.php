@@ -3,7 +3,7 @@
 
 <?php
 include "template_parts/header.php";
-$famID = "";
+$famID = "1";
 if (isset($_GET['familyID'])) {
     $famID = 1;
 }

@@ -63,6 +63,8 @@ $av_leftVillage = "";
 $av_aliveOrDeceased = "";
 $av_disabled = "";
 $is_student = 1;
+$is_student = 1;
+$is_student = 1;
 
 $person_details = $database->select_where('tbl_allvillagers', $where);
 foreach ($person_details as $person_details_item) {
@@ -109,6 +111,8 @@ foreach ($person_details as $person_details_item) {
     $av_leftVillage = $person_details_item['av_leftVillage'];
     $av_aliveOrDeceased = $person_details_item['av_aliveOrDeceased'];
     $av_disabled = $person_details_item['av_disabled'];
+    $av_OutstandingDue = $person_details_item['av_OutstandingDue'];
+    $av_specialSaandhaAmt = $person_details_item['av_specialSaandhaAmt'];
 
     if ($av_eduGrade == "0" && $av_madChild_status == "0") {
         $is_student = 0;
@@ -865,7 +869,7 @@ $age = $database->calculate_age($dob);
                             <div class="col-md-8 grid-margin stretch-card">
                                 <div class="card shadow">
                                     <div class="card-body">
-                                    <h4 class="card-title"> Saandha Payment History </h4>
+                                        <h4 class="card-title"> Saandha Payment History </h4>
                                         <div class="text-center">
                                             <div class="table-responsive table-responsive-data2">
                                                 <table class="table table-data2">
@@ -887,7 +891,7 @@ $age = $database->calculate_age($dob);
                                                             </tr>
                                                               ";
                                                         }
-                                                        
+
 
                                                         ?>
                                                     </tbody>
@@ -1055,6 +1059,18 @@ $age = $database->calculate_age($dob);
                                                                         <input type="radio" class="form-check-input" name="inputDiasbleStatus" id="inputDiasbleStatusN" value="No" <?php echo ($av_disabled == 'No') ? 'checked' : '' ?>> No </label>
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="saandhaAmountPrev">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputOutstandingSaaandhaDue"> Saandha - Outstanding Due </label>
+                                                            <input type="text" class="form-control" id="inputOutstandingSaaandhaDue" name="inputOutstandingSaaandhaDue" placeholder="Amount (Rs)" value="<?php echo $av_OutstandingDue ?>">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputSpecialSaandha"> Saandha - Special Amount </label>
+                                                            <input type="text" class="form-control" id="inputSpecialSaandha" name="inputSpecialSaandha" placeholder="Amount (Rs)" value="<?php echo $av_specialSaandhaAmt ?>">
                                                         </div>
                                                     </div>
                                                 </div>
