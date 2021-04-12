@@ -2155,7 +2155,7 @@ $(document).ready(function () {
           $("#specialSaandha").val(1);
           $('#inputPaymentSaandha').attr('readonly', true);
         }
-        else{
+        else {
           $("#inputPaymentSaandha").val(payment);
           $("#specialSaandha").val(0);
         }
@@ -2334,6 +2334,17 @@ $(document).ready(function () {
     sort13 = $("#sortvillagerAgeTo").val();
     window.location.href = "preview_villager-details.php?action=allvillagers&sort1=0&sort2=0&sort7=0&sort8=0&sort9=0&sort10=0&sort11=" + last_day + "&sort12=" + sort12 + "&sort13=" + sort13;
   });
+  // all villagers
+  $("#sortVillagerSaandhaFrom").change(function (e) {
+    e.preventDefault();
+    sort5 = $("#sortVillagerSaandhaFrom").val();
+    window.location.href = "preview_villager-details_step-2.php?index="+ index +"&subdivision="+ sub +"&action=view_saandha&sort5=" + sort5 + "&sort6=" + sort6;
+  });
+  $("#sortVillagerSaandhaTo").change(function (e) {
+    e.preventDefault();
+    sort6 = $("#sortVillagerSaandhaTo").val();
+    window.location.href = "preview_villager-details_step-2.php?index="+ index +"&subdivision="+ sub +"&action=view_saandha&sort5=" + sort5 + "&sort6=" + sort6;
+  });
 
   // saandha collector collection
   // delete record
@@ -2388,7 +2399,7 @@ $(document).ready(function () {
   if (wrong_user == 1) {
     $("#wrong_user").show();
   }
-  else{
+  else {
     $("#wrong_user").hide();
   }
 

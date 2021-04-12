@@ -5,6 +5,15 @@
 include "template_parts/header.php";
 $database = new databases();
 
+$sort5 = 0;
+$sort6 = 0;
+if (isset($_GET['sort5'])) {
+    $sort5 = $_GET['sort5'];
+}
+if (isset($_GET['sort6'])) {
+    $sort6 = $_GET['sort6'];
+}
+
 $index = $_GET['index'];
 $subdivision = $_GET['subdivision'];
 $action = $_GET['action'];
@@ -63,8 +72,10 @@ $av_leftVillage = "";
 $av_aliveOrDeceased = "";
 $av_disabled = "";
 $is_student = 1;
-$is_student = 1;
-$is_student = 1;
+$av_OutstandingDue = 1;
+$av_specialSaandhaAmt = 1;
+$av_QuickForm = "";
+
 
 $person_details = $database->select_where('tbl_allvillagers', $where);
 foreach ($person_details as $person_details_item) {
@@ -113,6 +124,7 @@ foreach ($person_details as $person_details_item) {
     $av_disabled = $person_details_item['av_disabled'];
     $av_OutstandingDue = $person_details_item['av_OutstandingDue'];
     $av_specialSaandhaAmt = $person_details_item['av_specialSaandhaAmt'];
+    $av_QuickForm = $person_details_item['av_QuickForm'];
 
     if ($av_eduGrade == "0" && $av_madChild_status == "0") {
         $is_student = 0;
@@ -215,6 +227,10 @@ $age = $database->calculate_age($dob);
     var av_madChild_status = "<?php echo $av_madChild_status; ?>";
     var av_married = "<?php echo $av_married; ?>";
     var av_job = "<?php echo $av_job; ?>";
+    var sort5 = "<?php echo $sort5; ?>";
+    var sort6 = "<?php echo $sort6; ?>";
+    var index = "<?php echo $index; ?>";
+    var sub = "<?php echo $subdivision; ?>";
 </script>
 
 <body>
@@ -288,7 +304,15 @@ $age = $database->calculate_age($dob);
                                 <div class="card shadow">
                                     <div class="card-body">
                                         <h4 class="card-title"> Personal Details </h4>
-                                        <div class="preview-list">
+                                        <?php
+                                        if ($av_QuickForm == 1) {
+                                            echo "<h6 class='text-danger'>*Details are entered using the Quick Form. Some of the Fields are Not Set.</h6>";
+                                        }
+                                        else {
+                                            echo "<h6 class='text-success'>*All the details are filled.</h6>";
+                                        }
+                                        ?>
+                                        <div class="preview-list mt-3">
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
                                                     <div class="flex-grow">
@@ -872,6 +896,18 @@ $age = $database->calculate_age($dob);
                                         <h4 class="card-title"> Saandha Payment History </h4>
                                         <div class="text-center">
                                             <div class="table-responsive table-responsive-data2">
+                                                <div class="sorting">
+                                                    <div class="row">
+                                                        <div class="form-group col-md-3">
+                                                            <label for="sortVillagerSaandhaFrom">From</label>
+                                                            <input class="form-control" type="date" name="sortVillagerSaandhaFrom" id="sortVillagerSaandhaFrom" value="<?php echo $sort5 ?>">
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label for="sortVillagerSaandhaTo">To</label>
+                                                            <input class="form-control" type="date" name="sortVillagerSaandhaTo" id="sortVillagerSaandhaTo" value="<?php echo $sort6 ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <table class="table table-data2">
                                                     <thead>
                                                         <tr class="tr-shadow">
@@ -883,13 +919,15 @@ $age = $database->calculate_age($dob);
                                                     <tbody>
                                                         <?php
                                                         foreach ($sanndha_collection as $sanndha_collection_item) {
-                                                            echo "
-                                                              <tr>
-                                                                <td> " . $sanndha_collection_item['collection_date'] . "</td>
-                                                                <td> " . $sanndha_collection_item['collection_paidAmount'] . " </td>
-                                                                <td>" . $sanndha_collection_item['collection_paidFor'] . "</td>
-                                                            </tr>
-                                                              ";
+                                                            if (date($sanndha_collection_item['collection_date']) >= $sort5 && date($sanndha_collection_item['collection_date']) <= $sort6) {
+                                                                echo "
+                                                                <tr>
+                                                                    <td> " . $sanndha_collection_item['collection_date'] . "</td>
+                                                                    <td> " . $sanndha_collection_item['collection_paidAmount'] . " </td>
+                                                                    <td>" . $sanndha_collection_item['collection_paidFor'] . "</td>
+                                                                </tr>
+                                                                ";
+                                                            }
                                                         }
 
 

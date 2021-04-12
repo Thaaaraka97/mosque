@@ -287,6 +287,7 @@ if (isset($_POST["addAnother"])) {
         'av_QuickForm' => mysqli_real_escape_string($database->con, 0),
         'av_OutstandingDue' => mysqli_real_escape_string($database->con, $inputOutstandingSaaandhaDue),
         'av_specialSaandhaAmt' => mysqli_real_escape_string($database->con, $inputSpecialSaandha),
+        'av_sentNotifications' => mysqli_real_escape_string($database->con, 0),
         'av_aliveOrDeceased' => mysqli_real_escape_string($database->con, 1)
     );
 
@@ -563,6 +564,7 @@ if (isset($_POST["submitSaandha"])) {
         'av_QuickForm' => mysqli_real_escape_string($database->con, 0),
         'av_OutstandingDue' => mysqli_real_escape_string($database->con, $inputOutstandingSaaandhaDue),
         'av_specialSaandhaAmt' => mysqli_real_escape_string($database->con, $inputSpecialSaandha),
+        'av_sentNotifications' => mysqli_real_escape_string($database->con, 0),
         'av_aliveOrDeceased' => mysqli_real_escape_string($database->con, 1)
     );
 
@@ -2127,6 +2129,7 @@ if (isset($_POST['submitQuickForm'])) {
         'av_QuickForm' => mysqli_real_escape_string($database->con, 1),
         'av_OutstandingDue' => mysqli_real_escape_string($database->con, $inputOutstandingSaaandhaDue),
         'av_specialSaandhaAmt' => mysqli_real_escape_string($database->con, $inputSpecialSaandha),
+        'av_sentNotifications' => mysqli_real_escape_string($database->con, 0),
         'av_aliveOrDeceased' => mysqli_real_escape_string($database->con, 1)
     );
 

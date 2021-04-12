@@ -163,6 +163,11 @@ foreach ($before_collection17 as $before_collection17_item) {
                           <span class="top-span">AN-NOOR JUMMA MASJID</span>
                         </div>
                       </td>
+                      <td>
+                        <div class="text-right">
+                          <button class="btn btn-primary btn-lg">Print</button>
+                        </div>
+                      </td>
                     </tr>
                   </table>
                 </div>
@@ -266,8 +271,8 @@ foreach ($before_collection17 as $before_collection17_item) {
                             $collection5_total = 0;
                             foreach ($collection5 as $collection5_item) {
                               $income = (float)$income + (float)$collection5_item['tbd_amount'];
-                              $collection5_total = $collection5_total + (float)$collection5_item['tbd_amount'];                              
-                              $total_income = $total_income + (float)$collection5_item['tbd_amount'];                              
+                              $collection5_total = $collection5_total + (float)$collection5_item['tbd_amount'];
+                              $total_income = $total_income + (float)$collection5_item['tbd_amount'];
                             }
                             if ($collection5_total != 0) {
                               echo "
@@ -281,8 +286,8 @@ foreach ($before_collection17 as $before_collection17_item) {
                             $collection6_total = 0;
                             foreach ($collection6 as $collection6_item) {
                               $income = (float)$income + (float)$collection6_item['fd_amount'];
-                              $collection6_total = $collection6_total + (float)$collection6_item['fd_amount'];                              
-                              $total_income = $total_income + (float)$collection6_item['fd_amount'];                              
+                              $collection6_total = $collection6_total + (float)$collection6_item['fd_amount'];
+                              $total_income = $total_income + (float)$collection6_item['fd_amount'];
                             }
                             if ($collection6_total != 0) {
                               echo "
@@ -296,8 +301,8 @@ foreach ($before_collection17 as $before_collection17_item) {
                             $collection7_total = 0;
                             foreach ($collection7 as $collection7_item) {
                               $income = (float)$income + (float)$collection7_item['fr_amount'];
-                              $collection7_total = $collection7_total + (float)$collection7_item['fr_amount'];                              
-                              $total_income = $total_income + (float)$collection7_item['fr_amount'];                              
+                              $collection7_total = $collection7_total + (float)$collection7_item['fr_amount'];
+                              $total_income = $total_income + (float)$collection7_item['fr_amount'];
                             }
                             if ($collection7_total != 0) {
                               echo "
@@ -311,8 +316,8 @@ foreach ($before_collection17 as $before_collection17_item) {
                             $collection8_total = 0;
                             foreach ($collection8 as $collection8_item) {
                               $income = (float)$income + (float)$collection8_item['funds_amount'];
-                              $collection8_total = $collection8_total + (float)$collection8_item['funds_amount'];                              
-                              $total_income = $total_income + (float)$collection8_item['funds_amount'];                              
+                              $collection8_total = $collection8_total + (float)$collection8_item['funds_amount'];
+                              $total_income = $total_income + (float)$collection8_item['funds_amount'];
                             }
                             if ($collection8_total != 0) {
                               echo "
@@ -409,8 +414,8 @@ foreach ($before_collection17 as $before_collection17_item) {
                             $collection14_total = 0;
                             foreach ($collection14 as $collection14_item) {
                               $income = (float)$income + (float)$collection14_item['ri_payment'];
-                              $collection14_total = $collection14_total + (float)$collection14_item['ri_payment'];                              
-                              $total_income = $total_income + (float)$collection14_item['ri_payment'];                              
+                              $collection14_total = $collection14_total + (float)$collection14_item['ri_payment'];
+                              $total_income = $total_income + (float)$collection14_item['ri_payment'];
                             }
                             if ($collection14_total != 0) {
                               echo "

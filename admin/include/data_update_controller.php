@@ -469,6 +469,7 @@ if (isset($_POST['editVillagers'])) {
         'av_divorced' => mysqli_real_escape_string($database->con, $inputDivorsed),
         'av_widowed' => mysqli_real_escape_string($database->con, $inputWidowed),
         'av_job' => mysqli_real_escape_string($database->con, $inputJob),
+        'av_QuickForm' => mysqli_real_escape_string($database->con, 0),
         'av_OutstandingDue' => mysqli_real_escape_string($database->con, $inputOutstandingSaaandhaDue),
         'av_specialSaandhaAmt' => mysqli_real_escape_string($database->con, $inputSpecialSaandha),
         'av_monthlyIncomePersonal' => mysqli_real_escape_string($database->con, $inputMonthlyIncomePersonal)

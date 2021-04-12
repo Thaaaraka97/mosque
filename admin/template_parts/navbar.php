@@ -180,13 +180,10 @@
             <div class="collapse" id="letters-dropdown">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_rental-places.php"> Rental Places </a>
+                        <a class="nav-link" href="letter1.php"> Letter 1 </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_new-rental-registration.php"> Rental Status </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="preview_rental-incomes.php"> Rental Income </a>
+                        <a class="nav-link" href="letter2.php"> Letter 2 </a>
                     </li>
                 </ul>
             </div>
