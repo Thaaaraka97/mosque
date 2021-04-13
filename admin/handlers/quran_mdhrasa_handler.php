@@ -1,5 +1,7 @@
 <?php
 include "../include/db-connection.php";
+include 'include/login_header.php';
+
 $database = new Databases;
 $URL = "preview_q_madrasa-details.php?deleted=1";
 $id = "";

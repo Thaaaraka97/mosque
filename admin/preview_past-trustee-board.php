@@ -3,6 +3,8 @@
 
 <?php
 include "template_parts/header.php";
+include 'include/login_header.php';
+
 ?>
 <script type="text/javascript">
     var action = "<?php echo $action; ?>";

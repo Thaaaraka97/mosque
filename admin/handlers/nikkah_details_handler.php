@@ -1,5 +1,7 @@
 <?php
 include "../include/db-connection.php";
+include 'include/login_header.php';
+
 $database = new databases();
 $URL = "preview_nikkah-details.php?deleted=1";
 

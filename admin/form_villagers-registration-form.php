@@ -3,6 +3,8 @@
 
 <?php
 include "template_parts/header.php";
+include 'include/login_header.php';
+
 $famID = "1";
 if (isset($_GET['familyID'])) {
     $famID = 1;

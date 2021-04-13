@@ -1,5 +1,7 @@
 <?php
 include "../include/db-connection.php";
+include 'include/login_header.php';
+
 $database = new Databases;
 date_default_timezone_set("Asia/Calcutta");
 $today = date("Y-m-d");
