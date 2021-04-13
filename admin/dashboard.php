@@ -2,6 +2,7 @@
 <html lang="en">
 
 <?php
+session_start();
 include "template_parts/header.php";
 include 'include/login_header.php';
 

@@ -1,8 +1,11 @@
 <?php
 
 // login details
-session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    $url='login.php';
+   echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$url.'">';
+    ?>
+    <!-- <script> location.replace("login.php"); </script> -->
+    <?php
     exit();
 }
