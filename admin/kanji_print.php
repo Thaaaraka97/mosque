@@ -82,11 +82,11 @@ $j = 1;
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-8 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="table-responsive table-responsive-data2 text-center">
-                                        <table class="table table-data2" id="ingredients">
+                        <div class="col-md-8">
+                            <div class="">
+                                <div class="">
+                                    <div class="text-center">
+                                        <table class="table table-bordered table-lg" id="ingredients">
                                             <thead>
                                                 <tr class="tr-shadow">
                                                     <th>No</th>
@@ -115,7 +115,7 @@ $j = 1;
                                                 ?>
                                             </tbody>
                                         </table>
-                                        <table class="table table-data2" id="people">
+                                        <table class="table table-bordered table-lg" id="people">
                                             <thead>
                                                 <tr class="tr-shadow">
                                                     <th>No</th>

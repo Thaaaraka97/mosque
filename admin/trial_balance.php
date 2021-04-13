@@ -165,7 +165,7 @@ foreach ($before_collection17 as $before_collection17_item) {
                       </td>
                       <td>
                         <div class="text-right">
-                          <button class="btn btn-primary btn-lg">Print</button>
+                          <button class="btn btn-primary btn-lg" id="monthlyReportPrint">Print</button>
                         </div>
                       </td>
                     </tr>
@@ -508,5 +508,28 @@ foreach ($before_collection17 as $before_collection17_item) {
     ?>
     <!-- End custom js for this page -->
 </body>
+<script>
+  var collection_total = "<?php echo $collection_total; ?>";
+  var collection2_total = "<?php echo $collection2_total; ?>";
+  var collection3_total = "<?php echo $collection3_total; ?>";
+  var collection4_total = "<?php echo $collection4_total; ?>";
+  var collection5_total = "<?php echo $collection5_total; ?>";
+  var collection6_total = "<?php echo $collection6_total; ?>";
+  var collection7_total = "<?php echo $collection7_total; ?>";
+  var collection8_total = "<?php echo $collection8_total; ?>";
+  var collection9_total = "<?php echo $collection9_total; ?>";
+  var collection10_total = "<?php echo $collection10_total; ?>";
+  var collection11_total = "<?php echo $collection11_total; ?>";
+  var collection12_total = "<?php echo $collection12_total; ?>";
+  var collection13_total = "<?php echo $collection13_total; ?>";
+  var collection14_total = "<?php echo $collection14_total; ?>";
+  var collection15_total = "<?php echo $collection15_total; ?>";
+  var collection16_total = "<?php echo $collection16_total; ?>";
+  var collection17_total = "<?php echo $collection17_total; ?>";
+  var total_income = "<?php echo $total_income; ?>";
+  var total_expense = "<?php echo $total_expense; ?>";
+  var before_income = "<?php echo $before_income; ?>";
+  var before_expense = "<?php echo $before_expense; ?>";
+</script>
 
 </html>

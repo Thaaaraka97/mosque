@@ -240,6 +240,12 @@ if (isset($_GET["inserted_record"])) {
                                                             <input type="text" class="form-control" id="inputSpecialSaandha" name="inputSpecialSaandha" placeholder="Amount (Rs)">
                                                         </div>
                                                     </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputPaidMonth"> Lasth Month Paid </label>
+                                                            <input type="month" class="form-control" id="inputPaidMonth" name="inputPaidMonth">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
