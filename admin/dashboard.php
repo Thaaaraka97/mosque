@@ -1,8 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
 session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<?php
 include "template_parts/header.php";
 include 'include/login_header.php';
 
