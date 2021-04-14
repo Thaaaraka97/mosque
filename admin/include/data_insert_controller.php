@@ -236,7 +236,7 @@ if (isset($_POST["addAnother"])) {
     $index = 0;
     // check subdivision
     $where = array(
-        'av_subDivision'     =>     $_POST["inputSubdivision"]
+        'av_subDivision'     =>     $av_subDivision
     );
     $person_details = $database->select_where('tbl_allvillagers', $where);
     foreach ($person_details as $person_details_item) {
@@ -530,7 +530,7 @@ if (isset($_POST["submitSaandha"])) {
     $index = 0;
     // check subdivision
     $where = array(
-        'av_subDivision'     =>     $_POST["inputSubdivision"]
+        'av_subDivision'     =>     $av_subDivision
     );
     $person_details = $database->select_where('tbl_allvillagers', $where);
     foreach ($person_details as $person_details_item) {
@@ -2188,7 +2188,7 @@ if (isset($_POST['submitQuickForm'])) {
         'av_scholAmount' => mysqli_real_escape_string($database->con, 0),
         'av_madChild_status' => mysqli_real_escape_string($database->con, 0),
         'av_madChild_type' => mysqli_real_escape_string($database->con, "Not Set"),
-        'av_madChild_madrasaName' => mysqli_real_escape_string($database->con, "Not Set"),
+        'av_madChild_madrasaName' => mysqli_real_escape_string($database->con, '0001-01-01'),
         'av_madChild_startDate' => mysqli_real_escape_string($database->con, 0),
         'av_madChild_avgMonthlyExpense	' => mysqli_real_escape_string($database->con, 0),
         'av_married' => mysqli_real_escape_string($database->con, 0),
