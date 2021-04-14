@@ -1884,7 +1884,7 @@ $(document).ready(function () {
     var codeblock = `
     <div id="row${m}">
         <div class="form-row ">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-5">
                 <label for="inputIngredient"> Ingredient </label>
                 <input type="text" class="form-control" id="inputIngredient[]" name="inputIngredient[]">
             </div>
@@ -1926,7 +1926,7 @@ $(document).ready(function () {
     var codeblock2 = `
     <div id="row${n}">
         <div class="form-row ">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label for="inputName"> Name </label>
                 <input type="text" class="form-control" id="inputName[]" name="inputName[]">
             </div>
@@ -1934,7 +1934,7 @@ $(document).ready(function () {
                 <label for="inputTP"> Contact Number </label>
                 <input type="text" class="form-control" id="inputTP[]" name="inputTP[]">
             </div>
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-4">
                 <label for="inputAddress"> Address </label>
                 <input type="text" class="form-control" id="inputAddress[]" name="inputAddress[]">
             </div>

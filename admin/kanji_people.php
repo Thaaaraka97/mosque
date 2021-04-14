@@ -100,7 +100,7 @@ if (isset($_GET['action'])) {
                                     <form method="post" id="kanjipeople">
                                         <div id="row">
                                             <div class="form-row">
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-md-3">
                                                     <label for="inputName"> Name </label>
                                                     <input type="text" class="form-control" id="inputName[]" name="inputName[]">
                                                 </div>
@@ -108,7 +108,7 @@ if (isset($_GET['action'])) {
                                                     <label for="inputTP"> Contact Number </label>
                                                     <input type="text" class="form-control" id="inputTP[]" name="inputTP[]">
                                                 </div>
-                                                <div class="form-group col-md-2">
+                                                <div class="form-group col-md-4">
                                                     <label for="inputAddress"> Address </label>
                                                     <input type="text" class="form-control" id="inputAddress[]" name="inputAddress[]">
                                                 </div>

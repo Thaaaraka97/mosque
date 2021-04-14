@@ -100,7 +100,7 @@ if (isset($_GET['action'])) {
                                     <form method="post" id="kanjiingredients">
                                         <div id="row">
                                             <div class="form-row">
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-md-5">
                                                     <label for="inputIngredient"> Ingredient </label>
                                                     <input type="text" class="form-control" id="inputIngredient[]" name="inputIngredient[]">
                                                 </div>
