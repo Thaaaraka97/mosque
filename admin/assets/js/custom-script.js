@@ -2051,6 +2051,14 @@ $(document).ready(function () {
     var response = "trail_balance_print.php?before_income=" + before_income + "&before_expense=" + before_expense + "&total_income=" + total_income + "&total_expense=" + total_expense + "&collection_total=" + collection_total + "&collection2_total=" + collection2_total + "&collection3_total=" + collection3_total + "&collection4_total=" + collection4_total + "&collection5_total=" + collection5_total + "&collection6_total=" + collection6_total + "&collection7_total=" + collection7_total + "&collection8_total=" + collection8_total + "&collection9_total=" + collection9_total + "&collection10_total=" + collection10_total + "&collection11_total=" + collection11_total + "&collection12_total=" + collection12_total + "&collection13_total=" + collection13_total + "&collection14_total=" + collection14_total + "&collection15_total=" + collection15_total + "&collection16_total=" + collection16_total + "&collection17_total=" + collection17_total + "";
     window.open(response, '_blank');
   });
+  $('#letter1Print').click(function () {
+    var response = "letter_print.php?action=letter1";
+    window.open(response, '_blank');
+  });
+  $('#letter2Print').click(function () {
+    var response = "letter_print.php?action=letter2";
+    window.open(response, '_blank');
+  });
 
   // form_pesh-imaam-details.php
   // find records on given details

@@ -297,7 +297,7 @@ foreach ($before_collection17 as $before_collection17_item) {
                             if ($collection6_total != 0) {
                               echo "
                                 <tr>
-                                  <td> Friday Collection Donation </td>
+                                  <td> Friday Regular Collection </td>
                                   <td> " . $collection6_total . " </td>
                                   <td> - </td>
                               </tr>
@@ -312,7 +312,7 @@ foreach ($before_collection17 as $before_collection17_item) {
                             if ($collection7_total != 0) {
                               echo "
                                 <tr>
-                                  <td> Friday Collection Regular </td>
+                                  <td> Friday Special Collection </td>
                                   <td> " . $collection7_total . " </td>
                                   <td> - </td>
                               </tr>

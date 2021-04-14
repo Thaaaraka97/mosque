@@ -429,13 +429,17 @@ div.modal-footer button.btn-secondary:hover {
 }
 #heading-underline {
   margin-top: 0rem;
-  width: 45%;
+  width: 35%;
   border-color: black;
 }
 #heading-underline2 {
   margin-top: 0rem;
-  width: 75%;
+  width: 60%;
   border-color: black;
+}
+#letter1 p, #letter2 p{
+  font-size: 1.5rem;
+  color: #111;
 }
 
 .board .panel {

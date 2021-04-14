@@ -61,6 +61,11 @@ if (isset($_GET['updated'])) {
                                                     <span class="top-span">AN-NOOR JUMMA MASJID</span>
                                                 </div>
                                             </td>
+                                            <td>
+                                                <div class="text-right">
+                                                    <button class="btn btn-primary btn-lg" id="letter2Print">Print</button>
+                                                </div>
+                                            </td>
                                         </tr>
                                     </table>
                                 </div>
@@ -77,7 +82,6 @@ if (isset($_GET['updated'])) {
                                         </p>
                                         <br><br>
                                         <p class="text-center font-weight-bold"><u>மஹல்லாவாசி என்பதை உறுதிப்படுத்தல்</u></p>
-                                        <hr id="heading-underline2">
                                         <br>
                                         <p class="mt-3">
                                             மேலே பெயர் குறிப்பிடப்பட்ட அல்ஹாஜ்/ஜனாப் ........................................................... என்பவர்
@@ -88,9 +92,7 @@ if (isset($_GET['updated'])) {
                                         <p class="mt-5 font-weight-bold">
                                             தலைவர் / செயலாளர்
                                         </p>
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
