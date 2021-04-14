@@ -170,11 +170,11 @@ if (isset($_GET['nodata'])) {
                                         <div class="form-row" id="saandhaGuardianChildren">
                                             <div class="form-group col-md-6">
                                                 <label for="inputnoofChildren"> No. of Children </label>
-                                                <input type="text" class="form-control" id="inputnoofChildren" name="inputnoofChildren" placeholder="No. of Children" required>
+                                                <input type="text" class="form-control" id="inputnoofChildren" name="inputnoofChildren" placeholder="No. of Children">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputnoofUnmarried"> No. of Unmarried Children </label>
-                                                <input type="text" class="form-control" id="inputnoofUnmarried" name="inputnoofUnmarried" placeholder="No. of Unmarried Children" required>
+                                                <input type="text" class="form-control" id="inputnoofUnmarried" name="inputnoofUnmarried" placeholder="No. of Unmarried Children">
                                             </div>
                                         </div>
                                         <div class="form-row">

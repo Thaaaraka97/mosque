@@ -2111,7 +2111,21 @@ if (isset($_POST['submitQuickForm'])) {
         }
     }
 
+    $index = 0;
+    // check subdivision
+    $where = array(
+        'av_subDivision'     =>     $_POST["inputSubdivision"]
+    );
+    $person_details = $database->select_where('tbl_allvillagers', $where);
+    foreach ($person_details as $person_details_item) {
+        if ($person_details_item["av_index"]) {
+            $index = $person_details_item["av_index"]; 
+        } 
+    }
+    $index = $index + 1;
+
     $insert_to_tbl_allvillagers = array(
+        'av_index' => mysqli_real_escape_string($database->con, $index),
         'av_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
         'av_familyID' => mysqli_real_escape_string($database->con, 0),
         'av_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
