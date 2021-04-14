@@ -167,8 +167,8 @@ if (isset($_POST["addAnother"])) {
     }
     if ($_POST["inputMonthlyIncomePersonal"] != "") {
         $inputMonthlyIncomePersonal = $_POST["inputMonthlyIncomePersonal"];
-        $av_monthlyIncomeFamily = (float)$av_monthlyIncomeFamily + (float)$inputMonthlyIncomePersonal;
-        $av_avgInterpersonalIncome = $av_monthlyIncomeFamily / ((int)$family_members_count + 1);
+        $av_monthlyIncomeFamily = (float) $av_monthlyIncomeFamily + (float) $inputMonthlyIncomePersonal;
+        $av_avgInterpersonalIncome = $av_monthlyIncomeFamily / ((int) $family_members_count + 1);
     } else {
         $inputMonthlyIncomePersonal = 0;
     }
@@ -241,8 +241,8 @@ if (isset($_POST["addAnother"])) {
     $person_details = $database->select_where('tbl_allvillagers', $where);
     foreach ($person_details as $person_details_item) {
         if ($person_details_item["av_index"]) {
-            $index = $person_details_item["av_index"]; 
-        } 
+            $index = $person_details_item["av_index"];
+        }
     }
     $index = $index + 1;
 
@@ -337,8 +337,7 @@ if (isset($_POST["addAnother"])) {
                 $inputPaidMonth = date_create($inputPaidMonth);
                 $date = date_format($inputPaidMonth, "Y-M");
                 $paidFor = $date;
-            }
-            else {
+            } else {
                 $paidFor = date('Y-M', strtotime($today));
             }
             // input a record into saandha collection
@@ -456,8 +455,8 @@ if (isset($_POST["submitSaandha"])) {
     }
     if ($_POST["inputMonthlyIncomePersonal"] != "") {
         $inputMonthlyIncomePersonal = $_POST["inputMonthlyIncomePersonal"];
-        $av_monthlyIncomeFamily = (float)$av_monthlyIncomeFamily + (float)$inputMonthlyIncomePersonal;
-        $av_avgInterpersonalIncome = $av_monthlyIncomeFamily / ((int)$family_members_count + 1);
+        $av_monthlyIncomeFamily = (float) $av_monthlyIncomeFamily + (float) $inputMonthlyIncomePersonal;
+        $av_avgInterpersonalIncome = $av_monthlyIncomeFamily / ((int) $family_members_count + 1);
     } else {
         $inputMonthlyIncomePersonal = 0;
     }
@@ -535,8 +534,8 @@ if (isset($_POST["submitSaandha"])) {
     $person_details = $database->select_where('tbl_allvillagers', $where);
     foreach ($person_details as $person_details_item) {
         if ($person_details_item["av_index"]) {
-            $index = $person_details_item["av_index"]; 
-        } 
+            $index = $person_details_item["av_index"];
+        }
     }
     $index = $index + 1;
 
@@ -632,8 +631,7 @@ if (isset($_POST["submitSaandha"])) {
                 $inputPaidMonth = date_create($inputPaidMonth);
                 $date = date_format($inputPaidMonth, "Y-M");
                 $paidFor = $date;
-            }
-            else {
+            } else {
                 $paidFor = date('Y-M', strtotime($today));
             }
             // input a record into saandha collection
@@ -659,6 +657,9 @@ if (isset($_POST["submitSaandha"])) {
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }
+        $URL = "form_villagers-registration-form.php?inserted_record=1";
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     }
 }
 
@@ -832,7 +833,7 @@ if (isset($_POST['submitJanaza'])) {
                     }
                 }
                 // update guardian information
-                if ((int)$max_age >= 18) {
+                if ((int) $max_age >= 18) {
                     $update_data = array(
                         'av_isGuardian' => mysqli_real_escape_string($database->con, 1),
                         'av_guardianIndex' => mysqli_real_escape_string($database->con, 0),
@@ -863,7 +864,7 @@ if (isset($_POST['submitJanaza'])) {
                             $max_sub = $sub;
                         }
                     }
-                    if ((int)$max_age >= 18) {
+                    if ((int) $max_age >= 18) {
                         $update_data = array(
                             'av_isGuardian' => mysqli_real_escape_string($database->con, 1),
                             'av_guardianIndex' => mysqli_real_escape_string($database->con, 0),
@@ -1158,9 +1159,9 @@ if (isset($_POST['submitNewRental'])) {
         $inputMonthlyAmount = 0;
     }
     if ($_POST["inputRentalDuration"] == "Other") {
-        (int)$inputRentalDuration = $_POST["inputRentalMonths"];
+        (int) $inputRentalDuration = $_POST["inputRentalMonths"];
     } else {
-        (int)$inputRentalDuration = $_POST["inputRentalDuration"];
+        (int) $inputRentalDuration = $_POST["inputRentalDuration"];
     }
 
     $insert_to_tbl_rentalsregisteration = array(
@@ -1265,7 +1266,7 @@ if (isset($_POST['submitRentalPayment'])) {
         $ri_payFor = $rental_income_details_item["ri_payFor"];
         $ri_dueAmount = $rental_income_details_item["ri_dueAmount"];
     }
-    if ((float)$ri_dueAmount > 0) {
+    if ((float) $ri_dueAmount > 0) {
         $insert_to_tbl_rentalincome = array(
             'ri_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
             'ri_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputRentalPaymentSubdivision']),
@@ -1285,7 +1286,7 @@ if (isset($_POST['submitRentalPayment'])) {
     }
 
     // input data into table
-    for ($i = 0; $i < (int)($payment / $monthly_payment); $i++) {
+    for ($i = 0; $i < (int) ($payment / $monthly_payment); $i++) {
 
         $rental_details = $database->select_where('tbl_rentalsregisteration', $where);
         foreach ($rental_details as $rental_details_item) {
@@ -1318,8 +1319,8 @@ if (isset($_POST['submitRentalPayment'])) {
         );
         $database->insert_data('tbl_rentalincome', $insert_to_tbl_rentalincome);
     }
-    if ((int)($payment % $monthly_payment) != 0) {
-        $remain = (int)($payment % $monthly_payment);
+    if ((int) ($payment % $monthly_payment) != 0) {
+        $remain = (int) ($payment % $monthly_payment);
         $due = $monthly_payment - $remain;
 
         $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
@@ -1758,36 +1759,33 @@ if (isset($_POST['submitSalary'])) {
     $payment = $_POST['inputBasicSalary'];
     $payment_count = $payment;
     $paidFor = $_POST['paidFor'];
-    (float)$basic_salary = $_POST["BasicSalary"];
-    (float)$prevPayment = $_POST["prevPayment"];
+    (float) $basic_salary = $_POST["BasicSalary"];
+    (float) $prevPayment = $_POST["prevPayment"];
     $due = $basic_salary - $prevPayment;
-    (float)$epf = (float)$basic_salary * 0.08;
+    (float) $epf = (float) $basic_salary * 0.08;
     if (isset($_POST["inputIncentive"])) {
         $inputIncentive = $_POST["inputIncentive"];
-    }
-    else {
-        $inputIncentive = 0; 
+    } else {
+        $inputIncentive = 0;
     }
     if (isset($_POST["inputMadrasaFee"])) {
         $inputMadrasaFee = $_POST["inputMadrasaFee"];
-    }
-    else {
-        $inputMadrasaFee = 0; 
+    } else {
+        $inputMadrasaFee = 0;
     }
     if (isset($_POST["inputBhayanFee"])) {
         $inputBhayanFee = $_POST["inputBhayanFee"];
-    }
-    else {
-        $inputBhayanFee = 0; 
+    } else {
+        $inputBhayanFee = 0;
     }
 
     if ($paidFor == "0") {
         $paidFor = date('Y-M');
-        (float)$epf = (float)$basic_salary * 0.08;
+        (float) $epf = (float) $basic_salary * 0.08;
 
-        if ((float)$payment >= (float)$basic_salary) {
+        if ((float) $payment >= (float) $basic_salary) {
             // input data into table
-            for ($i = 0; $i < (int)($payment_count / $basic_salary); $i++) {
+            for ($i = 0; $i < (int) ($payment_count / $basic_salary); $i++) {
                 if ($_POST["inputPost"] == "Pesh Imaam") {
                     $insert_to_tbl_peshimaamsalary = array(
                         'pSal_peshImaamId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
@@ -1821,7 +1819,7 @@ if (isset($_POST['submitSalary'])) {
             }
 
             // if there is a remaining in payment
-            if ((float)$payment > 0) {
+            if ((float) $payment > 0) {
                 if ($_POST["inputPost"] == "Pesh Imaam") {
                     $insert_to_tbl_peshimaamsalary = array(
                         'pSal_peshImaamId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
@@ -1889,7 +1887,7 @@ if (isset($_POST['submitSalary'])) {
             }
         }
     } else {
-        if ((float)$payment <= $due) {
+        if ((float) $payment <= $due) {
             if ($_POST["inputPost"] == "Pesh Imaam") {
                 $insert_to_tbl_peshimaamsalary = array(
                     'pSal_peshImaamId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
@@ -1951,8 +1949,8 @@ if (isset($_POST['submitSalary'])) {
             $payment_count = $payment_count - $due;
             $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
 
-            if ((float)$payment > 0) {
-                for ($i = 0; $i < (int)($payment_count / $basic_salary); $i++) {
+            if ((float) $payment > 0) {
+                for ($i = 0; $i < (int) ($payment_count / $basic_salary); $i++) {
                     if ($_POST["inputPost"] == "Pesh Imaam") {
                         $insert_to_tbl_peshimaamsalary = array(
                             'pSal_peshImaamId' => mysqli_real_escape_string($database->con, $_POST["inputPriestIndexNo"]),
@@ -1983,7 +1981,7 @@ if (isset($_POST['submitSalary'])) {
                     $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
                 }
             }
-            if ((float)$payment > 0) {
+            if ((float) $payment > 0) {
                 $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
                 if ($_POST["inputPost"] == "Pesh Imaam") {
                     $insert_to_tbl_peshimaamsalary = array(
@@ -2087,7 +2085,7 @@ if (isset($_POST['submitColSettlement'])) {
 
     $inputSettledAmount = $_POST["inputSettledAmount"];
     $inputSettlingAmount = $_POST["inputSettlingAmount"];
-    $selltle_amount = (float)$inputSettledAmount +  (float)$inputSettlingAmount;
+    $selltle_amount = (float) $inputSettledAmount +  (float) $inputSettlingAmount;
 
     $update_data = array(
         'scc_settledAmount' => mysqli_real_escape_string($database->con, $selltle_amount)
@@ -2111,7 +2109,6 @@ if (isset($_POST['submitQuickForm'])) {
         $inputGuardRelationship = "Guardian";
         $inputnoofUnmarried = $_POST['inputnoofUnmarried'];
         $inputnoofChildren = $_POST['inputnoofChildren'];
-
     } else {
         $inputGuardianStatus = 0;
         $inputnoofUnmarried = 0;
@@ -2145,8 +2142,8 @@ if (isset($_POST['submitQuickForm'])) {
     $person_details = $database->select_where('tbl_allvillagers', $where);
     foreach ($person_details as $person_details_item) {
         if ($person_details_item["av_index"]) {
-            $index = $person_details_item["av_index"]; 
-        } 
+            $index = $person_details_item["av_index"];
+        }
     }
     $index = $index + 1;
 
@@ -2312,7 +2309,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                         $current_saandha_amount = $saandha_amount;
                     }
                 }
-                if ((float)$payment >= (float)$current_saandha_amount) {
+                if ((float) $payment >= (float) $current_saandha_amount) {
                     $loop = true;
                     $insert_to_tbl_saandhacollection = array(
                         'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
@@ -2334,7 +2331,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                 }
             }
             // if there is a remaining in payment
-            if ((float)$payment > 0) {
+            if ((float) $payment > 0) {
                 // retrive saandha amount relevant to month
                 foreach ($saandha_amount_details as $saandha_amount_item) {
                     $saandha_amount = $saandha_amount_item["saf_amount"];
@@ -2350,7 +2347,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                 }
                 if ($paidFor != date('Y-M')) {
                     $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
-                    $due = (float)$current_saandha_amount - (float)$payment;
+                    $due = (float) $current_saandha_amount - (float) $payment;
                     $insert_to_tbl_saandhacollection = array(
                         'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
                         'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
@@ -2367,7 +2364,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                     }
                 } else {
-                    $due = (float)$current_saandha_amount - (float)$payment;
+                    $due = (float) $current_saandha_amount - (float) $payment;
                     $insert_to_tbl_saandhacollection = array(
                         'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
                         'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
@@ -2389,7 +2386,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
             }
         } else {
-            if ((float)$payment <= $due) {
+            if ((float) $payment <= $due) {
                 $due = $due - $payment;
                 $insert_to_tbl_saandhacollection = array(
                     'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
@@ -2439,7 +2436,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                             $current_saandha_amount = $saandha_amount;
                         }
                     }
-                    if ((float)$payment >= (float)$current_saandha_amount) {
+                    if ((float) $payment >= (float) $current_saandha_amount) {
                         $loop = true;
                         $insert_to_tbl_saandhacollection = array(
                             'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
@@ -2461,7 +2458,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                     }
                 }
                 // if there is a remaining in payment
-                if ((float)$payment > 0) {
+                if ((float) $payment > 0) {
                     // retrive saandha amount relevant to month
                     foreach ($saandha_amount_details as $saandha_amount_item) {
                         $saandha_amount = $saandha_amount_item["saf_amount"];
@@ -2477,7 +2474,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                     }
                     if ($paidFor != date('Y-M')) {
                         $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
-                        $due = (float)$current_saandha_amount - (float)$payment;
+                        $due = (float) $current_saandha_amount - (float) $payment;
                         $insert_to_tbl_saandhacollection = array(
                             'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
                             'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
@@ -2494,7 +2491,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                             echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                         }
                     } else {
-                        $due = (float)$current_saandha_amount - (float)$payment;
+                        $due = (float) $current_saandha_amount - (float) $payment;
                         $insert_to_tbl_saandhacollection = array(
                             'collection_index' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
                             'collection_subdivision' => mysqli_real_escape_string($database->con, $_POST['inputSaandhaSubdivision']),
