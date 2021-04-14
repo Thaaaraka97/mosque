@@ -29,7 +29,7 @@ include 'include/login_header.php';
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title"> Non-Mahalla Donations </h3>
+                        <h3 class="page-title"> Other Donations </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>forms.php">Forms</a></li>

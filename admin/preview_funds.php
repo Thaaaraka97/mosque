@@ -82,7 +82,7 @@ if (isset($_GET['edited'])) {
                                                         <tr class="tr-shadow">
                                                             <th>Date</th>
                                                             <th>Name</th>
-                                                            <th>Address</th>
+                                                            <th>Contact Number</th>
                                                             <th>Type</th>
                                                             <th>Amount</th>
                                                         </tr>
@@ -96,7 +96,7 @@ if (isset($_GET['edited'])) {
                                                          <tr>
                                                             <td>" . $funds_details_item['funds_date'] . "</td>
                                                             <td>" . $funds_details_item['funds_name'] . "</td>
-                                                            <td>" . $funds_details_item['funds_address'] . "</td>
+                                                            <td>" . $funds_details_item['funds_telephone'] . "</td>
                                                             <td>" . $funds_details_item['funds_type'] . "</td>
                                                             <td>" . $funds_details_item['funds_amount'] . "</td>
                                                         </tr>

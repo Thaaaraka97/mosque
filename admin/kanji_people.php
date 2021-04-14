@@ -83,7 +83,7 @@ if (isset($_GET['action'])) {
                                             </td>
                                             <td>
                                                 <div>
-                                                    <h3 class="card-title top"> Kanji List </h3>
+                                                    <h3 class="card-title top"> Kanji People List </h3>
                                                     <span class="top-span">AN-NOOR JUMMA MASJID</span>
                                                 </div>
                                             </td>

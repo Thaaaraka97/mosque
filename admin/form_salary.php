@@ -86,7 +86,7 @@ $database = new databases();
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="inputPriestIndexNo"> ID </label>
-                                                    <select id="inputPriestIndexNo" name="inputPriestIndexNo" class="form-control">                                                        
+                                                    <select id="inputPriestIndexNo" name="inputPriestIndexNo" class="form-control">
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-6">
@@ -103,27 +103,29 @@ $database = new databases();
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="d-flex justify-content-center">
-                                                <div class="form-group row col-md-6">
-                                                    <label for="inputIncentive" class="col-sm-4 col-form-label"> Incentive </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="inputIncentive" name="inputIncentive" placeholder="Amount" value="0">
+                                            <div id="otherSalary">
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="form-group row col-md-6">
+                                                        <label for="inputIncentive" class="col-sm-4 col-form-label"> Incentive </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="inputIncentive" name="inputIncentive" placeholder="Amount" value="0">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <div class="form-group row col-md-6">
-                                                    <label for="inputMadrasaFee" class="col-sm-4 col-form-label"> Madhrasa Fee </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="inputMadrasaFee" name="inputMadrasaFee" placeholder="Amount" value="0">
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="form-group row col-md-6">
+                                                        <label for="inputMadrasaFee" class="col-sm-4 col-form-label"> Madhrasa Fee </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="inputMadrasaFee" name="inputMadrasaFee" placeholder="Amount" value="0">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                <div class="form-group row col-md-6" id="specialbhyan">
-                                                    <label for="inputBhayanFee" class="col-sm-4 col-form-label"> Special Bhayan Fee</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="inputBhayanFee" name="inputBhayanFee" placeholder="Amount" value="0">
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="form-group row col-md-6" id="specialbhyan">
+                                                        <label for="inputBhayanFee" class="col-sm-4 col-form-label"> Special Bhayan Fee</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control" id="inputBhayanFee" name="inputBhayanFee" placeholder="Amount" value="0">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

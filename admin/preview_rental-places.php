@@ -83,9 +83,6 @@ if (isset($_GET['inserted'])) {
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <div class="mb-3 text-right">
-                                            <button class='btn btn-success btn-md ' data-toggle='modal' data-target='#addRecord' id="addNewPlace"> Add New </button>
-                                        </div>
                                         <div>
                                             <div class="table-responsive table-responsive-data2">
                                                 <table class="table table-data2">

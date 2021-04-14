@@ -85,171 +85,171 @@ $j = 1;
                             <div class="">
                                 <div class="">
                                     <div class="text-center">
-                                        <table class="table table-bordered table-lg" id="ingredients">
+                                        <table class="table table-bordered table-lg" id="monthly_report_print">
                                             <thead>
                                                 <tr class="tr-shadow">
-                                                    <th>Description</th>
-                                                    <th>Income</th>
-                                                    <th>Expense</th>
+                                                    <th class='text-dark font-weight-bold'>Description</th>
+                                                    <th class='text-dark font-weight-bold'>Income</th>
+                                                    <th class='text-dark font-weight-bold'>Expense</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td class='text-dark font-weight-bold'>Balance Carry Forward</td>
-                                                    <td class='text-dark font-weight-bold'><?php echo (float)$_GET['before_income'] - (float)$_GET['before_expense'] ?></td>
-                                                    <td class='text-dark font-weight-bold'>-</td>
+                                                    <td class='text-dark text-left'>Balance Carry Forward</td>
+                                                    <td class='text-dark'><?php echo (float)$_GET['before_income'] - (float)$_GET['before_expense'] ?></td>
+                                                    <td class='text-dark'>-</td>
                                                 </tr>
                                                 <?php
                                                 if ($_GET['collection_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Bills </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
-                                                        <td class='text-dark font-weight-bold'>" . $_GET['collection_total'] . "</td>
+                                                        <td class='text-dark text-left'> Bills </td>
+                                                        <td class='text-dark'> - </td>
+                                                        <td class='text-dark'>" . $_GET['collection_total'] . "</td>
                                                     </tr>
                                                         ";
                                                 }
                                                 if ($_GET['collection2_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Expenses </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
-                                                        <td class='text-dark font-weight-bold'>" . $_GET['collection2_total'] . "</td>
+                                                        <td class='text-dark text-left'> Expenses </td>
+                                                        <td class='text-dark'> - </td>
+                                                        <td class='text-dark'>" . $_GET['collection2_total'] . "</td>
                                                     </tr>
                                                         ";
                                                 }
                                                 if ($_GET['collection3_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Kanduri Collection </td>
-                                                        <td class='text-dark font-weight-bold'> " . $_GET['collection3_total'] . " </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
+                                                        <td class='text-dark text-left'> Kanduri Collection </td>
+                                                        <td class='text-dark'> " . $_GET['collection3_total'] . " </td>
+                                                        <td class='text-dark'> - </td>
                                                     </tr>
                                                     ";
                                                 }
                                                 if ($_GET['collection4_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Donations  </td>
-                                                        <td class='text-dark font-weight-bold'> " . $_GET['collection4_total'] . " </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
+                                                        <td class='text-dark text-left'> Donations  </td>
+                                                        <td class='text-dark'> " . $_GET['collection4_total'] . " </td>
+                                                        <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
                                                 }
                                                 if ($_GET['collection5_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Trusteeboard Donation </td>
-                                                        <td class='text-dark font-weight-bold'> " . $_GET['collection5_total'] . " </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
+                                                        <td class='text-dark text-left'> Trusteeboard Donation </td>
+                                                        <td class='text-dark'> " . $_GET['collection5_total'] . " </td>
+                                                        <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
                                                 }
                                                 if ($_GET['collection6_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Friday Collection Donation </td>
-                                                        <td class='text-dark font-weight-bold'> " . $_GET['collection6_total'] . " </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
+                                                        <td class='text-dark text-left'> Friday Collection Donation </td>
+                                                        <td class='text-dark'> " . $_GET['collection6_total'] . " </td>
+                                                        <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
                                                 }
                                                 if ($_GET['collection7_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Friday Collection Regular </td>
-                                                        <td class='text-dark font-weight-bold'> " . $_GET['collection7_total'] . " </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
+                                                        <td class='text-dark text-left'> Friday Collection Regular </td>
+                                                        <td class='text-dark'> " . $_GET['collection7_total'] . " </td>
+                                                        <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
                                                 }
                                                 if ($_GET['collection8_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                      <td class='text-dark font-weight-bold'> Funds  </td>
-                                                      <td class='text-dark font-weight-bold'> " . $_GET['collection8_total'] . " </td>
-                                                      <td class='text-dark font-weight-bold'> - </td>
+                                                      <td class='text-dark text-left'> Funds  </td>
+                                                      <td class='text-dark'> " . $_GET['collection8_total'] . " </td>
+                                                      <td class='text-dark'> - </td>
                                                     </tr>
                                                     ";
                                                 }
                                                 if ($_GET['collection9_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Laylat al-Qadr Collection </td>
-                                                        <td class='text-dark font-weight-bold'> " . $_GET['collection9_total'] . " </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
+                                                        <td class='text-dark text-left'> Laylat al-Qadr Collection </td>
+                                                        <td class='text-dark'> " . $_GET['collection9_total'] . " </td>
+                                                        <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
                                                 }
                                                 if ($_GET['collection10_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Muazzin Salary </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
-                                                        <td class='text-dark font-weight-bold'>" . $_GET['collection10_total'] . "</td>
+                                                        <td class='text-dark text-left'> Muazzin Salary </td>
+                                                        <td class='text-dark'> - </td>
+                                                        <td class='text-dark'>" . $_GET['collection10_total'] . "</td>
                                                     </tr>
                                                         ";
                                                 }
                                                 if ($_GET['collection11_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Pesh Imaam Salary </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
-                                                        <td class='text-dark font-weight-bold'>" . $_GET['collection11_total'] . "</td>
+                                                        <td class='text-dark text-left'> Pesh Imaam Salary </td>
+                                                        <td class='text-dark'> - </td>
+                                                        <td class='text-dark'>" . $_GET['collection11_total'] . "</td>
                                                     </tr>
                                                         ";
                                                 }
                                                 if ($_GET['collection12_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Non-Mahalla Saandha Collections </td>
-                                                        <td class='text-dark font-weight-bold'> " . $_GET['collection12_total'] . " </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
+                                                        <td class='text-dark text-left'> Non-Mahalla Saandha Collections </td>
+                                                        <td class='text-dark'> " . $_GET['collection12_total'] . " </td>
+                                                        <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
                                                 }
                                                 if ($_GET['collection13_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Other Servant Salary </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
-                                                        <td class='text-dark font-weight-bold'>" . $_GET['collection13_total'] . "</td>
+                                                        <td class='text-dark text-left'> Other Servant Salary </td>
+                                                        <td class='text-dark'> - </td>
+                                                        <td class='text-dark'>" . $_GET['collection13_total'] . "</td>
                                                     </tr>
                                                         ";
                                                 }
                                                 if ($_GET['collection14_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Rental Income </td>
-                                                        <td class='text-dark font-weight-bold'> " . $_GET['collection14_total'] . " </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
+                                                        <td class='text-dark text-left'> Rental Income </td>
+                                                        <td class='text-dark'> " . $_GET['collection14_total'] . " </td>
+                                                        <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
                                                 }
                                                 if ($_GET['collection15_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Saandha Collection </td>
-                                                        <td class='text-dark font-weight-bold'> " . $_GET['collection15_total'] . " </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
+                                                        <td class='text-dark text-left'> Saandha Collection </td>
+                                                        <td class='text-dark'> " . $_GET['collection15_total'] . " </td>
+                                                        <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
                                                 }
                                                 if ($_GET['collection16_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Special Bhayan Payment </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
-                                                        <td class='text-dark font-weight-bold'>" . $_GET['collection16_total'] . "</td>
+                                                        <td class='text-dark text-left'> Special Bhayan Payment </td>
+                                                        <td class='text-dark'> - </td>
+                                                        <td class='text-dark'>" . $_GET['collection16_total'] . "</td>
                                                     </tr>
                                                         ";
                                                 }
                                                 if ($_GET['collection17_total'] != 0) {
                                                     echo "
                                                     <tr>
-                                                        <td class='text-dark font-weight-bold'> Undiyal Collection </td>
-                                                        <td class='text-dark font-weight-bold'> " . $_GET['collection17_total'] . " </td>
-                                                        <td class='text-dark font-weight-bold'> - </td>
+                                                        <td class='text-dark text-left'> Undiyal Collection </td>
+                                                        <td class='text-dark'> " . $_GET['collection17_total'] . " </td>
+                                                        <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
                                                 }

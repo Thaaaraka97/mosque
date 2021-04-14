@@ -50,7 +50,7 @@ $database = new databases();
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="inputDonationDisaster">Donation</label>
+                                                <label for="inputDonationDisaster">Donator</label>
                                                 <select id="inputDonationDisaster" name="inputDonationDisaster" class="form-control">
                                                     <option value="0" selected>Choose...</option>
                                                     <option value="Mahalla">Mahalla</option>

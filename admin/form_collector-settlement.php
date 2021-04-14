@@ -38,7 +38,7 @@ $database = new databases();
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title"> </h3>
+                        <h3 class="page-title"> Collector Settlement </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?php echo $server_name ?>forms.php">Forms</a></li>
@@ -73,17 +73,17 @@ $database = new databases();
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="inputColAmount"> Collected Amount </label>
+                                                <label for="inputColAmount"> Total Collected Amount </label>
                                                 <input type="text" class="form-control" id="inputColAmount" name="inputColAmount" readonly>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="inputSettledAmount"> Settled Amount </label>
+                                                <label for="inputSettledAmount"> Total Settled Amount </label>
                                                 <input type="text" class="form-control" id="inputSettledAmount" name="inputSettledAmount" readonly>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-center">
                                             <div class="form-group col-md-6 text-center">
-                                                <label for="inputSettlingAmount"> Settling Amount </label>
+                                                <label for="inputSettlingAmount"> Payment Amount </label>
                                                 <input type="text" class="form-control" id="inputSettlingAmount" name="inputSettlingAmount" placeholder="Payment (Rs)">
                                             </div>
                                         </div>

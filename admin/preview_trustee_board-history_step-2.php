@@ -120,7 +120,7 @@ foreach ($trustee_board_history as $trustee_board_history_item) {
                                                 <div class="flex-grow">
                                                     <h6 class="preview-subject">Trusteeboard ID</h6>
                                                 </div>
-                                                <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                <div class="mr-auto text-sm-left pt-2 pt-sm-0">
                                                     <p class="text-muted"><?php echo $elected_ID ?></p>
                                                 </div>
                                             </div>
@@ -132,7 +132,7 @@ foreach ($trustee_board_history as $trustee_board_history_item) {
                                                 <div class="flex-grow">
                                                     <h6 class="preview-subject">Details</h6>
                                                 </div>
-                                                <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                <div class="mr-auto text-sm-left pt-2 pt-sm-0">
                                                     <p class="text-muted">
                                                     <?php 
                                                         $where = array(

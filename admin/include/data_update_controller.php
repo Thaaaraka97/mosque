@@ -343,11 +343,6 @@ if (isset($_POST['editVillagers'])) {
     } else {
         $inputOrphan = 0;
     }
-    if ($_POST['inputOutstandingSaaandhaDue'] != "") {
-        $inputOutstandingSaaandhaDue = $_POST['inputOutstandingSaaandhaDue'];
-    } else {
-        $inputOutstandingSaaandhaDue = 0;
-    }
     if ($_POST['inputSpecialSaandha'] != "") {
         $inputSpecialSaandha = $_POST['inputSpecialSaandha'];
     } else {
@@ -470,7 +465,6 @@ if (isset($_POST['editVillagers'])) {
         'av_widowed' => mysqli_real_escape_string($database->con, $inputWidowed),
         'av_job' => mysqli_real_escape_string($database->con, $inputJob),
         'av_QuickForm' => mysqli_real_escape_string($database->con, 0),
-        'av_OutstandingDue' => mysqli_real_escape_string($database->con, $inputOutstandingSaaandhaDue),
         'av_specialSaandhaAmt' => mysqli_real_escape_string($database->con, $inputSpecialSaandha),
         'av_monthlyIncomePersonal' => mysqli_real_escape_string($database->con, $inputMonthlyIncomePersonal)
 

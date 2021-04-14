@@ -57,7 +57,7 @@ if (isset($_GET['updated'])) {
                                             </td>
                                             <td>
                                                 <div>
-                                                    <h3 class="card-title top"> Letter 2 </h3>
+                                                    <h3 class="card-title top"> Mahalla Member Confirmation Letter </h3>
                                                     <span class="top-span">AN-NOOR JUMMA MASJID</span>
                                                 </div>
                                             </td>
@@ -72,26 +72,21 @@ if (isset($_GET['updated'])) {
                             <div class="card shadow">
                                 <div class="card-body text-dark">
                                     <div class="special-text">
-                                        <p>
-                                            அந் நூர் ஜும்ஆ மஸ்ஜித்,<br>
-                                            மோரகளை,<br>
-                                            கேஹலியகொடை<br>
+                                        <p class="mt-5">
+                                            மதிப்புக்குறிய
                                         </p>
+                                        <br><br>
+                                        <p class="text-center font-weight-bold"><u>மஹல்லாவாசி என்பதை உறுதிப்படுத்தல்</u></p>
+                                        <hr id="heading-underline2">
+                                        <br>
                                         <p class="mt-3">
-                                            முழுப்பெயர்<br>
-                                            முகவரி<br>
-                                            திகதி<br>
-                                        </p>
-                                        <p class="mt-3">
-                                            மேலே பெயர் குறிப்பிடப்பட்ட அல்ஹாஜ்/ஜனாப் .................................. என்பவர்
+                                            மேலே பெயர் குறிப்பிடப்பட்ட அல்ஹாஜ்/ஜனாப் ........................................................... என்பவர்
                                             எமது பள்ளிவாசல் மஹல்லாவுக்குட்பட்ட நிரந்தர குடியிருப்பாளர் என்பதையும் சந்தா தாரி
                                             என்பதையும் உறுதிப்படுத்துகிறோம்.
                                         </p>
-                                        <p class="mt-3">
+                                        <br><br><br>
+                                        <p class="mt-5 font-weight-bold">
                                             தலைவர் / செயலாளர்
-                                        </p>
-                                        <p class="mt-3">
-                                            பள்ளிவாசல் சீல்
                                         </p>
 
                                     </div>

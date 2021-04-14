@@ -106,6 +106,7 @@ if (isset($_GET['edited'])) {
                                                         }
 
                                                         $trustee_board_history = $database->select_data('tbl_trusteeboardhistory');
+                                                        $current_elected_ID = 0;
                                                         foreach ($trustee_board_history as $trustee_board_history_item) {
                                                             $id = $trustee_board_history_item['th_id'];
                                                             $elected_ID = $trustee_board_history_item['th_electedYYMM'];
@@ -113,21 +114,24 @@ if (isset($_GET['edited'])) {
                                                             if ($record == "") {
                                                                 $record = "-";
                                                             }
-                                                            echo "
-                                                         <tr>
-                                                            <td>" . $elected_ID . "</td>
-                                                            <td>" . $record . "</td>
-                                                            <td>";
-                                                            if ($elected_ID == $tb_ID) {
-                                                                echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=editable' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>";
-                                                            } else {
-                                                                echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=noneditable' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>";
+                                                            if ($current_elected_ID != $elected_ID) {
+                                                                echo "
+                                                                <tr>
+                                                                    <td>" . $elected_ID . "</td>
+                                                                    <td>" . $record . "</td>
+                                                                    <td>";
+                                                                    if ($elected_ID == $tb_ID) {
+                                                                        echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=editable' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>";
+                                                                    } else {
+                                                                        echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=noneditable' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>";
+                                                                    }
+                                                                    echo "
+                                                                    </td>
+                                                                    
+                                                                </tr>
+                                                                ";
+                                                                $current_elected_ID = $elected_ID;
                                                             }
-                                                            echo "
-                                                            </td>
-                                                            
-                                                        </tr>
-                                                         ";
                                                         }
 
                                                         ?>

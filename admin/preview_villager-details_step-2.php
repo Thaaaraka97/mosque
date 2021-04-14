@@ -77,9 +77,9 @@ $av_leftVillage = "";
 $av_aliveOrDeceased = "";
 $av_disabled = "";
 $is_student = 1;
-$av_OutstandingDue = 1;
 $av_specialSaandhaAmt = 1;
 $av_QuickForm = "";
+$av_FamilyID = "";
 
 
 $person_details = $database->select_where('tbl_allvillagers', $where);
@@ -127,9 +127,9 @@ foreach ($person_details as $person_details_item) {
     $av_leftVillage = $person_details_item['av_leftVillage'];
     $av_aliveOrDeceased = $person_details_item['av_aliveOrDeceased'];
     $av_disabled = $person_details_item['av_disabled'];
-    $av_OutstandingDue = $person_details_item['av_OutstandingDue'];
     $av_specialSaandhaAmt = $person_details_item['av_specialSaandhaAmt'];
     $av_QuickForm = $person_details_item['av_QuickForm'];
+    $av_FamilyID = $person_details_item['av_FamilyID'];
 
     if ($av_eduGrade == "0" && $av_madChild_status == "0") {
         $is_student = 0;
@@ -287,7 +287,7 @@ $age = $database->calculate_age($dob);
                                             <td>
                                                 <div>
                                                     <?php
-                                                    if ($action == "view") {
+                                                    if ($action == "view_saandha") {
                                                         echo "<h3 class='card-title top'> All Villagers Details Preview </h3>";
                                                     }
                                                     if ($action == "edit") {
@@ -505,6 +505,18 @@ $age = $database->calculate_age($dob);
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
                                                         <p class="text-muted"><?php echo $av_residentialStatus ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Family ID</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo $av_FamilyID ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1061,6 +1073,8 @@ $age = $database->calculate_age($dob);
                                                                 <option value="0" <?php echo ($av_guardianRelationship == '0') ? 'selected' : '' ?>>Choose...</option>
                                                                 <option value="Father" <?php echo ($av_guardianRelationship == 'Father') ? 'selected' : '' ?>>Father</option>
                                                                 <option value="Mother" <?php echo ($av_guardianRelationship == 'Mother') ? 'selected' : '' ?>>Mother</option>
+                                                                <option value="Brother" <?php echo ($av_guardianRelationship == 'Brother') ? 'selected' : '' ?>>Brother</option>
+                                                                <option value="Uncle" <?php echo ($av_guardianRelationship == 'Uncle') ? 'selected' : '' ?>>Uncle</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -1107,10 +1121,6 @@ $age = $database->calculate_age($dob);
                                                 </div>
                                                 <div id="saandhaAmountPrev">
                                                     <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="inputOutstandingSaaandhaDue"> Saandha - Outstanding Due </label>
-                                                            <input type="text" class="form-control" id="inputOutstandingSaaandhaDue" name="inputOutstandingSaaandhaDue" placeholder="Amount (Rs)" value="<?php echo $av_OutstandingDue ?>">
-                                                        </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="inputSpecialSaandha"> Saandha - Special Amount </label>
                                                             <input type="text" class="form-control" id="inputSpecialSaandha" name="inputSpecialSaandha" placeholder="Amount (Rs)" value="<?php echo $av_specialSaandhaAmt ?>">

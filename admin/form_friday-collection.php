@@ -44,22 +44,20 @@ include 'include/login_header.php';
                                     <h4 class="card-title"> Friday Collection Form </h4>
                                     <form class="pt-3" method="POST">
                                         <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <div class="form-group row pt-3">
-                                                    <div class="col-md-3 pt-2 d-flex align-items-center text-right">
-                                                        <label class="form-label"> Donation Type </label>
+                                            <div class="form-group row pt-3 col-md-10">
+                                                <div class="col-md-3 pt-2 d-flex align-items-center text-right">
+                                                    <label class="form-label"> Donation Type </label>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" name="inputFridayCollectionType" id="inputFridayCollectionTypeR" value="Friday Special Collection"> Friday Special Collection </label>
                                                     </div>
-                                                    <div class="col-sm-4">
-                                                        <div class="form-check">
-                                                            <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="inputFridayCollectionType" id="inputFridayCollectionTypeR" value="Regular Donation"> Regular Donation </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-5">
-                                                        <div class="form-check">
-                                                            <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="inputFridayCollectionType" id="inputFridayCollectionTypeC" value="Collection" checked> Collection </label>
-                                                        </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" name="inputFridayCollectionType" id="inputFridayCollectionTypeC" value="Regular Collection" checked> Regular Collection </label>
                                                     </div>
                                                 </div>
                                             </div>

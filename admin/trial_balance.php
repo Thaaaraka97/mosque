@@ -208,7 +208,7 @@ foreach ($before_collection17 as $before_collection17_item) {
                           </thead>
                           <tbody>
                             <tr>
-                              <td>Balance Carry Forward</td>
+                              <td>Balance Before</td>
                               <td><?php echo (float)$before_income - (float)$before_expense ?></td>
                               <td>-</td>
                             </tr>

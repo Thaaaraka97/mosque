@@ -420,8 +420,22 @@ div.modal-footer button.btn-secondary:hover {
   padding: 30px;
 }
 .special-text p {
-  font-size: 1em;
+  font-size: 0.9em;
   text-align: justify;
+}
+.special-text p u {
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+#heading-underline {
+  margin-top: 0rem;
+  width: 45%;
+  border-color: black;
+}
+#heading-underline2 {
+  margin-top: 0rem;
+  width: 75%;
+  border-color: black;
 }
 
 .board .panel {
@@ -473,6 +487,14 @@ div.modal-footer button.btn-secondary:hover {
   display: none;
 }
 
-#saandhaAmountPrev{
-  display: none;
+.search-box{
+  color: white;
+}
+.search-box:focus {
+  color: white;
+}
+
+#monthly_report_print td, #monthly_report_print th{
+  font-size: 1rem;
+  border: 2px solid black;
 }

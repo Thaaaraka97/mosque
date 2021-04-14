@@ -228,11 +228,6 @@ if (isset($_POST["addAnother"])) {
     } else {
         $inputGrade = $_POST['inputGrade'];
     }
-    if ($_POST['inputOutstandingSaaandhaDue'] == "") {
-        $inputOutstandingSaaandhaDue = 0;
-    } else {
-        $inputOutstandingSaaandhaDue = $_POST['inputOutstandingSaaandhaDue'];
-    }
     if ($_POST['inputSpecialSaandha'] == "") {
         $inputSpecialSaandha = 0;
     } else {
@@ -285,7 +280,6 @@ if (isset($_POST["addAnother"])) {
         'av_monthlyIncomePersonal' => mysqli_real_escape_string($database->con, $inputMonthlyIncomePersonal),
         'av_leftVillage' => mysqli_real_escape_string($database->con, 0),
         'av_QuickForm' => mysqli_real_escape_string($database->con, 0),
-        'av_OutstandingDue' => mysqli_real_escape_string($database->con, $inputOutstandingSaaandhaDue),
         'av_specialSaandhaAmt' => mysqli_real_escape_string($database->con, $inputSpecialSaandha),
         'av_sentNotifications' => mysqli_real_escape_string($database->con, 0),
         'av_aliveOrDeceased' => mysqli_real_escape_string($database->con, 1)
@@ -515,11 +509,6 @@ if (isset($_POST["submitSaandha"])) {
     } else {
         $inputDiasbleStatus = 0;
     }
-    if ($_POST['inputOutstandingSaaandhaDue'] == "") {
-        $inputOutstandingSaaandhaDue = 0;
-    } else {
-        $inputOutstandingSaaandhaDue = $_POST['inputOutstandingSaaandhaDue'];
-    }
     if ($_POST['inputSpecialSaandha'] == "") {
         $inputSpecialSaandha = 0;
     } else {
@@ -573,7 +562,6 @@ if (isset($_POST["submitSaandha"])) {
         'av_monthlyIncomePersonal' => mysqli_real_escape_string($database->con, $inputMonthlyIncomePersonal),
         'av_leftVillage' => mysqli_real_escape_string($database->con, 0),
         'av_QuickForm' => mysqli_real_escape_string($database->con, 0),
-        'av_OutstandingDue' => mysqli_real_escape_string($database->con, $inputOutstandingSaaandhaDue),
         'av_specialSaandhaAmt' => mysqli_real_escape_string($database->con, $inputSpecialSaandha),
         'av_sentNotifications' => mysqli_real_escape_string($database->con, 0),
         'av_aliveOrDeceased' => mysqli_real_escape_string($database->con, 1)
@@ -2084,7 +2072,6 @@ if (isset($_POST['submitQuickForm'])) {
     }
     if ($_POST['inputSaandhaStatus'] == "No") {
         $inputSaandhaStatus = 0;
-        $inputOutstandingSaaandhaDue = 0;
         $inputSpecialSaandha = 0;
         if ($_POST['inputAge'] >= 18) {
             $saandhaStatusReason = "Not Registered";
@@ -2093,7 +2080,6 @@ if (isset($_POST['submitQuickForm'])) {
         }
     } else {
         $inputSaandhaStatus = 1;
-        $inputOutstandingSaaandhaDue = $_POST['inputOutstandingSaaandhaDue'];
         $inputSpecialSaandha = $_POST['inputSpecialSaandha'];
         if ($_POST['inputAge'] >= 18) {
             $saandhaStatusReason = "Pending";
@@ -2149,7 +2135,6 @@ if (isset($_POST['submitQuickForm'])) {
         'av_monthlyIncomePersonal' => mysqli_real_escape_string($database->con, 0),
         'av_leftVillage' => mysqli_real_escape_string($database->con, 0),
         'av_QuickForm' => mysqli_real_escape_string($database->con, 1),
-        'av_OutstandingDue' => mysqli_real_escape_string($database->con, $inputOutstandingSaaandhaDue),
         'av_specialSaandhaAmt' => mysqli_real_escape_string($database->con, $inputSpecialSaandha),
         'av_sentNotifications' => mysqli_real_escape_string($database->con, 0),
         'av_aliveOrDeceased' => mysqli_real_escape_string($database->con, 1)

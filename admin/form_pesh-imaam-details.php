@@ -199,7 +199,7 @@ $database = new databases();
                                                             <div class="col-md-6">
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
-                                                                        <input type="checkbox" class="form-check-input" name="Mahalla" id="Mahalla" value="Mahalla Letter"> Mahalla Letter </label>
+                                                                        <input type="checkbox" class="form-check-input" name="Mahalla" id="Mahalla" value="Mahalla Masjid Letter"> Mahalla Masjid Letter </label>
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -530,9 +530,11 @@ $(document).ready(function () {
     if ($(this).val() == "No") {
       $("#saandhaGuardian").show();
       $("#saandhaGuardianEdit").show();
+      $("#saandhaGuardianChildren").hide();
     } else {
       $("#saandhaGuardian").hide();
       $("#saandhaGuardianEdit").hide();
+      $("#saandhaGuardianChildren").show();
     }
   });
 
@@ -717,7 +719,7 @@ $(document).ready(function () {
   // show/hide lease/monthly div on radio change
   $("input[type=radio][name=inputFridayCollectionType]").change(function (e) {
     e.preventDefault();
-    if ($(this).val() == "Collection") {
+    if ($(this).val() == "Regular Collection") {
       $("#fridayRegular").hide();
       $("#fridayRegularDate").show();
     } else {
@@ -751,6 +753,84 @@ $(document).ready(function () {
         } else {
           $("#inputSex").val("Female");
         }
+      },
+    });
+  });
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // nikkah details form
+  // submit data to find the details
+  $("#inputGroomSubdivision").change(function (e) {
+    e.preventDefault();
+    var index = $("#inputIndexNo").val();
+    var subdivision = $("#inputGroomSubdivision").val();
+    var data_bundle = "index=" + index + "&subdivision=" + subdivision + "&action=find_details";
+    $.ajax({
+      type: "post",
+      url: "handlers/nikkah_details_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split("+");
+        $('#inputGroomTP').prop('readonly', true);
+        $('#inputGroomName').prop('readonly', true);
+        $('#inputGroomBirthday').prop('readonly', true);
+        $('#inputGroomNIC').prop('readonly', true);
+        $('#inputGroomGuardianIndex').prop('readonly', true);
+        $('#inputGroomAge').prop('readonly', true);
+        $('#inputGroomAddress').prop('readonly', true);
+
+        $("#inputGroomTP").val(result_array[0]);
+        $("#inputGroomName").val(result_array[1]);
+        $("#inputGroomBirthday").val(result_array[2]);
+        $("#inputGroomNIC").val(result_array[3]);
+        $("#inputGroomGuardianIndex").val(result_array[4]);
+        $("#inputGroomAddress").val(result_array[5]);
+        var dob = result_array[2];
+        var today = new Date();
+        var birthDate = new Date(dob);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
+        }
+        $("#inputGroomAge").val(age);
+      },
+    });
+  });
+  $("#inputBrideSubdivision").change(function (e) {
+    e.preventDefault();
+    var index = $("#inputBrideIndexNo").val();
+    var subdivision = $("#inputBrideSubdivision").val();
+    var data_bundle = "index=" + index + "&subdivision=" + subdivision + "&action=find_details";
+    $.ajax({
+      type: "post",
+      url: "handlers/nikkah_details_handler.php",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split("+");
+        $('#inputBrideTP').prop('readonly', true);
+        $('#inputBrideName').prop('readonly', true);
+        $('#inpuBridetBirthday').prop('readonly', true);
+        $('#inputBrideNIC').prop('readonly', true);
+        $('#inputBrideGuardianIndex').prop('readonly', true);
+        $('#inputBrideAge').prop('readonly', true);
+        $('#inputBrideAddress').prop('readonly', true);
+
+        $("#inputBrideTP").val(result_array[0]);
+        $("#inputBrideName").val(result_array[1]);
+        $("#inpuBridetBirthday").val(result_array[2]);
+        $("#inputBrideNIC").val(result_array[3]);
+        $("#inputBrideGuardianIndex").val(result_array[4]);
+        $("#inputBrideAddress").val(result_array[5]);
+        var dob = result_array[2];
+        var today = new Date();
+        var birthDate = new Date(dob);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
+        }
+        $("#inputBrideAge").val(age);
       },
     });
   });
@@ -1772,21 +1852,25 @@ $(document).ready(function () {
       $("#specialbhyan").show();
       if (inputPayType == "Salary Payment") {
         $("#salaryDIV").show();
+        $("#otherSalary").show();
         $("#advanceDIV").hide();
       }
       else if (inputPayType == "Advance Payment") {
         $("#advanceDIV").show();
         $("#salaryDIV").hide();
+        $("#otherSalary").hide();
       }
     } else if (post == "Muazzin") {
       $("#specialbhyan").hide();
       if (inputPayType == "Salary Payment") {
         $("#salaryDIV").show();
+        $("#otherSalary").show();
         $("#advanceDIV").hide();
       }
       else if (inputPayType == "Advance Payment") {
         $("#advanceDIV").show();
         $("#salaryDIV").hide();
+        $("#otherSalary").hide();
       }
     }
   });

@@ -161,8 +161,20 @@ if (isset($_GET['nodata'])) {
                                                         <option value="0" selected>Choose...</option>
                                                         <option value="Father">Father</option>
                                                         <option value="Mother">Mother</option>
+                                                        <option value="Brother">Brother</option>
+                                                        <option value="Uncle">Uncle</option>
                                                     </select>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row" id="saandhaGuardianChildren">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputnoofChildren"> No. of Children </label>
+                                                <input type="text" class="form-control" id="inputnoofChildren" name="inputnoofChildren" placeholder="No. of Children" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputnoofUnmarried"> No. of Unmarried Children </label>
+                                                <input type="text" class="form-control" id="inputnoofUnmarried" name="inputnoofUnmarried" placeholder="No. of Unmarried Children" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -174,13 +186,13 @@ if (isset($_GET['nodata'])) {
                                                     <div class="col-sm-4">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="inputSaandhaStatus" id="inputSaandhaStatusY" value="Yes"> Yes </label>
+                                                                <input type="radio" class="form-check-input" name="inputSaandhaStatus" id="inputSaandhaStatusY" value="Yes" checked> Yes </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="inputSaandhaStatus" id="inputSaandhaStatusN" value="No" checked> No </label>
+                                                                <input type="radio" class="form-check-input" name="inputSaandhaStatus" id="inputSaandhaStatusN" value="No"> No </label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -189,29 +201,13 @@ if (isset($_GET['nodata'])) {
                                         <div id="saandhaAmountPrev">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="inputOutstandingSaaandhaDue"> Saandha - Outstanding Due </label>
-                                                    <input type="text" class="form-control" id="inputOutstandingSaaandhaDue" name="inputOutstandingSaaandhaDue" placeholder="Amount (Rs)">
-                                                </div>
-                                                <div class="form-group col-md-6">
                                                     <label for="inputSpecialSaandha"> Saandha - Special Amount </label>
                                                     <input type="text" class="form-control" id="inputSpecialSaandha" name="inputSpecialSaandha" placeholder="Amount (Rs)">
                                                 </div>
-                                            </div>
-                                            <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="inputPaidMonth"> Lasth Month Paid </label>
                                                     <input type="month" class="form-control" id="inputPaidMonth" name="inputPaidMonth">
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputnoofChildren"> No. of Children </label>
-                                                <input type="text" class="form-control" id="inputnoofChildren" name="inputnoofChildren" placeholder="No. of Children" required>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputnoofUnmarried"> No. of Unmarried Children </label>
-                                                <input type="text" class="form-control" id="inputnoofUnmarried" name="inputnoofUnmarried" placeholder="No. of Unmarried Children" required>
                                             </div>
                                         </div>
 
