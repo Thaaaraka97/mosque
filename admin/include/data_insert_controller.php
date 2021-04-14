@@ -233,8 +233,21 @@ if (isset($_POST["addAnother"])) {
     } else {
         $inputSpecialSaandha = $_POST['inputSpecialSaandha'];
     }
+    $index = 0;
+    // check subdivision
+    $where = array(
+        'av_subDivision'     =>     $_POST["inputSubdivision"]
+    );
+    $person_details = $database->select_where('tbl_allvillagers', $where);
+    foreach ($person_details as $person_details_item) {
+        if ($person_details_item["av_index"]) {
+            $index = $person_details_item["av_index"]; 
+        } 
+    }
+    $index = $index + 1;
 
     $insert_to_tbl_allvillagers = array(
+        'av_index' => mysqli_real_escape_string($database->con, $index),
         'av_subDivision' => mysqli_real_escape_string($database->con, $av_subDivision),
         'av_familyID' => mysqli_real_escape_string($database->con, $family_id),
         'av_address' => mysqli_real_escape_string($database->con, $av_address),
@@ -514,8 +527,21 @@ if (isset($_POST["submitSaandha"])) {
     } else {
         $inputSpecialSaandha = $_POST['inputSpecialSaandha'];
     }
+    $index = 0;
+    // check subdivision
+    $where = array(
+        'av_subDivision'     =>     $_POST["inputSubdivision"]
+    );
+    $person_details = $database->select_where('tbl_allvillagers', $where);
+    foreach ($person_details as $person_details_item) {
+        if ($person_details_item["av_index"]) {
+            $index = $person_details_item["av_index"]; 
+        } 
+    }
+    $index = $index + 1;
 
     $insert_to_tbl_allvillagers = array(
+        'av_index' => mysqli_real_escape_string($database->con, $index),
         'av_subDivision' => mysqli_real_escape_string($database->con, $av_subDivision),
         'av_familyID' => mysqli_real_escape_string($database->con, $family_id),
         'av_address' => mysqli_real_escape_string($database->con, $av_address),
