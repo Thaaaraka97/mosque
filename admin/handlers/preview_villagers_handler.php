@@ -1,6 +1,5 @@
 <?php
 include "../include/db-connection.php";
-include 'include/login_header.php';
 
 $database = new databases();
 $URL = "preview_villager-details.php?action=allvillagers&left=1";
