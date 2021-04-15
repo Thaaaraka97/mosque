@@ -2173,7 +2173,6 @@ if (isset($_POST['submitQuickForm'])) {
         'av_nic' => mysqli_real_escape_string($database->con, $_POST['inputNIC']),
         'av_dob' => mysqli_real_escape_string($database->con, $_POST['inputDOB']),
         'av_age' => mysqli_real_escape_string($database->con, $_POST['inputAge']),
-        'av_telephone' => mysqli_real_escape_string($database->con, 0),
         'av_isGuardian' => mysqli_real_escape_string($database->con, $inputGuardianStatus),
         'av_disabled' => mysqli_real_escape_string($database->con, 0),
         'av_guardianIndex' => mysqli_real_escape_string($database->con, $inputGuardianID),
