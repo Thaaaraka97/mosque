@@ -1182,7 +1182,16 @@ $(document).ready(function () {
     e.preventDefault();
     var TBlistDetails = $("#TBlistDetails").val();
     window.location.href =
-      "preview_trustee_board-details.php?action=" + TBlistDetails;
+      "preview_trustee_board-details.php?action=" + TBlistDetails + "&sort3=0";
+  });
+
+  // preview_trustee_board-details.php
+  // ajax submit list down details according to the selection
+  $("#sortTrusteeboardID").change(function (e) {
+    e.preventDefault();
+    var sort3 = $("#sortTrusteeboardID").val();
+    window.location.href =
+      "preview_trustee_board-details.php?action=" + TBlistDetails + "&sort3=" + sort3;
   });
 
   // preview_friday-collection.php
@@ -1903,6 +1912,7 @@ $(document).ready(function () {
         $("#BasicSalary").val(result_array[0]);
         $("#paidFor").val(result_array[1]);
         $("#prevPayment").val(result_array[2]);
+        $("#PrevPaymentHistory").val("Paid Rs." + result_array[2] + " for " + result_array[1]);
       },
     });
   });

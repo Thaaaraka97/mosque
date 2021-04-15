@@ -94,7 +94,7 @@ if (isset($_GET['sort1'])) {
                                             </td>
                                             <td>
                                                 <div>
-                                                    <h3 class="card-title top"> Friday Attendance Details Preview </h3>
+                                                    <h3 class="card-title top"> Private Loans Details Preview </h3>
                                                     <span class="top-span">AN-NOOR JUMMA MASJID</span>
                                                 </div>
                                             </td>
@@ -115,25 +115,23 @@ if (isset($_GET['sort1'])) {
                                                     <thead>
                                                         <tr class="tr-shadow">
                                                             <th>Date</th>
-                                                            <th>Time</th>
                                                             <th>Name</th>
                                                             <th>Address</th>
                                                             <th>Contact Number</th>
-                                                            <th>Temperature</th>
+                                                            <th>Amount</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        $friday_att = $database->select_data('tbl_fridayattendance');
-                                                        foreach ($friday_att as $friday_att_item) {
+                                                        $private_loan = $database->select_data('tbl_fridayattendance');
+                                                        foreach ($private_loan as $private_loan_item) {
                                                             echo "
                                                          <tr>
-                                                            <td>" . $friday_att_item['fa_date'] . "</td>
-                                                            <td>" . $friday_att_item['fa_time'] . "</td>
-                                                            <td>" . $friday_att_item['fa_name'] . "</td>
-                                                            <td>" . $friday_att_item['fa_address'] . "</td>
-                                                            <td>" . $friday_att_item['fa_telephone'] . "</td>
-                                                            <td>" . $friday_att_item['fa_temperature'] . "</td>
+                                                            <td>" . $private_loan_item['pl_date'] . "</td>
+                                                            <td>" . $private_loan_item['pl_name'] . "</td>
+                                                            <td>" . $private_loan_item['pl_address'] . "</td>
+                                                            <td>" . $private_loan_item['pl_telephone'] . "</td>
+                                                            <td>" . $private_loan_item['pl_amount'] . "</td>
                                                         </tr>
                                                          ";
                                                         }

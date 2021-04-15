@@ -2125,7 +2125,12 @@ if (isset($_POST['submitQuickForm'])) {
         }
     } else {
         $inputSaandhaStatus = 1;
-        $inputSpecialSaandha = $_POST['inputSpecialSaandha'];
+        if ($_POST['inputSpecialSaandha'] == "") {
+            $inputSpecialSaandha = $_POST['inputSpecialSaandha'];
+        }
+        else {
+            $inputSpecialSaandha = 0;
+        }
         if ($_POST['inputAge'] >= 18) {
             $saandhaStatusReason = "Pending";
         } else {

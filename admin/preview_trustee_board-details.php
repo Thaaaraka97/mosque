@@ -18,14 +18,43 @@ if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
 
+$sort3 = "0";
+if (isset($_GET['sort3'])) {
+    $sort3 = $_GET['sort3'];
+}
+
 $where = array(
     'tb_id ' != 0
 );
 $item_count = $database->select_count('tbl_trusteeboarddetails', $where);
+
+if ($action == "present") {
+    $where = array(
+        'tb_isActive'     =>    1
+    );
+    $trustee_board_details = $database->select_where('tbl_trusteeboarddetails', $where);
+    $item_count = $database->select_count('tbl_trusteeboarddetails', $where);
+}
+elseif ($action == "previous") {
+    $where = array(
+        'tb_isActive'     =>    0
+    );
+    if ($sort3 != 0) {
+        $where = array(
+            'tb_isActive'     =>    0,
+            'tb_electedYYMM'     =>    $sort3
+        );
+    }
+    $trustee_board_details2 = $database->select_where('tbl_trusteeboarddetails', $where);
+    $item_count = $database->select_count('tbl_trusteeboarddetails', $where);
+
+}
 ?>
 
 <script type="text/javascript">
     var TBlistDetails = "<?php echo $action; ?>";
+    var sort3 = "<?php echo $sort3; ?>";
+
 </script>
 
 <body>
@@ -116,10 +145,7 @@ $item_count = $database->select_count('tbl_trusteeboarddetails', $where);
                                                         </thead>
                                                         <tbody>
                                                             <?php
-                                                            $where = array(
-                                                                'tb_isActive'     =>    1
-                                                            );
-                                                            $trustee_board_details = $database->select_where('tbl_trusteeboarddetails', $where);
+                                                            
                                                             foreach ($trustee_board_details as $trustee_board_details_item) {
                                                                 $id = $trustee_board_details_item['tb_id'];
                                                                 $start = $trustee_board_details_item['tb_startDate'];
@@ -153,6 +179,33 @@ $item_count = $database->select_count('tbl_trusteeboarddetails', $where);
                                             </div>
                                             <div id="previousTB">
                                                 <div class="table-responsive table-responsive-data2">
+                                                    <div class="sorting">
+                                                        <div class="row">
+                                                            <div class="form-group col-md-3">
+                                                                <select name="sortTrusteeboardID" id="sortTrusteeboardID" class="form-control">
+                                                                    <option value="0" <?= $sort3 == '0' ? ' selected="selected"' : ''; ?>> Trusteeboard ID </option>
+                                                                    <?php
+                                                                    $where = array(
+                                                                        'tb_isActive'     =>     0
+                                                                    );
+                                                                    $current_tb_id = 0;
+                                                                    $tb_details = $database->select_where('tbl_trusteeboarddetails', $where);
+                                                                    foreach ($tb_details as $tb_details_item) {
+                                                                        $tb_id = $tb_details_item["tb_electedYYMM"];
+                                                                        if ($current_tb_id != $tb_id) {
+                                                                            $current_tb_id = $tb_id;
+                                                                            echo "<option value='".$tb_id."'";
+                                                                            if ($sort3 == $tb_id) {
+                                                                                echo ' selected="selected"';
+                                                                            }
+                                                                            echo ">".$tb_id." </option>";
+                                                                        }
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <table class="table table-data2">
                                                         <thead>
                                                             <tr>
@@ -165,10 +218,6 @@ $item_count = $database->select_count('tbl_trusteeboarddetails', $where);
                                                         </thead>
                                                         <tbody>
                                                             <?php
-                                                            $where2 = array(
-                                                                'tb_isActive'     =>    0
-                                                            );
-                                                            $trustee_board_details2 = $database->select_where('tbl_trusteeboarddetails', $where2);
                                                             foreach ($trustee_board_details2 as $trustee_board_details2_item) {
                                                                 $id = $trustee_board_details2_item['tb_id'];
                                                                 $start = $trustee_board_details2_item['tb_startDate'];
@@ -196,56 +245,7 @@ $item_count = $database->select_count('tbl_trusteeboarddetails', $where);
                                                         </tbody>
                                                     </table>
                                                 </div>
-
                                             </div>
-                                            <!-- <div class="mt-5">
-                                            <h4 class="card-title"> Trustee Board History Preview </h4>
-                                            <table class="display datatable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Trusteeboard ID</th>
-                                                        <th>Details</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    // $tb_ID = "";
-
-                                                    // $where = array(
-                                                    //     'tb_isActive'     =>     1
-                                                    // );
-                                                    // $trustee_board_details2 = $database->select_where('tbl_trusteeboarddetails', $where);
-                                                    // foreach ($trustee_board_details2 as $trustee_board_details2_item) {
-                                                    //     $tb_ID = $trustee_board_details2_item['tb_electedYYMM'];
-                                                    // }
-
-                                                    // $trustee_board_history = $database->select_data('tbl_trusteeboardhistory');
-                                                    // foreach ($trustee_board_history as $trustee_board_history_item) {
-                                                    //     $id = $trustee_board_history_item['th_id'];
-                                                    //     $elected_ID = $trustee_board_history_item['th_electedYYMM'];
-                                                    //     $record = $trustee_board_history_item['th_record'];
-                                                    //     echo "
-                                                    //      <tr>
-                                                    //         <td>" . $elected_ID . "</td>
-                                                    //         <td>" . $record . "</td>
-                                                    //         <td>";
-                                                    //     if ($elected_ID == $tb_ID) {
-                                                    //         echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=editable' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>";
-                                                    //     } else {
-                                                    //         echo "<a href='preview_trustee_board-history_step-2.php?id=" . $id . "&action=noneditable' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>";
-                                                    //     }
-                                                    //     echo "
-                                                    //         </td>
-
-                                                    //     </tr>
-                                                    //      ";
-                                                    // }
-
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                        </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -320,7 +320,7 @@ $item_count = $database->select_count('tbl_trusteeboarddetails', $where);
                         </div>
                         Click Add to terminate current member and add new member to the position.
                     </div>
-                    
+
                     <div class="modal-footer">
                         <a class="btn btn-secondary" data-dismiss="modal">Close</a>
                         <a class="btn btn-primary" id="del"> Add </a>

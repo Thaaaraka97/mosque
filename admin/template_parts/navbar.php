@@ -87,6 +87,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="preview_non-mahalla-saandha-registration.php"> Non-Mahalla Saandha Details </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_friday-attendance.php"> Friday Attendance </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_private-loans.php">Private Loans </a>
+                    </li>
                 </ul>
             </div>
         </li>

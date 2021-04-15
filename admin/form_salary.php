@@ -94,6 +94,12 @@ $database = new databases();
                                                     <input type="text" class="form-control" id="BasicSalary" name="BasicSalary" placeholder="Salary" readonly>
                                                 </div>
                                             </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="PrevPaymentHistory"> Previous Payment </label>
+                                                    <input type="text" class="form-control" id="PrevPaymentHistory" name="PrevPaymentHistory" placeholder="Salary" readonly>
+                                                </div>
+                                            </div>
                                             <div class="d-flex justify-content-center">
                                                 <div class="form-group row col-md-6">
                                                     <label for="inputAmountTea" id="advanceDIV" class="col-sm-4 col-form-label"> Advance </label>
