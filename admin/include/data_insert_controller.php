@@ -2125,7 +2125,7 @@ if (isset($_POST['submitQuickForm'])) {
         }
     } else {
         $inputSaandhaStatus = 1;
-        if ($_POST['inputSpecialSaandha'] == "") {
+        if ($_POST['inputSpecialSaandha'] != "") {
             $inputSpecialSaandha = $_POST['inputSpecialSaandha'];
         }
         else {
