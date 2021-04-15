@@ -1700,7 +1700,6 @@ if (isset($_POST['submitSaandhaCollector'])) {
         $inputActive = 0;
     }
     $password = $_POST['inputPassword'];
-    $password = md5($password);
 
     $insert_to_tbl_saandhacollector = array(
         'sc_index	' => mysqli_real_escape_string($database->con, $_POST['inputIndexNo']),
