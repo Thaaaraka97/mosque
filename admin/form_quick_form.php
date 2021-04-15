@@ -102,6 +102,12 @@ if (isset($_GET['nodata'])) {
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
+                                                <label for="inputTP">Telephone Number </label>
+                                                <input type="text" class="form-control" id="inputTP" name="inputTP" placeholder="077xxxxxxx">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
                                                 <label for="inputSubdivision"> Sub-division </label>
                                                 <select id="inputSubdivision" name="inputSubdivision" class="form-control" required>
                                                     <option value="0" selected>Choose...</option>

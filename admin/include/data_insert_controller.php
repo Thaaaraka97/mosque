@@ -2151,6 +2151,7 @@ if (isset($_POST['submitQuickForm'])) {
         'av_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputSubdivision']),
         'av_familyID' => mysqli_real_escape_string($database->con, 0),
         'av_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
+        'av_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
         'av_monthlyIncomeFamily' => mysqli_real_escape_string($database->con, 0),
         'av_avgInterpersonalIncome' => mysqli_real_escape_string($database->con, 0),
         'av_noofChildren' => mysqli_real_escape_string($database->con, $inputnoofChildren),
