@@ -348,7 +348,7 @@ if (isset($_POST["addAnother"])) {
                 'collection_address' => mysqli_real_escape_string($database->con, $av_address),
                 'collection_paidAmount' => mysqli_real_escape_string($database->con, "0"),
                 'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
-                'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                 'collection_date' => mysqli_real_escape_string($database->con, $today),
                 'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
 
@@ -642,7 +642,7 @@ if (isset($_POST["submitSaandha"])) {
                 'collection_address' => mysqli_real_escape_string($database->con, $av_address),
                 'collection_paidAmount' => mysqli_real_escape_string($database->con, "0"),
                 'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
-                'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                 'collection_date' => mysqli_real_escape_string($database->con, $today),
                 'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
 
@@ -1201,7 +1201,7 @@ if (isset($_POST['submitNewRental'])) {
             'ri_dueAmount' => mysqli_real_escape_string($database->con, "0"),
             'ri_type' => mysqli_real_escape_string($database->con, $_POST['inputNewRentalType']),
             'ri_notes' => mysqli_real_escape_string($database->con, "Down Payment"),
-            'ri_username' => mysqli_real_escape_string($database->con, "user"),
+            'ri_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
             'ri_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
             'ri_date' => mysqli_real_escape_string($database->con, $today),
             'ri_payFor' => mysqli_real_escape_string($database->con, date('Y-M', strtotime($today))),
@@ -1273,7 +1273,7 @@ if (isset($_POST['submitRentalPayment'])) {
             'ri_rentalid' => mysqli_real_escape_string($database->con, $inputRentalID),
             'ri_dueAmount' => mysqli_real_escape_string($database->con, "0"),
             'ri_type' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
-            'ri_username' => mysqli_real_escape_string($database->con, "user"),
+            'ri_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
             'ri_payment' => mysqli_real_escape_string($database->con, $ri_dueAmount),
             'ri_telephone' => mysqli_real_escape_string($database->con, $_POST['inputRentalPaymentTP']),
             'ri_notes' => mysqli_real_escape_string($database->con, "Previous Due Amount"),
@@ -1309,7 +1309,7 @@ if (isset($_POST['submitRentalPayment'])) {
             'ri_rentalid' => mysqli_real_escape_string($database->con, $inputRentalID),
             'ri_dueAmount' => mysqli_real_escape_string($database->con, "0"),
             'ri_type' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
-            'ri_username' => mysqli_real_escape_string($database->con, "user"),
+            'ri_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
             'ri_payment' => mysqli_real_escape_string($database->con, $monthly_payment),
             'ri_telephone' => mysqli_real_escape_string($database->con, $_POST['inputRentalPaymentTP']),
             'ri_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
@@ -1331,7 +1331,7 @@ if (isset($_POST['submitRentalPayment'])) {
             'ri_rentalid' => mysqli_real_escape_string($database->con, $inputRentalID),
             'ri_dueAmount' => mysqli_real_escape_string($database->con, $due),
             'ri_type' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
-            'ri_username' => mysqli_real_escape_string($database->con, "user"),
+            'ri_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
             'ri_payment' => mysqli_real_escape_string($database->con, $remain),
             'ri_telephone' => mysqli_real_escape_string($database->con, $_POST['inputRentalPaymentTP']),
             'ri_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
@@ -1470,7 +1470,7 @@ if (isset($_POST['submitExpenses'])) {
         'ex_date' => mysqli_real_escape_string($database->con, $_POST['inputDate']),
         'ex_type' => mysqli_real_escape_string($database->con, $_POST['inputExpensesType']),
         'ex_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
-        'ex_username' => mysqli_real_escape_string($database->con, "user"),
+        'ex_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
         'ex_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes'])
 
     );
@@ -1512,7 +1512,7 @@ if (isset($_POST['submitFridayCollection'])) {
             'fr_telephone' => mysqli_real_escape_string($database->con, $_POST['inputTP']),
             'fr_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
             'fr_date' => mysqli_real_escape_string($database->con, $today),
-            'fr_username' => mysqli_real_escape_string($database->con, "user")
+            'fr_username' => mysqli_real_escape_string($database->con, $_SESSION['username'])
 
         );
 
@@ -1526,7 +1526,7 @@ if (isset($_POST['submitFridayCollection'])) {
         $insert_to_tbl_fridaycollectiondonation = array(
             'fd_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
             'fd_date' => mysqli_real_escape_string($database->con, $_POST['inputDate']),
-            'fd_username' => mysqli_real_escape_string($database->con, "user")
+            'fd_username' => mysqli_real_escape_string($database->con, $_SESSION['username'])
 
         );
 
@@ -1555,7 +1555,7 @@ if (isset($_POST['submitFunds'])) {
         'funds_type' => mysqli_real_escape_string($database->con, $_POST['inputFundsType']),
         'funds_festival' => mysqli_real_escape_string($database->con, $_POST['inputFestival']),
         'funds_date' => mysqli_real_escape_string($database->con, $today),
-        'funds_username' => mysqli_real_escape_string($database->con, "user")
+        'funds_username' => mysqli_real_escape_string($database->con, $_SESSION['username'])
 
     );
 
@@ -1581,7 +1581,7 @@ if (isset($_POST['submitLailathulKadhir'])) {
         'lk_telephone' => mysqli_real_escape_string($database->con, $_POST['inputlailathulTP']),
         'lk_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount']),
         'lk_date' => mysqli_real_escape_string($database->con, $today),
-        'lk_username' => mysqli_real_escape_string($database->con, "user")
+        'lk_username' => mysqli_real_escape_string($database->con, $_SESSION['username'])
 
     );
 
@@ -1614,7 +1614,7 @@ if (isset($_POST['submitNonmahallaCol'])) {
             'nms_amount' => mysqli_real_escape_string($database->con, $amount),
             'nms_nmsrid' => mysqli_real_escape_string($database->con, $nmsr_id),
             'nms_date' => mysqli_real_escape_string($database->con, $today),
-            'nms_username' => mysqli_real_escape_string($database->con, "user")
+            'nms_username' => mysqli_real_escape_string($database->con, $_SESSION['username'])
 
         );
 
@@ -1743,7 +1743,7 @@ if (isset($_POST['submitSaandhaCollector'])) {
             'scc_address' => mysqli_real_escape_string($database->con, $av_address),
             'scc_totCollectedAmount' => mysqli_real_escape_string($database->con, 0),
             'scc_settledAmount' => mysqli_real_escape_string($database->con, 0),
-            'scc_username' => mysqli_real_escape_string($database->con, "user")
+            'scc_username' => mysqli_real_escape_string($database->con, $_SESSION['username'])
 
         );
         if ($database->insert_data('tbl_saandhacollectorcollection', $insert_to_tbl_saandhacollectorcollection)) {
@@ -2026,7 +2026,7 @@ if (isset($_POST['submitUndiyal'])) {
 
     $insert_tbl_undiyalcollection = array(
         'uc_date' => mysqli_real_escape_string($database->con, $_POST['inputDate']),
-        'uc_username' => mysqli_real_escape_string($database->con, "user"),
+        'uc_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
         'uc_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount'])
     );
     if ($database->insert_data('tbl_undiyalcollection', $insert_tbl_undiyalcollection)) {
@@ -2041,7 +2041,7 @@ if (isset($_POST['submitKanduri'])) {
 
     $insert_tbl_kanduricollection = array(
         'kc_date' => mysqli_real_escape_string($database->con, $_POST['inputDate']),
-        'kc_username' => mysqli_real_escape_string($database->con, "user"),
+        'kc_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
         'kc_amount' => mysqli_real_escape_string($database->con, $_POST['inputAmount'])
     );
     if ($database->insert_data('tbl_kanduricollection', $insert_tbl_kanduricollection)) {
@@ -2185,8 +2185,8 @@ if (isset($_POST['submitQuickForm'])) {
         'av_scholAmount' => mysqli_real_escape_string($database->con, 0),
         'av_madChild_status' => mysqli_real_escape_string($database->con, 0),
         'av_madChild_type' => mysqli_real_escape_string($database->con, "Not Set"),
-        'av_madChild_madrasaName' => mysqli_real_escape_string($database->con, '0001-01-01'),
-        'av_madChild_startDate' => mysqli_real_escape_string($database->con, 0),
+        'av_madChild_madrasaName' => mysqli_real_escape_string($database->con, "Not Set"),
+        'av_madChild_startDate' => mysqli_real_escape_string($database->con, '0001-01-01'),
         'av_madChild_avgMonthlyExpense	' => mysqli_real_escape_string($database->con, 0),
         'av_married' => mysqli_real_escape_string($database->con, 0),
         'av_divorced' => mysqli_real_escape_string($database->con, 0),
@@ -2224,7 +2224,7 @@ if (isset($_POST['submitQuickForm'])) {
                 'collection_address' => mysqli_real_escape_string($database->con, $av_address),
                 'collection_paidAmount' => mysqli_real_escape_string($database->con, 0),
                 'collection_dueAmount' => mysqli_real_escape_string($database->con, 0),
-                'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                 'collection_date' => mysqli_real_escape_string($database->con, $today),
                 'collection_paidFor' => mysqli_real_escape_string($database->con, $date)
             );
@@ -2264,7 +2264,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                 'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
                 'collection_paidAmount' => mysqli_real_escape_string($database->con, $payment),
                 'collection_dueAmount' => mysqli_real_escape_string($database->con, 0),
-                'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                 'collection_date' => mysqli_real_escape_string($database->con, $today),
                 'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
             );
@@ -2281,7 +2281,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                 'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
                 'collection_paidAmount' => mysqli_real_escape_string($database->con, $payment),
                 'collection_dueAmount' => mysqli_real_escape_string($database->con, 0),
-                'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                 'collection_date' => mysqli_real_escape_string($database->con, $today),
                 'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
             );
@@ -2318,7 +2318,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                         'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
                         'collection_paidAmount' => mysqli_real_escape_string($database->con, $current_saandha_amount),
                         'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
-                        'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                        'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                         'collection_date' => mysqli_real_escape_string($database->con, $today),
                         'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
 
@@ -2355,7 +2355,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                         'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
                         'collection_paidAmount' => mysqli_real_escape_string($database->con, $payment),
                         'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
-                        'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                        'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                         'collection_date' => mysqli_real_escape_string($database->con, $today),
                         'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
                     );
@@ -2372,7 +2372,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                         'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
                         'collection_paidAmount' => mysqli_real_escape_string($database->con, $payment),
                         'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
-                        'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                        'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                         'collection_date' => mysqli_real_escape_string($database->con, $today),
                         'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
                     );
@@ -2395,7 +2395,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                     'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
                     'collection_paidAmount' => mysqli_real_escape_string($database->con, $payment),
                     'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
-                    'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                    'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                     'collection_date' => mysqli_real_escape_string($database->con, $today),
                     'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
 
@@ -2412,7 +2412,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                     'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
                     'collection_paidAmount' => mysqli_real_escape_string($database->con, $due),
                     'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
-                    'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                    'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                     'collection_date' => mysqli_real_escape_string($database->con, $today),
                     'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
 
@@ -2445,7 +2445,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                             'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
                             'collection_paidAmount' => mysqli_real_escape_string($database->con, $current_saandha_amount),
                             'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
-                            'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                            'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                             'collection_date' => mysqli_real_escape_string($database->con, $today),
                             'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
 
@@ -2482,7 +2482,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                             'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
                             'collection_paidAmount' => mysqli_real_escape_string($database->con, $payment),
                             'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
-                            'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                            'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                             'collection_date' => mysqli_real_escape_string($database->con, $today),
                             'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
                         );
@@ -2499,7 +2499,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                             'collection_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress']),
                             'collection_paidAmount' => mysqli_real_escape_string($database->con, $payment),
                             'collection_dueAmount' => mysqli_real_escape_string($database->con, $due),
-                            'collection_username' => mysqli_real_escape_string($database->con, "user"),
+                            'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                             'collection_date' => mysqli_real_escape_string($database->con, $today),
                             'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
                         );
