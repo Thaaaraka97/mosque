@@ -53,7 +53,17 @@ foreach ($saandha_amount_details as $saandha_amount_item) {
 $where = array(
     'av_saandhaStatus'     =>     1
 );
-$person_count = $database->select_count('tbl_allvillagers', $where);
+$person_count1 = $database->select_count('tbl_allvillagers', $where);
+// retrieve special saandha amounts
+$person_count2 = 0;
+$special_saandha_amount = 0;
+$person_details = $database->select_where('tbl_allvillagers', $where);
+foreach ($person_details as $person_details_item) {
+    if ((float)$person_details_item["av_specialSaandhaAmt"] > 0) {
+        $person_count2 = $person_count2 + 1;
+        $special_saandha_amount = $special_saandha_amount + $person_details_item["av_specialSaandhaAmt"];
+    }
+}
 
 // find saandha collection
 $settled_amount = 0;
@@ -82,7 +92,7 @@ foreach ($saandha_collections as $saandha_collections_item) {
     }
 }
 
-$tot_amount_to_collect = (int)$person_count * (float)$current_saandha_amount;
+$tot_amount_to_collect = ((int)($person_count1 - $person_count2) * (float)$current_saandha_amount) + $special_saandha_amount;
 $outstanding_amount = $tot_amount_to_collect - $settled_amount;
 
 
@@ -245,7 +255,7 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                             <div class="col-md-10 grid-margin stretch-card">
                                 <div class="card shadow">
                                     <div class="card-body">
-                                        <h4 class="card-title"> Other Details </h4>
+                                        <h4 class="card-title"> Monthly Details </h4>
                                         <div class="preview-list">
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
@@ -253,7 +263,7 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                         <h6 class="preview-subject"> Saandha Eligible Count </h6>
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                                        <p class="text-muted"><?php echo $person_count ?></p>
+                                                        <p class="text-muted"><?php echo $person_count1 ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -298,10 +308,10 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
                                                     <div class="flex-grow">
-                                                        <h6 class="preview-subject">No of People to be Settled</h6>
+                                                        <h6 class="preview-subject">No of People Settled</h6>
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                                        <p class="text-muted"><?php echo $person_count - $settled_people ?></p>
+                                                        <p class="text-muted"><?php echo $settled_people ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -310,10 +320,10 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                             <div class="preview-item border-bottom">
                                                 <div class="preview-item-content d-sm-flex flex-grow">
                                                     <div class="flex-grow">
-                                                        <h6 class="preview-subject">No of People Settled</h6>
+                                                        <h6 class="preview-subject">No of People to be Settled</h6>
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                                        <p class="text-muted"><?php echo $settled_people ?></p>
+                                                        <p class="text-muted"><?php echo $person_count1 - $settled_people ?></p>
                                                     </div>
                                                 </div>
                                             </div>
