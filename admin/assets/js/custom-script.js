@@ -2373,17 +2373,17 @@ $(document).ready(function () {
   $("#sortSaandhaFrom").change(function (e) {
     e.preventDefault();
     sort5 = $("#sortSaandhaFrom").val();
-    window.location.href = "preview_saandha-page.php?sort1=0&sort5=" + sort5 + "&sort6=" + sort6 + "&sort14=0";
+    window.location.href = "preview_saandha-page.php?sort1=0&sort5=" + sort5 + "&sort6=" + sort6 + "&sort14=0000-00";
   });
   $("#sortSaandhaTo").change(function (e) {
     e.preventDefault();
     sort6 = $("#sortSaandhaTo").val();
-    window.location.href = "preview_saandha-page.php?sort1=0&sort5=" + sort5 + "&sort6=" + sort6 + "&sort14=0";
+    window.location.href = "preview_saandha-page.php?sort1=0&sort5=" + sort5 + "&sort6=" + sort6 + "&sort14=0000-00";
   });
   $("#sortSaandhasubdivision").change(function (e) {
     e.preventDefault();
     sort1 = $("#sortSaandhasubdivision").val();
-    window.location.href = "preview_saandha-page.php?sort1=" + sort1 + "&sort5=0&sort6=" + last_day + "&sort14=0";
+    window.location.href = "preview_saandha-page.php?sort1=" + sort1 + "&sort5=0&sort6=" + last_day + "&sort14=0000-00";
   });
   $("#sortSaandhaPadiFor").change(function (e) {
     e.preventDefault();
@@ -2470,6 +2470,26 @@ $(document).ready(function () {
       $.ajax({
         type: "post",
         url: "handlers/collections_handler.php",
+        data: data_bundle,
+        success: function (response) {
+          window.location.href = response;
+        }
+      });
+    });
+
+  });
+
+  // private loans preview
+  // delete record
+  $(".delete_p_loans").click(function (e) {
+    e.preventDefault();
+    var id = $(this).attr("id");
+    $("#del").click(function (e) {
+      var data_bundle = "id=" + id + "&action=delete_record";
+      e.preventDefault();
+      $.ajax({
+        type: "post",
+        url: "handlers/private_loans_handler.php",
         data: data_bundle,
         success: function (response) {
           window.location.href = response;

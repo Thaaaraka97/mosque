@@ -119,12 +119,14 @@ if (isset($_GET['sort1'])) {
                                                             <th>Address</th>
                                                             <th>Contact Number</th>
                                                             <th>Amount</th>
+                                                            <th>Delete</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <?php
                                                         $private_loan = $database->select_data('tbl_fridayattendance');
                                                         foreach ($private_loan as $private_loan_item) {
+                                                            $id = $private_loan_item['pl_id'];
                                                             echo "
                                                          <tr>
                                                             <td>" . $private_loan_item['pl_date'] . "</td>
@@ -132,6 +134,9 @@ if (isset($_GET['sort1'])) {
                                                             <td>" . $private_loan_item['pl_address'] . "</td>
                                                             <td>" . $private_loan_item['pl_telephone'] . "</td>
                                                             <td>" . $private_loan_item['pl_amount'] . "</td>
+                                                            <td>
+                                                                <a href='' id='" . $id . "' class='item delete_p_loans' data-toggle='modal' data-target='#deleteRecord'><i class='fa fa-trash fa-lg' aria-hidden='true'></i></a>
+                                                            </td>
                                                         </tr>
                                                          ";
                                                         }
@@ -172,7 +177,7 @@ if (isset($_GET['sort1'])) {
                         </button>
                     </div>
                     <div class="modal-body">
-                        Are you sure you want to delete this record? Once you click delete there's no going back.
+                        Are you sure you want to delete this record?
                     </div>
                     <div class="modal-footer">
                         <a class="btn btn-secondary" data-dismiss="modal">Close</a>

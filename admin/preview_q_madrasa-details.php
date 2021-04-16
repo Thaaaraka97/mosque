@@ -124,7 +124,6 @@ $item_count = $database->select_count('tbl_quranmadrasadetails', $where);
                                                             </td>
                                                             <td>
                                                                 <a href='' id='" . $id . "' class='item delete_q_madrasa' data-toggle='modal' data-target='#deleteRecord'><i class='fa fa-trash fa-lg' aria-hidden='true'></i></a>
-
                                                             </td>
                                                         </tr>
                                                          ";

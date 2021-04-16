@@ -17,14 +17,7 @@ if (isset($_GET['left'])) {
     $message = "Saandha Status successsfully Edited and Updated..!";
 }
 
-if (isset($_GET['list'])) {
-    $list = $_GET['list'];
-}
-
-$kanji_ingredients = $database->select_data('tbl_kanjiingredients');
-$kanji_people = $database->select_data('tbl_kanjipeople');
-$i = 1;
-$j = 1;
+$balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense'];
 ?>
 <style>
     table.dataTable.no-footer {
@@ -57,35 +50,15 @@ $j = 1;
         <!-- partial -->
         <div class="">
             <!-- partial -->
-            <div class="">
+            <div class="top-spacing">
                 <div class="wrapper">
-                    <div class="row justify-content-center mt-5">
-                        <div class="col-md-8 grid-margin stretch-card">
-                            <div class="card top-card">
-                                <div class="card-body top-card">
-                                    <table class="card-table">
-                                        <tr>
-                                            <td class="image-td">
-                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
-                                            </td>
-                                            <td class="pl-5">
-                                                <div>
-                                                    <h3 class='card-title top'> Monthly Report </h3>
-                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <div class="">
                                 <div class="">
+                                    <p class="date-top">Date : <?php echo date('Y/m/d'); ?></p>
                                     <div class="text-center">
-                                        <table class="table table-bordered table-lg" id="monthly_report_print">
+                                        <table class="table table-bordered table-lg font-size-1-5 print-table" id="monthly_report_print">
                                             <thead>
                                                 <tr class="tr-shadow">
                                                     <th class='text-dark font-weight-bold'>Description</th>
@@ -95,8 +68,8 @@ $j = 1;
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td class='text-dark text-left'>Balance Carry Forward</td>
-                                                    <td class='text-dark'><?php echo (float)$_GET['before_income'] - (float)$_GET['before_expense'] ?></td>
+                                                    <td class='text-dark text-left'>Balance Before</td>
+                                                    <td class='text-dark'><?php echo number_format((float)$balance_before, 2, '.', '') ?></td>
                                                     <td class='text-dark'>-</td>
                                                 </tr>
                                                 <?php
@@ -105,7 +78,7 @@ $j = 1;
                                                     <tr>
                                                         <td class='text-dark text-left'> Bills </td>
                                                         <td class='text-dark'> - </td>
-                                                        <td class='text-dark'>" . $_GET['collection_total'] . "</td>
+                                                        <td class='text-dark'>" . number_format((float)$_GET['collection_total'], 2, '.', '') . "</td>
                                                     </tr>
                                                         ";
                                                 }
@@ -114,7 +87,7 @@ $j = 1;
                                                     <tr>
                                                         <td class='text-dark text-left'> Expenses </td>
                                                         <td class='text-dark'> - </td>
-                                                        <td class='text-dark'>" . $_GET['collection2_total'] . "</td>
+                                                        <td class='text-dark'>" . number_format((float)$_GET['collection2_total'], 2, '.', '') . "</td>
                                                     </tr>
                                                         ";
                                                 }
@@ -122,7 +95,7 @@ $j = 1;
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Kanduri Collection </td>
-                                                        <td class='text-dark'> " . $_GET['collection3_total'] . " </td>
+                                                        <td class='text-dark'> " . number_format((float)$_GET['collection3_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                     ";
@@ -131,7 +104,7 @@ $j = 1;
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Donations  </td>
-                                                        <td class='text-dark'> " . $_GET['collection4_total'] . " </td>
+                                                        <td class='text-dark'> " . number_format((float)$_GET['collection4_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -140,7 +113,7 @@ $j = 1;
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Trusteeboard Donation </td>
-                                                        <td class='text-dark'> " . $_GET['collection5_total'] . " </td>
+                                                        <td class='text-dark'> " . number_format((float)$_GET['collection5_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -149,7 +122,7 @@ $j = 1;
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Friday Collection Donation </td>
-                                                        <td class='text-dark'> " . $_GET['collection6_total'] . " </td>
+                                                        <td class='text-dark'> " . number_format((float)$_GET['collection6_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -158,7 +131,7 @@ $j = 1;
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Friday Collection Regular </td>
-                                                        <td class='text-dark'> " . $_GET['collection7_total'] . " </td>
+                                                        <td class='text-dark'> " . number_format((float)$_GET['collection7_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -167,7 +140,7 @@ $j = 1;
                                                     echo "
                                                     <tr>
                                                       <td class='text-dark text-left'> Funds  </td>
-                                                      <td class='text-dark'> " . $_GET['collection8_total'] . " </td>
+                                                      <td class='text-dark'> " . number_format((float)$_GET['collection8_total'], 2, '.', '') . " </td>
                                                       <td class='text-dark'> - </td>
                                                     </tr>
                                                     ";
@@ -176,7 +149,7 @@ $j = 1;
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Laylat al-Qadr Collection </td>
-                                                        <td class='text-dark'> " . $_GET['collection9_total'] . " </td>
+                                                        <td class='text-dark'> " . number_format((float)$_GET['collection9_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -186,7 +159,7 @@ $j = 1;
                                                     <tr>
                                                         <td class='text-dark text-left'> Muazzin Salary </td>
                                                         <td class='text-dark'> - </td>
-                                                        <td class='text-dark'>" . $_GET['collection10_total'] . "</td>
+                                                        <td class='text-dark'>" . number_format((float)$_GET['collection10_total'], 2, '.', '') . "</td>
                                                     </tr>
                                                         ";
                                                 }
@@ -195,7 +168,7 @@ $j = 1;
                                                     <tr>
                                                         <td class='text-dark text-left'> Pesh Imaam Salary </td>
                                                         <td class='text-dark'> - </td>
-                                                        <td class='text-dark'>" . $_GET['collection11_total'] . "</td>
+                                                        <td class='text-dark'>" . number_format((float)$_GET['collection11_total'], 2, '.', '') . "</td>
                                                     </tr>
                                                         ";
                                                 }
@@ -203,7 +176,7 @@ $j = 1;
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Non-Mahalla Saandha Collections </td>
-                                                        <td class='text-dark'> " . $_GET['collection12_total'] . " </td>
+                                                        <td class='text-dark'> " . number_format((float)$_GET['collection12_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -213,7 +186,7 @@ $j = 1;
                                                     <tr>
                                                         <td class='text-dark text-left'> Other Servant Salary </td>
                                                         <td class='text-dark'> - </td>
-                                                        <td class='text-dark'>" . $_GET['collection13_total'] . "</td>
+                                                        <td class='text-dark'>" . number_format((float)$_GET['collection13_total'], 2, '.', '') . "</td>
                                                     </tr>
                                                         ";
                                                 }
@@ -221,7 +194,7 @@ $j = 1;
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Rental Income </td>
-                                                        <td class='text-dark'> " . $_GET['collection14_total'] . " </td>
+                                                        <td class='text-dark'> " . number_format((float)$_GET['collection14_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -230,7 +203,7 @@ $j = 1;
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Saandha Collection </td>
-                                                        <td class='text-dark'> " . $_GET['collection15_total'] . " </td>
+                                                        <td class='text-dark'> " . number_format((float)$_GET['collection15_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -240,7 +213,7 @@ $j = 1;
                                                     <tr>
                                                         <td class='text-dark text-left'> Special Bhayan Payment </td>
                                                         <td class='text-dark'> - </td>
-                                                        <td class='text-dark'>" . $_GET['collection16_total'] . "</td>
+                                                        <td class='text-dark'>" . number_format((float)$_GET['collection16_total'], 2, '.', '') . "</td>
                                                     </tr>
                                                         ";
                                                 }
@@ -248,16 +221,16 @@ $j = 1;
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Undiyal Collection </td>
-                                                        <td class='text-dark'> " . $_GET['collection17_total'] . " </td>
+                                                        <td class='text-dark'> " . number_format((float)$_GET['collection17_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
                                                 }
                                                 echo "
-                                                <tr>
+                                                <tr class='border-2px'>
                                                     <td class='text-dark font-weight-bold'> Total </td>
-                                                    <td class='text-dark font-weight-bold'> " . $_GET['total_income'] . " </td>
-                                                    <td class='text-dark font-weight-bold'> " . $_GET['total_expense'] . " </td>
+                                                    <td class='text-dark font-weight-bold'> " . number_format((float)$_GET['total_income'], 2, '.', ''). " </td>
+                                                    <td class='text-dark font-weight-bold'> " . number_format((float)$_GET['total_expense'], 2, '.', '') . " </td>
                                                 </tr>
                                                     ";
 
@@ -265,6 +238,7 @@ $j = 1;
                                             </tbody>
                                         </table>
                                     </div>
+                                    <p class="mt-4">*contact the relevant officers for any corrections</p>
                                 </div>
                             </div>
                         </div>

@@ -2049,20 +2049,6 @@ if (isset($_POST['submitKanduri'])) {
     }
 }
 
-// insert into tbl_rentalplaceregistration
-// submitRentalPlace button click
-if (isset($_POST['submitRentalPlace'])) {
-
-    $insert_tbl_rentalplaceregistration = array(
-        'rp_type' => mysqli_real_escape_string($database->con, $_POST['inputRentalType']),
-        'rp_address' => mysqli_real_escape_string($database->con, $_POST['inputAddress'])
-    );
-    if ($database->insert_data('tbl_rentalplaceregistration', $insert_tbl_rentalplaceregistration)) {
-        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-    }
-}
-
 // insert into tbl_nonmahallasaandharegistration
 // submitNonMahallaSaandha button click
 if (isset($_POST['submitNonMahallaSaandha'])) {

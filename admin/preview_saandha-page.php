@@ -232,7 +232,7 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                         if ($sort1 == "0") {
                                                             $saandha_collection_details = $database->select_dates('tbl_saandhacollection', 'collection_date', $sort5, $sort6);
                                                         }
-                                                        if ($sort14 != 0) {
+                                                        if ($sort14 != 0000-00) {
                                                             $where = array(
                                                                 'collection_paidFor' => $sort14
                                                             );

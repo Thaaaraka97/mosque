@@ -57,35 +57,8 @@ $j = 1;
         <!-- partial -->
         <div class="">
             <!-- partial -->
-            <div class="">
+            <div class="top-spacing">
                 <div class="wrapper">
-                    <div class="row justify-content-center mt-5">
-                        <div class="col-md-12 grid-margin stretch-card">
-                            <div class="card top-card">
-                                <div class="card-body top-card">
-                                    <table class="card-table">
-                                        <tr>
-                                            <td class="image-td">
-                                                <a class="sidebar-brand brand-logo-mini" href="<?php $server_name ?>index.php"><img class="top-card-logo" src="<?php $server_name ?>assets/images/logo-mini.png" alt="logo" style="float:left" /></a>
-                                            </td>
-                                            <td class="pl-5">
-                                                <div>
-                                                    <?php
-                                                    if ($action == "letter1") {
-                                                        echo "<h3 class='card-title top'> Character Certificate Letter </h3>";
-                                                    } else {
-                                                        echo "<h3 class='card-title top'> Mahalla Member Confirmation Letter </h3>";
-                                                    }
-                                                    ?>
-                                                    <span class="top-span">AN-NOOR JUMMA MASJID</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <div class="">
