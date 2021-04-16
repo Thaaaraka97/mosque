@@ -164,7 +164,7 @@
                         <a class="nav-link" href="preview_undiyal-collection.php"> Undiyal Collection </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preview_saandha-page.php?sort1=0&sort5=<?php echo date('Y-m-01') ?>&sort6=<?php echo date('Y-m-t') ?>"> Saandha Collection </a>
+                        <a class="nav-link" href="preview_saandha-page.php?sort1=0&sort5=<?php echo date('Y-m-01') ?>&sort6=<?php echo date('Y-m-t') ?>&sort14=0"> Saandha Collection </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_nonmahalla_saandha_collection.php?sort5=<?php echo date('Y-m-01') ?>&sort6=<?php echo date('Y-m-t') ?>"> Non-Mahalla Saandha Collection </a>

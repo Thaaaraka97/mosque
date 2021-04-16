@@ -2366,24 +2366,29 @@ $(document).ready(function () {
   $("#sortJanazaTo").change(function (e) {
     e.preventDefault();
     sort6 = $("#sortJanazaTo").val();
-    window.location.href = "preview_janaza-details.php?sort1=0&sort2=0&sort5=" + sort5 + "&sort6=" + sort6;
+    window.location.href = "preview_janaza-details.php?sort1=0&sort2=0&sort5=" + sort5 + "&sort6=" + sort6 + "&sort14=" + sort14;
   });
 
   // saandha collection preview
   $("#sortSaandhaFrom").change(function (e) {
     e.preventDefault();
     sort5 = $("#sortSaandhaFrom").val();
-    window.location.href = "preview_saandha-page.php?sort1=0&sort5=" + sort5 + "&sort6=" + sort6;
+    window.location.href = "preview_saandha-page.php?sort1=0&sort5=" + sort5 + "&sort6=" + sort6 + "&sort14=0";
   });
   $("#sortSaandhaTo").change(function (e) {
     e.preventDefault();
     sort6 = $("#sortSaandhaTo").val();
-    window.location.href = "preview_saandha-page.php?sort1=0&sort5=" + sort5 + "&sort6=" + sort6;
+    window.location.href = "preview_saandha-page.php?sort1=0&sort5=" + sort5 + "&sort6=" + sort6 + "&sort14=0";
   });
   $("#sortSaandhasubdivision").change(function (e) {
     e.preventDefault();
     sort1 = $("#sortSaandhasubdivision").val();
-    window.location.href = "preview_saandha-page.php?sort1=" + sort1 + "&sort5=0&sort6=" + last_day;
+    window.location.href = "preview_saandha-page.php?sort1=" + sort1 + "&sort5=0&sort6=" + last_day + "&sort14=0";
+  });
+  $("#sortSaandhaPadiFor").change(function (e) {
+    e.preventDefault();
+    sort14 = $("#sortSaandhaPadiFor").val();
+    window.location.href = "preview_saandha-page.php?sort1=" + sort1 + "&sort5=0&sort6=" + last_day + "&sort14=" + sort14;
   });
 
   // villger preview

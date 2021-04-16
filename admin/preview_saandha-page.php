@@ -21,6 +21,7 @@ if (isset($_GET['deleted'])) {
 $sort1 = "";
 $sort5 = 0;
 $sort6 = 0;
+$sort14 = 0;
 if (isset($_GET['sort5'])) {
     $sort5 = $_GET['sort5'];
 }
@@ -29,6 +30,13 @@ if (isset($_GET['sort6'])) {
 }
 if (isset($_GET['sort1'])) {
     $sort1 = $_GET['sort1'];
+}
+if (isset($_GET['sort14'])) {
+    $sort14 = $_GET['sort14'];
+    // $sort14Month = date("Y-F");
+    $sort14Date = date_create($sort14);
+    $sort14 = date_format($sort14Date, "Y-M");
+    $sort14Month = date_format($sort14Date, "Y-m");
 }
 
 // saandha amount
@@ -59,7 +67,7 @@ $person_count2 = 0;
 $special_saandha_amount = 0;
 $person_details = $database->select_where('tbl_allvillagers', $where);
 foreach ($person_details as $person_details_item) {
-    if ((float)$person_details_item["av_specialSaandhaAmt"] > 0) {
+    if ((float) $person_details_item["av_specialSaandhaAmt"] > 0) {
         $person_count2 = $person_count2 + 1;
         $special_saandha_amount = $special_saandha_amount + $person_details_item["av_specialSaandhaAmt"];
     }
@@ -70,29 +78,29 @@ $settled_amount = 0;
 $settled_people = 0;
 $current_collection_subdivision = 0;
 $current_collection_index = 0;
-$saandha_collections = $database->select_dates('tbl_saandhacollection','collection_date',$sort5,$sort6);
+$saandha_collections = $database->select_dates('tbl_saandhacollection', 'collection_date', $sort5, $sort6);
 foreach ($saandha_collections as $saandha_collections_item) {
     if (isset($saandha_collections_item["collection_paidAmount"])) {
         $amount = $saandha_collections_item["collection_paidAmount"];
-        $settled_amount = (float)$settled_amount + (float)$amount;
-
-        $collection_index = $saandha_collections_item["collection_index"];
-        $collection_subdivision = $saandha_collections_item["collection_subdivision"];
-        if ($settled_people == 0) {
-            $current_collection_index = $collection_index;
-            $current_collection_subdivision = $collection_subdivision;
-            $settled_people = $settled_people + 1;
+        if ($saandha_collections_item["collection_paidFor"] == $YYMM && $amount > 0) {
+            $settled_amount = (float) $settled_amount + (float) $amount;
+            $collection_index = $saandha_collections_item["collection_index"];
+            $collection_subdivision = $saandha_collections_item["collection_subdivision"];
+            if ($settled_people == 0) {
+                $current_collection_index = $collection_index;
+                $current_collection_subdivision = $collection_subdivision;
+                $settled_people = $settled_people + 1;
+            }
+            if ($current_collection_index != $collection_index) {
+                $settled_people = $settled_people + 1;
+                $current_collection_index = $collection_index;
+                $current_collection_subdivision = $collection_subdivision;
+            }
         }
-        if ($current_collection_index != $collection_index) {
-            $settled_people = $settled_people + 1;
-            $current_collection_index = $collection_index;
-            $current_collection_subdivision = $collection_subdivision;
-        }
-
     }
 }
 
-$tot_amount_to_collect = ((int)($person_count1 - $person_count2) * (float)$current_saandha_amount) + $special_saandha_amount;
+$tot_amount_to_collect = ((int) ($person_count1 - $person_count2) * (float) $current_saandha_amount) + $special_saandha_amount;
 $outstanding_amount = $tot_amount_to_collect - $settled_amount;
 
 
@@ -101,6 +109,7 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
     var sort1 = "<?php echo $sort1; ?>";
     var sort5 = "<?php echo $sort5; ?>";
     var sort6 = "<?php echo $sort6; ?>";
+    var sort14 = "<?php echo $sort14; ?>";
 </script>
 
 <body>
@@ -194,17 +203,22 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                             <label for="sortSaandhaTo">To</label>
                                                             <input class="form-control" type="date" name="sortSaandhaTo" id="sortSaandhaTo" value="<?php echo $sort6 ?>">
                                                         </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label for="sortSaandhaPadiFor">Paid-For</label>
+                                                            <input class="form-control" type="month" name="sortSaandhaPadiFor" id="sortSaandhaPadiFor" value="<?php echo $sort14Month ?>">
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <table class="table table-data2">
                                                     <thead>
                                                         <tr class="tr-shadow">
                                                             <th>Date</th>
+                                                            <th>Paid-For</th>
                                                             <th>Amount</th>
                                                             <th>Index</th>
                                                             <th>Sub-Division</th>
                                                             <th>Name</th>
-                                                            <th>Address</th>
                                                             <th>Actions</th>
                                                         </tr>
                                                     </thead>
@@ -218,6 +232,12 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                         if ($sort1 == "0") {
                                                             $saandha_collection_details = $database->select_dates('tbl_saandhacollection', 'collection_date', $sort5, $sort6);
                                                         }
+                                                        if ($sort14 != 0) {
+                                                            $where = array(
+                                                                'collection_paidFor' => $sort14
+                                                            );
+                                                            $saandha_collection_details = $database->select_where('tbl_saandhacollection', $where);
+                                                        }
                                                         foreach ($saandha_collection_details as $saandha_collection_item) {
                                                             if (isset($saandha_collection_item['collection_id'])) {
                                                                 $id = $saandha_collection_item['collection_id'];
@@ -227,11 +247,11 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                                 echo "
                                                                 <tr>
                                                                     <td>" . $saandha_collection_item['collection_date'] . "</td>
+                                                                    <td>" . $saandha_collection_item['collection_paidFor'] . "</td>
                                                                     <td>" . $saandha_collection_item['collection_paidAmount'] . "</td>
                                                                     <td>" . $index . "</td>
                                                                     <td>" . $subdivision . "</td>
                                                                     <td>" . $saandha_collection_item['collection_name'] . "</td>
-                                                                    <td>" . $saandha_collection_item['collection_address'] . "</td>
                                                                     <td>
                                                                         <a href='preview_villager-details_step-2.php?index=" . $index . "&subdivision=" . $subdivision . "&id=" . $id . "&action=view_saandha' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
                                                                     </td>
@@ -275,7 +295,7 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                         <h6 class="preview-subject">Total Income to Collect</h6>
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                                        <p class="text-muted"><?php echo "Rs." .$tot_amount_to_collect ?></p>
+                                                        <p class="text-muted"><?php echo "Rs." . $tot_amount_to_collect ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -287,7 +307,7 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                         <h6 class="preview-subject">Settled Amount</h6>
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                                        <p class="text-muted"><?php echo "Rs." .$settled_amount ?></p>
+                                                        <p class="text-muted"><?php echo "Rs." . $settled_amount ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -299,7 +319,7 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                         <h6 class="preview-subject">Outstanding Due</h6>
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                                                        <p class="text-muted"><?php echo "Rs." .$outstanding_amount ?></p>
+                                                        <p class="text-muted"><?php echo "Rs." . $outstanding_amount ?></p>
                                                     </div>
                                                 </div>
                                             </div>
