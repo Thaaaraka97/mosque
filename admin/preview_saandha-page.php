@@ -34,9 +34,11 @@ if (isset($_GET['sort1'])) {
 if (isset($_GET['sort14'])) {
     $sort14 = $_GET['sort14'];
     // $sort14Month = date("Y-F");
-    $sort14Date = date_create($sort14);
-    $sort14 = date_format($sort14Date, "Y-M");
-    $sort14Month = date_format($sort14Date, "Y-m");
+    if ($sort14 != 0000-00) {
+        $sort14Date = date_create($sort14);
+        $sort14 = date_format($sort14Date, "Y-M");
+        $sort14Month = date_format($sort14Date, "Y-m");
+    }
 }
 
 // saandha amount
@@ -206,7 +208,6 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                         <div class="form-group col-md-3">
                                                             <label for="sortSaandhaPadiFor">Paid-For</label>
                                                             <input class="form-control" type="month" name="sortSaandhaPadiFor" id="sortSaandhaPadiFor" value="<?php echo $sort14Month ?>">
-
                                                         </div>
                                                     </div>
                                                 </div>

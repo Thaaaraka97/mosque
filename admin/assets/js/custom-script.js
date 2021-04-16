@@ -2536,6 +2536,10 @@ $(document).ready(function () {
     $("#wrong_user").hide();
   }
 
+  setTimeout(function () {
+    $('.alert').fadeOut('fast');
+  }, 2500);
+
 
   // show/ hide div on the change of dropdown list donations
   if (fridaycollectionaction == "fridayregular") {
