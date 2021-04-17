@@ -143,12 +143,12 @@ foreach ($person_details as $person_details_item) {
 
                     $j = 1;
                     foreach ($saandha_amount_details as $saandha_amount_item) {
-                      echo "loop - " . $i . ", foreach - " . $j++ . "<br>";
+                    //   echo "loop - " . $i . ", foreach - " . $j++ . "<br>";
                       $saandha_amount = $saandha_amount_item["saf_amount"];
                       $saf_date = $saandha_amount_item["saf_date"];
                       $saf_date = date_create($saf_date);
                       $date = date_format($saf_date, "Y-M");
-                      echo $person_collection_paidfor1 . " - " . $date . "<br>";
+                    //   echo $person_collection_paidfor1 . " - " . $date . "<br>";
                 
                       if ($person_collection_paidfor1 == $date) {
                         $current_saandha_amount = $saandha_amount;
@@ -165,7 +165,7 @@ foreach ($person_details as $person_details_item) {
                     }
                     $tot_due = $tot_due + $current_saandha_amount;
                     $months_count--;
-                    echo $months_count . " + " . $tot_due . " + " . $current_saandha_amount . "<br>";
+                    // echo $months_count . " + " . $tot_due . " + " . $current_saandha_amount . "<br>";
                     if ($months_count <= 0) {
                       $loop = 0;
                     }
