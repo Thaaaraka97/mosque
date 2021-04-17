@@ -7,7 +7,6 @@ session_start();
 <?php
 include "template_parts/header.php";
 include 'include/login_header.php';
-print_r($_SESSION['username']) ;
 
 $database = new databases();
 $id = "";
@@ -35,7 +34,7 @@ if (isset($_GET['sort1'])) {
 if (isset($_GET['sort14'])) {
     $sort14 = $_GET['sort14'];
     // $sort14Month = date("Y-F");
-    if ($sort14 != 0000-00) {
+    if ($sort14 != 0000 - 00) {
         $sort14Date = date_create($sort14);
         $sort14 = date_format($sort14Date, "Y-M");
         $sort14Month = date_format($sort14Date, "Y-m");
@@ -114,45 +113,68 @@ foreach ($person_details as $person_details_item) {
     $sub_saandha = $person_details_item["av_subDivision"];
     $where = array(
         'collection_index'     =>     $index_saandha,
-        'collection_subdivision'     =>     $index_saandha
+        'collection_subdivision'     =>     $sub_saandha
     );
-    $person_saandha_collection = $database->select_count('tbl_saandhacollection', $where);
+    $person_saandha_collection = $database->select_where('tbl_saandhacollection', $where);
     foreach ($person_saandha_collection as $person_saandha_collection_item) {
         $person_collection_paidfor = $person_saandha_collection_item["collection_paidFor"];
-        $person_collection_paidfor = date_create($person_collection_paidfor);
-        $person_collection_paidfor = date_format($person_collection_paidfor, "Y-M");
-        if ($person_collection_paidfor == $YYMM) {
-            $months_count = $YYMM - $person_collection_paidfor;
-            if ($person_details_item["av_specialSaandhaAmt"] > 0 && $months_count > 0) {
+        $person_collection_paidfor1 = date_create($person_collection_paidfor);
+        if ($person_saandha_collection_item['collection_paidFor'] != "") {
+            $YYMM = date('Y-M-d');
+            $YYMM = date_create($YYMM);
+            $months_diff = date_diff($person_collection_paidfor1, $YYMM);
+            $months_count = $months_diff->format("%m");
+
+            if ($person_details_item["av_specialSaandhaAmt"] > 0 && $months_diff->format("%R%m months") > 0) {
                 $saandha_pay = $person_details_item["av_specialSaandhaAmt"];
                 $tot_due = $tot_due + ($months_count * $saandha_pay);
-            }
-            else {
+            } else {
                 $loop = 1;
                 if ($months_count <= 0) {
                     $loop = 0;
                 }
+                $person_collection_paidfor1 = $person_collection_paidfor;
+                $check = 1;
+                $i = 1;
+
+                // commented loop
                 while ($loop) {
+                    $person_collection_paidfor1 = date('Y-M', strtotime('+1 month', strtotime($person_collection_paidfor1)));
+
+                    $j = 1;
                     foreach ($saandha_amount_details as $saandha_amount_item) {
-                        $saandha_amount = $saandha_amount_item["saf_amount"];
-                        $saf_date = $saandha_amount_item["saf_date"];
-                        $saf_date = date_create($saf_date);
-                        $date = date_format($saf_date, "Y-M");
-                        $person_collection_paidfor = date('Y-M', strtotime('+1 month', strtotime($person_collection_paidfor)));
-                        if ($person_collection_paidfor == $date) {
+                      echo "loop - " . $i . ", foreach - " . $j++ . "<br>";
+                      $saandha_amount = $saandha_amount_item["saf_amount"];
+                      $saf_date = $saandha_amount_item["saf_date"];
+                      $saf_date = date_create($saf_date);
+                      $date = date_format($saf_date, "Y-M");
+                      echo $person_collection_paidfor1 . " - " . $date . "<br>";
+                
+                      if ($person_collection_paidfor1 == $date) {
+                        $current_saandha_amount = $saandha_amount;
+                        break;
+                      } else {
+                        $person_collection_paidfor_date = date_create($person_collection_paidfor1);
+                          if ($person_collection_paidfor_date > $date && $check == 1) {
                             $current_saandha_amount = $saandha_amount;
+                            $check = 0;
                             break;
-                        } else {
-                            $current_saandha_amount = $saandha_amount;
-                        }
+
+                          }
+                      }
                     }
                     $tot_due = $tot_due + $current_saandha_amount;
-                    $months_count --;
+                    $months_count--;
+                    echo $months_count . " + " . $tot_due . " + " . $current_saandha_amount . "<br>";
                     if ($months_count <= 0) {
-                        $loop = 0;
+                      $loop = 0;
                     }
-                }
+                    $i++;
+
+                  }
             }
+        } else {
+            break;
         }
     }
 }
@@ -284,7 +306,7 @@ foreach ($person_details as $person_details_item) {
                                                         if ($sort1 == "0") {
                                                             $saandha_collection_details = $database->select_dates('tbl_saandhacollection', 'collection_date', $sort5, $sort6);
                                                         }
-                                                        if ($sort14 != 0000-00) {
+                                                        if ($sort14 != 0000 - 00) {
                                                             $where = array(
                                                                 'collection_paidFor' => $sort14
                                                             );
