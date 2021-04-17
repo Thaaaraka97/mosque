@@ -17,7 +17,7 @@ if (isset($_GET['left'])) {
     $message = "Saandha Status successsfully Edited and Updated..!";
 }
 
-$balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense'];
+$balance_before = (float) $_GET['before_income'] - (float) $_GET['before_expense'];
 ?>
 <style>
     table.dataTable.no-footer {
@@ -46,7 +46,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
 </style>
 
 <body>
-    <div class="mt-8">
+    <div class="mt-1">
         <!-- partial -->
         <div class="">
             <!-- partial -->
@@ -56,7 +56,10 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                         <div class="col-md-10">
                             <div class="">
                                 <div class="">
-                                    <p class="date-top">Date : <?php echo date('Y/m/d'); ?></p>
+                                    <div class="text-center">
+                                        <h2><u>Trail Balance</u></h2>
+                                        <p class="date-top mt-2"><?php echo "From : " . $_GET['from'] . "<br>To : " . $_GET['to']; ?></p>
+                                    </div>
                                     <div class="text-center">
                                         <table class="table table-bordered table-lg font-size-1-5 print-table" id="monthly_report_print">
                                             <thead>
@@ -69,7 +72,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                             <tbody>
                                                 <tr>
                                                     <td class='text-dark text-left'>Balance Before</td>
-                                                    <td class='text-dark'><?php echo number_format((float)$balance_before, 2, '.', '') ?></td>
+                                                    <td class='text-dark'><?php echo number_format((float) $balance_before, 2, '.', '') ?></td>
                                                     <td class='text-dark'>-</td>
                                                 </tr>
                                                 <?php
@@ -78,7 +81,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     <tr>
                                                         <td class='text-dark text-left'> Bills </td>
                                                         <td class='text-dark'> - </td>
-                                                        <td class='text-dark'>" . number_format((float)$_GET['collection_total'], 2, '.', '') . "</td>
+                                                        <td class='text-dark'>" . number_format((float) $_GET['collection_total'], 2, '.', '') . "</td>
                                                     </tr>
                                                         ";
                                                 }
@@ -87,7 +90,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     <tr>
                                                         <td class='text-dark text-left'> Expenses </td>
                                                         <td class='text-dark'> - </td>
-                                                        <td class='text-dark'>" . number_format((float)$_GET['collection2_total'], 2, '.', '') . "</td>
+                                                        <td class='text-dark'>" . number_format((float) $_GET['collection2_total'], 2, '.', '') . "</td>
                                                     </tr>
                                                         ";
                                                 }
@@ -95,7 +98,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Kanduri Collection </td>
-                                                        <td class='text-dark'> " . number_format((float)$_GET['collection3_total'], 2, '.', '') . " </td>
+                                                        <td class='text-dark'> " . number_format((float) $_GET['collection3_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                     ";
@@ -104,7 +107,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Donations  </td>
-                                                        <td class='text-dark'> " . number_format((float)$_GET['collection4_total'], 2, '.', '') . " </td>
+                                                        <td class='text-dark'> " . number_format((float) $_GET['collection4_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -113,7 +116,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Trusteeboard Donation </td>
-                                                        <td class='text-dark'> " . number_format((float)$_GET['collection5_total'], 2, '.', '') . " </td>
+                                                        <td class='text-dark'> " . number_format((float) $_GET['collection5_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -122,7 +125,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Friday Collection Donation </td>
-                                                        <td class='text-dark'> " . number_format((float)$_GET['collection6_total'], 2, '.', '') . " </td>
+                                                        <td class='text-dark'> " . number_format((float) $_GET['collection6_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -131,7 +134,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Friday Collection Regular </td>
-                                                        <td class='text-dark'> " . number_format((float)$_GET['collection7_total'], 2, '.', '') . " </td>
+                                                        <td class='text-dark'> " . number_format((float) $_GET['collection7_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -140,7 +143,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     echo "
                                                     <tr>
                                                       <td class='text-dark text-left'> Funds  </td>
-                                                      <td class='text-dark'> " . number_format((float)$_GET['collection8_total'], 2, '.', '') . " </td>
+                                                      <td class='text-dark'> " . number_format((float) $_GET['collection8_total'], 2, '.', '') . " </td>
                                                       <td class='text-dark'> - </td>
                                                     </tr>
                                                     ";
@@ -149,7 +152,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Laylat al-Qadr Collection </td>
-                                                        <td class='text-dark'> " . number_format((float)$_GET['collection9_total'], 2, '.', '') . " </td>
+                                                        <td class='text-dark'> " . number_format((float) $_GET['collection9_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -159,7 +162,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     <tr>
                                                         <td class='text-dark text-left'> Muazzin Salary </td>
                                                         <td class='text-dark'> - </td>
-                                                        <td class='text-dark'>" . number_format((float)$_GET['collection10_total'], 2, '.', '') . "</td>
+                                                        <td class='text-dark'>" . number_format((float) $_GET['collection10_total'], 2, '.', '') . "</td>
                                                     </tr>
                                                         ";
                                                 }
@@ -168,7 +171,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     <tr>
                                                         <td class='text-dark text-left'> Pesh Imaam Salary </td>
                                                         <td class='text-dark'> - </td>
-                                                        <td class='text-dark'>" . number_format((float)$_GET['collection11_total'], 2, '.', '') . "</td>
+                                                        <td class='text-dark'>" . number_format((float) $_GET['collection11_total'], 2, '.', '') . "</td>
                                                     </tr>
                                                         ";
                                                 }
@@ -176,7 +179,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Non-Mahalla Saandha Collections </td>
-                                                        <td class='text-dark'> " . number_format((float)$_GET['collection12_total'], 2, '.', '') . " </td>
+                                                        <td class='text-dark'> " . number_format((float) $_GET['collection12_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -186,7 +189,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     <tr>
                                                         <td class='text-dark text-left'> Other Servant Salary </td>
                                                         <td class='text-dark'> - </td>
-                                                        <td class='text-dark'>" . number_format((float)$_GET['collection13_total'], 2, '.', '') . "</td>
+                                                        <td class='text-dark'>" . number_format((float) $_GET['collection13_total'], 2, '.', '') . "</td>
                                                     </tr>
                                                         ";
                                                 }
@@ -194,7 +197,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Rental Income </td>
-                                                        <td class='text-dark'> " . number_format((float)$_GET['collection14_total'], 2, '.', '') . " </td>
+                                                        <td class='text-dark'> " . number_format((float) $_GET['collection14_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -203,7 +206,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Saandha Collection </td>
-                                                        <td class='text-dark'> " . number_format((float)$_GET['collection15_total'], 2, '.', '') . " </td>
+                                                        <td class='text-dark'> " . number_format((float) $_GET['collection15_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -213,7 +216,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     <tr>
                                                         <td class='text-dark text-left'> Special Bhayan Payment </td>
                                                         <td class='text-dark'> - </td>
-                                                        <td class='text-dark'>" . number_format((float)$_GET['collection16_total'], 2, '.', '') . "</td>
+                                                        <td class='text-dark'>" . number_format((float) $_GET['collection16_total'], 2, '.', '') . "</td>
                                                     </tr>
                                                         ";
                                                 }
@@ -221,7 +224,7 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                     echo "
                                                     <tr>
                                                         <td class='text-dark text-left'> Undiyal Collection </td>
-                                                        <td class='text-dark'> " . number_format((float)$_GET['collection17_total'], 2, '.', '') . " </td>
+                                                        <td class='text-dark'> " . number_format((float) $_GET['collection17_total'], 2, '.', '') . " </td>
                                                         <td class='text-dark'> - </td>
                                                     </tr>
                                                         ";
@@ -229,8 +232,8 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                                 echo "
                                                 <tr class='border-2px'>
                                                     <td class='text-dark font-weight-bold'> Total </td>
-                                                    <td class='text-dark font-weight-bold'> " . number_format((float)$_GET['total_income'], 2, '.', ''). " </td>
-                                                    <td class='text-dark font-weight-bold'> " . number_format((float)$_GET['total_expense'], 2, '.', '') . " </td>
+                                                    <td class='text-dark font-weight-bold'> " . number_format((float) $_GET['total_income'], 2, '.', '') . " </td>
+                                                    <td class='text-dark font-weight-bold'> " . number_format((float) $_GET['total_expense'], 2, '.', '') . " </td>
                                                 </tr>
                                                     ";
 
@@ -238,7 +241,8 @@ $balance_before = (float)$_GET['before_income'] - (float)$_GET['before_expense']
                                             </tbody>
                                         </table>
                                     </div>
-                                    <p class="mt-4">*contact the relevant officers for any corrections</p>
+                                    <p class="mt-3">Printed Date : <?php echo date('Y/m/d'); ?></p>
+                                    <p class="">*contact the relevant officers for any corrections</p>
                                 </div>
                             </div>
                         </div>

@@ -2088,6 +2088,7 @@ if (isset($_POST['submitColSettlement'])) {
 // insert into tbl_allvillagers
 // submitQuickForm button click
 if (isset($_POST['submitQuickForm'])) {
+    $URL = "form_quick_form.php?inserted_record=1";
     if ($_POST['inputGuardianStatus'] == "Yes") {
         $inputGuardianStatus = 1;
         $inputGuardianID = 0;
@@ -2118,8 +2119,9 @@ if (isset($_POST['submitQuickForm'])) {
             $inputSpecialSaandha = 0;
         }
         if ($_POST['inputAge'] >= 18) {
-            $saandhaStatusReason = "Pending";
+            $saandhaStatusReason = "Saandha Registered";
         } else {
+            $inputSaandhaStatus = 0;
             $saandhaStatusReason = "Under Age";
         }
     }

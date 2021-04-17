@@ -7,6 +7,7 @@ session_start();
 <?php
 include "template_parts/header.php";
 include 'include/login_header.php';
+print_r($_SESSION['username']) ;
 
 $database = new databases();
 $id = "";
@@ -240,7 +241,7 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                             $saandha_collection_details = $database->select_where('tbl_saandhacollection', $where);
                                                         }
                                                         foreach ($saandha_collection_details as $saandha_collection_item) {
-                                                            if (isset($saandha_collection_item['collection_id'])) {
+                                                            if (isset($saandha_collection_item['collection_id']) && $saandha_collection_item['collection_paidAmount'] > 0) {
                                                                 $id = $saandha_collection_item['collection_id'];
                                                                 $index = $saandha_collection_item['collection_index'];
                                                                 $subdivision = $saandha_collection_item['collection_subdivision'];

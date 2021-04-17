@@ -16,6 +16,16 @@ if (isset($_GET['familyID'])) {
 if (isset($_GET['nodata'])) {
     $message = "No record on entered Family ID. Please Enter a Valid Family ID...!";
 }
+if (isset($_GET["inserted_record"])) {
+    $data_from_villagers = $database->select_data('tbl_allvillagers');
+    foreach ($data_from_villagers as $data_from_villagers_item) {
+        if (isset($data_from_villagers_item["av_index"])) {
+            $index = $data_from_villagers_item["av_index"];
+            $name = $data_from_villagers_item["av_name"];
+        }
+    }
+    $success_message = 'Record is added to the Database! <br><strong>' . $index . '</strong> is the registered <strong>Index</strong> of ' . $name;
+}
 ?>
 
 <body>
@@ -43,6 +53,14 @@ if (isset($_GET['nodata'])) {
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                                 <span aria-hidden='true'>&times;</span>
                             </button>
+                        </div>";
+                    }
+                    if (isset($_GET["inserted_records"]) || isset($_GET["inserted_record"])) {
+                        echo "
+                        <div class='alert alert-success alert-dismissible' role='alert'>" . $success_message . "
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                        </button>
                         </div>";
                     }
                     ?>
