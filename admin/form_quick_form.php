@@ -8,6 +8,7 @@ session_start();
 include "template_parts/header.php";
 include 'include/login_header.php';
 
+
 $famID = "";
 if (isset($_GET['familyID'])) {
     $famID = 1;
@@ -131,7 +132,6 @@ if (isset($_GET["inserted_record"])) {
                                                 <select id="inputSubdivision" name="inputSubdivision" class="form-control" required>
                                                     <option value="0" selected>Choose...</option>
                                                     <?php
-                                                    $sub_division = $database->select_data('tbl_subdivision');
                                                     foreach ($sub_division as $sub_division_item) {
                                                         echo "<option value='" . $sub_division_item["sb_name"] . "'>" . $sub_division_item["sb_name"] . "</option>";
                                                     }

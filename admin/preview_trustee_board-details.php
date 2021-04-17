@@ -285,7 +285,7 @@ elseif ($action == "previous") {
                                 <select id="inputSubdivision" name="inputSubdivision" class="form-control">
                                     <option value="0" selected>Choose...</option>
                                     <?php
-                                    $sub_division = $database->select_data('tbl_subdivision');
+                                    
                                     foreach ($sub_division as $sub_division_item) {
                                         echo "<option value='" . $sub_division_item["sb_name"] . "'>" . $sub_division_item["sb_name"] . "</option>";
                                     }

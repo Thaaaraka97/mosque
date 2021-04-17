@@ -2538,7 +2538,7 @@ $(document).ready(function () {
 
   setTimeout(function () {
     $('.alert').fadeOut('fast');
-  }, 2500);
+  }, 3000);
 
 
   // show/ hide div on the change of dropdown list donations
