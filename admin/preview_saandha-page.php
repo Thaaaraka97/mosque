@@ -106,6 +106,56 @@ foreach ($saandha_collections as $saandha_collections_item) {
 $tot_amount_to_collect = ((int) ($person_count1 - $person_count2) * (float) $current_saandha_amount) + $special_saandha_amount;
 $outstanding_amount = $tot_amount_to_collect - $settled_amount;
 
+// total saandha due
+$saandha_pay = 0;
+$tot_due = 0;
+foreach ($person_details as $person_details_item) {
+    $index_saandha = $person_details_item["av_index"];
+    $sub_saandha = $person_details_item["av_subDivision"];
+    $where = array(
+        'collection_index'     =>     $index_saandha,
+        'collection_subdivision'     =>     $index_saandha
+    );
+    $person_saandha_collection = $database->select_count('tbl_saandhacollection', $where);
+    foreach ($person_saandha_collection as $person_saandha_collection_item) {
+        $person_collection_paidfor = $person_saandha_collection_item["collection_paidFor"];
+        $person_collection_paidfor = date_create($person_collection_paidfor);
+        $person_collection_paidfor = date_format($person_collection_paidfor, "Y-M");
+        if ($person_collection_paidfor == $YYMM) {
+            $months_count = $YYMM - $person_collection_paidfor;
+            if ($person_details_item["av_specialSaandhaAmt"] > 0 && $months_count > 0) {
+                $saandha_pay = $person_details_item["av_specialSaandhaAmt"];
+                $tot_due = $tot_due + ($months_count * $saandha_pay);
+            }
+            else {
+                $loop = 1;
+                if ($months_count <= 0) {
+                    $loop = 0;
+                }
+                while ($loop) {
+                    foreach ($saandha_amount_details as $saandha_amount_item) {
+                        $saandha_amount = $saandha_amount_item["saf_amount"];
+                        $saf_date = $saandha_amount_item["saf_date"];
+                        $saf_date = date_create($saf_date);
+                        $date = date_format($saf_date, "Y-M");
+                        $person_collection_paidfor = date('Y-M', strtotime('+1 month', strtotime($person_collection_paidfor)));
+                        if ($person_collection_paidfor == $date) {
+                            $current_saandha_amount = $saandha_amount;
+                            break;
+                        } else {
+                            $current_saandha_amount = $saandha_amount;
+                        }
+                    }
+                    $tot_due = $tot_due + $current_saandha_amount;
+                    $months_count --;
+                    if ($months_count <= 0) {
+                        $loop = 0;
+                    }
+                }
+            }
+        }
+    }
+}
 
 ?>
 <script type="text/javascript">
@@ -346,6 +396,30 @@ $outstanding_amount = $tot_amount_to_collect - $settled_amount;
                                                     </div>
                                                     <div class="mr-auto text-sm-right pt-2 pt-sm-0">
                                                         <p class="text-muted"><?php echo $person_count1 - $settled_people ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="otherDetails2">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Other Details </h4>
+                                        <div class="preview-list">
+                                            <div class="preview-item border-bottom">
+                                                <div class="preview-item-content d-sm-flex flex-grow">
+                                                    <div class="flex-grow">
+                                                        <h6 class="preview-subject">Total Saandha Due</h6>
+                                                    </div>
+                                                    <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                                        <p class="text-muted"><?php echo "Rs." . $tot_due ?></p>
                                                     </div>
                                                 </div>
                                             </div>
