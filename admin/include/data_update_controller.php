@@ -214,6 +214,110 @@ if (isset($_POST['editQuran'])) {
 
 }
 
+// update data in tbl_peshimaaamdetails
+// editImaam button click
+if (isset($_POST['editImaam'])) {
+    if (isset($_POST['Gramasevaka'])) {
+        $Gramasevaka = 1;
+    } else {
+        $Gramasevaka = 0;
+    }
+    if (isset($_POST['Police'])) {
+        $Police = 1;
+    } else {
+        $Police = 0;
+    }
+    if (isset($_POST['Mahalla'])) {
+        $Mahalla = 1;
+    } else {
+        $Mahalla = 0;
+    }
+    if (isset($_POST['Maulavi'])) {
+        $Maulavi = 1;
+    } else {
+        $Maulavi = 0;
+    }
+    $update_data = array(
+        // 'pi_village' => mysqli_real_escape_string($database->con, $_POST['inputVillage']),
+        // 'pi_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
+        // 'pi_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputImaamSubdivision']),
+        // 'pi_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        // 'pi_address' => mysqli_real_escape_string($database->con, $address),
+        // 'pi_nic' => mysqli_real_escape_string($database->con, $_POST['inputNIC']),
+        // 'pi_married' => mysqli_real_escape_string($database->con, $inputMarriedStatus),
+        // 'pi_noofkids' => mysqli_real_escape_string($database->con, $_POST['inputKids']),
+        // 'pi_mobileTP' => mysqli_real_escape_string($database->con, $_POST['inputMobile']),
+        'pi_homeTP' => mysqli_real_escape_string($database->con, $_POST['inputHomeTP']),
+        // 'pi_assignedDate' => mysqli_real_escape_string($database->con, $_POST['inputAssignedDate']),
+        'pi_salary' => mysqli_real_escape_string($database->con, $_POST['inputBasicSalary']),
+        // 'pi_activestatus' => mysqli_real_escape_string($database->con, 1),
+        'pi_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
+        'pi_receivedLetterMahalla' => mysqli_real_escape_string($database->con, $Mahalla),
+        'pi_receivedLetterGramasevaka' => mysqli_real_escape_string($database->con, $Gramasevaka),
+        'pi_receivedLetterPolice' => mysqli_real_escape_string($database->con, $Police),
+        'pi_receivedLetterMaulavi' => mysqli_real_escape_string($database->con, $Maulavi)
+
+    );
+    $where_condition = array(
+        'pi_peshImaamId'     =>     $_POST["id"]
+    );
+    if ($database->update("tbl_peshimaaamdetails", $update_data, $where_condition)) {
+        $URL = "preview_pesh_imaam-details.php?edited=1";
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
+
+}
+
+// update data in tbl_peshimaaamdetails
+// editMuazzin button click
+if (isset($_POST['editMuazzin'])) {
+    if (isset($_POST['Gramasevaka'])) {
+        $Gramasevaka = 1;
+    } else {
+        $Gramasevaka = 0;
+    }
+    if (isset($_POST['Police'])) {
+        $Police = 1;
+    } else {
+        $Police = 0;
+    }
+    if (isset($_POST['Mahalla'])) {
+        $Mahalla = 1;
+    } else {
+        $Mahalla = 0;
+    }
+    $update_data = array(
+        // 'pi_village' => mysqli_real_escape_string($database->con, $_POST['inputVillage']),
+        // 'pi_index' => mysqli_real_escape_string($database->con, $inputIndexNo),
+        // 'pi_subDivision' => mysqli_real_escape_string($database->con, $_POST['inputImaamSubdivision']),
+        // 'pi_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
+        // 'pi_address' => mysqli_real_escape_string($database->con, $address),
+        // 'pi_nic' => mysqli_real_escape_string($database->con, $_POST['inputNIC']),
+        // 'pi_married' => mysqli_real_escape_string($database->con, $inputMarriedStatus),
+        // 'pi_noofkids' => mysqli_real_escape_string($database->con, $_POST['inputKids']),
+        // 'pi_mobileTP' => mysqli_real_escape_string($database->con, $_POST['inputMobile']),
+        'md_homeTP' => mysqli_real_escape_string($database->con, $_POST['inputHomeTP']),
+        // 'pi_assignedDate' => mysqli_real_escape_string($database->con, $_POST['inputAssignedDate']),
+        'md_salary' => mysqli_real_escape_string($database->con, $_POST['inputBasicSalary']),
+        // 'pi_activestatus' => mysqli_real_escape_string($database->con, 1),
+        'md_notes' => mysqli_real_escape_string($database->con, $_POST['inputNotes']),
+        'md_receivedLetterMahalla' => mysqli_real_escape_string($database->con, $Mahalla),
+        'md_receivedLetterGramasevaka' => mysqli_real_escape_string($database->con, $Gramasevaka),
+        'md_receivedLetterPolice' => mysqli_real_escape_string($database->con, $Police)
+
+    );
+    $where_condition = array(
+        'md_muazzinId'     =>     $_POST["id"]
+    );
+    if ($database->update("tbl_muazzindetails", $update_data, $where_condition)) {
+        $URL = "preview_muazzin-details.php?edited=1";
+        echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+    }
+
+}
+
 // update data in tbl_trusteeboarddetails
 // editVillagers button click
 if (isset($_POST['editVillagers'])) {

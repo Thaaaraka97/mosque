@@ -1054,7 +1054,6 @@ if (isset($_POST['submitPeshImaam'])) {
         'pi_receivedLetterGramasevaka' => mysqli_real_escape_string($database->con, $Gramasevaka),
         'pi_receivedLetterPolice' => mysqli_real_escape_string($database->con, $Police),
         'pi_receivedLetterMaulavi' => mysqli_real_escape_string($database->con, $Maulavi)
-        // 'pi_resignedDate' => mysqli_real_escape_string($database->con, "0001-01-01")
 
     );
 

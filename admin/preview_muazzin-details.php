@@ -135,7 +135,7 @@ elseif (isset($_GET['terminated'])) {
                                                         <th>Telephone</th>
                                                         <th>Active Peroid</th>
                                                         <th>Left the Position</th>
-                                                        <th>View</th>
+                                                        <th>Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -165,6 +165,8 @@ elseif (isset($_GET['terminated'])) {
                                                             echo "</td>
                                                             <td>
                                                                 <a href='preview_muazzin-details_step-2.php?id=".$id."&action=view' class='item'><i class='fa fa-eye fa-lg' aria-hidden='true'></i></a>
+                                                                <a href='preview_muazzin-details_step-2.php?id=" . $id . "&action=edit' class='item'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i></a>
+
                                                             </td>
                                                         </tr>
                                                          ";

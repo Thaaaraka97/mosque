@@ -392,6 +392,138 @@ foreach ($muazzin_details as $muazzin_details_item) {
                             </div>
                         </div>
                     </div>
+                    <div class="text-dark" id="editDetails">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <form method="post">
+                                            <h4 class="center card-title"> Edit Details </h4>
+                                            <div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputVillage"> Imaam Belongs to </label>
+                                                        <input type="text" class="form-control" id="inputVillage" name="inputVillage" value="<?php echo $village; ?>" readonly>
+                                                    </div>
+                                                </div>
+                                                <div id="peshImaamIndex">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputIndexNo"> Index Number </label>
+                                                            <input type="text" class="form-control" id="inputIndexNo" name="inputIndexNo" value="<?php echo $index; ?>" readonly>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputImaamSubdivision"> Sub-division </label>
+                                                            <input type="text" class="form-control" id="inputImaamSubdivision" name="inputImaamSubdivision" value="<?php echo $subdivision; ?>" readonly>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputName">Name </label>
+                                                    <input type="text" class="form-control" id="inputName" name="inputName" value="<?php echo $name; ?>" readonly>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputAddress"> Address </label>
+                                                    <textarea rows="5" class="form-control" id="inputAddress" name="inputAddress" value="<?php echo $address; ?>" readonly><?php echo $address; ?></textarea>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputNIC">National Identity Card </label>
+                                                        <input type="text" class="form-control" id="inputNIC" name="inputNIC" value="<?php echo $nic; ?>" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputName"> Married Status </label>
+                                                        <input type="text" class="form-control" id="inputMarriedStatus" name="inputMarriedStatus" value="<?php echo $married; ?>" readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputKids">No. of Kids </label>
+                                                        <input type="text" class="form-control" id="inputKids" name="inputKids" value="<?php echo $noofkids; ?>" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputMobile">Mobile Number </label>
+                                                        <input type="text" class="form-control" id="inputMobile" name="inputMobile" value="<?php echo $mobile_tp; ?>" readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputHomeTP">Residential Contact </label>
+                                                        <input type="text" class="form-control" id="inputHomeTP" name="inputHomeTP" placeholder="011xxxxxxx" value="<?php echo $home_tp; ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputAssignedDate">Assigned Date </label>
+                                                        <input type="text" class="form-control" id="inputAssignedDate" name="inputAssignedDate" value="<?php echo $start; ?>" readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputBasicSalary">Basic Salary </label>
+                                                        <input type="text" class="form-control" id="inputBasicSalary" name="inputBasicSalary" value="<?php echo $salary; ?>" placeholder="Basic Salary (Rs)" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12">
+                                                        <div class="form-group row">
+                                                            <div class="col-md-12">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <label class="form-label"> Received Letters </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row pl-3">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-check">
+                                                                            <label class="form-check-label">
+                                                                                <input type="checkbox" class="form-check-input" name="Police" id="Police" value="Police Certificate" <?php echo ($police == '1') ? 'checked' : '' ?>> Police Certificate </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row pl-3">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-check">
+                                                                            <label class="form-check-label">
+                                                                                <input type="checkbox" class="form-check-input" name="Gramasevaka" id="Gramasevaka" value="Gramasevaka Certificate" <?php echo ($gramasevaka == '1') ? 'checked' : '' ?>> Gramasevaka Certificate </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row pl-3">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-check">
+                                                                            <label class="form-check-label">
+                                                                                <input type="checkbox" class="form-check-input" name="Mahalla" id="Mahalla" value="Mahalla Masjid Letter" <?php echo ($mahalla == '1') ? 'checked' : '' ?>> Mahalla Masjid Letter </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <input type="hidden" class="form-control" id="inputDateToday">
+                                                    </div>
+                                                </div>
+                                                <div class=" form-group">
+                                                    <label for="inputNotes">Notes </label>
+                                                    <textarea class="form-control" id="inputNotes" name="inputNotes" rows="4" value="<?php echo $notes; ?>"><?php echo $notes; ?></textarea>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
+
+                                            <div class="text-center">
+                                                <button class="btn btn-primary btn-lg" id="editMuazzin" name="editMuazzin">Edit Details</button>
+                                            </div>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- content-wrapper ends -->
 
                     <!-- partial -->
