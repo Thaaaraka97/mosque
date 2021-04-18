@@ -2536,6 +2536,27 @@ $(document).ready(function () {
     $("#wrong_user").hide();
   }
 
+  // search bar
+  $("#main_search_btn").click(function (e) { 
+    e.preventDefault();
+    var item = $("#main_search").val();
+    $.ajax({
+      type: "post",
+      url: "handlers/search_handler.php",
+      data: "item=" +item ,
+      success: function (response) {
+        if (response == "wrong") {
+          $("#wrong_search").fadeIn();
+          $("#wrong_search").fadeOut(3000);
+        }
+        else{
+          window.location.href = response;
+        }
+      }
+    });
+    
+  });
+
   setTimeout(function () {
     $('.alert').fadeOut('fast');
   }, 3000);

@@ -28,8 +28,15 @@
             <ul class="navbar-nav w-100">
                 <li class="nav-item w-100">
                     <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                        <input type="text" class="form-control search-box" placeholder="Search" onkeyup="showResult(this.value)">
+                        <input type="text" class="form-control search-box" id="main_search" placeholder="Search">
+                        <a class="ml-2 btn btn-primary" id="main_search_btn"><i class="fa fa-search" aria-hidden="true"></i>Search</a>
+                        <!-- <input type="text" class="form-control search-box" placeholder="Search" id="main_search" onkeyup="showResult(this.value)"> -->
                         <div id="livesearch"></div>
+                        <div class='alert alert-danger alert-dismissible' id="wrong_search" role='alert'> Wrong Search Index
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                            </button>
+                        </div>
                     </form>
                 </li>
                 <li class="nav-item w-50">
