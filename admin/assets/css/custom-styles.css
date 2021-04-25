@@ -444,6 +444,7 @@ div.modal-footer button.btn-secondary:hover {
 
 .board .panel {
   padding: 30px;
+  height: 9rem;
   border: none;
   background: #fff;
 }
@@ -452,16 +453,14 @@ div.modal-footer button.btn-secondary:hover {
   margin-bottom: 30px;
   width: 100%;
 }
-.board .icon {
-  float: right;
-}
+
 .board .panel .icon .fa,
 .fas,
 .fab {
   font-size: 30px;
   color: #ffffff;
   background: #30a5ff;
-  padding: 19px;
+  padding: 10px;
 }
 .fa,
 .fas,
@@ -473,7 +472,13 @@ div.modal-footer button.btn-secondary:hover {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.dashboard a{
+  width: 100%;
+}
+.dashboard h5{
+  text-align: center;
+  margin-top: 8px;
+}
 .col-md-3 {
   width: 25%;
   float: left;
@@ -482,10 +487,7 @@ div.modal-footer button.btn-secondary:hover {
   padding-right: 15px;
   padding-left: 15px;
 }
-.board .number {
-  float: left;
-  width: 65%;
-}
+
 
 #cardhover div.col-md-6.d-flex.justify-content-center.align-self-center {
   text-align: center !important;
