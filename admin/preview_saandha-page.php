@@ -143,35 +143,33 @@ foreach ($person_details as $person_details_item) {
 
                     $j = 1;
                     foreach ($saandha_amount_details as $saandha_amount_item) {
-                    //   echo "loop - " . $i . ", foreach - " . $j++ . "<br>";
-                      $saandha_amount = $saandha_amount_item["saf_amount"];
-                      $saf_date = $saandha_amount_item["saf_date"];
-                      $saf_date = date_create($saf_date);
-                      $date = date_format($saf_date, "Y-M");
-                    //   echo $person_collection_paidfor1 . " - " . $date . "<br>";
-                
-                      if ($person_collection_paidfor1 == $date) {
-                        $current_saandha_amount = $saandha_amount;
-                        break;
-                      } else {
-                        $person_collection_paidfor_date = date_create($person_collection_paidfor1);
-                          if ($person_collection_paidfor_date > $date && $check == 1) {
-                            $current_saandha_amount = $saandha_amount;
-                            $check = 0;
-                            break;
+                        //   echo "loop - " . $i . ", foreach - " . $j++ . "<br>";
+                        $saandha_amount = $saandha_amount_item["saf_amount"];
+                        $saf_date = $saandha_amount_item["saf_date"];
+                        $saf_date = date_create($saf_date);
+                        $date = date_format($saf_date, "Y-M");
+                        //   echo $person_collection_paidfor1 . " - " . $date . "<br>";
 
-                          }
-                      }
+                        if ($person_collection_paidfor1 == $date) {
+                            $current_saandha_amount = $saandha_amount;
+                            break;
+                        } else {
+                            $person_collection_paidfor_date = date_create($person_collection_paidfor1);
+                            if ($person_collection_paidfor_date > $date && $check == 1) {
+                                $current_saandha_amount = $saandha_amount;
+                                $check = 0;
+                                break;
+                            }
+                        }
                     }
                     $tot_due = $tot_due + $current_saandha_amount;
                     $months_count--;
                     // echo $months_count . " + " . $tot_due . " + " . $current_saandha_amount . "<br>";
                     if ($months_count <= 0) {
-                      $loop = 0;
+                        $loop = 0;
                     }
                     $i++;
-
-                  }
+                }
             }
         } else {
             break;
@@ -450,6 +448,78 @@ foreach ($person_details as $person_details_item) {
                                 </div>
                             </div>
 
+                        </div>
+                    </div>
+                    <div id="individualRecords">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 grid-margin stretch-card">
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <div>
+                                                <div class="table-responsive table-responsive-data2">
+                                                    <table class="table table-data2">
+                                                        <thead>
+                                                            <tr class="tr-shadow">
+                                                                <th>Receipt No</th>
+                                                                <th>Date</th>
+                                                                <th>Amount</th>
+                                                                <th>Index</th>
+                                                                <th>Sub-Division</th>
+                                                                <th>Name</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+
+                                                            $total_sum_for_person = 0;
+                                                            $receipt_no = 1;
+                                                            $name = "";
+                                                            $current_index = 0;
+                                                            $current_subdivision = 0;
+                                                            $current_date = 0;
+
+                                                            $saandha_collection_person_details = $database->select_distinct3('tbl_saandhacollection', 'collection_index', 'collection_subdivision', 'collection_name');
+                                                            $saandha_collection_date_details = $database->select_distinct1('tbl_saandhacollection', 'collection_date');
+                                                            foreach ($saandha_collection_date_details as $saandha_collection_date_item) {
+                                                                foreach ($saandha_collection_person_details as $saandha_collection_person_item) {
+                                                                    $where = array(
+                                                                        'collection_index'     =>     $saandha_collection_person_item['collection_index'],
+                                                                        'collection_subdivision'     =>     $saandha_collection_person_item['collection_subdivision'],
+                                                                        'collection_date'     =>     $saandha_collection_date_item['collection_date']
+                                                                    );
+                                                                    $person_saandha_collection = $database->select_where('tbl_saandhacollection', $where);
+                                                                    foreach ($person_saandha_collection as $person_saandha_collection_item) {
+                                                                        if (isset($person_saandha_collection_item['collection_id'])) {
+                                                                            $total_sum_for_person = $total_sum_for_person + $person_saandha_collection_item['collection_paidAmount'];
+                                                                        }
+                                                                    }
+                                                                    if ($total_sum_for_person != 0 && $person_saandha_collection_item['collection_date'] <= $sort6 && $person_saandha_collection_item['collection_date'] >= $sort5) {
+                                                                        echo "
+                                                                            <tr>
+                                                                                <td>" . $receipt_no . "</td>
+                                                                                <td>" . $saandha_collection_date_item['collection_date'] . "</td>
+                                                                                <td>" . $total_sum_for_person . "</td>
+                                                                                <td>" . $saandha_collection_person_item['collection_index'] . "</td>
+                                                                                <td>" . $saandha_collection_person_item['collection_subdivision'] . "</td>
+                                                                                <td>" . $saandha_collection_person_item['collection_name'] . "</td>
+                                                                            </tr>
+                                                                            ";
+                                                                        $total_sum_for_person = 0;
+                                                                        $receipt_no = $receipt_no + 1;
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- content-wrapper ends -->
