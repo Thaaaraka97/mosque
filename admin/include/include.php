@@ -1,8 +1,8 @@
 <!-- extract the server name -->
 <?php
 
-if(siteURL() == 'http://localhost/') {
-    $server_name = siteURL()."mosque/";
+if(siteURL() == 'http://mosque.test/') {
+    $server_name = siteURL()."admin/";
 }
 else if(siteURL() == 'http://annoorjummamusjid1.lk/'){
     $server_name = siteURL();

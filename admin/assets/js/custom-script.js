@@ -1559,7 +1559,8 @@ $(document).ready(function () {
         }
         $("#inputPayment").val(payment);
         $("#payedFor").val(result_array[3]);
-        $("#inputPreviousDue").val(result_array[4]);
+        $("#inputPreviousDue").val(result_array[5]);
+        $("#inputDuePayment").val(result_array[4]);
       },
     });
   });
@@ -2261,7 +2262,7 @@ $(document).ready(function () {
         if (special_saandha != 0) {
           $("#inputPaymentSaandha").val(special_saandha);
           $("#specialSaandha").val(1);
-          $('#inputPaymentSaandha').attr('readonly', true);
+          // $('#inputPaymentSaandha').attr('readonly', true);
         }
         else {
           $("#inputPaymentSaandha").val(payment);
@@ -2269,8 +2270,9 @@ $(document).ready(function () {
         }
         $("#saandhaAmount").val(payment);
         $("#payedFor").val(result_array[2]);
-        $("#inputPreviousDue").val(result_array[4]);
+        $("#inputPreviousDue").val(result_array[6]);
         $("#inputDuePayment").val(result_array[4]);
+        $("#inputTP").val(result_array[7]);
 
       },
     });

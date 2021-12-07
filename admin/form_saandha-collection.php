@@ -99,6 +99,7 @@ $database = new databases();
                                         <input type="hidden" name="payedFor" id="payedFor">
                                         <input type="hidden" id="inputDuePayment" name="inputDuePayment">
                                         <input type="hidden" id="specialSaandha" name="specialSaandha">
+                                        <input type="hidden" id="inputTP" name="inputTP">
 
                                         <div class="text-center">
                                             <button class="btn btn-primary btn-lg" id="submitSandhaPayment" name="submitSandhaPayment">Add Payment</button>
