@@ -159,7 +159,27 @@ else if ($type == "saandha") {
     
     // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-echo "\n".$pay_start." and ".$pay_end."\n";
+// echo "\n".$pay_start." and ".$pay_end."\n";
+}
+else if ($type == "alert") {
+    $URL = "../form_collection_alert.php?inserted_record=1";
+    $date = $_GET["date"];
+    $collector = $_GET["collector"];
+    $msg = 'An-Noor Jumma Masjid, Moragala. \n\nWe here by notify that sandha collection will be executed on '.$date.' by '.$collector.'\n\nYour sandha due - Rs. '.$amount.' \n\nJazak Allah khair.';
+    $body = '{ 
+        "messages": [
+            {
+                "number": "'.$contact_no.'",
+                "mask": "AnNoorMasjd",
+                "text": "'.$msg.'",
+                "campaignName": "annoor"            
+            }
+        ] 
+        }';
+    
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+// echo "\n".$pay_start." and ".$pay_end."\n";
 }
 
 

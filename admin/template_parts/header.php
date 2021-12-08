@@ -6,6 +6,7 @@ include 'include/data_update_controller.php';
 date_default_timezone_set("Asia/Calcutta");
 $today = date('Y-m-d');
 $sub_division = $database->select_data('tbl_subdivision');
+$collector = $database->select_data('tbl_saandhacollector');
 
 ?>
 

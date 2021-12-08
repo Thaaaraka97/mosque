@@ -2297,6 +2297,25 @@ $(document).ready(function () {
     });
   });
 
+  // collection alert form
+  // ajax find records
+  $("#inputAlertSubdivision").change(function (e) {
+    e.preventDefault();
+    var index = $("#inputAlertIndexNo").val();
+    var subdivision = $("#inputAlertSubdivision").val();
+    var data_bundle = "index=" + index + "&subdivision=" + subdivision + "&action=find_record_sub";
+    $.ajax({
+      type: "post",
+      url: "handlers/saandha_collection_handler.php?action=find_record_sub",
+      data: data_bundle,
+      success: function (response) {
+        var result_array = response.split("+");
+        $("#inputDuePayment").val(result_array[6]);
+        $("#inputTP").val(result_array[7]);
+      }
+    });
+  });
+
   // monthly report
   $("#sortFrom").change(function (e) {
     e.preventDefault();

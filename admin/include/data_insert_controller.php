@@ -2691,3 +2691,20 @@ if (isset($_POST['submitSandhaPayment'])) {
         }
     }
 }
+
+
+// insert into tbl_saandhacollection
+// submitSandhaPayment button click
+if (isset($_POST['submitAlert'])) {
+    $due = $_POST['inputDuePayment'];
+    $date = $_POST['inputAlertDate'];
+    $collector = $_POST['inputAlertCollector'];
+
+    // calculate values for sms
+    $contact = substr_replace($_POST['inputTP'], "94", 0, 1);
+    // $amount = $_POST['inputPaymentSaandha'];
+    // $pay_start = $_POST['payedFor'];
+
+    $URL = "include/sms_api_connection.php?type=alert&amount=$due&date=$date&contact=$contact&collector=$collector";
+    echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+}
