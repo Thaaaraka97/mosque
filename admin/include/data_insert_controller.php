@@ -1328,6 +1328,14 @@ if (isset($_POST['submitRentalPayment'])) {
     $contact = substr_replace($_POST['inputRentalPaymentTP'], "94", 0, 1);
     $amount = $_POST['inputPayment'];
     $pay_start = $_POST['payedFor'];
+    $ref2 = 0;
+    $ref1 = 0;
+
+    $payment_details = $database->select_data('tbl_rentalincome');
+    foreach ($payment_details as $payment_details_item) {
+        $ref1 = $payment_details_item["ri_id"];
+    }
+    $ref1 = $ref1 + 1;
 
     // retrieve monthly payment details for selected rental
     $where = array(
@@ -1432,19 +1440,22 @@ if (isset($_POST['submitRentalPayment'])) {
 
 
         if ($database->insert_data('tbl_rentalincome', $insert_to_tbl_rentalincome)) {
-
-
-            // $no_of_due_months = $database->calculate_months($payFor);
-            // $due_upto_today = 0;
-            // $due_upto_today = $due_upto_today + $current_saandha_amount;
-            $URL = "include/sms_api_connection.php?type=rental&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact";
+            $payment_details = $database->select_data('tbl_rentalincome');
+            foreach ($payment_details as $payment_details_item) {
+                $ref2 = $payment_details_item["ri_id"];
+            }
+            $URL = "include/sms_api_connection.php?type=rental&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
             // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }
     } else {
-        $URL = "include/sms_api_connection.php?type=rental&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact";
+        $payment_details = $database->select_data('tbl_rentalincome');
+        foreach ($payment_details as $payment_details_item) {
+            $ref2 = $payment_details_item["ri_id"];
+        }
+        $URL = "include/sms_api_connection.php?type=rental&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
@@ -2412,6 +2423,18 @@ if (isset($_POST['submitSandhaPayment'])) {
     $contact = substr_replace($_POST['inputTP'], "94", 0, 1);
     $amount = $_POST['inputPaymentSaandha'];
     $pay_start = $_POST['payedFor'];
+    $ref2 = 0;
+    $ref1 = 0;
+
+    // $where2 = array(
+    //     'collection_index'     =>     $_POST["inputIndexNo"],
+    //     'collection_subdivision'     =>     $_POST["inputSaandhaSubdivision"]
+    // );
+    $payment_details = $database->select_data('tbl_saandhacollection');
+    foreach ($payment_details as $payment_details_item) {
+        $ref1 = $payment_details_item["collection_id"];
+    }
+    $ref1 = $ref1 + 1;
 
     if ($specialSaandha == 1) {
         if ($paidFor == "0") {
@@ -2428,8 +2451,16 @@ if (isset($_POST['submitSandhaPayment'])) {
                 'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
             );
             if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
+                $payment_details = $database->select_data('tbl_saandhacollection');
+                foreach ($payment_details as $payment_details_item) {
+                    $ref2 = $payment_details_item["collection_id"];
+                }
+
+                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+
+                // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
             }
         } else {
             $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
@@ -2445,8 +2476,16 @@ if (isset($_POST['submitSandhaPayment'])) {
                 'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
             );
             if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
+                $payment_details = $database->select_data('tbl_saandhacollection');
+                foreach ($payment_details as $payment_details_item) {
+                    $ref2 = $payment_details_item["collection_id"];
+                }
+
+                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+
+                // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
             }
         }
     } else {
@@ -2519,8 +2558,16 @@ if (isset($_POST['submitSandhaPayment'])) {
                         'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
                     );
                     if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
+                        $payment_details = $database->select_data('tbl_saandhacollection');
+                        foreach ($payment_details as $payment_details_item) {
+                            $ref2 = $payment_details_item["collection_id"];
+                        }
+
+                        $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
                         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-                        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+
+                        // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                        // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                     }
                 } else {
                     $due = (float) $current_saandha_amount - (float) $payment;
@@ -2536,13 +2583,29 @@ if (isset($_POST['submitSandhaPayment'])) {
                         'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
                     );
                     if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
+                        $payment_details = $database->select_data('tbl_saandhacollection');
+                        foreach ($payment_details as $payment_details_item) {
+                            $ref2 = $payment_details_item["collection_id"];
+                        }
+
+                        $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
                         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-                        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+
+                        // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                        // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                     }
                 }
             } else {
+                $payment_details = $database->select_data('tbl_saandhacollection');
+                foreach ($payment_details as $payment_details_item) {
+                    $ref2 = $payment_details_item["collection_id"];
+                }
+
+                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-                echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+
+                // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
             }
         } else {
             if ((float) $payment <= $due) {
@@ -2560,8 +2623,16 @@ if (isset($_POST['submitSandhaPayment'])) {
 
                 );
                 if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
+                    $payment_details = $database->select_data('tbl_saandhacollection');
+                    foreach ($payment_details as $payment_details_item) {
+                        $ref2 = $payment_details_item["collection_id"];
+                    }
+
+                    $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
                     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-                    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+
+                    // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                    // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                 }
             } else {
                 $insert_to_tbl_saandhacollection = array(
@@ -2649,8 +2720,16 @@ if (isset($_POST['submitSandhaPayment'])) {
                             'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
                         );
                         if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
+                            $payment_details = $database->select_data('tbl_saandhacollection');
+                            foreach ($payment_details as $payment_details_item) {
+                                $ref2 = $payment_details_item["collection_id"];
+                            }
+
+                            $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
                             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-                            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+
+                            // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+                            // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                         }
                     } else {
                         $due = (float) $current_saandha_amount - (float) $payment;
@@ -2669,20 +2748,34 @@ if (isset($_POST['submitSandhaPayment'])) {
 
 
                         if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
-                            $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact";
+                            $payment_details = $database->select_data('tbl_saandhacollection');
+                            foreach ($payment_details as $payment_details_item) {
+                                $ref2 = $payment_details_item["collection_id"];
+                            }
+
+                            $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
                             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                             // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                             // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                         }
                     }
                 } else {
-                    $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact";
+                    $payment_details = $database->select_data('tbl_saandhacollection');
+                    foreach ($payment_details as $payment_details_item) {
+                        $ref2 = $payment_details_item["collection_id"];
+                    }
+                    $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
                     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                     // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                     // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                 }
 
-                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact";
+                $payment_details = $database->select_data('tbl_saandhacollection');
+                foreach ($payment_details as $payment_details_item) {
+                    $ref2 = $payment_details_item["collection_id"];
+                }
+
+                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                 // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";

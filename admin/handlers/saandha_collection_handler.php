@@ -16,6 +16,7 @@ if ($action == "find_record_sub") {
     $av_specialSaandhaAmt = "";
     $payFor = "0";
     $due = "0";
+    $ref1 = "0";
     $saandha_amount = "";
     $current_saandha_amount = "";
     $where = array(

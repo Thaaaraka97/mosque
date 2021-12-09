@@ -126,7 +126,9 @@ else if ($type == "rental") {
     // $URL = "../form_villagers-registration-form-step2.php?inserted_record=1";
     $pay_start = $_GET["pay_start"];
     $pay_end = $_GET["pay_end"];
-    $msg = 'An-Noor Jumma Masjid, Moragala. \n\nRent Payment Notification. \n\nAmount - Rs. '.$amount.' \nPaid for - '.$pay_start.' to '.$pay_end.' \nDate - '.$today.' \n\nJazak Allah khair.';
+    $ref1 = $_GET["ref1"];
+    $ref2 = $_GET["ref2"];
+    $msg = 'An-Noor Jumma Masjid, Moragala. \n\nRent Payment Notification. \n\nReference No - '.$ref1.' - '.$ref2.' \nAmount - Rs. '.$amount.' \nPaid for - '.$pay_start.' to '.$pay_end.' \nDate - '.$today.' \n\nJazak Allah khair.';
     $body = '{ 
         "messages": [
             {
@@ -145,7 +147,9 @@ else if ($type == "saandha") {
     // $URL = "../form_villagers-registration-form-step2.php?inserted_record=1";
     $pay_start = $_GET["pay_start"];
     $pay_end = $_GET["pay_end"];
-    $msg = 'An-Noor Jumma Masjid, Moragala. \n\nSaandha Payment Notification. \n\nAmount - Rs. '.$amount.' \nPaid for - '.$pay_start.' to '.$pay_end.' \nDate - '.$today.' \n\nJazak Allah khair.';
+    $ref1 = $_GET["ref1"];
+    $ref2 = $_GET["ref2"];
+    $msg = 'An-Noor Jumma Masjid, Moragala. \n\nSaandha Payment Notification. \n\nReference No - '.$ref1.' - '.$ref2.' \nAmount - Rs. '.$amount.' \nPaid for - '.$pay_start.' to '.$pay_end.' \nDate - '.$today.' \n\nJazak Allah khair.';
     $body = '{ 
         "messages": [
             {
