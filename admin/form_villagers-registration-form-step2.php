@@ -247,6 +247,12 @@ if (isset($_GET["inserted_record"])) {
                                                             <input type="month" class="form-control" id="inputPaidMonth" name="inputPaidMonth">
                                                         </div>
                                                     </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputPrevDue"> Previous Due </label>
+                                                            <input type="text" class="form-control" id="inputPrevDue" name="inputPrevDue" placeholder="Amount (Rs)">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">

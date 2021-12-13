@@ -233,6 +233,8 @@ if (isset($_POST["addAnother"])) {
     } else {
         $inputSpecialSaandha = $_POST['inputSpecialSaandha'];
     }
+
+    $name = $_POST['inputName'];
     $index = 0;
     // check subdivision
     $where = array(
@@ -391,14 +393,14 @@ if (isset($_POST["addAnother"])) {
             // -----------------------------------------------------------------------------------------------
 
             if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
-                $URL = "include/sms_api_connection.php?type=allvillagers_addanother&amount=$due_upto_today&contact=$contact&index=$index&sub=$av_subDivision";
+                $URL = "include/sms_api_connection.php?type=allvillagers_addanother&amount=$due_upto_today&contact=$contact&index=$index&sub=$av_subDivision&name=$name";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                 // $URL = "form_villagers-registration-form-step2.php?inserted_record=1";
                 // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                 // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
             }
         } else {
-            $URL = "include/sms_api_connection.php?type=allvillagers_addanother&amount=$due_upto_today&contact=$contact&index=$index&sub=$av_subDivision";
+            $URL = "include/sms_api_connection.php?type=allvillagers_addanother&amount=$due_upto_today&contact=$contact&index=$index&sub=$av_subDivision&name=$name";
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             // $URL = "form_villagers-registration-form-step2.php?inserted_record=1";
             // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -567,6 +569,8 @@ if (isset($_POST["submitSaandha"])) {
     } else {
         $inputSpecialSaandha = $_POST['inputSpecialSaandha'];
     }
+
+    $name = $_POST['inputName'];
     $index = 0;
     // check subdivision
     $where = array(
@@ -726,7 +730,7 @@ if (isset($_POST["submitSaandha"])) {
             // -----------------------------------------------------------------------------------------------
             if ($database->insert_data('tbl_saandhacollection', $insert_to_tbl_saandhacollection)) {
 
-                $URL = "include/sms_api_connection.php?type=allvillagers&amount=$due_upto_today&contact=$contact&index=$index&sub=$av_subDivision";
+                $URL = "include/sms_api_connection.php?type=allvillagers&amount=$due_upto_today&contact=$contact&index=$index&sub=$av_subDivision&name=$name";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                 // $URL = "form_villagers-registration-form.php?inserted_record=1";
@@ -734,13 +738,13 @@ if (isset($_POST["submitSaandha"])) {
                 // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
             }
         } else {
-            $URL = "include/sms_api_connection.php?type=allvillagers&amount=$due_upto_today&contact=$contact&index=$index&sub=$av_subDivision";
+            $URL = "include/sms_api_connection.php?type=allvillagers&amount=$due_upto_today&contact=$contact&index=$index&sub=$av_subDivision&name=$name";
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             // $URL = "form_villagers-registration-form.php?inserted_record=1";
             // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         }
-        $URL = "include/sms_api_connection.php?type=allvillagers&amount=$due_upto_today&contact=$contact&index=$index&sub=$av_subDivision";
+        $URL = "include/sms_api_connection.php?type=allvillagers&amount=$due_upto_today&contact=$contact&index=$index&sub=$av_subDivision&name=$name";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         // $URL = "form_villagers-registration-form.php?inserted_record=1";
         // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -1316,6 +1320,7 @@ if (isset($_POST['submitRentalPayment'])) {
     }
     $inputRentalID = $_POST["inputRentalID"];
     $payment = $_POST['inputPayment'];
+    $name = $_POST['inputName'];
     // $payment_tot = $_POST['inputPayment'];
     $paidFor = $_POST['payedFor'];
     $is_lease = "";
@@ -1444,7 +1449,7 @@ if (isset($_POST['submitRentalPayment'])) {
             foreach ($payment_details as $payment_details_item) {
                 $ref2 = $payment_details_item["ri_id"];
             }
-            $URL = "include/sms_api_connection.php?type=rental&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
+            $URL = "include/sms_api_connection.php?type=rental&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
             // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -1455,7 +1460,7 @@ if (isset($_POST['submitRentalPayment'])) {
         foreach ($payment_details as $payment_details_item) {
             $ref2 = $payment_details_item["ri_id"];
         }
-        $URL = "include/sms_api_connection.php?type=rental&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
+        $URL = "include/sms_api_connection.php?type=rental&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
@@ -1632,7 +1637,8 @@ if (isset($_POST['submitFridayCollection'])) {
         if ($database->insert_data('tbl_fridaycollectionregular', $insert_to_tbl_fridaycollectionregular)) {
             $contact = substr_replace($_POST['inputTP'], "94", 0, 1);
             $amount = $_POST['inputAmount'];
-            $URL = "include/sms_api_connection.php?type=friday&amount=$amount&contact=$contact";
+            $name = $_POST['inputName'];
+            $URL = "include/sms_api_connection.php?type=friday&amount=$amount&contact=$contact&name=$name";
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
@@ -1680,7 +1686,8 @@ if (isset($_POST['submitFunds'])) {
         if ($_POST['inputFundsType'] == "Festival") {
             $contact = substr_replace($_POST['inputFundsTP'], "94", 0, 1);
             $amount = $_POST['inputAmount'];
-            $URL = "include/sms_api_connection.php?type=festival&amount=$amount&contact=$contact";
+            $name = $_POST['inputName'];
+            $URL = "include/sms_api_connection.php?type=festival&amount=$amount&contact=$contact&name=$name";
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         } else {
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -1712,7 +1719,8 @@ if (isset($_POST['submitLailathulKadhir'])) {
     if ($database->insert_data('tbl_lailathulkadhrcollection', $insert_to_tbl_lailathulkadhrcollection)) {
         $contact = substr_replace($_POST['inputlailathulTP'], "94", 0, 1);
         $amount = $_POST['inputAmount'];
-        $URL = "include/sms_api_connection.php?type=lailathul&amount=$amount&contact=$contact";
+        $name = $_POST['inputName'];
+        $URL = "include/sms_api_connection.php?type=lailathul&amount=$amount&contact=$contact&name=$name";
         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
         // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
@@ -1729,6 +1737,7 @@ if (isset($_POST['submitNonmahallaCol'])) {
     $person_details = $database->select_where('tbl_nonmahallasaandharegistration', $where);
     $nmsr_id = "";
     $amount = $_POST['inputAmount'];
+    $name = $_POST['inputName'];
 
     if ($person_details) {
         foreach ($person_details as $person_details_item) {
@@ -1749,7 +1758,7 @@ if (isset($_POST['submitNonmahallaCol'])) {
         if ($database->insert_data('tbl_nonmahallasaandhacollection', $insert_to_tbl_nonmahallasaandhacollection)) {
             $contact = substr_replace($_POST['inputNonmahallaColTP'], "94", 0, 1);
             // $amount = $_POST['inputAmount'];
-            $URL = "include/sms_api_connection.php?type=nonmahalla&amount=$amount&contact=$contact";
+            $URL = "include/sms_api_connection.php?type=nonmahalla&amount=$amount&contact=$contact&name=$name";
             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
             // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
@@ -2264,6 +2273,7 @@ if (isset($_POST['submitQuickForm'])) {
     }
 
     $index = 0;
+    $name = $_POST['inputName'];
     // check subdivision
     $where = array(
         'av_subDivision'     =>     $_POST["inputSubdivision"]
@@ -2392,7 +2402,7 @@ if (isset($_POST['submitQuickForm'])) {
                     // $due_upto_today = $due + ($no_of_due_months * $current_saandha_amount);
                 }
 
-                $URL = "include/sms_api_connection.php?type=allvillagers&amount=$due_upto_today&contact=$contact&index=$av_index&sub=$av_subDivision";
+                $URL = "include/sms_api_connection.php?type=allvillagers&amount=$due_upto_today&contact=$contact&index=$av_index&sub=$av_subDivision&name=$name";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                 // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                 // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
@@ -2418,6 +2428,7 @@ if (isset($_POST['submitSandhaPayment'])) {
     $paidFor = $_POST['payedFor'];
     $saandha_amount_details = $database->select_data('tbl_saandhaamountfixing');
     $specialSaandha = $_POST['specialSaandha'];
+    $name = $_POST['inputName'];
 
     // calculate values for sms
     $contact = substr_replace($_POST['inputTP'], "94", 0, 1);
@@ -2456,7 +2467,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                     $ref2 = $payment_details_item["collection_id"];
                 }
 
-                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
+                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                 // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2481,7 +2492,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                     $ref2 = $payment_details_item["collection_id"];
                 }
 
-                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
+                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                 // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2563,7 +2574,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                             $ref2 = $payment_details_item["collection_id"];
                         }
 
-                        $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
+                        $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
                         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                         // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2588,7 +2599,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                             $ref2 = $payment_details_item["collection_id"];
                         }
 
-                        $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
+                        $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
                         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                         // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2601,7 +2612,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                     $ref2 = $payment_details_item["collection_id"];
                 }
 
-                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
+                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                 // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2628,7 +2639,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                         $ref2 = $payment_details_item["collection_id"];
                     }
 
-                    $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
+                    $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
                     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                     // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2725,7 +2736,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                                 $ref2 = $payment_details_item["collection_id"];
                             }
 
-                            $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
+                            $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
                             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                             // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2753,7 +2764,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                                 $ref2 = $payment_details_item["collection_id"];
                             }
 
-                            $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
+                            $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
                             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                             // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                             // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
@@ -2764,7 +2775,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                     foreach ($payment_details as $payment_details_item) {
                         $ref2 = $payment_details_item["collection_id"];
                     }
-                    $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
+                    $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
                     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                     // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                     // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
@@ -2775,7 +2786,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                     $ref2 = $payment_details_item["collection_id"];
                 }
 
-                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2";
+                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                 // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2798,6 +2809,6 @@ if (isset($_POST['submitAlert'])) {
     // $amount = $_POST['inputPaymentSaandha'];
     // $pay_start = $_POST['payedFor'];
 
-    $URL = "include/sms_api_connection.php?type=alert&amount=$due&date=$date&contact=$contact&collector=$collector";
+    $URL = "include/sms_api_connection.php?type=alert&amount=$due&date=$date&contact=$contact&collector=$collector&name=test";
     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 }
