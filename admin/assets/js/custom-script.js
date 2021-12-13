@@ -2479,6 +2479,13 @@ $(document).ready(function () {
     sort6 = $("#sortVillagerSaandhaTo").val();
     window.location.href = "preview_villager-details_step-2.php?index=" + index + "&subdivision=" + sub + "&action=view_saandha&sort5=" + sort5 + "&sort6=" + sort6;
   });
+  $("#btnFindRef").click(function (e) {
+    e.preventDefault();
+    var refNo = $("#sortRef1").val();
+    var refNoArr = refNo.split("-");
+    window.location.href = "preview_saandha-page2.php?sort15=" + refNoArr[0] + "&sort16=" + refNoArr[1];
+  });
+  
 
   // saandha collector collection
   // delete record

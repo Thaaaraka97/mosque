@@ -86,6 +86,25 @@ else if ($type == "festival") {
     // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
     // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
+else if ($type == "quickform") {
+    $URL = "../form_quick_form.php?inserted_record=1";
+    $index = $_GET["index"];
+    $sub = $_GET["sub"];
+    $msg = 'An-Noor Jumma Masjid, Moragala. \nNew User Registration. \nName : '.$name.' \nYour index : '.$index.' \nYour subdivision : '.$sub.' \nYour due : Rs. '.$amount.' \nDate : '.$today.' \nJazak Allah khair.';
+    $body = '{ 
+        "messages": [
+            {
+                "number": "'.$contact_no.'",
+                "mask": "AnNoorMasjd",
+                "text": "'.$msg.'",
+                "campaignName": "annoor"            
+            }
+        ] 
+        }';
+    
+    // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+    // echo '<META HTTP:EQUIV="refresh" content="0;URL=' . $URL . '">';
+}
 else if ($type == "allvillagers") {
     $index = $_GET["index"];
     $sub = $_GET["sub"];

@@ -233,6 +233,11 @@ if (isset($_POST["addAnother"])) {
     } else {
         $inputSpecialSaandha = $_POST['inputSpecialSaandha'];
     }
+    if ($_POST['inputPrevDue'] == "") {
+        $inputPrevDue = 0;
+    } else {
+        $inputPrevDue = $_POST['inputPrevDue'];
+    }
 
     $name = $_POST['inputName'];
     $index = 0;
@@ -349,7 +354,7 @@ if (isset($_POST["addAnother"])) {
                 'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
                 'collection_address' => mysqli_real_escape_string($database->con, $av_address),
                 'collection_paidAmount' => mysqli_real_escape_string($database->con, "0"),
-                'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
+                'collection_dueAmount' => mysqli_real_escape_string($database->con, $inputPrevDue),
                 'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                 'collection_date' => mysqli_real_escape_string($database->con, $today),
                 'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
@@ -362,9 +367,9 @@ if (isset($_POST["addAnother"])) {
 
             // due upto today is added to the due amount
             $no_of_due_months = $database->calculate_months($paidFor);
-            $due_upto_today = 0;
+            $due_upto_today = $inputPrevDue;
             if ($inputSpecialSaandha != "0") {
-                $due_upto_today = $due + ($no_of_due_months * $inputSpecialSaandha);
+                $due_upto_today = $due_upto_today + ($no_of_due_months * $inputSpecialSaandha);
             } else {
                 $saandha_amount_details = $database->select_data('tbl_saandhaamountfixing');
                 // $tot_due = 0;
@@ -569,6 +574,11 @@ if (isset($_POST["submitSaandha"])) {
     } else {
         $inputSpecialSaandha = $_POST['inputSpecialSaandha'];
     }
+    if ($_POST['inputPrevDue'] == "") {
+        $inputPrevDue = 0;
+    } else {
+        $inputPrevDue = $_POST['inputPrevDue'];
+    }
 
     $name = $_POST['inputName'];
     $index = 0;
@@ -686,7 +696,7 @@ if (isset($_POST["submitSaandha"])) {
                 'collection_name' => mysqli_real_escape_string($database->con, $_POST['inputName']),
                 'collection_address' => mysqli_real_escape_string($database->con, $av_address),
                 'collection_paidAmount' => mysqli_real_escape_string($database->con, "0"),
-                'collection_dueAmount' => mysqli_real_escape_string($database->con, "0"),
+                'collection_dueAmount' => mysqli_real_escape_string($database->con, $inputPrevDue),
                 'collection_username' => mysqli_real_escape_string($database->con, $_SESSION['username']),
                 'collection_date' => mysqli_real_escape_string($database->con, $today),
                 'collection_paidFor' => mysqli_real_escape_string($database->con, $paidFor)
@@ -699,9 +709,9 @@ if (isset($_POST["submitSaandha"])) {
 
             // due upto today is added to the due amount
             $no_of_due_months = $database->calculate_months($paidFor);
-            $due_upto_today = 0;
-            if ($inputSpecialSaandha != "0") {
-                $due_upto_today = $due + ($no_of_due_months * $inputSpecialSaandha);
+            $due_upto_today = $inputPrevDue;
+            if ($inputSpecialSaandha != 0) {
+                $due_upto_today = $due_upto_today + ($no_of_due_months * $inputSpecialSaandha);
             } else {
                 $saandha_amount_details = $database->select_data('tbl_saandhaamountfixing');
                 // $tot_due = 0;
@@ -2354,8 +2364,9 @@ if (isset($_POST['submitQuickForm'])) {
 
         if ($_POST['inputPaidMonth'] != "") {
             $inputPaidMonth = $_POST["inputPaidMonth"];
-            $inputPaidMonth = date_create($inputPaidMonth);
-            $inputPaidMonth = date_format($inputPaidMonth, "Y-M");
+            $inputPaidMonth = date("Y-M", strtotime($inputPaidMonth));
+            // $inputPaidMonth = date_create($inputPaidMonth);
+            // $inputPaidMonth = date_format($inputPaidMonth, "Y-M");
             $insert_to_tbl_saandhacollection = array(
                 'collection_index' => mysqli_real_escape_string($database->con, $av_index),
                 'collection_subdivision' => mysqli_real_escape_string($database->con, $av_subDivision),
@@ -2372,10 +2383,10 @@ if (isset($_POST['submitQuickForm'])) {
                 $amount = $_POST['inputAmount'];
 
                 // due upto today is added to the due amount
-                $no_of_due_months = $database->calculate_months($payFor);
-                $due_upto_today = 0;
-                if ($inputSpecialSaandha != "0") {
-                    $due_upto_today = $due + ($no_of_due_months * $inputSpecialSaandha);
+                $no_of_due_months = $database->calculate_months($inputPaidMonth);
+                $due_upto_today = $inputPrevDue;
+                if ($inputSpecialSaandha != 0) {
+                    $due_upto_today = $due_upto_today + ($no_of_due_months * $inputSpecialSaandha);
                 } else {
                     $saandha_amount_details = $database->select_data('tbl_saandhaamountfixing');
                     // $tot_due = 0;
@@ -2402,7 +2413,7 @@ if (isset($_POST['submitQuickForm'])) {
                     // $due_upto_today = $due + ($no_of_due_months * $current_saandha_amount);
                 }
 
-                $URL = "include/sms_api_connection.php?type=allvillagers&amount=$due_upto_today&contact=$contact&index=$av_index&sub=$av_subDivision&name=$name";
+                $URL = "include/sms_api_connection.php?type=quickform&amount=$due_upto_today&contact=$contact&index=$av_index&sub=$av_subDivision&name=$name";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                 // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                 // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
@@ -2429,6 +2440,7 @@ if (isset($_POST['submitSandhaPayment'])) {
     $saandha_amount_details = $database->select_data('tbl_saandhaamountfixing');
     $specialSaandha = $_POST['specialSaandha'];
     $name = $_POST['inputName'];
+    $collector = $_SESSION['username'];
 
     // calculate values for sms
     $contact = substr_replace($_POST['inputTP'], "94", 0, 1);
@@ -2436,6 +2448,7 @@ if (isset($_POST['submitSandhaPayment'])) {
     $pay_start = $_POST['payedFor'];
     $ref2 = 0;
     $ref1 = 0;
+    $due_upto_today = 0;
 
     // $where2 = array(
     //     'collection_index'     =>     $_POST["inputIndexNo"],
@@ -2467,7 +2480,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                     $ref2 = $payment_details_item["collection_id"];
                 }
 
-                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
+                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name&collector=$collector&due=0";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                 // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2492,7 +2505,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                     $ref2 = $payment_details_item["collection_id"];
                 }
 
-                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
+                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name&collector=$collector&due=0";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                 // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2574,7 +2587,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                             $ref2 = $payment_details_item["collection_id"];
                         }
 
-                        $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
+                        $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name&collector=$collector&due=$due";
                         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                         // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2599,7 +2612,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                             $ref2 = $payment_details_item["collection_id"];
                         }
 
-                        $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
+                        $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name&collector=$collector&due=$due";
                         echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                         // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2612,7 +2625,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                     $ref2 = $payment_details_item["collection_id"];
                 }
 
-                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
+                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name&collector=$collector&due=0";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                 // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2638,8 +2651,33 @@ if (isset($_POST['submitSandhaPayment'])) {
                     foreach ($payment_details as $payment_details_item) {
                         $ref2 = $payment_details_item["collection_id"];
                     }
+                    // -----------------------------------------------------------------
+                    // $saandha_amount_details = $database->select_data('tbl_saandhaamountfixing');
+                    // // $tot_due = 0;
+                    // $current_saandha_amount = 0;
+                    // $saandha_amount = 0;
+                    // $saf_date = 0;
+                    // $today = date('Y-M');
+                    // while ($paidFor != $today) {
+                    //     // retrive saandha amount relevant to month
+                    //     foreach ($saandha_amount_details as $saandha_amount_item) {
+                    //         $saandha_amount = $saandha_amount_item["saf_amount"];
+                    //         $saf_date = $saandha_amount_item["saf_date"];
+                    //         $saf_date = date_create($saf_date);
+                    //         $date = date_format($saf_date, "Y-M");
+                    //         if ($paidFor == $date) {
+                    //             $current_saandha_amount = $saandha_amount;
+                    //             break;
+                    //         } else {
+                    //             $current_saandha_amount = $saandha_amount;
+                    //         }
+                    //     }
+                    //     $due_upto_today = $due + $due_upto_today + $current_saandha_amount;
+                    //     $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
+                    // }
+                    // ------------------------------------------------------------------
 
-                    $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
+                    $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name&collector=$collector&due=$due_upto_today";
                     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                     // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2735,8 +2773,33 @@ if (isset($_POST['submitSandhaPayment'])) {
                             foreach ($payment_details as $payment_details_item) {
                                 $ref2 = $payment_details_item["collection_id"];
                             }
+                            // -----------------------------------------------------------------
+                            // $saandha_amount_details = $database->select_data('tbl_saandhaamountfixing');
+                            // // $tot_due = 0;
+                            // $current_saandha_amount = 0;
+                            // $saandha_amount = 0;
+                            // $saf_date = 0;
+                            // $today = date('Y-M');
+                            // while ($paidFor != $today) {
+                            //     // retrive saandha amount relevant to month
+                            //     foreach ($saandha_amount_details as $saandha_amount_item) {
+                            //         $saandha_amount = $saandha_amount_item["saf_amount"];
+                            //         $saf_date = $saandha_amount_item["saf_date"];
+                            //         $saf_date = date_create($saf_date);
+                            //         $date = date_format($saf_date, "Y-M");
+                            //         if ($paidFor == $date) {
+                            //             $current_saandha_amount = $saandha_amount;
+                            //             break;
+                            //         } else {
+                            //             $current_saandha_amount = $saandha_amount;
+                            //         }
+                            //     }
+                            //     $due_upto_today = $due + $due_upto_today + $current_saandha_amount;
+                            //     $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
+                            // }
+                            // ------------------------------------------------------------------
 
-                            $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
+                            $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name&collector=$collector&due=$due_upto_today";
                             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                             // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
@@ -2763,8 +2826,33 @@ if (isset($_POST['submitSandhaPayment'])) {
                             foreach ($payment_details as $payment_details_item) {
                                 $ref2 = $payment_details_item["collection_id"];
                             }
+                            // -----------------------------------------------------------------
+                            // $saandha_amount_details = $database->select_data('tbl_saandhaamountfixing');
+                            // // $tot_due = 0;
+                            // $current_saandha_amount = 0;
+                            // $saandha_amount = 0;
+                            // $saf_date = 0;
+                            // $today = date('Y-M');
+                            // while ($paidFor != $today) {
+                            //     // retrive saandha amount relevant to month
+                            //     foreach ($saandha_amount_details as $saandha_amount_item) {
+                            //         $saandha_amount = $saandha_amount_item["saf_amount"];
+                            //         $saf_date = $saandha_amount_item["saf_date"];
+                            //         $saf_date = date_create($saf_date);
+                            //         $date = date_format($saf_date, "Y-M");
+                            //         if ($paidFor == $date) {
+                            //             $current_saandha_amount = $saandha_amount;
+                            //             break;
+                            //         } else {
+                            //             $current_saandha_amount = $saandha_amount;
+                            //         }
+                            //     }
+                            //     $due_upto_today = $due + $due_upto_today + $current_saandha_amount;
+                            //     $paidFor = date('Y-M', strtotime('+1 month', strtotime($paidFor)));
+                            // }
+                            // ------------------------------------------------------------------
 
-                            $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
+                            $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name&collector=$collector&due=$due_upto_today";
                             echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                             // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                             // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
@@ -2775,7 +2863,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                     foreach ($payment_details as $payment_details_item) {
                         $ref2 = $payment_details_item["collection_id"];
                     }
-                    $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
+                    $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name&collector=$collector&due=0";
                     echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                     // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
                     // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
@@ -2786,7 +2874,7 @@ if (isset($_POST['submitSandhaPayment'])) {
                     $ref2 = $payment_details_item["collection_id"];
                 }
 
-                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name";
+                $URL = "include/sms_api_connection.php?type=saandha&amount=$amount&pay_start=$pay_start&pay_end=$paidFor&contact=$contact&ref1=$ref1&ref2=$ref2&name=$name&collector=$collector&due=0";
                 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 
                 // echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";

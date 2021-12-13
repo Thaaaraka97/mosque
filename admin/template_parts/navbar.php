@@ -60,6 +60,9 @@
             <a class="nav-link" href="<?php $server_name ?>dashboard.php"> <span class="menu-icon"> <i class="mdi mdi-speedometer"></i> </span> <span class="menu-title"> Dashboard </span> </a>
         </li>
         <li class="nav-item menu-items">
+            <a class="nav-link" href="<?php $server_name ?>form_collection_alert.php"> <span class="menu-icon"> <i class="mdi mdi-bell-ring"></i> </span> <span class="menu-title"> Collection Alert </span> </a>
+        </li>
+        <li class="nav-item menu-items">
             <a class="nav-link" href="<?php $server_name ?>forms.php"> <span class="menu-icon"> <i class="mdi mdi-file-document-box"></i> </span> <span class="menu-title">Forms</span> </a>
         </li>
         <li class="nav-item menu-items">
@@ -165,6 +168,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_saandha-page.php?sort1=0&sort5=<?php echo date('Y-m-01') ?>&sort6=<?php echo date('Y-m-t') ?>&sort14=0000-00"> Saandha Collection </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preview_saandha-page2.php?sort5=0&sort6=0"> Find Saandha Records </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="preview_nonmahalla_saandha_collection.php?sort5=<?php echo date('Y-m-01') ?>&sort6=<?php echo date('Y-m-t') ?>"> Non-Mahalla Saandha Collection </a>
