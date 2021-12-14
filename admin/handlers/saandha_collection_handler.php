@@ -61,6 +61,8 @@ if ($action == "find_record_sub") {
     $no_of_due_months = $database->calculate_months($payFor);
     $due_upto_today = 0;
     $month = $payFor;
+    $month_str = strtotime($month);
+    $today_str = strtotime($today);
     if ($av_specialSaandhaAmt != "0") {
         $due_upto_today = $due + ($no_of_due_months * $av_specialSaandhaAmt);
     }
@@ -68,23 +70,32 @@ if ($action == "find_record_sub") {
         $saandha_amount_details = $database->select_data('tbl_saandhaamountfixing');
         // $tot_due = 0;
         $current_saandha_amount_for_due = 0;
-        while ($month != $today) {
-            // retrive saandha amount relevant to month
-            foreach ($saandha_amount_details as $saandha_amount_item) {
-                $saandha_amount = $saandha_amount_item["saf_amount"];
-                $saf_date = $saandha_amount_item["saf_date"];
-                $saf_date = date_create($saf_date);
-                $date = date_format($saf_date, "Y-M");
-                if ($month == $date) {
-                    $current_saandha_amount_for_due = $saandha_amount;
-                    break;
-                } else {
-                    $current_saandha_amount_for_due = $saandha_amount;
-                }
-            }
-            $due_upto_today = $due_upto_today + $current_saandha_amount_for_due;
-            $month = date('Y-M', strtotime('+1 month', strtotime($month)));
+        if ($due != 0) {
+            $due_upto_today = $due_upto_today + $due;
         }
+        
+        if ($month_str < $today_str) {
+            $month = date('Y-M', strtotime('+1 month', strtotime($month)));
+            while ($month != $today) {
+                // retrive saandha amount relevant to month
+                foreach ($saandha_amount_details as $saandha_amount_item) {
+                    $saandha_amount = $saandha_amount_item["saf_amount"];
+                    $saf_date = $saandha_amount_item["saf_date"];
+                    $saf_date = date_create($saf_date);
+                    $date = date_format($saf_date, "Y-M");
+                    $date_str = strtotime($date);
+                    if ($month == $date) {
+                        $current_saandha_amount_for_due = $saandha_amount;
+                        break;
+                    } else {
+                        $current_saandha_amount_for_due = $saandha_amount;
+                    }
+                }
+                $due_upto_today = $due_upto_today + $current_saandha_amount_for_due;
+                $month = date('Y-M', strtotime('+1 month', strtotime($month)));
+            }
+        }
+        
 
         // $due_upto_today = $due + ($no_of_due_months * $current_saandha_amount);
     }

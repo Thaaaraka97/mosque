@@ -7,6 +7,11 @@ $contact_no = $_GET["contact"];
 $type = $_GET["type"];
 $amount = $_GET["amount"];
 $name = $_GET["name"];
+$collector = "";
+if (isset($_GET["collector"])) {
+    $collector = $_GET["collector"];
+}
+
 
 echo $amount."+".$contact_no;
 
@@ -23,7 +28,7 @@ $digest=md5($password);
 $body = "";
 
 if ($type == "friday") {
-    $msg = 'An-Noor Jumma Masjid, Moragala. \nNon-Mahalla Friday Collection Notification. \nName : '.$name.' \nPaid Amount : Rs. '.$amount.' \nDate : '.$today.' \nJazak Allah khair.';
+    $msg = 'An-Noor Jumma Masjid, Moragala. \nNon-Mahalla Friday Collection Notification. \nName : '.$name.' \nPaid Amount : Rs. '.$amount.' \nDate : '.$today.' \nCollector : '.$collector.' \nJazak Allah khair.';
     $body = '{ 
         "messages": [
             {
@@ -39,7 +44,7 @@ if ($type == "friday") {
     // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
 else if ($type == "lailathul") {
-    $msg = 'An-Noor Jumma Masjid, Moragala. \nLaylat al-Qadr Collection Notification. \nName : '.$name.' \nPaid Amount : Rs. '.$amount.' \nDate : '.$today.' \nJazak Allah khair.';
+    $msg = 'An-Noor Jumma Masjid, Moragala. \nLaylat al-Qadr Collection Notification. \nName : '.$name.' \nPaid Amount : Rs. '.$amount.' \nDate : '.$today.' \nCollector : '.$collector.' \nJazak Allah khair.';
     $body = '{ 
         "messages": [
             {
@@ -55,7 +60,7 @@ else if ($type == "lailathul") {
     // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
 else if ($type == "nonmahalla") {
-    $msg = 'An-Noor Jumma Masjid, Moragala. \nNon-Mahalla Sandha Payment Notification. \nName : '.$name.'\nPaid Amount : Rs. '.$amount.' \nDate : '.$today.' \nJazak Allah khair.';
+    $msg = 'An-Noor Jumma Masjid, Moragala. \nNon-Mahalla Sandha Payment Notification. \nName : '.$name.'\nPaid Amount : Rs. '.$amount.' \nDate : '.$today.' \nCollector : '.$collector.' \nJazak Allah khair.';
     $body = '{ 
         "messages": [
             {
@@ -71,7 +76,7 @@ else if ($type == "nonmahalla") {
     // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
 else if ($type == "festival") {
-    $msg = 'An-Noor Jumma Masjid, Moragala. \nFestival Collection Notification. \nName : '.$name.' \nPaid Amount : Rs. '.$amount.' \nDate : '.$today.' \nJazak Allah khair.';
+    $msg = 'An-Noor Jumma Masjid, Moragala. \nFestival Collection Notification. \nName : '.$name.' \nPaid Amount : Rs. '.$amount.' \nDate : '.$today.' \nCollector : '.$collector.' \nJazak Allah khair.';
     $body = '{ 
         "messages": [
             {
@@ -148,7 +153,8 @@ else if ($type == "rental") {
     $pay_end = $_GET["pay_end"];
     $ref1 = $_GET["ref1"];
     $ref2 = $_GET["ref2"];
-    $msg = 'An-Noor Jumma Masjid, Moragala. \nRent Payment Notification. \nName : '.$name.' \nReference No : '.$ref1.'-'.$ref2.' \nAmount : Rs. '.$amount.' \nPaid for : '.$pay_start.' to '.$pay_end.' \nDate : '.$today.' \nJazak Allah khair.';
+    $due = $_GET["due"];
+    $msg = 'An-Noor Jumma Masjid, Moragala. \nRent Payment Notification. \nName : '.$name.' \nReference No : '.$ref1.'-'.$ref2.' \nAmount : Rs. '.$amount.' \nPaid for : '.$pay_start.' to '.$pay_end.' \nBalance amount : Rs. '.$due.' \nDate : '.$today.' \nCollector : '.$collector.' \nJazak Allah khair.';
     $body = '{ 
         "messages": [
             {
@@ -230,10 +236,10 @@ $server_output = curl_exec ($ch);
 curl_close ($ch); 
 
 $data = json_decode($server_output);
-echo $data->resultCode;
-echo "\n";
+// echo $data->resultCode;
+// echo "\n";
   
-echo $data->resultDesc;
+// echo $data->resultDesc;
 
 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
